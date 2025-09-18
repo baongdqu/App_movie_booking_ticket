@@ -10,7 +10,7 @@ Với giao diện **thân thiện** và thao tác **đơn giản**, ứng dụng
 ✨ Ngoài ra, người dùng còn có thể cập nhật những **bộ phim mới nhất**, **trailer hấp dẫn** và các **chương trình khuyến mãi đặc biệt**.
 
 <p align="center">
-  <img src="https://resource.kinhtedothi.vn/resources2025/1/users/203/3-vtb-v2-1749775536.jpg" alt="images" width="500" style="border-radius: 12px; box-shadow: 0 0 20px rgba(0,0,0,0.3);" />
+  <img src="https://github.com/baongdqu/App_movie_booking_ticket/blob/bae72a0573b0846ded2801b639b6711c80df03c4/pic/3-vtb-v2-1749775536.jpg" alt="images" width="500" style="border-radius: 12px; box-shadow: 0 0 20px rgba(0,0,0,0.3);" />
 </p>
 
 ---
