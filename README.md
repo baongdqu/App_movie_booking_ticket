@@ -28,4 +28,3 @@ Với giao diện **thân thiện** và thao tác **đơn giản**, ứng dụng
 <p align="center">
   <b>🎥 Thông qua ứng dụng này, chúng tôi mong muốn đem đến cho mọi người một trải nghiệm điện ảnh tuyệt đối, nhiều tiện ích và đầy hứng khởi. 🍿</b>
 </p>
-
