@@ -1,7 +1,7 @@
 package com.example.app_movie_booking_ticket;
 
 import androidx.annotation.NonNull;
-import com.google.firebase.FirebaseApp;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -14,14 +14,13 @@ import com.google.firebase.database.ValueEventListener;
  */
 public class firebase_helper {
 
-    // 1️⃣ Khai báo tham chiếu đến Realtime Database
-    private FirebaseDatabase database;
-    private DatabaseReference rootRef;
+    private final DatabaseReference rootRef;
 
     // 2️⃣ Hàm khởi tạo
     public firebase_helper() {
         // Lấy instance của Realtime Database
-        database = FirebaseDatabase.getInstance();
+        // 1️⃣ Khai báo tham chiếu đến Realtime Database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
 
         // Lấy reference gốc (root node)
         rootRef = database.getReference();
