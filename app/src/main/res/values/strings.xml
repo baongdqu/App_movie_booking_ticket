@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">App_movie_booking_ticket</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="ng_nh_p">Đăng nhập</string>
+    <string name="qu_n_m_t_kh_u">Quên mật khẩu?</string>
+    <string name="t_o_t_i_kho_n_m_i">Tạo tài khoản mới</string>
 </resources>
