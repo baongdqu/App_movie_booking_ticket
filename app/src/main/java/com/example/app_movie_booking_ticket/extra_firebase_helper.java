@@ -12,12 +12,12 @@ import com.google.firebase.database.ValueEventListener;
  * Lớp firebase_helper chứa các lệnh cơ bản để thao tác với Firebase Realtime Database.
  * (Mẫu minh họa, chưa cần chạy)
  */
-public class firebase_helper {
+public class extra_firebase_helper {
 
     private final DatabaseReference rootRef;
 
     // 2️⃣ Hàm khởi tạo
-    public firebase_helper() {
+    public extra_firebase_helper() {
         // Lấy instance của Realtime Database
         // 1️⃣ Khai báo tham chiếu đến Realtime Database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
