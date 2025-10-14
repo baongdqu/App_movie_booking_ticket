@@ -17,8 +17,21 @@
             android:exported="true" />
 
         <activity
+            android:name=".activities_1_signup"
+            android:exported="true" />
+
+        <activity
+            android:name=".activities_1_forgot_password"
+            android:exported="true" />
+
+        <activity
+            android:name=".activities_2_menu"
+            android:exported="true" />
+
+        <activity
             android:name=".activities_0_loading"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

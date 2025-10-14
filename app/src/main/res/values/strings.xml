@@ -5,4 +5,14 @@
     <string name="ng_nh_p">Đăng nhập</string>
     <string name="qu_n_m_t_kh_u">Quên mật khẩu?</string>
     <string name="t_o_t_i_kho_n_m_i">Tạo tài khoản mới</string>
+    <string name="h_t_n">Họ và tên</string>
+    <string name="xac_nhan_mat_khau">Xác nhận mật khẩu</string>
+    <string name="s_dien_thoai">Số điện thoại</string>
+    <string name="t_o_t_i_kho_n">Tạo tài khoản</string>
+    <string name="quay_l_i_ng_nh_p">Quay lại đăng nhập</string>
+    <string name="m_t_kh_u">Mật khẩu</string>
+    <string name="g_i_li_n_k_t_kh_i_ph_c">Gửi liên kết khôi phục</string>
+    <string name="quay_l_i_ng_nh_ps">Quay lại đăng nhập</string>
+    <string name="m_t_kh_uu">Mật khẩu</string>
+    <string name="ang_t_i">Đang tải...</string>
 </resources>
