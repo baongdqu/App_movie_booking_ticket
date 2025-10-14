@@ -1,5 +1,8 @@
 // link firebase đã tạo:
 // https://console.firebase.google.com/u/0/project/app-movie-booking-ticket/database/app-movie-booking-ticket-default-rtdb/data
+
+// và dưới đây là các đoạn code ví dụ mà thôi
+
 package com.example.app_movie_booking_ticket;
 
 import androidx.annotation.NonNull;

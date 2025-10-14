@@ -40,10 +40,10 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/password"
-        app:startIconDrawable="@drawable/ic_lock"
+        android:layout_marginTop="12dp"
+        android:hint="@string/m_t_kh_u"
         app:endIconMode="password_toggle"
-        android:layout_marginTop="12dp">
+        app:startIconDrawable="@drawable/ic_lock">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputPassword"
