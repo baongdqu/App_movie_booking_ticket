@@ -1,30 +1,20 @@
-<h1 align="center">🎬 Ứng Dụng Đặt Vé Xem Phim 🎟️</h1>
+<h1 align="center">🎬 Ứng Dụng Đặt Vé Xem Phim</h1>
+🌟 Giới thiệu
 
----
+Ứng dụng Đặt Vé Xem Phim giúp người dùng dễ dàng xem lịch chiếu, chọn ghế và mua vé trực tuyến tại các rạp phim trên toàn quốc.
+Giao diện đơn giản, dễ sử dụng và tiện lợi, mang lại trải nghiệm nhanh chóng và tiết kiệm thời gian.
 
-## 🌟 Giới thiệu ứng dụng:
+Người dùng cũng có thể xem thông tin phim mới, trailer và các ưu đãi khuyến mãi.
 
-Ứng dụng **Đặt Vé Xem Phim** là một nền tảng tiện lợi giúp người dùng dễ dàng tìm kiếm lịch chiếu, chọn chỗ ngồi, và mua vé trực tuyến tại các rạp phim trên toàn quốc.  
-Với giao diện **thân thiện** và thao tác **đơn giản**, ứng dụng mang lại trải nghiệm **nhanh chóng, an toàn và tiết kiệm thời gian** cho mọi khán giả.  
+<p align="center"> <img src="https://github.com/baongdqu/App_movie_booking_ticket/blob/bae72a0573b0846ded2801b639b6711c80df03c4/pic/3-vtb-v2-1749775536.jpg" alt="images" width="400" /> </p>
+👨‍💻 Nhóm phát triển
 
-✨ Ngoài ra, người dùng còn có thể cập nhật những **bộ phim mới nhất**, **trailer hấp dẫn** và các **chương trình khuyến mãi đặc biệt**.
+Ứng dụng được thực hiện bởi sinh viên trường Đại học Công Nghệ Thông Tin – ĐHQGHCM:
 
-<p align="center">
-  <img src="https://github.com/baongdqu/App_movie_booking_ticket/blob/bae72a0573b0846ded2801b639b6711c80df03c4/pic/3-vtb-v2-1749775536.jpg" alt="images" width="500" style="border-radius: 12px; box-shadow: 0 0 20px rgba(0,0,0,0.3);" />
-</p>
+Nguyễn Trường Duy – Trưởng nhóm
 
----
+Võ Minh Dương – Thành viên
 
-## 👨‍💻 Đội ngũ phát triển:
+Nguyễn Duy Quốc Bảo – Thành viên
 
-Ứng dụng **Đặt Vé Xem Phim** được phát triển bởi nhóm sinh viên trường **Đại học Công Nghệ Thông Tin, ĐHQGHCM**, gồm:
-
-- ✨ **Nguyễn Trường Duy**: *Trưởng nhóm*  
-- 🚀 **Võ Minh Dương**: *Thành viên*  
-- 🎯 **Nguyễn Duy Quốc Bảo**: *Thành viên*  
-
----
-
-<p align="center">
-  <b>🎥 Thông qua ứng dụng này, chúng tôi mong muốn đem đến cho mọi người một trải nghiệm điện ảnh tuyệt đối, nhiều tiện ích và đầy hứng khởi. 🍿</b>
-</p>
+<p align="center"> <b>🎥 Ứng dụng mang đến trải nghiệm xem phim tiện lợi và thú vị cho mọi người. 🍿</b> </p>
