@@ -1,6 +1,7 @@
 package com.example.app_movie_booking_ticket;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
@@ -26,6 +27,7 @@ public class activities_1_forgot_password extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.layouts_1_forgot_password); // chắc chắn tên file đúng
 
         // Ánh xạ view (sau setContentView)
