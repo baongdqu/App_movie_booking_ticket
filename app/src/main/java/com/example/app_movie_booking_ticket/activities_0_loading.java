@@ -1,6 +1,7 @@
 package com.example.app_movie_booking_ticket;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;   // ← thêm dòng import này
 import android.os.Bundle;
 import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,7 @@ public class activities_0_loading extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.layouts_0_loading);
 
         // Giả lập thời gian loading (3 giây)
