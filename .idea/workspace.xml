@@ -425,7 +425,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761103947006</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Code chức năng người dùng và các settings cho ứng dụng.">
+      <option name="closed" value="true" />
+      <created>1761470326515</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1761470326515</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -466,7 +474,8 @@
     <MESSAGE value="Thêm link firebase vào mã nguồn để team tra cứu." />
     <MESSAGE value="Đã code thêm chức năng: đăng nhập, đăng ký, quên mật khẩu, ... ban đầu." />
     <MESSAGE value="Khóa hướng màng hình cho các chức năng đăng nhập." />
-    <option name="LAST_COMMIT_MESSAGE" value="Khóa hướng màng hình cho các chức năng đăng nhập." />
+    <MESSAGE value="Code chức năng người dùng và các settings cho ứng dụng." />
+    <option name="LAST_COMMIT_MESSAGE" value="Code chức năng người dùng và các settings cho ứng dụng." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
