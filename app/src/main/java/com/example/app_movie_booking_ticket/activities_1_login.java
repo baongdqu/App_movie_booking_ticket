@@ -92,7 +92,15 @@ public class activities_1_login extends AppCompatActivity {
                                 if (user.isEmailVerified()) {
                                     Toast.makeText(activities_1_login.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
 
-                                    // ======= Bước 4: Chuyển sang màn hình Menu =======
+                                    // 🔹 Lưu thông tin người dùng vào SharedPreferences
+                                    getSharedPreferences("UserPrefs", MODE_PRIVATE)
+                                            .edit()
+                                            .putString("email", user.getEmail())   // lưu email từ Firebase
+                                            .putString("username", user.getDisplayName() != null ? user.getDisplayName() : "Người dùng")
+                                            .putString("uid", user.getUid())       // lưu UID nếu cần
+                                            .apply();
+
+                                    // 🔹 Chuyển sang màn hình Menu (hoặc màn hình người dùng)
                                     Intent intent = new Intent(activities_1_login.this, activities_2_menu.class);
                                     startActivity(intent);
                                     finish();
