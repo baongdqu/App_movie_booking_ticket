@@ -11,24 +11,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.App_movie_booking_ticket">
-
+        <activity
+            android:name=".Menu"
+            android:exported="false" />
         <activity
             android:name=".activities_1_login"
-            android:screenOrientation="fullSensor"
-            android:exported="true" />
-
+            android:exported="true"
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".activities_1_signup"
             android:exported="true" />
-
         <activity
             android:name=".activities_1_forgot_password"
             android:exported="true" />
-
         <activity
             android:name=".activities_2_menu"
             android:exported="true" />
-
         <activity
             android:name=".activities_0_loading"
             android:exported="true"
