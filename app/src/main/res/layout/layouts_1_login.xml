@@ -18,8 +18,7 @@
         android:layout_height="120dp"
         android:layout_marginBottom="32dp"
         android:layout_width="120dp"
-        android:src="@drawable/ic_movie"
-        app:tint="#FFFFFF" />
+        android:src="@drawable/ic_movie" />
 
     <!-- 🧑 Email -->
     <com.google.android.material.textfield.TextInputLayout

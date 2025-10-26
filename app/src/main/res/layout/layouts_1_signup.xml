@@ -22,7 +22,6 @@
             android:layout_height="120dp"
             android:layout_marginBottom="24dp"
             android:src="@drawable/ic_movie"
-            app:tint="#FFFFFF"
             android:contentDescription="@string/app_name" />
 
         <!-- 👤 Họ tên -->
