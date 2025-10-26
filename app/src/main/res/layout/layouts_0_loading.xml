@@ -15,10 +15,11 @@
         android:id="@+id/imgLogo"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:src="@drawable/ic_movie"
-        app:tint="#FFFFFF"
+        android:layout_marginBottom="24dp"
         android:contentDescription="@string/app_name"
-        android:layout_marginBottom="24dp" />
+        android:src="@drawable/ic_movie"
+        app:srcCompat="@drawable/ic_movie"
+        tools:srcCompat="@drawable/ic_movie" />
 
     <!-- 🔄 Thanh tròn xoay loading -->
     <ProgressBar
