@@ -21,10 +21,10 @@ public class extra_firebase_helper {
 
     private final DatabaseReference rootRef;
 
-    // 2️⃣ Hàm khởi tạo
+    //Hàm khởi tạo
     public extra_firebase_helper() {
-        // Lấy instance của Realtime Database
-        // 1️⃣ Khai báo tham chiếu đến Realtime Database
+        //Lấy instance của Realtime Database
+        //Khai báo tham chiếu đến Realtime Database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
         // Lấy reference gốc (root node)

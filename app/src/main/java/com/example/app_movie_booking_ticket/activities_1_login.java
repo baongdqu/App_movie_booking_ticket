@@ -93,7 +93,7 @@ public class activities_1_login extends AppCompatActivity {
                                     Toast.makeText(activities_1_login.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
 
                                     // ======= Bước 4: Chuyển sang màn hình Menu =======
-                                    Intent intent = new Intent(activities_1_login.this, activities_2_menu.class);
+                                    Intent intent = new Intent(activities_1_login.this, Menu.class);
                                     startActivity(intent);
                                     finish();
                                 } else {
