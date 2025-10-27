@@ -18,7 +18,6 @@
         android:contentDescription="@string/quay_l_i_menu"
         app:tint="@android:color/black" />
 
-    <!-- 📜 Nội dung cuộn -->
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_below="@id/btnBack"
@@ -33,7 +32,6 @@
             android:padding="20dp"
             android:gravity="center_horizontal">
 
-            <!-- 🧑 Avatar người dùng -->
             <ImageView
                 android:id="@+id/imgAvatar"
                 android:layout_width="120dp"
@@ -44,7 +42,6 @@
                 android:elevation="4dp"
                 android:layout_marginTop="40dp" />
 
-            <!-- 👤 Tên người dùng -->
             <TextView
                 android:id="@+id/txtUsername"
                 android:layout_width="wrap_content"
@@ -55,7 +52,6 @@
                 android:layout_marginTop="15dp"
                 android:textColor="#222" />
 
-            <!-- 📧 Email -->
             <TextView
                 android:id="@+id/txtEmail"
                 android:layout_width="wrap_content"
@@ -65,7 +61,6 @@
                 android:textColor="#666"
                 android:layout_marginBottom="30dp" />
 
-            <!-- 🔘 Các nút chức năng -->
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
