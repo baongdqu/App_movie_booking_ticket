@@ -7,14 +7,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import android.widget.Toast;
 
-public class activities_2_menu extends AppCompatActivity {
+public class activities_2_menu_manage_fragments extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layouts_2_menu);
+        setContentView(R.layout.layouts_2_menu_manage_fragments);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         FloatingActionButton btnTrailer = findViewById(R.id.btnTrailer);
