@@ -1,45 +1,58 @@
 package com.example.app_movie_booking_ticket;
 
-import android.content.Intent; // ✅ thêm dòng này
 import android.os.Bundle;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import android.widget.Toast;
 
 public class activities_2_menu extends AppCompatActivity {
+
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layouts_2_menu);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
         FloatingActionButton btnTrailer = findViewById(R.id.btnTrailer);
 
-        // Khi nhấn các nút điều hướng
+        // Load fragment mặc định (Home)
+        loadFragment(new fragments_home());
+        bottomNavigationView.setSelectedItemId(R.id.nav_home);
+
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
             if (id == R.id.nav_home) {
-                Toast.makeText(this, "Trang chủ", Toast.LENGTH_SHORT).show();
+                loadFragment(new fragments_home());
             } else if (id == R.id.nav_mail) {
-                Toast.makeText(this, "Hộp thư", Toast.LENGTH_SHORT).show();
+                loadFragment(new fragments_mail());
             } else if (id == R.id.nav_notifications) {
-                Toast.makeText(this, "Thông báo", Toast.LENGTH_SHORT).show();
+                loadFragment(new fragments_notifications());
             } else if (id == R.id.nav_user) {
-                Intent intent = new Intent(this, activities_3_user.class);
-                startActivity(intent); // dùng hàm thật
+                loadFragment(fragments_user.newInstance());
             }
             return true;
         });
 
-        // Nút trailer ở giữa
         btnTrailer.setOnClickListener(v -> {
             Toast.makeText(this, "Giới thiệu phim mới!", Toast.LENGTH_SHORT).show();
             // TODO: mở Activity trailer, hoặc phát video
         });
+    }
+
+    // Hàm tiện ích để load fragment
+    public void loadFragment(Fragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, fragment)
+                .commit();
+    }
+
+    // Hàm để cho fragment gọi lại khi cần chọn lại nav item
+    public void selectBottomNavItem(int itemId) {
+        bottomNavigationView.setSelectedItemId(itemId);
     }
 }
