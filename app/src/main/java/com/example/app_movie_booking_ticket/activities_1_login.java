@@ -101,7 +101,7 @@ public class activities_1_login extends AppCompatActivity {
                                             .apply();
 
                                     // 🔹 Chuyển sang màn hình Menu (hoặc màn hình người dùng)
-                                    Intent intent = new Intent(activities_1_login.this, activities_2_menu.class);
+                                    Intent intent = new Intent(activities_1_login.this, activities_2_menu_manage_fragments.class);
                                     startActivity(intent);
                                     finish();
                                 } else {

@@ -14,7 +14,6 @@
 
         <activity
             android:name=".activities_1_login"
-            android:screenOrientation="fullSensor"
             android:exported="true" />
 
         <activity
@@ -26,11 +25,7 @@
             android:exported="true" />
 
         <activity
-            android:name=".activities_2_menu"
-            android:exported="true" />
-
-        <activity
-            android:name=".fragments_user"
+            android:name=".activities_2_menu_manage_fragments"
             android:exported="true" />
 
         <activity

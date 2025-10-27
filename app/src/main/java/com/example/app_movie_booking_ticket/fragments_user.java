@@ -90,10 +90,10 @@ public class fragments_user extends Fragment {
 
         // Nút back: quay về Home (ta sẽ gọi activity chứa fragment để load lại fragment Home)
         btnBack.setOnClickListener(v -> {
-            if (requireActivity() instanceof activities_2_menu) {
-                ((activities_2_menu) requireActivity()).loadFragment(new fragments_home());
+            if (requireActivity() instanceof activities_2_menu_manage_fragments) {
+                ((activities_2_menu_manage_fragments) requireActivity()).loadFragment(new fragments_home());
                 // chọn lại nav item home nếu muốn
-                ((activities_2_menu) requireActivity()).selectBottomNavItem(R.id.nav_home);
+                ((activities_2_menu_manage_fragments) requireActivity()).selectBottomNavItem(R.id.nav_home);
             }
         });
 
