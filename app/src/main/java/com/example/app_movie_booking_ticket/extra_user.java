@@ -6,6 +6,8 @@ public class extra_user {
     public String email;
     public String phone;
 
+    private String avatarUrl;
+
     // ⚠️ Constructor trống - bắt buộc để Firebase đọc/ghi dữ liệu
     public extra_user() {
     }
@@ -17,4 +19,7 @@ public class extra_user {
         this.email = email;
         this.phone = phone;
     }
+
+    public String getAvatarUrl() { return avatarUrl; }
+    public void setAvatarUrl(String avatarUrl) { this.avatarUrl = avatarUrl; }
 }

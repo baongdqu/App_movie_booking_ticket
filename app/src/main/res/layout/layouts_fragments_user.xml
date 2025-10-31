@@ -71,10 +71,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Chỉnh sửa thông tin"
-                    android:drawableStart="@drawable/ic_edit"
-                    android:backgroundTint="@color/purple_500"
+                    android:backgroundTint="@color/red"
                     android:textColor="@android:color/white"
-                    android:layout_marginBottom="10dp" />
+                    android:layout_marginTop="12dp" />
 
                 <Button
                     android:id="@+id/btnSettings"
