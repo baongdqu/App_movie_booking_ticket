@@ -29,3 +29,5 @@ firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 
+kotlin-android = { id = "org.jetbrains.kotlin.android", version = "2.2.21" }
+
