@@ -25,11 +25,20 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.*;
+import android.widget.Toast;
+
 
 public class fragments_home extends Fragment {
 
     private LayoutsFragmentsHomeBinding binding;
     private FirebaseDatabase database;
+    private FirebaseAuth auth;
+    private DatabaseReference userRef;
+
     private final Handler sliderHandler = new Handler();
 
     private final Runnable sliderRunnable = new Runnable() {
@@ -53,11 +62,19 @@ public class fragments_home extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         database = FirebaseDatabase.getInstance();
         initBanner();
+        auth = FirebaseAuth.getInstance();
+        userRef = FirebaseDatabase.getInstance().getReference("users");
+
+// gọi hàm load user info
+        loadUserInfo();
+
     }
 
     private void initBanner() {
         DatabaseReference myRef = database.getReference("Banners");
         binding.progressBarSlider.setVisibility(View.VISIBLE);
+
+
 
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -80,6 +97,45 @@ public class fragments_home extends Fragment {
             }
         });
     }
+    private void loadUserInfo() {
+        FirebaseUser currentUser = auth.getCurrentUser();
+        if (currentUser == null) return;
+
+        String uid = currentUser.getUid();
+
+        userRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (!snapshot.exists()) return;
+
+                String fullName = snapshot.child("fullName").getValue(String.class);
+                String email = snapshot.child("email").getValue(String.class);
+                String avatarUrl = snapshot.child("avatarUrl").getValue(String.class);
+
+                // Hiển thị tên và email
+                binding.tvFullName.setText(fullName != null ? fullName : "Người dùng");
+                binding.tvEmail.setText(email != null ? email : "");
+
+                // Hiển thị avatar (nếu không có thì dùng mặc định)
+                if (avatarUrl != null && !avatarUrl.isEmpty()) {
+                    Glide.with(requireContext())
+                            .load(avatarUrl)
+                            .placeholder(R.drawable.ic_default_avatar) // ảnh tạm khi đang tải
+                            .error(R.drawable.ic_default_avatar)        // ảnh fallback khi lỗi
+                            .into(binding.imgAvatar);
+                } else {
+                    binding.imgAvatar.setImageResource(R.drawable.ic_default_avatar);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(requireContext(), "Lỗi tải thông tin user", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
 
     private void setupBanners(List<SliderItems> lists) {
         binding.viewPager2.setAdapter(new SliderAdapter(lists, binding.viewPager2));
