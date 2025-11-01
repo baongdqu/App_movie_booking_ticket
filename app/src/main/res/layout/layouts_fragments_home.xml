@@ -112,18 +112,39 @@
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
             <!-- TOP MOVIE SECTION -->
-            <!-- Section: Top Movie -->
-            <TextView
-                android:id="@+id/tvTopMovie"
+            <!-- Tiêu đề Top Movie + Nút View All -->
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Top Movie"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"
-                android:textSize="18sp"
                 android:layout_marginTop="20dp"
                 android:paddingStart="16dp"
-                android:paddingEnd="16dp" />
+                android:paddingEnd="16dp">
+
+                <TextView
+                    android:id="@+id/tvTopMovie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Top Movie"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/tvViewAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View all"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@id/tvTopMovie"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerTopMovie"
@@ -132,8 +153,9 @@
                 android:layout_marginTop="8dp"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
-                android:orientation="horizontal"
-                android:scrollbars="none" />
+                android:scrollbars="none"
+                tools:listitem="@layout/item_top_movie" />
+
 
 
         </LinearLayout>

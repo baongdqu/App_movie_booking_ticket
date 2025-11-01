@@ -33,6 +33,8 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.app_movie_booking_ticket.adapter.TopMovieAdapter;
 import com.example.app_movie_booking_ticket.model.extra_Movie;
+import android.content.Intent;
+
 
 
 
@@ -72,6 +74,16 @@ public class fragments_home extends Fragment {
 // gọi hàm load user info
         loadUserInfo();
         loadTopMovies();
+        binding.tvViewAll.setOnClickListener(v -> {
+            Toast.makeText(requireContext(), "Mở danh sách toàn bộ phim", Toast.LENGTH_SHORT).show();
+            // TODO: Chuyển sang màn hình danh sách đầy đủ
+        });
+        binding.tvViewAll.setOnClickListener(v -> {
+            Intent intent = new Intent(requireContext(), AllMoviesActivity.class);
+            startActivity(intent);
+        });
+
+
 
 
     }
