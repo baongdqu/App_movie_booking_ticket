@@ -8,7 +8,6 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,6 +24,7 @@ public class activities_3_advanced_settings extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        extra_themeutils.applySavedTheme(this);
         setContentView(R.layout.layouts_3_advanced_settings);
 
         // Ánh xạ
@@ -38,15 +38,13 @@ public class activities_3_advanced_settings extends AppCompatActivity {
         prefs = getSharedPreferences("AppSettings", MODE_PRIVATE);
 
         // 🔘 Load trạng thái đã lưu
-        switchDarkMode.setChecked(prefs.getBoolean("dark_mode", false));
+        switchDarkMode.setChecked(extra_themeutils.isDarkMode(this));
         switchNotification.setChecked(prefs.getBoolean("notifications", true));
 
         // 🎨 Đổi chế độ sáng/tối
         switchDarkMode.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            prefs.edit().putBoolean("dark_mode", isChecked).apply();
-            AppCompatDelegate.setDefaultNightMode(
-                    isChecked ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO
-            );
+            extra_themeutils.setDarkMode(this, isChecked);
+            recreate(); // Làm mới để áp dụng theme ngay
         });
 
         // 🔔 Bật/tắt thông báo

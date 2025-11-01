@@ -29,7 +29,6 @@ import java.util.Objects;
 
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -69,6 +68,7 @@ public class activities_3_edit_profile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        extra_themeutils.applySavedTheme(this);
         setContentView(R.layout.layouts_3_edit_profile);
 
         // -------------------------------
