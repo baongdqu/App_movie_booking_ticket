@@ -1,7 +1,6 @@
 plugins {
     id("com.android.application")
-    id("com.google.gms.google-services")
-    alias(libs.plugins.kotlin.android) // nếu bạn dùng Firebase
+    id("com.google.gms.google-services") // nếu bạn dùng Firebase
 }
 
 android {
@@ -47,10 +46,11 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.firebase.database)
     implementation(libs.firebase.auth)
-    implementation(libs.core.ktx)
-    implementation(libs.viewpager2)
+    implementation(libs.firebase.firestore)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
 }
