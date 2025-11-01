@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("com.google.gms.google-services") // nếu bạn dùng Firebase
+    id("org.jetbrains.kotlin.android")
 }
 
 android {
@@ -30,6 +31,12 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+    buildFeatures{
+        viewBinding = true
     }
 }
 
