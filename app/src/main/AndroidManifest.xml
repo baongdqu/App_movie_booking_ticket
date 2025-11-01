@@ -4,6 +4,7 @@
 
     <!-- Cho phép ứng dụng truy cập Internet -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -37,6 +38,10 @@
 
         <activity
             android:name=".activities_3_advanced_settings"
+            android:exported="true" />
+
+        <activity
+            android:name=".activities_3_change_password"
             android:exported="true" />
 
         <activity
