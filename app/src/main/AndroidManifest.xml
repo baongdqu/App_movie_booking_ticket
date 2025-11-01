@@ -36,6 +36,10 @@
             android:exported="true" />
 
         <activity
+            android:name=".activities_3_advanced_settings"
+            android:exported="true" />
+
+        <activity
             android:name=".activities_0_loading"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">

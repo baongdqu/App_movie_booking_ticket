@@ -108,7 +108,9 @@ public class fragments_user extends Fragment {
         // Chỉnh sửa hồ sơ
         btnEditProfile.setOnClickListener(v -> startActivity(new Intent(requireActivity(), activities_3_edit_profile.class)));
 
-        btnSettings.setOnClickListener(v -> Toast.makeText(getContext(), "Cài đặt (chưa implement)", Toast.LENGTH_SHORT).show());
+        btnSettings.setOnClickListener(v -> {
+            startActivity(new Intent(requireActivity(), activities_3_advanced_settings.class));
+        });
 
         btnLogout.setOnClickListener(v -> {
             prefs.edit().clear().apply();

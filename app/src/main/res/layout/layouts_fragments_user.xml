@@ -5,11 +5,11 @@
     android:layout_height="match_parent"
     android:background="#F7F7F7">
 
-    <!-- 🔙 Nút quay lại (ở góc trên phải) -->
+    <!-- 🔙 Nút quay lại -->
     <ImageButton
         android:id="@+id/btnBack"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_margin="16dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -18,20 +18,23 @@
         android:contentDescription="@string/quay_l_i_menu"
         app:tint="@android:color/black" />
 
+    <!-- Nội dung chính -->
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_below="@id/btnBack"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="10dp">
+        android:paddingTop="10dp"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp"
+            android:padding="24dp"
             android:gravity="center_horizontal">
 
+            <!-- Ảnh đại diện -->
             <ImageView
                 android:id="@+id/imgAvatar"
                 android:layout_width="120dp"
@@ -40,18 +43,20 @@
                 android:background="@drawable/bg_avatar_circle"
                 android:padding="10dp"
                 android:elevation="4dp"
-                android:layout_marginTop="40dp" />
+                android:layout_marginTop="36dp" />
 
+            <!-- Tên người dùng -->
             <TextView
                 android:id="@+id/txtUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
+                android:text="Tên người dùng"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="16dp"
                 android:textColor="#222" />
 
+            <!-- Email -->
             <TextView
                 android:id="@+id/txtEmail"
                 android:layout_width="wrap_content"
@@ -59,41 +64,60 @@
                 android:text="nguyenvana@example.com"
                 android:textSize="14sp"
                 android:textColor="#666"
-                android:layout_marginBottom="30dp" />
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="32dp" />
 
+            <!-- Các nút chức năng -->
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
 
+                <!-- Nút chỉnh sửa -->
                 <Button
                     android:id="@+id/btnEditProfile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Chỉnh sửa thông tin"
-                    android:backgroundTint="@color/red"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="12dp" />
+                    android:backgroundTint="#1976D2"
+                    android:textStyle="bold"
+                    android:padding="14dp"
+                    android:elevation="4dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginHorizontal="8dp" />
 
+                <!-- Nút cài đặt nâng cao -->
                 <Button
                     android:id="@+id/btnSettings"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Cài đặt tài khoản"
-                    android:drawableStart="@drawable/ic_settings"
-                    android:backgroundTint="@color/teal_700"
+                    android:text="Cài đặt nâng cao"
                     android:textColor="@android:color/white"
-                    android:layout_marginBottom="10dp" />
+                    android:backgroundTint="#D32F2F"
+                    android:textStyle="bold"
+                    android:padding="14dp"
+                    android:elevation="4dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginHorizontal="8dp" />
 
+                <!-- Nút đăng xuất -->
                 <Button
                     android:id="@+id/btnLogout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Đăng xuất"
                     android:drawableStart="@drawable/ic_logout"
-                    android:backgroundTint="#E53935"
+                    android:drawablePadding="8dp"
                     android:textColor="@android:color/white"
-                    android:layout_marginBottom="10dp" />
+                    android:backgroundTint="#B71C1C"
+                    android:textStyle="bold"
+                    android:padding="14dp"
+                    android:elevation="4dp"
+                    android:layout_marginBottom="40dp"
+                    android:layout_marginHorizontal="8dp" />
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
