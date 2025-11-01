@@ -7,14 +7,14 @@
     android:layout_height="match_parent">
 
 
-
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,9 +24,10 @@
                 android:id="@+id/userInfoLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#000000"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:padding="16dp"
-                android:gravity="center_vertical">
+                android:padding="16dp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/imgAvatar"
@@ -34,7 +35,7 @@
                     android:layout_height="60dp"
                     android:layout_marginEnd="12dp"
                     android:src="@drawable/ic_person"
-                    app:civ_border_color="#242426"
+                    app:civ_border_color="#ffffff"
                     app:civ_border_overlay="false"
                     app:civ_border_width="2dp" />
 
@@ -47,8 +48,10 @@
                         android:id="@+id/tvFullName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:includeFontPadding="false"
                         android:text="@string/user_name"
-                        android:textColor="#000000"
+                        android:textColor="#ffffff"
                         android:textSize="24sp"
                         android:textStyle="bold" />
 
@@ -56,9 +59,10 @@
                         android:id="@+id/tvEmail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="cursive"
                         android:text="@string/user_email"
-                        android:textColor="#000000"
-                        android:textSize="16sp" />
+                        android:textColor="#ffffff"
+                        android:textSize="20sp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -107,6 +111,31 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- TOP MOVIE SECTION -->
+            <!-- Section: Top Movie -->
+            <TextView
+                android:id="@+id/tvTopMovie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Top Movie"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerTopMovie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:orientation="horizontal"
+                android:scrollbars="none" />
+
+
         </LinearLayout>
     </ScrollView>
 

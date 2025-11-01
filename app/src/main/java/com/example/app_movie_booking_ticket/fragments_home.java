@@ -30,6 +30,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.*;
 import android.widget.Toast;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import com.example.app_movie_booking_ticket.adapter.TopMovieAdapter;
+import com.example.app_movie_booking_ticket.model.extra_Movie;
+
 
 
 public class fragments_home extends Fragment {
@@ -67,6 +71,8 @@ public class fragments_home extends Fragment {
 
 // gọi hàm load user info
         loadUserInfo();
+        loadTopMovies();
+
 
     }
 
@@ -134,6 +140,38 @@ public class fragments_home extends Fragment {
             }
         });
     }
+    private void loadTopMovies() {
+        DatabaseReference movieRef = FirebaseDatabase.getInstance().getReference("Items");
+
+        List<extra_Movie> movieList = new ArrayList<>();
+        TopMovieAdapter adapter = new TopMovieAdapter(requireContext(), movieList);
+        binding.recyclerTopMovie.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+        binding.recyclerTopMovie.setAdapter(adapter);
+
+        movieRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                movieList.clear();
+                for (DataSnapshot itemSnap : snapshot.getChildren()) {
+                    extra_Movie movie = itemSnap.getValue(extra_Movie.class);
+                    if (movie != null) {
+                        movieList.add(movie);
+                    }
+                }
+
+                // sắp xếp theo IMDb giảm dần (Top Movie)
+                movieList.sort((m1, m2) -> Double.compare(m2.getImdb(), m1.getImdb()));
+
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(requireContext(), "Lỗi tải Top Movies!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 
 
 
