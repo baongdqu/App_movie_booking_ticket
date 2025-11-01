@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,10 +22,22 @@ import com.google.android.gms.tasks.Task;
 
 import java.util.Objects;
 
+/**
+ * Màn hình Đăng ký tài khoản người dùng
+ * -----------------------------------------------------
+ * - Cho phép người dùng nhập họ tên, email, mật khẩu, số điện thoại
+ * - Kiểm tra hợp lệ đầu vào
+ * - Tạo tài khoản Firebase Authentication
+ * - Lưu thông tin người dùng vào Firebase Realtime Database
+ * - Gán ảnh đại diện mặc định (từ dịch vụ lưu ảnh miễn phí như ImgBB)
+ * - Gửi email xác minh tài khoản
+ */
 public class activities_1_signup extends AppCompatActivity {
 
+    // -------------------------
+    // KHAI BÁO BIẾN GIAO DIỆN
+    // -------------------------
     private TextInputEditText inputFullName, inputEmailSignup, inputPasswordSignup, inputConfirmPassword, inputPhone;
-
     private FirebaseAuth mAuth;
     private DatabaseReference usersRef;
 
@@ -34,14 +45,17 @@ public class activities_1_signup extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
         setContentView(R.layout.layouts_1_signup);
 
-        // Firebase
+        // -------------------------
+        // KHỞI TẠO FIREBASE
+        // -------------------------
         mAuth = FirebaseAuth.getInstance();
         usersRef = FirebaseDatabase.getInstance().getReference("users");
 
-        // Ánh xạ view
+        // -------------------------
+        // ÁNH XẠ CÁC VIEW TRONG GIAO DIỆN
+        // -------------------------
         inputFullName = findViewById(R.id.inputFullName);
         inputEmailSignup = findViewById(R.id.inputEmailSignup);
         inputPasswordSignup = findViewById(R.id.inputPasswordSignup);
@@ -50,24 +64,34 @@ public class activities_1_signup extends AppCompatActivity {
         Button btnCreateAccount = findViewById(R.id.btnCreateAccount);
         TextView txtBackToLogin = findViewById(R.id.txtBackToLogin);
 
-        // Quay lại đăng nhập
+        // -------------------------
+        // XỬ LÝ NÚT "QUAY LẠI ĐĂNG NHẬP"
+        // -------------------------
         txtBackToLogin.setOnClickListener(v -> {
             startActivity(new Intent(activities_1_signup.this, activities_1_login.class));
             finish();
         });
 
-        // Khi bấm đăng ký
+        // -------------------------
+        // XỬ LÝ NÚT "TẠO TÀI KHOẢN"
+        // -------------------------
         btnCreateAccount.setOnClickListener(v -> registerUser());
     }
 
+    /**
+     * Hàm xử lý đăng ký người dùng
+     */
     private void registerUser() {
+        // Lấy dữ liệu người dùng nhập vào
         String fullName = Objects.requireNonNull(inputFullName.getText()).toString().trim();
         String email = Objects.requireNonNull(inputEmailSignup.getText()).toString().trim();
         String password = Objects.requireNonNull(inputPasswordSignup.getText()).toString().trim();
         String confirmPassword = Objects.requireNonNull(inputConfirmPassword.getText()).toString().trim();
         String phone = Objects.requireNonNull(inputPhone.getText()).toString().trim();
 
-        // Validate
+        // -------------------------
+        // KIỂM TRA HỢP LỆ ĐẦU VÀO
+        // -------------------------
         if (TextUtils.isEmpty(fullName) || TextUtils.isEmpty(email) ||
                 TextUtils.isEmpty(password) || TextUtils.isEmpty(confirmPassword)) {
             Toast.makeText(this, "Vui lòng điền đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
@@ -86,22 +110,44 @@ public class activities_1_signup extends AppCompatActivity {
             return;
         }
 
-        // Tạo tài khoản Firebase
+        // -------------------------
+        // TẠO TÀI KHOẢN TRÊN FIREBASE AUTH
+        // -------------------------
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @NonNull
+                    @Override
+                    protected Object clone() throws CloneNotSupportedException {
+                        return super.clone();
+                    }
+
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser firebaseUser = mAuth.getCurrentUser();
                             if (firebaseUser != null) {
                                 String uid = firebaseUser.getUid();
+
+                                // -------------------------
+                                // TẠO ĐỐI TƯỢNG NGƯỜI DÙNG
+                                // -------------------------
                                 extra_user user = new extra_user(uid, fullName, email, phone);
 
-                                // Lưu thông tin vào Realtime Database
+                                // -------------------------
+                                // GÁN ẢNH ĐẠI DIỆN MẶC ĐỊNH
+                                // -------------------------
+                                // 👉 Thay URL bên dưới bằng link ảnh thật của bạn (ImgBB, Cloudinary, v.v.)
+                                user.setAvatarUrl("https://i.ibb.co/C3JdHS1r/Avatar-trang-den.png");
+
+                                // -------------------------
+                                // LƯU THÔNG TIN NGƯỜI DÙNG VÀO REALTIME DATABASE
+                                // -------------------------
                                 usersRef.child(uid).setValue(user)
                                         .addOnCompleteListener(dbTask -> {
                                             if (dbTask.isSuccessful()) {
-                                                // Gửi email xác minh
+                                                // -------------------------
+                                                // GỬI EMAIL XÁC MINH TÀI KHOẢN
+                                                // -------------------------
                                                 firebaseUser.sendEmailVerification()
                                                         .addOnCompleteListener(verifyTask -> {
                                                             if (verifyTask.isSuccessful()) {
@@ -109,7 +155,7 @@ public class activities_1_signup extends AppCompatActivity {
                                                                         "Đăng ký thành công! Vui lòng kiểm tra email để xác minh tài khoản.",
                                                                         Toast.LENGTH_LONG).show();
 
-                                                                // Đăng xuất người dùng (để họ không đăng nhập khi chưa verify)
+                                                                // Đăng xuất để chờ xác minh email
                                                                 mAuth.signOut();
 
                                                                 // Quay lại màn hình đăng nhập

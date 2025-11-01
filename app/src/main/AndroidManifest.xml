@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Cho phép ứng dụng truy cập Internet -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,24 +15,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.App_movie_booking_ticket">
-        <activity
-            android:name=".Menu"
-            android:exported="false" />
+
         <activity
             android:name=".activities_1_login"
-            android:exported="true"
-            android:screenOrientation="fullSensor" />
+            android:exported="true" />
+
         <activity
             android:name=".activities_1_signup"
             android:exported="true" />
+
         <activity
             android:name=".activities_1_forgot_password"
             android:exported="true" />
+
         <activity
-            android:name=".activities_2_menu"
+            android:name=".activities_2_menu_manage_fragments"
             android:exported="true" />
+
         <activity
-            android:name=".activities_3_user"
+            android:name=".activities_3_edit_profile"
+            android:exported="true" />
+
+        <activity
+            android:name=".activities_3_advanced_settings"
+            android:exported="true" />
+
+        <activity
+            android:name=".activities_3_change_password"
             android:exported="true" />
 
         <activity
@@ -37,7 +50,6 @@
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
