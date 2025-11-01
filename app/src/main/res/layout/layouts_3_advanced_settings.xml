@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F7F7F7"
+    android:background="@color/bg_color"
     android:padding="24dp">
 
     <LinearLayout
@@ -18,7 +18,7 @@
             android:text="Cài đặt tài khoản"
             android:textSize="22sp"
             android:textStyle="bold"
-            android:textColor="#222"
+            android:textColor="@color/text_primary"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="32dp" />
 
@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:textColor="#333"
+            android:textColor="@color/text_secondary"
             android:layout_marginBottom="20dp" />
 
         <Switch
@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:textColor="#333"
+            android:textColor="@color/text_secondary"
             android:layout_marginBottom="40dp" />
 
         <Button
@@ -45,7 +45,7 @@
             android:text="Đổi mật khẩu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#D32F2F"
+            android:backgroundTint="@color/button_red"
             android:textColor="@android:color/white"
             android:padding="12dp"
             android:elevation="3dp"
@@ -54,7 +54,7 @@
         <Button
             android:id="@+id/btnDeleteAccount"
             android:text="Xóa tài khoản"
-            android:backgroundTint="#E53935"
+            android:backgroundTint="@color/button_red_dark"
             android:textColor="@android:color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
         <Button
             android:id="@+id/btnBackSettings"
             android:text="Quay lại"
-            android:backgroundTint="#B71C1C"
+            android:backgroundTint="@color/button_red_dark"
             android:textColor="@android:color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

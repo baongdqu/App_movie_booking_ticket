@@ -14,6 +14,7 @@ public class activities_2_menu_manage_fragments extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        extra_themeutils.applySavedTheme(this); // ✅ Sửa đúng tên class
         setContentView(R.layout.layouts_2_menu_manage_fragments);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -51,7 +52,7 @@ public class activities_2_menu_manage_fragments extends AppCompatActivity {
                 .commit();
     }
 
-    // Hàm để cho fragment gọi lại khi cần chọn lại nav item
+    // Cho phép fragment chọn lại nav item
     public void selectBottomNavItem(int itemId) {
         bottomNavigationView.setSelectedItemId(itemId);
     }
