@@ -23,4 +23,4 @@ Ngoài ra, người dùng còn có thể cập nhật những **bộ phim mới 
 
 <p align="center">
   <b>🎥 Thông qua ứng dụng này, chúng tôi mong muốn đem đến cho mọi người một trải nghiệm điện ảnh tuyệt vời – tiện lợi, thú vị và đầy hứng khởi. 🍿</b>
-</p>
+</p> 
