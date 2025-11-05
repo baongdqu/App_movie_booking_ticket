@@ -10,7 +10,6 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -24,7 +23,6 @@
                 android:id="@+id/userInfoLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#000000"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="16dp">
@@ -35,7 +33,6 @@
                     android:layout_height="60dp"
                     android:layout_marginEnd="12dp"
                     android:src="@drawable/ic_person"
-                    app:civ_border_color="#ffffff"
                     app:civ_border_overlay="false"
                     app:civ_border_width="2dp" />
 
@@ -51,7 +48,6 @@
                         android:fontFamily="sans-serif-medium"
                         android:includeFontPadding="false"
                         android:text="@string/user_name"
-                        android:textColor="#ffffff"
                         android:textSize="24sp"
                         android:textStyle="bold" />
 
@@ -61,7 +57,6 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="cursive"
                         android:text="@string/user_email"
-                        android:textColor="#ffffff"
                         android:textSize="20sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -78,7 +73,6 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="Welcome"
-                    android:textColor="@color/white"
                     android:textSize="20dp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -125,7 +119,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Top Movie"
-                    android:textColor="@android:color/white"
                     android:textStyle="bold"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -136,7 +129,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="View all"
-                    android:textColor="#ffffff"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintBaseline_toBaselineOf="@id/tvTopMovie"
