@@ -4,8 +4,10 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.app_movie_booking_ticket.adapter.AllMoviesAdapter;
 import com.example.app_movie_booking_ticket.adapter.TopMovieAdapter;
 import com.example.app_movie_booking_ticket.model.extra_Movie;
 import com.google.firebase.database.DataSnapshot;
@@ -22,7 +24,7 @@ import java.util.List;
 public class AllMoviesActivity extends AppCompatActivity {
 
     private RecyclerView recyclerAllMovies;
-    private TopMovieAdapter adapter;
+    private AllMoviesAdapter adapter;
     private List<extra_Movie> allMovies;
 
     @Override
@@ -33,10 +35,10 @@ public class AllMoviesActivity extends AppCompatActivity {
 
 
         recyclerAllMovies = findViewById(R.id.recyclerAllMovies);
-        recyclerAllMovies.setLayoutManager(new GridLayoutManager(this, 2)); // hiển thị 2 cột
+        recyclerAllMovies.setLayoutManager(new LinearLayoutManager(this)); // hiển thị 2 cột
 
         allMovies = new ArrayList<>();
-        adapter = new TopMovieAdapter(this, allMovies);
+        adapter = new AllMoviesAdapter(this, allMovies);
         recyclerAllMovies.setAdapter(adapter);
 
         // Lấy dữ liệu từ Firebase

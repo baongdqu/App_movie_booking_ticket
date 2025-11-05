@@ -124,6 +124,7 @@ public class fragments_home extends Fragment {
         userRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (binding == null) return;
                 if (!snapshot.exists()) return;
 
                 String fullName = snapshot.child("fullName").getValue(String.class);
@@ -163,6 +164,7 @@ public class fragments_home extends Fragment {
         movieRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (binding == null || getView() == null) return;
                 movieList.clear();
                 for (DataSnapshot itemSnap : snapshot.getChildren()) {
                     extra_Movie movie = itemSnap.getValue(extra_Movie.class);
