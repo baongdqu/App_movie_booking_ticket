@@ -63,7 +63,6 @@ public class fragments_user extends Fragment {
         // ---------------------------
         // ÁNH XẠ VIEW (từ view của fragment)
         // ---------------------------
-        btnBack = view.findViewById(R.id.btnBack);
         imgAvatar = view.findViewById(R.id.imgAvatar); // <- đảm bảo id trùng với layout
         txtUsername = view.findViewById(R.id.txtUsername);
         txtEmail = view.findViewById(R.id.txtEmail);
@@ -96,14 +95,6 @@ public class fragments_user extends Fragment {
             txtUsername.setText("Người dùng");
             imgAvatar.setImageResource(R.drawable.ic_person);
         }
-
-        // Nút back
-        btnBack.setOnClickListener(v -> {
-            if (requireActivity() instanceof activities_2_menu_manage_fragments) {
-                ((activities_2_menu_manage_fragments) requireActivity()).loadFragment(new fragments_home());
-                ((activities_2_menu_manage_fragments) requireActivity()).selectBottomNavItem(R.id.nav_home);
-            }
-        });
 
         // Chỉnh sửa hồ sơ
         btnEditProfile.setOnClickListener(v -> startActivity(new Intent(requireActivity(), activities_3_edit_profile.class)));
