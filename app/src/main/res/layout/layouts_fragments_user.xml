@@ -4,23 +4,11 @@
     android:layout_height="match_parent"
     android:background="@color/bg_color">
 
-    <ImageButton
-        android:id="@+id/btnBack"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_margin="16dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/ic_arow_back"
-        android:contentDescription="@string/quay_l_i_menu"
-        app:tint="@color/text_primary" />
-
     <ScrollView
         android:id="@+id/scrollView"
-        android:layout_below="@id/btnBack"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="56dp"
         android:paddingTop="10dp"
         android:scrollbars="none">
 
