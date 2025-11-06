@@ -29,5 +29,6 @@
     <string name="imgbb_api_key">34b97f269820a2c163fc835da8c61544</string>
     <string name="user_name">User Name</string>
     <string name="user_email">user@example.com</string>
+    <string name="g_i_l_i_email_x_c_minh">Gửi lại email xác minh?</string>
 
 </resources>
