@@ -100,6 +100,11 @@
           <theme>@style/Theme.App_movie_booking_ticket</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/layouts_3_change_password.xml">
+        <config>
+          <theme>@style/Theme.App_movie_booking_ticket</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/layouts_3_edit_profile.xml">
         <config>
           <theme>@style/Theme.App_movie_booking_ticket</theme>
@@ -141,14 +146,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="844f1ce6-039a-4511-a069-8979768ecd95" name="Changes" comment="Chỉ test nho nhỏ.">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
+    <list default="true" id="844f1ce6-039a-4511-a069-8979768ecd95" name="Changes" comment="Import thêm các file âm thanh cho chương trình.">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/activities_1_login.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/activities_1_login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layouts_1_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layouts_1_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,28 +233,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "Android App.app.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "com.google.services.firebase.aqiPopupShown": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/s3cr3t/AndroidStudioProjects/App_movie_booking_ticket_",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "AndroidSdkUpdater"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/s3cr3t/AndroidStudioProjects/App_movie_booking_ticket_&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;AndroidSdkUpdater&quot;
   }
-}]]></component>
+}</component>
   <component name="PsdUISettings">
     <option name="MODULE_TAB" value="Properties" />
   </component>
@@ -417,7 +420,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762156334432</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Import thêm các file âm thanh cho chương trình.">
+      <option name="closed" value="true" />
+      <created>1762414723680</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1762414723680</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -460,7 +471,8 @@
     <MESSAGE value="Khóa hướng màng hình cho các chức năng đăng nhập." />
     <MESSAGE value="Code chức năng người dùng và các settings cho ứng dụng." />
     <MESSAGE value="Chỉ test nho nhỏ." />
-    <option name="LAST_COMMIT_MESSAGE" value="Chỉ test nho nhỏ." />
+    <MESSAGE value="Import thêm các file âm thanh cho chương trình." />
+    <option name="LAST_COMMIT_MESSAGE" value="Import thêm các file âm thanh cho chương trình." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -478,12 +490,12 @@
       <map>
         <entry key="com.example.app_movie_booking_ticket">
           <value>
-            <CheckInfo lastCheckTimestamp="1762156106962" />
+            <CheckInfo lastCheckTimestamp="1762415996659" />
           </value>
         </entry>
         <entry key="com.example.app_movie_booking_ticket.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1762156106983" />
+            <CheckInfo lastCheckTimestamp="1762415996651" />
           </value>
         </entry>
       </map>
