@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App_movie_booking_ticket">
         <activity
+            android:name=".SeatSelectionActivity"
+            android:exported="false" />
+        <activity
             android:name=".AllUpcomingActivity"
             android:exported="false" />
         <activity

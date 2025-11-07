@@ -17,6 +17,10 @@ import com.example.app_movie_booking_ticket.R;
 import com.example.app_movie_booking_ticket.model.Movie;
 
 import java.util.List;
+import android.content.Intent;
+import com.example.app_movie_booking_ticket.SeatSelectionActivity;
+
+
 
 public class AllMoviesAdapter extends RecyclerView.Adapter<AllMoviesAdapter.MovieViewHolder> {
 
@@ -33,6 +37,7 @@ public class AllMoviesAdapter extends RecyclerView.Adapter<AllMoviesAdapter.Movi
     public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_all_movie, parent, false);
         return new MovieViewHolder(view);
+
     }
 
     @Override
@@ -44,11 +49,18 @@ public class AllMoviesAdapter extends RecyclerView.Adapter<AllMoviesAdapter.Movi
         holder.tvMovieTime.setText(movie.getTime());
         holder.tvMovieDate.setText(String.valueOf(movie.getYear()));
         Glide.with(context).load(movie.getPoster()).into(holder.imgMovie);
+        holder.btnBuy.setOnClickListener(v -> {
+            Intent intent = new Intent(context, SeatSelectionActivity.class);
+            intent.putExtra("title", movie.getTitle());
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+
+        });
 
         holder.btnDetail.setOnClickListener(v ->
                 Toast.makeText(context, "Xem chi tiết: " + movie.getTitle(), Toast.LENGTH_SHORT).show());
-        holder.btnBuy.setOnClickListener(v ->
-                Toast.makeText(context, "Đến mua vé: " + movie.getTitle(), Toast.LENGTH_SHORT).show());
+
+
     }
 
     @Override
