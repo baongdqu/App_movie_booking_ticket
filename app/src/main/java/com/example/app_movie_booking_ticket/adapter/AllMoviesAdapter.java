@@ -20,6 +20,8 @@ import com.example.app_movie_booking_ticket.model.Movie;
 
 import java.util.List;
 
+import com.example.app_movie_booking_ticket.SeatSelectionActivity;
+
 public class AllMoviesAdapter extends RecyclerView.Adapter<AllMoviesAdapter.MovieViewHolder> {
 
     private final Context context;
@@ -47,13 +49,16 @@ public class AllMoviesAdapter extends RecyclerView.Adapter<AllMoviesAdapter.Movi
         holder.tvMovieDate.setText(String.valueOf(movie.getYear()));
         Glide.with(context).load(movie.getPoster()).into(holder.imgMovie);
 
-        holder.btnDetail.setOnClickListener(v ->
-                Toast.makeText(context, "Xem chi tiết: " + movie.getTitle(), Toast.LENGTH_SHORT).show());
-        holder.btnBuy.setOnClickListener(v ->
-                Toast.makeText(context, "Đến mua vé: " + movie.getTitle(), Toast.LENGTH_SHORT).show());
+
+
         holder.btnDetail.setOnClickListener(v -> {
             Intent intent = new Intent(context, activities_4_movie_detail.class);
             intent.putExtra("movie", movie);
+            context.startActivity(intent);
+        });
+        holder.btnBuy.setOnClickListener(v -> {
+            Intent intent = new Intent(context, SeatSelectionActivity.class);
+            intent.putExtra("movieTitle", movie.getTitle());
             context.startActivity(intent);
         });
     }
