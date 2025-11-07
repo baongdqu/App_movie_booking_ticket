@@ -28,7 +28,7 @@ import java.util.List;
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.*;
+
 import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.app_movie_booking_ticket.adapter.TopMovieAdapter;
@@ -79,7 +79,7 @@ public class fragments_home extends Fragment {
             // TODO: Chuyển sang màn hình danh sách đầy đủ
         });
         binding.tvViewAll.setOnClickListener(v -> {
-            Intent intent = new Intent(requireContext(), AllMoviesActivity.class);
+            Intent intent = new Intent(requireContext(), activities_4_all_movies.class);
             startActivity(intent);
         });
 

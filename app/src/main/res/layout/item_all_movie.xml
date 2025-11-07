@@ -33,7 +33,6 @@
             android:text="Tittle"
             android:layout_marginTop="12dp"
             android:layout_marginStart="8dp"
-            android:drawableStart=""
             android:textSize="18sp"
             android:textStyle="bold" />
 
