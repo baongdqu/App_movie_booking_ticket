@@ -30,5 +30,16 @@
     <string name="user_name">User Name</string>
     <string name="user_email">user@example.com</string>
     <string name="g_i_l_i_email_x_c_minh">Gửi lại email xác minh?</string>
+    <string name="back_button">Nút quay lại</string>
+    <string name="label_select_date">Chọn ngày chiếu</string>
+    <string name="label_select_time">Chọn suất chiếu</string>
+    <string name="movie_title">Tên phim</string>
+    <string name="btn_continue">Tiếp tục</string>
+    <string name="total_price">Tổng: 0đ</string>
+    <string name="label_empty">Ghế trống</string>
+    <string name="label_selected">Ghế bạn chọn</string>
+    <string name="label_booked">Đã đặt</string>
+
+
 
 </resources>

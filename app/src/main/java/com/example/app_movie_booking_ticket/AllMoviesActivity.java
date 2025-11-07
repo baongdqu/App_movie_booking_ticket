@@ -47,6 +47,8 @@ public class AllMoviesActivity extends AppCompatActivity {
         loadMoviesFromFirebase();
 
         btnBack.setOnClickListener(v -> finish());
+
+
     }
 
     private void loadMoviesFromFirebase() {
