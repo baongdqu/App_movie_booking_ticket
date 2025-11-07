@@ -9,7 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app_movie_booking_ticket.adapter.AllMoviesAdapter;
-import com.example.app_movie_booking_ticket.model.Movie; // ✅ dùng Movie thay vì extra_Movie
+import com.example.app_movie_booking_ticket.model.Movie;
+import com.example.app_movie_booking_ticket.model.MovieTest; // ✅ dùng Movie thay vì extra_Movie
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,7 +30,7 @@ public class AllUpcomingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_movies); // ✅ Dùng chung layout "All Movies"
+        setContentView(R.layout.activity_all_movies); // Dùng chung layout "All Movies"
 
         // Ánh xạ view
         recyclerAllUpcoming = findViewById(R.id.recyclerAllMovies);
