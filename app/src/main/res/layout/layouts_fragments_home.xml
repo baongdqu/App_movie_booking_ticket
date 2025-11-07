@@ -17,7 +17,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="80dp">
             <!-- 🧩 THÔNG TIN NGƯỜI DÙNG -->
             <LinearLayout
                 android:id="@+id/userInfoLayout"
@@ -33,7 +34,6 @@
                     android:layout_height="60dp"
                     android:layout_marginEnd="12dp"
                     android:src="@drawable/ic_person"
-                    app:civ_border_color="#ffffff"
                     app:civ_border_overlay="false"
                     app:civ_border_width="2dp" />
 

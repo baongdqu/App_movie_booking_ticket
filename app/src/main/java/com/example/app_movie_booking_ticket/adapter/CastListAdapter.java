@@ -8,17 +8,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.app_movie_booking_ticket.databinding.ItemAllMovieBinding;
 import com.example.app_movie_booking_ticket.databinding.ItemCastBinding;
-import com.example.app_movie_booking_ticket.model.extra_Movie;
+import com.example.app_movie_booking_ticket.model.Movie;
 
 import java.util.List;
 
 public class CastListAdapter extends RecyclerView.Adapter<CastListAdapter.CastViewHolder> {
     private Context context;
-    private List<extra_Movie.Cast> casts;
+    private List<Movie.Cast> casts;
 
-    public CastListAdapter(Context context, List<extra_Movie.Cast> casts)
+    public CastListAdapter(Context context, List<Movie.Cast> casts)
     {
         this.context = context;
         this.casts = casts;
@@ -41,7 +40,7 @@ public class CastListAdapter extends RecyclerView.Adapter<CastListAdapter.CastVi
 
     @Override
     public void onBindViewHolder(@NonNull CastViewHolder holder, int position) {
-        extra_Movie.Cast cast = casts.get(position);
+        Movie.Cast cast = casts.get(position);
         holder.binding.textView2.setText(cast.getActor());
         Glide.with(context)
                 .load(cast.getPicUrl())

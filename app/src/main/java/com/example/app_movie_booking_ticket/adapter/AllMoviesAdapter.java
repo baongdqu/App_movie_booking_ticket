@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.app_movie_booking_ticket.R;
+import com.example.app_movie_booking_ticket.activities_4_movie_detail;
 import com.example.app_movie_booking_ticket.model.Movie;
 
 import java.util.List;
@@ -50,6 +51,11 @@ public class AllMoviesAdapter extends RecyclerView.Adapter<AllMoviesAdapter.Movi
                 Toast.makeText(context, "Xem chi tiết: " + movie.getTitle(), Toast.LENGTH_SHORT).show());
         holder.btnBuy.setOnClickListener(v ->
                 Toast.makeText(context, "Đến mua vé: " + movie.getTitle(), Toast.LENGTH_SHORT).show());
+        holder.btnDetail.setOnClickListener(v -> {
+            Intent intent = new Intent(context, activities_4_movie_detail.class);
+            intent.putExtra("movie", movie);
+            context.startActivity(intent);
+        });
     }
 
     @Override

@@ -8,9 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.app_movie_booking_ticket.databinding.ItemCastBinding;
 import com.example.app_movie_booking_ticket.databinding.ItemMovieimagesBinding;
-import com.example.app_movie_booking_ticket.model.extra_Movie;
 
 import java.util.List;
 
