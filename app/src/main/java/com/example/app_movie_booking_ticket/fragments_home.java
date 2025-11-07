@@ -83,6 +83,9 @@ public class fragments_home extends Fragment {
             startActivity(intent);
         });
 
+        loadUpcomingMovies();
+
+
 
 
 
@@ -183,6 +186,40 @@ public class fragments_home extends Fragment {
             }
         });
     }
+    private void loadUpcomingMovies() {
+        DatabaseReference upcomingRef = FirebaseDatabase.getInstance().getReference("Upcomming");
+
+        List<extra_Movie> upcomingList = new ArrayList<>();
+        TopMovieAdapter upcomingAdapter = new TopMovieAdapter(requireContext(), upcomingList);
+        binding.recyclerUpcomingMovies.setLayoutManager(
+                new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        );
+        binding.recyclerUpcomingMovies.setAdapter(upcomingAdapter);
+
+        upcomingRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                upcomingList.clear();
+                for (DataSnapshot itemSnap : snapshot.getChildren()) {
+                    extra_Movie movie = itemSnap.getValue(extra_Movie.class);
+                    if (movie != null) {
+                        upcomingList.add(movie);
+                    }
+                }
+
+                // sắp xếp theo năm mới nhất trước
+                upcomingList.sort((m1, m2) -> Integer.compare(m2.getYear(), m1.getYear()));
+
+                upcomingAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(requireContext(), "Lỗi tải Upcoming Movies!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 
 
 
