@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">App_movie_booking_ticket</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="ng_nh_p">Đăng nhập</string>
+    <string name="qu_n_m_t_kh_u">Quên mật khẩu?</string>
+    <string name="t_o_t_i_kho_n_m_i">Tạo tài khoản mới</string>
+    <string name="h_t_n">Họ và tên</string>
+    <string name="xac_nhan_mat_khau">Xác nhận mật khẩu</string>
+    <string name="s_dien_thoai">Số điện thoại</string>
+    <string name="t_o_t_i_kho_n">Tạo tài khoản</string>
+    <string name="quay_l_i_ng_nh_p">Quay lại đăng nhập</string>
+    <string name="m_t_kh_u">Mật khẩu</string>
+    <string name="g_i_li_n_k_t_kh_i_ph_c">Gửi liên kết khôi phục</string>
+    <string name="quay_l_i_ng_nh_ps">Quay lại đăng nhập</string>
+    <string name="m_t_kh_uu">Mật khẩu</string>
+    <string name="ang_t_i">Đang tải...</string>
+    <string name="trailer">Trailer</string>
+    <string name="th_ng_b_o">Thông báo</string>
+    <string name="ng_i_d_ng">Người dùng</string>
+    <string name="trang_ch">Trang chủ</string>
+    <string name="th">Thư</string>
+    <string name="nguyenvana_example_com">nguyenvana@example.com</string>
+    <string name="c_i_t_t_i_kho_n">Cài đặt tài khoản</string>
+    <string name="ch_nh_s_a_th_ng_tin">Chỉnh sửa thông tin</string>
+    <string name="nguy_n_v_n_a">Nguyễn Văn A</string>
+    <string name="ng_xu_t">Đăng xuất</string>
+    <string name="quay_l_i_menu">Quay lại menu</string>
+    <string name="imgbb_api_key">34b97f269820a2c163fc835da8c61544</string>
+    <string name="user_name">User Name</string>
+    <string name="user_email">user@example.com</string>
+    <string name="g_i_l_i_email_x_c_minh">Gửi lại email xác minh?</string>
+
+</resources>
