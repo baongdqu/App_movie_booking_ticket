@@ -51,8 +51,9 @@ public class SeatSelectionActivity extends AppCompatActivity {
         layoutTimes = findViewById(R.id.layoutTimes);
         btnContinue = findViewById(R.id.btnContinue);
 
-        movieTitle = getIntent().getStringExtra("title");
-        if (movieTitle == null) movieTitle = "The Gorge";
+        movieTitle = getIntent().getStringExtra("movieTitle");
+        if (movieTitle == null || movieTitle.isEmpty()) movieTitle = "Tên Phim";
+
         tvMovieTitle.setText(movieTitle);
 
         dbRef = FirebaseDatabase.getInstance().getReference("Bookings").child(movieTitle);

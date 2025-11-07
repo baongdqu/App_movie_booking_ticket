@@ -17,6 +17,9 @@ import com.example.app_movie_booking_ticket.adapter.CastListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.content.Intent;
+import com.example.app_movie_booking_ticket.SeatSelectionActivity;
+
 
 public class activities_4_movie_detail extends AppCompatActivity {
 
@@ -63,5 +66,22 @@ public class activities_4_movie_detail extends AppCompatActivity {
 
         // Back button
         binding.btnBack.setOnClickListener(v -> finish());
+
+        //mua ve
+        // Nút Mua vé
+        binding.button2.setOnClickListener(v -> {
+            Intent intent2 = new Intent(activities_4_movie_detail.this, SeatSelectionActivity.class);
+
+            // ✅ Gửi đúng tên phim và giá vé qua Intent đang mở
+            intent2.putExtra("movieTitle", movie.getTitle());
+            intent2.putExtra("price", movie.getPrice());
+
+            startActivity(intent2);
+        });
+
+
+
+
+
     }
 }
