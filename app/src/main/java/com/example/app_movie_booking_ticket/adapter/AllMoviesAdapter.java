@@ -3,69 +3,74 @@ package com.example.app_movie_booking_ticket.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.app_movie_booking_ticket.activities_4_movie_detail;
-import com.example.app_movie_booking_ticket.databinding.ItemAllMovieBinding;
-import com.example.app_movie_booking_ticket.model.extra_Movie;
+import com.example.app_movie_booking_ticket.R;
+import com.example.app_movie_booking_ticket.model.Movie;
 
 import java.util.List;
 
-public class AllMoviesAdapter extends RecyclerView.Adapter<AllMoviesAdapter.AllMoviesViewHolder> {
-    private Context context;
-    private List<extra_Movie> movieList;
+public class AllMoviesAdapter extends RecyclerView.Adapter<AllMoviesAdapter.MovieViewHolder> {
 
-    public AllMoviesAdapter(Context context, List<extra_Movie> movieList)
-    {
+    private final Context context;
+    private final List<Movie> movieList;
+
+    public AllMoviesAdapter(Context context, List<Movie> movieList) {
         this.context = context;
         this.movieList = movieList;
     }
 
-    public static class AllMoviesViewHolder extends RecyclerView.ViewHolder {
-        ItemAllMovieBinding binding;
-        public AllMoviesViewHolder(ItemAllMovieBinding binding) {
-            super(binding.getRoot());
-            this.binding = binding;
-        }
-    }
-
     @NonNull
     @Override
-    public AllMoviesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        ItemAllMovieBinding binding = ItemAllMovieBinding.inflate(inflater, parent, false);
-        return new AllMoviesViewHolder(binding);
+    public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.item_all_movie, parent, false);
+        return new MovieViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AllMoviesViewHolder holder, int position) {
-        extra_Movie movie = movieList.get(position);
-        holder.binding.textTitle.setText(movie.getTitle());
-        if (movie.getGenre() != null && !movie.getGenre().isEmpty()) {
-            String genres = String.join(", ", movie.getGenre());
-            holder.binding.textGenre.setText(genres);
-        } else {
-            holder.binding.textGenre.setText("N/A");
-        }
-        holder.binding.textYear.setText(String.valueOf(movie.getYear()));
-        holder.binding.textDuration.setText(movie.getTime());
-        Glide.with(context)
-                .load(movie.getPoster())
-                .into(holder.binding.imagePoster);
+    public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
+        Movie movie = movieList.get(position);
 
-        holder.binding.buttonDetail.setOnClickListener(v -> {
-            Intent intent = new Intent(context, activities_4_movie_detail.class);
-            intent.putExtra("movie", movie);
-            context.startActivity(intent);
-        });
+        holder.tvMovieName.setText(movie.getTitle());
+        holder.tvMovieGenre.setText(movie.getGenre() != null ? String.join(", ", movie.getGenre()) : "");
+        holder.tvMovieTime.setText(movie.getTime());
+        holder.tvMovieDate.setText(String.valueOf(movie.getYear()));
+        Glide.with(context).load(movie.getPoster()).into(holder.imgMovie);
+
+        holder.btnDetail.setOnClickListener(v ->
+                Toast.makeText(context, "Xem chi tiết: " + movie.getTitle(), Toast.LENGTH_SHORT).show());
+        holder.btnBuy.setOnClickListener(v ->
+                Toast.makeText(context, "Đến mua vé: " + movie.getTitle(), Toast.LENGTH_SHORT).show());
     }
 
     @Override
     public int getItemCount() {
         return movieList.size();
+    }
+
+    public static class MovieViewHolder extends RecyclerView.ViewHolder {
+        ImageView imgMovie;
+        TextView tvMovieName, tvMovieGenre, tvMovieTime, tvMovieDate;
+        Button btnDetail, btnBuy;
+
+        public MovieViewHolder(@NonNull View itemView) {
+            super(itemView);
+            imgMovie = itemView.findViewById(R.id.imgMovie);
+            tvMovieName = itemView.findViewById(R.id.tvMovieName);
+            tvMovieGenre = itemView.findViewById(R.id.tvMovieGenre);
+            tvMovieTime = itemView.findViewById(R.id.tvMovieTime);
+            tvMovieDate = itemView.findViewById(R.id.tvMovieDate);
+            btnDetail = itemView.findViewById(R.id.btnDetail);
+            btnBuy = itemView.findViewById(R.id.btnBuy);
+        }
     }
 }
