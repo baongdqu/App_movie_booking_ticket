@@ -31,20 +31,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.bumptech.glide.Glide;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.*;
 
-import android.widget.Toast;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import com.example.app_movie_booking_ticket.adapter.TopMovieAdapter;
-import com.example.app_movie_booking_ticket.model.extra_Movie;
-import android.content.Intent;
-
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.app_movie_booking_ticket.model.Movie;
 
 public class fragments_home extends Fragment {
 
@@ -95,7 +86,7 @@ public class fragments_home extends Fragment {
         });
 
 
-        // 🆕 --- THÊM CHỨC NĂNG CHUYỂN ĐẾN TRANG NGƯỜI DÙNG VỚI ANIMATION ---
+        // --- THÊM CHỨC NĂNG CHUYỂN ĐẾN TRANG NGƯỜI DÙNG VỚI ANIMATION ---
         binding.userInfoLayout.setOnClickListener(v -> {
             if (getActivity() instanceof activities_2_menu_manage_fragments) {
                 ((activities_2_menu_manage_fragments) getActivity()).selectBottomNavItem(R.id.nav_user);
@@ -188,7 +179,7 @@ public class fragments_home extends Fragment {
     private void loadTopMovies() {
         DatabaseReference movieRef = FirebaseDatabase.getInstance().getReference("Items");
 
-        List<extra_Movie> movieList = new ArrayList<>();
+        List<Movie> movieList = new ArrayList<>();
         TopMovieAdapter adapter = new TopMovieAdapter(requireContext(), movieList);
         binding.recyclerTopMovie.setLayoutManager(
                 new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
@@ -200,7 +191,7 @@ public class fragments_home extends Fragment {
                 if (binding == null || getView() == null) return;
                 movieList.clear();
                 for (DataSnapshot itemSnap : snapshot.getChildren()) {
-                    extra_Movie movie = itemSnap.getValue(extra_Movie.class);
+                    Movie movie = itemSnap.getValue(Movie.class);
                     if (movie != null) movieList.add(movie);
                 }
 
@@ -220,7 +211,7 @@ public class fragments_home extends Fragment {
     private void loadUpcomingMovies() {
         DatabaseReference upcomingRef = FirebaseDatabase.getInstance().getReference("Upcomming");
 
-        List<extra_Movie> upcomingList = new ArrayList<>();
+        List<Movie> upcomingList = new ArrayList<>();
         TopMovieAdapter upcomingAdapter = new TopMovieAdapter(requireContext(), upcomingList);
         binding.recyclerUpcomingMovies.setLayoutManager(
                 new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
@@ -232,7 +223,7 @@ public class fragments_home extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 upcomingList.clear();
                 for (DataSnapshot itemSnap : snapshot.getChildren()) {
-                    extra_Movie movie = itemSnap.getValue(extra_Movie.class);
+                    Movie movie = itemSnap.getValue(Movie.class);
                     if (movie != null) upcomingList.add(movie);
                 }
                 upcomingList.sort((m1, m2) -> Integer.compare(m2.getYear(), m1.getYear()));

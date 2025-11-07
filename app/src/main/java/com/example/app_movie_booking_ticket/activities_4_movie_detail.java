@@ -5,16 +5,13 @@ import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.app_movie_booking_ticket.adapter.MovieImageAdapter;
-import com.example.app_movie_booking_ticket.databinding.Activity4MovieDetailBinding;
-import com.example.app_movie_booking_ticket.model.extra_Movie;
+import com.example.app_movie_booking_ticket.databinding.Activity4MovieDetailsBinding;
+import com.example.app_movie_booking_ticket.model.Movie;
 
 import com.example.app_movie_booking_ticket.adapter.CastListAdapter;
 
@@ -27,17 +24,17 @@ public class activities_4_movie_detail extends AppCompatActivity {
     private RecyclerView recyclerImageView;
     private CastListAdapter adapter;
     private MovieImageAdapter ImagesAdapter;
-    private Activity4MovieDetailBinding binding;
+    private Activity4MovieDetailsBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        binding = Activity4MovieDetailBinding.inflate(getLayoutInflater());
+        binding = Activity4MovieDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         recyclerCastView = binding.recyclerCast;
         recyclerImageView = binding.recyclerImages;
         Intent intent = getIntent();
-        extra_Movie movie = (extra_Movie) intent.getSerializableExtra("movie");
+        Movie movie = (Movie) intent.getSerializableExtra("movie");
         if (movie == null) return;
 
         // Load movie data into layout
@@ -55,7 +52,7 @@ public class activities_4_movie_detail extends AppCompatActivity {
         if (imagesList == null) imagesList = new ArrayList<>();
 
 
-        List<extra_Movie.Cast> castList = movie.getCasts();
+        List<Movie.Cast> castList = movie.getCasts();
         adapter = new CastListAdapter(this, castList);
         binding.recyclerCast.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         binding.recyclerCast.setAdapter(adapter);
