@@ -15,10 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App_movie_booking_ticket">
         <activity
-            android:name=".adapter.AllMoviesAdapter"
+            android:name=".activities_4_movie_detail"
             android:exported="false" />
         <activity
-            android:name=".AllMoviesActivity"
+            android:name=".activities_4_all_movies"
             android:exported="false" />
         <activity
             android:name=".activities_1_login"

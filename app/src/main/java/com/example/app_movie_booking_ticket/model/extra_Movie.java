@@ -1,11 +1,13 @@
 package com.example.app_movie_booking_ticket.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class extra_Movie {
+public class extra_Movie implements Serializable {
     private String Title;
     private String Poster;
     private double Imdb;
+    private List<String> Pcitures;
     private List<String> Genre;
     private String Description;
     private String Time;
@@ -17,12 +19,13 @@ public class extra_Movie {
     // Firebase requires a no-argument constructor
     public extra_Movie() {}
 
-    public extra_Movie(String title, String poster, double imdb, List<String> genre,
+    public extra_Movie(String title, String poster, double imdb,  List<String> pictures, List<String> genre,
                        String description, String time, int year, int price,
                        String trailer, List<Cast> casts) {
         this.Title = title;
         this.Poster = poster;
         this.Imdb = imdb;
+        this.Pcitures = pictures;
         this.Genre = genre;
         this.Description = description;
         this.Time = time;
@@ -44,7 +47,9 @@ public class extra_Movie {
     public double getImdb() {
         return Imdb;
     }
-
+    public List<String> getPicture(){
+        return Pcitures;
+    }
     public List<String> getGenre() {
         return Genre;
     }
@@ -74,7 +79,7 @@ public class extra_Movie {
     }
 
     // Inner class for Cast objects
-    public static class Cast {
+    public static class Cast implements Serializable{
         private String Actor;
         private String PicUrl;
 

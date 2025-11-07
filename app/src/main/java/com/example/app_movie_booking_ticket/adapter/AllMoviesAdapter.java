@@ -1,20 +1,17 @@
 package com.example.app_movie_booking_ticket.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.app_movie_booking_ticket.AllMoviesActivity;
+import com.example.app_movie_booking_ticket.activities_4_movie_detail;
 import com.example.app_movie_booking_ticket.databinding.ItemAllMovieBinding;
 import com.example.app_movie_booking_ticket.model.extra_Movie;
-import com.example.app_movie_booking_ticket.R;
 
 import java.util.List;
 
@@ -59,6 +56,12 @@ public class AllMoviesAdapter extends RecyclerView.Adapter<AllMoviesAdapter.AllM
         Glide.with(context)
                 .load(movie.getPoster())
                 .into(holder.binding.imagePoster);
+
+        holder.binding.buttonDetail.setOnClickListener(v -> {
+            Intent intent = new Intent(context, activities_4_movie_detail.class);
+            intent.putExtra("movie", movie);
+            context.startActivity(intent);
+        });
     }
 
     @Override
