@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="inputEmailForgot" type="id" />
+    <item name="btnResetPassword" type="id" />
+    <item name="btnChangeAvatar" type="id" />
+</resources>
