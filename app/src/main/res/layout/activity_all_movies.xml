@@ -1,43 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#000000">
+    android:background="#F9F9F9">
 
-    <!-- Thanh tiêu đề -->
+    <!-- Header -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="#121212"
-        android:paddingHorizontal="12dp"
-        android:gravity="center_vertical">
+        android:background="#000000"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="12dp">
 
         <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="80dp"
-            android:layout_height="match_parent"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_alignParentStart="true"
-            android:contentDescription="Back"
+            android:layout_centerVertical="true"
             android:src="@drawable/ic_back_arrow"
-            android:tint="@android:color/white" />
+            app:tint="#FFFFFF" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:text="All Movies"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_centerInParent="true" />
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold" />
     </RelativeLayout>
 
-    <!-- Danh sách phim -->
+    <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerAllMovies"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="8dp"
         android:scrollbars="vertical" />
+
 </LinearLayout>
+
 
 

@@ -1,20 +1,21 @@
 package com.example.app_movie_booking_ticket;
 
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.app_movie_booking_ticket.adapter.TopMovieAdapter;
-import com.example.app_movie_booking_ticket.model.extra_Movie;
+import com.example.app_movie_booking_ticket.adapter.AllMoviesAdapter;
+import com.example.app_movie_booking_ticket.model.Movie;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import android.widget.ImageView;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,33 +23,41 @@ import java.util.List;
 public class AllMoviesActivity extends AppCompatActivity {
 
     private RecyclerView recyclerAllMovies;
-    private TopMovieAdapter adapter;
-    private List<extra_Movie> allMovies;
+    private AllMoviesAdapter adapter;
+    private ImageView btnBack;
+    private List<Movie> movieList;
+    private DatabaseReference dbRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_movies);
 
-
-
         recyclerAllMovies = findViewById(R.id.recyclerAllMovies);
-        recyclerAllMovies.setLayoutManager(new GridLayoutManager(this, 2)); // hiển thị 2 cột
+        btnBack = findViewById(R.id.btnBack);
+        movieList = new ArrayList<>();
 
-        allMovies = new ArrayList<>();
-        adapter = new TopMovieAdapter(this, allMovies);
+        recyclerAllMovies.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new AllMoviesAdapter(this, movieList);
         recyclerAllMovies.setAdapter(adapter);
 
-        // Lấy dữ liệu từ Firebase
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Items");
-        ref.addValueEventListener(new ValueEventListener() {
+        dbRef = FirebaseDatabase.getInstance().getReference("Items");
+
+
+        loadMoviesFromFirebase();
+
+        btnBack.setOnClickListener(v -> finish());
+    }
+
+    private void loadMoviesFromFirebase() {
+        dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                allMovies.clear();
-                for (DataSnapshot item : snapshot.getChildren()) {
-                    extra_Movie movie = item.getValue(extra_Movie.class);
+                movieList.clear();
+                for (DataSnapshot movieSnap : snapshot.getChildren()) {
+                    Movie movie = movieSnap.getValue(Movie.class);
                     if (movie != null) {
-                        allMovies.add(movie);
+                        movieList.add(movie);
                     }
                 }
                 adapter.notifyDataSetChanged();
@@ -56,14 +65,10 @@ public class AllMoviesActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(AllMoviesActivity.this, "Lỗi tải dữ liệu", Toast.LENGTH_SHORT).show();
             }
         });
-        ImageView btnBack = findViewById(R.id.btnBack);
-        btnBack.setOnClickListener(v -> {
-            getOnBackPressedDispatcher().onBackPressed();
-        });
-
-
     }
 }
+
 
