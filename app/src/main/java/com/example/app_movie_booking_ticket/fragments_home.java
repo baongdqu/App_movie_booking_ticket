@@ -13,8 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
+import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 import com.example.app_movie_booking_ticket.adapter.SliderAdapter;
+import com.example.app_movie_booking_ticket.adapter.TopMovieAdapter;
 import com.example.app_movie_booking_ticket.databinding.LayoutsFragmentsHomeBinding;
 import com.example.app_movie_booking_ticket.model.SliderItems;
 import com.google.firebase.database.DataSnapshot;
@@ -25,18 +31,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.bumptech.glide.Glide;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.*;
-import android.widget.Toast;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import com.example.app_movie_booking_ticket.adapter.TopMovieAdapter;
-import com.example.app_movie_booking_ticket.model.extra_Movie;
-import android.content.Intent;
 
-
-
+import com.example.app_movie_booking_ticket.model.Movie;
 
 public class fragments_home extends Fragment {
 
@@ -74,10 +73,9 @@ public class fragments_home extends Fragment {
 // gọi hàm load user info
         loadUserInfo();
         loadTopMovies();
-        binding.tvViewAll.setOnClickListener(v -> {
-            Toast.makeText(requireContext(), "Mở danh sách toàn bộ phim", Toast.LENGTH_SHORT).show();
-            // TODO: Chuyển sang màn hình danh sách đầy đủ
-        });
+        loadUpcomingMovies();
+
+        // --- Sự kiện xem tất cả phim ---
         binding.tvViewAll.setOnClickListener(v -> {
             Intent intent = new Intent(requireContext(), AllMoviesActivity.class);
             startActivity(intent);
@@ -88,12 +86,31 @@ public class fragments_home extends Fragment {
         });
 
 
-        loadUpcomingMovies();
+        // --- THÊM CHỨC NĂNG CHUYỂN ĐẾN TRANG NGƯỜI DÙNG VỚI ANIMATION ---
+        binding.userInfoLayout.setOnClickListener(v -> {
+            if (getActivity() instanceof activities_2_menu_manage_fragments) {
+                ((activities_2_menu_manage_fragments) getActivity()).selectBottomNavItem(R.id.nav_user);
+                // Thêm hiệu ứng slide sang phải
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            } else {
+                // fallback nếu fragment không nằm trong activity chính
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .setCustomAnimations(
+                                R.anim.slide_in_right,  // khi fragment mới vào
+                                R.anim.slide_out_left,  // khi fragment cũ rời đi
+                                R.anim.slide_in_left,   // khi back lại
+                                R.anim.slide_out_right  // khi fragment mới bị pop ra
+                        )
+                        .replace(R.id.container, new fragments_user())
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
 
-
-
-
-
+        // Cho phép bấm avatar hoặc tên user để thực hiện giống như click vào layout
+        binding.imgAvatar.setOnClickListener(v -> binding.userInfoLayout.performClick());
+        binding.tvFullName.setOnClickListener(v -> binding.userInfoLayout.performClick());
     }
 
     private void initBanner() {
@@ -109,20 +126,17 @@ public class fragments_home extends Fragment {
                 List<SliderItems> lists = new ArrayList<>();
                 for (DataSnapshot i : snapshot.getChildren()) {
                     SliderItems item = i.getValue(SliderItems.class);
-                    if (item != null) {
-                        lists.add(item);
-                    }
+                    if (item != null) lists.add(item);
                 }
                 binding.progressBarSlider.setVisibility(View.GONE);
                 setupBanners(lists);
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                // handle error if needed
-            }
+            public void onCancelled(@NonNull DatabaseError error) {}
         });
     }
+
     private void loadUserInfo() {
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser == null) return;
@@ -132,6 +146,7 @@ public class fragments_home extends Fragment {
         userRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (binding == null) return;
                 if (!snapshot.exists()) return;
 
                 String fullName = snapshot.child("fullName").getValue(String.class);
@@ -146,8 +161,8 @@ public class fragments_home extends Fragment {
                 if (avatarUrl != null && !avatarUrl.isEmpty()) {
                     Glide.with(requireContext())
                             .load(avatarUrl)
-                            .placeholder(R.drawable.ic_default_avatar) // ảnh tạm khi đang tải
-                            .error(R.drawable.ic_default_avatar)        // ảnh fallback khi lỗi
+                            .placeholder(R.drawable.ic_default_avatar)
+                            .error(R.drawable.ic_default_avatar)
                             .into(binding.imgAvatar);
                 } else {
                     binding.imgAvatar.setImageResource(R.drawable.ic_default_avatar);
@@ -160,23 +175,24 @@ public class fragments_home extends Fragment {
             }
         });
     }
+
     private void loadTopMovies() {
         DatabaseReference movieRef = FirebaseDatabase.getInstance().getReference("Items");
 
-        List<extra_Movie> movieList = new ArrayList<>();
+        List<Movie> movieList = new ArrayList<>();
         TopMovieAdapter adapter = new TopMovieAdapter(requireContext(), movieList);
-        binding.recyclerTopMovie.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+        binding.recyclerTopMovie.setLayoutManager(
+                new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
         binding.recyclerTopMovie.setAdapter(adapter);
 
         movieRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (binding == null || getView() == null) return;
                 movieList.clear();
                 for (DataSnapshot itemSnap : snapshot.getChildren()) {
-                    extra_Movie movie = itemSnap.getValue(extra_Movie.class);
-                    if (movie != null) {
-                        movieList.add(movie);
-                    }
+                    Movie movie = itemSnap.getValue(Movie.class);
+                    if (movie != null) movieList.add(movie);
                 }
 
                 // sắp xếp theo IMDb giảm dần (Top Movie)
@@ -191,10 +207,11 @@ public class fragments_home extends Fragment {
             }
         });
     }
+
     private void loadUpcomingMovies() {
         DatabaseReference upcomingRef = FirebaseDatabase.getInstance().getReference("Upcomming");
 
-        List<extra_Movie> upcomingList = new ArrayList<>();
+        List<Movie> upcomingList = new ArrayList<>();
         TopMovieAdapter upcomingAdapter = new TopMovieAdapter(requireContext(), upcomingList);
         binding.recyclerUpcomingMovies.setLayoutManager(
                 new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
@@ -206,15 +223,10 @@ public class fragments_home extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 upcomingList.clear();
                 for (DataSnapshot itemSnap : snapshot.getChildren()) {
-                    extra_Movie movie = itemSnap.getValue(extra_Movie.class);
-                    if (movie != null) {
-                        upcomingList.add(movie);
-                    }
+                    Movie movie = itemSnap.getValue(Movie.class);
+                    if (movie != null) upcomingList.add(movie);
                 }
-
-                // sắp xếp theo năm mới nhất trước
                 upcomingList.sort((m1, m2) -> Integer.compare(m2.getYear(), m1.getYear()));
-
                 upcomingAdapter.notifyDataSetChanged();
             }
 
@@ -224,10 +236,6 @@ public class fragments_home extends Fragment {
             }
         });
     }
-
-
-
-
 
     private void setupBanners(List<SliderItems> lists) {
         binding.viewPager2.setAdapter(new SliderAdapter(lists, binding.viewPager2));

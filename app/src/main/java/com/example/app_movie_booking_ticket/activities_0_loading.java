@@ -42,6 +42,6 @@ public class activities_0_loading extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        }, 2000);
+        }, 1);
     }
 }

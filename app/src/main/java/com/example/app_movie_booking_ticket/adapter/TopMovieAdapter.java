@@ -1,6 +1,7 @@
 package com.example.app_movie_booking_ticket.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,16 +13,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.app_movie_booking_ticket.R;
-import com.example.app_movie_booking_ticket.model.extra_Movie;
+import com.example.app_movie_booking_ticket.activities_4_movie_detail;
+import com.example.app_movie_booking_ticket.model.Movie;
 
 import java.util.List;
 
 public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.MovieViewHolder> {
 
     private Context context;
-    private List<extra_Movie> movieList;
+    private List<Movie> movieList;
 
-    public TopMovieAdapter(Context context, List<extra_Movie> movieList) {
+    public TopMovieAdapter(Context context, List<Movie> movieList) {
         this.context = context;
         this.movieList = movieList;
     }
@@ -35,12 +37,18 @@ public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.MovieV
 
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
-        extra_Movie movie = movieList.get(position);
+        Movie movie = movieList.get(position);
         holder.tvMovieName.setText(movie.getTitle());
         Glide.with(context)
                 .load(movie.getPoster())
                 .placeholder(R.drawable.ic_default_poster)
                 .into(holder.imgMovie);
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, activities_4_movie_detail.class);
+            intent.putExtra("movie", movie);
+            context.startActivity(intent);
+        });
     }
 
     @Override

@@ -132,6 +132,7 @@ public class fragments_user extends Fragment {
      * - Sử dụng Glide để load ảnh vào imgAvatar
      */
     private void loadUserData(String email) {
+
         ref.orderByChild("email").equalTo(email)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
