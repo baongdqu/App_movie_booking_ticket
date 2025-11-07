@@ -63,7 +63,7 @@ public class activities_3_edit_profile extends AppCompatActivity {
     private Uri selectedImageUri = null;
 
     // URL avatar mặc định
-    private final String DEFAULT_AVATAR_URL = "https://i.ibb.co/C3JdHS1r/Avatar-trang-den.png"; // 🔁 đổi link thật của bạn
+    private final String DEFAULT_AVATAR_URL = "https://i.ibb.co/C3JdHS1r/Avatar-trang-den.png";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
