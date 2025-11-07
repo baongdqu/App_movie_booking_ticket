@@ -120,6 +120,11 @@
           <theme>@style/Theme.App_movie_booking_ticket</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_4_movie_details.xml">
+        <config>
+          <theme>@style/Theme.App_movie_booking_ticket</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_all_movies.xml">
         <config>
           <theme>@style/Theme.App_movie_booking_ticket</theme>
@@ -141,6 +146,16 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_all_movie.xml">
+        <config>
+          <theme>@style/Theme.App_movie_booking_ticket</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_cast.xml">
+        <config>
+          <theme>@style/Theme.App_movie_booking_ticket</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_movieimages.xml">
         <config>
           <theme>@style/Theme.App_movie_booking_ticket</theme>
         </config>
@@ -227,11 +242,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="844f1ce6-039a-4511-a069-8979768ecd95" name="Changes" comment="Thêm chức năng gửi lại email xác minh tài khoản nếu chưa kịp xác minh.">
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/SeatSelectionActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/SeatSelectionActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/activities_4_movie_detail.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/activities_4_movie_detail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/adapter/AllMoviesAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/adapter/AllMoviesAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -326,7 +340,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "com.google.services.firebase.aqiPopupShown": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "D:/app_tiket_2",
     "project.structure.last.edited": "Modules",

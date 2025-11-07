@@ -58,9 +58,10 @@ public class AllMoviesAdapter extends RecyclerView.Adapter<AllMoviesAdapter.Movi
         });
         holder.btnBuy.setOnClickListener(v -> {
             Intent intent = new Intent(context, SeatSelectionActivity.class);
-            intent.putExtra("movieTitle", movie.getTitle());
+            intent.putExtra("movieTitle", movie.getTitle()); // gửi tên phim
             context.startActivity(intent);
         });
+
     }
 
     @Override
