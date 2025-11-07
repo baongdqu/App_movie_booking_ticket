@@ -23,13 +23,19 @@ import com.example.app_movie_booking_ticket.adapter.SliderAdapter;
 import com.example.app_movie_booking_ticket.adapter.TopMovieAdapter;
 import com.example.app_movie_booking_ticket.databinding.LayoutsFragmentsHomeBinding;
 import com.example.app_movie_booking_ticket.model.SliderItems;
-import com.example.app_movie_booking_ticket.model.extra_Movie;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.*;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import com.example.app_movie_booking_ticket.model.Movie;
 
 public class fragments_home extends Fragment {
 
@@ -39,8 +45,13 @@ public class fragments_home extends Fragment {
     private DatabaseReference userRef;
 
     private final Handler sliderHandler = new Handler();
-    private final Runnable sliderRunnable = () ->
+
+    private final Runnable sliderRunnable = new Runnable() {
+        @Override
+        public void run() {
             binding.viewPager2.setCurrentItem(binding.viewPager2.getCurrentItem() + 1);
+        }
+    };
 
     @Nullable
     @Override
@@ -55,11 +66,11 @@ public class fragments_home extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         database = FirebaseDatabase.getInstance();
+        initBanner();
         auth = FirebaseAuth.getInstance();
         userRef = FirebaseDatabase.getInstance().getReference("users");
 
-        // --- Load dữ liệu ---
-        initBanner();
+// gọi hàm load user info
         loadUserInfo();
         loadTopMovies();
         loadUpcomingMovies();
@@ -75,7 +86,7 @@ public class fragments_home extends Fragment {
         });
 
 
-        // 🆕 --- THÊM CHỨC NĂNG CHUYỂN ĐẾN TRANG NGƯỜI DÙNG VỚI ANIMATION ---
+        // --- THÊM CHỨC NĂNG CHUYỂN ĐẾN TRANG NGƯỜI DÙNG VỚI ANIMATION ---
         binding.userInfoLayout.setOnClickListener(v -> {
             if (getActivity() instanceof activities_2_menu_manage_fragments) {
                 ((activities_2_menu_manage_fragments) getActivity()).selectBottomNavItem(R.id.nav_user);
@@ -106,6 +117,8 @@ public class fragments_home extends Fragment {
         DatabaseReference myRef = database.getReference("Banners");
         binding.progressBarSlider.setVisibility(View.VISIBLE);
 
+
+
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -133,15 +146,18 @@ public class fragments_home extends Fragment {
         userRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (binding == null) return;
                 if (!snapshot.exists()) return;
 
                 String fullName = snapshot.child("fullName").getValue(String.class);
                 String email = snapshot.child("email").getValue(String.class);
                 String avatarUrl = snapshot.child("avatarUrl").getValue(String.class);
 
+                // Hiển thị tên và email
                 binding.tvFullName.setText(fullName != null ? fullName : "Người dùng");
                 binding.tvEmail.setText(email != null ? email : "");
 
+                // Hiển thị avatar (nếu không có thì dùng mặc định)
                 if (avatarUrl != null && !avatarUrl.isEmpty()) {
                     Glide.with(requireContext())
                             .load(avatarUrl)
@@ -163,7 +179,7 @@ public class fragments_home extends Fragment {
     private void loadTopMovies() {
         DatabaseReference movieRef = FirebaseDatabase.getInstance().getReference("Items");
 
-        List<extra_Movie> movieList = new ArrayList<>();
+        List<Movie> movieList = new ArrayList<>();
         TopMovieAdapter adapter = new TopMovieAdapter(requireContext(), movieList);
         binding.recyclerTopMovie.setLayoutManager(
                 new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
@@ -172,12 +188,16 @@ public class fragments_home extends Fragment {
         movieRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (binding == null || getView() == null) return;
                 movieList.clear();
                 for (DataSnapshot itemSnap : snapshot.getChildren()) {
-                    extra_Movie movie = itemSnap.getValue(extra_Movie.class);
+                    Movie movie = itemSnap.getValue(Movie.class);
                     if (movie != null) movieList.add(movie);
                 }
+
+                // sắp xếp theo IMDb giảm dần (Top Movie)
                 movieList.sort((m1, m2) -> Double.compare(m2.getImdb(), m1.getImdb()));
+
                 adapter.notifyDataSetChanged();
             }
 
@@ -191,7 +211,7 @@ public class fragments_home extends Fragment {
     private void loadUpcomingMovies() {
         DatabaseReference upcomingRef = FirebaseDatabase.getInstance().getReference("Upcomming");
 
-        List<extra_Movie> upcomingList = new ArrayList<>();
+        List<Movie> upcomingList = new ArrayList<>();
         TopMovieAdapter upcomingAdapter = new TopMovieAdapter(requireContext(), upcomingList);
         binding.recyclerUpcomingMovies.setLayoutManager(
                 new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
@@ -203,7 +223,7 @@ public class fragments_home extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 upcomingList.clear();
                 for (DataSnapshot itemSnap : snapshot.getChildren()) {
-                    extra_Movie movie = itemSnap.getValue(extra_Movie.class);
+                    Movie movie = itemSnap.getValue(Movie.class);
                     if (movie != null) upcomingList.add(movie);
                 }
                 upcomingList.sort((m1, m2) -> Integer.compare(m2.getYear(), m1.getYear()));
