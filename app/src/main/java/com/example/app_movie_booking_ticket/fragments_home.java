@@ -82,6 +82,11 @@ public class fragments_home extends Fragment {
             Intent intent = new Intent(requireContext(), AllMoviesActivity.class);
             startActivity(intent);
         });
+        binding.tvViewAllUpcoming.setOnClickListener(v -> {
+            Intent intent = new Intent(requireContext(), AllUpcomingActivity.class);
+            startActivity(intent);
+        });
+
 
         loadUpcomingMovies();
 
