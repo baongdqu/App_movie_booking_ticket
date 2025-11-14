@@ -1,6 +1,7 @@
 package com.example.app_movie_booking_ticket;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.AudioAttributes;
 import android.media.SoundPool;
 
@@ -16,6 +17,14 @@ public class extra_sound_manager {
     private static int soundSuccess;
     private static int soundOpening;
     private static int soundNotification;
+
+    // ================================
+    //  CHECK SETTINGS BẬT/TẮT ÂM THANH
+    // ================================
+    public static boolean isSoundEnabled(Context ctx) {
+        return ctx.getSharedPreferences("AppSettings", Context.MODE_PRIVATE)
+                .getBoolean("sound_enabled", true);
+    }
 
     private static void ensureInit(Context context) {
         if (soundPool != null && isLoaded) return;
@@ -43,14 +52,25 @@ public class extra_sound_manager {
         isLoaded = true;
     }
 
+    // ================================
+    //  HÀM PLAY CÓ KIỂM TRA ÂM THANH
+    // ================================
     private static void play(Context context, int soundId) {
         if (context == null) return;
+
+        // Nếu người dùng tắt âm thanh → Không phát
+        if (!isSoundEnabled(context)) return;
+
         ensureInit(context.getApplicationContext());
+
         if (soundPool != null && soundId != 0) {
             soundPool.play(soundId, 1f, 1f, 1, 0, 1f);
         }
     }
 
+    // ================================
+    //  CÁC HÀM PUBLIC PLAY
+    // ================================
     public static void playUiClick(Context context) {
         play(context, soundUiClick);
     }
