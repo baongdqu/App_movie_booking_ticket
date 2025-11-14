@@ -14,7 +14,7 @@ public class activities_2_menu_manage_fragments extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        extra_themeutils.applySavedTheme(this); // ✅ Sửa đúng tên class
+        extra_themeutils.applySavedTheme(this);
         setContentView(R.layout.layouts_2_menu_manage_fragments);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -25,22 +25,19 @@ public class activities_2_menu_manage_fragments extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.nav_home);
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
+            extra_sound_manager.playMenuClick(this);
+
             int id = item.getItemId();
-            if (id == R.id.nav_home) {
-                loadFragment(new fragments_home());
-            } else if (id == R.id.nav_mail) {
-                loadFragment(new fragments_mail());
-            } else if (id == R.id.nav_notifications) {
-                loadFragment(new fragments_notifications());
-            } else if (id == R.id.nav_user) {
-                loadFragment(fragments_user.newInstance());
-            }
+            if (id == R.id.nav_home)      loadFragment(new fragments_home());
+            else if (id == R.id.nav_mail) loadFragment(new fragments_mail());
+            else if (id == R.id.nav_notifications) loadFragment(new fragments_notifications());
+            else if (id == R.id.nav_user) loadFragment(fragments_user.newInstance());
             return true;
         });
 
         btnTrailer.setOnClickListener(v -> {
+            extra_sound_manager.playMenuClick(this);
             Toast.makeText(this, "Giới thiệu phim mới!", Toast.LENGTH_SHORT).show();
-            // TODO: mở Activity trailer, hoặc phát video
         });
     }
 

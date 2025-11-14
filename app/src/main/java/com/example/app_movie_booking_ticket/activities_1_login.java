@@ -57,16 +57,20 @@ public class activities_1_login extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         // ================== 🔘 SỰ KIỆN CLICK ĐĂNG NHẬP ==================
-        btnLogin.setOnClickListener(v -> loginUser());
-
+        btnLogin.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
+            loginUser();
+        });
         // ================== 🔘 MỞ MÀN HÌNH ĐĂNG KÝ ==================
         btnSignup.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
             Intent intent = new Intent(activities_1_login.this, activities_1_signup.class);
             startActivity(intent);
         });
 
         // ================== 🔘 QUÊN MẬT KHẨU (tuỳ chọn) ==================
         btntxtForgotPassword.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
             startActivity(new Intent(activities_1_login.this, activities_1_forgot_password.class));
         });
 
@@ -77,7 +81,8 @@ public class activities_1_login extends AppCompatActivity {
             String password = Objects.requireNonNull(inputPassword.getText()).toString().trim();
 
             if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-                Toast.makeText(this, "Vui lòng nhập email và mật khẩu trước khi gửi lại email xác minh.", Toast.LENGTH_LONG).show();
+                extra_sound_manager.playError(this);
+                Toast.makeText(this, "Vui lòng nhập email và mật khẩu!", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -146,6 +151,7 @@ public class activities_1_login extends AppCompatActivity {
                             if (user != null) {
                                 // ======= Bước 3: Kiểm tra email đã verify chưa =======
                                 if (user.isEmailVerified()) {
+                                    extra_sound_manager.playSuccess(activities_1_login.this);
                                     Toast.makeText(activities_1_login.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
 
                                     // 🔹 Lưu thông tin người dùng vào SharedPreferences
@@ -169,8 +175,9 @@ public class activities_1_login extends AppCompatActivity {
                                                 user.sendEmailVerification()
                                                         .addOnCompleteListener(verifyTask -> {
                                                             if (verifyTask.isSuccessful()) {
+                                                                extra_sound_manager.playError(activities_1_login.this);
                                                                 Toast.makeText(activities_1_login.this,
-                                                                        "Đã gửi lại email xác minh. Vui lòng kiểm tra hộp thư.",
+                                                                        "Đăng nhập thất bại: " + Objects.requireNonNull(task.getException()).getMessage(),
                                                                         Toast.LENGTH_LONG).show();
                                                             } else {
                                                                 Toast.makeText(activities_1_login.this,

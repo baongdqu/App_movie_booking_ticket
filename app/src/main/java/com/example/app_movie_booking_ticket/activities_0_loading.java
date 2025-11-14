@@ -20,6 +20,8 @@ public class activities_0_loading extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         setContentView(R.layout.layouts_0_loading);
 
+        extra_sound_manager.playOpening(this);
+
         // Khởi tạo FirebaseAuth
         mAuth = FirebaseAuth.getInstance();
 

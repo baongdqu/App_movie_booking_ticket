@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.app_movie_booking_ticket.R;
 import com.example.app_movie_booking_ticket.activities_4_movie_detail;
+import com.example.app_movie_booking_ticket.extra_sound_manager;
 import com.example.app_movie_booking_ticket.model.Movie;
 
 import java.util.List;
@@ -44,7 +45,9 @@ public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.MovieV
                 .placeholder(R.drawable.ic_default_poster)
                 .into(holder.imgMovie);
 
+        // ✅ Phát âm thanh khi click
         holder.itemView.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(v.getContext());
             Intent intent = new Intent(context, activities_4_movie_detail.class);
             intent.putExtra("movie", movie);
             context.startActivity(intent);
