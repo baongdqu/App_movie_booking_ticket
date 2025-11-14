@@ -31,6 +31,16 @@
             android:textColor="@color/text_secondary"
             android:layout_marginBottom="20dp" />
 
+        <!-- === Switch Bật/Tắt âm thanh === -->
+        <Switch
+            android:id="@+id/switchSound"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bật/Tắt âm thanh"
+            android:textSize="16sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginBottom="20dp" />
+
         <Switch
             android:id="@+id/switchNotification"
             android:text="Bật thông báo"

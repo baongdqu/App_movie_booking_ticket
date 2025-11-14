@@ -26,7 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class activities_3_advanced_settings extends AppCompatActivity {
 
-    private Switch switchDarkMode, switchNotification;
+    private Switch switchDarkMode, switchNotification, switchSound;
     private Button btnChangePassword, btnDeleteAccount, btnBackSettings;
 
     private SharedPreferences prefs;
@@ -40,6 +40,7 @@ public class activities_3_advanced_settings extends AppCompatActivity {
 
         switchDarkMode = findViewById(R.id.switchDarkMode);
         switchNotification = findViewById(R.id.switchNotification);
+        switchSound = findViewById(R.id.switchSound);
         btnChangePassword = findViewById(R.id.btnChangePassword);
         btnDeleteAccount = findViewById(R.id.btnDeleteAccount);
         btnBackSettings = findViewById(R.id.btnBackSettings);
@@ -49,6 +50,7 @@ public class activities_3_advanced_settings extends AppCompatActivity {
 
         switchDarkMode.setChecked(extra_themeutils.isDarkMode(this));
         switchNotification.setChecked(prefs.getBoolean("notifications", true));
+        switchSound.setChecked(prefs.getBoolean("sound_enabled", true));
 
         switchDarkMode.setOnCheckedChangeListener((buttonView, isChecked) -> {
             extra_sound_manager.playToggle(this);
@@ -60,6 +62,11 @@ public class activities_3_advanced_settings extends AppCompatActivity {
             extra_sound_manager.playToggle(this);
             prefs.edit().putBoolean("notifications", isChecked).apply();
             Toast.makeText(this, isChecked ? "Thông báo đã bật" : "Thông báo đã tắt", Toast.LENGTH_SHORT).show();
+        });
+
+        switchSound.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            prefs.edit().putBoolean("sound_enabled", isChecked).apply();
+            Toast.makeText(this, isChecked ? "Âm thanh được bật" : "Âm thanh đã tắt", Toast.LENGTH_SHORT).show();
         });
 
         btnChangePassword.setOnClickListener(v ->
