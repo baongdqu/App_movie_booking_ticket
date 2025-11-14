@@ -21,23 +21,25 @@ import java.util.Objects;
 public class activities_1_forgot_password extends AppCompatActivity {
 
     private TextInputEditText inputEmailForgot;
-
     private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        setContentView(R.layout.layouts_1_forgot_password); // chắc chắn tên file đúng
+        setContentView(R.layout.layouts_1_forgot_password);
 
-        // Ánh xạ view (sau setContentView)
+        // Ánh xạ view
         inputEmailForgot = findViewById(R.id.inputEmailForgot);
         Button btnResetPassword = findViewById(R.id.btnResetPassword);
         TextView txtBackToLogin = findViewById(R.id.txtBackToLogin);
 
         mAuth = FirebaseAuth.getInstance();
 
-        btnResetPassword.setOnClickListener(v -> resetPassword());
+        btnResetPassword.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
+            resetPassword();
+        });
 
         txtBackToLogin.setOnClickListener(v -> {
             startActivity(new Intent(activities_1_forgot_password.this, activities_1_login.class));
@@ -49,6 +51,7 @@ public class activities_1_forgot_password extends AppCompatActivity {
         String email = Objects.requireNonNull(inputEmailForgot.getText()).toString().trim();
 
         if (TextUtils.isEmpty(email)) {
+            extra_sound_manager.playError(this);
             Toast.makeText(this, "Vui lòng nhập email để khôi phục mật khẩu!", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -58,6 +61,7 @@ public class activities_1_forgot_password extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
+                            extra_sound_manager.playSuccess(activities_1_forgot_password.this);
                             Toast.makeText(activities_1_forgot_password.this,
                                     "Đã gửi liên kết khôi phục mật khẩu tới email của bạn!",
                                     Toast.LENGTH_LONG).show();
@@ -65,6 +69,7 @@ public class activities_1_forgot_password extends AppCompatActivity {
                             startActivity(new Intent(activities_1_forgot_password.this, activities_1_login.class));
                             finish();
                         } else {
+                            extra_sound_manager.playError(activities_1_forgot_password.this);
                             Toast.makeText(activities_1_forgot_password.this,
                                     "Lỗi: " + Objects.requireNonNull(task.getException()).getMessage(),
                                     Toast.LENGTH_LONG).show();
