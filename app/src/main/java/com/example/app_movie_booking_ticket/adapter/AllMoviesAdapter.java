@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,11 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.app_movie_booking_ticket.R;
 import com.example.app_movie_booking_ticket.activities_4_movie_detail;
+import com.example.app_movie_booking_ticket.SeatSelectionActivity;
+import com.example.app_movie_booking_ticket.extra_sound_manager;
 import com.example.app_movie_booking_ticket.model.Movie;
 
 import java.util.List;
-
-import com.example.app_movie_booking_ticket.SeatSelectionActivity;
 
 public class AllMoviesAdapter extends RecyclerView.Adapter<AllMoviesAdapter.MovieViewHolder> {
 
@@ -49,19 +48,21 @@ public class AllMoviesAdapter extends RecyclerView.Adapter<AllMoviesAdapter.Movi
         holder.tvMovieDate.setText(String.valueOf(movie.getYear()));
         Glide.with(context).load(movie.getPoster()).into(holder.imgMovie);
 
-
-
+        // Chi tiết phim
         holder.btnDetail.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(v.getContext());
             Intent intent = new Intent(context, activities_4_movie_detail.class);
             intent.putExtra("movie", movie);
             context.startActivity(intent);
         });
+
+        // Mua vé
         holder.btnBuy.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(v.getContext());
             Intent intent = new Intent(context, SeatSelectionActivity.class);
-            intent.putExtra("movieTitle", movie.getTitle()); // gửi tên phim
+            intent.putExtra("movieTitle", movie.getTitle());
             context.startActivity(intent);
         });
-
     }
 
     @Override
