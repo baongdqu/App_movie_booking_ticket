@@ -52,28 +52,38 @@ public class activities_3_advanced_settings extends AppCompatActivity {
         switchNotification.setChecked(prefs.getBoolean("notifications", true));
         switchSound.setChecked(prefs.getBoolean("sound_enabled", true));
 
+        // Switch Dark Mode
         switchDarkMode.setOnCheckedChangeListener((buttonView, isChecked) -> {
             extra_sound_manager.playToggle(this);
             extra_themeutils.setDarkMode(this, isChecked);
             recreate();
         });
 
+        // Switch Notification
         switchNotification.setOnCheckedChangeListener((buttonView, isChecked) -> {
             extra_sound_manager.playToggle(this);
             prefs.edit().putBoolean("notifications", isChecked).apply();
             Toast.makeText(this, isChecked ? "Thông báo đã bật" : "Thông báo đã tắt", Toast.LENGTH_SHORT).show();
         });
 
+        // Switch Sound (ĐÃ BỔ SUNG ÂM THANH)
         switchSound.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            // **BỔ SUNG ÂM THANH** - Lưu ý về logic đã thảo luận
+            extra_sound_manager.playToggle(this);
             prefs.edit().putBoolean("sound_enabled", isChecked).apply();
             Toast.makeText(this, isChecked ? "Âm thanh được bật" : "Âm thanh đã tắt", Toast.LENGTH_SHORT).show();
         });
 
-        btnChangePassword.setOnClickListener(v ->
-                startActivity(new Intent(this, activities_3_change_password.class))
-        );
+        // Nút Thay đổi Mật khẩu
+        btnChangePassword.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
+            startActivity(new Intent(this, activities_3_change_password.class));
+        });
 
+        // Nút Xóa Tài khoản
         btnDeleteAccount.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
+
             Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 
             new MaterialAlertDialogBuilder(this, com.google.android.material.R.style.MaterialAlertDialog_Material3)
@@ -150,7 +160,11 @@ public class activities_3_advanced_settings extends AppCompatActivity {
             }
         });
 
-        btnBackSettings.setOnClickListener(v -> finish());
+        // Nút Quay lại
+        btnBackSettings.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
+            finish();
+        });
     }
 
     private void dialogConfirmDelete(FirebaseUser user, String password) {
