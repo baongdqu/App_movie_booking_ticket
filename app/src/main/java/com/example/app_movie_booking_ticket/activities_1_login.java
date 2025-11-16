@@ -43,6 +43,9 @@ public class activities_1_login extends AppCompatActivity {
         // Liên kết với layout
         setContentView(R.layout.layouts_1_login);
 
+        // ================== 🔊 BỔ SUNG ÂM THANH MỞ GIAO DIỆN ==================
+        extra_sound_manager.playOpeningApp(this);
+
         // ================== 🔧 KHỞI TẠO CÁC THÀNH PHẦN ==================
         inputEmail = findViewById(R.id.inputEmail);
         inputPassword = findViewById(R.id.inputPassword);
@@ -175,11 +178,12 @@ public class activities_1_login extends AppCompatActivity {
                                                 user.sendEmailVerification()
                                                         .addOnCompleteListener(verifyTask -> {
                                                             if (verifyTask.isSuccessful()) {
-                                                                extra_sound_manager.playError(activities_1_login.this);
+                                                                extra_sound_manager.playUiClick(activities_1_login.this); // Âm thanh cho hành động gửi lại email thành công
                                                                 Toast.makeText(activities_1_login.this,
-                                                                        "Đăng nhập thất bại: " + Objects.requireNonNull(task.getException()).getMessage(),
+                                                                        "Đã gửi lại email xác minh. Vui lòng kiểm tra hộp thư.",
                                                                         Toast.LENGTH_LONG).show();
                                                             } else {
+                                                                extra_sound_manager.playError(activities_1_login.this); // Âm thanh lỗi nếu gửi lại email thất bại
                                                                 Toast.makeText(activities_1_login.this,
                                                                         "Không thể gửi email xác minh: " + Objects.requireNonNull(verifyTask.getException()).getMessage(),
                                                                         Toast.LENGTH_LONG).show();
@@ -189,6 +193,7 @@ public class activities_1_login extends AppCompatActivity {
                                                         });
                                             })
                                             .setNeutralButton("Mở Email", (dialog, which) -> {
+                                                extra_sound_manager.playUiClick(activities_1_login.this); // Âm thanh cho hành động mở email
                                                 // cố gắng mở ứng dụng email mặc định
                                                 Intent intent = new Intent(Intent.ACTION_MAIN);
                                                 intent.addCategory(Intent.CATEGORY_APP_EMAIL);
@@ -201,6 +206,7 @@ public class activities_1_login extends AppCompatActivity {
                                                 mAuth.signOut();
                                             })
                                             .setNegativeButton("Đóng", (dialog, which) -> {
+                                                extra_sound_manager.playUiClick(activities_1_login.this); // Âm thanh cho hành động đóng dialog
                                                 // sign out để dọn phiên
                                                 mAuth.signOut();
                                                 dialog.dismiss();
@@ -212,6 +218,7 @@ public class activities_1_login extends AppCompatActivity {
 
                         } else {
                             // Nếu đăng nhập thất bại (sai mật khẩu, email không tồn tại, ...)
+                            extra_sound_manager.playError(activities_1_login.this); // Âm thanh lỗi khi đăng nhập thất bại
                             Toast.makeText(activities_1_login.this,
                                     "Đăng nhập thất bại: " +
                                             Objects.requireNonNull(task.getException()).getMessage(),

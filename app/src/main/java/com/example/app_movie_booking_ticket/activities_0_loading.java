@@ -3,7 +3,7 @@ package com.example.app_movie_booking_ticket;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.os.Handler;
+import android.os.Handler; // Cần import android.os.Handler (đã có)
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,12 +20,17 @@ public class activities_0_loading extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         setContentView(R.layout.layouts_0_loading);
 
-        extra_sound_manager.playOpening(this);
+        // ================== 🔊 SỬA: PHÁT ÂM THANH SAU 100MS ==================
+        // Đảm bảo SoundPool có thời gian tải ID của file âm thanh
+        new Handler().postDelayed(() -> {
+            extra_sound_manager.playOpening(activities_0_loading.this);
+        }, 500); // 100ms
 
         // Khởi tạo FirebaseAuth
         mAuth = FirebaseAuth.getInstance();
 
-        // Delay (giả lập loading) rồi kiểm tra phiên (chức năng lưu trữ phiên đăng nhập thì ở hàm dưới
+        // Delay chính (giả lập loading)
+        // Lưu ý: Độ trễ này vẫn giữ nguyên 3000ms tính từ lúc onCreate bắt đầu.
         new Handler().postDelayed(() -> {
             FirebaseUser currentUser = mAuth.getCurrentUser();
 
@@ -44,6 +49,6 @@ public class activities_0_loading extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        }, 1);
+        }, 7000);
     }
 }
