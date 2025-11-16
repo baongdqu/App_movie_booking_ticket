@@ -69,7 +69,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\s3cr3t\AppData\Local\Temp\baseline_arrow_back_24.xml" />
+                                                <entry key="imagePath" value="C:\Users\s3cr3t\AppData\Local\Temp\ic_android_black_24dp.xml" />
                                                 <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
@@ -82,6 +82,9 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
+                                                <entry key="imagePath" value="C:\Users\s3cr3t\AndroidStudioProjects\App_movie_booking_ticket (2025-11-08 14-28-12)\app\src\main\res\mipmap-anydpi-v26\ic_default_poster.png" />
+                                                <entry key="scalingPercent" value="77" />
+                                                <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -113,7 +116,10 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="foregroundAssetType" value="CLIP_ART" />
+                                      <entry key="backgroundAssetType" value="COLOR" />
+                                      <entry key="backgroundColor" value="000000" />
+                                      <entry key="backgroundLayerName" value="icon_app_back" />
+                                      <entry key="foregroundLayerName" value="icon_app_fore" />
                                       <entry key="outputName" value="ic_arow_back" />
                                     </map>
                                   </option>
