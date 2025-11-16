@@ -96,14 +96,25 @@ public class fragments_user extends Fragment {
             imgAvatar.setImageResource(R.drawable.ic_person);
         }
 
-        // Chỉnh sửa hồ sơ
-        btnEditProfile.setOnClickListener(v -> startActivity(new Intent(requireActivity(), activities_3_edit_profile.class)));
+        // ---------------------------
+        // XỬ LÝ SỰ KIỆN BẤM VÀ ÂM THANH
+        // ---------------------------
 
+        // Chỉnh sửa hồ sơ (btnEditProfile)
+        btnEditProfile.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(requireActivity()); // Bổ sung âm thanh
+            startActivity(new Intent(requireActivity(), activities_3_edit_profile.class));
+        });
+
+        // Cài đặt nâng cao (btnSettings)
         btnSettings.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(requireActivity()); // Bổ sung âm thanh
             startActivity(new Intent(requireActivity(), activities_3_advanced_settings.class));
         });
 
+        // Đăng xuất (btnLogout)
         btnLogout.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(requireActivity()); // Bổ sung âm thanh
             prefs.edit().clear().apply();
             mAuth.signOut();
             Intent intent = new Intent(requireActivity(), activities_1_login.class);

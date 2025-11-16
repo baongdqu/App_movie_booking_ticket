@@ -30,12 +30,17 @@ public class activities_3_change_password extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        // Nút LƯU (Save) - Có âm thanh
         btnSavePassword.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(this);
             changePassword();
         });
 
-        btnCancelPassword.setOnClickListener(v -> finish());
+        // Nút HỦY (Cancel) - ĐÃ BỔ SUNG ÂM THANH
+        btnCancelPassword.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this); // Bổ sung âm thanh cho nút Hủy
+            finish();
+        });
     }
 
     private void changePassword() {
