@@ -80,7 +80,7 @@ public class fragments_home extends Fragment {
         // =========================
         // 🔍 SETUP SEARCH
         // =========================
-        ImageView btnSearch = binding.btnSearch;
+        ImageView btnSearch = binding.imgSearch;
         TextInputLayout searchBox = binding.searchBoxLayout;
         TextInputEditText inputSearch = binding.inputSearch;
 
