@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
+    <!-- 🧩 SCROLL VIEW CHÍNH -->
     <ScrollView
+        android:id="@+id/scrollViewHome"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingBottom="80dp">
-            <!-- 🧩 THÔNG TIN NGƯỜI DÙNG -->
+
+            <!-- 🧩 USER INFO + NÚT SEARCH -->
             <LinearLayout
                 android:id="@+id/userInfoLayout"
                 android:layout_width="match_parent"
@@ -38,8 +41,9 @@
                     app:civ_border_width="2dp" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
@@ -47,7 +51,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
-                        android:includeFontPadding="false"
                         android:text="@string/user_name"
                         android:textSize="24sp"
                         android:textStyle="bold" />
@@ -60,30 +63,39 @@
                         android:text="@string/user_email"
                         android:textSize="20sp" />
                 </LinearLayout>
+
+                <!-- NÚT SEARCH -->
+                <ImageView
+                    android:id="@+id/btnSearch"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:contentDescription="Search"
+                    android:src="@drawable/searching_white"
+                    app:tint="@color/white" />
             </LinearLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <!-- 🔽 Ô SEARCH XỔ XUỐNG -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/searchBoxLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:visibility="gone">
 
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputSearch"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Welcome"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:hint="Tìm kiếm phim..."
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- SLIDER BANNER -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:minHeight="200dp">
+                android:layout_height="200dp"
+                android:layout_marginTop="16dp">
 
                 <ProgressBar
                     android:id="@+id/progressBarSlider"
@@ -92,7 +104,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="@+id/viewPager2"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/viewPager2"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/viewPager2" />
 
                 <androidx.viewpager2.widget.ViewPager2
@@ -106,8 +118,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
+
             <!-- TOP MOVIE SECTION -->
-            <!-- Tiêu đề Top Movie + Nút View All -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -123,7 +135,7 @@
                     android:textStyle="bold"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tvViewAll"
@@ -136,9 +148,6 @@
                     app:layout_constraintEnd_toEndOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerTopMovie"
                 android:layout_width="match_parent"
@@ -148,8 +157,6 @@
                 android:paddingEnd="8dp"
                 android:scrollbars="none"
                 tools:listitem="@layout/item_top_movie" />
-
-
 
             <!-- UPCOMING MOVIES SECTION -->
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -167,7 +174,7 @@
                     android:textStyle="bold"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tvViewAllUpcoming"
@@ -190,10 +197,7 @@
                 android:scrollbars="none"
                 tools:listitem="@layout/item_top_movie" />
 
-
-
         </LinearLayout>
     </ScrollView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

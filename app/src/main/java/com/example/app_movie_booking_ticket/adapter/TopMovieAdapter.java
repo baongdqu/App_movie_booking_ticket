@@ -59,6 +59,10 @@ public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.MovieV
         return movieList.size();
     }
 
+    public void updateList(List<Movie> newList) {
+        this.movieList = newList;
+        notifyDataSetChanged();
+    }
     static class MovieViewHolder extends RecyclerView.ViewHolder {
         ImageView imgMovie;
         TextView tvMovieName;
