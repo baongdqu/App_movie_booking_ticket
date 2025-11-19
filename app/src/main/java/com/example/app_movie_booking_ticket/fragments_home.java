@@ -86,6 +86,7 @@ public class fragments_home extends Fragment {
 
         // Mở / đóng search box
         btnSearch.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(requireContext());
             if (searchBox.getVisibility() == View.GONE) {
                 searchBox.setVisibility(View.VISIBLE);
                 searchBox.setAlpha(0f);
@@ -113,11 +114,17 @@ public class fragments_home extends Fragment {
         // =========================
         // XEM TẤT CẢ PHIM
         // =========================
-        binding.tvViewAll.setOnClickListener(v ->
-                startActivity(new Intent(requireContext(), AllMoviesActivity.class)));
+        binding.tvViewAll.setOnClickListener(v -> {
+            // 🔊 Âm thanh click
+            extra_sound_manager.playUiClick(requireContext());
+            startActivity(new Intent(requireContext(), AllMoviesActivity.class));
+        });
 
-        binding.tvViewAllUpcoming.setOnClickListener(v ->
-                startActivity(new Intent(requireContext(), AllUpcomingActivity.class)));
+        binding.tvViewAllUpcoming.setOnClickListener(v -> {
+            // 🔊 Âm thanh click
+            extra_sound_manager.playUiClick(requireContext());
+            startActivity(new Intent(requireContext(), AllUpcomingActivity.class));
+        });
 
         // =========================
         // TRANG NGƯỜI DÙNG
