@@ -81,7 +81,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:visibility="gone">
+                android:visibility="gone"
+                app:startIconDrawable="@drawable/ic_search"
+                app:endIconMode="clear_text">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/inputSearch"
@@ -90,6 +92,31 @@
                     android:hint="Tìm kiếm phim..."
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- 🔍 KẾT QUẢ TÌM KIẾM -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerSearchResults"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:visibility="gone"
+                android:scrollbars="vertical"
+                tools:listitem="@layout/item_top_movie" />
+
+            <!-- ❌ KHÔNG TÌM THẤY KẾT QUẢ -->
+            <TextView
+                android:id="@+id/tvNoResults"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp"
+                android:gravity="center"
+                android:text="Không tìm thấy phim nào"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:visibility="gone" />
 
             <!-- SLIDER BANNER -->
             <androidx.constraintlayout.widget.ConstraintLayout
