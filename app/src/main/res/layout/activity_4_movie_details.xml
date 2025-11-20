@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:background="@color/bg_color">
 
     <!-- Top bar -->
     <RelativeLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="#121212"
+        android:background="@color/card_background"
         android:gravity="center_vertical"
+        android:elevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,15 +26,19 @@
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:padding="8dp"
+            android:clickable="true"
+            android:focusable="true"
             android:src="@drawable/ic_back_arrow"
-            android:tint="@android:color/white" />
+            app:tint="@color/text_primary" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="Movie Detail"
-            android:textSize="18sp"
+            android:textColor="@color/text_primary"
+            android:textSize="20sp"
+            android:fontFamily="sans-serif-medium"
             android:textStyle="bold" />
     </RelativeLayout>
 
@@ -76,20 +81,28 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Title"
-                        android:textSize="20sp"
+                        android:textColor="@color/text_primary"
+                        android:textSize="22sp"
+                        android:fontFamily="sans-serif-medium"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textGenre"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Genre" />
+                        android:text="Genre"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp"
+                        android:layout_marginTop="4dp" />
 
                     <TextView
                         android:id="@+id/textYearDuration"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2025 • 1h 55m" />
+                        android:text="2025 • 1h 55m"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp"
+                        android:layout_marginTop="2dp" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -116,15 +129,17 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginVertical="12dp"
-                android:background="@color/colorOnBackground" />
+                android:layout_marginVertical="16dp"
+                android:background="@color/divider_color" />
 
             <TextView
                 android:id="@+id/textSummary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Summary"
-                android:textSize="20dp"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-medium"
                 android:textStyle="bold" />
 
             <TextView
@@ -132,20 +147,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Movie summary goes here" />
+                android:text="Movie summary goes here"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                android:lineSpacingMultiplier="1.3" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginVertical="12dp"
-                android:background="@color/colorOnBackground" />
+                android:layout_marginVertical="16dp"
+                android:background="@color/divider_color" />
             <!-- Cast RecyclerView -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:text="Cast"
-                android:textSize="20dp"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-medium"
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -154,19 +173,21 @@
                 android:layout_height="wrap_content"
                 android:clipToPadding="false"
                 android:clipChildren="false"
-                android:layout_marginTop="8dp" />
+                android:scrollbars="none"
+                android:layout_marginTop="12dp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginVertical="12dp"
-                android:background="@color/colorOnBackground" />
+                android:layout_marginVertical="16dp"
+                android:background="@color/divider_color" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
                 android:text="Images"
-                android:textSize="20dp"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-medium"
                 android:textStyle="bold" />
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerImages"
@@ -174,16 +195,24 @@
                 android:layout_height="wrap_content"
                 android:clipToPadding="false"
                 android:clipChildren="false"
-                android:layout_marginTop="8dp" />
+                android:scrollbars="none"
+                android:layout_marginTop="12dp" />
         </LinearLayout>
     </ScrollView>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mua vé"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="16dp"
+        android:text="Mua vé"
+        android:textColor="@color/netflix_text_white"
+        android:backgroundTint="@color/netflix_red"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif-medium"
+        android:textAllCaps="false"
+        app:cornerRadius="4dp"
         app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

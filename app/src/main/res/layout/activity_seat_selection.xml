@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF9FC"
+    android:background="@color/bg_color"
     android:fitsSystemWindows="true"
     tools:context=".SeatSelectionActivity">
 
@@ -13,11 +13,10 @@
         android:id="@+id/headerBar"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:paddingHorizontal="16dp"
-        android:paddingVertical="12dp"
         android:gravity="center_vertical"
-        android:background="@drawable/bg_header_round"
+        android:background="@color/card_background"
         android:elevation="4dp">
 
         <ImageView
@@ -27,8 +26,10 @@
             android:src="@drawable/ic_back_arrow"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/back_button"
+            android:clickable="true"
+            android:focusable="true"
             android:padding="8dp"
-            app:tint="#A10062" />
+            app:tint="@color/text_primary" />
 
         <TextView
             android:id="@+id/tvMovieTitle1"
@@ -37,8 +38,9 @@
             android:layout_marginStart="12dp"
             android:text="Đặt vé"
             android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
             android:textSize="20sp"
-            android:textColor="#A10062" />
+            android:textColor="@color/text_primary" />
     </LinearLayout>
 
     <!-- 🔹 Nội dung chính -->
@@ -60,10 +62,11 @@
                 android:id="@+id/tvMovieTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="16dp"
                 android:text="Tên phim"
-                android:textColor="#000000"
-                android:textSize="22sp"
+                android:textColor="@color/text_primary"
+                android:textSize="24sp"
+                android:fontFamily="sans-serif-medium"
                 android:textStyle="bold" />
 
             <TextView
@@ -71,10 +74,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/label_select_date"
                 android:textStyle="bold"
-                android:textColor="#333"
-                android:textSize="15sp"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-medium"
                 android:layout_marginTop="12dp"
-                android:layout_marginBottom="6dp" />
+                android:layout_marginBottom="8dp" />
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -98,10 +102,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/label_select_time"
                 android:textStyle="bold"
-                android:textColor="#333"
-                android:textSize="15sp"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-medium"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="6dp" />
+                android:layout_marginBottom="8dp" />
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -138,9 +143,10 @@
                     android:layout_height="wrap_content"
                     android:text="MÀN HÌNH"
                     android:textStyle="bold"
-                    android:textColor="#A10062"
+                    android:textColor="@color/text_secondary"
                     android:layout_marginTop="8dp"
-                    android:textSize="14sp" />
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="13sp" />
             </LinearLayout>
 
             <GridLayout
@@ -236,10 +242,10 @@
         android:id="@+id/bottomBar"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:padding="12dp"
+        android:padding="16dp"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/bg_bottom_bar"
+        android:layout_height="wrap_content"
+        android:background="@color/card_background"
         android:elevation="10dp"
         android:layout_gravity="bottom">
 
@@ -250,22 +256,23 @@
             android:layout_height="wrap_content"
             android:text="Tạm tính: 0đ"
             android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
             android:textSize="16sp"
-            android:textColor="#A10062" />
+            android:textColor="@color/text_primary" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnContinue"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:minWidth="140dp"
             android:text="@string/btn_continue"
-            android:textColor="@android:color/white"
+            android:textColor="@color/netflix_text_white"
+            android:backgroundTint="@color/netflix_red"
             android:textAllCaps="false"
+            android:fontFamily="sans-serif-medium"
             android:textSize="15sp"
-            app:cornerRadius="12dp"
-            app:backgroundTint="#A10062"
-            android:paddingVertical="8dp"
-            android:layout_marginStart="12dp"
-            android:layout_gravity="end" />
+            app:cornerRadius="4dp"
+            android:layout_marginStart="12dp" />
     </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

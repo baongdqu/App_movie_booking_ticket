@@ -1,108 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:gravity="center"
-    android:background="#121212"
-    tools:context=".activities_1_login">
+    android:background="@color/netflix_black"
+    android:fillViewport="true">
 
-    <!-- 🎥 Logo hoặc tên ứng dụng -->
-    <ImageView
-        android:contentDescription="@string/app_name"
-        android:id="@+id/imgLogo"
-        android:layout_height="120dp"
-        android:layout_marginBottom="32dp"
-        android:layout_width="120dp"
-        android:src="@drawable/ic_movie" />
-
-    <!-- 🧑 Email -->
-    <com.google.android.material.textfield.TextInputLayout
+    <LinearLayout
+        android:id="@+id/layout_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/email"
-        app:startIconDrawable="@drawable/ic_email">
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/inputEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#AAAAAA" />
-    </com.google.android.material.textfield.TextInputLayout>
+        android:orientation="vertical"
+        android:padding="32dp"
+        android:gravity="center"
+        tools:context=".activities_1_login">
 
-    <!-- 🔒 Password -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:hint="@string/m_t_kh_u"
-        app:endIconMode="password_toggle"
-        app:startIconDrawable="@drawable/ic_lock">
+        <!-- 🎥 Logo Netflix Style -->
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="48dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_movie" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputPassword"
+        <!-- Card Container cho form -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#AAAAAA" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
 
-    <!-- 🔘 Nút đăng nhập -->
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/ng_nh_p"
-        android:textAllCaps="false"
-        android:textSize="18sp"
-        android:backgroundTint="#E50914"
-        android:textColor="#FFFFFF" />
+            <!-- 🧑 Email Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/email"
+                app:hintTextColor="@color/netflix_text_gray"
+                app:boxBackgroundMode="filled"
+                app:boxBackgroundColor="@color/netflix_dark_gray"
+                app:boxCornerRadiusBottomEnd="4dp"
+                app:boxCornerRadiusBottomStart="4dp"
+                app:boxCornerRadiusTopEnd="4dp"
+                app:boxCornerRadiusTopStart="4dp"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp">
+                
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/netflix_text_white"
+                    android:textColorHint="@color/netflix_text_gray"
+                    android:textSize="16sp"
+                    android:paddingVertical="16dp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- 🔹 Quên mật khẩu -->
-    <TextView
-        android:id="@+id/btntxtForgotPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/qu_n_m_t_kh_u"
-        android:textColor="#AAAAAA"
-        android:textSize="14sp"
-        android:layout_marginTop="16dp" />
+            <!-- 🔒 Password Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/m_t_kh_u"
+                app:hintTextColor="@color/netflix_text_gray"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/netflix_text_gray"
+                app:boxBackgroundMode="filled"
+                app:boxBackgroundColor="@color/netflix_dark_gray"
+                app:boxCornerRadiusBottomEnd="4dp"
+                app:boxCornerRadiusBottomStart="4dp"
+                app:boxCornerRadiusTopEnd="4dp"
+                app:boxCornerRadiusTopStart="4dp"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp">
 
-    <!-- ✅ Gửi lại email xác minh (clickable) -->
-    <TextView
-        android:id="@+id/txtResendVerify"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/g_i_l_i_email_x_c_minh"
-        android:textColor="#FFCC00"
-        android:textSize="14sp"
-        android:layout_marginTop="12dp"
-        android:clickable="true"
-        android:focusable="true" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:textColor="@color/netflix_text_white"
+                    android:textColorHint="@color/netflix_text_gray"
+                    android:textSize="16sp"
+                    android:paddingVertical="16dp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Gạch chia -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginVertical="20dp"
-        android:background="#AAAAAA" />
+            <!-- 🔘 Login Button (Netflix Red) -->
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="32dp"
+                android:text="@string/ng_nh_p"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.02"
+                android:background="@drawable/bg_netflix_button"
+                android:textColor="@color/netflix_text_white" />
 
-    <!-- 🧾 Nút đăng ký -->
-    <Button
-        android:id="@+id/btnSignup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/t_o_t_i_kho_n_m_i"
-        android:textAllCaps="false"
-        android:textSize="16sp"
-        android:backgroundTint="#333333"
-        android:textColor="#FFFFFF" />
+            <!-- 🔹 Forgot Password Link -->
+            <TextView
+                android:id="@+id/btntxtForgotPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/qu_n_m_t_kh_u"
+                android:textColor="@color/netflix_text_gray"
+                android:textSize="14sp"
+                android:layout_marginTop="24dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="8dp" />
 
-</LinearLayout>
+            <!-- ✅ Resend Verification Email Link -->
+            <TextView
+                android:id="@+id/txtResendVerify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/g_i_l_i_email_x_c_minh"
+                android:textColor="@color/netflix_light_gray"
+                android:textSize="13sp"
+                android:layout_marginTop="12dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="8dp" />
+
+        </LinearLayout>
+
+        <!-- Spacer -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:minHeight="32dp" />
+
+        <!-- Bottom Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <!-- Divider with Text -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginVertical="24dp">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/netflix_medium_gray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chưa có tài khoản?"
+                    android:textColor="@color/netflix_text_gray"
+                    android:textSize="13sp"
+                    android:paddingHorizontal="16dp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/netflix_medium_gray" />
+            </LinearLayout>
+
+            <!-- 🧾 Signup Button (Secondary Style) -->
+            <Button
+                android:id="@+id/btnSignup"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="@string/t_o_t_i_kho_n_m_i"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-medium"
+                android:background="@drawable/bg_netflix_button_secondary"
+                android:textColor="@color/netflix_text_white" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
