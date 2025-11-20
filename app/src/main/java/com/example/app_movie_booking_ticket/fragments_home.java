@@ -50,6 +50,14 @@ public class fragments_home extends Fragment {
     private List<Movie> movieListTop = new ArrayList<>();
     private TopMovieAdapter topMovieAdapter;
 
+    // Danh sách phim Upcoming và Adapter
+    private List<Movie> upcomingMoviesList = new ArrayList<>();
+    private TopMovieAdapter upcomingAdapter;
+
+    // Danh sách TẤT CẢ phim (Top + Upcoming) cho search
+    private List<Movie> allMoviesList = new ArrayList<>();
+    private TopMovieAdapter searchAdapter;
+
     private final Handler sliderHandler = new Handler();
 
     private final Runnable sliderRunnable = () ->
@@ -95,7 +103,11 @@ public class fragments_home extends Fragment {
                 searchBox.animate().alpha(0f).setDuration(150).withEndAction(() -> {
                     searchBox.setVisibility(View.GONE);
                     inputSearch.setText("");
-                    topMovieAdapter.updateList(movieListTop); // reset list gốc khi đóng search
+                    // Reset UI về trạng thái ban đầu
+                    binding.recyclerSearchResults.setVisibility(View.GONE);
+                    binding.tvNoResults.setVisibility(View.GONE);
+                    binding.recyclerTopMovie.setVisibility(View.VISIBLE);
+                    binding.recyclerUpcomingMovies.setVisibility(View.VISIBLE);
                 }).start();
             }
         });
@@ -177,6 +189,9 @@ public class fragments_home extends Fragment {
                 // Sắp xếp theo IMDb giảm dần
                 movieListTop.sort((m1, m2) -> Double.compare(m2.getImdb(), m1.getImdb()));
                 topMovieAdapter.updateList(movieListTop);
+
+                // ✅ Cập nhật allMoviesList
+                updateAllMoviesList();
             }
 
             @Override
@@ -190,8 +205,7 @@ public class fragments_home extends Fragment {
     private void loadUpcomingMovies() {
         DatabaseReference upcomingRef = FirebaseDatabase.getInstance().getReference("Upcomming");
 
-        List<Movie> upcomingList = new ArrayList<>();
-        TopMovieAdapter upcomingAdapter = new TopMovieAdapter(requireContext(), upcomingList);
+        upcomingAdapter = new TopMovieAdapter(requireContext(), upcomingMoviesList);
         binding.recyclerUpcomingMovies.setLayoutManager(
                 new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         );
@@ -200,13 +214,16 @@ public class fragments_home extends Fragment {
         upcomingRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                upcomingList.clear();
+                upcomingMoviesList.clear();
                 for (DataSnapshot itemSnap : snapshot.getChildren()) {
                     Movie movie = itemSnap.getValue(Movie.class);
-                    if (movie != null) upcomingList.add(movie);
+                    if (movie != null) upcomingMoviesList.add(movie);
                 }
-                upcomingList.sort((m1, m2) -> Integer.compare(m2.getYear(), m1.getYear()));
+                upcomingMoviesList.sort((m1, m2) -> Integer.compare(m2.getYear(), m1.getYear()));
                 upcomingAdapter.notifyDataSetChanged();
+
+                // ✅ Cập nhật allMoviesList
+                updateAllMoviesList();
             }
 
             @Override
@@ -215,16 +232,60 @@ public class fragments_home extends Fragment {
     }
 
     // =====================================================
-    // 🔍 FILTER PHIM THEO TÊN
+    // 🔍 FILTER PHIM THEO TÊN - TÌM TRONG TẤT CẢ PHIM
     // =====================================================
     private void filterMovies(String keyword) {
-        List<Movie> tempList = new ArrayList<>();
-        for (Movie movie : movieListTop) {
+        if (keyword == null || keyword.trim().isEmpty()) {
+            // Không có từ khóa -> hiển thị UI gốc
+            binding.recyclerSearchResults.setVisibility(View.GONE);
+            binding.tvNoResults.setVisibility(View.GONE);
+            binding.recyclerTopMovie.setVisibility(View.VISIBLE);
+            binding.recyclerUpcomingMovies.setVisibility(View.VISIBLE);
+            return;
+        }
+
+        // Lọc phim từ allMoviesList
+        List<Movie> filteredList = new ArrayList<>();
+        for (Movie movie : allMoviesList) {
             if (movie.getTitle().toLowerCase().contains(keyword.toLowerCase())) {
-                tempList.add(movie);
+                filteredList.add(movie);
             }
         }
-        topMovieAdapter.updateList(tempList);
+
+        // Hiển thị kết quả
+        if (filteredList.isEmpty()) {
+            // Không tìm thấy kết quả
+            binding.recyclerSearchResults.setVisibility(View.GONE);
+            binding.tvNoResults.setVisibility(View.VISIBLE);
+            binding.recyclerTopMovie.setVisibility(View.GONE);
+            binding.recyclerUpcomingMovies.setVisibility(View.GONE);
+        } else {
+            // Có kết quả -> hiển thị RecyclerView search
+            binding.tvNoResults.setVisibility(View.GONE);
+            binding.recyclerTopMovie.setVisibility(View.GONE);
+            binding.recyclerUpcomingMovies.setVisibility(View.GONE);
+            binding.recyclerSearchResults.setVisibility(View.VISIBLE);
+
+            // Khởi tạo adapter nếu chưa có
+            if (searchAdapter == null) {
+                searchAdapter = new TopMovieAdapter(requireContext(), filteredList);
+                binding.recyclerSearchResults.setLayoutManager(
+                        new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                );
+                binding.recyclerSearchResults.setAdapter(searchAdapter);
+            } else {
+                searchAdapter.updateList(filteredList);
+            }
+        }
+    }
+
+    // =====================================================
+    // 🔥 CẬP NHẬT DANH SÁCH TẤT CẢ PHIM
+    // =====================================================
+    private void updateAllMoviesList() {
+        allMoviesList.clear();
+        allMoviesList.addAll(movieListTop);
+        allMoviesList.addAll(upcomingMoviesList);
     }
 
     // =====================================================
