@@ -3,7 +3,8 @@ package com.example.app_movie_booking_ticket;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.os.Handler; // Cần import android.os.Handler (đã có)
+import android.os.Handler;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,17 +21,23 @@ public class activities_0_loading extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         setContentView(R.layout.layouts_0_loading);
 
-        // ================== 🔊 SỬA: PHÁT ÂM THANH SAU 100MS ==================
+        // ================== 🔊 SỬA: PHÁT ÂM THANH SAU 500MS ==================
         // Đảm bảo SoundPool có thời gian tải ID của file âm thanh
         new Handler().postDelayed(() -> {
             extra_sound_manager.playOpening(activities_0_loading.this);
-        }, 500); // 100ms
+        }, 500);
 
         // Khởi tạo FirebaseAuth
         mAuth = FirebaseAuth.getInstance();
 
+        // 🎬 Netflix-style fade-in animation cho logo
+        ImageView imgLogo = findViewById(R.id.imgLogo);
+        android.view.animation.Animation scaleIn = android.view.animation.AnimationUtils.loadAnimation(this,
+                R.anim.scale_fade_in);
+        imgLogo.startAnimation(scaleIn);
+
         // Delay chính (giả lập loading)
-        // Lưu ý: Độ trễ này vẫn giữ nguyên 3000ms tính từ lúc onCreate bắt đầu.
+        // Lưu ý: Độ trễ này vẫn giữ nguyên 7000ms tính từ lúc onCreate bắt đầu.
         new Handler().postDelayed(() -> {
             FirebaseUser currentUser = mAuth.getCurrentUser();
 
