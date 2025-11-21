@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.app_movie_booking_ticket.databinding.ItemMovieimagesBinding;
+import com.example.app_movie_booking_ticket.model.Movie;
 
 import java.util.List;
 

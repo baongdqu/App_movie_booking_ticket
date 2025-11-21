@@ -45,7 +45,7 @@ public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.MovieV
                 .placeholder(R.drawable.ic_default_poster)
                 .into(holder.imgMovie);
 
-        // ✅ Phát âm thanh khi click
+        // Phát âm thanh khi click
         holder.itemView.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(v.getContext());
             Intent intent = new Intent(context, activities_4_movie_detail.class);

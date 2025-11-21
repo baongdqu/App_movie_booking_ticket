@@ -2,6 +2,7 @@ package com.example.app_movie_booking_ticket;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,6 +34,9 @@ public class activities_4_movie_detail extends AppCompatActivity {
         Movie movie = (Movie) intent.getSerializableExtra("movie");
         if (movie == null) return;
 
+        Log.d("DEBUG", "movie = " + movie);
+        Log.d("DEBUG", "pcitures = " + movie.getPcitures());
+
         // Load movie data into layout
         binding.textTitle.setText(movie.getTitle());
         binding.textGenre.setText(String.join(", ", movie.getGenre()));
@@ -43,7 +47,7 @@ public class activities_4_movie_detail extends AppCompatActivity {
                 .load(movie.getPoster())
                 .into(binding.imagePoster);
 
-        List<String> imagesList = movie.getPicture();
+        List<String> imagesList = movie.getPcitures();
         if (imagesList == null) imagesList = new ArrayList<>();
 
         List<Movie.Cast> castList = movie.getCasts();

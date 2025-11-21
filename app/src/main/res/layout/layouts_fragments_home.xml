@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:background="@color/bg_color">
 
-    <!-- 🧩 SCROLL VIEW CHÍNH -->
+    <!-- SCROLL VIEW CHÍNH -->
     <ScrollView
         android:id="@+id/scrollViewHome"
         android:layout_width="match_parent"
@@ -118,7 +118,7 @@
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- 🔍 KẾT QUẢ TÌM KIẾM -->
+            <!--  KẾT QUẢ TÌM KIẾM -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerSearchResults"
                 android:layout_width="match_parent"
@@ -130,7 +130,7 @@
                 android:scrollbars="none"
                 tools:listitem="@layout/item_top_movie" />
 
-            <!-- ❌ KHÔNG TÌM THẤY KẾT QUẢ -->
+            <!--  KHÔNG TÌM THẤY KẾT QUẢ -->
             <TextView
                 android:id="@+id/tvNoResults"
                 android:layout_width="match_parent"

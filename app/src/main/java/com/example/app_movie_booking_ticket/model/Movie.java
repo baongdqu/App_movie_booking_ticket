@@ -47,7 +47,7 @@ public class Movie implements Serializable {
     public double getImdb() {
         return Imdb;
     }
-    public List<String> getPicture(){
+    public List<String> getPcitures(){
         return Pcitures;
     }
     public List<String> getGenre() {
