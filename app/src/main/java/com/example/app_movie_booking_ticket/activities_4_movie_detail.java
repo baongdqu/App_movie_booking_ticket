@@ -3,7 +3,6 @@ package com.example.app_movie_booking_ticket;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -25,13 +24,13 @@ public class activities_4_movie_detail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         binding = Activity4MovieDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         Intent intent = getIntent();
         Movie movie = (Movie) intent.getSerializableExtra("movie");
-        if (movie == null) return;
+        if (movie == null)
+            return;
 
         // Load movie data into layout
         binding.textTitle.setText(movie.getTitle());
@@ -44,7 +43,8 @@ public class activities_4_movie_detail extends AppCompatActivity {
                 .into(binding.imagePoster);
 
         List<String> imagesList = movie.getPicture();
-        if (imagesList == null) imagesList = new ArrayList<>();
+        if (imagesList == null)
+            imagesList = new ArrayList<>();
 
         List<Movie.Cast> castList = movie.getCasts();
         adapter = new CastListAdapter(this, castList);
