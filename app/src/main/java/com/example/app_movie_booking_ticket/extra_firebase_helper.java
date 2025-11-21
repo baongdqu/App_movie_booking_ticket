@@ -33,17 +33,17 @@ public class extra_firebase_helper {
         // Bạn có thể dùng rootRef.child("Users") để trỏ tới node cụ thể
     }
 
-    // 3️⃣ Ghi dữ liệu (ghi đè node)
+    //  Ghi dữ liệu (ghi đè node)
     public void writeData(String path, Object value) {
         rootRef.child(path).setValue(value);
     }
 
-    // 4️⃣ Thêm dữ liệu (tạo node tự động bằng push ID)
+    //  Thêm dữ liệu (tạo node tự động bằng push ID)
     public void addData(String path, Object value) {
         rootRef.child(path).push().setValue(value);
     }
 
-    // 5️⃣ Đọc dữ liệu 1 lần (chỉ lấy snapshot hiện tại)
+    //  Đọc dữ liệu 1 lần (chỉ lấy snapshot hiện tại)
     public void readDataOnce(String path) {
         rootRef.child(path).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -59,7 +59,7 @@ public class extra_firebase_helper {
         });
     }
 
-    // 6️⃣ Lắng nghe dữ liệu liên tục (real-time listener)
+    //  Lắng nghe dữ liệu liên tục (real-time listener)
     public void listenData(String path) {
         rootRef.child(path).addValueEventListener(new ValueEventListener() {
             @Override
@@ -75,19 +75,19 @@ public class extra_firebase_helper {
         });
     }
 
-    // 7️⃣ Xóa dữ liệu
+    //  Xóa dữ liệu
     public void deleteData(String path) {
         rootRef.child(path).removeValue();
     }
 
-    // 8️⃣ Cập nhật dữ liệu (ghi đè một phần)
+    //  Cập nhật dữ liệu (ghi đè một phần)
     public void updateData(String path, Object newValue) {
         rootRef.child(path).setValue(newValue);
     }
 }
 
 /*
-  🧠 Gợi ý sử dụng:
+  Gợi ý sử dụng:
   <p>
   Sau này, khi có Activity như MainActivity.java, bạn có thể dùng:
   <p>

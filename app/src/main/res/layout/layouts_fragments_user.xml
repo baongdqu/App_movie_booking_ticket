@@ -20,7 +20,7 @@
             android:padding="24dp"
             android:gravity="center_horizontal">
 
-            <!-- ✨ Profile Info Card (Netflix Style) -->
+            <!-- Profile Info Card (Netflix Style) -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -137,7 +137,7 @@ public class SeatSelectionActivity extends AppCompatActivity {
         });
     }
 
-    // 🔹 Sau khi chọn ngày, hiển thị các giờ chiếu tương ứng
+    // Sau khi chọn ngày, hiển thị các giờ chiếu tương ứng
     private void loadShowtimesForDate(String date) {
         layoutTimes.removeAllViews();
 
@@ -190,7 +190,7 @@ public class SeatSelectionActivity extends AppCompatActivity {
         });
     }
 
-    // 🔹 Load ghế của ngày + giờ cụ thể
+    //  Load ghế của ngày + giờ cụ thể
     private void loadSeats(String date, String time) {
         DatabaseReference seatRef = dbRef.child(date + "_" + time);
         seatRef.addListenerForSingleValueEvent(new ValueEventListener() {

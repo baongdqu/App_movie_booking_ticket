@@ -8,7 +8,7 @@
     android:fitsSystemWindows="true"
     tools:context=".SeatSelectionActivity">
 
-    <!-- 🔹 Thanh tiêu đề -->
+    <!-- Thanh tiêu đề -->
     <LinearLayout
         android:id="@+id/headerBar"
         android:orientation="horizontal"
@@ -40,7 +40,8 @@
             android:textStyle="bold"
             android:fontFamily="sans-serif-medium"
             android:textSize="20sp"
-            android:textColor="@color/text_primary" />
+            android:textColor="@color/text_primary"
+            />
     </LinearLayout>
 
     <!-- 🔹 Nội dung chính -->

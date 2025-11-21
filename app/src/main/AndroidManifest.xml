@@ -4,7 +4,8 @@
     <!-- Cho phép ứng dụng truy cập Internet -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
 
     <application
@@ -12,10 +13,13 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_arow_back"
-        android:roundIcon="@mipmap/ic_arow_back_round"
         android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_arow_back_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.App_movie_booking_ticket">
+        <activity
+            android:name=".PaymentActivity"
+            android:exported="false" />
         <activity
             android:name=".SeatSelectionActivity"
             android:exported="false" />
