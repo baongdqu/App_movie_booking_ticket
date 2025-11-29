@@ -31,7 +31,7 @@ public class fragments_user extends Fragment {
     private TextView txtEmail;
     private ImageView imgAvatar;            // <- trước đây là local trong onViewCreated, bây giờ là field
     private ImageButton btnBack;
-    private Button btnEditProfile, btnSettings, btnLogout;
+    private Button btnMyTickets, btnEditProfile, btnSettings, btnLogout;
 
     // Firebase + prefs
     private FirebaseAuth mAuth;
@@ -66,6 +66,7 @@ public class fragments_user extends Fragment {
         imgAvatar = view.findViewById(R.id.imgAvatar); // <- đảm bảo id trùng với layout
         txtUsername = view.findViewById(R.id.txtUsername);
         txtEmail = view.findViewById(R.id.txtEmail);
+        btnMyTickets = view.findViewById(R.id.btnMyTickets);
         btnEditProfile = view.findViewById(R.id.btnEditProfile);
         btnSettings = view.findViewById(R.id.btnSettings);
         btnLogout = view.findViewById(R.id.btnLogout);
@@ -99,6 +100,12 @@ public class fragments_user extends Fragment {
         // ---------------------------
         // XỬ LÝ SỰ KIỆN BẤM VÀ ÂM THANH
         // ---------------------------
+
+        // Vé của tôi (btnMyTickets)
+        btnMyTickets.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(requireActivity());
+            startActivity(new Intent(requireActivity(), MyTicketsActivity.class));
+        });
 
         // Chỉnh sửa hồ sơ (btnEditProfile)
         btnEditProfile.setOnClickListener(v -> {

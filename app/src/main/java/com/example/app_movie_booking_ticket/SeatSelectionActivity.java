@@ -65,7 +65,15 @@ public class SeatSelectionActivity extends AppCompatActivity {
                 return;
             }
             int total = selectedSeats.size() * pricePerSeat;
-            Toast.makeText(this, "Ghế: " + selectedSeats + " | Tổng: " + total + "đ", Toast.LENGTH_LONG).show();
+
+            // Start BookingConfirmationActivity
+            android.content.Intent intent = new android.content.Intent(this, BookingConfirmationActivity.class);
+            intent.putExtra("movieTitle", movieTitle);
+            intent.putExtra("date", selectedDate);
+            intent.putExtra("time", selectedShowtime);
+            intent.putStringArrayListExtra("seats", new ArrayList<>(selectedSeats));
+            intent.putExtra("totalPrice", total);
+            startActivity(intent);
         });
 
         ImageView btnBack = findViewById(R.id.btnBack);
