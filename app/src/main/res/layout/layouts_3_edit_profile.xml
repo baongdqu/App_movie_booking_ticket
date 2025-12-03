@@ -56,6 +56,7 @@
         <!-- Ô NHẬP HỌ VÀ TÊN -->
         <!-- ========================= -->
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilFullNameEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Họ và tên"
@@ -76,17 +77,19 @@
                 android:textColor="@color/text_primary"
                 android:textColorHint="@color/text_secondary"
                 android:textSize="16sp"
-                android:paddingVertical="16dp" />
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- ========================= -->
         <!-- Ô NHẬP SỐ ĐIỆN THOẠI -->
         <!-- ========================= -->
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilPhoneEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Số điện thoại"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
             app:hintTextColor="@color/text_secondary"
             app:boxBackgroundMode="filled"
             app:boxBackgroundColor="@color/card_background"
@@ -105,17 +108,19 @@
                 android:textColor="@color/text_primary"
                 android:textColorHint="@color/text_secondary"
                 android:textSize="16sp"
-                android:paddingVertical="16dp" />
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- ========================= -->
         <!-- Ô NHẬP NGÀY SINH -->
         <!-- ========================= -->
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilDobEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ngày sinh (dd/MM/yyyy)"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
             app:hintTextColor="@color/text_secondary"
             app:boxBackgroundMode="filled"
             app:boxBackgroundColor="@color/card_background"
@@ -130,25 +135,27 @@
                 android:id="@+id/inputDobEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="date"
+                android:inputType="none"
                 android:focusable="false"
                 android:clickable="true"
                 android:textColor="@color/text_primary"
                 android:textColorHint="@color/text_secondary"
                 android:textSize="16sp"
-                android:paddingVertical="16dp" />
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- ========================= -->
         <!-- Ô CHỌN GIỚI TÍNH -->
         <!-- ========================= -->
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilGenderEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Giới tính"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
             app:hintTextColor="@color/text_secondary"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            app:boxBackgroundMode="filled"
             app:boxBackgroundColor="@color/card_background"
             app:boxCornerRadiusBottomEnd="4dp"
             app:boxCornerRadiusBottomStart="4dp"
@@ -157,14 +164,18 @@
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp">
 
-            <AutoCompleteTextView
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputGenderEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none"
+                android:focusable="false"
+                android:clickable="true"
                 android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary"
                 android:textSize="16sp"
-                android:paddingVertical="16dp" />
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- ========================= -->

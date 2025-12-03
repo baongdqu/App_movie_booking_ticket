@@ -16,8 +16,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
@@ -46,8 +44,7 @@ public class activities_3_edit_profile extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1001;
 
-    private TextInputEditText inputFullName, inputPhone, inputDob;
-    private AutoCompleteTextView inputGender;
+    private TextInputEditText inputFullName, inputPhone, inputDob, inputGender;
     private Button btnSave, btnCancel, btnChangeAvatar;
     private ImageView imgAvatar;
 
@@ -104,9 +101,7 @@ public class activities_3_edit_profile extends AppCompatActivity {
                     inputFullName.setText(fullName != null ? fullName : "");
                     inputPhone.setText(phone != null ? phone : "");
                     inputDob.setText(dob != null ? dob : "");
-                    if (gender != null) {
-                        inputGender.setText(gender, false);
-                    }
+                    inputGender.setText(gender != null ? gender : "");
 
                     if (avatarUrl == null || avatarUrl.isEmpty()) {
                         Map<String, Object> defaultAvatar = new HashMap<>();
@@ -174,7 +169,7 @@ public class activities_3_edit_profile extends AppCompatActivity {
             String newName = Objects.requireNonNull(inputFullName.getText()).toString().trim();
             String newPhone = Objects.requireNonNull(inputPhone.getText()).toString().trim();
             String newDob = Objects.requireNonNull(inputDob.getText()).toString().trim();
-            String newGender = inputGender.getText().toString().trim();
+            String newGender = Objects.requireNonNull(inputGender.getText()).toString().trim();
 
             if (TextUtils.isEmpty(newName)) {
                 extra_sound_manager.playError(this);
@@ -215,9 +210,16 @@ public class activities_3_edit_profile extends AppCompatActivity {
     }
 
     private void setupGenderDropdown() {
-        String[] genders = new String[] { "Nam", "Nữ", "Khác" };
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, genders);
-        inputGender.setAdapter(adapter);
+        final String[] genders = new String[] { "Nam", "Nữ", "Khác" };
+
+        inputGender.setOnClickListener(v -> {
+            new android.app.AlertDialog.Builder(this)
+                    .setTitle("Chọn giới tính")
+                    .setItems(genders, (dialog, which) -> {
+                        inputGender.setText(genders[which]);
+                    })
+                    .show();
+        });
     }
 
     private void setupDatePicker() {
