@@ -109,6 +109,65 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- ========================= -->
+        <!-- Ô NHẬP NGÀY SINH -->
+        <!-- ========================= -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ngày sinh (dd/MM/yyyy)"
+            android:layout_marginTop="16dp"
+            app:hintTextColor="@color/text_secondary"
+            app:boxBackgroundMode="filled"
+            app:boxBackgroundColor="@color/card_background"
+            app:boxCornerRadiusBottomEnd="4dp"
+            app:boxCornerRadiusBottomStart="4dp"
+            app:boxCornerRadiusTopEnd="4dp"
+            app:boxCornerRadiusTopStart="4dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputDobEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:focusable="false"
+                android:clickable="true"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary"
+                android:textSize="16sp"
+                android:paddingVertical="16dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- ========================= -->
+        <!-- Ô CHỌN GIỚI TÍNH -->
+        <!-- ========================= -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Giới tính"
+            android:layout_marginTop="16dp"
+            app:hintTextColor="@color/text_secondary"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            app:boxBackgroundColor="@color/card_background"
+            app:boxCornerRadiusBottomEnd="4dp"
+            app:boxCornerRadiusBottomStart="4dp"
+            app:boxCornerRadiusTopEnd="4dp"
+            app:boxCornerRadiusTopStart="4dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp">
+
+            <AutoCompleteTextView
+                android:id="@+id/inputGenderEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:paddingVertical="16dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- ========================= -->
         <!-- NÚT LƯU THÔNG TIN -->
         <!-- ========================= -->
         <com.google.android.material.button.MaterialButton
