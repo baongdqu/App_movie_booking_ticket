@@ -12,6 +12,11 @@
         android:title="@string/th" />
 
     <item
+        android:id="@+id/nav_chat_bot"
+        android:icon="@drawable/ic_chat_bot"
+        android:title="ChatBot" />
+
+    <item
         android:id="@+id/nav_notifications"
         android:icon="@drawable/ic_notifications"
         android:title="@string/th_ng_b_o" />
