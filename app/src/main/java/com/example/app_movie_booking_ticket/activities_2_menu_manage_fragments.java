@@ -4,7 +4,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import android.widget.Toast;
 
 public class activities_2_menu_manage_fragments extends AppCompatActivity {
@@ -18,7 +18,6 @@ public class activities_2_menu_manage_fragments extends AppCompatActivity {
         setContentView(R.layout.layouts_2_menu_manage_fragments);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-        FloatingActionButton btnTrailer = findViewById(R.id.btnTrailer);
 
         // Load fragment mặc định (Home)
         loadFragment(new fragments_home());
@@ -28,16 +27,23 @@ public class activities_2_menu_manage_fragments extends AppCompatActivity {
             extra_sound_manager.playMenuClick(this);
 
             int id = item.getItemId();
-            if (id == R.id.nav_home)      loadFragment(new fragments_home());
-            else if (id == R.id.nav_mail) loadFragment(new fragments_mail());
-            else if (id == R.id.nav_notifications) loadFragment(new fragments_notifications());
-            else if (id == R.id.nav_user) loadFragment(fragments_user.newInstance());
-            return true;
-        });
-
-        btnTrailer.setOnClickListener(v -> {
-            extra_sound_manager.playMenuClick(this);
-            Toast.makeText(this, "Giới thiệu phim mới!", Toast.LENGTH_SHORT).show();
+            if (id == R.id.nav_home) {
+                loadFragment(new fragments_home());
+                return true;
+            } else if (id == R.id.nav_mail) {
+                loadFragment(new fragments_mail());
+                return true;
+            } else if (id == R.id.nav_chat_bot) {
+                Toast.makeText(this, "Tính năng chatbot sắp xuất hiện!", Toast.LENGTH_SHORT).show();
+                return false; // Không thay đổi tab được chọn
+            } else if (id == R.id.nav_notifications) {
+                loadFragment(new fragments_notifications());
+                return true;
+            } else if (id == R.id.nav_user) {
+                loadFragment(fragments_user.newInstance());
+                return true;
+            }
+            return false;
         });
     }
 
