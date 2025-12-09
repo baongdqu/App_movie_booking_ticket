@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.app_movie_booking_ticket.R;
-import com.example.app_movie_booking_ticket.activities_4_movie_detail;
-import com.example.app_movie_booking_ticket.SeatSelectionActivity;
+import com.example.app_movie_booking_ticket.parthome_movie_detail;
+import com.example.app_movie_booking_ticket.parthome_SeatSelectionActivity;
 import com.example.app_movie_booking_ticket.extra_sound_manager;
 import com.example.app_movie_booking_ticket.model.Movie;
 
@@ -34,7 +34,7 @@ public class AllMoviesAdapter extends RecyclerView.Adapter<AllMoviesAdapter.Movi
     @NonNull
     @Override
     public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_all_movie, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.parthome_item_all_movie, parent, false);
         return new MovieViewHolder(view);
     }
 
@@ -51,7 +51,7 @@ public class AllMoviesAdapter extends RecyclerView.Adapter<AllMoviesAdapter.Movi
         // Chi tiết phim
         holder.btnDetail.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(v.getContext());
-            Intent intent = new Intent(context, activities_4_movie_detail.class);
+            Intent intent = new Intent(context, parthome_movie_detail.class);
             intent.putExtra("movie", movie);
             context.startActivity(intent);
         });
@@ -59,7 +59,7 @@ public class AllMoviesAdapter extends RecyclerView.Adapter<AllMoviesAdapter.Movi
         // Mua vé
         holder.btnBuy.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(v.getContext());
-            Intent intent = new Intent(context, SeatSelectionActivity.class);
+            Intent intent = new Intent(context, parthome_SeatSelectionActivity.class);
             intent.putExtra("movieTitle", movie.getTitle());
             context.startActivity(intent);
         });

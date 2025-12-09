@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class AllMoviesActivity extends AppCompatActivity {
+public class parthome_AllMoviesActivity extends AppCompatActivity {
 
 
     private RecyclerView recyclerAllMovies;
@@ -38,7 +38,7 @@ public class AllMoviesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_movies);
+        setContentView(R.layout.parthome_all_movies);
 
 
         recyclerAllMovies = findViewById(R.id.recyclerAllMovies);
@@ -79,8 +79,8 @@ public class AllMoviesActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                extra_sound_manager.playError(AllMoviesActivity.this);
-                Toast.makeText(AllMoviesActivity.this, "Lỗi tải dữ liệu", Toast.LENGTH_SHORT).show();
+                extra_sound_manager.playError(parthome_AllMoviesActivity.this);
+                Toast.makeText(parthome_AllMoviesActivity.this, "Lỗi tải dữ liệu", Toast.LENGTH_SHORT).show();
             }
         });
     }

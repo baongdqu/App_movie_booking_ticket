@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.app_movie_booking_ticket.databinding.ItemCastBinding;
+import com.example.app_movie_booking_ticket.databinding.ParthomeItemCastBinding;
 import com.example.app_movie_booking_ticket.model.Movie;
 
 import java.util.List;
@@ -23,8 +23,8 @@ public class CastListAdapter extends RecyclerView.Adapter<CastListAdapter.CastVi
         this.casts = casts;
     }
     public static class CastViewHolder extends RecyclerView.ViewHolder{
-        ItemCastBinding binding;
-        public CastViewHolder(ItemCastBinding binding){
+        ParthomeItemCastBinding binding;
+        public CastViewHolder(ParthomeItemCastBinding binding){
             super(binding.getRoot());
             this.binding = binding;
         }
@@ -34,7 +34,7 @@ public class CastListAdapter extends RecyclerView.Adapter<CastListAdapter.CastVi
     @Override
     public CastViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        ItemCastBinding binding = ItemCastBinding.inflate(inflater, parent, false);
+        ParthomeItemCastBinding binding = ParthomeItemCastBinding.inflate(inflater, parent, false);
         return new CastListAdapter.CastViewHolder(binding);
     }
 
