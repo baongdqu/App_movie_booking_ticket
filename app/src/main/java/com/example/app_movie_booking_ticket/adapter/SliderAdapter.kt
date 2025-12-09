@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
-import com.example.app_movie_booking_ticket.databinding.ViewholderSliderBinding
+import com.example.app_movie_booking_ticket.databinding.ParthomeViewholderSliderBinding
 import com.example.app_movie_booking_ticket.model.SliderItems
 
 class SliderAdapter(private var sliderItems: MutableList<SliderItems>, private val viewPager2: ViewPager2
@@ -19,7 +19,7 @@ class SliderAdapter(private var sliderItems: MutableList<SliderItems>, private v
         sliderItems.addAll(sliderItems)
         notifyDataSetChanged()
     }
-    inner class SliderViewholder(private val binding: ViewholderSliderBinding):
+    inner class SliderViewholder(private val binding: ParthomeViewholderSliderBinding):
     RecyclerView.ViewHolder(binding.root){
         fun bind (sliderItems: SliderItems) {
             context?.let {
@@ -28,7 +28,7 @@ class SliderAdapter(private var sliderItems: MutableList<SliderItems>, private v
                     .apply(
                         RequestOptions().transform(CenterCrop(), RoundedCorners(60))
                     )
-                    .into(binding.imageSilde)
+                    .into(binding.imageSlide)
             }
         }
 
@@ -40,7 +40,7 @@ class SliderAdapter(private var sliderItems: MutableList<SliderItems>, private v
         viewType: Int
     ): SliderAdapter.SliderViewholder {
         context=parent.context
-        val binding = ViewholderSliderBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = ParthomeViewholderSliderBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return SliderViewholder(binding)
     }
 

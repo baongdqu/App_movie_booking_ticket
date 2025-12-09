@@ -129,13 +129,13 @@ public class fragments_home extends Fragment {
         binding.tvViewAll.setOnClickListener(v -> {
             // 🔊 Âm thanh click
             extra_sound_manager.playUiClick(requireContext());
-            startActivity(new Intent(requireContext(), AllMoviesActivity.class));
+            startActivity(new Intent(requireContext(), parthome_AllMoviesActivity.class));
         });
 
         binding.tvViewAllUpcoming.setOnClickListener(v -> {
             // 🔊 Âm thanh click
             extra_sound_manager.playUiClick(requireContext());
-            startActivity(new Intent(requireContext(), AllUpcomingActivity.class));
+            startActivity(new Intent(requireContext(), parthome_AllUpcomingActivity.class));
         });
 
         // =========================

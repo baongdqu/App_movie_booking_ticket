@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/bg_color"
-    tools:context=".AllUpcomingActivity">
+    tools:context=".parthome_AllUpcomingActivity">
 
     <!-- Header -->
     <RelativeLayout
