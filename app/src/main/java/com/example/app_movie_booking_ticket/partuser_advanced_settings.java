@@ -24,7 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class activities_3_advanced_settings extends AppCompatActivity {
+public class partuser_advanced_settings extends AppCompatActivity {
 
     private Switch switchDarkMode, switchNotification, switchSound;
     private Button btnChangePassword, btnDeleteAccount, btnBackSettings;
@@ -36,7 +36,7 @@ public class activities_3_advanced_settings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         extra_themeutils.applySavedTheme(this);
-        setContentView(R.layout.layouts_3_advanced_settings);
+        setContentView(R.layout.partuser_advanced_settings);
 
         switchDarkMode = findViewById(R.id.switchDarkMode);
         switchNotification = findViewById(R.id.switchNotification);
@@ -77,7 +77,7 @@ public class activities_3_advanced_settings extends AppCompatActivity {
         // Nút Thay đổi Mật khẩu
         btnChangePassword.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(this);
-            startActivity(new Intent(this, activities_3_change_password.class));
+            startActivity(new Intent(this, partuser_change_password.class));
         });
 
         // Nút Xóa Tài khoản

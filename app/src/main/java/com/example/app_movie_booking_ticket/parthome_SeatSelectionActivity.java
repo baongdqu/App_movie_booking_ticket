@@ -24,7 +24,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class SeatSelectionActivity extends AppCompatActivity {
+public class parthome_SeatSelectionActivity extends AppCompatActivity {
 
     private TextView tvMovieTitle, tvTotalPrice;
     private LinearLayout layoutDates, layoutTimes;
@@ -42,7 +42,7 @@ public class SeatSelectionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_seat_selection);
+        setContentView(R.layout.parthome_seat_selection);
 
         tvMovieTitle = findViewById(R.id.tvMovieTitle);
         tvTotalPrice = findViewById(R.id.tvTotalPrice);
@@ -78,7 +78,7 @@ public class SeatSelectionActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (!snapshot.exists()) {
-                    Toast.makeText(SeatSelectionActivity.this, "Không có lịch chiếu!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(parthome_SeatSelectionActivity.this, "Không có lịch chiếu!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -95,7 +95,7 @@ public class SeatSelectionActivity extends AppCompatActivity {
 
                 // Tạo nút chọn ngày
                 for (String date : uniqueDates) {
-                    Button btnDate = new Button(SeatSelectionActivity.this);
+                    Button btnDate = new Button(parthome_SeatSelectionActivity.this);
                     btnDate.setText(date);
                     btnDate.setBackgroundResource(R.drawable.bg_date_time_selector);
                     btnDate.setTextColor(Color.BLACK);
@@ -149,7 +149,7 @@ public class SeatSelectionActivity extends AppCompatActivity {
                     if (key != null && key.startsWith(date)) {
                         String time = key.split("_")[1];
 
-                        Button btnTime = new Button(SeatSelectionActivity.this);
+                        Button btnTime = new Button(parthome_SeatSelectionActivity.this);
                         btnTime.setText(time);
                         btnTime.setBackgroundResource(R.drawable.bg_date_time_selector);
                         btnTime.setTextColor(Color.BLACK);
@@ -221,7 +221,7 @@ public class SeatSelectionActivity extends AppCompatActivity {
                         String seatName = seat.getKey();
                         String status = seat.getValue(String.class);
 
-                        Button seatBtn = new Button(SeatSelectionActivity.this);
+                        Button seatBtn = new Button(parthome_SeatSelectionActivity.this);
                         seatBtn.setText(seatName);
                         seatBtn.setTextSize(12);
                         seatBtn.setTextColor(Color.WHITE);

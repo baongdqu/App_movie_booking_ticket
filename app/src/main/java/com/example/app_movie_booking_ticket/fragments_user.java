@@ -103,13 +103,13 @@ public class fragments_user extends Fragment {
         // Chỉnh sửa hồ sơ (btnEditProfile)
         btnEditProfile.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(requireActivity()); // Bổ sung âm thanh
-            startActivity(new Intent(requireActivity(), activities_3_edit_profile.class));
+            startActivity(new Intent(requireActivity(), partuser_edit_profile.class));
         });
 
         // Cài đặt nâng cao (btnSettings)
         btnSettings.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(requireActivity()); // Bổ sung âm thanh
-            startActivity(new Intent(requireActivity(), activities_3_advanced_settings.class));
+            startActivity(new Intent(requireActivity(), partuser_advanced_settings.class));
         });
 
         // Đăng xuất (btnLogout)

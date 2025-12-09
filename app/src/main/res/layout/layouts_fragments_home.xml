@@ -128,7 +128,7 @@
                 android:paddingEnd="8dp"
                 android:visibility="gone"
                 android:scrollbars="none"
-                tools:listitem="@layout/item_top_movie" />
+                tools:listitem="@layout/parthome_item_top_movie" />
 
             <!-- ❌ KHÔNG TÌM THẤY KẾT QUẢ -->
             <TextView
@@ -214,7 +214,7 @@
                 android:paddingEnd="8dp"
                 android:clipToPadding="false"
                 android:scrollbars="none"
-                tools:listitem="@layout/item_top_movie" />
+                tools:listitem="@layout/parthome_item_top_movie" />
 
             <!-- UPCOMING MOVIES SECTION -->
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -258,7 +258,7 @@
                 android:paddingEnd="8dp"
                 android:clipToPadding="false"
                 android:scrollbars="none"
-                tools:listitem="@layout/item_top_movie" />
+                tools:listitem="@layout/parthome_item_top_movie" />
 
         </LinearLayout>
     </ScrollView>

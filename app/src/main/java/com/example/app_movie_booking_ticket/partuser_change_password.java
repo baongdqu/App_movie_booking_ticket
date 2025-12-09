@@ -10,7 +10,7 @@ import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class activities_3_change_password extends AppCompatActivity {
+public class partuser_change_password extends AppCompatActivity {
 
     private EditText inputOldPassword, inputNewPassword, inputConfirmPassword;
     private Button btnSavePassword, btnCancelPassword;
@@ -20,7 +20,7 @@ public class activities_3_change_password extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         extra_themeutils.applySavedTheme(this);
-        setContentView(R.layout.layouts_3_change_password);
+        setContentView(R.layout.partuser_change_password);
 
         inputOldPassword = findViewById(R.id.inputOldPassword);
         inputNewPassword = findViewById(R.id.inputNewPassword);

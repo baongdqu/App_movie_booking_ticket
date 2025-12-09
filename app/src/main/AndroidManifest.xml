@@ -17,16 +17,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App_movie_booking_ticket">
         <activity
-            android:name=".SeatSelectionActivity"
+            android:name=".parthome_SeatSelectionActivity"
             android:exported="false" />
         <activity
-            android:name=".AllUpcomingActivity"
+            android:name=".parthome_AllUpcomingActivity"
             android:exported="false" />
         <activity
-            android:name=".activities_4_movie_detail"
+            android:name=".parthome_movie_detail"
             android:exported="false" />
         <activity
-            android:name=".AllMoviesActivity"
+            android:name=".parthome_AllMoviesActivity"
             android:exported="false" />
         <activity
             android:name=".activities_1_login"
@@ -41,13 +41,13 @@
             android:name=".activities_2_menu_manage_fragments"
             android:exported="true" />
         <activity
-            android:name=".activities_3_edit_profile"
+            android:name=".partuser_edit_profile"
             android:exported="true" />
         <activity
-            android:name=".activities_3_advanced_settings"
+            android:name=".partuser_advanced_settings"
             android:exported="true" />
         <activity
-            android:name=".activities_3_change_password"
+            android:name=".partuser_change_password"
             android:exported="true" />
         <activity
             android:name=".activities_0_loading"
