@@ -8,23 +8,23 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bumptech.glide.Glide;
 import com.example.app_movie_booking_ticket.adapter.MovieImageAdapter;
-import com.example.app_movie_booking_ticket.databinding.Activity4MovieDetailsBinding;
+import com.example.app_movie_booking_ticket.databinding.ParthomeMovieDetailsBinding;
 import com.example.app_movie_booking_ticket.model.Movie;
 import com.example.app_movie_booking_ticket.adapter.CastListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class activities_4_movie_detail extends AppCompatActivity {
+public class parthome_movie_detail extends AppCompatActivity {
 
     private CastListAdapter adapter;
     private MovieImageAdapter ImagesAdapter;
-    private Activity4MovieDetailsBinding binding;
+    private ParthomeMovieDetailsBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = Activity4MovieDetailsBinding.inflate(getLayoutInflater());
+        binding = ParthomeMovieDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         Intent intent = getIntent();
@@ -64,7 +64,7 @@ public class activities_4_movie_detail extends AppCompatActivity {
         // Mua vé
         binding.button2.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(this);
-            Intent intent2 = new Intent(activities_4_movie_detail.this, SeatSelectionActivity.class);
+            Intent intent2 = new Intent(parthome_movie_detail.this, parthome_SeatSelectionActivity.class);
             intent2.putExtra("movieTitle", movie.getTitle());
             intent2.putExtra("price", movie.getPrice());
             startActivity(intent2);

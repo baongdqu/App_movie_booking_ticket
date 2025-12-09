@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class AllUpcomingActivity extends AppCompatActivity {
+public class parthome_AllUpcomingActivity extends AppCompatActivity {
 
 
     private RecyclerView recyclerAllUpcoming;
@@ -38,7 +38,7 @@ public class AllUpcomingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_movies);
+        setContentView(R.layout.parthome_all_movies);
 
 
         recyclerAllUpcoming = findViewById(R.id.recyclerAllMovies);
@@ -75,7 +75,7 @@ public class AllUpcomingActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                extra_sound_manager.playError(AllUpcomingActivity.this);
+                extra_sound_manager.playError(parthome_AllUpcomingActivity.this);
             }
         });
     }

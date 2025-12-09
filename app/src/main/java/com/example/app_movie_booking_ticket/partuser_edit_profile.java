@@ -40,7 +40,7 @@ import okhttp3.MultipartBody;
 import com.bumptech.glide.Glide;
 import android.util.Log;
 
-public class activities_3_edit_profile extends AppCompatActivity {
+public class partuser_edit_profile extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1001;
 
@@ -59,7 +59,7 @@ public class activities_3_edit_profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         extra_themeutils.applySavedTheme(this);
-        setContentView(R.layout.layouts_3_edit_profile);
+        setContentView(R.layout.partuser_edit_profile);
 
         inputFullName = findViewById(R.id.inputFullNameEdit);
         inputPhone = findViewById(R.id.inputPhoneEdit);
@@ -109,12 +109,12 @@ public class activities_3_edit_profile extends AppCompatActivity {
                         usersRef.child(finalUid).updateChildren(defaultAvatar)
                                 .addOnCompleteListener(task -> {
                                     if (task.isSuccessful()) {
-                                        extra_sound_manager.playSuccess(activities_3_edit_profile.this);
-                                        Toast.makeText(activities_3_edit_profile.this, "Đã gán avatar mặc định.",
+                                        extra_sound_manager.playSuccess(partuser_edit_profile.this);
+                                        Toast.makeText(partuser_edit_profile.this, "Đã gán avatar mặc định.",
                                                 Toast.LENGTH_SHORT).show();
                                     } else {
-                                        extra_sound_manager.playError(activities_3_edit_profile.this);
-                                        Toast.makeText(activities_3_edit_profile.this,
+                                        extra_sound_manager.playError(partuser_edit_profile.this);
+                                        Toast.makeText(partuser_edit_profile.this,
                                                 "Không thể cập nhật avatar mặc định: "
                                                         + Objects.requireNonNull(task.getException()).getMessage(),
                                                 Toast.LENGTH_LONG).show();
@@ -124,7 +124,7 @@ public class activities_3_edit_profile extends AppCompatActivity {
                     }
 
                     if (avatarUrl != null && !avatarUrl.isEmpty()) {
-                        Glide.with(activities_3_edit_profile.this)
+                        Glide.with(partuser_edit_profile.this)
                                 .load(avatarUrl)
                                 .placeholder(R.drawable.ic_person)
                                 .error(R.drawable.ic_person)
@@ -134,16 +134,16 @@ public class activities_3_edit_profile extends AppCompatActivity {
                         imgAvatar.setImageResource(R.drawable.ic_person);
                     }
                 } else {
-                    extra_sound_manager.playError(activities_3_edit_profile.this);
-                    Toast.makeText(activities_3_edit_profile.this, "Không tìm thấy dữ liệu người dùng!",
+                    extra_sound_manager.playError(partuser_edit_profile.this);
+                    Toast.makeText(partuser_edit_profile.this, "Không tìm thấy dữ liệu người dùng!",
                             Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                extra_sound_manager.playError(activities_3_edit_profile.this);
-                Toast.makeText(activities_3_edit_profile.this, "Lỗi tải dữ liệu: " + error.getMessage(),
+                extra_sound_manager.playError(partuser_edit_profile.this);
+                Toast.makeText(partuser_edit_profile.this, "Lỗi tải dữ liệu: " + error.getMessage(),
                         Toast.LENGTH_SHORT).show();
             }
         });
@@ -292,8 +292,8 @@ public class activities_3_edit_profile extends AppCompatActivity {
                 @Override
                 public void onFailure(@NonNull Call call, @NonNull IOException e) {
                     runOnUiThread(() -> {
-                        extra_sound_manager.playError(activities_3_edit_profile.this);
-                        Toast.makeText(activities_3_edit_profile.this, "Lỗi upload ảnh: " + e.getMessage(),
+                        extra_sound_manager.playError(partuser_edit_profile.this);
+                        Toast.makeText(partuser_edit_profile.this, "Lỗi upload ảnh: " + e.getMessage(),
                                 Toast.LENGTH_LONG).show();
                     });
                     Log.e("IMGBB_UPLOAD", "onFailure", e);
@@ -310,13 +310,13 @@ public class activities_3_edit_profile extends AppCompatActivity {
                             usersRef.child(uid).updateChildren(updates)
                                     .addOnCompleteListener(task -> runOnUiThread(() -> {
                                         if (task.isSuccessful()) {
-                                            extra_sound_manager.playSuccess(activities_3_edit_profile.this);
-                                            Toast.makeText(activities_3_edit_profile.this, "Cập nhật hồ sơ thành công!",
+                                            extra_sound_manager.playSuccess(partuser_edit_profile.this);
+                                            Toast.makeText(partuser_edit_profile.this, "Cập nhật hồ sơ thành công!",
                                                     Toast.LENGTH_SHORT).show();
                                             finish();
                                         } else {
-                                            extra_sound_manager.playError(activities_3_edit_profile.this);
-                                            Toast.makeText(activities_3_edit_profile.this,
+                                            extra_sound_manager.playError(partuser_edit_profile.this);
+                                            Toast.makeText(partuser_edit_profile.this,
                                                     "Lỗi lưu DB: "
                                                             + Objects.requireNonNull(task.getException()).getMessage(),
                                                     Toast.LENGTH_LONG).show();
@@ -324,16 +324,16 @@ public class activities_3_edit_profile extends AppCompatActivity {
                                     }));
                         } else {
                             runOnUiThread(() -> {
-                                extra_sound_manager.playError(activities_3_edit_profile.this);
-                                Toast.makeText(activities_3_edit_profile.this,
+                                extra_sound_manager.playError(partuser_edit_profile.this);
+                                Toast.makeText(partuser_edit_profile.this,
                                         "Upload thất bại (" + response.code() + "): " + respStr, Toast.LENGTH_LONG)
                                         .show();
                             });
                         }
                     } catch (Exception ex) {
                         runOnUiThread(() -> {
-                            extra_sound_manager.playError(activities_3_edit_profile.this);
-                            Toast.makeText(activities_3_edit_profile.this,
+                            extra_sound_manager.playError(partuser_edit_profile.this);
+                            Toast.makeText(partuser_edit_profile.this,
                                     "Lỗi xử lý phản hồi upload: " + ex.getMessage(), Toast.LENGTH_LONG).show();
                         });
                         Log.e("IMGBB_UPLOAD", "parse error", ex);
