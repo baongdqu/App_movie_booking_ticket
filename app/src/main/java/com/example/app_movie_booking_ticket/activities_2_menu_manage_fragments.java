@@ -34,7 +34,7 @@ public class activities_2_menu_manage_fragments extends BaseActivity {
                 loadFragment(new fragments_mail());
                 return true;
             } else if (id == R.id.nav_chat_bot) {
-                Toast.makeText(this, "Tính năng chatbot sắp xuất hiện!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.toast_chatbot_coming_soon), Toast.LENGTH_SHORT).show();
                 return false; // Không thay đổi tab được chọn
             } else if (id == R.id.nav_notifications) {
                 loadFragment(new fragments_notifications());

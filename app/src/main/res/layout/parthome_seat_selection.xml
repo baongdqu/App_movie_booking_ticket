@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:text="Đặt vé"
+            android:text="@string/book_ticket"
             android:textStyle="bold"
             android:fontFamily="sans-serif-medium"
             android:textSize="20sp"
@@ -63,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="Tên phim"
+                android:text="@string/movie_title"
                 android:textColor="@color/text_primary"
                 android:textSize="24sp"
                 android:fontFamily="sans-serif-medium"
@@ -141,7 +141,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="MÀN HÌNH"
+                    android:text="@string/screen"
                     android:textStyle="bold"
                     android:textColor="@color/text_secondary"
                     android:layout_marginTop="8dp"
@@ -186,7 +186,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ghế thường"
+                        android:text="@string/label_empty"
                         android:textSize="13sp"
                         android:textColor="#555555" />
                 </LinearLayout>
@@ -207,7 +207,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ghế bạn chọn"
+                        android:text="@string/label_selected"
                         android:textSize="13sp"
                         android:textColor="#555555" />
                 </LinearLayout>
@@ -228,7 +228,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Đã đặt"
+                        android:text="@string/label_booked"
                         android:textSize="13sp"
                         android:textColor="#555555" />
                 </LinearLayout>
@@ -254,7 +254,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Tạm tính: 0đ"
+            android:text="@string/total_price"
             android:textStyle="bold"
             android:fontFamily="sans-serif-medium"
             android:textSize="16sp"
