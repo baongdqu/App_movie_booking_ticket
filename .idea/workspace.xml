@@ -20,11 +20,6 @@
           <theme>@style/Theme.App_movie_booking_ticket</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/drawable/bg_button_verify.xml">
-        <config>
-          <theme>@style/Theme.App_movie_booking_ticket</theme>
-        </config>
-      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/drawable/bg_date_time_item.xml">
         <config>
           <theme>@style/Theme.App_movie_booking_ticket</theme>
@@ -40,22 +35,12 @@
           <theme>@style/Theme.App_movie_booking_ticket</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/drawable/bg_input_field.xml">
-        <config>
-          <theme>@style/Theme.App_movie_booking_ticket</theme>
-        </config>
-      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/drawable/bg_item_movie.xml">
         <config>
           <theme>@style/Theme.App_movie_booking_ticket</theme>
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/drawable/bg_seat_selector.xml">
-        <config>
-          <theme>@style/Theme.App_movie_booking_ticket</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/drawable/custom_input.xml">
         <config>
           <theme>@style/Theme.App_movie_booking_ticket</theme>
         </config>
@@ -141,11 +126,6 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/drawable/screen_curve.xml">
-        <config>
-          <theme>@style/Theme.App_movie_booking_ticket</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_otp_input.xml">
         <config>
           <theme>@style/Theme.App_movie_booking_ticket</theme>
         </config>
@@ -271,7 +251,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="844f1ce6-039a-4511-a069-8979768ecd95" name="Changes" comment="fix: fix lỗi giao diện chồng lấp ở edit profile.">
+    <list default="true" id="844f1ce6-039a-4511-a069-8979768ecd95" name="Changes" comment="feat: thêm chức năng thay đổi ngôn ngữ cho app với 2 ngôn ngữ chinh.">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/BaseActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/extra_language_helper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.bin" afterDir="false" />
@@ -280,10 +263,15 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/activities_0_loading.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/activities_0_loading.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/activities_1_login.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/activities_1_login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/activities_2_menu_manage_fragments.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/activities_2_menu_manage_fragments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/partuser_advanced_settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/partuser_advanced_settings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/partuser_edit_profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/partuser_edit_profile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/partuser_edit_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/partuser_edit_profile.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/partuser_advanced_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/partuser_advanced_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/problems/problems-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/problems/problems-report.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -732,7 +720,8 @@
     <MESSAGE value="feat: thêm trường thông tin ngày sinh và giới tính của 1 user." />
     <MESSAGE value="feat: thêm document kỹ thuật cho dự án." />
     <MESSAGE value="fix: fix lỗi giao diện chồng lấp ở edit profile." />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: fix lỗi giao diện chồng lấp ở edit profile." />
+    <MESSAGE value="feat: thêm chức năng thay đổi ngôn ngữ cho app với 2 ngôn ngữ chinh." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: thêm chức năng thay đổi ngôn ngữ cho app với 2 ngôn ngữ chinh." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
