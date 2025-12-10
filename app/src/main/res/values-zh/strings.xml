@@ -22,6 +22,7 @@
     <string name="ng_i_d_ng">个人资料</string>
     <string name="trang_ch">首页</string>
     <string name="th">邮件</string>
+    <string name="chatbot">聊天机器人</string>
     <string name="nguyenvana_example_com">zhangsan@example.com</string>
     <string name="c_i_t_t_i_kho_n">帐户设置</string>
     <string name="ch_nh_s_a_th_ng_tin">编辑个人资料</string>
@@ -168,7 +169,7 @@
     <string name="toast_seat_total">座位: %1$s | 总计: ¥%2$s</string>
     <string name="toast_no_schedule">没有排片！</string>
     <string name="toast_load_data_error">数据加载错误</string>
-    <string name="toast_chatbot_coming">聊天机器人功能即将推出！</string>
+    <string name="toast_chatbot_coming_soon">聊天机器人功能即将推出！</string>
     <string name="toast_fill_info">请填写所有信息！</string>
     <string name="toast_invalid_email">无效的电子邮箱！</string>
     <string name="toast_password_6_chars">密码必须至少6个字符！</string>
