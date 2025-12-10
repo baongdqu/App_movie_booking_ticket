@@ -99,7 +99,7 @@ public class partuser_edit_profile extends BaseActivity {
             uid = mAuth.getCurrentUser().getUid();
         if (uid == null) {
             extra_sound_manager.playError(this);
-            Toast.makeText(this, "Không xác định người dùng.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_user_not_found), Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
@@ -155,13 +155,14 @@ public class partuser_edit_profile extends BaseActivity {
                                 .addOnCompleteListener(task -> {
                                     if (task.isSuccessful()) {
                                         extra_sound_manager.playSuccess(partuser_edit_profile.this);
-                                        Toast.makeText(partuser_edit_profile.this, "Đã gán avatar mặc định.",
+                                        Toast.makeText(partuser_edit_profile.this,
+                                                getString(R.string.toast_default_avatar_set),
                                                 Toast.LENGTH_SHORT).show();
                                     } else {
                                         extra_sound_manager.playError(partuser_edit_profile.this);
                                         Toast.makeText(partuser_edit_profile.this,
-                                                "Không thể cập nhật avatar mặc định: "
-                                                        + Objects.requireNonNull(task.getException()).getMessage(),
+                                                String.format(getString(R.string.toast_default_avatar_error),
+                                                        Objects.requireNonNull(task.getException()).getMessage()),
                                                 Toast.LENGTH_LONG).show();
                                     }
                                 });
@@ -180,7 +181,7 @@ public class partuser_edit_profile extends BaseActivity {
                     }
                 } else {
                     extra_sound_manager.playError(partuser_edit_profile.this);
-                    Toast.makeText(partuser_edit_profile.this, "Không tìm thấy dữ liệu người dùng!",
+                    Toast.makeText(partuser_edit_profile.this, getString(R.string.toast_user_data_not_found),
                             Toast.LENGTH_SHORT).show();
                 }
             }
@@ -188,7 +189,8 @@ public class partuser_edit_profile extends BaseActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 extra_sound_manager.playError(partuser_edit_profile.this);
-                Toast.makeText(partuser_edit_profile.this, "Lỗi tải dữ liệu: " + error.getMessage(),
+                Toast.makeText(partuser_edit_profile.this,
+                        String.format(getString(R.string.toast_load_error), error.getMessage()),
                         Toast.LENGTH_SHORT).show();
             }
         });
@@ -216,14 +218,14 @@ public class partuser_edit_profile extends BaseActivity {
 
             String inputNumber = Objects.requireNonNull(inputPhone.getText()).toString().trim();
             if (inputNumber.isEmpty()) {
-                Toast.makeText(this, "Vui lòng nhập số điện thoại.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.toast_enter_phone), Toast.LENGTH_SHORT).show();
                 return;
             }
 
             // Check if phone was changed but not verified
             if (inputNumber.equals(currentPhone) && imgPhoneStatus.getDrawable().getConstantState() == getResources()
                     .getDrawable(R.drawable.ic_check).getConstantState()) {
-                Toast.makeText(this, "Số điện thoại này đã được xác thực rồi.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.toast_phone_verified), Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -242,7 +244,8 @@ public class partuser_edit_profile extends BaseActivity {
                     .setCallbacks(mCallbacks) // OnVerificationStateChangedCallbacks
                     .build();
             PhoneAuthProvider.verifyPhoneNumber(options);
-            Toast.makeText(this, "Đang gửi OTP đến " + formattedPhone + "...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, String.format(getString(R.string.toast_sending_otp), formattedPhone),
+                    Toast.LENGTH_SHORT).show();
         });
 
         btnSave.setOnClickListener(v -> {
@@ -254,7 +257,7 @@ public class partuser_edit_profile extends BaseActivity {
 
             if (TextUtils.isEmpty(newName)) {
                 extra_sound_manager.playError(this);
-                Toast.makeText(this, "Vui lòng nhập họ tên.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.toast_enter_name), Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -338,11 +341,12 @@ public class partuser_edit_profile extends BaseActivity {
     }
 
     private void setupGenderDropdown() {
-        final String[] genders = new String[] { "Nam", "Nữ", "Khác" };
+        final String[] genders = new String[] { getString(R.string.male), getString(R.string.female),
+                getString(R.string.other) };
 
         inputGender.setOnClickListener(v -> {
             new android.app.AlertDialog.Builder(this)
-                    .setTitle("Chọn giới tính")
+                    .setTitle(getString(R.string.select_gender))
                     .setItems(genders, (dialog, which) -> {
                         inputGender.setText(genders[which]);
                     })
@@ -393,7 +397,8 @@ public class partuser_edit_profile extends BaseActivity {
             @Override
             public void onVerificationFailed(@NonNull FirebaseException e) {
                 extra_sound_manager.playError(partuser_edit_profile.this);
-                Toast.makeText(partuser_edit_profile.this, "Xác thực thất bại: " + e.getMessage(), Toast.LENGTH_LONG)
+                Toast.makeText(partuser_edit_profile.this,
+                        String.format(getString(R.string.toast_verification_failed), e.getMessage()), Toast.LENGTH_LONG)
                         .show();
             }
 
@@ -408,7 +413,7 @@ public class partuser_edit_profile extends BaseActivity {
 
     private void showOtpDialog() {
         EditText input = new EditText(this);
-        input.setHint("Nhập mã OTP");
+        input.setHint(getString(R.string.dialog_enter_otp));
         input.setTextAlignment(android.view.View.TEXT_ALIGNMENT_CENTER);
         input.setInputType(android.text.InputType.TYPE_CLASS_NUMBER);
         android.widget.FrameLayout container = new android.widget.FrameLayout(this);
@@ -420,16 +425,16 @@ public class partuser_edit_profile extends BaseActivity {
         container.addView(input);
 
         new android.app.AlertDialog.Builder(this)
-                .setTitle("Nhập mã xác thực")
+                .setTitle(getString(R.string.dialog_enter_otp_title))
                 .setView(container)
-                .setPositiveButton("Xác nhận", (dialog, which) -> {
+                .setPositiveButton(getString(R.string.dialog_confirm), (dialog, which) -> {
                     String code = input.getText().toString().trim();
                     if (!code.isEmpty()) {
                         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
                         linkPhoneCredential(credential);
                     }
                 })
-                .setNegativeButton("Hủy", null)
+                .setNegativeButton(getString(R.string.cancel), null)
                 .show();
     }
 
@@ -454,7 +459,8 @@ public class partuser_edit_profile extends BaseActivity {
                             } else {
                                 extra_sound_manager.playError(this);
                                 Toast.makeText(this,
-                                        "Lỗi gỡ bỏ SĐT cũ: " + Objects.requireNonNull(task.getException()).getMessage(),
+                                        String.format(getString(R.string.toast_unlink_error),
+                                                Objects.requireNonNull(task.getException()).getMessage()),
                                         Toast.LENGTH_SHORT).show();
                             }
                         });
@@ -482,7 +488,7 @@ public class partuser_edit_profile extends BaseActivity {
                         usersRef.child(mAuth.getCurrentUser().getUid()).updateChildren(updatePhoneMap);
 
                         extra_sound_manager.playSuccess(this);
-                        Toast.makeText(this, "Xác thực và Cập nhật SĐT thành công!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, getString(R.string.toast_phone_update_success), Toast.LENGTH_SHORT).show();
                         imgPhoneStatus.setImageResource(R.drawable.ic_check);
                         imgPhoneStatus.setColorFilter(getResources().getColor(R.color.netflix_green));
                         btnVerifyPhone.setVisibility(android.view.View.GONE);
@@ -491,11 +497,12 @@ public class partuser_edit_profile extends BaseActivity {
                         extra_sound_manager.playError(this);
 
                         if (e instanceof FirebaseAuthUserCollisionException) {
-                            Toast.makeText(this, "Số ĐT này đã liên kết với tài khoản khác!", Toast.LENGTH_LONG)
+                            Toast.makeText(this, getString(R.string.toast_phone_linked_other), Toast.LENGTH_LONG)
                                     .show();
                         } else {
                             String msg = e != null ? e.getMessage() : "Unknown";
-                            Toast.makeText(this, "Lỗi: " + msg, Toast.LENGTH_LONG).show();
+                            Toast.makeText(this, String.format(getString(R.string.toast_error), msg), Toast.LENGTH_LONG)
+                                    .show();
                         }
                     }
                 });
@@ -540,7 +547,8 @@ public class partuser_edit_profile extends BaseActivity {
                 public void onFailure(@NonNull Call call, @NonNull IOException e) {
                     runOnUiThread(() -> {
                         extra_sound_manager.playError(partuser_edit_profile.this);
-                        Toast.makeText(partuser_edit_profile.this, "Lỗi upload ảnh: " + e.getMessage(),
+                        Toast.makeText(partuser_edit_profile.this,
+                                String.format(getString(R.string.toast_upload_error), e.getMessage()),
                                 Toast.LENGTH_LONG).show();
                     });
                     Log.e("IMGBB_UPLOAD", "onFailure", e);
@@ -558,14 +566,15 @@ public class partuser_edit_profile extends BaseActivity {
                                     .addOnCompleteListener(task -> runOnUiThread(() -> {
                                         if (task.isSuccessful()) {
                                             extra_sound_manager.playSuccess(partuser_edit_profile.this);
-                                            Toast.makeText(partuser_edit_profile.this, "Cập nhật hồ sơ thành công!",
+                                            Toast.makeText(partuser_edit_profile.this,
+                                                    getString(R.string.toast_profile_updated),
                                                     Toast.LENGTH_SHORT).show();
                                             finish();
                                         } else {
                                             extra_sound_manager.playError(partuser_edit_profile.this);
                                             Toast.makeText(partuser_edit_profile.this,
-                                                    "Lỗi lưu DB: "
-                                                            + Objects.requireNonNull(task.getException()).getMessage(),
+                                                    String.format(getString(R.string.toast_db_error),
+                                                            Objects.requireNonNull(task.getException()).getMessage()),
                                                     Toast.LENGTH_LONG).show();
                                         }
                                     }));
@@ -573,7 +582,9 @@ public class partuser_edit_profile extends BaseActivity {
                             runOnUiThread(() -> {
                                 extra_sound_manager.playError(partuser_edit_profile.this);
                                 Toast.makeText(partuser_edit_profile.this,
-                                        "Upload thất bại (" + response.code() + "): " + respStr, Toast.LENGTH_LONG)
+                                        String.format(getString(R.string.toast_upload_failed),
+                                                String.valueOf(response.code()), respStr),
+                                        Toast.LENGTH_LONG)
                                         .show();
                             });
                         }
@@ -581,7 +592,8 @@ public class partuser_edit_profile extends BaseActivity {
                         runOnUiThread(() -> {
                             extra_sound_manager.playError(partuser_edit_profile.this);
                             Toast.makeText(partuser_edit_profile.this,
-                                    "Lỗi xử lý phản hồi upload: " + ex.getMessage(), Toast.LENGTH_LONG).show();
+                                    String.format(getString(R.string.toast_response_error), ex.getMessage()),
+                                    Toast.LENGTH_LONG).show();
                         });
                         Log.e("IMGBB_UPLOAD", "parse error", ex);
                     } finally {
@@ -592,7 +604,8 @@ public class partuser_edit_profile extends BaseActivity {
             });
         } catch (IOException e) {
             extra_sound_manager.playError(this);
-            Toast.makeText(this, "Không thể xử lý ảnh: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, String.format(getString(R.string.toast_image_error), e.getMessage()),
+                    Toast.LENGTH_SHORT).show();
             Log.e("IMGBB_UPLOAD", "bitmap error", e);
         }
     }
@@ -613,12 +626,13 @@ public class partuser_edit_profile extends BaseActivity {
                         if (task.isSuccessful()) {
                             extra_sound_manager.playSuccess(this);
                             prefs.edit().putString("username", newName).apply();
-                            Toast.makeText(this, "Cập nhật hồ sơ thành công.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, getString(R.string.toast_profile_updated), Toast.LENGTH_SHORT).show();
                             finish();
                         } else {
                             extra_sound_manager.playError(this);
                             Toast.makeText(this,
-                                    "Lỗi cập nhật: " + Objects.requireNonNull(task.getException()).getMessage(),
+                                    String.format(getString(R.string.toast_update_error),
+                                            Objects.requireNonNull(task.getException()).getMessage()),
                                     Toast.LENGTH_LONG).show();
                         }
                     });

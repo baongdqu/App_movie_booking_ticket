@@ -52,7 +52,7 @@ public class activities_1_forgot_password extends AppCompatActivity {
 
         if (TextUtils.isEmpty(email)) {
             extra_sound_manager.playError(this);
-            Toast.makeText(this, "Vui lòng nhập email để khôi phục mật khẩu!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_enter_email_to_reset), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -63,7 +63,7 @@ public class activities_1_forgot_password extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             extra_sound_manager.playSuccess(activities_1_forgot_password.this);
                             Toast.makeText(activities_1_forgot_password.this,
-                                    "Đã gửi liên kết khôi phục mật khẩu tới email của bạn!",
+                                    getString(R.string.toast_email_sent),
                                     Toast.LENGTH_LONG).show();
 
                             startActivity(new Intent(activities_1_forgot_password.this, activities_1_login.class));
@@ -71,7 +71,8 @@ public class activities_1_forgot_password extends AppCompatActivity {
                         } else {
                             extra_sound_manager.playError(activities_1_forgot_password.this);
                             Toast.makeText(activities_1_forgot_password.this,
-                                    "Lỗi: " + Objects.requireNonNull(task.getException()).getMessage(),
+                                    String.format(getString(R.string.toast_email_error),
+                                            Objects.requireNonNull(task.getException()).getMessage()),
                                     Toast.LENGTH_LONG).show();
                         }
                     }

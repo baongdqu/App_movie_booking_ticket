@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">App_movie_booking_ticket</string>
+    <string name="search_hint">영화 검색...</string>
+    <string name="email">이메일</string>
+    <string name="password">비밀번호</string>
+    <string name="ng_nh_p">로그인</string>
+    <string name="qu_n_m_t_kh_u">비밀번호를 잊으셨나요?</string>
+    <string name="t_o_t_i_kho_n_m_i">새 계정 만들기</string>
+    <string name="h_t_n">성명</string>
+    <string name="xac_nhan_mat_khau">비밀번호 확인</string>
+    <string name="s_dien_thoai">전화번호</string>
+    <string name="t_o_t_i_kho_n">회원가입</string>
+    <string name="quay_l_i_ng_nh_p">로그인으로 돌아가기</string>
+    <string name="m_t_kh_u">비밀번호</string>
+    <string name="g_i_li_n_k_t_kh_i_ph_c">복구 링크 전송</string>
+    <string name="quay_l_i_ng_nh_ps">로그인으로 돌아가기</string>
+    <string name="m_t_kh_uu">비밀번호</string>
+    <string name="ang_t_i">로딩 중...</string>
+    <string name="trailer">예고편</string>
+    <string name="th_ng_b_o">알림</string>
+    <string name="ng_i_d_ng">프로필</string>
+    <string name="trang_ch">홈</string>
+    <string name="th">메일</string>
+    <string name="nguyenvana_example_com">honggildong@example.com</string>
+    <string name="c_i_t_t_i_kho_n">계정 설정</string>
+    <string name="ch_nh_s_a_th_ng_tin">프로필 수정</string>
+    <string name="nguy_n_v_n_a">홍길동</string>
+    <string name="ng_xu_t">로그아웃</string>
+    <string name="quay_l_i_menu">메뉴로 돌아가기</string>
+    <string name="imgbb_api_key">34b97f269820a2c163fc835da8c61544</string>
+    <string name="user_name">사용자 이름</string>
+    <string name="user_email">user@example.com</string>
+    <string name="g_i_l_i_email_x_c_minh">인증 이메일 재전송?</string>
+    <string name="back_button">뒤로</string>
+    <string name="label_select_date">날짜 선택</string>
+    <string name="label_select_time">시간 선택</string>
+    <string name="movie_title">영화 제목</string>
+    <string name="btn_continue">계속</string>
+    <string name="total_price">합계: ₩0</string>
+    <string name="label_empty">빈 좌석</string>
+    <string name="label_selected">선택됨</string>
+    <string name="label_booked">예약됨</string>
+    <string name="change_language">언어 변경</string>
+    <string name="language_selection_title">언어 선택</string>
+    <string name="lang_vi">Tiếng Việt</string>
+    <string name="lang_en">English</string>
+    <string name="lang_ru">Русский</string>
+    <string name="lang_ja">日本語</string>
+    <string name="lang_ko">한국어</string>
+    <string name="lang_zh">中文</string>
+
+    <!-- Forgot Password -->
+    <string name="forgot_password_title">비밀번호를 잊으셨나요?</string>
+    <string name="forgot_password_desc">등록된 이메일을 입력하시면 비밀번호 복구 링크를 보내드립니다.</string>
+    
+    <!-- Login -->
+    <string name="no_account">계정이 없으신가요?</string>
+    
+    <!-- Home -->
+    <string name="no_movies_found">영화를 찾을 수 없습니다</string>
+    <string name="top_movie">인기 영화</string>
+    <string name="view_all">모두 보기</string>
+    <string name="upcoming_movies">개봉 예정</string>
+    
+    <!-- Mail & Notifications -->
+    <string name="empty_mailbox">메일함이 비어 있습니다</string>
+    <string name="new_messages_here">새 메시지가 여기에 표시됩니다</string>
+    <string name="no_notifications">알림이 없습니다</string>
+    <string name="new_notifications_here">새 알림이 여기에 표시됩니다</string>
+    
+    <!-- User Profile -->
+    <string name="advanced_settings">고급 설정</string>
+    
+    <!-- Movie List -->
+    <string name="all_movies">모든 영화</string>
+    <string name="genre">장르</string>
+    <string name="duration_placeholder">1시간 41분</string>
+    <string name="date_placeholder">2025.10.31</string>
+    <string name="details">상세정보</string>
+    <string name="buy_ticket">티켓 구매</string>
+    <string name="movie_name">영화 이름</string>
+    
+    <!-- Movie Details -->
+    <string name="movie_detail">영화 상세정보</string>
+    <string name="title">제목</string>
+    <string name="year_duration">2025 • 1시간 55분</string>
+    <string name="like">좋아요</string>
+    <string name="summary">줄거리</string>
+    <string name="movie_summary_placeholder">영화 줄거리가 여기에 표시됩니다</string>
+    <string name="cast">출연진</string>
+    <string name="images">이미지</string>
+    
+    <!-- Seat Selection -->
+    <string name="book_ticket">예매하기</string>
+    <string name="screen">스크린</string>
+    <string name="price_format">합계: ₩%1$s</string>
+    
+    <!-- Settings -->
+    <string name="dark_mode">다크 모드</string>
+    <string name="interface_section">인터페이스</string>
+    <string name="sound_notification">소리 및 알림</string>
+    <string name="toggle_sound">소리 켜기/끄기</string>
+    <string name="enable_notification">알림 활성화</string>
+    <string name="security">보안</string>
+    <string name="change_password">비밀번호 변경</string>
+    <string name="delete_account">계정 삭제</string>
+    <string name="back">뒤로</string>
+    
+    <!-- Change Password -->
+    <string name="current_password">현재 비밀번호</string>
+    <string name="new_password">새 비밀번호</string>
+    <string name="confirm_new_password">새 비밀번호 확인</string>
+    <string name="save_password">비밀번호 저장</string>
+    
+    <!-- Edit Profile -->
+    <string name="full_name">성명</string>
+    <string name="phone">전화번호</string>
+    <string name="date_of_birth">생년월일</string>
+    <string name="gender">성별</string>
+    <string name="male">남성</string>
+    <string name="female">여성</string>
+    <string name="other">기타</string>
+    <string name="select_gender">성별 선택</string>
+    <string name="save">저장</string>
+    <string name="cancel">취소</string>
+    <string name="change_avatar">아바타 변경</string>
+    <string name="verify">인증</string>
+    
+    <!-- Toast Messages -->
+    <string name="toast_user_not_found">사용자를 확인할 수 없습니다.</string>
+    <string name="toast_default_avatar_set">기본 아바타가 설정되었습니다.</string>
+    <string name="toast_default_avatar_error">아바타 업데이트 실패: %1$s</string>
+    <string name="toast_user_data_not_found">사용자 데이터를 찾을 수 없습니다!</string>
+    <string name="toast_load_error">데이터 로드 오류: %1$s</string>
+    <string name="toast_enter_phone">전화번호를 입력하세요.</string>
+    <string name="toast_phone_verified">이 전화번호는 이미 인증되었습니다.</string>
+    <string name="toast_sending_otp">%1$s로 OTP 전송 중...</string>
+    <string name="toast_enter_name">이름을 입력하세요.</string>
+    <string name="toast_verification_failed">인증 실패: %1$s</string>
+    <string name="toast_unlink_error">이전 전화번호 해제 오류: %1$s</string>
+    <string name="toast_phone_update_success">전화번호 인증 및 업데이트 성공!</string>
+    <string name="toast_phone_linked_other">이 전화번호는 다른 계정에 연결되어 있습니다!</string>
+    <string name="toast_error">오류: %1$s</string>
+    <string name="toast_upload_error">이미지 업로드 오류: %1$s</string>
+    <string name="toast_profile_updated">프로필이 업데이트되었습니다!</string>
+    <string name="toast_db_error">데이터베이스 오류: %1$s</string>
+    <string name="toast_upload_failed">업로드 실패 (%1$s): %2$s</string>
+    <string name="toast_response_error">업로드 응답 오류: %1$s</string>
+    <string name="toast_image_error">이미지를 처리할 수 없습니다: %1$s</string>
+    <string name="toast_update_error">업데이트 오류: %1$s</string>
+    <string name="toast_fill_all_fields">모든 항목을 입력하세요.</string>
+    <string name="toast_password_mismatch">비밀번호가 일치하지 않습니다!</string>
+    <string name="toast_password_min_length">비밀번호는 6자 이상이어야 합니다!</string>
+    <string name="toast_password_changed">비밀번호가 변경되었습니다!</string>
+    <string name="toast_wrong_password">현재 비밀번호가 올바르지 않습니다!</string>
+    <string name="toast_notification_on">알림이 활성화되었습니다</string>
+    <string name="toast_notification_off">알림이 비활성화되었습니다</string>
+    <string name="toast_sound_on">소리가 활성화되었습니다</string>
+    <string name="toast_sound_off">소리가 비활성화되었습니다</string>
+    <string name="toast_enter_password">비밀번호를 입력하세요.</string>
+    <string name="toast_no_email">인증을 위한 이메일이 없습니다.</string>
+    <string name="toast_account_deleted">계정이 삭제되었습니다!</string>
+    <string name="toast_delete_account_error">계정 삭제 실패: %1$s</string>
+    <string name="toast_delete_data_error">데이터 삭제 오류: %1$s</string>
+    <string name="toast_session_expired">비밀번호가 틀리거나 세션이 만료되었습니다!</string>
+    <string name="toast_select_seat">좌석을 선택하세요!</string>
+    <string name="toast_seat_total">좌석: %1$s | 합계: ₩%2$s</string>
+    <string name="toast_no_schedule">일정이 없습니다!</string>
+    <string name="toast_load_data_error">데이터 로드 오류</string>
+    <string name="toast_chatbot_coming">챗봇 기능이 곧 출시됩니다!</string>
+    <string name="toast_fill_info">모든 정보를 입력하세요!</string>
+    <string name="toast_invalid_email">유효하지 않은 이메일!</string>
+    <string name="toast_password_6_chars">비밀번호는 6자 이상이어야 합니다!</string>
+    <string name="toast_load_user_error">사용자 정보 로드 오류</string>
+    <string name="toast_email_sent">복구 링크가 전송되었습니다!</string>
+    <string name="toast_email_error">오류: %1$s</string>
+    <string name="toast_account_created">계정 생성 완료! 이메일을 확인하세요.</string>
+    <string name="toast_email_exists">이메일이 이미 존재합니다.</string>
+    <string name="toast_weak_password">비밀번호가 너무 약합니다.</string>
+    <string name="toast_login_success">로그인 성공!</string>
+    <string name="toast_login_failed">로그인 실패: %1$s</string>
+    <string name="toast_verify_email">로그인 전에 이메일을 확인하세요.</string>
+    <string name="toast_verification_sent">인증 이메일이 재전송되었습니다. 받은편지함을 확인하세요.</string>
+    <string name="toast_verification_send_error">이메일 전송 오류: %1$s</string>
+
+    <!-- Dialogs -->
+    <string name="dialog_confirm_delete_title">⚠️ 계정 삭제 확인</string>
+    <string name="dialog_confirm_delete_message">이 작업은 계정과 모든 관련 데이터를 영구적으로 삭제합니다. 계속하시겠습니까?</string>
+    <string name="dialog_reauthenticate_title">재인증</string>
+    <string name="dialog_enter_password_hint">확인을 위해 비밀번호 입력</string>
+    <string name="dialog_confirm">확인</string>
+    <string name="dialog_delete">삭제</string>
+    <string name="dialog_enter_otp">OTP 입력</string>
+    <string name="dialog_enter_otp_title">인증 코드 입력</string>
+    <string name="dialog_email_not_verified_title">이메일 미인증</string>
+    <string name="dialog_email_not_verified_message">계정 이메일이 인증되지 않았습니다. 인증 이메일을 다시 보내시겠습니까?</string>
+    <string name="dialog_resend_email">이메일 재전송</string>
+    <string name="dialog_open_email">이메일 열기</string>
+    <string name="dialog_close">닫기</string>
+    <string name="toast_email_already_verified">이메일이 이미 인증되었습니다. 로그인할 수 있습니다.</string>
+    <string name="toast_email_app_not_found">이메일 앱을 찾을 수 없습니다.</string>
+    <string name="toast_enter_email_to_reset">비밀번호를 재설정하려면 이메일을 입력하세요!</string>
+</resources>
