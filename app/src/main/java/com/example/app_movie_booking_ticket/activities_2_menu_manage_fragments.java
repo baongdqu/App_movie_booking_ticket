@@ -7,7 +7,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import android.widget.Toast;
 
-public class activities_2_menu_manage_fragments extends AppCompatActivity {
+public class activities_2_menu_manage_fragments extends BaseActivity {
 
     private BottomNavigationView bottomNavigationView;
 
