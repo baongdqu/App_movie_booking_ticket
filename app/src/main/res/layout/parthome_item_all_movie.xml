@@ -28,7 +28,7 @@
             android:id="@+id/tvMovieName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tên Phim"
+            android:text="@string/movie_name"
             android:textColor="#000"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:text="Thể Loại"
+            android:text="@string/genre"
             android:textColor="#555"
             android:textSize="13sp" />
 
@@ -46,7 +46,7 @@
             android:id="@+id/tvMovieTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1 giờ 41 phút"
+            android:text="@string/duration_placeholder"
             android:textColor="#555"
             android:textSize="13sp"
             android:layout_marginTop="4dp" />
@@ -55,7 +55,7 @@
             android:id="@+id/tvMovieDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="31/10/2025"
+            android:text="@string/date_placeholder"
             android:textColor="#777"
             android:textSize="13sp"
             android:layout_marginTop="2dp" />
@@ -72,7 +72,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Chi tiết"
+                android:text="@string/details"
                 android:textSize="13sp"
                 android:textColor="#000"
                 android:backgroundTint="#E0E0E0" />
@@ -84,7 +84,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
                 android:backgroundTint="#E0E0E0"
-                android:text="Mua vé"
+                android:text="@string/buy_ticket"
                 android:textColor="#000000"
                 android:textSize="13sp" />
         </LinearLayout>

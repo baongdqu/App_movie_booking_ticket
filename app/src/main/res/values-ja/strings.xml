@@ -22,6 +22,7 @@
     <string name="ng_i_d_ng">プロフィール</string>
     <string name="trang_ch">ホーム</string>
     <string name="th">メール</string>
+    <string name="chatbot">チャットボット</string>
     <string name="nguyenvana_example_com">yamada@example.com</string>
     <string name="c_i_t_t_i_kho_n">アカウント設定</string>
     <string name="ch_nh_s_a_th_ng_tin">プロフィール編集</string>
@@ -168,7 +169,7 @@
     <string name="toast_seat_total">座席: %1$s | 合計: ¥%2$s</string>
     <string name="toast_no_schedule">スケジュールがありません！</string>
     <string name="toast_load_data_error">データ読み込みエラー</string>
-    <string name="toast_chatbot_coming">チャットボット機能は近日公開！</string>
+    <string name="toast_chatbot_coming_soon">チャットボット機能は近日公開！</string>
     <string name="toast_fill_info">すべての情報を入力してください！</string>
     <string name="toast_invalid_email">無効なメールアドレス！</string>
     <string name="toast_password_6_chars">パスワードは6文字以上必要です！</string>

@@ -137,10 +137,6 @@
                 app:cornerRadius="4dp"
                 app:strokeColor="@color/netflix_medium_gray"
                 app:strokeWidth="1dp"
-                app:icon="@drawable/ic_logout"
-                app:iconGravity="textStart"
-                app:iconPadding="12dp"
-                app:iconTint="@color/netflix_text_gray"
                 android:layout_marginBottom="40dp" />
         </LinearLayout>
     </ScrollView>

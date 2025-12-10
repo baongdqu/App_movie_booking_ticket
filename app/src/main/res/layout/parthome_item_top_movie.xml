@@ -16,7 +16,7 @@
         android:id="@+id/tvMovieName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Movie Name"
+        android:text="@string/movie_name"
         android:gravity="center"
         android:textSize="14sp"
         android:paddingTop="4dp" />

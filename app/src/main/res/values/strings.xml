@@ -22,6 +22,7 @@
     <string name="ng_i_d_ng">Người dùng</string>
     <string name="trang_ch">Trang chủ</string>
     <string name="th">Thư</string>
+    <string name="chatbot">Chatbot</string>
     <string name="nguyenvana_example_com">nguyenvana@example.com</string>
     <string name="c_i_t_t_i_kho_n">Cài đặt tài khoản</string>
     <string name="ch_nh_s_a_th_ng_tin">Chỉnh sửa thông tin</string>
@@ -168,7 +169,7 @@
     <string name="toast_seat_total">Ghế: %1$s | Tổng: %2$sđ</string>
     <string name="toast_no_schedule">Không có lịch chiếu!</string>
     <string name="toast_load_data_error">Lỗi tải dữ liệu</string>
-    <string name="toast_chatbot_coming">Tính năng chatbot sắp xuất hiện!</string>
+    <string name="toast_chatbot_coming_soon">Tính năng chatbot sắp xuất hiện!</string>
     <string name="toast_fill_info">Vui lòng điền đầy đủ thông tin!</string>
     <string name="toast_invalid_email">Email không hợp lệ!</string>
     <string name="toast_password_6_chars">Mật khẩu phải có ít nhất 6 ký tự!</string>

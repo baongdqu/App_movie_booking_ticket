@@ -22,6 +22,7 @@
     <string name="ng_i_d_ng">Профиль</string>
     <string name="trang_ch">Главная</string>
     <string name="th">Почта</string>
+    <string name="chatbot">Чат-бот</string>
     <string name="nguyenvana_example_com">ivanov@example.com</string>
     <string name="c_i_t_t_i_kho_n">Настройки аккаунта</string>
     <string name="ch_nh_s_a_th_ng_tin">Редактировать профиль</string>
@@ -168,7 +169,7 @@
     <string name="toast_seat_total">Место: %1$s | Итого: %2$s₽</string>
     <string name="toast_no_schedule">Нет расписания!</string>
     <string name="toast_load_data_error">Ошибка загрузки данных</string>
-    <string name="toast_chatbot_coming">Чат-бот скоро появится!</string>
+    <string name="toast_chatbot_coming_soon">Чат-бот скоро появится!</string>
     <string name="toast_fill_info">Заполните всю информацию!</string>
     <string name="toast_invalid_email">Неверный email!</string>
     <string name="toast_password_6_chars">Пароль должен содержать минимум 6 символов!</string>
