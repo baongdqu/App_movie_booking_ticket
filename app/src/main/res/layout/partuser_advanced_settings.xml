@@ -17,7 +17,7 @@
             android:id="@+id/txtTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cài đặt tài khoản"
+            android:text="@string/c_i_t_t_i_kho_n"
             android:textSize="26sp"
             android:textStyle="bold"
             android:fontFamily="sans-serif-medium"
@@ -29,7 +29,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Giao diện"
+            android:text="@string/interface_section"
             android:textSize="14sp"
             android:textColor="@color/text_secondary"
             android:textAllCaps="true"
@@ -38,7 +38,7 @@
 
         <Switch
             android:id="@+id/switchDarkMode"
-            android:text="Chế độ tối"
+            android:text="@string/dark_mode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
@@ -72,7 +72,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Âm thanh &amp; Thông báo"
+            android:text="@string/sound_notification"
             android:textSize="14sp"
             android:textColor="@color/text_secondary"
             android:textAllCaps="true"
@@ -83,7 +83,7 @@
             android:id="@+id/switchSound"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Bật/Tắt âm thanh"
+            android:text="@string/toggle_sound"
             android:textSize="16sp"
             android:textColor="@color/text_primary"
             android:padding="16dp"
@@ -91,7 +91,7 @@
 
         <Switch
             android:id="@+id/switchNotification"
-            android:text="Bật thông báo"
+            android:text="@string/enable_notification"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
@@ -109,7 +109,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bảo mật"
+            android:text="@string/security"
             android:textSize="14sp"
             android:textColor="@color/text_secondary"
             android:textAllCaps="true"
@@ -118,7 +118,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnChangePassword"
-            android:text="Đổi mật khẩu"
+            android:text="@string/change_password"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:backgroundTint="@color/netflix_red"
@@ -131,7 +131,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnDeleteAccount"
-            android:text="Xóa tài khoản"
+            android:text="@string/delete_account"
             android:backgroundTint="@color/button_red_dark"
             android:textColor="@color/netflix_text_white"
             android:layout_width="match_parent"
@@ -151,7 +151,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnBackSettings"
-            android:text="Quay lại"
+            android:text="@string/back"
             android:backgroundTint="@color/card_background"
             android:textColor="@color/text_primary"
             android:layout_width="match_parent"

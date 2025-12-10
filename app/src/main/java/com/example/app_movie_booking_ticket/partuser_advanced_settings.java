@@ -66,7 +66,9 @@ public class partuser_advanced_settings extends BaseActivity {
         switchNotification.setOnCheckedChangeListener((buttonView, isChecked) -> {
             extra_sound_manager.playToggle(this);
             prefs.edit().putBoolean("notifications", isChecked).apply();
-            Toast.makeText(this, isChecked ? "Thông báo đã bật" : "Thông báo đã tắt", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,
+                    isChecked ? getString(R.string.toast_notification_on) : getString(R.string.toast_notification_off),
+                    Toast.LENGTH_SHORT).show();
         });
 
         // Switch Sound (ĐÃ BỔ SUNG ÂM THANH)
@@ -74,7 +76,8 @@ public class partuser_advanced_settings extends BaseActivity {
             // **BỔ SUNG ÂM THANH** - Lưu ý về logic đã thảo luận
             extra_sound_manager.playToggle(this);
             prefs.edit().putBoolean("sound_enabled", isChecked).apply();
-            Toast.makeText(this, isChecked ? "Âm thanh được bật" : "Âm thanh đã tắt", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, isChecked ? getString(R.string.toast_sound_on) : getString(R.string.toast_sound_off),
+                    Toast.LENGTH_SHORT).show();
         });
 
         // Nút Thay đổi Mật khẩu
@@ -91,20 +94,20 @@ public class partuser_advanced_settings extends BaseActivity {
 
             new MaterialAlertDialogBuilder(this, com.google.android.material.R.style.MaterialAlertDialog_Material3)
                     .setIcon(R.drawable.ic_warning_red)
-                    .setTitle("⚠️ Xác nhận xóa tài khoản")
+                    .setTitle(getString(R.string.dialog_confirm_delete_title))
                     .setMessage(
-                            "Hành động này sẽ xóa vĩnh viễn tài khoản và toàn bộ dữ liệu liên quan. Bạn có chắc chắn muốn tiếp tục?")
-                    .setPositiveButton("Xóa", (dialog, which) -> {
+                            getString(R.string.dialog_confirm_delete_message))
+                    .setPositiveButton(getString(R.string.dialog_delete), (dialog, which) -> {
                         FirebaseUser user = mAuth.getCurrentUser();
                         if (user == null) {
                             extra_sound_manager.playError(this);
-                            Toast.makeText(this, "Không xác định được người dùng.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, getString(R.string.toast_user_not_found), Toast.LENGTH_SHORT).show();
                             return;
                         }
 
                         TextInputLayout layout = new TextInputLayout(this, null,
                                 com.google.android.material.R.style.Widget_Material3_TextInputLayout_OutlinedBox);
-                        layout.setHint("Nhập mật khẩu để xác nhận");
+                        layout.setHint(getString(R.string.dialog_enter_password_hint));
                         layout.setEndIconMode(TextInputLayout.END_ICON_PASSWORD_TOGGLE);
 
                         final TextInputEditText input = new TextInputEditText(this);
@@ -128,13 +131,13 @@ public class partuser_advanced_settings extends BaseActivity {
                         });
 
                         new MaterialAlertDialogBuilder(this)
-                                .setTitle("Xác thực lại tài khoản")
+                                .setTitle(getString(R.string.dialog_reauthenticate_title))
                                 .setView(layout)
-                                .setPositiveButton("Xác nhận", (d2, w2) -> {
+                                .setPositiveButton(getString(R.string.dialog_confirm), (d2, w2) -> {
                                     String password = input.getText() != null ? input.getText().toString().trim() : "";
                                     dialogConfirmDelete(user, password);
                                 })
-                                .setNegativeButton("Hủy", (d2, w2) -> d2.dismiss())
+                                .setNegativeButton(getString(R.string.cancel), (d2, w2) -> d2.dismiss())
                                 .show();
 
                         input.setOnEditorActionListener((v1, actionId, event) -> {
@@ -147,7 +150,7 @@ public class partuser_advanced_settings extends BaseActivity {
                         });
 
                     })
-                    .setNegativeButton("Hủy", (dialog, which2) -> {
+                    .setNegativeButton(getString(R.string.cancel), (dialog, which2) -> {
                         if (vibrator != null) {
                             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O)
                                 vibrator.vibrate(VibrationEffect.createOneShot(80, VibrationEffect.DEFAULT_AMPLITUDE));
@@ -168,16 +171,64 @@ public class partuser_advanced_settings extends BaseActivity {
         });
 
         // Nút Đổi Ngôn Ngữ
+        // Nút Đổi Ngôn Ngữ
         btnChangeLanguage.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(this);
-            String[] languages = { getString(R.string.lang_vi), getString(R.string.lang_en) };
+            String[] languages = {
+                    getString(R.string.lang_vi),
+                    getString(R.string.lang_en),
+                    getString(R.string.lang_ru),
+                    getString(R.string.lang_ja),
+                    getString(R.string.lang_ko),
+                    getString(R.string.lang_zh)
+            };
+
             String currentLang = extra_language_helper.getLanguage(this);
-            int checkedItem = currentLang.equals("en") ? 1 : 0;
+            int checkedItem;
+            switch (currentLang) {
+                case "en":
+                    checkedItem = 1;
+                    break;
+                case "ru":
+                    checkedItem = 2;
+                    break;
+                case "ja":
+                    checkedItem = 3;
+                    break;
+                case "ko":
+                    checkedItem = 4;
+                    break;
+                case "zh":
+                    checkedItem = 5;
+                    break;
+                default:
+                    checkedItem = 0; // vi
+            }
 
             new MaterialAlertDialogBuilder(this)
                     .setTitle(getString(R.string.language_selection_title))
                     .setSingleChoiceItems(languages, checkedItem, (dialog, which) -> {
-                        String selectedLang = which == 0 ? "vi" : "en";
+                        String selectedLang;
+                        switch (which) {
+                            case 1:
+                                selectedLang = "en";
+                                break;
+                            case 2:
+                                selectedLang = "ru";
+                                break;
+                            case 3:
+                                selectedLang = "ja";
+                                break;
+                            case 4:
+                                selectedLang = "ko";
+                                break;
+                            case 5:
+                                selectedLang = "zh";
+                                break;
+                            default:
+                                selectedLang = "vi";
+                        }
+
                         if (!currentLang.equals(selectedLang)) {
                             extra_language_helper.setLocale(this, selectedLang);
                             dialog.dismiss();
@@ -208,14 +259,14 @@ public class partuser_advanced_settings extends BaseActivity {
     private void dialogConfirmDelete(FirebaseUser user, String password) {
         if (password.isEmpty()) {
             extra_sound_manager.playError(this);
-            Toast.makeText(this, "Vui lòng nhập mật khẩu.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_enter_password), Toast.LENGTH_SHORT).show();
             return;
         }
 
         String email = user.getEmail();
         if (email == null) {
             extra_sound_manager.playError(this);
-            Toast.makeText(this, "Không có email để xác thực.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_no_email), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -231,7 +282,8 @@ public class partuser_advanced_settings extends BaseActivity {
                                             extra_sound_manager.playSuccess(this);
                                             getSharedPreferences("UserPrefs", MODE_PRIVATE).edit().clear().apply();
                                             FirebaseAuth.getInstance().signOut();
-                                            Toast.makeText(this, "Đã xóa tài khoản thành công!", Toast.LENGTH_SHORT)
+                                            Toast.makeText(this, getString(R.string.toast_account_deleted),
+                                                    Toast.LENGTH_SHORT)
                                                     .show();
 
                                             Intent intent = new Intent(this, activities_1_login.class);
@@ -242,19 +294,23 @@ public class partuser_advanced_settings extends BaseActivity {
                                         })
                                         .addOnFailureListener(e -> {
                                             extra_sound_manager.playError(this);
-                                            Toast.makeText(this, "Không thể xóa tài khoản: " + e.getMessage(),
+                                            Toast.makeText(this,
+                                                    String.format(getString(R.string.toast_delete_account_error),
+                                                            e.getMessage()),
                                                     Toast.LENGTH_LONG).show();
                                         });
                             })
                             .addOnFailureListener(e -> {
                                 extra_sound_manager.playError(this);
-                                Toast.makeText(this, "Lỗi khi xóa dữ liệu: " + e.getMessage(), Toast.LENGTH_LONG)
+                                Toast.makeText(this,
+                                        String.format(getString(R.string.toast_delete_data_error), e.getMessage()),
+                                        Toast.LENGTH_LONG)
                                         .show();
                             });
                 })
                 .addOnFailureListener(e -> {
                     extra_sound_manager.playError(this);
-                    Toast.makeText(this, "Mật khẩu không đúng hoặc phiên đăng nhập đã hết hạn!", Toast.LENGTH_LONG)
+                    Toast.makeText(this, getString(R.string.toast_session_expired), Toast.LENGTH_LONG)
                             .show();
                 });
     }
