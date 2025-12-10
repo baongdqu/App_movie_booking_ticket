@@ -24,10 +24,12 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class partuser_advanced_settings extends AppCompatActivity {
+import android.view.View;
+
+public class partuser_advanced_settings extends BaseActivity {
 
     private Switch switchDarkMode, switchNotification, switchSound;
-    private Button btnChangePassword, btnDeleteAccount, btnBackSettings;
+    private Button btnChangePassword, btnDeleteAccount, btnBackSettings, btnChangeLanguage;
 
     private SharedPreferences prefs;
     private FirebaseAuth mAuth;
@@ -44,6 +46,7 @@ public class partuser_advanced_settings extends AppCompatActivity {
         btnChangePassword = findViewById(R.id.btnChangePassword);
         btnDeleteAccount = findViewById(R.id.btnDeleteAccount);
         btnBackSettings = findViewById(R.id.btnBackSettings);
+        btnChangeLanguage = findViewById(R.id.btnChangeLanguage);
 
         mAuth = FirebaseAuth.getInstance();
         prefs = getSharedPreferences("AppSettings", MODE_PRIVATE);
@@ -89,7 +92,8 @@ public class partuser_advanced_settings extends AppCompatActivity {
             new MaterialAlertDialogBuilder(this, com.google.android.material.R.style.MaterialAlertDialog_Material3)
                     .setIcon(R.drawable.ic_warning_red)
                     .setTitle("⚠️ Xác nhận xóa tài khoản")
-                    .setMessage("Hành động này sẽ xóa vĩnh viễn tài khoản và toàn bộ dữ liệu liên quan. Bạn có chắc chắn muốn tiếp tục?")
+                    .setMessage(
+                            "Hành động này sẽ xóa vĩnh viễn tài khoản và toàn bộ dữ liệu liên quan. Bạn có chắc chắn muốn tiếp tục?")
                     .setPositiveButton("Xóa", (dialog, which) -> {
                         FirebaseUser user = mAuth.getCurrentUser();
                         if (user == null) {
@@ -119,7 +123,8 @@ public class partuser_advanced_settings extends AppCompatActivity {
                                 input.setTransformationMethod(PasswordTransformationMethod.getInstance());
                                 layout.setEndIconActivated(false);
                             }
-                            if (input.getText() != null) input.setSelection(input.getText().length());
+                            if (input.getText() != null)
+                                input.setSelection(input.getText().length());
                         });
 
                         new MaterialAlertDialogBuilder(this)
@@ -146,7 +151,8 @@ public class partuser_advanced_settings extends AppCompatActivity {
                         if (vibrator != null) {
                             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O)
                                 vibrator.vibrate(VibrationEffect.createOneShot(80, VibrationEffect.DEFAULT_AMPLITUDE));
-                            else vibrator.vibrate(80);
+                            else
+                                vibrator.vibrate(80);
                         }
                         dialog.dismiss();
                     })
@@ -156,8 +162,40 @@ public class partuser_advanced_settings extends AppCompatActivity {
             if (vibrator != null) {
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O)
                     vibrator.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
-                else vibrator.vibrate(100);
+                else
+                    vibrator.vibrate(100);
             }
+        });
+
+        // Nút Đổi Ngôn Ngữ
+        btnChangeLanguage.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
+            String[] languages = { getString(R.string.lang_vi), getString(R.string.lang_en) };
+            String currentLang = extra_language_helper.getLanguage(this);
+            int checkedItem = currentLang.equals("en") ? 1 : 0;
+
+            new MaterialAlertDialogBuilder(this)
+                    .setTitle(getString(R.string.language_selection_title))
+                    .setSingleChoiceItems(languages, checkedItem, (dialog, which) -> {
+                        String selectedLang = which == 0 ? "vi" : "en";
+                        if (!currentLang.equals(selectedLang)) {
+                            extra_language_helper.setLocale(this, selectedLang);
+                            dialog.dismiss();
+                            // Restart Application to apply language changes
+                            Intent i = getBaseContext().getPackageManager()
+                                    .getLaunchIntentForPackage(getBaseContext().getPackageName());
+                            if (i != null) {
+                                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(i);
+                                finish();
+                            } else {
+                                recreate();
+                            }
+                        } else {
+                            dialog.dismiss();
+                        }
+                    })
+                    .show();
         });
 
         // Nút Quay lại
@@ -193,26 +231,31 @@ public class partuser_advanced_settings extends AppCompatActivity {
                                             extra_sound_manager.playSuccess(this);
                                             getSharedPreferences("UserPrefs", MODE_PRIVATE).edit().clear().apply();
                                             FirebaseAuth.getInstance().signOut();
-                                            Toast.makeText(this, "Đã xóa tài khoản thành công!", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(this, "Đã xóa tài khoản thành công!", Toast.LENGTH_SHORT)
+                                                    .show();
 
                                             Intent intent = new Intent(this, activities_1_login.class);
-                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            intent.setFlags(
+                                                    Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                             startActivity(intent);
                                             finish();
                                         })
                                         .addOnFailureListener(e -> {
                                             extra_sound_manager.playError(this);
-                                            Toast.makeText(this, "Không thể xóa tài khoản: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                                            Toast.makeText(this, "Không thể xóa tài khoản: " + e.getMessage(),
+                                                    Toast.LENGTH_LONG).show();
                                         });
                             })
                             .addOnFailureListener(e -> {
                                 extra_sound_manager.playError(this);
-                                Toast.makeText(this, "Lỗi khi xóa dữ liệu: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(this, "Lỗi khi xóa dữ liệu: " + e.getMessage(), Toast.LENGTH_LONG)
+                                        .show();
                             });
                 })
                 .addOnFailureListener(e -> {
                     extra_sound_manager.playError(this);
-                    Toast.makeText(this, "Mật khẩu không đúng hoặc phiên đăng nhập đã hết hạn!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Mật khẩu không đúng hoặc phiên đăng nhập đã hết hạn!", Toast.LENGTH_LONG)
+                            .show();
                 });
     }
 }

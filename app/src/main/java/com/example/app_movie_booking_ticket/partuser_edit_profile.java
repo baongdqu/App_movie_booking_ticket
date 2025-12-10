@@ -48,7 +48,7 @@ import okhttp3.MultipartBody;
 import com.bumptech.glide.Glide;
 import android.util.Log;
 
-public class partuser_edit_profile extends AppCompatActivity {
+public class partuser_edit_profile extends BaseActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1001;
 

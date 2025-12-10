@@ -46,6 +46,22 @@
             android:padding="16dp"
             android:layout_marginBottom="8dp" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnChangeLanguage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/change_language"
+            android:textSize="16sp"
+            android:textColor="@color/text_primary"
+            android:gravity="center_vertical|start"
+            android:backgroundTint="@android:color/transparent"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:layout_marginBottom="8dp" 
+            android:textAllCaps="false"/>
+
+
+
         <!-- Divider -->
         <View
             android:layout_width="match_parent"

@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class activities_0_loading extends AppCompatActivity {
+public class activities_0_loading extends BaseActivity {
 
     private FirebaseAuth mAuth;
 

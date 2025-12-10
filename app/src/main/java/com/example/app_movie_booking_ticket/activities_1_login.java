@@ -22,7 +22,7 @@ import com.google.android.gms.tasks.Task;
 
 import java.util.Objects;
 
-public class activities_1_login extends AppCompatActivity {
+public class activities_1_login extends BaseActivity {
 
     // 🔹 Khai báo các thành phần giao diện
     private TextInputEditText inputEmail, inputPassword;
@@ -77,7 +77,8 @@ public class activities_1_login extends AppCompatActivity {
             startActivity(new Intent(activities_1_login.this, activities_1_forgot_password.class));
         });
 
-        // ================== 🔘 GỬI LẠI EMAIL XÁC MINH (tại giao diện login) ==================
+        // ================== 🔘 GỬI LẠI EMAIL XÁC MINH (tại giao diện login)
+        // ==================
         txtResendVerify.setOnClickListener(v -> {
             // Yêu cầu user đã nhập email + mật khẩu ở form
             String email = Objects.requireNonNull(inputEmail.getText()).toString().trim();
@@ -96,7 +97,9 @@ public class activities_1_login extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             if (user != null) {
                                 if (user.isEmailVerified()) {
-                                    Toast.makeText(activities_1_login.this, "Email đã được xác minh trước đó. Bạn có thể đăng nhập.", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(activities_1_login.this,
+                                            "Email đã được xác minh trước đó. Bạn có thể đăng nhập.", Toast.LENGTH_LONG)
+                                            .show();
                                     // optional: signOut vì chỉ đăng nhập tạm
                                     mAuth.signOut();
                                 } else {
@@ -109,7 +112,9 @@ public class activities_1_login extends AppCompatActivity {
                                                             Toast.LENGTH_LONG).show();
                                                 } else {
                                                     Toast.makeText(activities_1_login.this,
-                                                            "Không thể gửi email xác minh: " + Objects.requireNonNull(verifyTask.getException()).getMessage(),
+                                                            "Không thể gửi email xác minh: "
+                                                                    + Objects.requireNonNull(verifyTask.getException())
+                                                                            .getMessage(),
                                                             Toast.LENGTH_LONG).show();
                                                 }
                                                 // sign out sau khi gửi
@@ -117,11 +122,13 @@ public class activities_1_login extends AppCompatActivity {
                                             });
                                 }
                             } else {
-                                Toast.makeText(activities_1_login.this, "Không tìm thấy người dùng.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(activities_1_login.this, "Không tìm thấy người dùng.",
+                                        Toast.LENGTH_SHORT).show();
                             }
                         } else {
                             Toast.makeText(activities_1_login.this,
-                                    "Đăng nhập tạm thất bại: " + Objects.requireNonNull(task.getException()).getMessage(),
+                                    "Đăng nhập tạm thất bại: "
+                                            + Objects.requireNonNull(task.getException()).getMessage(),
                                     Toast.LENGTH_LONG).show();
                         }
                     });
@@ -155,37 +162,63 @@ public class activities_1_login extends AppCompatActivity {
                                 // ======= Bước 3: Kiểm tra email đã verify chưa =======
                                 if (user.isEmailVerified()) {
                                     extra_sound_manager.playSuccess(activities_1_login.this);
-                                    Toast.makeText(activities_1_login.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(activities_1_login.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT)
+                                            .show();
 
                                     // 🔹 Lưu thông tin người dùng vào SharedPreferences
                                     getSharedPreferences("UserPrefs", MODE_PRIVATE)
                                             .edit()
-                                            .putString("email", user.getEmail())   // lưu email từ Firebase
-                                            .putString("username", user.getDisplayName() != null ? user.getDisplayName() : "Người dùng")
-                                            .putString("uid", user.getUid())       // lưu UID nếu cần
+                                            .putString("email", user.getEmail()) // lưu email từ Firebase
+                                            .putString("username",
+                                                    user.getDisplayName() != null ? user.getDisplayName()
+                                                            : "Người dùng")
+                                            .putString("uid", user.getUid()) // lưu UID nếu cần
                                             .apply();
 
                                     // 🔹 Chuyển sang màn hình Menu (hoặc màn hình người dùng)
-                                    Intent intent = new Intent(activities_1_login.this, activities_2_menu_manage_fragments.class);
+                                    Intent intent = new Intent(activities_1_login.this,
+                                            activities_2_menu_manage_fragments.class);
                                     startActivity(intent);
                                     finish();
                                 } else {
                                     // Nếu chưa verify → hiển thị dialog cho phép gửi lại email
                                     new MaterialAlertDialogBuilder(activities_1_login.this)
                                             .setTitle("Email chưa được xác minh")
-                                            .setMessage("Tài khoản của bạn chưa xác minh email. Bạn có muốn gửi lại email xác minh không?")
+                                            .setMessage(
+                                                    "Tài khoản của bạn chưa xác minh email. Bạn có muốn gửi lại email xác minh không?")
                                             .setPositiveButton("Gửi lại email", (dialog, which) -> {
                                                 user.sendEmailVerification()
                                                         .addOnCompleteListener(verifyTask -> {
                                                             if (verifyTask.isSuccessful()) {
-                                                                extra_sound_manager.playUiClick(activities_1_login.this); // Âm thanh cho hành động gửi lại email thành công
+                                                                extra_sound_manager
+                                                                        .playUiClick(activities_1_login.this); // Âm
+                                                                                                               // thanh
+                                                                                                               // cho
+                                                                                                               // hành
+                                                                                                               // động
+                                                                                                               // gửi
+                                                                                                               // lại
+                                                                                                               // email
+                                                                                                               // thành
+                                                                                                               // công
                                                                 Toast.makeText(activities_1_login.this,
                                                                         "Đã gửi lại email xác minh. Vui lòng kiểm tra hộp thư.",
                                                                         Toast.LENGTH_LONG).show();
                                                             } else {
-                                                                extra_sound_manager.playError(activities_1_login.this); // Âm thanh lỗi nếu gửi lại email thất bại
+                                                                extra_sound_manager.playError(activities_1_login.this); // Âm
+                                                                                                                        // thanh
+                                                                                                                        // lỗi
+                                                                                                                        // nếu
+                                                                                                                        // gửi
+                                                                                                                        // lại
+                                                                                                                        // email
+                                                                                                                        // thất
+                                                                                                                        // bại
                                                                 Toast.makeText(activities_1_login.this,
-                                                                        "Không thể gửi email xác minh: " + Objects.requireNonNull(verifyTask.getException()).getMessage(),
+                                                                        "Không thể gửi email xác minh: " + Objects
+                                                                                .requireNonNull(
+                                                                                        verifyTask.getException())
+                                                                                .getMessage(),
                                                                         Toast.LENGTH_LONG).show();
                                                             }
                                                             // sign out sau khi gửi
@@ -193,20 +226,28 @@ public class activities_1_login extends AppCompatActivity {
                                                         });
                                             })
                                             .setNeutralButton("Mở Email", (dialog, which) -> {
-                                                extra_sound_manager.playUiClick(activities_1_login.this); // Âm thanh cho hành động mở email
+                                                extra_sound_manager.playUiClick(activities_1_login.this); // Âm thanh
+                                                                                                          // cho hành
+                                                                                                          // động mở
+                                                                                                          // email
                                                 // cố gắng mở ứng dụng email mặc định
                                                 Intent intent = new Intent(Intent.ACTION_MAIN);
                                                 intent.addCategory(Intent.CATEGORY_APP_EMAIL);
                                                 try {
                                                     startActivity(intent);
                                                 } catch (ActivityNotFoundException ex) {
-                                                    Toast.makeText(activities_1_login.this, "Không tìm thấy ứng dụng Email.", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(activities_1_login.this,
+                                                            "Không tìm thấy ứng dụng Email.", Toast.LENGTH_SHORT)
+                                                            .show();
                                                 }
                                                 // sign out user (vì chưa verified)
                                                 mAuth.signOut();
                                             })
                                             .setNegativeButton("Đóng", (dialog, which) -> {
-                                                extra_sound_manager.playUiClick(activities_1_login.this); // Âm thanh cho hành động đóng dialog
+                                                extra_sound_manager.playUiClick(activities_1_login.this); // Âm thanh
+                                                                                                          // cho hành
+                                                                                                          // động đóng
+                                                                                                          // dialog
                                                 // sign out để dọn phiên
                                                 mAuth.signOut();
                                                 dialog.dismiss();
@@ -218,7 +259,8 @@ public class activities_1_login extends AppCompatActivity {
 
                         } else {
                             // Nếu đăng nhập thất bại (sai mật khẩu, email không tồn tại, ...)
-                            extra_sound_manager.playError(activities_1_login.this); // Âm thanh lỗi khi đăng nhập thất bại
+                            extra_sound_manager.playError(activities_1_login.this); // Âm thanh lỗi khi đăng nhập thất
+                                                                                    // bại
                             Toast.makeText(activities_1_login.this,
                                     "Đăng nhập thất bại: " +
                                             Objects.requireNonNull(task.getException()).getMessage(),
