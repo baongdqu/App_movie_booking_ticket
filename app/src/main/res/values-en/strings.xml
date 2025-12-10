@@ -22,6 +22,7 @@
     <string name="ng_i_d_ng">Profile</string>
     <string name="trang_ch">Home</string>
     <string name="th">Mail</string>
+    <string name="chatbot">Chatbot</string>
     <string name="nguyenvana_example_com">nguyenvana@example.com</string>
     <string name="c_i_t_t_i_kho_n">Account Settings</string>
     <string name="ch_nh_s_a_th_ng_tin">Edit Profile</string>
@@ -168,7 +169,7 @@
     <string name="toast_seat_total">Seat: %1$s | Total: $%2$s</string>
     <string name="toast_no_schedule">No schedule available!</string>
     <string name="toast_load_data_error">Error loading data</string>
-    <string name="toast_chatbot_coming">Chatbot feature coming soon!</string>
+    <string name="toast_chatbot_coming_soon">Chatbot feature coming soon!</string>
     <string name="toast_fill_info">Please fill in all information!</string>
     <string name="toast_invalid_email">Invalid email!</string>
     <string name="toast_password_6_chars">Password must be at least 6 characters!</string>
