@@ -30,7 +30,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tạo tài khoản"
+            android:text="@string/t_o_t_i_kho_n"
             android:textColor="@color/netflix_text_white"
             android:textSize="24sp"
             android:textStyle="bold"

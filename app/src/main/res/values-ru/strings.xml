@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">App_movie_booking_ticket</string>
+    <string name="search_hint">Поиск фильмов...</string>
+    <string name="email">Эл. почта</string>
+    <string name="password">Пароль</string>
+    <string name="ng_nh_p">Войти</string>
+    <string name="qu_n_m_t_kh_u">Забыли пароль?</string>
+    <string name="t_o_t_i_kho_n_m_i">Создать аккаунт</string>
+    <string name="h_t_n">ФИО</string>
+    <string name="xac_nhan_mat_khau">Подтвердить пароль</string>
+    <string name="s_dien_thoai">Телефон</string>
+    <string name="t_o_t_i_kho_n">Регистрация</string>
+    <string name="quay_l_i_ng_nh_p">Назад ко входу</string>
+    <string name="m_t_kh_u">Пароль</string>
+    <string name="g_i_li_n_k_t_kh_i_ph_c">Отправить ссылку восстановления</string>
+    <string name="quay_l_i_ng_nh_ps">Назад ко входу</string>
+    <string name="m_t_kh_uu">Пароль</string>
+    <string name="ang_t_i">Загрузка...</string>
+    <string name="trailer">Трейлер</string>
+    <string name="th_ng_b_o">Уведомления</string>
+    <string name="ng_i_d_ng">Профиль</string>
+    <string name="trang_ch">Главная</string>
+    <string name="th">Почта</string>
+    <string name="nguyenvana_example_com">ivanov@example.com</string>
+    <string name="c_i_t_t_i_kho_n">Настройки аккаунта</string>
+    <string name="ch_nh_s_a_th_ng_tin">Редактировать профиль</string>
+    <string name="nguy_n_v_n_a">Иван Иванов</string>
+    <string name="ng_xu_t">Выйти</string>
+    <string name="quay_l_i_menu">Вернуться в меню</string>
+    <string name="imgbb_api_key">34b97f269820a2c163fc835da8c61544</string>
+    <string name="user_name">Имя пользователя</string>
+    <string name="user_email">user@example.com</string>
+    <string name="g_i_l_i_email_x_c_minh">Отправить письмо подтверждения?</string>
+    <string name="back_button">Назад</string>
+    <string name="label_select_date">Выберите дату</string>
+    <string name="label_select_time">Выберите время</string>
+    <string name="movie_title">Название фильма</string>
+    <string name="btn_continue">Продолжить</string>
+    <string name="total_price">Итого: 0₽</string>
+    <string name="label_empty">Свободно</string>
+    <string name="label_selected">Выбрано</string>
+    <string name="label_booked">Занято</string>
+    <string name="change_language">Сменить язык</string>
+    <string name="language_selection_title">Выберите язык</string>
+    <string name="lang_vi">Tiếng Việt</string>
+    <string name="lang_en">English</string>
+    <string name="lang_ru">Русский</string>
+    <string name="lang_ja">日本語</string>
+    <string name="lang_ko">한국어</string>
+    <string name="lang_zh">中文</string>
+
+    <!-- Forgot Password -->
+    <string name="forgot_password_title">Забыли пароль?</string>
+    <string name="forgot_password_desc">Введите зарегистрированный email, и мы отправим ссылку для восстановления пароля.</string>
+    
+    <!-- Login -->
+    <string name="no_account">Нет аккаунта?</string>
+    
+    <!-- Home -->
+    <string name="no_movies_found">Фильмы не найдены</string>
+    <string name="top_movie">Топ фильмов</string>
+    <string name="view_all">Смотреть все</string>
+    <string name="upcoming_movies">Скоро в прокате</string>
+    
+    <!-- Mail & Notifications -->
+    <string name="empty_mailbox">Почтовый ящик пуст</string>
+    <string name="new_messages_here">Новые сообщения появятся здесь</string>
+    <string name="no_notifications">Нет уведомлений</string>
+    <string name="new_notifications_here">Новые уведомления появятся здесь</string>
+    
+    <!-- User Profile -->
+    <string name="advanced_settings">Расширенные настройки</string>
+    
+    <!-- Movie List -->
+    <string name="all_movies">Все фильмы</string>
+    <string name="genre">Жанр</string>
+    <string name="duration_placeholder">1ч 41м</string>
+    <string name="date_placeholder">31.10.2025</string>
+    <string name="details">Подробнее</string>
+    <string name="buy_ticket">Купить билет</string>
+    <string name="movie_name">Название фильма</string>
+    
+    <!-- Movie Details -->
+    <string name="movie_detail">О фильме</string>
+    <string name="title">Название</string>
+    <string name="year_duration">2025 • 1ч 55м</string>
+    <string name="like">Нравится</string>
+    <string name="summary">Описание</string>
+    <string name="movie_summary_placeholder">Описание фильма</string>
+    <string name="cast">В ролях</string>
+    <string name="images">Изображения</string>
+    
+    <!-- Seat Selection -->
+    <string name="book_ticket">Забронировать</string>
+    <string name="screen">Экран</string>
+    <string name="price_format">Итого: %1$s₽</string>
+    
+    <!-- Settings -->
+    <string name="dark_mode">Тёмная тема</string>
+    <string name="interface_section">Интерфейс</string>
+    <string name="sound_notification">Звук и уведомления</string>
+    <string name="toggle_sound">Вкл/Выкл звук</string>
+    <string name="enable_notification">Включить уведомления</string>
+    <string name="security">Безопасность</string>
+    <string name="change_password">Изменить пароль</string>
+    <string name="delete_account">Удалить аккаунт</string>
+    <string name="back">Назад</string>
+    
+    <!-- Change Password -->
+    <string name="current_password">Текущий пароль</string>
+    <string name="new_password">Новый пароль</string>
+    <string name="confirm_new_password">Подтвердите новый пароль</string>
+    <string name="save_password">Сохранить пароль</string>
+    
+    <!-- Edit Profile -->
+    <string name="full_name">ФИО</string>
+    <string name="phone">Телефон</string>
+    <string name="date_of_birth">Дата рождения</string>
+    <string name="gender">Пол</string>
+    <string name="male">Мужской</string>
+    <string name="female">Женский</string>
+    <string name="other">Другой</string>
+    <string name="select_gender">Выберите пол</string>
+    <string name="save">Сохранить</string>
+    <string name="cancel">Отмена</string>
+    <string name="change_avatar">Изменить аватар</string>
+    <string name="verify">Подтвердить</string>
+    
+    <!-- Toast Messages -->
+    <string name="toast_user_not_found">Пользователь не определён.</string>
+    <string name="toast_default_avatar_set">Аватар по умолчанию установлен.</string>
+    <string name="toast_default_avatar_error">Не удалось обновить аватар: %1$s</string>
+    <string name="toast_user_data_not_found">Данные пользователя не найдены!</string>
+    <string name="toast_load_error">Ошибка загрузки данных: %1$s</string>
+    <string name="toast_enter_phone">Введите номер телефона.</string>
+    <string name="toast_phone_verified">Этот номер телефона уже подтверждён.</string>
+    <string name="toast_sending_otp">Отправка OTP на %1$s...</string>
+    <string name="toast_enter_name">Введите ваше имя.</string>
+    <string name="toast_verification_failed">Ошибка подтверждения: %1$s</string>
+    <string name="toast_unlink_error">Ошибка отвязки старого телефона: %1$s</string>
+    <string name="toast_phone_update_success">Телефон подтверждён и обновлён!</string>
+    <string name="toast_phone_linked_other">Этот телефон привязан к другому аккаунту!</string>
+    <string name="toast_error">Ошибка: %1$s</string>
+    <string name="toast_upload_error">Ошибка загрузки изображения: %1$s</string>
+    <string name="toast_profile_updated">Профиль успешно обновлён!</string>
+    <string name="toast_db_error">Ошибка базы данных: %1$s</string>
+    <string name="toast_upload_failed">Загрузка не удалась (%1$s): %2$s</string>
+    <string name="toast_response_error">Ошибка ответа загрузки: %1$s</string>
+    <string name="toast_image_error">Не удалось обработать изображение: %1$s</string>
+    <string name="toast_update_error">Ошибка обновления: %1$s</string>
+    <string name="toast_fill_all_fields">Заполните все поля.</string>
+    <string name="toast_password_mismatch">Пароли не совпадают!</string>
+    <string name="toast_password_min_length">Пароль должен содержать минимум 6 символов!</string>
+    <string name="toast_password_changed">Пароль успешно изменён!</string>
+    <string name="toast_wrong_password">Неверный текущий пароль!</string>
+    <string name="toast_notification_on">Уведомления включены</string>
+    <string name="toast_notification_off">Уведомления отключены</string>
+    <string name="toast_sound_on">Звук включён</string>
+    <string name="toast_sound_off">Звук отключён</string>
+    <string name="toast_enter_password">Введите пароль.</string>
+    <string name="toast_no_email">Нет email для аутентификации.</string>
+    <string name="toast_account_deleted">Аккаунт успешно удалён!</string>
+    <string name="toast_delete_account_error">Не удалось удалить аккаунт: %1$s</string>
+    <string name="toast_delete_data_error">Ошибка удаления данных: %1$s</string>
+    <string name="toast_session_expired">Неверный пароль или сессия истекла!</string>
+    <string name="toast_select_seat">Выберите место!</string>
+    <string name="toast_seat_total">Место: %1$s | Итого: %2$s₽</string>
+    <string name="toast_no_schedule">Нет расписания!</string>
+    <string name="toast_load_data_error">Ошибка загрузки данных</string>
+    <string name="toast_chatbot_coming">Чат-бот скоро появится!</string>
+    <string name="toast_fill_info">Заполните всю информацию!</string>
+    <string name="toast_invalid_email">Неверный email!</string>
+    <string name="toast_password_6_chars">Пароль должен содержать минимум 6 символов!</string>
+    <string name="toast_load_user_error">Ошибка загрузки информации</string>
+    <string name="toast_email_sent">Ссылка для восстановления отправлена!</string>
+    <string name="toast_email_error">Ошибка: %1$s</string>
+    <string name="toast_account_created">Аккаунт создан! Подтвердите email.</string>
+    <string name="toast_email_exists">Email уже существует.</string>
+    <string name="toast_weak_password">Слишком слабый пароль.</string>
+    <string name="toast_login_success">Успешный вход!</string>
+    <string name="toast_login_failed">Ошибка входа: %1$s</string>
+    <string name="toast_verify_email">Подтвердите email перед входом.</string>
+    <string name="toast_verification_sent">Письмо подтверждения отправлено. Проверьте почту.</string>
+    <string name="toast_verification_send_error">Ошибка отправки email: %1$s</string>
+
+    <!-- Dialogs -->
+    <string name="dialog_confirm_delete_title">⚠️ Подтвердите удаление аккаунта</string>
+    <string name="dialog_confirm_delete_message">Это действие навсегда удалит ваш аккаунт и все связанные данные. Вы уверены?</string>
+    <string name="dialog_reauthenticate_title">Повторная аутентификация</string>
+    <string name="dialog_enter_password_hint">Введите пароль для подтверждения</string>
+    <string name="dialog_confirm">Подтвердить</string>
+    <string name="dialog_delete">Удалить</string>
+    <string name="dialog_enter_otp">Введите OTP</string>
+    <string name="dialog_enter_otp_title">Введите код подтверждения</string>
+    <string name="dialog_email_not_verified_title">Email не подтверждён</string>
+    <string name="dialog_email_not_verified_message">Email вашего аккаунта не подтверждён. Хотите отправить письмо подтверждения повторно?</string>
+    <string name="dialog_resend_email">Отправить снова</string>
+    <string name="dialog_open_email">Открыть почту</string>
+    <string name="dialog_close">Закрыть</string>
+    <string name="toast_email_already_verified">Email уже подтверждён. Вы можете войти.</string>
+    <string name="toast_email_app_not_found">Почтовое приложение не найдено.</string>
+    <string name="toast_enter_email_to_reset">Введите email для восстановления пароля!</string>
+</resources>
