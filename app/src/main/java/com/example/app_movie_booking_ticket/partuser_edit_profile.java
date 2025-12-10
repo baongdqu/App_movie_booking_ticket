@@ -18,6 +18,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthOptions;
+import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+
+import com.google.firebase.FirebaseException;
 import com.google.firebase.database.*;
 
 import org.json.JSONObject;
@@ -28,6 +34,8 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
+import android.widget.EditText;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -46,11 +54,17 @@ public class partuser_edit_profile extends AppCompatActivity {
 
     private TextInputEditText inputFullName, inputPhone, inputDob, inputGender;
     private Button btnSave, btnCancel, btnChangeAvatar;
-    private ImageView imgAvatar;
+    private ImageView imgAvatar, imgPhoneStatus;
+    private Button btnVerifyPhone;
+    private String currentPhone = "";
 
     private DatabaseReference usersRef;
     private FirebaseAuth mAuth;
     private SharedPreferences prefs;
+
+    private String verificationId;
+    private PhoneAuthProvider.ForceResendingToken resendToken;
+    private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
 
     private Uri selectedImageUri = null;
     private final String DEFAULT_AVATAR_URL = "https://i.ibb.co/C3JdHS1r/Avatar-trang-den.png";
@@ -69,9 +83,12 @@ public class partuser_edit_profile extends AppCompatActivity {
         btnCancel = findViewById(R.id.btnCancelProfile);
         btnChangeAvatar = findViewById(R.id.btnChangeAvatar);
         imgAvatar = findViewById(R.id.imgAvatar);
+        imgPhoneStatus = findViewById(R.id.imgPhoneStatus);
+        btnVerifyPhone = findViewById(R.id.btnVerifyPhone);
 
         setupGenderDropdown();
         setupDatePicker();
+        setupPhoneAuthCallbacks();
 
         mAuth = FirebaseAuth.getInstance();
         usersRef = FirebaseDatabase.getInstance().getReference("users");
@@ -93,7 +110,35 @@ public class partuser_edit_profile extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     String fullName = snapshot.child("fullName").getValue(String.class);
-                    String phone = snapshot.child("phone").getValue(String.class);
+                    currentPhone = snapshot.child("phone").getValue(String.class);
+                    String phone = currentPhone;
+
+                    // Logic Sync: Compare DB phone vs Auth Phone
+                    String authPhone = getLinkedPhoneNumber();
+                    boolean verified = false;
+
+                    if (phone != null && !phone.isEmpty() && authPhone != null) {
+                        String normalizedDbPhone = normalizePhoneNumber(phone);
+                        if (normalizedDbPhone.equals(authPhone)) {
+                            verified = true;
+                        }
+                    }
+
+                    inputFullName.setText(fullName != null ? fullName : "");
+                    inputPhone.setText(phone != null ? phone : "");
+
+                    imgPhoneStatus.setVisibility(android.view.View.VISIBLE);
+                    if (verified) {
+                        imgPhoneStatus.setImageResource(R.drawable.ic_check);
+                        imgPhoneStatus.setColorFilter(getResources().getColor(R.color.netflix_green));
+                        btnVerifyPhone.setVisibility(android.view.View.GONE);
+                    } else {
+                        imgPhoneStatus.setImageResource(R.drawable.ic_close);
+                        imgPhoneStatus.setColorFilter(getResources().getColor(android.R.color.holo_red_dark)); // Use
+                                                                                                               // red
+                                                                                                               // explicitly
+                        btnVerifyPhone.setVisibility(android.view.View.VISIBLE);
+                    }
                     String dob = snapshot.child("dateOfBirth").getValue(String.class);
                     String gender = snapshot.child("gender").getValue(String.class);
                     String avatarUrl = snapshot.child("avatarUrl").getValue(String.class);
@@ -164,6 +209,42 @@ public class partuser_edit_profile extends AppCompatActivity {
             }
         });
 
+        // inputPhone.setFocusable(true);
+
+        btnVerifyPhone.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
+
+            String inputNumber = Objects.requireNonNull(inputPhone.getText()).toString().trim();
+            if (inputNumber.isEmpty()) {
+                Toast.makeText(this, "Vui lòng nhập số điện thoại.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Check if phone was changed but not verified
+            if (inputNumber.equals(currentPhone) && imgPhoneStatus.getDrawable().getConstantState() == getResources()
+                    .getDrawable(R.drawable.ic_check).getConstantState()) {
+                Toast.makeText(this, "Số điện thoại này đã được xác thực rồi.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Normalizing phone number for Firebase (e.g., +84)
+            String formattedPhone = inputNumber;
+            if (formattedPhone.startsWith("0")) {
+                formattedPhone = "+84" + formattedPhone.substring(1);
+            } else if (!formattedPhone.startsWith("+")) {
+                formattedPhone = "+84" + formattedPhone;
+            }
+
+            PhoneAuthOptions options = PhoneAuthOptions.newBuilder(mAuth)
+                    .setPhoneNumber(formattedPhone) // Phone number to verify
+                    .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
+                    .setActivity(this) // Activity (for callback binding)
+                    .setCallbacks(mCallbacks) // OnVerificationStateChangedCallbacks
+                    .build();
+            PhoneAuthProvider.verifyPhoneNumber(options);
+            Toast.makeText(this, "Đang gửi OTP đến " + formattedPhone + "...", Toast.LENGTH_SHORT).show();
+        });
+
         btnSave.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(this);
             String newName = Objects.requireNonNull(inputFullName.getText()).toString().trim();
@@ -179,34 +260,81 @@ public class partuser_edit_profile extends AppCompatActivity {
 
             Map<String, Object> updates = new HashMap<>();
             updates.put("fullName", newName);
-            updates.put("phone", newPhone);
+
+            if (!newPhone.equals(currentPhone)) {
+                // User is saving a DIFFERENT phone number (likely unverified)
+                // We must UNLINK the old verified phone from Auth (if exists) -> "biến mất cùng
+                // với tài khoản"
+
+                // Note: We blindly try to unlink. If it's not linked, it might error, but we
+                // proceed to save anyway.
+                // Or better, check if linked.
+                mAuth.getCurrentUser().unlink(PhoneAuthProvider.PROVIDER_ID)
+                        .addOnCompleteListener(task -> {
+                            // Whether unlink success (was linked and now removed) or failed (wasn't
+                            // linked),
+                            // we proceed to save the NEW number to DB.
+                            // Ideally we check error, but user wants "save unverified phone", so priority
+                            // is DB update.
+
+                            updates.put("phone", newPhone);
+                            updates.put("phoneVerified", false);
+                            updates.put("dateOfBirth", newDob);
+                            updates.put("gender", newGender);
+
+                            performProfileUpdate(updates, newName);
+                        });
+
+                return; // Async flow takes over
+            }
+            // Phone is same as verified/current. Just save.
+            updates.put("phone", currentPhone);
             updates.put("dateOfBirth", newDob);
             updates.put("gender", newGender);
-
-            if (selectedImageUri != null) {
-                uploadToImgBB(selectedImageUri, finalUid, updates);
-            } else {
-                usersRef.child(finalUid).updateChildren(updates)
-                        .addOnCompleteListener(task -> {
-                            if (task.isSuccessful()) {
-                                extra_sound_manager.playSuccess(this);
-                                prefs.edit().putString("username", newName).apply();
-                                Toast.makeText(this, "Cập nhật hồ sơ thành công.", Toast.LENGTH_SHORT).show();
-                                finish();
-                            } else {
-                                extra_sound_manager.playError(this);
-                                Toast.makeText(this,
-                                        "Lỗi cập nhật: " + Objects.requireNonNull(task.getException()).getMessage(),
-                                        Toast.LENGTH_LONG).show();
-                            }
-                        });
-            }
+            performProfileUpdate(updates, newName);
         });
 
         btnCancel.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(this);
             finish();
         });
+
+        inputPhone.addTextChangedListener(new android.text.TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String input = s.toString().trim();
+
+                String authPhone = getLinkedPhoneNumber();
+                String normalizedInput = normalizePhoneNumber(input);
+
+                boolean matchesAuth = authPhone != null && normalizedInput.equals(authPhone);
+
+                // If matches Auth, it is verified.
+                if (matchesAuth) {
+                    btnVerifyPhone.setVisibility(android.view.View.GONE);
+                    imgPhoneStatus.setImageResource(R.drawable.ic_check);
+                    imgPhoneStatus.setColorFilter(getResources().getColor(R.color.netflix_green));
+                } else {
+                    // Mismatch -> Show Verify
+                    btnVerifyPhone.setVisibility(android.view.View.VISIBLE);
+                    imgPhoneStatus.setImageResource(R.drawable.ic_close);
+                    imgPhoneStatus.setColorFilter(getResources().getColor(android.R.color.holo_red_dark));
+                }
+            }
+
+            @Override
+            public void afterTextChanged(android.text.Editable s) {
+            }
+
+        });
+
+        // Initialize button visibility based on initial state (handled in onDataChange
+        // mostly, but good to ensure)
     }
 
     private void setupGenderDropdown() {
@@ -252,6 +380,125 @@ public class partuser_edit_profile extends AppCompatActivity {
                     year, month, day);
             datePickerDialog.show();
         });
+    }
+
+    private void setupPhoneAuthCallbacks() {
+        mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+            @Override
+            public void onVerificationCompleted(@NonNull PhoneAuthCredential credential) {
+                // Auto-retrieval or instant verification
+                linkPhoneCredential(credential);
+            }
+
+            @Override
+            public void onVerificationFailed(@NonNull FirebaseException e) {
+                extra_sound_manager.playError(partuser_edit_profile.this);
+                Toast.makeText(partuser_edit_profile.this, "Xác thực thất bại: " + e.getMessage(), Toast.LENGTH_LONG)
+                        .show();
+            }
+
+            @Override
+            public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken token) {
+                verificationId = s;
+                resendToken = token;
+                showOtpDialog();
+            }
+        };
+    }
+
+    private void showOtpDialog() {
+        EditText input = new EditText(this);
+        input.setHint("Nhập mã OTP");
+        input.setTextAlignment(android.view.View.TEXT_ALIGNMENT_CENTER);
+        input.setInputType(android.text.InputType.TYPE_CLASS_NUMBER);
+        android.widget.FrameLayout container = new android.widget.FrameLayout(this);
+        android.widget.FrameLayout.LayoutParams params = new android.widget.FrameLayout.LayoutParams(
+                android.view.ViewGroup.LayoutParams.MATCH_PARENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.leftMargin = 50;
+        params.rightMargin = 50;
+        input.setLayoutParams(params);
+        container.addView(input);
+
+        new android.app.AlertDialog.Builder(this)
+                .setTitle("Nhập mã xác thực")
+                .setView(container)
+                .setPositiveButton("Xác nhận", (dialog, which) -> {
+                    String code = input.getText().toString().trim();
+                    if (!code.isEmpty()) {
+                        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
+                        linkPhoneCredential(credential);
+                    }
+                })
+                .setNegativeButton("Hủy", null)
+                .show();
+    }
+
+    private void linkPhoneCredential(PhoneAuthCredential credential) {
+        if (mAuth.getCurrentUser() != null) {
+            // Check if user already has a phone number linked
+            String currentLinkedPhone = null;
+            for (com.google.firebase.auth.UserInfo profile : mAuth.getCurrentUser().getProviderData()) {
+                if (PhoneAuthProvider.PROVIDER_ID.equals(profile.getProviderId())) {
+                    currentLinkedPhone = profile.getPhoneNumber();
+                    break;
+                }
+            }
+
+            if (currentLinkedPhone != null) {
+                // Unlink the old phone number first
+                mAuth.getCurrentUser().unlink(PhoneAuthProvider.PROVIDER_ID)
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                // Now link the new credential
+                                finalLink(credential);
+                            } else {
+                                extra_sound_manager.playError(this);
+                                Toast.makeText(this,
+                                        "Lỗi gỡ bỏ SĐT cũ: " + Objects.requireNonNull(task.getException()).getMessage(),
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            } else {
+                // No existing phone, pure link
+                finalLink(credential);
+            }
+        }
+    }
+
+    private void finalLink(PhoneAuthCredential credential) {
+        mAuth.getCurrentUser().linkWithCredential(credential)
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        Map<String, Object> updatePhoneMap = new HashMap<>();
+                        updatePhoneMap.put("phoneVerified", true);
+
+                        String newPhone = mAuth.getCurrentUser().getPhoneNumber();
+                        if (newPhone != null) {
+                            updatePhoneMap.put("phone", newPhone);
+                            currentPhone = newPhone;
+                            inputPhone.setText(newPhone);
+                        }
+
+                        usersRef.child(mAuth.getCurrentUser().getUid()).updateChildren(updatePhoneMap);
+
+                        extra_sound_manager.playSuccess(this);
+                        Toast.makeText(this, "Xác thực và Cập nhật SĐT thành công!", Toast.LENGTH_SHORT).show();
+                        imgPhoneStatus.setImageResource(R.drawable.ic_check);
+                        imgPhoneStatus.setColorFilter(getResources().getColor(R.color.netflix_green));
+                        btnVerifyPhone.setVisibility(android.view.View.GONE);
+                    } else {
+                        Exception e = task.getException();
+                        extra_sound_manager.playError(this);
+
+                        if (e instanceof FirebaseAuthUserCollisionException) {
+                            Toast.makeText(this, "Số ĐT này đã liên kết với tài khoản khác!", Toast.LENGTH_LONG)
+                                    .show();
+                        } else {
+                            String msg = e != null ? e.getMessage() : "Unknown";
+                            Toast.makeText(this, "Lỗi: " + msg, Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
     }
 
     @Override
@@ -348,5 +595,58 @@ public class partuser_edit_profile extends AppCompatActivity {
             Toast.makeText(this, "Không thể xử lý ảnh: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             Log.e("IMGBB_UPLOAD", "bitmap error", e);
         }
+    }
+
+    // Helper to perform the final DB update to avoid code duplication
+    private void performProfileUpdate(Map<String, Object> updates, String newName) {
+        if (selectedImageUri != null) {
+            // If we have an image to upload, upload it first, then update childs inside
+            // that method
+            // But wait, uploadToImgBB calls updateChildren internally.
+            // We should refactor strictly if we want perfect DRY, but here we can just pass
+            // 'updates' to uploadToImgBB
+            uploadToImgBB(selectedImageUri, mAuth.getCurrentUser().getUid(), updates);
+        } else {
+            // Direct update
+            usersRef.child(mAuth.getCurrentUser().getUid()).updateChildren(updates)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            extra_sound_manager.playSuccess(this);
+                            prefs.edit().putString("username", newName).apply();
+                            Toast.makeText(this, "Cập nhật hồ sơ thành công.", Toast.LENGTH_SHORT).show();
+                            finish();
+                        } else {
+                            extra_sound_manager.playError(this);
+                            Toast.makeText(this,
+                                    "Lỗi cập nhật: " + Objects.requireNonNull(task.getException()).getMessage(),
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    });
+        }
+    }
+
+    // Helper to get formatted/normalized phone number
+    private String normalizePhoneNumber(String phone) {
+        if (phone == null || phone.isEmpty())
+            return "";
+        String clean = phone.trim();
+        if (clean.startsWith("0")) {
+            return "+84" + clean.substring(1);
+        } else if (!clean.startsWith("+")) {
+            return "+84" + clean;
+        }
+        return clean;
+    }
+
+    // Helper to get the phone number actually linked to Firebase Auth
+    private String getLinkedPhoneNumber() {
+        if (mAuth.getCurrentUser() == null)
+            return null;
+        for (com.google.firebase.auth.UserInfo profile : mAuth.getCurrentUser().getProviderData()) {
+            if (PhoneAuthProvider.PROVIDER_ID.equals(profile.getProviderId())) {
+                return profile.getPhoneNumber();
+            }
+        }
+        return null;
     }
 }
