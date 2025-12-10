@@ -39,7 +39,8 @@
     <string name="label_empty">Ghế trống</string>
     <string name="label_selected">Ghế bạn chọn</string>
     <string name="label_booked">Đã đặt</string>
-
-
-
+    <string name="change_language">Đổi ngôn ngữ</string>
+    <string name="language_selection_title">Chọn ngôn ngữ</string>
+    <string name="lang_vi">Tiếng Việt</string>
+    <string name="lang_en">English</string>
 </resources>
