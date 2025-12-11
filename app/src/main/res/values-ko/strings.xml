@@ -202,4 +202,42 @@
     <string name="toast_email_already_verified">이메일이 이미 인증되었습니다. 로그인할 수 있습니다.</string>
     <string name="toast_email_app_not_found">이메일 앱을 찾을 수 없습니다.</string>
     <string name="toast_enter_email_to_reset">비밀번호를 재설정하려면 이메일을 입력하세요!</string>
+
+    <!-- Movie Preferences / Additional Info -->
+    <string name="movie_preferences">추가 정보</string>
+    <string name="movie_preferences_title">추가 정보</string>
+    <string name="movie_preferences_subtitle">더 나은 경험을 위해 세부 정보를 제공해주세요</string>
+    <string name="favorite_genre">좋아하는 영화 장르</string>
+    <string name="select_genre">장르 선택</string>
+    <string name="favorite_movie_language">좋아하는 영화 언어</string>
+    <string name="select_movie_language">언어 선택</string>
+    <string name="subtitle_preference">더빙 또는 자막?</string>
+    <string name="dubbed">더빙</string>
+    <string name="subtitled">자막</string>
+    <string name="both_dubbed_subtitled">둘 다 좋아요</string>
+    <string name="toast_preferences_saved">영화 취향이 저장되었습니다!</string>
+    <string name="toast_select_at_least_one">최소 하나의 취향을 선택하세요!</string>
+
+    <!-- Movie Genres -->
+    <string name="genre_action">액션</string>
+    <string name="genre_comedy">코미디</string>
+    <string name="genre_drama">드라마</string>
+    <string name="genre_horror">공포</string>
+    <string name="genre_romance">로맨스</string>
+    <string name="genre_scifi">SF</string>
+    <string name="genre_animation">애니메이션</string>
+    <string name="genre_documentary">다큐멘터리</string>
+    <string name="genre_thriller">스릴러</string>
+    <string name="genre_fantasy">판타지</string>
+
+    <!-- Movie Languages -->
+    <string name="movie_lang_vietnamese">베트남어</string>
+    <string name="movie_lang_english">영어</string>
+    <string name="movie_lang_korean">한국어</string>
+    <string name="movie_lang_japanese">일본어</string>
+    <string name="movie_lang_chinese">중국어</string>
+    <string name="movie_lang_thai">태국어</string>
+    <string name="movie_lang_hindi">힌디어</string>
+    <string name="movie_lang_french">프랑스어</string>
+    <string name="movie_lang_spanish">스페인어</string>
 </resources>

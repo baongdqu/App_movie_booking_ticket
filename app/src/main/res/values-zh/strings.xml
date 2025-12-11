@@ -202,4 +202,42 @@
     <string name="toast_email_already_verified">邮箱已验证。您可以登录了。</string>
     <string name="toast_email_app_not_found">找不到邮件应用。</string>
     <string name="toast_enter_email_to_reset">请输入电子邮箱以重置密码！</string>
+
+    <!-- Movie Preferences / Additional Info -->
+    <string name="movie_preferences">附加信息</string>
+    <string name="movie_preferences_title">附加信息</string>
+    <string name="movie_preferences_subtitle">提供详细信息以改善您的体验</string>
+    <string name="favorite_genre">喜欢的电影类型</string>
+    <string name="select_genre">选择类型</string>
+    <string name="favorite_movie_language">喜欢的电影语言</string>
+    <string name="select_movie_language">选择语言</string>
+    <string name="subtitle_preference">配音还是字幕？</string>
+    <string name="dubbed">配音</string>
+    <string name="subtitled">字幕</string>
+    <string name="both_dubbed_subtitled">都可以</string>
+    <string name="toast_preferences_saved">电影偏好已保存！</string>
+    <string name="toast_select_at_least_one">请至少选择一项偏好！</string>
+
+    <!-- Movie Genres -->
+    <string name="genre_action">动作</string>
+    <string name="genre_comedy">喜剧</string>
+    <string name="genre_drama">剧情</string>
+    <string name="genre_horror">恐怖</string>
+    <string name="genre_romance">爱情</string>
+    <string name="genre_scifi">科幻</string>
+    <string name="genre_animation">动画</string>
+    <string name="genre_documentary">纪录片</string>
+    <string name="genre_thriller">惊悚</string>
+    <string name="genre_fantasy">奇幻</string>
+
+    <!-- Movie Languages -->
+    <string name="movie_lang_vietnamese">越南语</string>
+    <string name="movie_lang_english">英语</string>
+    <string name="movie_lang_korean">韩语</string>
+    <string name="movie_lang_japanese">日语</string>
+    <string name="movie_lang_chinese">中文</string>
+    <string name="movie_lang_thai">泰语</string>
+    <string name="movie_lang_hindi">印地语</string>
+    <string name="movie_lang_french">法语</string>
+    <string name="movie_lang_spanish">西班牙语</string>
 </resources>

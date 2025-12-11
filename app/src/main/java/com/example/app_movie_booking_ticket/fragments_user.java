@@ -25,13 +25,13 @@ import com.google.firebase.database.*;
 public class fragments_user extends Fragment {
 
     // ============================
-    //  Các view (để dùng ở nhiều chỗ)
+    // Các view (để dùng ở nhiều chỗ)
     // ============================
     private TextView txtUsername;
     private TextView txtEmail;
-    private ImageView imgAvatar;            // <- trước đây là local trong onViewCreated, bây giờ là field
+    private ImageView imgAvatar; // <- trước đây là local trong onViewCreated, bây giờ là field
     private ImageButton btnBack;
-    private Button btnEditProfile, btnSettings, btnLogout;
+    private Button btnEditProfile, btnMoviePreferences, btnSettings, btnLogout;
 
     // Firebase + prefs
     private FirebaseAuth mAuth;
@@ -51,7 +51,7 @@ public class fragments_user extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+            Bundle savedInstanceState) {
         // Inflate layout fragment_user.xml
         return inflater.inflate(R.layout.layouts_fragments_user, container, false);
     }
@@ -67,6 +67,7 @@ public class fragments_user extends Fragment {
         txtUsername = view.findViewById(R.id.txtUsername);
         txtEmail = view.findViewById(R.id.txtEmail);
         btnEditProfile = view.findViewById(R.id.btnEditProfile);
+        btnMoviePreferences = view.findViewById(R.id.btnMoviePreferences);
         btnSettings = view.findViewById(R.id.btnSettings);
         btnLogout = view.findViewById(R.id.btnLogout);
 
@@ -104,6 +105,12 @@ public class fragments_user extends Fragment {
         btnEditProfile.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(requireActivity()); // Bổ sung âm thanh
             startActivity(new Intent(requireActivity(), partuser_edit_profile.class));
+        });
+
+        // Sở thích phim (btnMoviePreferences)
+        btnMoviePreferences.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(requireActivity());
+            startActivity(new Intent(requireActivity(), partuser_movie_preferences.class));
         });
 
         // Cài đặt nâng cao (btnSettings)
@@ -158,7 +165,8 @@ public class fragments_user extends Fragment {
                                 txtUsername.setText(username != null ? username : "Người dùng");
 
                                 // set avatar — nếu null hoặc rỗng thì dùng default
-                                final String urlToLoad = (avatarUrl != null && !avatarUrl.isEmpty()) ? avatarUrl : DEFAULT_AVATAR_URL;
+                                final String urlToLoad = (avatarUrl != null && !avatarUrl.isEmpty()) ? avatarUrl
+                                        : DEFAULT_AVATAR_URL;
 
                                 // Dùng Glide (context là fragment -> requireActivity())
                                 try {

@@ -96,6 +96,25 @@
                 app:iconTint="@color/netflix_text_white"
                 android:layout_marginBottom="16dp" />
 
+            <!-- Movie Preferences Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMoviePreferences"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="@string/movie_preferences"
+                android:textColor="@color/netflix_text_white"
+                android:backgroundTint="@color/netflix_medium_gray"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-medium"
+                android:textAllCaps="false"
+                app:cornerRadius="4dp"
+                app:icon="@drawable/ic_movie"
+                app:iconGravity="textStart"
+                app:iconPadding="12dp"
+                app:iconTint="@color/netflix_text_white"
+                android:layout_marginBottom="16dp" />
+
             <!-- Settings Button -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnSettings"

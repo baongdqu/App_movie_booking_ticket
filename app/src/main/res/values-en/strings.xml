@@ -202,4 +202,42 @@
     <string name="toast_email_already_verified">Email was already verified. You can log in.</string>
     <string name="toast_email_app_not_found">Email app not found.</string>
     <string name="toast_enter_email_to_reset">Please enter email to reset password!</string>
+
+    <!-- Movie Preferences / Additional Info -->
+    <string name="movie_preferences">Additional Information</string>
+    <string name="movie_preferences_title">Additional Information</string>
+    <string name="movie_preferences_subtitle">Provide details to improve your experience</string>
+    <string name="favorite_genre">Favorite Movie Genre</string>
+    <string name="select_genre">Select movie genre</string>
+    <string name="favorite_movie_language">Favorite Movie Language</string>
+    <string name="select_movie_language">Select movie language</string>
+    <string name="subtitle_preference">Dubbed or Subtitled?</string>
+    <string name="dubbed">Dubbed</string>
+    <string name="subtitled">Subtitled</string>
+    <string name="both_dubbed_subtitled">Both are fine</string>
+    <string name="toast_preferences_saved">Movie preferences saved!</string>
+    <string name="toast_select_at_least_one">Please select at least one preference!</string>
+
+    <!-- Movie Genres -->
+    <string name="genre_action">Action</string>
+    <string name="genre_comedy">Comedy</string>
+    <string name="genre_drama">Drama</string>
+    <string name="genre_horror">Horror</string>
+    <string name="genre_romance">Romance</string>
+    <string name="genre_scifi">Sci-Fi</string>
+    <string name="genre_animation">Animation</string>
+    <string name="genre_documentary">Documentary</string>
+    <string name="genre_thriller">Thriller</string>
+    <string name="genre_fantasy">Fantasy</string>
+
+    <!-- Movie Languages -->
+    <string name="movie_lang_vietnamese">Vietnamese</string>
+    <string name="movie_lang_english">English</string>
+    <string name="movie_lang_korean">Korean</string>
+    <string name="movie_lang_japanese">Japanese</string>
+    <string name="movie_lang_chinese">Chinese</string>
+    <string name="movie_lang_thai">Thai</string>
+    <string name="movie_lang_hindi">Hindi</string>
+    <string name="movie_lang_french">French</string>
+    <string name="movie_lang_spanish">Spanish</string>
 </resources>
