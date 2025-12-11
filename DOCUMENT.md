@@ -144,6 +144,7 @@ res/layout/
 ├── layouts_3_edit_profile.xml
 ├── layouts_3_change_password.xml
 ├── layouts_3_advanced_settings.xml
+├── partuser_movie_preferences.xml
 ├── layouts_fragments_home.xml
 ├── layouts_fragments_user.xml
 ├── layouts_fragments_mail.xml
@@ -430,6 +431,15 @@ app-movie-booking/
     │   ├── theme: String
     │   ├── notifications: Boolean
     │   └── sound: Boolean
+    │
+    └── users/
+        └── {uid}/
+            └── moviePreferences/
+                ├── favoriteGenre: String
+                ├── favoriteLanguage: String
+                ├── subtitlePreference: String
+                ├── genreIndex: Integer (Index thể loại đã chọn)
+                └── languageIndex: Integer (Index ngôn ngữ đã chọn)
 ```
 
 ### 5.2. Model Classes
@@ -616,6 +626,16 @@ SharedPreferences: "UserPrefs"
   - Notification settings
   - Sound settings
   - Language settings
+
+
+#### Additional Information Screen (Thông tin bổ sung)
+- **File:** `partuser_movie_preferences.xml`, `partuser_movie_preferences.java`
+- **Truy cập:** Từ màn hình User -> Click "Thông tin bổ sung"
+- **Chức năng:**
+  - Chọn thể loại phim yêu thích (Dropdown)
+  - Chọn ngôn ngữ phim yêu thích (Dropdown)
+  - Chọn hình thức xem (Lồng tiếng/Phụ đề - RadioButton)
+  - **Lưu ý kỹ thuật:** Dữ liệu được lưu trữ dưới dạng Index (số nguyên) để đảm bảo tính nhất quán khi chuyển đổi ngôn ngữ ứng dụng.
 
 ### 6.5. Movie Screens
 
