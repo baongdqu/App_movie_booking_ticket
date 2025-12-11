@@ -202,4 +202,68 @@
     <string name="toast_email_already_verified">Email đã được xác minh trước đó. Bạn có thể đăng nhập.</string>
     <string name="toast_email_app_not_found">Không tìm thấy ứng dụng Email.</string>
     <string name="toast_enter_email_to_reset">Vui lòng nhập email để khôi phục mật khẩu!</string>
+
+    <!-- Movie Preferences / Additional Info -->
+    <string name="movie_preferences">Thông tin bổ sung</string>
+    <string name="movie_preferences_title">Thông tin bổ sung</string>
+    <string name="movie_preferences_subtitle">Cung cấp thêm thông tin để chúng tôi phục vụ bạn tốt hơn</string>
+    <string name="favorite_genre">Thể loại phim yêu thích</string>
+    <string name="select_genre">Chọn thể loại phim</string>
+    <string name="favorite_movie_language">Ngôn ngữ phim yêu thích</string>
+    <string name="select_movie_language">Chọn ngôn ngữ phim</string>
+    <string name="subtitle_preference">Lồng tiếng hay phụ đề?</string>
+    <string name="dubbed">Phim lồng tiếng</string>
+    <string name="subtitled">Phim phụ đề</string>
+    <string name="both_dubbed_subtitled">Cả hai đều được</string>
+    <string name="toast_preferences_saved">Đã lưu sở thích phim!</string>
+    <string name="toast_select_at_least_one">Vui lòng chọn ít nhất một sở thích!</string>
+
+    <!-- Movie Genres -->
+    <string name="genre_action">Hành động</string>
+    <string name="genre_comedy">Hài hước</string>
+    <string name="genre_drama">Chính kịch</string>
+    <string name="genre_horror">Kinh dị</string>
+    <string name="genre_romance">Lãng mạn</string>
+    <string name="genre_scifi">Khoa học viễn tưởng</string>
+    <string name="genre_animation">Hoạt hình</string>
+    <string name="genre_documentary">Tài liệu</string>
+    <string name="genre_thriller">Giật gân</string>
+    <string name="genre_fantasy">Kỳ ảo</string>
+
+    <!-- Movie Languages -->
+    <string name="movie_lang_vietnamese">Tiếng Việt</string>
+    <string name="movie_lang_english">Tiếng Anh</string>
+    <string name="movie_lang_korean">Tiếng Hàn</string>
+    <string name="movie_lang_japanese">Tiếng Nhật</string>
+    <string name="movie_lang_chinese">Tiếng Trung</string>
+    <string name="movie_lang_thai">Tiếng Thái</string>
+    <string name="movie_lang_hindi">Tiếng Hindi</string>
+    <string name="movie_lang_french">Tiếng Pháp</string>
+    <string name="movie_lang_spanish">Tiếng Tây Ban Nha</string>
+
+    <!-- Arrays for Dropdowns (Dynamic Lists) -->
+    <string-array name="movie_genres_array">
+        <item>@string/genre_action</item>
+        <item>@string/genre_comedy</item>
+        <item>@string/genre_drama</item>
+        <item>@string/genre_horror</item>
+        <item>@string/genre_romance</item>
+        <item>@string/genre_scifi</item>
+        <item>@string/genre_animation</item>
+        <item>@string/genre_documentary</item>
+        <item>@string/genre_thriller</item>
+        <item>@string/genre_fantasy</item>
+    </string-array>
+
+    <string-array name="movie_languages_array">
+        <item>@string/movie_lang_vietnamese</item>
+        <item>@string/movie_lang_english</item>
+        <item>@string/movie_lang_korean</item>
+        <item>@string/movie_lang_japanese</item>
+        <item>@string/movie_lang_chinese</item>
+        <item>@string/movie_lang_thai</item>
+        <item>@string/movie_lang_hindi</item>
+        <item>@string/movie_lang_french</item>
+        <item>@string/movie_lang_spanish</item>
+    </string-array>
 </resources>

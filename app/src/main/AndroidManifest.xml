@@ -50,6 +50,9 @@
             android:name=".partuser_change_password"
             android:exported="true" />
         <activity
+            android:name=".partuser_movie_preferences"
+            android:exported="true" />
+        <activity
             android:name=".activities_0_loading"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">

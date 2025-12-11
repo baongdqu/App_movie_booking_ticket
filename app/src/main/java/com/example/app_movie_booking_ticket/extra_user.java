@@ -8,6 +8,9 @@ public class extra_user {
     public String dateOfBirth;
     public String gender;
 
+    // Preferences (saved as a Map for flexibility)
+    public java.util.Map<String, Object> moviePreferences;
+
     private String avatarUrl;
 
     // ⚠️ Constructor trống - bắt buộc để Firebase đọc/ghi dữ liệu

@@ -202,4 +202,42 @@
     <string name="toast_email_already_verified">メールは既に確認済みです。ログインできます。</string>
     <string name="toast_email_app_not_found">メールアプリが見つかりません。</string>
     <string name="toast_enter_email_to_reset">パスワードをリセットするにはメールアドレスを入力してください！</string>
+
+    <!-- Movie Preferences / Additional Info -->
+    <string name="movie_preferences">追加情報</string>
+    <string name="movie_preferences_title">追加情報</string>
+    <string name="movie_preferences_subtitle">より良い体験のために詳細を提供してください</string>
+    <string name="favorite_genre">好きな映画ジャンル</string>
+    <string name="select_genre">ジャンルを選択</string>
+    <string name="favorite_movie_language">好きな映画の言語</string>
+    <string name="select_movie_language">言語を選択</string>
+    <string name="subtitle_preference">吹き替えか字幕か？</string>
+    <string name="dubbed">吹き替え</string>
+    <string name="subtitled">字幕</string>
+    <string name="both_dubbed_subtitled">どちらでも良い</string>
+    <string name="toast_preferences_saved">映画の好みを保存しました！</string>
+    <string name="toast_select_at_least_one">少なくとも1つの好みを選択してください！</string>
+
+    <!-- Movie Genres -->
+    <string name="genre_action">アクション</string>
+    <string name="genre_comedy">コメディ</string>
+    <string name="genre_drama">ドラマ</string>
+    <string name="genre_horror">ホラー</string>
+    <string name="genre_romance">ロマンス</string>
+    <string name="genre_scifi">SF</string>
+    <string name="genre_animation">アニメーション</string>
+    <string name="genre_documentary">ドキュメンタリー</string>
+    <string name="genre_thriller">スリラー</string>
+    <string name="genre_fantasy">ファンタジー</string>
+
+    <!-- Movie Languages -->
+    <string name="movie_lang_vietnamese">ベトナム語</string>
+    <string name="movie_lang_english">英語</string>
+    <string name="movie_lang_korean">韓国語</string>
+    <string name="movie_lang_japanese">日本語</string>
+    <string name="movie_lang_chinese">中国語</string>
+    <string name="movie_lang_thai">タイ語</string>
+    <string name="movie_lang_hindi">ヒンディー語</string>
+    <string name="movie_lang_french">フランス語</string>
+    <string name="movie_lang_spanish">スペイン語</string>
 </resources>
