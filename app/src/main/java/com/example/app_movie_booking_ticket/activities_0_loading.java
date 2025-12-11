@@ -6,12 +6,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class activities_0_loading extends BaseActivity {
+public class activities_0_loading extends extra_manager_language {
 
     private FirebaseAuth mAuth;
 

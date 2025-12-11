@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import com.google.android.material.textfield.TextInputEditText;
@@ -48,7 +47,7 @@ import okhttp3.MultipartBody;
 import com.bumptech.glide.Glide;
 import android.util.Log;
 
-public class partuser_edit_profile extends BaseActivity {
+public class partuser_edit_profile extends extra_manager_language {
 
     private static final int PICK_IMAGE_REQUEST = 1001;
 

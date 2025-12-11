@@ -10,7 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
@@ -22,7 +21,7 @@ import com.google.android.gms.tasks.Task;
 
 import java.util.Objects;
 
-public class activities_1_login extends BaseActivity {
+public class activities_1_login extends extra_manager_language {
 
     // 🔹 Khai báo các thành phần giao diện
     private TextInputEditText inputEmail, inputPassword;
