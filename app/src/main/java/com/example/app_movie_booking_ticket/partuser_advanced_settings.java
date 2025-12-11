@@ -12,8 +12,6 @@ import android.widget.Button;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -24,9 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import android.view.View;
-
-public class partuser_advanced_settings extends BaseActivity {
+public class partuser_advanced_settings extends extra_manager_language {
 
     private Switch switchDarkMode, switchNotification, switchSound;
     private Button btnChangePassword, btnDeleteAccount, btnBackSettings, btnChangeLanguage;
