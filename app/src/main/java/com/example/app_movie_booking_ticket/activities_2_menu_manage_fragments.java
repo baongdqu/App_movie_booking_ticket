@@ -1,13 +1,13 @@
 package com.example.app_movie_booking_ticket;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import android.widget.Toast;
 
-public class activities_2_menu_manage_fragments extends BaseActivity {
+public class activities_2_menu_manage_fragments extends extra_manager_language {
 
     private BottomNavigationView bottomNavigationView;
 

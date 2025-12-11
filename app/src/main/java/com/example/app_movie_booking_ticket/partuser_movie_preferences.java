@@ -2,7 +2,6 @@ package com.example.app_movie_booking_ticket;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -19,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class partuser_movie_preferences extends BaseActivity {
+public class partuser_movie_preferences extends extra_manager_language {
 
     private TextInputEditText inputGenre, inputMovieLanguage;
     private RadioGroup radioGroupSubtitle;
