@@ -266,4 +266,19 @@
         <item>@string/movie_lang_french</item>
         <item>@string/movie_lang_spanish</item>
     </string-array>
+
+    <!-- 🤖 Chatbot Strings -->
+    <string name="chatbot_title">Trợ lý phim</string>
+    <string name="chatbot_online">Trực tuyến</string>
+    <string name="chatbot_offline">Ngoại tuyến</string>
+    <string name="chatbot_typing">Đang nhập...</string>
+    <string name="chatbot_welcome_message">Xin chào! 🎬 Tôi là trợ lý ảo của rạp phim. Tôi có thể giúp bạn:\n\n• Tìm phim hay\n• Hướng dẫn đặt vé\n• Trả lời câu hỏi về suất chiếu\n\nBạn cần hỗ trợ gì hôm nay?</string>
+    <string name="chat_input_hint">Nhập tin nhắn...</string>
+    <string name="send_message">Gửi tin nhắn</string>
+    <string name="chip_suggest_movie">Gợi ý phim hay</string>
+    <string name="chip_book_ticket">Cách đặt vé</string>
+    <string name="chip_showtime">Suất chiếu hôm nay</string>
+    <string name="chip_ticket_price">Giá vé</string>
+    <string name="gemini_api_key">YOUR_GEMINI_API_KEY_HERE</string>
+
 </resources>
