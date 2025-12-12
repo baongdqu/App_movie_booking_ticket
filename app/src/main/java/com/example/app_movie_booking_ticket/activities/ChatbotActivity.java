@@ -4,10 +4,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,28 +16,29 @@ import com.example.app_movie_booking_ticket.R;
 import com.example.app_movie_booking_ticket.adapter.ChatMessageAdapter;
 import com.example.app_movie_booking_ticket.extra.extra_gemini_helper;
 import com.example.app_movie_booking_ticket.model.ChatMessage;
-import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.chip.Chip;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
  * Activity cho màn hình Chatbot
  * Cho phép người dùng chat với AI để được hỗ trợ đặt vé xem phim
+ * 
+ * UI/UX: Modern design với gradient, cards, shadows
  */
 public class ChatbotActivity extends AppCompatActivity {
 
     // UI Components
-    private MaterialToolbar toolbar;
+    private ImageView btnBack;
     private RecyclerView recyclerChatMessages;
     private EditText inputChatMessage;
     private FloatingActionButton fabSendMessage;
-    private LinearLayout layoutTypingIndicator;
+    private CardView layoutTypingIndicator;
 
-    // Quick Reply Chips
-    private Chip chipSuggestMovie;
-    private Chip chipBookTicket;
-    private Chip chipShowtime;
-    private Chip chipTicketPrice;
+    // Quick Reply Buttons (MaterialButton thay vì Chip)
+    private MaterialButton chipSuggestMovie;
+    private MaterialButton chipBookTicket;
+    private MaterialButton chipShowtime;
+    private MaterialButton chipTicketPrice;
 
     // Adapter & Helper
     private ChatMessageAdapter adapter;
@@ -61,13 +63,13 @@ public class ChatbotActivity extends AppCompatActivity {
      * Khởi tạo các view
      */
     private void initViews() {
-        toolbar = findViewById(R.id.toolbarChatbot);
+        btnBack = findViewById(R.id.btnBack);
         recyclerChatMessages = findViewById(R.id.recyclerChatMessages);
         inputChatMessage = findViewById(R.id.inputChatMessage);
         fabSendMessage = findViewById(R.id.fabSendMessage);
         layoutTypingIndicator = findViewById(R.id.layoutTypingIndicator);
 
-        // Quick Reply Chips
+        // Quick Reply Buttons
         chipSuggestMovie = findViewById(R.id.chipSuggestMovie);
         chipBookTicket = findViewById(R.id.chipBookTicket);
         chipShowtime = findViewById(R.id.chipShowtime);
@@ -78,7 +80,7 @@ public class ChatbotActivity extends AppCompatActivity {
      * Setup toolbar với nút back
      */
     private void setupToolbar() {
-        toolbar.setNavigationOnClickListener(v -> onBackPressed());
+        btnBack.setOnClickListener(v -> onBackPressed());
     }
 
     /**
@@ -91,6 +93,14 @@ public class ChatbotActivity extends AppCompatActivity {
 
         recyclerChatMessages.setLayoutManager(layoutManager);
         recyclerChatMessages.setAdapter(adapter);
+
+        // Smooth scroll khi có tin nhắn mới
+        adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount) {
+                recyclerChatMessages.smoothScrollToPosition(adapter.getItemCount() - 1);
+            }
+        });
     }
 
     /**
@@ -109,7 +119,7 @@ public class ChatbotActivity extends AppCompatActivity {
             return false;
         });
 
-        // Quick Reply Chips
+        // Quick Reply Buttons
         chipSuggestMovie.setOnClickListener(v -> sendQuickReply(getString(R.string.chip_suggest_movie)));
         chipBookTicket.setOnClickListener(v -> sendQuickReply(getString(R.string.chip_book_ticket)));
         chipShowtime.setOnClickListener(v -> sendQuickReply(getString(R.string.chip_showtime)));
@@ -142,7 +152,6 @@ public class ChatbotActivity extends AppCompatActivity {
 
         // Thêm tin nhắn user vào danh sách
         adapter.addMessage(new ChatMessage(message, ChatMessage.TYPE_USER));
-        scrollToBottom();
 
         // Clear input
         inputChatMessage.setText("");
@@ -157,7 +166,6 @@ public class ChatbotActivity extends AppCompatActivity {
     private void sendQuickReply(String message) {
         // Thêm tin nhắn user
         adapter.addMessage(new ChatMessage(message, ChatMessage.TYPE_USER));
-        scrollToBottom();
 
         // Gọi API
         callGeminiAPI(message);
@@ -179,7 +187,6 @@ public class ChatbotActivity extends AppCompatActivity {
 
                 // Thêm phản hồi từ bot
                 adapter.addMessage(new ChatMessage(response, ChatMessage.TYPE_BOT));
-                scrollToBottom();
             }
 
             @Override
@@ -187,10 +194,9 @@ public class ChatbotActivity extends AppCompatActivity {
                 showTypingIndicator(false);
                 setInputEnabled(true);
 
-                // Hiển thị tin nhắn lỗi
+                // Hiển thị tin nhắn lỗi với style thân thiện
                 String errorMessage = "❌ " + error + "\n\nVui lòng thử lại sau nhé!";
                 adapter.addMessage(new ChatMessage(errorMessage, ChatMessage.TYPE_BOT));
-                scrollToBottom();
 
                 Toast.makeText(ChatbotActivity.this, error, Toast.LENGTH_SHORT).show();
             }
@@ -198,27 +204,42 @@ public class ChatbotActivity extends AppCompatActivity {
     }
 
     /**
-     * Hiển thị/ẩn typing indicator
+     * Hiển thị/ẩn typing indicator với animation
      */
     private void showTypingIndicator(boolean show) {
-        layoutTypingIndicator.setVisibility(show ? View.VISIBLE : View.GONE);
+        if (show) {
+            layoutTypingIndicator.setVisibility(View.VISIBLE);
+            layoutTypingIndicator.setAlpha(0f);
+            layoutTypingIndicator.animate()
+                    .alpha(1f)
+                    .setDuration(200)
+                    .start();
+        } else {
+            layoutTypingIndicator.animate()
+                    .alpha(0f)
+                    .setDuration(150)
+                    .withEndAction(() -> layoutTypingIndicator.setVisibility(View.GONE))
+                    .start();
+        }
     }
 
     /**
-     * Bật/tắt input field và nút gửi
+     * Bật/tắt input field và nút gửi với animation
      */
     private void setInputEnabled(boolean enabled) {
         inputChatMessage.setEnabled(enabled);
         fabSendMessage.setEnabled(enabled);
-        fabSendMessage.setAlpha(enabled ? 1.0f : 0.5f);
+
+        // Animate FAB alpha
+        fabSendMessage.animate()
+                .alpha(enabled ? 1.0f : 0.5f)
+                .setDuration(150)
+                .start();
     }
 
-    /**
-     * Scroll đến tin nhắn cuối cùng
-     */
-    private void scrollToBottom() {
-        if (adapter.getItemCount() > 0) {
-            recyclerChatMessages.smoothScrollToPosition(adapter.getItemCount() - 1);
-        }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 }

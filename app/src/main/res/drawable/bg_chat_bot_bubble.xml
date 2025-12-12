@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Glassmorphism effect với màu card -->
     <solid android:color="@color/chat_bot_bubble" />
+    <!-- Viền nhẹ tạo chiều sâu -->
+    <stroke
+        android:width="1dp"
+        android:color="@color/divider_color" />
+    <!-- Bo góc mềm mại - góc trên trái nhỏ hơn tạo hiệu ứng "đuôi tin nhắn" -->
     <corners
-        android:topLeftRadius="4dp"
-        android:topRightRadius="16dp"
-        android:bottomLeftRadius="16dp"
-        android:bottomRightRadius="16dp" />
+        android:topLeftRadius="6dp"
+        android:topRightRadius="20dp"
+        android:bottomLeftRadius="20dp"
+        android:bottomRightRadius="20dp" />
 </shape>
