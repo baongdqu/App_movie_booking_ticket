@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.app_movie_booking_ticket.activities.ChatbotActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -167,6 +170,14 @@ public class fragments_home extends Fragment {
 
         binding.imgAvatar.setOnClickListener(v -> binding.userInfoLayout.performClick());
         binding.tvFullName.setOnClickListener(v -> binding.userInfoLayout.performClick());
+
+        // =========================
+        // 🤖 CHATBOT FAB
+        // =========================
+        binding.fabChatbot.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(requireContext());
+            startActivity(new Intent(requireContext(), ChatbotActivity.class));
+        });
     }
 
     // =====================================================

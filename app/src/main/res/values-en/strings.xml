@@ -240,4 +240,19 @@
     <string name="movie_lang_hindi">Hindi</string>
     <string name="movie_lang_french">French</string>
     <string name="movie_lang_spanish">Spanish</string>
+
+    <!-- 🤖 Chatbot Strings -->
+    <string name="chatbot_title">Movie Assistant</string>
+    <string name="chatbot_online">Online</string>
+    <string name="chatbot_offline">Offline</string>
+    <string name="chatbot_typing">Typing...</string>
+    <string name="chatbot_welcome_message">Hello! 🎬 I\'m the movie theater assistant. I can help you:\n\n• Find great movies\n• Guide you to book tickets\n• Answer questions about showtimes\n\nHow can I help you today?</string>
+    <string name="chat_input_hint">Type a message...</string>
+    <string name="send_message">Send message</string>
+    <string name="chip_suggest_movie">Movie suggestions</string>
+    <string name="chip_book_ticket">How to book</string>
+    <string name="chip_showtime">Today\'s showtimes</string>
+    <string name="chip_ticket_price">Ticket prices</string>
+
 </resources>
+

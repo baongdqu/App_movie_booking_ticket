@@ -29,4 +29,16 @@
     <color name="netflix_text_white">#FFFFFF</color>
     <color name="netflix_text_gray">#AAAAAA</color>
     <color name="netflix_overlay">#CC000000</color>
+
+    <!-- 🤖 Chatbot Colors (Dark Mode) -->
+    <color name="chat_background">@color/bg_color</color>
+    <color name="chat_user_bubble">#E50914</color>
+    <color name="chat_user_bubble_dark">#B20710</color>
+    <color name="chat_bot_bubble">@color/card_background</color>
+    <color name="chat_bot_text">@color/text_primary</color>
+    <color name="chat_input_bg">@color/card_background</color>
+    <color name="chat_send_button">#E50914</color>
+    <color name="chat_hint_text">@color/text_secondary</color>
+    <color name="chat_chip_stroke">#E50914</color>
+    <color name="chat_chip_text">#E50914</color>
 </resources>

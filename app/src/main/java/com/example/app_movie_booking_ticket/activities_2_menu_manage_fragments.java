@@ -1,8 +1,10 @@
 package com.example.app_movie_booking_ticket;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import com.example.app_movie_booking_ticket.activities.ChatbotActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import android.widget.Toast;
@@ -34,7 +36,9 @@ public class activities_2_menu_manage_fragments extends extra_manager_language {
                 loadFragment(new fragments_mail());
                 return true;
             } else if (id == R.id.nav_chat_bot) {
-                Toast.makeText(this, getString(R.string.toast_chatbot_coming_soon), Toast.LENGTH_SHORT).show();
+                // Mở ChatbotActivity thay vì hiển thị toast
+                extra_sound_manager.playUiClick(this);
+                startActivity(new Intent(this, ChatbotActivity.class));
                 return false; // Không thay đổi tab được chọn
             } else if (id == R.id.nav_notifications) {
                 loadFragment(new fragments_notifications());
