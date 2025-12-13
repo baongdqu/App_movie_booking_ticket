@@ -254,5 +254,8 @@
     <string name="chip_showtime">Today\'s showtimes</string>
     <string name="chip_ticket_price">Ticket prices</string>
 
+    <string name="notification_profile_update_title">Account Update</string>
+    <string name="notification_profile_update_message">You have updated your personal information</string>
+    
 </resources>
 

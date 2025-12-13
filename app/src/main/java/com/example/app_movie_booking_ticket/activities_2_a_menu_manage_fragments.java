@@ -4,12 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import com.example.app_movie_booking_ticket.activities.ChatbotActivity;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import android.widget.Toast;
-
-public class activities_2_menu_manage_fragments extends extra_manager_language {
+public class activities_2_a_menu_manage_fragments extends extra_manager_language {
 
     private BottomNavigationView bottomNavigationView;
 
@@ -17,7 +15,7 @@ public class activities_2_menu_manage_fragments extends extra_manager_language {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         extra_themeutils.applySavedTheme(this);
-        setContentView(R.layout.layouts_2_menu_manage_fragments);
+        setContentView(R.layout.layouts_2_a_menu_manage_fragments);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
@@ -38,7 +36,7 @@ public class activities_2_menu_manage_fragments extends extra_manager_language {
             } else if (id == R.id.nav_chat_bot) {
                 // Mở ChatbotActivity thay vì hiển thị toast
                 extra_sound_manager.playUiClick(this);
-                startActivity(new Intent(this, ChatbotActivity.class));
+                startActivity(new Intent(this, activities_2_chatbot.class));
                 return false; // Không thay đổi tab được chọn
             } else if (id == R.id.nav_notifications) {
                 loadFragment(new fragments_notifications());

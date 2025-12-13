@@ -240,4 +240,8 @@
     <string name="movie_lang_hindi">ヒンディー語</string>
     <string name="movie_lang_french">フランス語</string>
     <string name="movie_lang_spanish">スペイン語</string>
+
+    <!-- Notification Messages -->
+    <string name="notification_profile_update_title">アカウント更新</string>
+    <string name="notification_profile_update_message">個人情報を変更しました</string>
 </resources>
