@@ -154,7 +154,7 @@ public class activities_2_chatbot extends AppCompatActivity {
                 // Server không khả dụng - thông báo cho user
                 runOnUiThread(() -> {
                     Toast.makeText(activities_2_chatbot.this,
-                            "⚠️ Server AI chưa sẵn sàng. Kiểm tra kết nối.",
+                            getString(R.string.server_not_ready),
                             Toast.LENGTH_LONG).show();
                 });
             }
@@ -223,7 +223,7 @@ public class activities_2_chatbot extends AppCompatActivity {
                 setInputEnabled(true);
 
                 // Hiển thị tin nhắn lỗi với style thân thiện
-                String errorMessage = "❌ " + error + "\n\nVui lòng thử lại sau nhé!";
+                String errorMessage = getString(R.string.error_prefix) + error + getString(R.string.please_try_again);
                 adapter.addMessage(new ChatMessage(errorMessage, ChatMessage.TYPE_BOT));
 
                 Toast.makeText(activities_2_chatbot.this, error, Toast.LENGTH_SHORT).show();

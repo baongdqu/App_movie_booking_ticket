@@ -244,4 +244,32 @@
     <!-- Notification Messages -->
     <string name="notification_profile_update_title">アカウント更新</string>
     <string name="notification_profile_update_message">個人情報を変更しました</string>
+
+    <!-- 🤖 Chatbot Strings -->
+    <string name="chatbot_title">映画アシスタント</string>
+    <string name="chatbot_online">オンライン</string>
+    <string name="chatbot_offline">オフライン</string>
+    <string name="chatbot_typing">入力中...</string>
+    <string name="chatbot_welcome_message">こんにちは！🎬 映画館アシスタントです。お手伝いできること：\n\n• 映画の提案\n• チケット予約方法\n• 上映時間の案内\n\n今日はどのようなご用件ですか？</string>
+    <string name="chat_input_hint">メッセージを入力...</string>
+    <string name="send_message">送信</string>
+    <string name="chip_suggest_movie">映画の提案</string>
+    <string name="chip_book_ticket">予約方法</string>
+    <string name="chip_showtime">今日の上映時間</string>
+    <string name="chip_ticket_price">チケット価格</string>
+    <string name="gemini_api_key">YOUR_GEMINI_API_KEY_HERE</string>
+    <string name="gemini_cli_server_url">https://a907c5b6456c.ngrok-free.app</string>
+    <string name="use_local_ai_server">true</string>
+
+    <!-- Chatbot Error Messages -->
+    <string name="server_not_ready">⚠️ AIサーバーの準備ができていません。接続を確認してください。</string>
+    <string name="server_connect_error_title">AIサーバーに接続できません。</string>
+    <string name="server_check_list">確認:\n• サーバーは稼働していますか？\n• Ngrokトンネルは有効ですか？\n• URLは正しいですか？</string>
+    <string name="error_prefix">❌ </string>
+    <string name="please_try_again">\n\n後でもう一度試してください！</string>
+    <string name="error_processing_response">応答の処理エラー: %1$s</string>
+    <string name="error_creating_request">リクエスト作成エラー: %1$s</string>
+    <string name="server_healthy">サーバーは正常です</string>
+    <string name="server_not_responding">サーバーが応答しません: %1$s</string>
+    <string name="connect_failed">サーバー接続失敗: %1$s</string>
 </resources>

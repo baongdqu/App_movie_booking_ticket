@@ -244,4 +244,32 @@
     <!-- Notification Messages -->
     <string name="notification_profile_update_title">계정 업데이트</string>
     <string name="notification_profile_update_message">개인 정보를 업데이트했습니다</string>
+
+    <!-- 🤖 Chatbot Strings -->
+    <string name="chatbot_title">영화 도우미</string>
+    <string name="chatbot_online">온라인</string>
+    <string name="chatbot_offline">오프라인</string>
+    <string name="chatbot_typing">입력 중...</string>
+    <string name="chatbot_welcome_message">안녕하세요! 🎬 영화관 도우미입니다. 다음을 도와드릴 수 있습니다:\n\n• 영화 추천\n• 티켓 예매 안내\n• 상영 시간 문의\n\n오늘 무엇을 도와드릴까요?</string>
+    <string name="chat_input_hint">메시지 입력...</string>
+    <string name="send_message">전송</string>
+    <string name="chip_suggest_movie">영화 추천</string>
+    <string name="chip_book_ticket">예매 방법</string>
+    <string name="chip_showtime">오늘 상영 시간</string>
+    <string name="chip_ticket_price">티켓 가격</string>
+    <string name="gemini_api_key">YOUR_GEMINI_API_KEY_HERE</string>
+    <string name="gemini_cli_server_url">https://a907c5b6456c.ngrok-free.app</string>
+    <string name="use_local_ai_server">true</string>
+
+    <!-- Chatbot Error Messages -->
+    <string name="server_not_ready">⚠️ AI 서버가 준비되지 않았습니다. 연결을 확인하십시오.</string>
+    <string name="server_connect_error_title">AI 서버에 연결할 수 없습니다.</string>
+    <string name="server_check_list">확인:\n• 서버가 실행 중입니까?\n• Ngrok 터널이 활성화되어 있습니까?\n• URL이 정확합니까?</string>
+    <string name="error_prefix">❌ </string>
+    <string name="please_try_again">\n\n나중에 다시 시도해 주세요!</string>
+    <string name="error_processing_response">응답 처리 오류: %1$s</string>
+    <string name="error_creating_request">요청 생성 오류: %1$s</string>
+    <string name="server_healthy">서버 정상</string>
+    <string name="server_not_responding">서버 응답 없음: %1$s</string>
+    <string name="connect_failed">서버 연결 실패: %1$s</string>
 </resources>
