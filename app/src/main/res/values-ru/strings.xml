@@ -240,4 +240,8 @@
     <string name="movie_lang_hindi">Хинди</string>
     <string name="movie_lang_french">Французский</string>
     <string name="movie_lang_spanish">Испанский</string>
+
+    <!-- Notification Messages -->
+    <string name="notification_profile_update_title">Обновление аккаунта</string>
+    <string name="notification_profile_update_message">Вы обновили личную информацию</string>
 </resources>
