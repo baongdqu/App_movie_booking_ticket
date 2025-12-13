@@ -34,7 +34,7 @@ public class NotificationAdapter
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context)
-                .inflate(R.layout.item_notification, parent, false);
+                .inflate(R.layout.partnortifications_item_notification, parent, false);
         return new ViewHolder(view);
     }
 

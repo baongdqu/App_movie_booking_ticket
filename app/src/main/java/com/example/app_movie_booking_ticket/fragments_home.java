@@ -11,9 +11,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.app_movie_booking_ticket.activities.ChatbotActivity;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -150,8 +147,8 @@ public class fragments_home extends Fragment {
         // TRANG NGƯỜI DÙNG
         // =========================
         binding.userInfoLayout.setOnClickListener(v -> {
-            if (getActivity() instanceof activities_2_menu_manage_fragments) {
-                ((activities_2_menu_manage_fragments) getActivity())
+            if (getActivity() instanceof activities_2_a_menu_manage_fragments) {
+                ((activities_2_a_menu_manage_fragments) getActivity())
                         .selectBottomNavItem(R.id.nav_user);
                 getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             } else {
@@ -176,7 +173,7 @@ public class fragments_home extends Fragment {
         // =========================
         binding.fabChatbot.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(requireContext());
-            startActivity(new Intent(requireContext(), ChatbotActivity.class));
+            startActivity(new Intent(requireContext(), activities_2_chatbot.class));
         });
     }
 

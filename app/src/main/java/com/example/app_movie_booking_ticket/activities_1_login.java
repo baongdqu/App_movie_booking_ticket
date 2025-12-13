@@ -176,10 +176,9 @@ public class activities_1_login extends extra_manager_language {
                                             .putString("uid", user.getUid()) // lưu UID nếu cần
                                             .apply();
 
-
                                     // 🔹 Chuyển sang màn hình Menu (hoặc màn hình người dùng)
                                     Intent intent = new Intent(activities_1_login.this,
-                                            activities_2_menu_manage_fragments.class);
+                                            activities_2_a_menu_manage_fragments.class);
                                     startActivity(intent);
                                     finish();
                                 } else {

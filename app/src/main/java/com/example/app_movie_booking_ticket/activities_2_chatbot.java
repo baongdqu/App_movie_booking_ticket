@@ -1,4 +1,4 @@
-package com.example.app_movie_booking_ticket.activities;
+package com.example.app_movie_booking_ticket;
 
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +12,6 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.app_movie_booking_ticket.R;
 import com.example.app_movie_booking_ticket.adapter.ChatMessageAdapter;
 import com.example.app_movie_booking_ticket.extra.extra_gemini_helper;
 import com.example.app_movie_booking_ticket.model.ChatMessage;
@@ -23,9 +22,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
  * Activity cho màn hình Chatbot
  * Cho phép người dùng chat với AI để được hỗ trợ đặt vé xem phim
  * 
+ * NOTE: Tên lớp đã được đổi thành activities_2_chatbot theo yêu cầu.
+ * 
  * UI/UX: Modern design với gradient, cards, shadows
  */
-public class ChatbotActivity extends AppCompatActivity {
+public class activities_2_chatbot extends AppCompatActivity {
 
     // UI Components
     private ImageView btnBack;
@@ -47,7 +48,7 @@ public class ChatbotActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chatbot);
+        setContentView(R.layout.layouts_2_chatbot);
 
         initViews();
         setupToolbar();
@@ -198,7 +199,7 @@ public class ChatbotActivity extends AppCompatActivity {
                 String errorMessage = "❌ " + error + "\n\nVui lòng thử lại sau nhé!";
                 adapter.addMessage(new ChatMessage(errorMessage, ChatMessage.TYPE_BOT));
 
-                Toast.makeText(ChatbotActivity.this, error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(activities_2_chatbot.this, error, Toast.LENGTH_SHORT).show();
             }
         });
     }
