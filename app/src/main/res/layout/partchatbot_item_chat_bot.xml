@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:paddingVertical="6dp"
     android:paddingStart="4dp"
-    android:paddingEnd="48dp">
+    android:paddingEnd="16dp">
 
     <!-- Bot avatar trong card với shadow -->
     <androidx.cardview.widget.CardView
@@ -31,7 +31,7 @@
     <!-- Bot message bubble với shadow -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardBotMessage"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         app:cardCornerRadius="20dp"
@@ -39,7 +39,9 @@
         app:cardBackgroundColor="@android:color/transparent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/cardBotAvatar"
-        app:layout_constraintWidth_max="300dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_default="wrap"
+        app:layout_constraintHorizontal_bias="0">
 
         <TextView
             android:id="@+id/tvBotMessage"
@@ -68,3 +70,4 @@
         app:layout_constraintStart_toStartOf="@id/cardBotMessage"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

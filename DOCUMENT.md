@@ -17,6 +17,7 @@
 6. [Các Màn Hình Chính](#6-các-màn-hình-chính)
 7. [Hướng Dẫn Cài Đặt](#7-hướng-dẫn-cài-đặt)
 8. [Hướng Dẫn Sử Dụng](#8-hướng-dẫn-sử-dụng)
+9. [API Reference (Local Server)](#9-api-reference-local-server)
 
 ---
 
@@ -848,6 +849,80 @@ cd App_movie_booking_ticket
 3. Nhập mật khẩu mới
 4. Xác nhận
 5. Click "Change"
+
+---
+
+## 9. API REFERENCE (LOCAL SERVER)
+
+Nếu sử dụng **Mode Local (Server)**, ứng dụng Android sẽ giao tiếp với `server_gemini_cli` thông qua các REST API endpoints sau. Server này được viết bằng Python (Flask).
+
+### 9.1. Base URL
+- Localhost: `http://localhost:5000`
+- Ngrok (Public): `https://<your-ngrok-id>.ngrok-free.app`
+
+### 9.2. Endpoints Chi Tiết
+
+#### a. Chat với AI
+- **Endpoint:** `POST /api/chat`
+- **Mô tả:** Gửi tin nhắn từ người dùng và nhận câu trả lời từ AI.
+- **Request Body:**
+  ```json
+  {
+    "message": "Gợi ý phim hành động",
+    "user_id": "user123", // Optional
+    "context": "optional_context" // Optional
+  }
+  ```
+- **Response:**
+  ```json
+  {
+    "success": true,
+    "reply": "Dưới đây là một số phim hành động...",
+    "category": "movie_suggestion",
+    "timestamp": "2025-12-13T..."
+  }
+  ```
+
+#### b. Gợi Ý Phim (Specific)
+- **Endpoint:** `POST /api/suggest`
+- **Mô tả:** API chuyên dụng để lấy gợi ý phim theo tiêu chí.
+- **Request Body:**
+  ```json
+  {
+    "genre": "hành động",
+    "mood": "vui vẻ",
+    "count": 5
+  }
+  ```
+
+#### c. Thông Tin Phim
+- **Endpoint:** `POST /api/movie-info`
+- **Mô tả:** Hỏi chi tiết về một bộ phim cụ thể.
+- **Request Body:**
+  ```json
+  {
+    "movie_name": "Inception"
+  }
+  ```
+
+#### d. Hướng Dẫn Đặt Vé
+- **Endpoint:** `POST /api/booking-help`
+- **Mô tả:** Hỗ trợ người dùng khi gặp sự cố đặt vé.
+- **Request Body:**
+  ```json
+  {
+    "step": "chọn ghế",
+    "problem": "ghế bị khóa"
+  }
+  ```
+
+#### e. System Categories
+- **Endpoint:** `GET /api/categories`
+- **Mô tả:** Lấy danh sách các chủ đề (categories) mà AI được huấn luyện để nhận diện.
+
+#### f. Health Check
+- **Endpoint:** `GET /api/health`
+- **Mô tả:** Kiểm tra trạng thái hoạt động của server và Gemini connection.
 
 ---
 

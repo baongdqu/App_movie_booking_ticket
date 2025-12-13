@@ -1,0 +1,258 @@
+package com.example.app_movie_booking_ticket.extra;
+
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
+import com.example.app_movie_booking_ticket.R;
+import com.example.app_movie_booking_ticket.model.ChatMessage;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
+/**
+ * Helper class để gọi Gemini CLI REST API Server
+ * Server chạy local và được expose qua ngrok
+ * 
+ * Ưu điểm so với Gemini API trực tiếp:
+ * - Sử dụng Gemini CLI với đầy đủ tính năng
+ * - Có thể customize prompt templates trên server
+ * - Không cần API key trong app (bảo mật hơn)
+ */
+public class extra_gemini_cli_helper {
+
+    private static final String TAG = "GeminiCLIHelper";
+    private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
+    // Server URL - thay đổi theo ngrok URL
+    // Có thể lưu vào SharedPreferences hoặc strings.xml để dễ cập nhật
+    private String serverUrl;
+
+    private final OkHttpClient client;
+    private final Handler mainHandler;
+    private final Context context;
+
+    /**
+     * Interface callback cho kết quả API
+     */
+    public interface ChatCallback {
+        void onSuccess(String response);
+
+        void onError(String error);
+    }
+
+    /**
+     * Constructor - khởi tạo với context
+     */
+    public extra_gemini_cli_helper(Context context) {
+        this.context = context;
+        this.mainHandler = new Handler(Looper.getMainLooper());
+
+        // Lấy server URL từ resources
+        this.serverUrl = context.getString(R.string.gemini_cli_server_url);
+
+        // Cấu hình OkHttp với timeout dài hơn cho AI processing
+        this.client = new OkHttpClient.Builder()
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(120, TimeUnit.SECONDS) // Gemini CLI có thể mất thời gian
+                .writeTimeout(30, TimeUnit.SECONDS)
+                .build();
+    }
+
+    /**
+     * Cập nhật server URL (khi ngrok URL thay đổi)
+     */
+    public void setServerUrl(String url) {
+        this.serverUrl = url;
+    }
+
+    /**
+     * Kiểm tra server có hoạt động không
+     */
+    public void checkHealth(ChatCallback callback) {
+        Request request = new Request.Builder()
+                .url(serverUrl + "/api/health")
+                .get()
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) {
+                if (response.isSuccessful()) {
+                    mainHandler.post(() -> callback.onSuccess("Server is healthy"));
+                } else {
+                    mainHandler.post(() -> callback.onError("Server not responding: " + response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                mainHandler.post(() -> callback.onError("Cannot connect to server: " + e.getMessage()));
+            }
+        });
+    }
+
+    /**
+     * Gửi tin nhắn đến Gemini CLI Server
+     *
+     * @param userMessage Tin nhắn từ người dùng
+     * @param history     Lịch sử hội thoại (không sử dụng, server quản lý context)
+     * @param callback    Callback trả về kết quả
+     */
+    public void sendMessage(String userMessage, List<ChatMessage> history, ChatCallback callback) {
+        try {
+            // Build request body
+            JSONObject requestBody = new JSONObject();
+            requestBody.put("message", userMessage);
+            requestBody.put("user_id", "android_user"); // Có thể dùng device ID
+
+            Request request = new Request.Builder()
+                    .url(serverUrl + "/api/chat")
+                    .post(RequestBody.create(requestBody.toString(), JSON))
+                    .addHeader("Content-Type", "application/json")
+                    .build();
+
+            // Gọi API async
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                    try {
+                        String responseBody = response.body() != null ? response.body().string() : "";
+
+                        if (response.isSuccessful()) {
+                            String text = parseResponse(responseBody);
+                            mainHandler.post(() -> callback.onSuccess(text));
+                        } else {
+                            Log.e(TAG, "API Error: " + response.code() + " - " + responseBody);
+                            String errorMsg = parseErrorMessage(responseBody, response.code());
+                            mainHandler.post(() -> callback.onError(errorMsg));
+                        }
+                    } catch (Exception e) {
+                        Log.e(TAG, "Parse error", e);
+                        mainHandler.post(() -> callback.onError("Lỗi xử lý phản hồi: " + e.getMessage()));
+                    }
+                }
+
+                @Override
+                public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                    Log.e(TAG, "Network error", e);
+                    String errorMsg = "Không thể kết nối server AI.\n";
+                    errorMsg += "Kiểm tra:\n";
+                    errorMsg += "• Server đang chạy?\n";
+                    errorMsg += "• Ngrok tunnel hoạt động?\n";
+                    errorMsg += "• URL đúng không?";
+                    final String finalError = errorMsg;
+                    mainHandler.post(() -> callback.onError(finalError));
+                }
+            });
+
+        } catch (Exception e) {
+            Log.e(TAG, "Build request error", e);
+            callback.onError("Lỗi tạo request: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Gợi ý phim
+     */
+    public void suggestMovies(String genre, String mood, int count, ChatCallback callback) {
+        try {
+            JSONObject requestBody = new JSONObject();
+            requestBody.put("genre", genre);
+            requestBody.put("mood", mood);
+            requestBody.put("count", count);
+
+            Request request = new Request.Builder()
+                    .url(serverUrl + "/api/suggest")
+                    .post(RequestBody.create(requestBody.toString(), JSON))
+                    .addHeader("Content-Type", "application/json")
+                    .build();
+
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                    try {
+                        String responseBody = response.body() != null ? response.body().string() : "";
+                        if (response.isSuccessful()) {
+                            JSONObject json = new JSONObject(responseBody);
+                            String suggestions = json.optString("suggestions", "Không có gợi ý");
+                            mainHandler.post(() -> callback.onSuccess(suggestions));
+                        } else {
+                            mainHandler.post(() -> callback.onError("Lỗi gợi ý phim: " + response.code()));
+                        }
+                    } catch (Exception e) {
+                        mainHandler.post(() -> callback.onError("Lỗi: " + e.getMessage()));
+                    }
+                }
+
+                @Override
+                public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                    mainHandler.post(() -> callback.onError("Lỗi kết nối: " + e.getMessage()));
+                }
+            });
+
+        } catch (Exception e) {
+            callback.onError("Lỗi: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Parse response từ REST API
+     */
+    private String parseResponse(String jsonResponse) throws JSONException {
+        JSONObject obj = new JSONObject(jsonResponse);
+
+        // Check success
+        boolean success = obj.optBoolean("success", false);
+
+        if (success) {
+            return obj.optString("reply", "Không có phản hồi");
+        } else {
+            String error = obj.optString("error", "Lỗi không xác định");
+            throw new JSONException(error);
+        }
+    }
+
+    /**
+     * Parse error message từ API response
+     */
+    private String parseErrorMessage(String jsonResponse, int statusCode) {
+        try {
+            JSONObject obj = new JSONObject(jsonResponse);
+            if (obj.has("error")) {
+                return obj.getString("error");
+            }
+        } catch (JSONException e) {
+            // Ignore parse error
+        }
+
+        switch (statusCode) {
+            case 400:
+                return "Yêu cầu không hợp lệ";
+            case 404:
+                return "API endpoint không tồn tại";
+            case 500:
+                return "Lỗi server AI";
+            case 502:
+            case 503:
+                return "Server AI đang bận. Vui lòng thử lại sau.";
+            default:
+                return "Lỗi server: " + statusCode;
+        }
+    }
+}

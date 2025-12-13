@@ -5,7 +5,10 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Random;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -13,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app_movie_booking_ticket.adapter.ChatMessageAdapter;
-import com.example.app_movie_booking_ticket.extra.extra_gemini_helper;
+import com.example.app_movie_booking_ticket.extra.extra_gemini_cli_helper;
 import com.example.app_movie_booking_ticket.model.ChatMessage;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -22,7 +25,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
  * Activity cho màn hình Chatbot
  * Cho phép người dùng chat với AI để được hỗ trợ đặt vé xem phim
  * 
- * NOTE: Tên lớp đã được đổi thành activities_2_chatbot theo yêu cầu.
+ * Sử dụng Gemini CLI Server qua REST API (local server + ngrok)
+ * Server chạy trên máy local và được expose qua ngrok
  * 
  * UI/UX: Modern design với gradient, cards, shadows
  */
@@ -34,6 +38,7 @@ public class activities_2_chatbot extends AppCompatActivity {
     private EditText inputChatMessage;
     private FloatingActionButton fabSendMessage;
     private CardView layoutTypingIndicator;
+    private TextView tvTypingIndicator;
 
     // Quick Reply Buttons (MaterialButton thay vì Chip)
     private MaterialButton chipSuggestMovie;
@@ -43,7 +48,7 @@ public class activities_2_chatbot extends AppCompatActivity {
 
     // Adapter & Helper
     private ChatMessageAdapter adapter;
-    private extra_gemini_helper geminiHelper;
+    private extra_gemini_cli_helper geminiHelper; // Sử dụng Gemini CLI Server
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +74,7 @@ public class activities_2_chatbot extends AppCompatActivity {
         inputChatMessage = findViewById(R.id.inputChatMessage);
         fabSendMessage = findViewById(R.id.fabSendMessage);
         layoutTypingIndicator = findViewById(R.id.layoutTypingIndicator);
+        tvTypingIndicator = findViewById(R.id.tvTypingIndicator);
 
         // Quick Reply Buttons
         chipSuggestMovie = findViewById(R.id.chipSuggestMovie);
@@ -128,10 +134,31 @@ public class activities_2_chatbot extends AppCompatActivity {
     }
 
     /**
-     * Khởi tạo Gemini Helper
+     * Khởi tạo Gemini CLI Helper và kiểm tra kết nối server
      */
     private void initGeminiHelper() {
-        geminiHelper = new extra_gemini_helper(this);
+        geminiHelper = new extra_gemini_cli_helper(this);
+
+        // Kiểm tra kết nối server khi khởi động
+        geminiHelper.checkHealth(new extra_gemini_cli_helper.ChatCallback() {
+            @Override
+            public void onSuccess(String response) {
+                // Server đang hoạt động
+                runOnUiThread(() -> {
+                    // Có thể hiển thị indicator "Online" ở đây
+                });
+            }
+
+            @Override
+            public void onError(String error) {
+                // Server không khả dụng - thông báo cho user
+                runOnUiThread(() -> {
+                    Toast.makeText(activities_2_chatbot.this,
+                            "⚠️ Server AI chưa sẵn sàng. Kiểm tra kết nối.",
+                            Toast.LENGTH_LONG).show();
+                });
+            }
+        });
     }
 
     /**
@@ -173,14 +200,14 @@ public class activities_2_chatbot extends AppCompatActivity {
     }
 
     /**
-     * Gọi Gemini API
+     * Gọi Gemini CLI Server API
      */
     private void callGeminiAPI(String message) {
         // Hiển thị typing indicator
         showTypingIndicator(true);
         setInputEnabled(false);
 
-        geminiHelper.sendMessage(message, adapter.getMessages(), new extra_gemini_helper.ChatCallback() {
+        geminiHelper.sendMessage(message, adapter.getMessages(), new extra_gemini_cli_helper.ChatCallback() {
             @Override
             public void onSuccess(String response) {
                 showTypingIndicator(false);
@@ -209,6 +236,11 @@ public class activities_2_chatbot extends AppCompatActivity {
      */
     private void showTypingIndicator(boolean show) {
         if (show) {
+            // Set random typing text
+            String[] phrases = getResources().getStringArray(R.array.chatbot_typing_phrases);
+            String randomPhrase = phrases[new Random().nextInt(phrases.length)];
+            tvTypingIndicator.setText(randomPhrase);
+
             layoutTypingIndicator.setVisibility(View.VISIBLE);
             layoutTypingIndicator.setAlpha(0f);
             layoutTypingIndicator.animate()
