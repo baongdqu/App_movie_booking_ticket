@@ -626,6 +626,22 @@ public class partuser_edit_profile extends extra_manager_language {
                             extra_sound_manager.playSuccess(this);
                             prefs.edit().putString("username", newName).apply();
                             Toast.makeText(this, getString(R.string.toast_profile_updated), Toast.LENGTH_SHORT).show();
+
+                            DatabaseReference notiRef = FirebaseDatabase.getInstance()
+                                    .getReference("notifications")
+                                    .child(mAuth.getCurrentUser().getUid())
+                                    .push();
+
+                            Map<String, Object> notiData = new HashMap<>();
+                            notiData.put("title", "Cập nhật tài khoản");
+                            notiData.put("message", "Bạn đã thay đổi thông tin cá nhân");
+                            notiData.put("timestamp", System.currentTimeMillis()); // 👈 QUAN TRỌNG
+                            notiData.put("read", false);
+                            notiData.put("type", "PROFILE");
+
+                            notiRef.setValue(notiData);
+
+
                             finish();
                         } else {
                             extra_sound_manager.playError(this);
@@ -634,6 +650,7 @@ public class partuser_edit_profile extends extra_manager_language {
                                             Objects.requireNonNull(task.getException()).getMessage()),
                                     Toast.LENGTH_LONG).show();
                         }
+
                     });
         }
     }
