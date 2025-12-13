@@ -1,55 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_color">
+    android:orientation="vertical">
 
-    <!-- Main Content -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerNotifications"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="16dp"
-        android:paddingBottom="16dp"
-        android:clipToPadding="false"
-        android:scrollbars="none" />
-
-    <!-- Empty State -->
+    <!-- HEADER -->
     <LinearLayout
-        android:id="@+id/emptyStateNotifications"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:padding="32dp"
-        android:visibility="gone">
-
-        <ImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@drawable/ic_notifications"
-            android:alpha="0.3"
-            android:layout_marginBottom="24dp"
-            android:contentDescription="No notifications" />
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/no_notifications"
-            android:textSize="20sp"
+            android:layout_weight="1"
+            android:text="Thông báo"
             android:textStyle="bold"
-            android:fontFamily="sans-serif-medium"
-            android:textColor="@color/text_primary"
-            android:layout_marginBottom="8dp" />
+            android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/btnClearAll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/new_notifications_here"
-            android:textSize="14sp"
-            android:textColor="@color/text_secondary"
-            android:gravity="center" />
+            android:text="Clear"
+            android:textColor="@android:color/holo_red_dark"
+            android:textStyle="bold" />
     </LinearLayout>
 
-</RelativeLayout>
+    <!-- LIST -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvNotifications"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
