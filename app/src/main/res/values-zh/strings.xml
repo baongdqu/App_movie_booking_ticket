@@ -240,4 +240,8 @@
     <string name="movie_lang_hindi">印地语</string>
     <string name="movie_lang_french">法语</string>
     <string name="movie_lang_spanish">西班牙语</string>
+
+    <!-- Notification Messages -->
+    <string name="notification_profile_update_title">账户更新</string>
+    <string name="notification_profile_update_message">您已更新个人信息</string>
 </resources>

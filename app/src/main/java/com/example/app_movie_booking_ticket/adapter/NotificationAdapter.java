@@ -42,22 +42,23 @@ public class NotificationAdapter
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         AppNotification noti = list.get(position);
 
-        holder.txtTitle.setText(noti.getTitle());
-        holder.txtMessage.setText(noti.getMessage());
+        String type = noti.getType();
+        if ("PROFILE".equals(type)) {
+            holder.txtTitle.setText(context.getString(R.string.notification_profile_update_title));
+            holder.txtMessage.setText(context.getString(R.string.notification_profile_update_message));
+        } else {
+            holder.txtTitle.setText(noti.getTitle());
+            holder.txtMessage.setText(noti.getMessage());
+        }
 
-        SimpleDateFormat sdf =
-                new SimpleDateFormat("HH:mm • dd/MM/yyyy", Locale.getDefault());
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm • dd/MM/yyyy", Locale.getDefault());
         holder.txtTime.setText(
-                sdf.format(new Date(noti.getTimestamp()))
-        );
+                sdf.format(new Date(noti.getTimestamp())));
 
         // ===== CLICK =====
         holder.itemView.setOnClickListener(v -> {
-            String type = noti.getType();
-
             if ("PROFILE".equals(type)) {
-                Intent intent =
-                        new Intent(context, partuser_edit_profile.class);
+                Intent intent = new Intent(context, partuser_edit_profile.class);
                 context.startActivity(intent);
             }
             // LOGIN thì không cần mở gì

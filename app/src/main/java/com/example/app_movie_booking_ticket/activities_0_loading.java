@@ -41,7 +41,7 @@ public class activities_0_loading extends extra_manager_language {
 
             if (currentUser != null && currentUser.isEmailVerified()) {
                 // Nếu đã đăng nhập và email đã verify -> vào thẳng Menu
-                Intent intent = new Intent(activities_0_loading.this, activities_2_menu_manage_fragments.class);
+                Intent intent = new Intent(activities_0_loading.this, activities_2_a_menu_manage_fragments.class);
                 startActivity(intent);
                 finish();
             } else {
