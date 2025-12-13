@@ -37,10 +37,10 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
         if (viewType == ChatMessage.TYPE_USER) {
-            View view = inflater.inflate(R.layout.item_chat_user, parent, false);
+            View view = inflater.inflate(R.layout.partchatbot_item_chat_user, parent, false);
             return new UserMessageViewHolder(view);
         } else {
-            View view = inflater.inflate(R.layout.item_chat_bot, parent, false);
+            View view = inflater.inflate(R.layout.partchatbot_item_chat_bot, parent, false);
             return new BotMessageViewHolder(view);
         }
     }
