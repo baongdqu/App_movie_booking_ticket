@@ -38,7 +38,7 @@
             android:name=".activities_1_forgot_password"
             android:exported="true" />
         <activity
-            android:name=".activities_2_menu_manage_fragments"
+            android:name=".activities_2_a_menu_manage_fragments"
             android:exported="true" />
         <activity
             android:name=".partuser_edit_profile"
@@ -63,7 +63,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.ChatbotActivity"
+            android:name=".activities_2_chatbot"
             android:exported="false"
             android:label="@string/chatbot_title"
             android:windowSoftInputMode="adjustResize" />
