@@ -305,6 +305,7 @@
                 android:indeterminateTint="@color/chat_send_button"/>
 
             <TextView
+                android:id="@+id/tvTypingIndicator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/chatbot_typing"

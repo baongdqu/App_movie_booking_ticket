@@ -11,7 +11,7 @@ Ngoài ra, người dùng còn có thể cập nhật những **bộ phim mới 
 
 ---
 
-## 👨‍💻 Đội ngũ phát triển
+## ‍💻 Đội ngũ phát triển
 
 Ứng dụng **Đặt Vé Xem Phim** được phát triển bởi nhóm sinh viên trường **Đại học Công Nghệ Thông Tin – ĐHQG TP.HCM**, gồm:
 
@@ -24,4 +24,3 @@ Ngoài ra, người dùng còn có thể cập nhật những **bộ phim mới 
 <p align="center">
   <b>🎥 Thông qua ứng dụng này, chúng tôi mong muốn đem đến cho mọi người một trải nghiệm điện ảnh tuyệt vời – tiện lợi, thú vị và đầy hứng khởi. 🍿</b>
 </p>
- 
