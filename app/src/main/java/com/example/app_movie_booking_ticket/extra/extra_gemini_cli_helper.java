@@ -94,15 +94,16 @@ public class extra_gemini_cli_helper {
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) {
                 if (response.isSuccessful()) {
-                    mainHandler.post(() -> callback.onSuccess("Server is healthy"));
+                    mainHandler.post(() -> callback.onSuccess(context.getString(R.string.server_healthy)));
                 } else {
-                    mainHandler.post(() -> callback.onError("Server not responding: " + response.code()));
+                    mainHandler.post(
+                            () -> callback.onError(context.getString(R.string.server_not_responding, response.code())));
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                mainHandler.post(() -> callback.onError("Cannot connect to server: " + e.getMessage()));
+                mainHandler.post(() -> callback.onError(context.getString(R.string.connect_failed, e.getMessage())));
             }
         });
     }
@@ -144,18 +145,16 @@ public class extra_gemini_cli_helper {
                         }
                     } catch (Exception e) {
                         Log.e(TAG, "Parse error", e);
-                        mainHandler.post(() -> callback.onError("Lỗi xử lý phản hồi: " + e.getMessage()));
+                        mainHandler.post(() -> callback
+                                .onError(context.getString(R.string.error_processing_response, e.getMessage())));
                     }
                 }
 
                 @Override
                 public void onFailure(@NonNull Call call, @NonNull IOException e) {
                     Log.e(TAG, "Network error", e);
-                    String errorMsg = "Không thể kết nối server AI.\n";
-                    errorMsg += "Kiểm tra:\n";
-                    errorMsg += "• Server đang chạy?\n";
-                    errorMsg += "• Ngrok tunnel hoạt động?\n";
-                    errorMsg += "• URL đúng không?";
+                    String errorMsg = context.getString(R.string.server_connect_error_title) + "\n";
+                    errorMsg += context.getString(R.string.server_check_list);
                     final String finalError = errorMsg;
                     mainHandler.post(() -> callback.onError(finalError));
                 }
@@ -163,7 +162,7 @@ public class extra_gemini_cli_helper {
 
         } catch (Exception e) {
             Log.e(TAG, "Build request error", e);
-            callback.onError("Lỗi tạo request: " + e.getMessage());
+            callback.onError(context.getString(R.string.error_creating_request, e.getMessage()));
         }
     }
 

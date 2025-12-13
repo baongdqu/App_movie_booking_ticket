@@ -301,4 +301,17 @@
         <item>Đang soạn tin nhắn...</item>
         <item>Đang Google... đùa đó :v</item>
     </string-array>
+
+    <!-- Chatbot Error Messages -->
+    <string name="server_not_ready">⚠️ Server AI chưa sẵn sàng. Kiểm tra kết nối.</string>
+    <string name="server_connect_error_title">Không thể kết nối server AI.</string>
+    <string name="server_check_list">Kiểm tra:\n• Server đang chạy?\n• Ngrok tunnel hoạt động?\n• URL đúng không?</string>
+    <string name="error_prefix">❌ </string>
+    <string name="please_try_again">\n\nVui lòng thử lại sau nhé!</string>
+    <string name="error_processing_response">Lỗi xử lý phản hồi: %1$s</string>
+    <string name="error_creating_request">Lỗi tạo request: %1$s</string>
+    <string name="server_healthy">Server hoạt động tốt</string>
+    <string name="server_not_responding">Server không phản hồi: %1$s</string>
+    <string name="connect_failed">Không thể kết nối server: %1$s</string>
+
 </resources>

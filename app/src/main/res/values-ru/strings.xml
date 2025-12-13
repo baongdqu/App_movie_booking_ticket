@@ -244,4 +244,32 @@
     <!-- Notification Messages -->
     <string name="notification_profile_update_title">Обновление аккаунта</string>
     <string name="notification_profile_update_message">Вы обновили личную информацию</string>
+
+    <!-- 🤖 Chatbot Strings -->
+    <string name="chatbot_title">Киноассистент</string>
+    <string name="chatbot_online">В сети</string>
+    <string name="chatbot_offline">Не в сети</string>
+    <string name="chatbot_typing">Печатает...</string>
+    <string name="chatbot_welcome_message">Привет! 🎬 Я виртуальный помощник кинотеатра. Я могу помочь вам:\n\n• Найти отличные фильмы\n• Забронировать билеты\n• Узнать расписание сеансов\n\nЧем я могу помочь вам сегодня?</string>
+    <string name="chat_input_hint">Введите сообщение...</string>
+    <string name="send_message">Отправить</string>
+    <string name="chip_suggest_movie">Предложить фильм</string>
+    <string name="chip_book_ticket">Как забронировать</string>
+    <string name="chip_showtime">Сеансы на сегодня</string>
+    <string name="chip_ticket_price">Цены на билеты</string>
+    <string name="gemini_api_key">YOUR_GEMINI_API_KEY_HERE</string>
+    <string name="gemini_cli_server_url">https://a907c5b6456c.ngrok-free.app</string>
+    <string name="use_local_ai_server">true</string>
+
+    <!-- Chatbot Error Messages -->
+    <string name="server_not_ready">⚠️ AI-сервер не готов. Проверьте соединение.</string>
+    <string name="server_connect_error_title">Не удается подключиться к AI-серверу.</string>
+    <string name="server_check_list">Проверьте:\n• Сервер запущен?\n• Туннель Ngrok активен?\n• URL правильный?</string>
+    <string name="error_prefix">❌ </string>
+    <string name="please_try_again">\n\nПожалуйста, попробуйте позже!</string>
+    <string name="error_processing_response">Ошибка обработки ответа: %1$s</string>
+    <string name="error_creating_request">Ошибка создания запроса: %1$s</string>
+    <string name="server_healthy">Сервер работает нормально</string>
+    <string name="server_not_responding">Сервер не отвечает: %1$s</string>
+    <string name="connect_failed">Ошибка подключения к серверу: %1$s</string>
 </resources>

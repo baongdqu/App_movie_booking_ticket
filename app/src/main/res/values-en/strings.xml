@@ -256,6 +256,17 @@
 
     <string name="notification_profile_update_title">Account Update</string>
     <string name="notification_profile_update_message">You have updated your personal information</string>
-    
+
+    <!-- Chatbot Error Messages -->
+    <string name="server_not_ready">⚠️ AI Server not ready. Check connection.</string>
+    <string name="server_connect_error_title">Cannot connect to AI Server.</string>
+    <string name="server_check_list">Check:\n• Is server running?\n• Is Ngrok tunnel active?\n• Is URL correct?</string>
+    <string name="error_prefix">❌ </string>
+    <string name="please_try_again">\n\nPlease try again later!</string>
+    <string name="error_processing_response">Error processing response: %1$s</string>
+    <string name="error_creating_request">Error creating request: %1$s</string>
+    <string name="server_healthy">Server is healthy</string>
+    <string name="server_not_responding">Server not responding: %1$s</string>
+    <string name="connect_failed">Cannot connect to server: %1$s</string>
 </resources>
 

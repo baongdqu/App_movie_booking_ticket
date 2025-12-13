@@ -244,4 +244,32 @@
     <!-- Notification Messages -->
     <string name="notification_profile_update_title">账户更新</string>
     <string name="notification_profile_update_message">您已更新个人信息</string>
+
+    <!-- 🤖 Chatbot Strings -->
+    <string name="chatbot_title">电影助手</string>
+    <string name="chatbot_online">在线</string>
+    <string name="chatbot_offline">离线</string>
+    <string name="chatbot_typing">正在输入...</string>
+    <string name="chatbot_welcome_message">您好！🎬 我是电影院助手。我可以帮您：\n\n• 推荐精彩电影\n• 指导订票\n• 查询上映时间\n\n今天有什么可以帮您？</string>
+    <string name="chat_input_hint">输入消息...</string>
+    <string name="send_message">发送</string>
+    <string name="chip_suggest_movie">电影推荐</string>
+    <string name="chip_book_ticket">订票方法</string>
+    <string name="chip_showtime">今日上映</string>
+    <string name="chip_ticket_price">票价查询</string>
+    <string name="gemini_api_key">YOUR_GEMINI_API_KEY_HERE</string>
+    <string name="gemini_cli_server_url">https://a907c5b6456c.ngrok-free.app</string>
+    <string name="use_local_ai_server">true</string>
+
+    <!-- Chatbot Error Messages -->
+    <string name="server_not_ready">⚠️ AI 服务器未就绪。请检查连接。</string>
+    <string name="server_connect_error_title">无法连接到 AI 服务器。</string>
+    <string name="server_check_list">检查：\n• 服务器正在运行吗？\n• Ngrok 隧道是否处于活动状态？\n• URL 是否正确？</string>
+    <string name="error_prefix">❌ </string>
+    <string name="please_try_again">\n\n请稍后再试！</string>
+    <string name="error_processing_response">响应处理错误: %1$s</string>
+    <string name="error_creating_request">请求创建错误: %1$s</string>
+    <string name="server_healthy">服务器运行正常</string>
+    <string name="server_not_responding">服务器无响应: %1$s</string>
+    <string name="connect_failed">无法连接服务器: %1$s</string>
 </resources>
