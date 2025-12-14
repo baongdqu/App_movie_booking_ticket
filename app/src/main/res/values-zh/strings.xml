@@ -272,4 +272,10 @@
     <string name="server_healthy">服务器运行正常</string>
     <string name="server_not_responding">服务器无响应: %1$s</string>
     <string name="connect_failed">无法连接服务器: %1$s</string>
+
+    <!-- Network Check Dialog -->
+    <string name="dialog_no_internet_title">没有网络连接</string>
+    <string name="dialog_no_internet_message">使用此应用需要互联网连接。请检查您的网络连接并重试。</string>
+    <string name="retry">重试</string>
+    <string name="exit">退出</string>
 </resources>

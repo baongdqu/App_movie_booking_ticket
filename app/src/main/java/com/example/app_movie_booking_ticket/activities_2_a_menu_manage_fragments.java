@@ -3,6 +3,7 @@ package com.example.app_movie_booking_ticket;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -22,6 +23,10 @@ public class activities_2_a_menu_manage_fragments extends extra_manager_language
         // Load fragment mặc định (Home)
         loadFragment(new fragments_home());
         bottomNavigationView.setSelectedItemId(R.id.nav_home);
+
+        // ================== 🌐 KIỂM TRA KẾT QUẢ MẠNG TỪ LOADING SCREEN
+        // ==================
+        checkNoInternetFromLoading();
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             extra_sound_manager.playMenuClick(this);
@@ -47,6 +52,41 @@ public class activities_2_a_menu_manage_fragments extends extra_manager_language
             }
             return false;
         });
+    }
+
+    /**
+     * Kiểm tra xem có thông báo "không có mạng" từ Loading screen không
+     * Nếu có thì hiển thị dialog trên màn hình Home (đẹp hơn)
+     */
+    private void checkNoInternetFromLoading() {
+        boolean noInternet = getIntent().getBooleanExtra(activities_0_loading.EXTRA_NO_INTERNET, false);
+
+        if (noInternet) {
+            showNoInternetDialog();
+        }
+    }
+
+    /**
+     * Hiển thị hộp thoại thông báo không có kết nối mạng
+     */
+    private void showNoInternetDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle(getString(R.string.dialog_no_internet_title))
+                .setMessage(getString(R.string.dialog_no_internet_message))
+                .setCancelable(false)
+                .setPositiveButton(getString(R.string.retry), (dialog, which) -> {
+                    dialog.dismiss();
+                    // Khởi động lại app từ Loading screen để kiểm tra lại mạng
+                    Intent intent = new Intent(this, activities_0_loading.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
+                })
+                .setNegativeButton(getString(R.string.exit), (dialog, which) -> {
+                    dialog.dismiss();
+                    finishAffinity();
+                })
+                .show();
     }
 
     // Hàm tiện ích để load fragment

@@ -272,4 +272,10 @@
     <string name="server_healthy">Сервер работает нормально</string>
     <string name="server_not_responding">Сервер не отвечает: %1$s</string>
     <string name="connect_failed">Ошибка подключения к серверу: %1$s</string>
+
+    <!-- Network Check Dialog -->
+    <string name="dialog_no_internet_title">Нет подключения к интернету</string>
+    <string name="dialog_no_internet_message">Для использования этого приложения необходимо подключение к интернету. Проверьте соединение и повторите попытку.</string>
+    <string name="retry">Повторить</string>
+    <string name="exit">Выход</string>
 </resources>
