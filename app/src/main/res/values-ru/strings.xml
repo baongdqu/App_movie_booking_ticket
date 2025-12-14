@@ -258,7 +258,7 @@
     <string name="chip_showtime">Сеансы на сегодня</string>
     <string name="chip_ticket_price">Цены на билеты</string>
     <string name="gemini_api_key">YOUR_GEMINI_API_KEY_HERE</string>
-    <string name="gemini_cli_server_url">https://a907c5b6456c.ngrok-free.app</string>
+    <string name="gemini_cli_server_url">https://413b99345c3d.ngrok-free.app</string>
     <string name="use_local_ai_server">true</string>
 
     <!-- Chatbot Error Messages -->

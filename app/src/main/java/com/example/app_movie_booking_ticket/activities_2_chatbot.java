@@ -127,10 +127,10 @@ public class activities_2_chatbot extends AppCompatActivity {
         });
 
         // Quick Reply Buttons
-        chipSuggestMovie.setOnClickListener(v -> sendQuickReply(getString(R.string.chip_suggest_movie)));
-        chipBookTicket.setOnClickListener(v -> sendQuickReply(getString(R.string.chip_book_ticket)));
-        chipShowtime.setOnClickListener(v -> sendQuickReply(getString(R.string.chip_showtime)));
-        chipTicketPrice.setOnClickListener(v -> sendQuickReply(getString(R.string.chip_ticket_price)));
+        chipSuggestMovie.setOnClickListener(v -> sendQuickReply(getString(R.string.prompt_suggest_movie)));
+        chipBookTicket.setOnClickListener(v -> sendQuickReply(getString(R.string.prompt_book_ticket)));
+        chipShowtime.setOnClickListener(v -> sendQuickReply(getString(R.string.prompt_showtime)));
+        chipTicketPrice.setOnClickListener(v -> sendQuickReply(getString(R.string.prompt_ticket_price)));
     }
 
     /**

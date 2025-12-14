@@ -1,6 +1,7 @@
 package com.example.app_movie_booking_ticket.extra;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
@@ -29,23 +30,23 @@ import okhttp3.Response;
  * Helper class để gọi Gemini CLI REST API Server
  * Server chạy local và được expose qua ngrok
  * 
- * Ưu điểm so với Gemini API trực tiếp:
- * - Sử dụng Gemini CLI với đầy đủ tính năng
- * - Có thể customize prompt templates trên server
- * - Không cần API key trong app (bảo mật hơn)
+ * Phiên bản đơn giản: Gửi message trực tiếp lên server
  */
 public class extra_gemini_cli_helper {
 
     private static final String TAG = "GeminiCLIHelper";
     private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
-    // Server URL - thay đổi theo ngrok URL
-    // Có thể lưu vào SharedPreferences hoặc strings.xml để dễ cập nhật
-    private String serverUrl;
+    // Server URL will be fetched dynamically from resources each request
+    private String getServerUrl() {
+        return context.getString(R.string.gemini_cli_server_url);
+    }
 
     private final OkHttpClient client;
     private final Handler mainHandler;
     private final Context context;
+    private final Resources resources;
+    private String serverUrl;
 
     /**
      * Interface callback cho kết quả API
@@ -61,6 +62,7 @@ public class extra_gemini_cli_helper {
      */
     public extra_gemini_cli_helper(Context context) {
         this.context = context;
+        this.resources = context.getResources();
         this.mainHandler = new Handler(Looper.getMainLooper());
 
         // Lấy server URL từ resources
@@ -69,24 +71,23 @@ public class extra_gemini_cli_helper {
         // Cấu hình OkHttp với timeout dài hơn cho AI processing
         this.client = new OkHttpClient.Builder()
                 .connectTimeout(30, TimeUnit.SECONDS)
-                .readTimeout(120, TimeUnit.SECONDS) // Gemini CLI có thể mất thời gian
+                .readTimeout(120, TimeUnit.SECONDS)
                 .writeTimeout(30, TimeUnit.SECONDS)
                 .build();
     }
 
-    /**
-     * Cập nhật server URL (khi ngrok URL thay đổi)
-     */
-    public void setServerUrl(String url) {
-        this.serverUrl = url;
-    }
+    // Deprecated: server URL is fetched dynamically, no need to set it manually.
+    // public void setServerUrl(String url) {
+    // // this.serverUrl = url;
+    // }
 
     /**
      * Kiểm tra server có hoạt động không
      */
     public void checkHealth(ChatCallback callback) {
         Request request = new Request.Builder()
-                .url(serverUrl + "/api/health")
+                .url(context.getString(R.string.gemini_cli_server_url) + "/api/health")
+                .addHeader("ngrok-skip-browser-warning", "true")
                 .get()
                 .build();
 
@@ -110,25 +111,25 @@ public class extra_gemini_cli_helper {
 
     /**
      * Gửi tin nhắn đến Gemini CLI Server
+     * Message được gửi trực tiếp lên server xử lý
      *
      * @param userMessage Tin nhắn từ người dùng
-     * @param history     Lịch sử hội thoại (không sử dụng, server quản lý context)
+     * @param history     Lịch sử hội thoại (không sử dụng)
      * @param callback    Callback trả về kết quả
      */
     public void sendMessage(String userMessage, List<ChatMessage> history, ChatCallback callback) {
         try {
-            // Build request body
             JSONObject requestBody = new JSONObject();
             requestBody.put("message", userMessage);
-            requestBody.put("user_id", "android_user"); // Có thể dùng device ID
+            requestBody.put("user_id", "android_user");
 
             Request request = new Request.Builder()
                     .url(serverUrl + "/api/chat")
                     .post(RequestBody.create(requestBody.toString(), JSON))
                     .addHeader("Content-Type", "application/json")
+                    .addHeader("ngrok-skip-browser-warning", "true")
                     .build();
 
-            // Gọi API async
             client.newCall(request).enqueue(new Callback() {
                 @Override
                 public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
@@ -167,47 +168,19 @@ public class extra_gemini_cli_helper {
     }
 
     /**
-     * Gợi ý phim
+     * Gợi ý phim với filter
      */
     public void suggestMovies(String genre, String mood, int count, ChatCallback callback) {
-        try {
-            JSONObject requestBody = new JSONObject();
-            requestBody.put("genre", genre);
-            requestBody.put("mood", mood);
-            requestBody.put("count", count);
+        StringBuilder message = new StringBuilder("Gợi ý ");
+        if (count > 0)
+            message.append(count).append(" ");
+        message.append("phim ");
+        if (genre != null && !genre.isEmpty())
+            message.append("thể loại ").append(genre).append(" ");
+        if (mood != null && !mood.isEmpty())
+            message.append("phù hợp tâm trạng ").append(mood);
 
-            Request request = new Request.Builder()
-                    .url(serverUrl + "/api/suggest")
-                    .post(RequestBody.create(requestBody.toString(), JSON))
-                    .addHeader("Content-Type", "application/json")
-                    .build();
-
-            client.newCall(request).enqueue(new Callback() {
-                @Override
-                public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                    try {
-                        String responseBody = response.body() != null ? response.body().string() : "";
-                        if (response.isSuccessful()) {
-                            JSONObject json = new JSONObject(responseBody);
-                            String suggestions = json.optString("suggestions", "Không có gợi ý");
-                            mainHandler.post(() -> callback.onSuccess(suggestions));
-                        } else {
-                            mainHandler.post(() -> callback.onError("Lỗi gợi ý phim: " + response.code()));
-                        }
-                    } catch (Exception e) {
-                        mainHandler.post(() -> callback.onError("Lỗi: " + e.getMessage()));
-                    }
-                }
-
-                @Override
-                public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                    mainHandler.post(() -> callback.onError("Lỗi kết nối: " + e.getMessage()));
-                }
-            });
-
-        } catch (Exception e) {
-            callback.onError("Lỗi: " + e.getMessage());
-        }
+        sendMessage(message.toString().trim(), null, callback);
     }
 
     /**
@@ -215,14 +188,12 @@ public class extra_gemini_cli_helper {
      */
     private String parseResponse(String jsonResponse) throws JSONException {
         JSONObject obj = new JSONObject(jsonResponse);
-
-        // Check success
         boolean success = obj.optBoolean("success", false);
 
         if (success) {
-            return obj.optString("reply", "Không có phản hồi");
+            return obj.optString("reply", context.getString(R.string.error_unknown));
         } else {
-            String error = obj.optString("error", "Lỗi không xác định");
+            String error = obj.optString("error", context.getString(R.string.error_api));
             throw new JSONException(error);
         }
     }
@@ -246,10 +217,10 @@ public class extra_gemini_cli_helper {
             case 404:
                 return "API endpoint không tồn tại";
             case 500:
-                return "Lỗi server AI";
+                return context.getString(R.string.error_api);
             case 502:
             case 503:
-                return "Server AI đang bận. Vui lòng thử lại sau.";
+                return context.getString(R.string.error_timeout);
             default:
                 return "Lỗi server: " + statusCode;
         }
