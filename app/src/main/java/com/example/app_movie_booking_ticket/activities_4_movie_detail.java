@@ -71,6 +71,7 @@ public class activities_4_movie_detail extends AppCompatActivity {
             Intent intent2 = new Intent(activities_4_movie_detail.this, SeatSelectionActivity.class);
             intent2.putExtra("movieTitle", movie.getTitle());
             intent2.putExtra("price", movie.getPrice());
+            intent2.putExtra("posterUrl", movie.getPoster());
             startActivity(intent2);
         });
     }

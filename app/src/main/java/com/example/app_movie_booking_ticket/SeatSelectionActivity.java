@@ -1,5 +1,6 @@
 package com.example.app_movie_booking_ticket;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +33,7 @@ public class SeatSelectionActivity extends AppCompatActivity {
     private Button btnContinue;
 
     private String movieTitle;
+    private String posterUrl;
     private String selectedDate = "";
     private String selectedShowtime = "";
     private int pricePerSeat = 0;
@@ -53,7 +55,7 @@ public class SeatSelectionActivity extends AppCompatActivity {
 
         movieTitle = getIntent().getStringExtra("movieTitle");
         if (movieTitle == null || movieTitle.isEmpty()) movieTitle = "Tên Phim";
-
+        posterUrl = getIntent().getStringExtra("posterUrl");
         tvMovieTitle.setText(movieTitle);
 
         dbRef = FirebaseDatabase.getInstance().getReference("Bookings").child(movieTitle);
@@ -65,7 +67,16 @@ public class SeatSelectionActivity extends AppCompatActivity {
                 return;
             }
             int total = selectedSeats.size() * pricePerSeat;
-            Toast.makeText(this, "Ghế: " + selectedSeats + " | Tổng: " + total + "đ", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(SeatSelectionActivity.this, PaymentActivity.class);
+
+            intent.putExtra("movieTitle", movieTitle);
+            intent.putExtra("date", selectedDate);
+            intent.putExtra("time", selectedShowtime);
+            intent.putStringArrayListExtra("seats", new ArrayList<>(selectedSeats));
+            intent.putExtra("pricePerSeat", pricePerSeat);
+            intent.putExtra("totalPrice", total);
+            intent.putExtra("posterUrl", posterUrl);
+            startActivity(intent);
         });
 
         ImageView btnBack = findViewById(R.id.btnBack);

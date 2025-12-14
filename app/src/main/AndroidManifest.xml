@@ -17,6 +17,7 @@
         android:roundIcon="@mipmap/ic_arow_back_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.App_movie_booking_ticket">
+
         <activity
             android:name=".PaymentActivity"
             android:exported="false" />
@@ -61,6 +62,18 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ResultActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="resultactivity" />
             </intent-filter>
         </activity>
     </application>
