@@ -251,7 +251,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="844f1ce6-039a-4511-a069-8979768ecd95" name="Changes" comment="feat, docs, style: cài đặt api dịch vụ AI vào botchat, viết docs, cải thiện thêm giao diện.">
+    <list default="true" id="844f1ce6-039a-4511-a069-8979768ecd95" name="Changes" comment="style: cập nhật giao diện đa ngôn ngữ cho botchat.">
       <change beforePath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.bin" afterDir="false" />
@@ -259,9 +259,12 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.13/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deviceManager.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deviceManager.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/activities_2_chatbot.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/activities_2_chatbot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/extra/extra_gemini_cli_helper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/extra/extra_gemini_cli_helper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/activities_0_loading.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/activities_0_loading.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/activities_1_login.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/activities_1_login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/activities_2_a_menu_manage_fragments.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/activities_2_a_menu_manage_fragments.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values-ja/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-ja/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values-ko/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-ko/strings.xml" afterDir="false" />
@@ -278,7 +281,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=Default, isTemplate=false, identifier=serial=127.0.0.1:6555;connection=f400ef0b)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=c5e029187d73)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -781,12 +784,12 @@
       <map>
         <entry key="com.example.app_movie_booking_ticket">
           <value>
-            <CheckInfo lastCheckTimestamp="1765593523720" />
+            <CheckInfo lastCheckTimestamp="1765693825030" />
           </value>
         </entry>
         <entry key="com.example.app_movie_booking_ticket.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1765593523721" />
+            <CheckInfo lastCheckTimestamp="1765693825032" />
           </value>
         </entry>
       </map>

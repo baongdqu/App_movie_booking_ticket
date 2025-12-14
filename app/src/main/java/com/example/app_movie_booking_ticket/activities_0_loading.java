@@ -1,17 +1,45 @@
 package com.example.app_movie_booking_ticket;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.net.ConnectivityManager;
+import android.net.NetworkCapabilities;
+import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicBoolean;
+
 public class activities_0_loading extends extra_manager_language {
 
     private FirebaseAuth mAuth;
+    private ExecutorService executorService;
+    private Handler mainHandler;
+
+    // Biến lưu kết quả kiểm tra mạng (thread-safe)
+    private AtomicBoolean internetCheckCompleted = new AtomicBoolean(false);
+    private AtomicBoolean hasInternetResult = new AtomicBoolean(false);
+
+    // Flag để đánh dấu loading đã xong chưa
+    private AtomicBoolean loadingCompleted = new AtomicBoolean(false);
+
+    // Thời gian loading tối thiểu (ms) - tối ưu xuống 5 giây
+    private static final long MIN_LOADING_TIME = 5000;
+
+    // Key để truyền kết quả kiểm tra mạng qua Intent
+    public static final String EXTRA_NO_INTERNET = "extra_no_internet";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +47,15 @@ public class activities_0_loading extends extra_manager_language {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         setContentView(R.layout.layouts_0_loading);
 
-        // ================== 🔊 SỬA: PHÁT ÂM THANH SAU 500MS ==================
-        // Đảm bảo SoundPool có thời gian tải ID của file âm thanh
+        // Khởi tạo executor và handler cho background task
+        executorService = Executors.newSingleThreadExecutor();
+        mainHandler = new Handler(Looper.getMainLooper());
+
+        // ================== 🌐 BẮT ĐẦU KIỂM TRA MẠNG NGAY LẬP TỨC (SONG SONG)
+        // ==================
+        startInternetCheck();
+
+        // ================== 🔊 PHÁT ÂM THANH SAU 500MS ==================
         new Handler().postDelayed(() -> {
             extra_sound_manager.playOpening(activities_0_loading.this);
         }, 500);
@@ -34,26 +69,145 @@ public class activities_0_loading extends extra_manager_language {
                 R.anim.scale_fade_in);
         imgLogo.startAnimation(scaleIn);
 
-        // Delay chính (giả lập loading)
-        // Lưu ý: Độ trễ này vẫn giữ nguyên 7000ms tính từ lúc onCreate bắt đầu.
+        // ================== SAU KHI LOADING XONG (7 GIÂY) ==================
         new Handler().postDelayed(() -> {
-            FirebaseUser currentUser = mAuth.getCurrentUser();
+            loadingCompleted.set(true);
+            tryProceed();
+        }, MIN_LOADING_TIME);
+    }
 
-            if (currentUser != null && currentUser.isEmailVerified()) {
-                // Nếu đã đăng nhập và email đã verify -> vào thẳng Menu
-                Intent intent = new Intent(activities_0_loading.this, activities_2_a_menu_manage_fragments.class);
-                startActivity(intent);
-                finish();
-            } else {
-                // Nếu không có user hoặc chưa verify -> đi đến Login
-                // nếu user tồn tại nhưng chưa verify bạn cũng có thể signOut để sạch
-                if (currentUser != null && !currentUser.isEmailVerified()) {
-                    mAuth.signOut();
-                }
-                Intent intent = new Intent(activities_0_loading.this, activities_1_login.class);
-                startActivity(intent);
-                finish();
+    /**
+     * Bắt đầu kiểm tra Internet NGAY LẬP TỨC (chạy song song với loading animation)
+     */
+    private void startInternetCheck() {
+        executorService.execute(() -> {
+            boolean hasInternet = hasActualInternetAccess();
+
+            hasInternetResult.set(hasInternet);
+            internetCheckCompleted.set(true);
+
+            mainHandler.post(this::tryProceed);
+        });
+    }
+
+    /**
+     * Thử tiến hành vào app nếu cả loading VÀ kiểm tra mạng đều đã xong
+     */
+    private void tryProceed() {
+        if (loadingCompleted.get() && internetCheckCompleted.get()) {
+            // Luôn chuyển sang màn hình tiếp theo và truyền kết quả kiểm tra mạng
+            proceedToNextScreen(!hasInternetResult.get()); // true = không có mạng
+        }
+    }
+
+    /**
+     * Kiểm tra xem có Internet thực sự hay không
+     */
+    private boolean hasActualInternetAccess() {
+        if (!isNetworkAvailable()) {
+            return false;
+        }
+
+        String[] testUrls = {
+                "https://clients3.google.com/generate_204",
+                "https://connectivitycheck.gstatic.com/generate_204",
+                "https://www.google.com",
+                "https://www.cloudflare.com"
+        };
+
+        for (String testUrl : testUrls) {
+            if (canReachUrl(testUrl)) {
+                return true;
             }
-        }, 7000);
+        }
+
+        return false;
+    }
+
+    /**
+     * Thử kết nối đến một URL để kiểm tra có Internet thực sự
+     */
+    private boolean canReachUrl(String urlString) {
+        HttpURLConnection connection = null;
+        try {
+            URL url = new URL(urlString);
+            connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setConnectTimeout(3000);
+            connection.setReadTimeout(3000);
+            connection.setUseCaches(false);
+            connection.connect();
+
+            int responseCode = connection.getResponseCode();
+            return responseCode == 200 || responseCode == 204;
+        } catch (IOException e) {
+            return false;
+        } finally {
+            if (connection != null) {
+                connection.disconnect();
+            }
+        }
+    }
+
+    /**
+     * Kiểm tra kết nối mạng vật lý
+     */
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        if (connectivityManager == null) {
+            return false;
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            android.net.Network network = connectivityManager.getActiveNetwork();
+            if (network == null) {
+                return false;
+            }
+            NetworkCapabilities capabilities = connectivityManager.getNetworkCapabilities(network);
+            if (capabilities == null) {
+                return false;
+            }
+            return capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) ||
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) ||
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET);
+        } else {
+            NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+            return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+        }
+    }
+
+    /**
+     * Tiếp tục vào màn hình tiếp theo và truyền kết quả kiểm tra mạng
+     * 
+     * @param noInternet true nếu không có mạng, false nếu có mạng
+     */
+    private void proceedToNextScreen(boolean noInternet) {
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        Intent intent;
+
+        if (currentUser != null && currentUser.isEmailVerified()) {
+            // Đã đăng nhập -> vào Menu
+            intent = new Intent(activities_0_loading.this, activities_2_a_menu_manage_fragments.class);
+        } else {
+            // Chưa đăng nhập -> vào Login
+            if (currentUser != null && !currentUser.isEmailVerified()) {
+                mAuth.signOut();
+            }
+            intent = new Intent(activities_0_loading.this, activities_1_login.class);
+        }
+
+        // Truyền kết quả kiểm tra mạng qua Intent
+        intent.putExtra(EXTRA_NO_INTERNET, noInternet);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (executorService != null && !executorService.isShutdown()) {
+            executorService.shutdown();
+        }
     }
 }

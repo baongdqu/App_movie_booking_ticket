@@ -58,6 +58,10 @@ public class activities_1_login extends extra_manager_language {
         // Khởi tạo Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
+        // ================== 🌐 KIỂM TRA KẾT QUẢ MẠNG TỪ LOADING SCREEN
+        // ==================
+        checkNoInternetFromLoading();
+
         // ================== 🔘 SỰ KIỆN CLICK ĐĂNG NHẬP ==================
         btnLogin.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(this);
@@ -278,5 +282,40 @@ public class activities_1_login extends extra_manager_language {
                         }
                     }
                 });
+    }
+
+    /**
+     * Kiểm tra xem có thông báo "không có mạng" từ Loading screen không
+     * Nếu có thì hiển thị dialog trên màn hình Login (đẹp hơn)
+     */
+    private void checkNoInternetFromLoading() {
+        boolean noInternet = getIntent().getBooleanExtra(activities_0_loading.EXTRA_NO_INTERNET, false);
+
+        if (noInternet) {
+            showNoInternetDialog();
+        }
+    }
+
+    /**
+     * Hiển thị hộp thoại thông báo không có kết nối mạng
+     */
+    private void showNoInternetDialog() {
+        new androidx.appcompat.app.AlertDialog.Builder(this)
+                .setTitle(getString(R.string.dialog_no_internet_title))
+                .setMessage(getString(R.string.dialog_no_internet_message))
+                .setCancelable(false)
+                .setPositiveButton(getString(R.string.retry), (dialog, which) -> {
+                    dialog.dismiss();
+                    // Khởi động lại app từ Loading screen để kiểm tra lại mạng
+                    Intent intent = new Intent(this, activities_0_loading.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
+                })
+                .setNegativeButton(getString(R.string.exit), (dialog, which) -> {
+                    dialog.dismiss();
+                    finishAffinity();
+                })
+                .show();
     }
 }
