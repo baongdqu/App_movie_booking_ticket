@@ -54,25 +54,25 @@
     <!-- Forgot Password -->
     <string name="forgot_password_title">Quên mật khẩu?</string>
     <string name="forgot_password_desc">Nhập email đã đăng ký của bạn và chúng tôi sẽ gửi liên kết khôi phục mật khẩu.</string>
-    
+
     <!-- Login -->
     <string name="no_account">Chưa có tài khoản?</string>
-    
+
     <!-- Home -->
     <string name="no_movies_found">Không tìm thấy phim nào</string>
     <string name="top_movie">Phim thịnh hành</string>
     <string name="view_all">Xem tất cả</string>
     <string name="upcoming_movies">Phim sắp chiếu</string>
-    
+
     <!-- Mail & Notifications -->
     <string name="empty_mailbox">Hộp thư trống</string>
     <string name="new_messages_here">Tin nhắn mới sẽ hiển thị ở đây</string>
     <string name="no_notifications">Chưa có thông báo</string>
     <string name="new_notifications_here">Thông báo mới sẽ hiển thị ở đây</string>
-    
+
     <!-- User Profile -->
     <string name="advanced_settings">Cài đặt nâng cao</string>
-    
+
     <!-- Movie List -->
     <string name="all_movies">Tất cả phim</string>
     <string name="genre">Thể loại</string>
@@ -81,7 +81,7 @@
     <string name="details">Chi tiết</string>
     <string name="buy_ticket">Mua vé</string>
     <string name="movie_name">Tên phim</string>
-    
+
     <!-- Movie Details -->
     <string name="movie_detail">Chi tiết phim</string>
     <string name="title">Tiêu đề</string>
@@ -91,12 +91,12 @@
     <string name="movie_summary_placeholder">Tóm tắt phim sẽ hiển thị ở đây</string>
     <string name="cast">Diễn viên</string>
     <string name="images">Hình ảnh</string>
-    
+
     <!-- Seat Selection -->
     <string name="book_ticket">Đặt vé</string>
     <string name="screen">Màn hình</string>
     <string name="price_format">Tổng: %1$sđ</string>
-    
+
     <!-- Settings -->
     <string name="dark_mode">Chế độ tối</string>
     <string name="interface_section">Giao diện</string>
@@ -107,13 +107,13 @@
     <string name="change_password">Đổi mật khẩu</string>
     <string name="delete_account">Xóa tài khoản</string>
     <string name="back">Quay lại</string>
-    
+
     <!-- Change Password -->
     <string name="current_password">Mật khẩu hiện tại</string>
     <string name="new_password">Mật khẩu mới</string>
     <string name="confirm_new_password">Xác nhận mật khẩu mới</string>
     <string name="save_password">Lưu mật khẩu</string>
-    
+
     <!-- Edit Profile -->
     <string name="full_name">Họ và tên</string>
     <string name="phone">Số điện thoại</string>
@@ -127,7 +127,7 @@
     <string name="cancel">Hủy</string>
     <string name="change_avatar">Đổi ảnh đại diện</string>
     <string name="verify">Xác thực</string>
-    
+
     <!-- Toast Messages -->
     <string name="toast_user_not_found">Không xác định người dùng.</string>
     <string name="toast_default_avatar_set">Đã gán avatar mặc định.</string>
@@ -282,11 +282,10 @@
     <string name="gemini_api_key">YOUR_GEMINI_API_KEY_HERE</string>
     <string name="notification_profile_update_title">Cập nhật tài khoản</string>
     <string name="notification_profile_update_message">Bạn đã thay đổi thông tin cá nhân</string>
-    
+
     <!-- Gemini CLI Server -->
     <string name="gemini_cli_server_url">https://81c2bb6905fe.ngrok-free.app</string>
     <string name="use_local_ai_server">true</string>
-
 
 
     <string-array name="chatbot_typing_phrases">
