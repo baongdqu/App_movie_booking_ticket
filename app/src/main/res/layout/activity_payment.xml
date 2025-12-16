@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- TOOLBAR -->
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/card_background"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btnBackPay"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_back_arrow"
+            app:tint="@color/text_primary" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Thông tin thanh toán"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+    </RelativeLayout>
+
+
+    <!-- NỘI DUNG CUỘN -->
+
+
+    <!-- THANH THANH TOÁN DƯỚI CÙNG -->
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomBar"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteX="192dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thông tin đặt vé"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:paddingBottom="8dp">
+
+            </TextView>
+            <!-- CARD: Thông tin đặt vé -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvTicket"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="0dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Hàng 1: Poster + Thông tin phim -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imagePoster"
+                            android:layout_width="110dp"
+                            android:layout_height="150dp"
+                            android:scaleType="centerCrop"/>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:paddingStart="12dp">
+
+                            <!-- Logo rạp -->
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="6dp"
+                                    android:text="Tên phim"
+                                    android:textSize="14sp"
+                                    android:textColor="#555555"
+                                    />
+                            </LinearLayout>
+
+                            <!-- Tên phim -->
+                            <TextView
+                                android:id="@+id/txtTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Movie name"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:paddingTop="4dp"/>
+
+                            <!-- Nhãn tuổi + mô tả -->
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:paddingTop="6dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="4dp"
+                                    android:text="16+"
+                                    android:textSize="12sp"
+                                    android:textColor="#FFFFFF"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingStart="8dp"
+                                    android:text="Thể loại"
+                                    android:textSize="12sp"
+                                    android:textColor="#777777"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- LINE DASHED -->
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="27dp"
+                        android:paddingVertical="12dp"
+                        android:src="@drawable/dashed_line"/>
+
+                    <!-- GRID 2x2: Thời gian – Định dạng – Phòng chiếu – Ghế -->
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:columnCount="2"
+                        android:rowCount="2"
+                        android:paddingTop="8dp"
+                        android:alignmentMode="alignMargins"
+                        android:columnOrderPreserved="false">
+
+                        <!-- Thời gian -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:text="Thời gian:"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/txtTime"
+                                android:text="11:45 → 13:28\nThứ 6, 21/11/2025"
+                                android:textColor="#E0814E"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+
+                        <!-- Định dạng -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:text="Định dạng:"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/txtFormat"
+                                android:text="2D Phụ đề"
+                                android:textColor="#E0814E"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+
+                        <!-- Phòng chiếu -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical"
+                            android:paddingTop="16dp">
+
+                            <TextView
+                                android:text="Phòng chiếu:"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                />
+
+                            <TextView
+                                android:id="@+id/txtRoom"
+                                android:text="RAP 5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+
+                        <!-- Ghế -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical"
+                            android:paddingTop="16dp">
+
+                            <TextView
+                                android:text="Số ghế:"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/txtSeat"
+                                android:text="H09"/>
+                        </LinearLayout>
+
+                    </GridLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Thông tin người nhận"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:paddingBottom="8dp"/>
+
+            <!-- THÔNG TIN NGƯỜI NHẬN -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="14dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+
+
+                    <TextView
+                        android:id="@+id/txtUser"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:paddingTop="8dp"
+                        android:text="User name" />
+
+                    <TextView
+                        android:id="@+id/txtPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Phone number" />
+
+                    <TextView
+                        android:id="@+id/txtEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="mail@example.com" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- THÔNG TIN NGƯỜI NHẬN -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="14dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"/>
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:background="#FFFFFF"
+        android:padding="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/txtTotal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="75.000đ"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/btnContinue"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="Thanh toán bằng VNPay"
+            android:backgroundTint="@color/black"
+            android:textColor="#FFFFFF"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
