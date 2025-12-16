@@ -25,11 +25,11 @@ import com.google.firebase.database.*;
 public class fragments_user extends Fragment {
 
     // ============================
-    //  Các view (để dùng ở nhiều chỗ)
+    // Các view (để dùng ở nhiều chỗ)
     // ============================
     private TextView txtUsername;
     private TextView txtEmail;
-    private ImageView imgAvatar;            // <- trước đây là local trong onViewCreated, bây giờ là field
+    private ImageView imgAvatar; // <- trước đây là local trong onViewCreated, bây giờ là field
     private ImageButton btnBack;
     private Button btnEditProfile, btnSettings, btnLogout;
 
@@ -51,7 +51,7 @@ public class fragments_user extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+            Bundle savedInstanceState) {
         // Inflate layout fragment_user.xml
         return inflater.inflate(R.layout.layouts_fragments_user, container, false);
     }
@@ -158,7 +158,8 @@ public class fragments_user extends Fragment {
                                 txtUsername.setText(username != null ? username : "Người dùng");
 
                                 // set avatar — nếu null hoặc rỗng thì dùng default
-                                final String urlToLoad = (avatarUrl != null && !avatarUrl.isEmpty()) ? avatarUrl : DEFAULT_AVATAR_URL;
+                                final String urlToLoad = (avatarUrl != null && !avatarUrl.isEmpty()) ? avatarUrl
+                                        : DEFAULT_AVATAR_URL;
 
                                 // Dùng Glide (context là fragment -> requireActivity())
                                 try {

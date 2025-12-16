@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    layouts_3_edit_profile.xml
+    Màn hình chỉnh sửa hồ sơ người dùng (Netflix Style)
+    - Hiển thị ảnh đại diện với CircleImageView
+    - Cho phép đổi ảnh đại diện
+    - Chỉnh sửa họ tên và số điện thoại
+    - Nút Lưu / Hủy
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="32dp">
+
+        <!-- ========================= -->
+        <!-- ẢNH ĐẠI DIỆN NGƯỜI DÙNG -->
+        <!-- ========================= -->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgAvatar"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/ic_person"
+            app:civ_border_width="4dp"
+            app:civ_border_color="@color/profile_accent" />
+
+        <!-- ========================= -->
+        <!-- NÚT ĐỔI ẢNH ĐẠI DIỆN -->
+        <!-- ========================= -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnChangeAvatar"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="Đổi ảnh đại diện"
+            android:textColor="@color/netflix_text_white"
+            android:backgroundTint="@color/netflix_medium_gray"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-medium"
+            android:textAllCaps="false"
+            app:cornerRadius="4dp"
+            app:icon="@drawable/ic_person"
+            app:iconTint="@color/netflix_text_white"
+            android:layout_marginBottom="32dp" />
+
+        <!-- ========================= -->
+        <!-- Ô NHẬP HỌ VÀ TÊN -->
+        <!-- ========================= -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Họ và tên"
+            app:hintTextColor="@color/text_secondary"
+            app:boxBackgroundMode="filled"
+            app:boxBackgroundColor="@color/card_background"
+            app:boxCornerRadiusBottomEnd="4dp"
+            app:boxCornerRadiusBottomStart="4dp"
+            app:boxCornerRadiusTopEnd="4dp"
+            app:boxCornerRadiusTopStart="4dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputFullNameEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary"
+                android:textSize="16sp"
+                android:paddingVertical="16dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- ========================= -->
+        <!-- Ô NHẬP SỐ ĐIỆN THOẠI -->
+        <!-- ========================= -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Số điện thoại"
+            android:layout_marginTop="16dp"
+            app:hintTextColor="@color/text_secondary"
+            app:boxBackgroundMode="filled"
+            app:boxBackgroundColor="@color/card_background"
+            app:boxCornerRadiusBottomEnd="4dp"
+            app:boxCornerRadiusBottomStart="4dp"
+            app:boxCornerRadiusTopEnd="4dp"
+            app:boxCornerRadiusTopStart="4dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputPhoneEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary"
+                android:textSize="16sp"
+                android:paddingVertical="16dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- ========================= -->
+        <!-- NÚT LƯU THÔNG TIN -->
+        <!-- ========================= -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSaveProfile"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Lưu thay đổi"
+            android:textColor="@color/netflix_text_white"
+            android:backgroundTint="@color/netflix_red"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:fontFamily="sans-serif-medium"
+            android:textAllCaps="false"
+            app:cornerRadius="4dp"
+            android:layout_marginTop="32dp" />
+
+        <!-- ========================= -->
+        <!-- NÚT HỦY BỎ -->
+        <!-- ========================= -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancelProfile"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Hủy"
+            android:textColor="@color/text_primary"
+            android:backgroundTint="@color/card_background"
+            android:textSize="16sp"
+            android:fontFamily="sans-serif-medium"
+            android:textAllCaps="false"
+            app:cornerRadius="4dp"
+            app:strokeColor="@color/divider_color"
+            app:strokeWidth="1dp"
+            android:layout_marginTop="12dp" />
+
+    </LinearLayout>
+</ScrollView>
