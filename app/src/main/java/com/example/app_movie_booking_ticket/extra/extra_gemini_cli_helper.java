@@ -86,7 +86,7 @@ public class extra_gemini_cli_helper {
      */
     public void checkHealth(ChatCallback callback) {
         Request request = new Request.Builder()
-                .url(serverUrl + "/api/health")
+                .url(serverUrl + "/health")
                 .get()
                 .build();
 
@@ -120,10 +120,12 @@ public class extra_gemini_cli_helper {
             // Build request body
             JSONObject requestBody = new JSONObject();
             requestBody.put("message", userMessage);
-            requestBody.put("user_id", "android_user"); // Có thể dùng device ID
+            // System prompt mặc định cho chatbot phim
+            requestBody.put("system_prompt",
+                    "Bạn là trợ lý ảo của rạp chiếu phim. Hãy trả lời khán giả một cách thân thiện, ngắn gọn và hữu ích. Sử dụng tiếng Việt.");
 
             Request request = new Request.Builder()
-                    .url(serverUrl + "/api/chat")
+                    .url(serverUrl + "/chat")
                     .post(RequestBody.create(requestBody.toString(), JSON))
                     .addHeader("Content-Type", "application/json")
                     .build();
@@ -171,13 +173,17 @@ public class extra_gemini_cli_helper {
      */
     public void suggestMovies(String genre, String mood, int count, ChatCallback callback) {
         try {
+            // Chuyển sang dùng endpoint /chat vì server không có /suggest
             JSONObject requestBody = new JSONObject();
-            requestBody.put("genre", genre);
-            requestBody.put("mood", mood);
-            requestBody.put("count", count);
+            String prompt = String.format(
+                    "Gợi ý giúp tôi %d phim thể loại %s phù hợp với tâm trạng %s. Chỉ liệt kê tên phim và năm sản xuất.",
+                    count, genre, mood);
+
+            requestBody.put("message", prompt);
+            requestBody.put("system_prompt", "Bạn là chuyên gia điện ảnh am hiểu các bộ phim.");
 
             Request request = new Request.Builder()
-                    .url(serverUrl + "/api/suggest")
+                    .url(serverUrl + "/chat")
                     .post(RequestBody.create(requestBody.toString(), JSON))
                     .addHeader("Content-Type", "application/json")
                     .build();
@@ -188,8 +194,8 @@ public class extra_gemini_cli_helper {
                     try {
                         String responseBody = response.body() != null ? response.body().string() : "";
                         if (response.isSuccessful()) {
-                            JSONObject json = new JSONObject(responseBody);
-                            String suggestions = json.optString("suggestions", "Không có gợi ý");
+                            // Sử dụng lại logic parseResponse
+                            String suggestions = parseResponse(responseBody);
                             mainHandler.post(() -> callback.onSuccess(suggestions));
                         } else {
                             mainHandler.post(() -> callback.onError("Lỗi gợi ý phim: " + response.code()));
@@ -216,14 +222,17 @@ public class extra_gemini_cli_helper {
     private String parseResponse(String jsonResponse) throws JSONException {
         JSONObject obj = new JSONObject(jsonResponse);
 
-        // Check success
-        boolean success = obj.optBoolean("success", false);
-
-        if (success) {
-            return obj.optString("reply", "Không có phản hồi");
+        // API mới trả về field "response"
+        if (obj.has("response")) {
+            return obj.getString("response");
+        } else if (obj.has("reply")) { // Fallback, just in case
+            return obj.getString("reply");
         } else {
-            String error = obj.optString("error", "Lỗi không xác định");
-            throw new JSONException(error);
+            // Check for error field
+            if (obj.has("error")) {
+                throw new JSONException(obj.getString("error"));
+            }
+            return "Không có nội dung phản hồi từ server";
         }
     }
 
