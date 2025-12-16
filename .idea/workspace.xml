@@ -251,14 +251,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="844f1ce6-039a-4511-a069-8979768ecd95" name="Changes" comment="fix: cập nhật thêm tính năng botchat, thay đổi api server mới.">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/assets/info_FILM.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/assets/info_README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/info_DOCUMENT.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/info_README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DOCUMENT.md" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/assets/info_DOCUMENT.md" afterDir="false" />
-    </list>
+    <list default="true" id="844f1ce6-039a-4511-a069-8979768ecd95" name="Changes" comment="docs: thêm data cho chatbot." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -702,7 +695,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765892639779</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="docs: thêm data cho chatbot.">
+      <option name="closed" value="true" />
+      <created>1765895209097</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1765895209097</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -737,7 +738,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Thêm link firebase vào mã nguồn để team tra cứu." />
     <MESSAGE value="Đã code thêm chức năng: đăng nhập, đăng ký, quên mật khẩu, ... ban đầu." />
     <MESSAGE value="Khóa hướng màng hình cho các chức năng đăng nhập." />
     <MESSAGE value="Code chức năng người dùng và các settings cho ứng dụng." />
@@ -762,7 +762,8 @@
     <MESSAGE value="fix: sửa lỗi đa ngôn ngữ trên giao diện thông báo (vì giao diện này chưa thực hiện tính năng này)." />
     <MESSAGE value="feat, docs, style: cài đặt api dịch vụ AI vào botchat, viết docs, cải thiện thêm giao diện." />
     <MESSAGE value="fix: cập nhật thêm tính năng botchat, thay đổi api server mới." />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: cập nhật thêm tính năng botchat, thay đổi api server mới." />
+    <MESSAGE value="docs: thêm data cho chatbot." />
+    <option name="LAST_COMMIT_MESSAGE" value="docs: thêm data cho chatbot." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
