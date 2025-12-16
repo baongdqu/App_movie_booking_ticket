@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">App_movie_booking_ticket</string>
+    <string name="search_hint">搜索电影...</string>
+    <string name="email">电子邮箱</string>
+    <string name="password">密码</string>
+    <string name="ng_nh_p">登录</string>
+    <string name="qu_n_m_t_kh_u">忘记密码？</string>
+    <string name="t_o_t_i_kho_n_m_i">创建新帐户</string>
+    <string name="h_t_n">姓名</string>
+    <string name="xac_nhan_mat_khau">确认密码</string>
+    <string name="s_dien_thoai">电话号码</string>
+    <string name="t_o_t_i_kho_n">注册</string>
+    <string name="quay_l_i_ng_nh_p">返回登录</string>
+    <string name="m_t_kh_u">密码</string>
+    <string name="g_i_li_n_k_t_kh_i_ph_c">发送恢复链接</string>
+    <string name="quay_l_i_ng_nh_ps">返回登录</string>
+    <string name="m_t_kh_uu">密码</string>
+    <string name="ang_t_i">加载中...</string>
+    <string name="trailer">预告片</string>
+    <string name="th_ng_b_o">通知</string>
+    <string name="ng_i_d_ng">个人资料</string>
+    <string name="trang_ch">首页</string>
+    <string name="th">邮件</string>
+    <string name="chatbot">聊天机器人</string>
+    <string name="nguyenvana_example_com">zhangsan@example.com</string>
+    <string name="c_i_t_t_i_kho_n">帐户设置</string>
+    <string name="ch_nh_s_a_th_ng_tin">编辑个人资料</string>
+    <string name="nguy_n_v_n_a">张三</string>
+    <string name="ng_xu_t">登出</string>
+    <string name="quay_l_i_menu">返回菜单</string>
+    <string name="imgbb_api_key">34b97f269820a2c163fc835da8c61544</string>
+    <string name="user_name">用户名</string>
+    <string name="user_email">user@example.com</string>
+    <string name="g_i_l_i_email_x_c_minh">重发验证邮件？</string>
+    <string name="back_button">返回</string>
+    <string name="label_select_date">选择日期</string>
+    <string name="label_select_time">选择时间</string>
+    <string name="movie_title">电影标题</string>
+    <string name="btn_continue">继续</string>
+    <string name="total_price">总计: ¥0</string>
+    <string name="label_empty">空座</string>
+    <string name="label_selected">已选</string>
+    <string name="label_booked">已预订</string>
+    <string name="change_language">更改语言</string>
+    <string name="language_selection_title">选择语言</string>
+    <string name="lang_vi">Tiếng Việt</string>
+    <string name="lang_en">English</string>
+    <string name="lang_ru">Русский</string>
+    <string name="lang_ja">日本語</string>
+    <string name="lang_ko">한국어</string>
+    <string name="lang_zh">中文</string>
+
+    <!-- Forgot Password -->
+    <string name="forgot_password_title">忘记密码？</string>
+    <string name="forgot_password_desc">输入您注册的电子邮箱，我们将发送密码恢复链接。</string>
+    
+    <!-- Login -->
+    <string name="no_account">没有帐户？</string>
+    
+    <!-- Home -->
+    <string name="no_movies_found">未找到电影</string>
+    <string name="top_movie">热门电影</string>
+    <string name="view_all">查看全部</string>
+    <string name="upcoming_movies">即将上映</string>
+    
+    <!-- Mail & Notifications -->
+    <string name="empty_mailbox">邮箱为空</string>
+    <string name="new_messages_here">新消息将显示在这里</string>
+    <string name="no_notifications">没有通知</string>
+    <string name="new_notifications_here">新通知将显示在这里</string>
+    
+    <!-- User Profile -->
+    <string name="advanced_settings">高级设置</string>
+    
+    <!-- Movie List -->
+    <string name="all_movies">所有电影</string>
+    <string name="genre">类型</string>
+    <string name="duration_placeholder">1小时41分钟</string>
+    <string name="date_placeholder">2025/10/31</string>
+    <string name="details">详情</string>
+    <string name="buy_ticket">购票</string>
+    <string name="movie_name">电影名称</string>
+    
+    <!-- Movie Details -->
+    <string name="movie_detail">电影详情</string>
+    <string name="title">标题</string>
+    <string name="year_duration">2025 • 1小时55分钟</string>
+    <string name="like">喜欢</string>
+    <string name="summary">简介</string>
+    <string name="movie_summary_placeholder">电影简介将显示在这里</string>
+    <string name="cast">演员</string>
+    <string name="images">图片</string>
+    
+    <!-- Seat Selection -->
+    <string name="book_ticket">订票</string>
+    <string name="screen">屏幕</string>
+    <string name="price_format">总计: ¥%1$s</string>
+    
+    <!-- Settings -->
+    <string name="dark_mode">深色模式</string>
+    <string name="interface_section">界面</string>
+    <string name="sound_notification">声音和通知</string>
+    <string name="toggle_sound">开/关声音</string>
+    <string name="enable_notification">启用通知</string>
+    <string name="security">安全</string>
+    <string name="change_password">更改密码</string>
+    <string name="delete_account">删除帐户</string>
+    <string name="back">返回</string>
+    
+    <!-- Change Password -->
+    <string name="current_password">当前密码</string>
+    <string name="new_password">新密码</string>
+    <string name="confirm_new_password">确认新密码</string>
+    <string name="save_password">保存密码</string>
+    
+    <!-- Edit Profile -->
+    <string name="full_name">姓名</string>
+    <string name="phone">电话号码</string>
+    <string name="date_of_birth">出生日期</string>
+    <string name="gender">性别</string>
+    <string name="male">男</string>
+    <string name="female">女</string>
+    <string name="other">其他</string>
+    <string name="select_gender">选择性别</string>
+    <string name="save">保存</string>
+    <string name="cancel">取消</string>
+    <string name="change_avatar">更改头像</string>
+    <string name="verify">验证</string>
+    
+    <!-- Toast Messages -->
+    <string name="toast_user_not_found">无法识别用户。</string>
+    <string name="toast_default_avatar_set">已设置默认头像。</string>
+    <string name="toast_default_avatar_error">无法更新头像: %1$s</string>
+    <string name="toast_user_data_not_found">未找到用户数据！</string>
+    <string name="toast_load_error">数据加载错误: %1$s</string>
+    <string name="toast_enter_phone">请输入电话号码。</string>
+    <string name="toast_phone_verified">此电话号码已验证。</string>
+    <string name="toast_sending_otp">正在向 %1$s 发送OTP...</string>
+    <string name="toast_enter_name">请输入您的姓名。</string>
+    <string name="toast_verification_failed">验证失败: %1$s</string>
+    <string name="toast_unlink_error">解绑旧电话号码错误: %1$s</string>
+    <string name="toast_phone_update_success">电话验证和更新成功！</string>
+    <string name="toast_phone_linked_other">此电话号码已绑定到其他帐户！</string>
+    <string name="toast_error">错误: %1$s</string>
+    <string name="toast_upload_error">图片上传错误: %1$s</string>
+    <string name="toast_profile_updated">个人资料更新成功！</string>
+    <string name="toast_db_error">数据库错误: %1$s</string>
+    <string name="toast_upload_failed">上传失败 (%1$s): %2$s</string>
+    <string name="toast_response_error">上传响应错误: %1$s</string>
+    <string name="toast_image_error">无法处理图片: %1$s</string>
+    <string name="toast_update_error">更新错误: %1$s</string>
+    <string name="toast_fill_all_fields">请填写所有字段。</string>
+    <string name="toast_password_mismatch">密码不匹配！</string>
+    <string name="toast_password_min_length">密码必须至少6个字符！</string>
+    <string name="toast_password_changed">密码更改成功！</string>
+    <string name="toast_wrong_password">当前密码不正确！</string>
+    <string name="toast_notification_on">通知已启用</string>
+    <string name="toast_notification_off">通知已禁用</string>
+    <string name="toast_sound_on">声音已启用</string>
+    <string name="toast_sound_off">声音已禁用</string>
+    <string name="toast_enter_password">请输入密码。</string>
+    <string name="toast_no_email">没有用于验证的电子邮箱。</string>
+    <string name="toast_account_deleted">帐户已删除！</string>
+    <string name="toast_delete_account_error">无法删除帐户: %1$s</string>
+    <string name="toast_delete_data_error">删除数据错误: %1$s</string>
+    <string name="toast_session_expired">密码错误或会话已过期！</string>
+    <string name="toast_select_seat">请选择座位！</string>
+    <string name="toast_seat_total">座位: %1$s | 总计: ¥%2$s</string>
+    <string name="toast_no_schedule">没有排片！</string>
+    <string name="toast_load_data_error">数据加载错误</string>
+    <string name="toast_chatbot_coming_soon">聊天机器人功能即将推出！</string>
+    <string name="toast_fill_info">请填写所有信息！</string>
+    <string name="toast_invalid_email">无效的电子邮箱！</string>
+    <string name="toast_password_6_chars">密码必须至少6个字符！</string>
+    <string name="toast_load_user_error">用户信息加载错误</string>
+    <string name="toast_email_sent">恢复链接已发送！</string>
+    <string name="toast_email_error">错误: %1$s</string>
+    <string name="toast_account_created">帐户创建成功！请验证您的邮箱。</string>
+    <string name="toast_email_exists">电子邮箱已存在。</string>
+    <string name="toast_weak_password">密码太弱。</string>
+    <string name="toast_login_success">登录成功！</string>
+    <string name="toast_login_failed">登录失败: %1$s</string>
+    <string name="toast_verify_email">请在登录前验证您的邮箱。</string>
+    <string name="toast_verification_sent">验证邮件已重新发送。请检查收件箱。</string>
+    <string name="toast_verification_send_error">邮件发送错误: %1$s</string>
+
+    <!-- Dialogs -->
+    <string name="dialog_confirm_delete_title">⚠️ 确认删除帐户</string>
+    <string name="dialog_confirm_delete_message">此操作将永久删除您的帐户和所有相关数据。确定要继续吗？</string>
+    <string name="dialog_reauthenticate_title">重新验证</string>
+    <string name="dialog_enter_password_hint">输入密码以确认</string>
+    <string name="dialog_confirm">确认</string>
+    <string name="dialog_delete">删除</string>
+    <string name="dialog_enter_otp">输入OTP</string>
+    <string name="dialog_enter_otp_title">输入验证码</string>
+    <string name="dialog_email_not_verified_title">邮箱未验证</string>
+    <string name="dialog_email_not_verified_message">您的帐户邮箱未验证。要重新发送验证邮件吗？</string>
+    <string name="dialog_resend_email">重新发送邮件</string>
+    <string name="dialog_open_email">打开邮箱</string>
+    <string name="dialog_close">关闭</string>
+    <string name="toast_email_already_verified">邮箱已验证。您可以登录了。</string>
+    <string name="toast_email_app_not_found">找不到邮件应用。</string>
+    <string name="toast_enter_email_to_reset">请输入电子邮箱以重置密码！</string>
+
+    <!-- Movie Preferences / Additional Info -->
+    <string name="movie_preferences">附加信息</string>
+    <string name="movie_preferences_title">附加信息</string>
+    <string name="movie_preferences_subtitle">提供详细信息以改善您的体验</string>
+    <string name="favorite_genre">喜欢的电影类型</string>
+    <string name="select_genre">选择类型</string>
+    <string name="favorite_movie_language">喜欢的电影语言</string>
+    <string name="select_movie_language">选择语言</string>
+    <string name="subtitle_preference">配音还是字幕？</string>
+    <string name="dubbed">配音</string>
+    <string name="subtitled">字幕</string>
+    <string name="both_dubbed_subtitled">都可以</string>
+    <string name="toast_preferences_saved">电影偏好已保存！</string>
+    <string name="toast_select_at_least_one">请至少选择一项偏好！</string>
+
+    <!-- Movie Genres -->
+    <string name="genre_action">动作</string>
+    <string name="genre_comedy">喜剧</string>
+    <string name="genre_drama">剧情</string>
+    <string name="genre_horror">恐怖</string>
+    <string name="genre_romance">爱情</string>
+    <string name="genre_scifi">科幻</string>
+    <string name="genre_animation">动画</string>
+    <string name="genre_documentary">纪录片</string>
+    <string name="genre_thriller">惊悚</string>
+    <string name="genre_fantasy">奇幻</string>
+
+    <!-- Movie Languages -->
+    <string name="movie_lang_vietnamese">越南语</string>
+    <string name="movie_lang_english">英语</string>
+    <string name="movie_lang_korean">韩语</string>
+    <string name="movie_lang_japanese">日语</string>
+    <string name="movie_lang_chinese">中文</string>
+    <string name="movie_lang_thai">泰语</string>
+    <string name="movie_lang_hindi">印地语</string>
+    <string name="movie_lang_french">法语</string>
+    <string name="movie_lang_spanish">西班牙语</string>
+
+    <!-- Notification Messages -->
+    <string name="notification_profile_update_title">账户更新</string>
+    <string name="notification_profile_update_message">您已更新个人信息</string>
+
+    <!-- 🤖 Chatbot Strings -->
+    <string name="chatbot_title">电影助手</string>
+    <string name="chatbot_online">在线</string>
+    <string name="chatbot_offline">离线</string>
+    <string name="chatbot_typing">正在输入...</string>
+    <string name="chatbot_welcome_message">您好！🎬 我是电影院助手。我可以帮您：\n\n• 推荐精彩电影\n• 指导订票\n• 查询上映时间\n\n今天有什么可以帮您？</string>
+    <string name="chat_input_hint">输入消息...</string>
+    <string name="send_message">发送</string>
+    <string name="chip_suggest_movie">电影推荐</string>
+    <string name="chip_book_ticket">订票方法</string>
+    <string name="chip_showtime">今日上映</string>
+    <string name="chip_ticket_price">票价查询</string>
+    <string name="gemini_api_key">YOUR_GEMINI_API_KEY_HERE</string>
+    <string name="gemini_cli_server_url">https://413b99345c3d.ngrok-free.app</string>
+    <string name="use_local_ai_server">true</string>
+
+    <!-- Chatbot Error Messages -->
+    <string name="server_not_ready">⚠️ AI 服务器未就绪。请检查连接。</string>
+    <string name="server_connect_error_title">无法连接到 AI 服务器。</string>
+    <string name="server_check_list">检查：\n• 服务器正在运行吗？\n• Ngrok 隧道是否处于活动状态？\n• URL 是否正确？</string>
+    <string name="error_prefix">❌ </string>
+    <string name="please_try_again">\n\n请稍后再试！</string>
+    <string name="error_processing_response">响应处理错误: %1$s</string>
+    <string name="error_creating_request">请求创建错误: %1$s</string>
+    <string name="server_healthy">服务器运行正常</string>
+    <string name="server_not_responding">服务器无响应: %1$s</string>
+    <string name="connect_failed">无法连接服务器: %1$s</string>
+
+    <!-- Network Check Dialog -->
+    <string name="dialog_no_internet_title">没有网络连接</string>
+    <string name="dialog_no_internet_message">使用此应用需要互联网连接。请检查您的网络连接并重试。</string>
+    <string name="retry">重试</string>
+    <string name="exit">退出</string>
+</resources>

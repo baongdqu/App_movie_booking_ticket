@@ -64,24 +64,25 @@ public class activities_1_signup extends AppCompatActivity {
         String confirmPassword = Objects.requireNonNull(inputConfirmPassword.getText()).toString().trim();
         String phone = Objects.requireNonNull(inputPhone.getText()).toString().trim();
 
-        if (TextUtils.isEmpty(fullName) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(confirmPassword)) {
+        if (TextUtils.isEmpty(fullName) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password)
+                || TextUtils.isEmpty(confirmPassword)) {
             extra_sound_manager.playError(this);
-            Toast.makeText(this, "Vui lòng điền đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_fill_info), Toast.LENGTH_SHORT).show();
             return;
         }
         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             extra_sound_manager.playError(this);
-            Toast.makeText(this, "Email không hợp lệ!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_invalid_email), Toast.LENGTH_SHORT).show();
             return;
         }
         if (password.length() < 6) {
             extra_sound_manager.playError(this);
-            Toast.makeText(this, "Mật khẩu phải có ít nhất 6 ký tự!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_password_6_chars), Toast.LENGTH_SHORT).show();
             return;
         }
         if (!password.equals(confirmPassword)) {
             extra_sound_manager.playError(this);
-            Toast.makeText(this, "Mật khẩu xác nhận không khớp!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_password_mismatch), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -99,7 +100,7 @@ public class activities_1_signup extends AppCompatActivity {
                             FirebaseUser firebaseUser = mAuth.getCurrentUser();
                             if (firebaseUser != null) {
                                 String uid = firebaseUser.getUid();
-                                extra_user user = new extra_user(uid, fullName, email, phone);
+                                extra_user user = new extra_user(uid, fullName, email, phone, "", "");
                                 user.setAvatarUrl("https://i.ibb.co/C3JdHS1r/Avatar-trang-den.png");
 
                                 usersRef.child(uid).setValue(user)
@@ -108,24 +109,32 @@ public class activities_1_signup extends AppCompatActivity {
                                                 firebaseUser.sendEmailVerification()
                                                         .addOnCompleteListener(verifyTask -> {
                                                             if (verifyTask.isSuccessful()) {
-                                                                extra_sound_manager.playSuccess(activities_1_signup.this);
+                                                                extra_sound_manager
+                                                                        .playSuccess(activities_1_signup.this);
                                                                 Toast.makeText(activities_1_signup.this,
-                                                                        "Đăng ký thành công! Vui lòng kiểm tra email để xác minh tài khoản.",
+                                                                        getString(R.string.toast_account_created),
                                                                         Toast.LENGTH_LONG).show();
                                                                 mAuth.signOut();
-                                                                startActivity(new Intent(activities_1_signup.this, activities_1_login.class));
+                                                                startActivity(new Intent(activities_1_signup.this,
+                                                                        activities_1_login.class));
                                                                 finish();
                                                             } else {
                                                                 extra_sound_manager.playError(activities_1_signup.this);
                                                                 Toast.makeText(activities_1_signup.this,
-                                                                        "Không gửi được email xác minh: " + Objects.requireNonNull(verifyTask.getException()).getMessage(),
+                                                                        String.format(getString(
+                                                                                R.string.toast_verification_send_error),
+                                                                                Objects.requireNonNull(
+                                                                                        verifyTask.getException())
+                                                                                        .getMessage()),
                                                                         Toast.LENGTH_LONG).show();
                                                             }
                                                         });
                                             } else {
                                                 extra_sound_manager.playError(activities_1_signup.this);
                                                 Toast.makeText(activities_1_signup.this,
-                                                        "Lỗi lưu dữ liệu: " + Objects.requireNonNull(dbTask.getException()).getMessage(),
+                                                        String.format(getString(R.string.toast_db_error),
+                                                                Objects.requireNonNull(dbTask.getException())
+                                                                        .getMessage()),
                                                         Toast.LENGTH_LONG).show();
                                             }
                                         });
@@ -133,7 +142,8 @@ public class activities_1_signup extends AppCompatActivity {
                         } else {
                             extra_sound_manager.playError(activities_1_signup.this);
                             Toast.makeText(activities_1_signup.this,
-                                    "Đăng ký thất bại: " + Objects.requireNonNull(task.getException()).getMessage(),
+                                    String.format(getString(R.string.toast_error),
+                                            Objects.requireNonNull(task.getException()).getMessage()),
                                     Toast.LENGTH_LONG).show();
                         }
                     }

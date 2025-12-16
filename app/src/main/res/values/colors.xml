@@ -23,6 +23,7 @@
     <color name="button_primary_profile">#E50914</color>
     <color name="button_secondary_profile">#1976D2</color>
     <color name="divider_color">#E0E0E0</color>
+    <color name="netflix_green">#4CAF50</color>
 
     <!-- 🎬 Netflix-Style Color Palette -->
     <color name="netflix_black">#141414</color>
@@ -40,5 +41,17 @@
     <color name="netflix_light_card">#FFFFFF</color>
     <color name="netflix_light_text_primary">#000000</color>
     <color name="netflix_light_text_secondary">#666666</color>
+
+    <!-- 🤖 Chatbot Colors -->
+    <color name="chat_background">@color/bg_color</color>
+    <color name="chat_user_bubble">#E50914</color>
+    <color name="chat_user_bubble_dark">#B20710</color>
+    <color name="chat_bot_bubble">@color/card_background</color>
+    <color name="chat_bot_text">@color/text_primary</color>
+    <color name="chat_input_bg">@color/card_background</color>
+    <color name="chat_send_button">#E50914</color>
+    <color name="chat_hint_text">@color/text_secondary</color>
+    <color name="chat_chip_stroke">#E50914</color>
+    <color name="chat_chip_text">#E50914</color>
 
 </resources>

@@ -1,5 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">App_movie_booking_ticket</string>
+    <string name="search_hint">Tìm kiếm phim...</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="ng_nh_p">Đăng nhập</string>
@@ -20,6 +22,7 @@
     <string name="ng_i_d_ng">Người dùng</string>
     <string name="trang_ch">Trang chủ</string>
     <string name="th">Thư</string>
+    <string name="chatbot">Chatbot</string>
     <string name="nguyenvana_example_com">nguyenvana@example.com</string>
     <string name="c_i_t_t_i_kho_n">Cài đặt tài khoản</string>
     <string name="ch_nh_s_a_th_ng_tin">Chỉnh sửa thông tin</string>
@@ -27,10 +30,10 @@
     <string name="ng_xu_t">Đăng xuất</string>
     <string name="quay_l_i_menu">Quay lại menu</string>
     <string name="imgbb_api_key">34b97f269820a2c163fc835da8c61544</string>
-    <string name="user_name">User Name</string>
+    <string name="user_name">Tên người dùng</string>
     <string name="user_email">user@example.com</string>
     <string name="g_i_l_i_email_x_c_minh">Gửi lại email xác minh?</string>
-    <string name="back_button">Nút quay lại</string>
+    <string name="back_button">Quay lại</string>
     <string name="label_select_date">Chọn ngày chiếu</string>
     <string name="label_select_time">Chọn suất chiếu</string>
     <string name="movie_title">Tên phim</string>
@@ -39,7 +42,282 @@
     <string name="label_empty">Ghế trống</string>
     <string name="label_selected">Ghế bạn chọn</string>
     <string name="label_booked">Đã đặt</string>
+    <string name="change_language">Đổi ngôn ngữ</string>
+    <string name="language_selection_title">Chọn ngôn ngữ</string>
+    <string name="lang_vi">Tiếng Việt</string>
+    <string name="lang_en">English</string>
+    <string name="lang_ru">Русский</string>
+    <string name="lang_ja">日本語</string>
+    <string name="lang_ko">한국어</string>
+    <string name="lang_zh">中文</string>
+
+    <!-- Forgot Password -->
+    <string name="forgot_password_title">Quên mật khẩu?</string>
+    <string name="forgot_password_desc">Nhập email đã đăng ký của bạn và chúng tôi sẽ gửi liên kết khôi phục mật khẩu.</string>
+    
+    <!-- Login -->
+    <string name="no_account">Chưa có tài khoản?</string>
+    
+    <!-- Home -->
+    <string name="no_movies_found">Không tìm thấy phim nào</string>
+    <string name="top_movie">Phim thịnh hành</string>
+    <string name="view_all">Xem tất cả</string>
+    <string name="upcoming_movies">Phim sắp chiếu</string>
+    
+    <!-- Mail & Notifications -->
+    <string name="empty_mailbox">Hộp thư trống</string>
+    <string name="new_messages_here">Tin nhắn mới sẽ hiển thị ở đây</string>
+    <string name="no_notifications">Chưa có thông báo</string>
+    <string name="new_notifications_here">Thông báo mới sẽ hiển thị ở đây</string>
+    
+    <!-- User Profile -->
+    <string name="advanced_settings">Cài đặt nâng cao</string>
+    
+    <!-- Movie List -->
+    <string name="all_movies">Tất cả phim</string>
+    <string name="genre">Thể loại</string>
+    <string name="duration_placeholder">1 giờ 41 phút</string>
+    <string name="date_placeholder">31/10/2025</string>
+    <string name="details">Chi tiết</string>
+    <string name="buy_ticket">Mua vé</string>
+    <string name="movie_name">Tên phim</string>
+    
+    <!-- Movie Details -->
+    <string name="movie_detail">Chi tiết phim</string>
+    <string name="title">Tiêu đề</string>
+    <string name="year_duration">2025 • 1h 55m</string>
+    <string name="like">Thích</string>
+    <string name="summary">Tóm tắt</string>
+    <string name="movie_summary_placeholder">Tóm tắt phim sẽ hiển thị ở đây</string>
+    <string name="cast">Diễn viên</string>
+    <string name="images">Hình ảnh</string>
+    
+    <!-- Seat Selection -->
+    <string name="book_ticket">Đặt vé</string>
+    <string name="screen">Màn hình</string>
+    <string name="price_format">Tổng: %1$sđ</string>
+    
+    <!-- Settings -->
+    <string name="dark_mode">Chế độ tối</string>
+    <string name="interface_section">Giao diện</string>
+    <string name="sound_notification">Âm thanh &amp; Thông báo</string>
+    <string name="toggle_sound">Bật/Tắt âm thanh</string>
+    <string name="enable_notification">Bật thông báo</string>
+    <string name="security">Bảo mật</string>
+    <string name="change_password">Đổi mật khẩu</string>
+    <string name="delete_account">Xóa tài khoản</string>
+    <string name="back">Quay lại</string>
+    
+    <!-- Change Password -->
+    <string name="current_password">Mật khẩu hiện tại</string>
+    <string name="new_password">Mật khẩu mới</string>
+    <string name="confirm_new_password">Xác nhận mật khẩu mới</string>
+    <string name="save_password">Lưu mật khẩu</string>
+    
+    <!-- Edit Profile -->
+    <string name="full_name">Họ và tên</string>
+    <string name="phone">Số điện thoại</string>
+    <string name="date_of_birth">Ngày sinh</string>
+    <string name="gender">Giới tính</string>
+    <string name="male">Nam</string>
+    <string name="female">Nữ</string>
+    <string name="other">Khác</string>
+    <string name="select_gender">Chọn giới tính</string>
+    <string name="save">Lưu</string>
+    <string name="cancel">Hủy</string>
+    <string name="change_avatar">Đổi ảnh đại diện</string>
+    <string name="verify">Xác thực</string>
+    
+    <!-- Toast Messages -->
+    <string name="toast_user_not_found">Không xác định người dùng.</string>
+    <string name="toast_default_avatar_set">Đã gán avatar mặc định.</string>
+    <string name="toast_default_avatar_error">Không thể cập nhật avatar mặc định: %1$s</string>
+    <string name="toast_user_data_not_found">Không tìm thấy dữ liệu người dùng!</string>
+    <string name="toast_load_error">Lỗi tải dữ liệu: %1$s</string>
+    <string name="toast_enter_phone">Vui lòng nhập số điện thoại.</string>
+    <string name="toast_phone_verified">Số điện thoại này đã được xác thực rồi.</string>
+    <string name="toast_sending_otp">Đang gửi OTP đến %1$s...</string>
+    <string name="toast_enter_name">Vui lòng nhập họ tên.</string>
+    <string name="toast_verification_failed">Xác thực thất bại: %1$s</string>
+    <string name="toast_unlink_error">Lỗi gỡ bỏ SĐT cũ: %1$s</string>
+    <string name="toast_phone_update_success">Xác thực và Cập nhật SĐT thành công!</string>
+    <string name="toast_phone_linked_other">Số ĐT này đã liên kết với tài khoản khác!</string>
+    <string name="toast_error">Lỗi: %1$s</string>
+    <string name="toast_upload_error">Lỗi upload ảnh: %1$s</string>
+    <string name="toast_profile_updated">Cập nhật hồ sơ thành công!</string>
+    <string name="toast_db_error">Lỗi lưu DB: %1$s</string>
+    <string name="toast_upload_failed">Upload thất bại (%1$s): %2$s</string>
+    <string name="toast_response_error">Lỗi xử lý phản hồi upload: %1$s</string>
+    <string name="toast_image_error">Không thể xử lý ảnh: %1$s</string>
+    <string name="toast_update_error">Lỗi cập nhật: %1$s</string>
+    <string name="toast_fill_all_fields">Vui lòng nhập đầy đủ thông tin.</string>
+    <string name="toast_password_mismatch">Mật khẩu xác nhận không khớp!</string>
+    <string name="toast_password_min_length">Mật khẩu mới phải có ít nhất 6 ký tự!</string>
+    <string name="toast_password_changed">Đổi mật khẩu thành công!</string>
+    <string name="toast_wrong_password">Mật khẩu hiện tại không đúng!</string>
+    <string name="toast_notification_on">Thông báo đã bật</string>
+    <string name="toast_notification_off">Thông báo đã tắt</string>
+    <string name="toast_sound_on">Âm thanh được bật</string>
+    <string name="toast_sound_off">Âm thanh đã tắt</string>
+    <string name="toast_enter_password">Vui lòng nhập mật khẩu.</string>
+    <string name="toast_no_email">Không có email để xác thực.</string>
+    <string name="toast_account_deleted">Đã xóa tài khoản thành công!</string>
+    <string name="toast_delete_account_error">Không thể xóa tài khoản: %1$s</string>
+    <string name="toast_delete_data_error">Lỗi khi xóa dữ liệu: %1$s</string>
+    <string name="toast_session_expired">Mật khẩu không đúng hoặc phiên đăng nhập đã hết hạn!</string>
+    <string name="toast_select_seat">Vui lòng chọn ghế!</string>
+    <string name="toast_seat_total">Ghế: %1$s | Tổng: %2$sđ</string>
+    <string name="toast_no_schedule">Không có lịch chiếu!</string>
+    <string name="toast_load_data_error">Lỗi tải dữ liệu</string>
+    <string name="toast_chatbot_coming_soon">Tính năng chatbot sắp xuất hiện!</string>
+    <string name="toast_fill_info">Vui lòng điền đầy đủ thông tin!</string>
+    <string name="toast_invalid_email">Email không hợp lệ!</string>
+    <string name="toast_password_6_chars">Mật khẩu phải có ít nhất 6 ký tự!</string>
+    <string name="toast_load_user_error">Lỗi tải thông tin user</string>
+    <string name="toast_email_sent">Đã gửi liên kết khôi phục!</string>
+    <string name="toast_email_error">Lỗi: %1$s</string>
+    <string name="toast_account_created">Tạo tài khoản thành công! Vui lòng xác minh email.</string>
+    <string name="toast_email_exists">Email đã tồn tại.</string>
+    <string name="toast_weak_password">Mật khẩu quá yếu.</string>
+    <string name="toast_login_success">Đăng nhập thành công!</string>
+    <string name="toast_login_failed">Đăng nhập thất bại: %1$s</string>
+    <string name="toast_verify_email">Vui lòng xác minh email trước khi đăng nhập.</string>
+    <string name="toast_verification_sent">Đã gửi lại email xác minh. Vui lòng kiểm tra hộp thư.</string>
+    <string name="toast_verification_send_error">Lỗi gửi email: %1$s</string>
+
+    <!-- Dialogs -->
+    <string name="dialog_confirm_delete_title">⚠️ Xác nhận xóa tài khoản</string>
+    <string name="dialog_confirm_delete_message">Hành động này sẽ xóa vĩnh viễn tài khoản và toàn bộ dữ liệu liên quan. Bạn có chắc chắn muốn tiếp tục?</string>
+    <string name="dialog_reauthenticate_title">Xác thực lại tài khoản</string>
+    <string name="dialog_enter_password_hint">Nhập mật khẩu để xác nhận</string>
+    <string name="dialog_confirm">Xác nhận</string>
+    <string name="dialog_delete">Xóa</string>
+    <string name="dialog_enter_otp">Nhập mã OTP</string>
+    <string name="dialog_enter_otp_title">Nhập mã xác thực</string>
+    <string name="dialog_email_not_verified_title">Email chưa được xác minh</string>
+    <string name="dialog_email_not_verified_message">Tài khoản của bạn chưa xác minh email. Bạn có muốn gửi lại email xác minh không?</string>
+    <string name="dialog_resend_email">Gửi lại email</string>
+    <string name="dialog_open_email">Mở Email</string>
+    <string name="dialog_close">Đóng</string>
+    <string name="toast_email_already_verified">Email đã được xác minh trước đó. Bạn có thể đăng nhập.</string>
+    <string name="toast_email_app_not_found">Không tìm thấy ứng dụng Email.</string>
+    <string name="toast_enter_email_to_reset">Vui lòng nhập email để khôi phục mật khẩu!</string>
+
+    <!-- Movie Preferences / Additional Info -->
+    <string name="movie_preferences">Thông tin bổ sung</string>
+    <string name="movie_preferences_title">Thông tin bổ sung</string>
+    <string name="movie_preferences_subtitle">Cung cấp thêm thông tin để chúng tôi phục vụ bạn tốt hơn</string>
+    <string name="favorite_genre">Thể loại phim yêu thích</string>
+    <string name="select_genre">Chọn thể loại phim</string>
+    <string name="favorite_movie_language">Ngôn ngữ phim yêu thích</string>
+    <string name="select_movie_language">Chọn ngôn ngữ phim</string>
+    <string name="subtitle_preference">Lồng tiếng hay phụ đề?</string>
+    <string name="dubbed">Phim lồng tiếng</string>
+    <string name="subtitled">Phim phụ đề</string>
+    <string name="both_dubbed_subtitled">Cả hai đều được</string>
+    <string name="toast_preferences_saved">Đã lưu sở thích phim!</string>
+    <string name="toast_select_at_least_one">Vui lòng chọn ít nhất một sở thích!</string>
+
+    <!-- Movie Genres -->
+    <string name="genre_action">Hành động</string>
+    <string name="genre_comedy">Hài hước</string>
+    <string name="genre_drama">Chính kịch</string>
+    <string name="genre_horror">Kinh dị</string>
+    <string name="genre_romance">Lãng mạn</string>
+    <string name="genre_scifi">Khoa học viễn tưởng</string>
+    <string name="genre_animation">Hoạt hình</string>
+    <string name="genre_documentary">Tài liệu</string>
+    <string name="genre_thriller">Giật gân</string>
+    <string name="genre_fantasy">Kỳ ảo</string>
+
+    <!-- Movie Languages -->
+    <string name="movie_lang_vietnamese">Tiếng Việt</string>
+    <string name="movie_lang_english">Tiếng Anh</string>
+    <string name="movie_lang_korean">Tiếng Hàn</string>
+    <string name="movie_lang_japanese">Tiếng Nhật</string>
+    <string name="movie_lang_chinese">Tiếng Trung</string>
+    <string name="movie_lang_thai">Tiếng Thái</string>
+    <string name="movie_lang_hindi">Tiếng Hindi</string>
+    <string name="movie_lang_french">Tiếng Pháp</string>
+    <string name="movie_lang_spanish">Tiếng Tây Ban Nha</string>
+
+    <!-- Arrays for Dropdowns (Dynamic Lists) -->
+    <string-array name="movie_genres_array">
+        <item>@string/genre_action</item>
+        <item>@string/genre_comedy</item>
+        <item>@string/genre_drama</item>
+        <item>@string/genre_horror</item>
+        <item>@string/genre_romance</item>
+        <item>@string/genre_scifi</item>
+        <item>@string/genre_animation</item>
+        <item>@string/genre_documentary</item>
+        <item>@string/genre_thriller</item>
+        <item>@string/genre_fantasy</item>
+    </string-array>
+
+    <string-array name="movie_languages_array">
+        <item>@string/movie_lang_vietnamese</item>
+        <item>@string/movie_lang_english</item>
+        <item>@string/movie_lang_korean</item>
+        <item>@string/movie_lang_japanese</item>
+        <item>@string/movie_lang_chinese</item>
+        <item>@string/movie_lang_thai</item>
+        <item>@string/movie_lang_hindi</item>
+        <item>@string/movie_lang_french</item>
+        <item>@string/movie_lang_spanish</item>
+    </string-array>
+
+    <!-- 🤖 Chatbot Strings -->
+    <string name="chatbot_title">Trợ lý phim</string>
+    <string name="chatbot_online">Trực tuyến</string>
+    <string name="chatbot_offline">Ngoại tuyến</string>
+    <string name="chatbot_typing">Đang soạn tin...</string>
+    <string name="chatbot_welcome_message">Xin chào! 🎬 Tôi là trợ lý ảo của rạp phim. Tôi có thể giúp bạn:\n\n• Tìm phim hay\n• Hướng dẫn đặt vé\n• Trả lời câu hỏi về suất chiếu\n\nBạn cần hỗ trợ gì hôm nay?</string>
+    <string name="chat_input_hint">Nhập tin nhắn...</string>
+    <string name="send_message">Gửi tin nhắn</string>
+    <string name="chip_suggest_movie">Gợi ý phim hay</string>
+    <string name="chip_book_ticket">Cách đặt vé</string>
+    <string name="chip_showtime">Suất chiếu hôm nay</string>
+    <string name="chip_ticket_price">Giá vé</string>
+    <string name="gemini_api_key">YOUR_GEMINI_API_KEY_HERE</string>
+    <string name="notification_profile_update_title">Cập nhật tài khoản</string>
+    <string name="notification_profile_update_message">Bạn đã thay đổi thông tin cá nhân</string>
+    
+    <!-- Gemini CLI Server -->
+    <string name="gemini_cli_server_url">https://413b99345c3d.ngrok-free.app</string>
+    <string name="use_local_ai_server">true</string>
 
 
+
+    <string-array name="chatbot_typing_phrases">
+        <item>Đợi xíu nhá...</item>
+        <item>Đang suy nghĩ nè...</item>
+        <item>Để mình xem nào...</item>
+        <item>Bình tĩnh, có ngay đây...</item>
+        <item>Hack não tí...</item>
+        <item>Đang lục lọi trí nhớ...</item>
+        <item>Chờ xíu nha...</item>
+        <item>Sắp có câu trả lời rồi...</item>
+        <item>Đang soạn tin nhắn...</item>
+        <item>Đang Google... đùa đó :v</item>
+    </string-array>
+
+    <!-- Chatbot Error Messages -->
+    <string name="server_not_ready">⚠️ Server AI chưa sẵn sàng. Kiểm tra kết nối.</string>
+    <string name="server_connect_error_title">Không thể kết nối server AI.</string>
+    <string name="server_check_list">Kiểm tra:\n• Server đang chạy?\n• Ngrok tunnel hoạt động?\n• URL đúng không?</string>
+    <string name="error_prefix">❌ </string>
+    <string name="please_try_again">\n\nVui lòng thử lại sau nhé!</string>
+    <string name="error_processing_response">Lỗi xử lý phản hồi: %1$s</string>
+    <string name="error_creating_request">Lỗi tạo request: %1$s</string>
+    <string name="server_healthy">Server hoạt động tốt</string>
+    <string name="server_not_responding">Server không phản hồi: %1$s</string>
+    <string name="connect_failed">Không thể kết nối server: %1$s</string>
+
+    <!-- Network Check Dialog -->
+    <string name="dialog_no_internet_title">Không có kết nối mạng</string>
+    <string name="dialog_no_internet_message">Bạn cần kết nối Internet để sử dụng ứng dụng này. Vui lòng kiểm tra kết nối mạng của bạn và thử lại.</string>
+    <string name="retry">Thử lại</string>
+    <string name="exit">Thoát</string>
 
 </resources>

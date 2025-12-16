@@ -60,14 +60,14 @@ public class fragments_home extends Fragment {
 
     private final Handler sliderHandler = new Handler();
 
-    private final Runnable sliderRunnable = () ->
-            binding.viewPager2.setCurrentItem(binding.viewPager2.getCurrentItem() + 1);
+    private final Runnable sliderRunnable = () -> binding.viewPager2
+            .setCurrentItem(binding.viewPager2.getCurrentItem() + 1);
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+            @Nullable ViewGroup container,
+            @Nullable Bundle savedInstanceState) {
         binding = LayoutsFragmentsHomeBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
@@ -114,8 +114,13 @@ public class fragments_home extends Fragment {
 
         // TextWatcher lọc phim theo tên
         inputSearch.addTextChangedListener(new TextWatcher() {
-            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            @Override public void afterTextChanged(Editable s) {}
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -129,21 +134,21 @@ public class fragments_home extends Fragment {
         binding.tvViewAll.setOnClickListener(v -> {
             // 🔊 Âm thanh click
             extra_sound_manager.playUiClick(requireContext());
-            startActivity(new Intent(requireContext(), AllMoviesActivity.class));
+            startActivity(new Intent(requireContext(), parthome_AllMoviesActivity.class));
         });
 
         binding.tvViewAllUpcoming.setOnClickListener(v -> {
             // 🔊 Âm thanh click
             extra_sound_manager.playUiClick(requireContext());
-            startActivity(new Intent(requireContext(), AllUpcomingActivity.class));
+            startActivity(new Intent(requireContext(), parthome_AllUpcomingActivity.class));
         });
 
         // =========================
         // TRANG NGƯỜI DÙNG
         // =========================
         binding.userInfoLayout.setOnClickListener(v -> {
-            if (getActivity() instanceof activities_2_menu_manage_fragments) {
-                ((activities_2_menu_manage_fragments) getActivity())
+            if (getActivity() instanceof activities_2_a_menu_manage_fragments) {
+                ((activities_2_a_menu_manage_fragments) getActivity())
                         .selectBottomNavItem(R.id.nav_user);
                 getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             } else {
@@ -153,8 +158,7 @@ public class fragments_home extends Fragment {
                                 R.anim.slide_in_right,
                                 R.anim.slide_out_left,
                                 R.anim.slide_in_left,
-                                R.anim.slide_out_right
-                        )
+                                R.anim.slide_out_right)
                         .replace(R.id.container, new fragments_user())
                         .addToBackStack(null)
                         .commit();
@@ -163,6 +167,14 @@ public class fragments_home extends Fragment {
 
         binding.imgAvatar.setOnClickListener(v -> binding.userInfoLayout.performClick());
         binding.tvFullName.setOnClickListener(v -> binding.userInfoLayout.performClick());
+
+        // =========================
+        // 🤖 CHATBOT FAB
+        // =========================
+        binding.fabChatbot.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(requireContext());
+            startActivity(new Intent(requireContext(), activities_2_chatbot.class));
+        });
     }
 
     // =====================================================
@@ -173,8 +185,7 @@ public class fragments_home extends Fragment {
 
         topMovieAdapter = new TopMovieAdapter(requireContext(), movieListTop);
         binding.recyclerTopMovie.setLayoutManager(
-                new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        );
+                new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
         binding.recyclerTopMovie.setAdapter(topMovieAdapter);
 
         movieRef.addValueEventListener(new ValueEventListener() {
@@ -183,7 +194,8 @@ public class fragments_home extends Fragment {
                 movieListTop.clear();
                 for (DataSnapshot itemSnap : snapshot.getChildren()) {
                     Movie movie = itemSnap.getValue(Movie.class);
-                    if (movie != null) movieListTop.add(movie);
+                    if (movie != null)
+                        movieListTop.add(movie);
                 }
 
                 // Sắp xếp theo IMDb giảm dần
@@ -195,7 +207,8 @@ public class fragments_home extends Fragment {
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
         });
     }
 
@@ -207,8 +220,7 @@ public class fragments_home extends Fragment {
 
         upcomingAdapter = new TopMovieAdapter(requireContext(), upcomingMoviesList);
         binding.recyclerUpcomingMovies.setLayoutManager(
-                new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        );
+                new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
         binding.recyclerUpcomingMovies.setAdapter(upcomingAdapter);
 
         upcomingRef.addValueEventListener(new ValueEventListener() {
@@ -217,7 +229,8 @@ public class fragments_home extends Fragment {
                 upcomingMoviesList.clear();
                 for (DataSnapshot itemSnap : snapshot.getChildren()) {
                     Movie movie = itemSnap.getValue(Movie.class);
-                    if (movie != null) upcomingMoviesList.add(movie);
+                    if (movie != null)
+                        upcomingMoviesList.add(movie);
                 }
                 upcomingMoviesList.sort((m1, m2) -> Integer.compare(m2.getYear(), m1.getYear()));
                 upcomingAdapter.notifyDataSetChanged();
@@ -227,7 +240,8 @@ public class fragments_home extends Fragment {
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
         });
     }
 
@@ -270,8 +284,7 @@ public class fragments_home extends Fragment {
             if (searchAdapter == null) {
                 searchAdapter = new TopMovieAdapter(requireContext(), filteredList);
                 binding.recyclerSearchResults.setLayoutManager(
-                        new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-                );
+                        new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false));
                 binding.recyclerSearchResults.setAdapter(searchAdapter);
             } else {
                 searchAdapter.updateList(filteredList);
@@ -298,12 +311,14 @@ public class fragments_home extends Fragment {
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (binding == null || getView() == null) return;
+                if (binding == null || getView() == null)
+                    return;
 
                 List<SliderItems> lists = new ArrayList<>();
                 for (DataSnapshot i : snapshot.getChildren()) {
                     SliderItems item = i.getValue(SliderItems.class);
-                    if (item != null) lists.add(item);
+                    if (item != null)
+                        lists.add(item);
                 }
 
                 binding.progressBarSlider.setVisibility(View.GONE);
@@ -311,7 +326,8 @@ public class fragments_home extends Fragment {
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
         });
     }
 
@@ -320,21 +336,24 @@ public class fragments_home extends Fragment {
     // =====================================================
     private void loadUserInfo() {
         FirebaseUser currentUser = auth.getCurrentUser();
-        if (currentUser == null) return;
+        if (currentUser == null)
+            return;
 
         String uid = currentUser.getUid();
 
         userRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (binding == null) return;
-                if (!snapshot.exists()) return;
+                if (binding == null)
+                    return;
+                if (!snapshot.exists())
+                    return;
 
                 String fullName = snapshot.child("fullName").getValue(String.class);
                 String email = snapshot.child("email").getValue(String.class);
                 String avatarUrl = snapshot.child("avatarUrl").getValue(String.class);
 
-                binding.tvFullName.setText(fullName != null ? fullName : "Người dùng");
+                binding.tvFullName.setText(fullName != null ? fullName : getString(R.string.user_name));
                 binding.tvEmail.setText(email != null ? email : "");
 
                 if (avatarUrl != null && !avatarUrl.isEmpty()) {
@@ -350,7 +369,7 @@ public class fragments_home extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(requireContext(), "Lỗi tải thông tin user", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), getString(R.string.toast_load_user_error), Toast.LENGTH_SHORT).show();
             }
         });
     }

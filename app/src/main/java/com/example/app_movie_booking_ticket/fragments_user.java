@@ -31,7 +31,7 @@ public class fragments_user extends Fragment {
     private TextView txtEmail;
     private ImageView imgAvatar; // <- trước đây là local trong onViewCreated, bây giờ là field
     private ImageButton btnBack;
-    private Button btnEditProfile, btnSettings, btnLogout;
+    private Button btnEditProfile, btnMoviePreferences, btnSettings, btnLogout;
 
     // Firebase + prefs
     private FirebaseAuth mAuth;
@@ -67,6 +67,7 @@ public class fragments_user extends Fragment {
         txtUsername = view.findViewById(R.id.txtUsername);
         txtEmail = view.findViewById(R.id.txtEmail);
         btnEditProfile = view.findViewById(R.id.btnEditProfile);
+        btnMoviePreferences = view.findViewById(R.id.btnMoviePreferences);
         btnSettings = view.findViewById(R.id.btnSettings);
         btnLogout = view.findViewById(R.id.btnLogout);
 
@@ -103,13 +104,19 @@ public class fragments_user extends Fragment {
         // Chỉnh sửa hồ sơ (btnEditProfile)
         btnEditProfile.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(requireActivity()); // Bổ sung âm thanh
-            startActivity(new Intent(requireActivity(), activities_3_edit_profile.class));
+            startActivity(new Intent(requireActivity(), partuser_edit_profile.class));
+        });
+
+        // Sở thích phim (btnMoviePreferences)
+        btnMoviePreferences.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(requireActivity());
+            startActivity(new Intent(requireActivity(), partuser_movie_preferences.class));
         });
 
         // Cài đặt nâng cao (btnSettings)
         btnSettings.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(requireActivity()); // Bổ sung âm thanh
-            startActivity(new Intent(requireActivity(), activities_3_advanced_settings.class));
+            startActivity(new Intent(requireActivity(), partuser_advanced_settings.class));
         });
 
         // Đăng xuất (btnLogout)

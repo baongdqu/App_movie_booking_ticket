@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
     <!-- Cho phép ứng dụng truy cập Internet -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
@@ -17,16 +18,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App_movie_booking_ticket">
         <activity
-            android:name=".SeatSelectionActivity"
+            android:name=".parthome_SeatSelectionActivity"
             android:exported="false" />
         <activity
-            android:name=".AllUpcomingActivity"
+            android:name=".parthome_AllUpcomingActivity"
             android:exported="false" />
         <activity
-            android:name=".activities_4_movie_detail"
+            android:name=".parthome_movie_detail"
             android:exported="false" />
         <activity
-            android:name=".AllMoviesActivity"
+            android:name=".parthome_AllMoviesActivity"
             android:exported="false" />
         <activity
             android:name=".activities_1_login"
@@ -38,16 +39,19 @@
             android:name=".activities_1_forgot_password"
             android:exported="true" />
         <activity
-            android:name=".activities_2_menu_manage_fragments"
+            android:name=".activities_2_a_menu_manage_fragments"
             android:exported="true" />
         <activity
-            android:name=".activities_3_edit_profile"
+            android:name=".partuser_edit_profile"
             android:exported="true" />
         <activity
-            android:name=".activities_3_advanced_settings"
+            android:name=".partuser_advanced_settings"
             android:exported="true" />
         <activity
-            android:name=".activities_3_change_password"
+            android:name=".partuser_change_password"
+            android:exported="true" />
+        <activity
+            android:name=".partuser_movie_preferences"
             android:exported="true" />
         <activity
             android:name=".activities_0_loading"
@@ -59,6 +63,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities_2_chatbot"
+            android:exported="false"
+            android:label="@string/chatbot_title"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

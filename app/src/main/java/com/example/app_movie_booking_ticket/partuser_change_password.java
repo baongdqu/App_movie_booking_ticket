@@ -10,7 +10,7 @@ import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class activities_3_change_password extends AppCompatActivity {
+public class partuser_change_password extends AppCompatActivity {
 
     private EditText inputOldPassword, inputNewPassword, inputConfirmPassword;
     private Button btnSavePassword, btnCancelPassword;
@@ -20,7 +20,7 @@ public class activities_3_change_password extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         extra_themeutils.applySavedTheme(this);
-        setContentView(R.layout.layouts_3_change_password);
+        setContentView(R.layout.partuser_change_password);
 
         inputOldPassword = findViewById(R.id.inputOldPassword);
         inputNewPassword = findViewById(R.id.inputNewPassword);
@@ -50,26 +50,26 @@ public class activities_3_change_password extends AppCompatActivity {
 
         if (TextUtils.isEmpty(oldPass) || TextUtils.isEmpty(newPass) || TextUtils.isEmpty(confirmPass)) {
             extra_sound_manager.playError(this);
-            Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_fill_all_fields), Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (!newPass.equals(confirmPass)) {
             extra_sound_manager.playError(this);
-            Toast.makeText(this, "Mật khẩu xác nhận không khớp!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_password_mismatch), Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (newPass.length() < 6) {
             extra_sound_manager.playError(this);
-            Toast.makeText(this, "Mật khẩu mới phải có ít nhất 6 ký tự!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_password_min_length), Toast.LENGTH_SHORT).show();
             return;
         }
 
         FirebaseUser user = mAuth.getCurrentUser();
         if (user == null || user.getEmail() == null) {
             extra_sound_manager.playError(this);
-            Toast.makeText(this, "Không xác định được người dùng!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_user_not_found), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -77,16 +77,17 @@ public class activities_3_change_password extends AppCompatActivity {
                 .addOnSuccessListener(unused -> user.updatePassword(newPass)
                         .addOnSuccessListener(unused2 -> {
                             extra_sound_manager.playSuccess(this);
-                            Toast.makeText(this, "Đổi mật khẩu thành công!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, getString(R.string.toast_password_changed), Toast.LENGTH_SHORT).show();
                             finish();
                         })
                         .addOnFailureListener(e -> {
                             extra_sound_manager.playError(this);
-                            Toast.makeText(this, "Lỗi cập nhật: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(this, String.format(getString(R.string.toast_update_error), e.getMessage()),
+                                    Toast.LENGTH_LONG).show();
                         }))
                 .addOnFailureListener(e -> {
                     extra_sound_manager.playError(this);
-                    Toast.makeText(this, "Mật khẩu hiện tại không đúng!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.toast_wrong_password), Toast.LENGTH_SHORT).show();
                 });
     }
 }
