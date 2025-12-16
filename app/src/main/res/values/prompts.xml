@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Chatbot Prompts & Error Responses -->
+<resources>
+    
+    <!-- Quick Reply Prompts - Nội dung gửi khi bấm nút tắt -->
+    <string name="prompt_suggest_movie">Gợi ý cho tôi một số phim hay đang chiếu tại rạp</string>
+    <string name="prompt_book_ticket">Hướng dẫn tôi cách đặt vé xem phim</string>
+    <string name="prompt_showtime">Cho tôi xem lịch chiếu phim hôm nay</string>
+    <string name="prompt_ticket_price">Giá vé xem phim hiện tại là bao nhiêu?</string>
+    
+    <!-- Error Responses -->
+    <string name="error_unknown">Xin lỗi, tôi chưa hiểu rõ câu hỏi của bạn. Bạn có thể diễn đạt lại được không? 🤔</string>
+    <string name="error_api">Xin lỗi, có lỗi xảy ra trong quá trình xử lý. Vui lòng thử lại sau ít phút. 🙏</string>
+    <string name="error_timeout">Xin lỗi, hệ thống đang bận. Vui lòng thử lại sau. ⏳</string>
+    
+</resources>

@@ -8,8 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.app_movie_booking_ticket.databinding.ItemMovieimagesBinding;
-import com.example.app_movie_booking_ticket.model.Movie;
+import com.example.app_movie_booking_ticket.databinding.ParthomeItemMovieimagesBinding;
 
 import java.util.List;
 
@@ -23,8 +22,8 @@ public class MovieImageAdapter  extends RecyclerView.Adapter<MovieImageAdapter.M
         this.picturesList = picturesList;
     }
     public static class MovieImageViewHolder extends RecyclerView.ViewHolder{
-        ItemMovieimagesBinding binding;
-        public MovieImageViewHolder(ItemMovieimagesBinding binding){
+        ParthomeItemMovieimagesBinding binding;
+        public MovieImageViewHolder(ParthomeItemMovieimagesBinding binding){
             super(binding.getRoot());
             this.binding = binding;
         }
@@ -33,7 +32,7 @@ public class MovieImageAdapter  extends RecyclerView.Adapter<MovieImageAdapter.M
     @Override
     public MovieImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        ItemMovieimagesBinding binding = ItemMovieimagesBinding.inflate(inflater, parent, false);
+        ParthomeItemMovieimagesBinding binding = ParthomeItemMovieimagesBinding.inflate(inflater, parent, false);
         return new MovieImageAdapter.MovieImageViewHolder(binding);
     }
 

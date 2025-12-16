@@ -4,6 +4,6 @@
     android:layout_height="match_parent"
     android:minHeight="300dp"
     android:scaleType="centerCrop"
-    android:id="@+id/imageSilde"
+    android:id="@+id/imageSlide"
     android:adjustViewBounds="false">
 </ImageView>

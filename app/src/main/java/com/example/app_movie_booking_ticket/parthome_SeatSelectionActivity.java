@@ -44,7 +44,7 @@ public class SeatSelectionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_seat_selection);
+        setContentView(R.layout.parthome_seat_selection);
 
         tvMovieTitle = findViewById(R.id.tvMovieTitle);
         tvTotalPrice = findViewById(R.id.tvTotalPrice);
@@ -63,10 +63,12 @@ public class SeatSelectionActivity extends AppCompatActivity {
 
         btnContinue.setOnClickListener(v -> {
             if (selectedSeats.isEmpty()) {
-                Toast.makeText(this, "Vui lòng chọn ghế!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.toast_select_seat), Toast.LENGTH_SHORT).show();
                 return;
             }
             int total = selectedSeats.size() * pricePerSeat;
+            Toast.makeText(this, String.format(getString(R.string.toast_seat_total), selectedSeats.toString(),
+                    String.valueOf(total)), Toast.LENGTH_LONG).show();
             Intent intent = new Intent(SeatSelectionActivity.this, PaymentActivity.class);
 
             intent.putExtra("movieTitle", movieTitle);
@@ -89,7 +91,8 @@ public class SeatSelectionActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (!snapshot.exists()) {
-                    Toast.makeText(SeatSelectionActivity.this, "Không có lịch chiếu!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(parthome_SeatSelectionActivity.this, getString(R.string.toast_no_schedule),
+                            Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -106,7 +109,7 @@ public class SeatSelectionActivity extends AppCompatActivity {
 
                 // Tạo nút chọn ngày
                 for (String date : uniqueDates) {
-                    Button btnDate = new Button(SeatSelectionActivity.this);
+                    Button btnDate = new Button(parthome_SeatSelectionActivity.this);
                     btnDate.setText(date);
                     btnDate.setBackgroundResource(R.drawable.bg_date_time_selector);
                     btnDate.setTextColor(Color.BLACK);
@@ -134,7 +137,7 @@ public class SeatSelectionActivity extends AppCompatActivity {
                         gridSeats.removeAllViews();
                         selectedShowtime = "";
                         selectedSeats.clear();
-                        tvTotalPrice.setText("Tổng: 0đ");
+                        tvTotalPrice.setText(getString(R.string.total_price));
 
                         loadShowtimesForDate(date);
                     });
@@ -144,11 +147,12 @@ public class SeatSelectionActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(DatabaseError error) {}
+            public void onCancelled(DatabaseError error) {
+            }
         });
     }
 
-    // Sau khi chọn ngày, hiển thị các giờ chiếu tương ứng
+    // 🔹 Sau khi chọn ngày, hiển thị các giờ chiếu tương ứng
     private void loadShowtimesForDate(String date) {
         layoutTimes.removeAllViews();
 
@@ -160,7 +164,7 @@ public class SeatSelectionActivity extends AppCompatActivity {
                     if (key != null && key.startsWith(date)) {
                         String time = key.split("_")[1];
 
-                        Button btnTime = new Button(SeatSelectionActivity.this);
+                        Button btnTime = new Button(parthome_SeatSelectionActivity.this);
                         btnTime.setText(time);
                         btnTime.setBackgroundResource(R.drawable.bg_date_time_selector);
                         btnTime.setTextColor(Color.BLACK);
@@ -186,7 +190,7 @@ public class SeatSelectionActivity extends AppCompatActivity {
                             // reset ghế
                             gridSeats.removeAllViews();
                             selectedSeats.clear();
-                            tvTotalPrice.setText("Tổng: 0đ");
+                            tvTotalPrice.setText(getString(R.string.total_price));
 
                             loadSeats(date, time);
                         });
@@ -223,7 +227,7 @@ public class SeatSelectionActivity extends AppCompatActivity {
                 gridSeats.setColumnCount(8);
 
                 selectedSeats.clear();
-                tvTotalPrice.setText("Tổng: 0đ");
+                tvTotalPrice.setText(getString(R.string.total_price));
 
                 if (snapshot.exists()) {
                     pricePerSeat = snapshot.child("pricePerSeat").getValue(Integer.class);
@@ -232,7 +236,7 @@ public class SeatSelectionActivity extends AppCompatActivity {
                         String seatName = seat.getKey();
                         String status = seat.getValue(String.class);
 
-                        Button seatBtn = new Button(SeatSelectionActivity.this);
+                        Button seatBtn = new Button(parthome_SeatSelectionActivity.this);
                         seatBtn.setText(seatName);
                         seatBtn.setTextSize(12);
                         seatBtn.setTextColor(Color.WHITE);
@@ -275,7 +279,8 @@ public class SeatSelectionActivity extends AppCompatActivity {
             selectedSeats.add(seatName);
             seatBtn.setSelected(true);
         }
-        tvTotalPrice.setText("Tổng: " + (selectedSeats.size() * pricePerSeat) + "đ");
+        tvTotalPrice.setText(
+                String.format(getString(R.string.price_format), String.valueOf(selectedSeats.size() * pricePerSeat)));
     }
 }
 

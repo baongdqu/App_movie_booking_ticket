@@ -41,7 +41,7 @@
             android:id="@+id/btnChangeAvatar"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:text="Đổi ảnh đại diện"
+            android:text="@string/change_avatar"
             android:textColor="@color/netflix_text_white"
             android:backgroundTint="@color/netflix_medium_gray"
             android:textSize="14sp"
@@ -56,9 +56,10 @@
         <!-- Ô NHẬP HỌ VÀ TÊN -->
         <!-- ========================= -->
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilFullNameEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Họ và tên"
+            android:hint="@string/full_name"
             app:hintTextColor="@color/text_secondary"
             app:boxBackgroundMode="filled"
             app:boxBackgroundColor="@color/card_background"
@@ -76,17 +77,81 @@
                 android:textColor="@color/text_primary"
                 android:textColorHint="@color/text_secondary"
                 android:textSize="16sp"
-                android:paddingVertical="16dp" />
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- ========================= -->
         <!-- Ô NHẬP SỐ ĐIỆN THOẠI -->
         <!-- ========================= -->
-        <com.google.android.material.textfield.TextInputLayout
+        <!-- ========================= -->
+        <!-- Ô NHẬP SỐ ĐIỆN THOẠI -->
+        <!-- ========================= -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Số điện thoại"
-            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPhoneEdit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/phone"
+                app:hintTextColor="@color/text_secondary"
+                app:boxBackgroundMode="filled"
+                app:boxBackgroundColor="@color/card_background"
+                app:boxCornerRadiusBottomEnd="4dp"
+                app:boxCornerRadiusBottomStart="4dp"
+                app:boxCornerRadiusTopEnd="4dp"
+                app:boxCornerRadiusTopStart="4dp"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputPhoneEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_secondary"
+                    android:textSize="16sp"
+                    android:paddingTop="14dp"
+                    android:paddingBottom="14dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/imgPhoneStatus"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_close"
+                app:tint="@color/netflix_red"
+                android:layout_marginStart="8dp"
+                android:visibility="gone"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnVerifyPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="@string/verify"
+                android:textSize="12sp"
+                android:layout_marginStart="8dp"
+                app:cornerRadius="4dp"
+                android:visibility="gone"
+                android:backgroundTint="@color/netflix_red"/>
+        </LinearLayout>
+
+        <!-- ========================= -->
+        <!-- Ô NHẬP NGÀY SINH -->
+        <!-- ========================= -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilDobEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/date_of_birth"
+            android:layout_marginTop="20dp"
             app:hintTextColor="@color/text_secondary"
             app:boxBackgroundMode="filled"
             app:boxBackgroundColor="@color/card_background"
@@ -98,14 +163,50 @@
             app:boxStrokeWidthFocused="0dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inputPhoneEdit"
+                android:id="@+id/inputDobEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="phone"
+                android:inputType="none"
+                android:focusable="false"
+                android:clickable="true"
                 android:textColor="@color/text_primary"
                 android:textColorHint="@color/text_secondary"
                 android:textSize="16sp"
-                android:paddingVertical="16dp" />
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- ========================= -->
+        <!-- Ô CHỌN GIỚI TÍNH -->
+        <!-- ========================= -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilGenderEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/gender"
+            android:layout_marginTop="20dp"
+            app:hintTextColor="@color/text_secondary"
+            app:boxBackgroundMode="filled"
+            app:boxBackgroundColor="@color/card_background"
+            app:boxCornerRadiusBottomEnd="4dp"
+            app:boxCornerRadiusBottomStart="4dp"
+            app:boxCornerRadiusTopEnd="4dp"
+            app:boxCornerRadiusTopStart="4dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputGenderEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:focusable="false"
+                android:clickable="true"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary"
+                android:textSize="16sp"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- ========================= -->
@@ -115,7 +216,7 @@
             android:id="@+id/btnSaveProfile"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:text="Lưu thay đổi"
+            android:text="@string/save"
             android:textColor="@color/netflix_text_white"
             android:backgroundTint="@color/netflix_red"
             android:textStyle="bold"
@@ -132,7 +233,7 @@
             android:id="@+id/btnCancelProfile"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:text="Hủy"
+            android:text="@string/cancel"
             android:textColor="@color/text_primary"
             android:backgroundTint="@color/card_background"
             android:textSize="16sp"
