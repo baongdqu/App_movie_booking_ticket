@@ -207,7 +207,16 @@ public class activities_2_chatbot extends AppCompatActivity {
         showTypingIndicator(true);
         setInputEnabled(false);
 
-        geminiHelper.sendMessage(message, adapter.getMessages(), new extra_gemini_cli_helper.ChatCallback() {
+        // Chuẩn bị tin nhắn gửi đi (kèm Email người dùng)
+        String messageToSend = message;
+        com.google.firebase.auth.FirebaseUser user = com.google.firebase.auth.FirebaseAuth.getInstance()
+                .getCurrentUser();
+        if (user != null && user.getEmail() != null) {
+            // Thêm thông tin email vào đầu prompt để Bot nhận biết
+            messageToSend = "User Email: " + user.getEmail() + "\n\n" + message;
+        }
+
+        geminiHelper.sendMessage(messageToSend, adapter.getMessages(), new extra_gemini_cli_helper.ChatCallback() {
             @Override
             public void onSuccess(String response) {
                 showTypingIndicator(false);
