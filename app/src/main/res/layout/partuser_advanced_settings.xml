@@ -116,6 +116,44 @@
             android:letterSpacing="0.1"
             android:layout_marginBottom="16dp" />
 
+        <Switch
+            android:id="@+id/switchPinLock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/enable_pin_lock"
+            android:textSize="16sp"
+            android:textColor="@color/text_primary"
+            android:padding="16dp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/txtPinStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pin_status_inactive"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:visibility="gone"
+            android:layout_marginBottom="16dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnChangePin"
+            android:text="@string/change_pin"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:backgroundTint="@color/card_background"
+            android:textColor="@color/text_primary"
+            android:textSize="16sp"
+            android:fontFamily="sans-serif-medium"
+            android:textAllCaps="false"
+            app:cornerRadius="4dp"
+            app:strokeColor="@color/divider_color"
+            app:strokeWidth="1dp"
+            android:visibility="gone"
+            android:layout_marginBottom="16dp" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnChangePassword"
             android:text="@string/change_password"

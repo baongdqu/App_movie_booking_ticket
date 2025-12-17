@@ -319,4 +319,29 @@
     <string name="retry">Thử lại</string>
     <string name="exit">Thoát</string>
 
+    <!-- PIN Security Settings -->
+    <string name="pin_settings_title">Mã PIN bảo mật</string>
+    <string name="pin_settings_description">Bảo vệ ứng dụng bằng mã PIN 6 chữ số</string>
+    <string name="setup_pin">Thiết lập mã PIN</string>
+    <string name="change_pin">Đổi mã PIN</string>
+    <string name="remove_pin">Xóa mã PIN</string>
+    <string name="enable_pin_lock">Bật khóa bằng mã PIN</string>
+    <string name="dialog_setup_pin_title">Thiết lập mã PIN</string>
+    <string name="dialog_enter_new_pin">Nhập mã PIN mới (6 chữ số)</string>
+    <string name="dialog_confirm_pin">Xác nhận mã PIN</string>
+    <string name="dialog_enter_current_pin">Nhập mã PIN hiện tại</string>
+    <string name="dialog_change_pin_title">Đổi mã PIN</string>
+    <string name="dialog_remove_pin_title">Xóa mã PIN</string>
+    <string name="dialog_remove_pin_message">Bạn có chắc chắn muốn xóa mã PIN? Ứng dụng sẽ không còn được bảo vệ.</string>
+    <string name="toast_pin_set_success">Đã thiết lập mã PIN thành công!</string>
+    <string name="toast_pin_changed_success">Đã đổi mã PIN thành công!</string>
+    <string name="toast_pin_removed">Đã xóa mã PIN!</string>
+    <string name="toast_pin_mismatch">Mã PIN xác nhận không khớp!</string>
+    <string name="toast_pin_wrong">Mã PIN không đúng!</string>
+    <string name="toast_pin_invalid_length">Mã PIN phải có đúng 6 chữ số!</string>
+    <string name="toast_pin_enabled">Đã bật khóa mã PIN</string>
+    <string name="toast_pin_disabled">Đã tắt khóa mã PIN</string>
+    <string name="pin_status_active">Mã PIN đang hoạt động</string>
+    <string name="pin_status_inactive">Chưa thiết lập mã PIN</string>
+
 </resources>

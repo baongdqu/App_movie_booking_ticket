@@ -122,7 +122,14 @@ public class fragments_user extends Fragment {
         // Đăng xuất (btnLogout)
         btnLogout.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(requireActivity()); // Bổ sung âm thanh
+
+            // Xóa UserPrefs
             prefs.edit().clear().apply();
+
+            // Xóa PIN Settings (AppSettings) -> Tắt khóa app
+            SharedPreferences appPrefs = requireActivity().getSharedPreferences("AppSettings", Context.MODE_PRIVATE);
+            appPrefs.edit().remove("pin_enabled").remove("app_pin").apply();
+
             mAuth.signOut();
             Intent intent = new Intent(requireActivity(), activities_1_login.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
