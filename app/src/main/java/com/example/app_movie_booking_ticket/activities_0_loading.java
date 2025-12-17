@@ -184,22 +184,46 @@ public class activities_0_loading extends extra_manager_language {
      */
     private void proceedToNextScreen(boolean noInternet) {
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        Intent intent;
+        Intent targetIntent;
 
         if (currentUser != null && currentUser.isEmailVerified()) {
             // Đã đăng nhập -> vào Menu
-            intent = new Intent(activities_0_loading.this, activities_2_a_menu_manage_fragments.class);
+            targetIntent = new Intent(activities_0_loading.this, activities_2_a_menu_manage_fragments.class);
         } else {
             // Chưa đăng nhập -> vào Login
             if (currentUser != null && !currentUser.isEmailVerified()) {
                 mAuth.signOut();
             }
-            intent = new Intent(activities_0_loading.this, activities_1_login.class);
+            targetIntent = new Intent(activities_0_loading.this, activities_1_login.class);
         }
 
-        // Truyền kết quả kiểm tra mạng qua Intent
-        intent.putExtra(EXTRA_NO_INTERNET, noInternet);
-        startActivity(intent);
+        // Truyền kết quả kiểm tra mạng qua Intent gốc
+        targetIntent.putExtra(EXTRA_NO_INTERNET, noInternet);
+
+        // KIỂM TRA MÃ PIN (Chỉ kiểm tra khi người dùng ĐÃ ĐĂNG NHẬP)
+        if (currentUser != null && currentUser.isEmailVerified()) {
+            android.content.SharedPreferences prefs = getSharedPreferences("AppSettings", MODE_PRIVATE);
+            boolean isPinEnabled = prefs.getBoolean("pin_enabled", false);
+
+            if (isPinEnabled) {
+                // Nếu bật PIN -> Chuyển hướng sang Lock Screen, truyền Intent đích theo
+                Intent lockIntent = new Intent(activities_0_loading.this, activities_lock_screen.class);
+                lockIntent.putExtra("target_intent", targetIntent);
+                startActivity(lockIntent);
+            } else {
+                // Đã đăng nhập nhưng không bật PIN -> Vào thẳng
+                startActivity(targetIntent);
+            }
+        } else {
+            // Chưa đăng nhập (hoặc chưa verify email) -> Bỏ qua PIN -> Vào thẳng (Login
+            // hoặc màn hình tương ứng)
+            // Lưu ý: Nếu user chưa đăng nhập thì việc hỏi PIN là vô nghĩa và có thể gây
+            // kẹt.
+            // Có thể cân nhắc reset pin_enabled về false ở đây để dọn dẹp, nhưng tốt hơn là
+            // xử lý lúc Logout.
+            startActivity(targetIntent);
+        }
+
         finish();
     }
 

@@ -24,8 +24,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class partuser_advanced_settings extends extra_manager_language {
 
-    private Switch switchDarkMode, switchNotification, switchSound;
-    private Button btnChangePassword, btnDeleteAccount, btnBackSettings, btnChangeLanguage;
+    private Switch switchDarkMode, switchNotification, switchSound, switchPinLock;
+    private Button btnChangePassword, btnDeleteAccount, btnBackSettings, btnChangeLanguage, btnChangePin;
+    private android.widget.TextView txtPinStatus;
 
     private SharedPreferences prefs;
     private FirebaseAuth mAuth;
@@ -39,10 +40,14 @@ public class partuser_advanced_settings extends extra_manager_language {
         switchDarkMode = findViewById(R.id.switchDarkMode);
         switchNotification = findViewById(R.id.switchNotification);
         switchSound = findViewById(R.id.switchSound);
+        switchPinLock = findViewById(R.id.switchPinLock);
+        txtPinStatus = findViewById(R.id.txtPinStatus);
+
         btnChangePassword = findViewById(R.id.btnChangePassword);
         btnDeleteAccount = findViewById(R.id.btnDeleteAccount);
         btnBackSettings = findViewById(R.id.btnBackSettings);
         btnChangeLanguage = findViewById(R.id.btnChangeLanguage);
+        btnChangePin = findViewById(R.id.btnChangePin);
 
         mAuth = FirebaseAuth.getInstance();
         prefs = getSharedPreferences("AppSettings", MODE_PRIVATE);
@@ -50,6 +55,9 @@ public class partuser_advanced_settings extends extra_manager_language {
         switchDarkMode.setChecked(extra_themeutils.isDarkMode(this));
         switchNotification.setChecked(prefs.getBoolean("notifications", true));
         switchSound.setChecked(prefs.getBoolean("sound_enabled", true));
+
+        // Init PIN state
+        updatePinUI();
 
         // Switch Dark Mode
         switchDarkMode.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -67,13 +75,34 @@ public class partuser_advanced_settings extends extra_manager_language {
                     Toast.LENGTH_SHORT).show();
         });
 
-        // Switch Sound (ĐÃ BỔ SUNG ÂM THANH)
+        // Switch Sound
         switchSound.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            // **BỔ SUNG ÂM THANH** - Lưu ý về logic đã thảo luận
             extra_sound_manager.playToggle(this);
             prefs.edit().putBoolean("sound_enabled", isChecked).apply();
             Toast.makeText(this, isChecked ? getString(R.string.toast_sound_on) : getString(R.string.toast_sound_off),
                     Toast.LENGTH_SHORT).show();
+        });
+
+        // Switch PIN Lock
+        switchPinLock.setOnClickListener(v -> {
+            extra_sound_manager.playToggle(this);
+            boolean isChecked = switchPinLock.isChecked();
+            // Revert state temporarily, change only on success
+            switchPinLock.setChecked(!isChecked);
+
+            if (isChecked) {
+                // User wants to enable PIN
+                showSetPinDialog();
+            } else {
+                // User wants to disable PIN
+                showConfirmPinDialogForDisable();
+            }
+        });
+
+        // Button Change PIN
+        btnChangePin.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
+            showChangePinDialog();
         });
 
         // Nút Thay đổi Mật khẩu
@@ -252,6 +281,180 @@ public class partuser_advanced_settings extends extra_manager_language {
         });
     }
 
+    // --- PIN Logic Helpers ---
+
+    private void updatePinUI() {
+        boolean isEmabled = prefs.getBoolean("pin_enabled", false);
+        switchPinLock.setChecked(isEmabled);
+        if (isEmabled) {
+            btnChangePin.setVisibility(android.view.View.VISIBLE);
+            txtPinStatus.setText(R.string.pin_status_active);
+            txtPinStatus.setVisibility(android.view.View.VISIBLE);
+        } else {
+            btnChangePin.setVisibility(android.view.View.GONE);
+            txtPinStatus.setText(R.string.pin_status_inactive);
+            txtPinStatus.setVisibility(android.view.View.GONE);
+        }
+    }
+
+    private void showSetPinDialog() {
+        TextInputLayout layout = new TextInputLayout(this, null,
+                com.google.android.material.R.style.Widget_Material3_TextInputLayout_OutlinedBox);
+        layout.setHint(getString(R.string.dialog_enter_new_pin));
+
+        // Cần padding cho đẹp
+        android.widget.FrameLayout container = new android.widget.FrameLayout(this);
+        android.widget.FrameLayout.LayoutParams params = new android.widget.FrameLayout.LayoutParams(
+                android.view.ViewGroup.LayoutParams.MATCH_PARENT,
+                android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.setMargins(60, 20, 60, 10); // left, top, right, bottom
+        layout.setLayoutParams(params);
+        container.addView(layout);
+
+        final TextInputEditText input = new TextInputEditText(this);
+        input.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_PASSWORD);
+        input.setFilters(new android.text.InputFilter[] { new android.text.InputFilter.LengthFilter(6) });
+        input.setSingleLine(true);
+        layout.addView(input);
+
+        new MaterialAlertDialogBuilder(this)
+                .setTitle(getString(R.string.dialog_setup_pin_title))
+                .setView(container)
+                .setPositiveButton(getString(R.string.btn_continue), (dialog, which) -> {
+                    String pin = input.getText() != null ? input.getText().toString().trim() : "";
+                    if (pin.length() == 6) {
+                        showConfirmPinDialogForSetup(pin);
+                    } else {
+                        extra_sound_manager.playError(this);
+                        Toast.makeText(this, getString(R.string.toast_pin_invalid_length), Toast.LENGTH_SHORT).show();
+                        updatePinUI(); // revert if failed
+                    }
+                })
+                .setNegativeButton(getString(R.string.cancel), (dialog, which) -> updatePinUI())
+                .setOnCancelListener(dialog -> updatePinUI())
+                .show();
+    }
+
+    private void showConfirmPinDialogForSetup(String firstPin) {
+        TextInputLayout layout = new TextInputLayout(this, null,
+                com.google.android.material.R.style.Widget_Material3_TextInputLayout_OutlinedBox);
+        layout.setHint(getString(R.string.dialog_confirm_pin));
+
+        android.widget.FrameLayout container = new android.widget.FrameLayout(this);
+        android.widget.FrameLayout.LayoutParams params = new android.widget.FrameLayout.LayoutParams(
+                android.view.ViewGroup.LayoutParams.MATCH_PARENT,
+                android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.setMargins(60, 20, 60, 10);
+        layout.setLayoutParams(params);
+        container.addView(layout);
+
+        final TextInputEditText input = new TextInputEditText(this);
+        input.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_PASSWORD);
+        input.setFilters(new android.text.InputFilter[] { new android.text.InputFilter.LengthFilter(6) });
+        input.setSingleLine(true);
+        layout.addView(input);
+
+        new MaterialAlertDialogBuilder(this)
+                .setTitle(getString(R.string.dialog_confirm_pin))
+                .setView(container)
+                .setPositiveButton(getString(R.string.save), (dialog, which) -> {
+                    String confirmPin = input.getText() != null ? input.getText().toString().trim() : "";
+                    if (confirmPin.equals(firstPin)) {
+                        prefs.edit().putBoolean("pin_enabled", true).putString("app_pin", confirmPin).apply();
+                        extra_sound_manager.playSuccess(this);
+                        Toast.makeText(this, getString(R.string.toast_pin_set_success), Toast.LENGTH_SHORT).show();
+                        updatePinUI();
+                    } else {
+                        extra_sound_manager.playError(this);
+                        Toast.makeText(this, getString(R.string.toast_pin_mismatch), Toast.LENGTH_SHORT).show();
+                        updatePinUI();
+                    }
+                })
+                .setNegativeButton(getString(R.string.cancel), (dialog, which) -> updatePinUI())
+                .setOnCancelListener(dialog -> updatePinUI())
+                .show();
+    }
+
+    private void showConfirmPinDialogForDisable() {
+        TextInputLayout layout = new TextInputLayout(this, null,
+                com.google.android.material.R.style.Widget_Material3_TextInputLayout_OutlinedBox);
+        layout.setHint(getString(R.string.dialog_enter_current_pin));
+
+        android.widget.FrameLayout container = new android.widget.FrameLayout(this);
+        android.widget.FrameLayout.LayoutParams params = new android.widget.FrameLayout.LayoutParams(
+                android.view.ViewGroup.LayoutParams.MATCH_PARENT,
+                android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.setMargins(60, 20, 60, 10);
+        layout.setLayoutParams(params);
+        container.addView(layout);
+
+        final TextInputEditText input = new TextInputEditText(this);
+        input.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_PASSWORD);
+        input.setFilters(new android.text.InputFilter[] { new android.text.InputFilter.LengthFilter(6) });
+        input.setSingleLine(true);
+        layout.addView(input);
+
+        new MaterialAlertDialogBuilder(this)
+                .setTitle(getString(R.string.dialog_remove_pin_title))
+                .setMessage(getString(R.string.dialog_remove_pin_message))
+                .setView(container)
+                .setPositiveButton(getString(R.string.dialog_delete), (dialog, which) -> {
+                    String enteredPin = input.getText() != null ? input.getText().toString().trim() : "";
+                    String storedPin = prefs.getString("app_pin", "");
+                    if (enteredPin.equals(storedPin)) {
+                        prefs.edit().putBoolean("pin_enabled", false).remove("app_pin").apply();
+                        extra_sound_manager.playSuccess(this);
+                        Toast.makeText(this, getString(R.string.toast_pin_removed), Toast.LENGTH_SHORT).show();
+                        updatePinUI();
+                    } else {
+                        extra_sound_manager.playError(this);
+                        Toast.makeText(this, getString(R.string.toast_pin_wrong), Toast.LENGTH_SHORT).show();
+                        updatePinUI();
+                    }
+                })
+                .setNegativeButton(getString(R.string.cancel), (dialog, which) -> updatePinUI())
+                .setOnCancelListener(dialog -> updatePinUI())
+                .show();
+    }
+
+    private void showChangePinDialog() {
+        // Verify Old PIN first
+        TextInputLayout layout = new TextInputLayout(this, null,
+                com.google.android.material.R.style.Widget_Material3_TextInputLayout_OutlinedBox);
+        layout.setHint(getString(R.string.dialog_enter_current_pin));
+
+        android.widget.FrameLayout container = new android.widget.FrameLayout(this);
+        android.widget.FrameLayout.LayoutParams params = new android.widget.FrameLayout.LayoutParams(
+                android.view.ViewGroup.LayoutParams.MATCH_PARENT,
+                android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.setMargins(60, 20, 60, 10);
+        layout.setLayoutParams(params);
+        container.addView(layout);
+
+        final TextInputEditText input = new TextInputEditText(this);
+        input.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_PASSWORD);
+        input.setFilters(new android.text.InputFilter[] { new android.text.InputFilter.LengthFilter(6) });
+        input.setSingleLine(true);
+        layout.addView(input);
+
+        new MaterialAlertDialogBuilder(this)
+                .setTitle(getString(R.string.dialog_change_pin_title))
+                .setView(container)
+                .setPositiveButton(getString(R.string.btn_continue), (dialog, which) -> {
+                    String enteredPin = input.getText() != null ? input.getText().toString().trim() : "";
+                    String storedPin = prefs.getString("app_pin", "");
+                    if (enteredPin.equals(storedPin)) {
+                        // Correct old PIN -> Setup new PIN
+                        showSetPinDialog();
+                    } else {
+                        extra_sound_manager.playError(this);
+                        Toast.makeText(this, getString(R.string.toast_pin_wrong), Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton(getString(R.string.cancel), null)
+                .show();
+    }
+
     private void dialogConfirmDelete(FirebaseUser user, String password) {
         if (password.isEmpty()) {
             extra_sound_manager.playError(this);
@@ -276,7 +479,11 @@ public class partuser_advanced_settings extends extra_manager_language {
                                 user.delete()
                                         .addOnSuccessListener(unused2 -> {
                                             extra_sound_manager.playSuccess(this);
+                                            // Xóa UserPrefs
                                             getSharedPreferences("UserPrefs", MODE_PRIVATE).edit().clear().apply();
+                                            // Xóa AppSettings (PIN)
+                                            prefs.edit().clear().apply();
+
                                             FirebaseAuth.getInstance().signOut();
                                             Toast.makeText(this, getString(R.string.toast_account_deleted),
                                                     Toast.LENGTH_SHORT)

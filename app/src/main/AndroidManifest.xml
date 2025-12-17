@@ -58,6 +58,11 @@
             android:name=".partuser_movie_preferences"
             android:exported="true" />
         <activity
+            android:name=".activities_lock_screen"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
             android:name=".activities_0_loading"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">
