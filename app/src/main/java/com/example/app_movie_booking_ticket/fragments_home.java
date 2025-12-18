@@ -66,8 +66,8 @@ public class fragments_home extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
-            @Nullable ViewGroup container,
-            @Nullable Bundle savedInstanceState) {
+                             @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         binding = LayoutsFragmentsHomeBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }

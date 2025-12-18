@@ -39,6 +39,9 @@ import java.util.Map;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
+import com.google.firebase.database.Transaction;
+import com.google.firebase.database.MutableData;
+
 
 public class PaymentActivity extends AppCompatActivity {
 
@@ -83,6 +86,15 @@ public class PaymentActivity extends AppCompatActivity {
         TextView txtEmail = findViewById(R.id.txtEmail);
 
         Button btnContinue = findViewById(R.id.btnContinue);
+        Button btnPayByBalance = findViewById(R.id.btnPayByBalance);
+
+       // ===== CLICK THANH TOÁN BẰNG SỐ DƯ =====
+        btnPayByBalance.setOnClickListener(v -> {
+            Log.d("PAY_BALANCE", "Clicked pay by balance");
+            payByBalance();
+        });
+
+
         Log.d("PAYMENT", "posterUrl = " + posterUrl);
 
         // ===== HIỂN THỊ DATA =====
@@ -255,6 +267,103 @@ public class PaymentActivity extends AppCompatActivity {
         }
 
     }
+    private void payByBalance() {
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) return;
+
+        String uid = user.getUid();
+
+        DatabaseReference balanceRef =
+                FirebaseDatabase.getInstance()
+                        .getReference("users")
+                        .child(uid)
+                        .child("balance");
+
+        balanceRef.runTransaction(new Transaction.Handler() {
+
+            @NonNull
+            @Override
+            public Transaction.Result doTransaction(
+                    @NonNull MutableData currentData) {
+
+                Long balance = currentData.getValue(Long.class);
+
+                // 🔥 balance null = 0
+                if (balance == null) balance = 0L;
+
+                // ❌ KHÔNG ĐỦ TIỀN
+                if (balance < totalPrice) {
+                    return Transaction.abort();
+                }
+
+                // ✅ TRỪ TIỀN
+                currentData.setValue(balance - totalPrice);
+                return Transaction.success(currentData);
+            }
+
+            @Override
+            public void onComplete(
+                    DatabaseError error,
+                    boolean committed,
+                    DataSnapshot snapshot) {
+
+                // ❌ TRANSACTION FAIL
+                if (!committed) {
+                    Toast.makeText(
+                            PaymentActivity.this,
+                            "Số dư không đủ để thanh toán",
+                            Toast.LENGTH_SHORT
+                    ).show();
+                    return;
+                }
+
+                // ✅ THANH TOÁN THÀNH CÔNG
+                bookSeats(movieTitle, date, time, seats);
+                saveTicketSuccessByBalance();
+
+                Toast.makeText(
+                        PaymentActivity.this,
+                        "Thanh toán bằng số dư thành công",
+                        Toast.LENGTH_SHORT
+                ).show();
+
+                finish();
+            }
+        });
+    }
+    private void saveTicketSuccessByBalance() {
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) return;
+
+        DatabaseReference ref =
+                FirebaseDatabase.getInstance().getReference("tickets");
+
+        String ticketId = ref.push().getKey();
+        if (ticketId == null) return;
+
+        Map<String, Object> payment = new HashMap<>();
+        payment.put("method", "BALANCE");
+        payment.put("status", "PAID");
+        payment.put("paidAt", System.currentTimeMillis());
+
+        Map<String, Object> ticket = new HashMap<>();
+        ticket.put("userId", user.getUid());
+        ticket.put("movieTitle", movieTitle);
+        ticket.put("posterUrl", posterUrl);
+        ticket.put("date", date);
+        ticket.put("time", time);
+        ticket.put("seats", seats);
+        ticket.put("totalPrice", totalPrice);
+        ticket.put("payment", payment);
+        ticket.put("status", "PAID");
+        ticket.put("createdAt", System.currentTimeMillis());
+
+        ref.child(ticketId).setValue(ticket);
+    }
+
+
 
     private void saveTicketSuccess() {
         if (currentUser == null) return;
