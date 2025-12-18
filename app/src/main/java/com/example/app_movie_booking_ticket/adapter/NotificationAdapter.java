@@ -22,12 +22,22 @@ import java.util.Locale;
 public class NotificationAdapter
         extends RecyclerView.Adapter<NotificationAdapter.ViewHolder> {
 
-    private Context context;
-    private List<AppNotification> list;
+    // 🔥 CALLBACK
+    public interface OnNotificationClickListener {
+        void onNotificationClick(AppNotification notification);
+    }
 
-    public NotificationAdapter(Context context, List<AppNotification> list) {
+    private final Context context;
+    private final List<AppNotification> list;
+    private final OnNotificationClickListener listener;
+
+    // ✅ Constructor mới
+    public NotificationAdapter(Context context,
+                               List<AppNotification> list,
+                               OnNotificationClickListener listener) {
         this.context = context;
         this.list = list;
+        this.listener = listener;
     }
 
     @NonNull
@@ -40,28 +50,44 @@ public class NotificationAdapter
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        AppNotification noti = list.get(position);
 
+        AppNotification noti = list.get(position);
         String type = noti.getType();
+
+        // ===== TITLE & MESSAGE =====
         if ("PROFILE".equals(type)) {
-            holder.txtTitle.setText(context.getString(R.string.notification_profile_update_title));
-            holder.txtMessage.setText(context.getString(R.string.notification_profile_update_message));
+            holder.txtTitle.setText(
+                    context.getString(R.string.notification_profile_update_title));
+            holder.txtMessage.setText(
+                    context.getString(R.string.notification_profile_update_message));
         } else {
             holder.txtTitle.setText(noti.getTitle());
             holder.txtMessage.setText(noti.getMessage());
         }
 
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm • dd/MM/yyyy", Locale.getDefault());
+        // ===== TIME =====
+        SimpleDateFormat sdf =
+                new SimpleDateFormat("HH:mm • dd/MM/yyyy", Locale.getDefault());
         holder.txtTime.setText(
                 sdf.format(new Date(noti.getTimestamp())));
 
+        // ===== READ / UNREAD UI =====
+        holder.itemView.setAlpha(noti.isRead() ? 0.6f : 1f);
+
         // ===== CLICK =====
         holder.itemView.setOnClickListener(v -> {
+
+            // PROFILE giữ hành vi cũ
             if ("PROFILE".equals(type)) {
                 Intent intent = new Intent(context, partuser_edit_profile.class);
                 context.startActivity(intent);
+                return;
             }
-            // LOGIN thì không cần mở gì
+
+            // LOGIN / REFUND → fragment xử lý
+            if (listener != null) {
+                listener.onNotificationClick(noti);
+            }
         });
     }
 
@@ -70,6 +96,7 @@ public class NotificationAdapter
         return list.size();
     }
 
+    // ===== VIEW HOLDER =====
     static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView txtTitle, txtMessage, txtTime;
