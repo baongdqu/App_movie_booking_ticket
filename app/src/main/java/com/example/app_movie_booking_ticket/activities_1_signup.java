@@ -102,7 +102,7 @@ public class activities_1_signup extends AppCompatActivity {
                                 String uid = firebaseUser.getUid();
                                 extra_user user = new extra_user(uid, fullName, email, phone, "", "");
                                 user.setAvatarUrl("https://i.ibb.co/C3JdHS1r/Avatar-trang-den.png");
-
+                                user.setBalance(0);
                                 usersRef.child(uid).setValue(user)
                                         .addOnCompleteListener(dbTask -> {
                                             if (dbTask.isSuccessful()) {

@@ -352,9 +352,15 @@ public class fragments_home extends Fragment {
                 String fullName = snapshot.child("fullName").getValue(String.class);
                 String email = snapshot.child("email").getValue(String.class);
                 String avatarUrl = snapshot.child("avatarUrl").getValue(String.class);
+                Long balance = snapshot.child("balance").getValue(Long.class);
+                if (balance == null) balance = 0L;
 
                 binding.tvFullName.setText(fullName != null ? fullName : getString(R.string.user_name));
                 binding.tvEmail.setText(email != null ? email : "");
+                binding.tvBalance.setText(
+                        "Số dư: " + formatMoney(balance) + " đ"
+                );
+
 
                 if (avatarUrl != null && !avatarUrl.isEmpty()) {
                     Glide.with(requireContext())
@@ -407,4 +413,8 @@ public class fragments_home extends Fragment {
         sliderHandler.removeCallbacks(sliderRunnable);
         binding = null;
     }
+    private String formatMoney(long amount) {
+        return String.format("%,d", amount).replace(',', '.');
+    }
+
 }

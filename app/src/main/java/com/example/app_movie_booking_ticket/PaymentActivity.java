@@ -279,6 +279,7 @@ public class PaymentActivity extends AppCompatActivity {
         ticket.put("totalPrice", totalPrice);
         ticket.put("payment", payment);
         ticket.put("createdAt", System.currentTimeMillis());
+        ticket.put("status", "PAID");
 
         ref.child(ticketId).setValue(ticket);
     }
