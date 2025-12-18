@@ -324,27 +324,49 @@
         android:layout_width="match_parent"
         android:layout_height="72dp"
         android:background="#FFFFFF"
-        android:padding="16dp"
+        android:paddingHorizontal="16dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent">
 
+        <!-- TỔNG TIỀN -->
         <TextView
             android:id="@+id/txtTotal"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="75.000đ"
+            android:text="85.000đ"
             android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
 
-        <Button
-            android:id="@+id/btnContinue"
+        <!-- CỤM NÚT -->
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:text="Thanh toán bằng VNPay"
-            android:backgroundTint="@color/black"
-            android:textColor="#FFFFFF"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <Button
+                android:id="@+id/btnPayByBalance"
+                android:layout_width="160dp"
+                android:layout_height="36dp"
+                android:backgroundTint="@color/black"
+                android:text="Số dư"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnContinue"
+                android:layout_width="160dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="2dp"
+                android:backgroundTint="@color/black"
+                android:text="VNPay"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
