@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,12 +21,22 @@ import java.util.List;
 
 public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder> {
 
+    // 🔥 CALLBACK REFUND
+    public interface OnRefundClickListener {
+        void onRefundClick(TicketSimple ticket);
+    }
+
     private final Context context;
     private final List<TicketSimple> list;
+    private final OnRefundClickListener refundListener;
 
-    public TicketAdapter(Context context, List<TicketSimple> list) {
+    // ✅ Constructor mới (có refund listener)
+    public TicketAdapter(Context context,
+                         List<TicketSimple> list,
+                         OnRefundClickListener refundListener) {
         this.context = context;
         this.list = list;
+        this.refundListener = refundListener;
     }
 
     @NonNull
@@ -51,7 +60,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
                 .load(ticket.posterUrl)
                 .into(holder.imgPoster);
 
-        // 👉 DETAILS
+        // 👉 DETAILS (GIỮ NGUYÊN)
         holder.btnDetails.setOnClickListener(v -> {
             if (ticket.movie == null) return;
 
@@ -60,14 +69,12 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
             context.startActivity(intent);
         });
 
-        // 👉 REFUND (chưa xử lý)
-        holder.btnRefund.setOnClickListener(v ->
-                Toast.makeText(
-                        context,
-                        "Refund feature coming soon",
-                        Toast.LENGTH_SHORT
-                ).show()
-        );
+        // 👉 REFUND (GỌI CALLBACK)
+        holder.btnRefund.setOnClickListener(v -> {
+            if (refundListener != null) {
+                refundListener.onRefundClick(ticket);
+            }
+        });
     }
 
     @Override
@@ -85,12 +92,13 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
         ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            imgPoster = itemView.findViewById(R.id.imgPoster);
-            tvTitle   = itemView.findViewById(R.id.tvTitle);
-            tvInfo    = itemView.findViewById(R.id.tvInfo);
-            tvSeats   = itemView.findViewById(R.id.tvSeats);
+            imgPoster  = itemView.findViewById(R.id.imgPoster);
+            tvTitle    = itemView.findViewById(R.id.tvTitle);
+            tvInfo     = itemView.findViewById(R.id.tvInfo);
+            tvSeats    = itemView.findViewById(R.id.tvSeats);
             btnDetails = itemView.findViewById(R.id.btnDetails);
             btnRefund  = itemView.findViewById(R.id.btnRefund);
         }
     }
 }
+

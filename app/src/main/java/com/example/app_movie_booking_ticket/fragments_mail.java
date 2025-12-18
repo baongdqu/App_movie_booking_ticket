@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,16 +16,9 @@ import com.example.app_movie_booking_ticket.adapter.TicketAdapter;
 import com.example.app_movie_booking_ticket.model.Movie;
 import com.example.app_movie_booking_ticket.model.TicketSimple;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class fragments_mail extends Fragment {
 
@@ -34,6 +28,7 @@ public class fragments_mail extends Fragment {
 
     private final DatabaseReference db =
             FirebaseDatabase.getInstance().getReference();
+
     private final String currentUserId =
             FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -52,17 +47,20 @@ public class fragments_mail extends Fragment {
 
         rvTickets = view.findViewById(R.id.rvTickets);
         rvTickets.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new TicketAdapter(requireContext(), ticketList);
+
+        adapter = new TicketAdapter(
+                requireContext(),
+                ticketList,
+                this::refundTicket   // 🔥 CALLBACK
+        );
+
         rvTickets.setAdapter(adapter);
 
-        loadMoviesThenTickets(); // 🔥 QUAN TRỌNG
-
+        loadMoviesThenTickets();
         return view;
     }
 
-    /**
-     * 1️⃣ Load Items 1 lần duy nhất
-     */
+    // ---------- LOAD MOVIES ----------
     private void loadMoviesThenTickets() {
         db.child("Items")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -81,7 +79,7 @@ public class fragments_mail extends Fragment {
                             }
                         }
 
-                        loadTickets(); // 🔥 sau khi có movie cache
+                        loadTickets();
                     }
 
                     @Override
@@ -89,9 +87,7 @@ public class fragments_mail extends Fragment {
                 });
     }
 
-    /**
-     * 2️⃣ Load vé của user
-     */
+    // ---------- LOAD TICKETS (PAID + NULL) ----------
     private void loadTickets() {
         db.child("tickets")
                 .orderByChild("userId")
@@ -103,6 +99,13 @@ public class fragments_mail extends Fragment {
                         ticketList.clear();
 
                         for (DataSnapshot t : snapshot.getChildren()) {
+
+                            // 🔥 STATUS FILTER
+                            String status =
+                                    t.child("status").getValue(String.class);
+                            if (status != null && !"PAID".equals(status)) {
+                                continue; // REFUNDED / CANCELLED
+                            }
 
                             String movieTitle =
                                     t.child("movieTitle").getValue(String.class);
@@ -120,11 +123,15 @@ public class fragments_mail extends Fragment {
                                     t.child("time").getValue(String.class);
 
                             List<String> seats = new ArrayList<>();
-                            for (DataSnapshot s : t.child("seats").getChildren()) {
-                                seats.add(s.getValue(String.class));
+                            if (t.child("seats").exists()) {
+                                for (DataSnapshot s : t.child("seats").getChildren()) {
+                                    String seat = s.getValue(String.class);
+                                    if (seat != null) seats.add(seat);
+                                }
                             }
 
                             ticketList.add(new TicketSimple(
+                                    t.getKey(),                     // 🔥 ticketId
                                     movie,
                                     movie.getTitle(),
                                     date + " • " + time,
@@ -133,11 +140,86 @@ public class fragments_mail extends Fragment {
                             ));
                         }
 
-                        adapter.notifyDataSetChanged(); // 🔥 1 lần duy nhất
+                        adapter.notifyDataSetChanged();
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {}
                 });
     }
+
+    // ---------- REFUND ----------
+    private void refundTicket(TicketSimple ticket) {
+
+        String ticketId = ticket.getTicketId();
+
+        DatabaseReference ticketRef =
+                db.child("tickets").child(ticketId);
+
+        ticketRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if (!snapshot.exists()) return;
+
+                // 🔥 STATUS NULL = PAID
+                String status =
+                        snapshot.child("status").getValue(String.class);
+                if (status == null) status = "PAID";
+
+                if (!"PAID".equals(status)) {
+                    Toast.makeText(getContext(),
+                            "Vé đã được hoàn",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                Long totalPrice =
+                        snapshot.child("totalPrice").getValue(Long.class);
+                if (totalPrice == null) return;
+
+                DatabaseReference balanceRef =
+                        db.child("users")
+                                .child(currentUserId)
+                                .child("balance");
+
+                // 🔥 BALANCE NULL = 0
+                balanceRef.runTransaction(new Transaction.Handler() {
+                    @NonNull
+                    @Override
+                    public Transaction.Result doTransaction(
+                            @NonNull MutableData currentData) {
+
+                        Long current =
+                                currentData.getValue(Long.class);
+                        if (current == null) current = 0L;
+
+                        currentData.setValue(current + totalPrice);
+                        return Transaction.success(currentData);
+                    }
+
+                    @Override
+                    public void onComplete(DatabaseError error,
+                                           boolean committed,
+                                           DataSnapshot snapshot) {
+
+                        if (committed) {
+                            ticketRef.child("status")
+                                    .setValue("REFUNDED");
+
+                            Toast.makeText(getContext(),
+                                    "Hoàn tiền thành công",
+                                    Toast.LENGTH_SHORT).show();
+
+                            loadTickets(); // reload list
+                        }
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
+    }
 }
+
