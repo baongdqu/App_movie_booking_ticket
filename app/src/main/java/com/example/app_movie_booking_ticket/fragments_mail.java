@@ -32,7 +32,6 @@ public class fragments_mail extends Fragment {
     private final String currentUserId =
             FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-    // 🔥 CACHE MOVIE
     private final Map<String, Movie> movieMap = new HashMap<>();
 
     @Nullable
@@ -51,7 +50,7 @@ public class fragments_mail extends Fragment {
         adapter = new TicketAdapter(
                 requireContext(),
                 ticketList,
-                this::refundTicket   // 🔥 CALLBACK
+                this::refundTicket
         );
 
         rvTickets.setAdapter(adapter);
@@ -60,7 +59,7 @@ public class fragments_mail extends Fragment {
         return view;
     }
 
-    // ---------- LOAD MOVIES ----------
+    // ================= LOAD MOVIES =================
     private void loadMoviesThenTickets() {
         db.child("Items")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -82,12 +81,11 @@ public class fragments_mail extends Fragment {
                         loadTickets();
                     }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {}
+                    @Override public void onCancelled(@NonNull DatabaseError error) {}
                 });
     }
 
-    // ---------- LOAD TICKETS (PAID + NULL) ----------
+    // ================= LOAD TICKETS =================
     private void loadTickets() {
         db.child("tickets")
                 .orderByChild("userId")
@@ -100,12 +98,9 @@ public class fragments_mail extends Fragment {
 
                         for (DataSnapshot t : snapshot.getChildren()) {
 
-                            // 🔥 STATUS FILTER
                             String status =
                                     t.child("status").getValue(String.class);
-                            if (status != null && !"PAID".equals(status)) {
-                                continue; // REFUNDED / CANCELLED
-                            }
+                            if (status != null && !"PAID".equals(status)) continue;
 
                             String movieTitle =
                                     t.child("movieTitle").getValue(String.class);
@@ -131,7 +126,7 @@ public class fragments_mail extends Fragment {
                             }
 
                             ticketList.add(new TicketSimple(
-                                    t.getKey(),                     // 🔥 ticketId
+                                    t.getKey(),
                                     movie,
                                     movie.getTitle(),
                                     date + " • " + time,
@@ -143,28 +138,24 @@ public class fragments_mail extends Fragment {
                         adapter.notifyDataSetChanged();
                     }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {}
+                    @Override public void onCancelled(@NonNull DatabaseError error) {}
                 });
     }
 
-    // ---------- REFUND ----------
+    // ================= REFUND =================
     private void refundTicket(TicketSimple ticket) {
 
         String ticketId = ticket.getTicketId();
-
-        DatabaseReference ticketRef =
-                db.child("tickets").child(ticketId);
+        DatabaseReference ticketRef = db.child("tickets").child(ticketId);
 
         ticketRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshotTicket) {
 
-                if (!snapshot.exists()) return;
+                if (!snapshotTicket.exists()) return;
 
-                // 🔥 STATUS NULL = PAID
                 String status =
-                        snapshot.child("status").getValue(String.class);
+                        snapshotTicket.child("status").getValue(String.class);
                 if (status == null) status = "PAID";
 
                 if (!"PAID".equals(status)) {
@@ -175,23 +166,24 @@ public class fragments_mail extends Fragment {
                 }
 
                 Long totalPrice =
-                        snapshot.child("totalPrice").getValue(Long.class);
+                        snapshotTicket.child("totalPrice").getValue(Long.class);
                 if (totalPrice == null) return;
+
+                String movieTitle =
+                        snapshotTicket.child("movieTitle").getValue(String.class);
 
                 DatabaseReference balanceRef =
                         db.child("users")
                                 .child(currentUserId)
                                 .child("balance");
 
-                // 🔥 BALANCE NULL = 0
                 balanceRef.runTransaction(new Transaction.Handler() {
                     @NonNull
                     @Override
                     public Transaction.Result doTransaction(
                             @NonNull MutableData currentData) {
 
-                        Long current =
-                                currentData.getValue(Long.class);
+                        Long current = currentData.getValue(Long.class);
                         if (current == null) current = 0L;
 
                         currentData.setValue(current + totalPrice);
@@ -207,19 +199,52 @@ public class fragments_mail extends Fragment {
                             ticketRef.child("status")
                                     .setValue("REFUNDED");
 
+                            createRefundNotification(
+                                    ticketId,
+                                    movieTitle,
+                                    totalPrice
+                            );
+
                             Toast.makeText(getContext(),
                                     "Hoàn tiền thành công",
                                     Toast.LENGTH_SHORT).show();
 
-                            loadTickets(); // reload list
+                            loadTickets();
                         }
                     }
                 });
             }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
+            @Override public void onCancelled(@NonNull DatabaseError error) {}
         });
     }
+
+    // ================= NOTIFICATION =================
+    private void createRefundNotification(String ticketId,
+                                          String movieTitle,
+                                          long amount) {
+
+        String uid = FirebaseAuth.getInstance().getUid();
+        if (uid == null) return;
+
+        DatabaseReference notiRef = FirebaseDatabase.getInstance()
+                .getReference("notifications")
+                .child(uid);
+
+        String notiId = notiRef.push().getKey();
+        if (notiId == null) return;
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("title", "Hoàn tiền thành công");
+        data.put("message",
+                "Bạn đã được hoàn " + amount + "đ cho vé " + movieTitle);
+        data.put("type", "REFUND");
+        data.put("ticketId", ticketId);
+        data.put("timestamp", System.currentTimeMillis());
+        data.put("read", false);
+
+        notiRef.child(notiId).setValue(data);
+    }
 }
+
 

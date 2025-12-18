@@ -23,12 +23,15 @@ import java.util.List;
 
 public class fragments_notifications extends Fragment {
 
-    private RecyclerView rv;
-    private TextView btnClear;
+    private RecyclerView rvNotifications;
+    private TextView btnClearAll;
+
     private NotificationAdapter adapter;
-    private List<AppNotification> list;
+    private final List<AppNotification> list = new ArrayList<>();
+
     private DatabaseReference ref;
 
+    @Nullable
     @Override
     public View onCreateView(
             @NonNull LayoutInflater inflater,
@@ -41,73 +44,141 @@ public class fragments_notifications extends Fragment {
                 false
         );
 
-        rv = view.findViewById(R.id.rvNotifications);
-        btnClear = view.findViewById(R.id.btnClearAll);
+        rvNotifications = view.findViewById(R.id.rvNotifications);
+        btnClearAll = view.findViewById(R.id.btnClearAll);
 
-        rv.setLayoutManager(new LinearLayoutManager(getContext()));
-        list = new ArrayList<>();
-        adapter = new NotificationAdapter(getContext(), list);
-        rv.setAdapter(adapter);
+        rvNotifications.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        // 🔥 Adapter có callback
+        adapter = new NotificationAdapter(
+                requireContext(),
+                list,
+                this::handleNotificationClick
+        );
+        rvNotifications.setAdapter(adapter);
 
         String uid = FirebaseAuth.getInstance().getUid();
         ref = FirebaseDatabase.getInstance()
                 .getReference("notifications")
                 .child(uid);
 
-        loadData();
+        loadNotifications();
+        setupSwipeToDelete();
 
-        btnClear.setOnClickListener(v -> {
+        btnClearAll.setOnClickListener(v -> {
             ref.removeValue();
             list.clear();
             adapter.notifyDataSetChanged();
         });
 
+        return view;
+    }
+
+    // =====================================================
+    // 🔥 LOAD NOTIFICATIONS
+    // =====================================================
+    private void loadNotifications() {
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                list.clear();
+
+                for (DataSnapshot c : snapshot.getChildren()) {
+                    AppNotification n = c.getValue(AppNotification.class);
+                    if (n != null) {
+                        n.setId(c.getKey());
+                        list.add(n);
+                    }
+                }
+
+                // 🔥 sort mới → cũ
+                list.sort((a, b) ->
+                        Long.compare(b.getTimestamp(), a.getTimestamp()));
+
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
+    // =====================================================
+    // 🔥 CLICK NOTIFICATION
+    // =====================================================
+    private void handleNotificationClick(AppNotification n) {
+
+        // Đánh dấu đã đọc
+        ref.child(n.getId()).child("read").setValue(true);
+
+        String type = n.getType();
+
+        // PROFILE → đã xử lý trong adapter
+        if ("PROFILE".equals(type)) return;
+
+        // REFUND → mở danh sách vé đã hoàn
+        if ("REFUND".equals(type)) {
+
+            Bundle bundle = new Bundle();
+            bundle.putString("filter", "REFUNDED");
+
+            fragments_mail fragment = new fragments_mail();
+            fragment.setArguments(bundle);
+
+            requireActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .setCustomAnimations(
+                            R.anim.slide_in_right,
+                            R.anim.slide_out_left,
+                            R.anim.slide_in_left,
+                            R.anim.slide_out_right
+                    )
+                    .replace(R.id.container, fragment)
+                    .addToBackStack(null)
+                    .commit();
+        }
+        // LOGIN / loại khác → chỉ đánh dấu đã đọc
+    }
+
+    // =====================================================
+    // 🔥 SWIPE TO DELETE
+    // =====================================================
+    private void setupSwipeToDelete() {
+
         ItemTouchHelper helper = new ItemTouchHelper(
                 new ItemTouchHelper.SimpleCallback(
                         0,
                         ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+
                     @Override
                     public boolean onMove(
-                            @NonNull RecyclerView rv,
-                            @NonNull RecyclerView.ViewHolder vh,
+                            @NonNull RecyclerView recyclerView,
+                            @NonNull RecyclerView.ViewHolder viewHolder,
                             @NonNull RecyclerView.ViewHolder target) {
                         return false;
                     }
 
                     @Override
                     public void onSwiped(
-                            @NonNull RecyclerView.ViewHolder vh,
-                            int dir) {
-                        int pos = vh.getAdapterPosition();
-                        AppNotification n = list.get(pos);
+                            @NonNull RecyclerView.ViewHolder viewHolder,
+                            int direction) {
+
+                        int position = viewHolder.getAdapterPosition();
+                        AppNotification n = list.get(position);
+
+                        // Xoá Firebase
                         ref.child(n.getId()).removeValue();
-                        list.remove(pos);
-                        adapter.notifyItemRemoved(pos);
+
+                        // Xoá local
+                        list.remove(position);
+                        adapter.notifyItemRemoved(position);
                     }
                 });
 
-        helper.attachToRecyclerView(rv);
-
-        return view;
-    }
-
-    private void loadData() {
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snap) {
-                list.clear();
-                for (DataSnapshot c : snap.getChildren()) {
-                    AppNotification n =
-                            c.getValue(AppNotification.class);
-                    if (n != null) {
-                        n.setId(c.getKey());
-                        list.add(n);
-                    }
-                }
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override public void onCancelled(@NonNull DatabaseError e) {}
-        });
+        helper.attachToRecyclerView(rvNotifications);
     }
 }
+
