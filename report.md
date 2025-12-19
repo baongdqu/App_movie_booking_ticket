@@ -47,47 +47,89 @@ Em xin chân thành cảm ơn!
 
 ## Tóm tắt khóa luận, đồ án
 
-Đồ án tập trung vào việc nghiên cứu và xây dựng một ứng dụng di động toàn diện trên nền tảng Android nhằm hỗ trợ người dùng trong việc tìm kiếm thông tin và đặt vé xem phim một cách nhanh chóng, tiện lợi. Trong bối cảnh công nghệ di động phát triển vượt bậc, ứng dụng được thiết kế nhằm tối ưu hóa trải nghiệm người dùng, giúp giảm thiểu thời gian chờ đợi và đơn giản hóa quy trình giao dịch truyền thống tại các rạp chiếu phim hiện nay.
+Đồ án "**Ứng dụng Đặt Vé Xem Phim**" được phát triển bởi nhóm sinh viên trường **Đại học Công Nghệ Thông Tin – ĐHQG TP.HCM**, bao gồm: **Nguyễn Trường Duy** (Trưởng nhóm), **Võ Minh Dương** và **Nguyễn Duy Quốc Bảo**. Ứng dụng được xây dựng trên nền tảng **Android Native** sử dụng ngôn ngữ **Java**, kết hợp với hệ sinh thái **Firebase** để quản lý dữ liệu và xác thực người dùng theo thời gian thực.
 
-**Các hệ thống chức năng cốt lõi của ứng dụng bao gồm:**
+**Các module chức năng chính đã được hiện thực:**
 
-- **Hệ thống hiển thị và quản lý nội dung:** Cung cấp danh sách phim đang chiếu và sắp chiếu được cập nhật liên tục theo thời gian thực. Người dùng có thể dễ dàng tra cứu thông tin chi tiết về nội dung, dàn diễn viên, xem đánh giá và thưởng thức trailer chất lượng cao ngay trên giao diện ứng dụng.
-- **Quy trình đặt vé và chọn chỗ thông minh:** Tích hợp tính năng lựa chọn suất chiếu linh hoạt theo cụm rạp, cho phép người dùng thực hiện chọn vị trí ghế ngồi trực quan thông qua sơ đồ phòng chiếu được mô phỏng sinh động và chính xác.
-- **Thanh toán và bảo mật giao dịch:** Hỗ trợ các phương thức thanh toán trực tuyến an toàn, tích hợp các lớp bảo mật bổ sung như mã PIN và xác thực tài khoản để đảm bảo an toàn tuyệt đối cho thông tin cá nhân cũng như lịch sử giao dịch của khách hàng.
-- **Tiện ích mở rộng:** Tích hợp Chatbot tự động hỗ trợ giải đáp thắc mắc nhanh chóng và hệ thống thông báo nhắc lịch xem phim, giúp nâng cao tính tương tác và giữ chân người dùng.
+- **Module Xác thực người dùng (`activities_1_login`, `activities_1_signup`, `activities_1_forgot_password`):** Tích hợp Firebase Authentication hỗ trợ đăng ký, đăng nhập bằng Email/Password, xác minh email và khôi phục mật khẩu. Bổ sung tính năng đăng nhập bằng Google cho trải nghiệm liền mạch.
 
-**Kết quả đạt được:** Sau quá trình thực hiện, ứng dụng đã được hoàn thiện với giao diện UI/UX hiện đại, trẻ trung và hoạt động ổn định trên nhiều dòng thiết bị Android khác nhau. Sản phẩm không chỉ đáp ứng đầy đủ các nhu cầu cấp thiết của người dùng về việc đặt vé trực tuyến mà còn thể hiện tính thực tiễn cao, có khả năng áp dụng vào hệ thống vận hành của các cụm rạp thực tế trong tương lai.
+- **Module Trang chủ (`fragments_home`):** Hiển thị banner quảng cáo dạng slideshow tự động (ViewPager2), danh sách phim đang chiếu (Top Movies) và phim sắp ra mắt (Upcoming) với giao diện cuộn ngang. Tích hợp thanh tìm kiếm phim theo tên với hiệu ứng animation.
+
+- **Module Chi tiết phim (`parthome_movie_detail`):** Trình bày thông tin phim bao gồm poster, tên, thể loại, thời lượng, điểm IMDb, nội dung tóm tắt và danh sách diễn viên. Tích hợp **ExoPlayer** để phát trailer phim chất lượng cao (hỗ trợ HLS streaming) trực tiếp trong ứng dụng.
+
+- **Module Chọn ghế (`parthome_SeatSelectionActivity`):** Sơ đồ ghế ngồi trực quan sử dụng GridLayout 8 cột, phân biệt rõ ràng các trạng thái ghế (trống/đang chọn/đã đặt) bằng màu sắc. Hỗ trợ chọn ngày và giờ chiếu linh hoạt, tự động tính toán tổng tiền theo thời gian thực.
+
+- **Module Thanh toán (`PaymentActivity`):** Mô phỏng quy trình thanh toán với 2 phương thức: Ví VNPay và Số dư tài khoản. Sau khi thanh toán thành công, vé được lưu vào lịch sử và hiển thị mã QR/mã vé điện tử.
+
+- **Module Trang cá nhân (`fragments_user`, `partuser_edit_profile`, `partuser_change_password`):** Quản lý thông tin cá nhân, cập nhật avatar (tích hợp upload ảnh), đổi mật khẩu và xem lịch sử vé đã đặt.
+
+- **Module Chatbot AI (`activities_2_chatbot`):** Trợ lý ảo thông minh tích hợp mô hình ngôn ngữ lớn **Ollama** thông qua server Python và **ngrok**. Hỗ trợ tư vấn phim dựa trên sở thích, trả lời câu hỏi về lịch chiếu, giá vé với giao diện chat hiện đại kèm Quick Replies.
+
+- **Module Bảo mật nâng cao (`activities_lock_screen`, `partuser_advanced_settings`):** Tính năng khóa ứng dụng bằng mã PIN 6 chữ số, tự động reset PIN khi đăng xuất để đảm bảo quyền riêng tư.
+
+- **Module Đa ngôn ngữ (`extra_language_helper`):** Hỗ trợ chuyển đổi linh hoạt giữa nhiều ngôn ngữ: Tiếng Việt, Tiếng Anh, Tiếng Nhật, Tiếng Hàn, Tiếng Nga và Tiếng Trung.
+
+- **Module Sở thích phim (`partuser_movie_preferences`):** Lưu trữ thể loại phim yêu thích và thời gian xem phim ưa thích của người dùng, phục vụ cho việc cá nhân hóa gợi ý từ Chatbot AI.
+
+**Công nghệ sử dụng:** Java, Android SDK (API 24-34), Firebase (Realtime Database, Authentication), Glide, ExoPlayer, OkHttp, Gson, Material Design Components.
+
+**Kết quả đạt được:** Ứng dụng hoàn thiện với giao diện "Cinematic Dark Mode" lấy cảm hứng từ Netflix, hoạt động ổn định trên nhiều thiết bị Android. Sản phẩm đáp ứng đầy đủ quy trình đặt vé trực tuyến từ A-Z, có tính thực tiễn cao và khả năng mở rộng cho môi trường vận hành thực tế.
 
 ---
 
 ## Danh mục hình ảnh
 
-| STT | Tên hình ảnh                               | Nguồn / Mô tả          |
-| --- | ------------------------------------------ | ---------------------- |
-| 1   | Hình 1.1: Tổng quan thị trường vé xem phim | Internet               |
-| 2   | Hình 3.1: Sơ đồ Use Case tổng quát         | Tự vẽ                  |
-| 3   | Hình 3.2: Biểu đồ ERD cơ sở dữ liệu        | Tự vẽ                  |
-| 4   | Hình 4.1: Giao diện màn hình đăng nhập     | Chụp màn hình ứng dụng |
-| 5   | Hình 4.2: Giao diện trang chủ              | Chụp màn hình ứng dụng |
-| ... | ...                                        | ...                    |
+| STT | Tên hình ảnh                                      | Nguồn / Mô tả          |
+| --- | ------------------------------------------------- | ---------------------- |
+| 1   | Hình 3.1: Sơ đồ Use Case tổng quát                | Tự vẽ                  |
+| 2   | Hình 3.2: Sơ đồ kiến trúc hệ thống                | Tự vẽ                  |
+| 3   | Hình 4.1: Giao diện màn hình Splash & Đăng nhập   | Chụp màn hình ứng dụng |
+| 4   | Hình 4.2: Giao diện Trang chủ và Tìm kiếm phim    | Chụp màn hình ứng dụng |
+| 5   | Hình 4.3: Giao diện Chi tiết phim và phát Trailer | Chụp màn hình ứng dụng |
+| 6   | Hình 4.4: Giao diện Chọn ghế và Thanh toán        | Chụp màn hình ứng dụng |
+| 7   | Hình 4.5: Giao diện Trang cá nhân                 | Chụp màn hình ứng dụng |
+| 8   | Hình 4.6: Giao diện Thông báo                     | Chụp màn hình ứng dụng |
+| 9   | Hình 4.7: Giao diện Chatbot tư vấn phim           | Chụp màn hình ứng dụng |
+| 10  | Hình 4.8: Giao diện màn hình Đăng ký              | Chụp màn hình ứng dụng |
+| 11  | Hình 4.9: Giao diện màn hình Quên mật khẩu        | Chụp màn hình ứng dụng |
+| 12  | Hình 4.10: Giao diện Lịch sử đặt vé               | Chụp màn hình ứng dụng |
+| 13  | Hình 4.11: Giao diện Chỉnh sửa hồ sơ              | Chụp màn hình ứng dụng |
+| 14  | Hình 4.12: Giao diện Đổi mật khẩu                 | Chụp màn hình ứng dụng |
+| 15  | Hình 4.13: Giao diện Sở thích phim                | Chụp màn hình ứng dụng |
+| 16  | Hình 4.14: Giao diện Cài đặt nâng cao             | Chụp màn hình ứng dụng |
+| 17  | Hình 4.15: Giao diện Khóa ứng dụng (PIN Lock)     | Chụp màn hình ứng dụng |
 
 ## Danh mục bảng
 
-| STT | Tên bảng                                 | Số trang |
-| --- | ---------------------------------------- | -------- |
-| 1   | Bảng 2.1: So sánh các hệ quản trị CSDL   | ...      |
-| 2   | Bảng 3.1: Chi tiết các tác nhân (Actors) | ...      |
-| 3   | Bảng 3.2: Kịch bản kiểm thử (Test cases) | ...      |
+| STT | Tên bảng                                              |
+| --- | ----------------------------------------------------- |
+| 1   | Bảng 3.1: Yêu cầu chức năng (Functional Requirements) |
+| 2   | Bảng 3.2: Yêu cầu phi chức năng (Non-Functional)      |
+| 3   | Bảng 5.1: Kiểm thử chức năng Đăng nhập/Đăng ký        |
+| 4   | Bảng 5.2: Kiểm thử chức năng Tìm kiếm và Xem phim     |
+| 5   | Bảng 5.3: Kiểm thử chức năng Đặt vé và Thanh toán     |
+| 6   | Bảng 5.4: Kiểm thử chức năng Chatbot AI               |
+| 7   | Bảng B.1: Giải thích các node Firebase                |
+| 8   | Bảng C.1: API Endpoints (Chatbot Server)              |
 
 ## Danh mục từ viết tắt
 
-| Từ viết tắt | Nghĩa tiếng Anh                   | Nghĩa tiếng Việt             |
-| ----------- | --------------------------------- | ---------------------------- |
-| UI          | User Interface                    | Giao diện người dùng         |
-| UX          | User Experience                   | Trải nghiệm người dùng       |
-| DB          | Database                          | Cơ sở dữ liệu                |
-| API         | Application Programming Interface | Giao diện lập trình ứng dụng |
-| ...         | ...                               | ...                          |
+| Từ viết tắt | Nghĩa tiếng Anh                   | Nghĩa tiếng Việt               |
+| ----------- | --------------------------------- | ------------------------------ |
+| UI          | User Interface                    | Giao diện người dùng           |
+| UX          | User Experience                   | Trải nghiệm người dùng         |
+| API         | Application Programming Interface | Giao diện lập trình ứng dụng   |
+| SDK         | Software Development Kit          | Bộ công cụ phát triển phần mềm |
+| LLM         | Large Language Model              | Mô hình ngôn ngữ lớn           |
+| AI          | Artificial Intelligence           | Trí tuệ nhân tạo               |
+| HLS         | HTTP Live Streaming               | Phát trực tuyến HTTP           |
+| JSON        | JavaScript Object Notation        | Định dạng dữ liệu JSON         |
+| REST        | Representational State Transfer   | Kiến trúc API RESTful          |
+| NoSQL       | Not Only SQL                      | Cơ sở dữ liệu phi quan hệ      |
+| PIN         | Personal Identification Number    | Mã số định danh cá nhân        |
+| QR          | Quick Response                    | Mã phản hồi nhanh              |
+| IMDB        | Internet Movie Database           | Cơ sở dữ liệu phim trực tuyến  |
+| VNPay       | Vietnam Payment                   | Cổng thanh toán Việt Nam       |
 
 ---
 
@@ -95,28 +137,87 @@ Em xin chân thành cảm ơn!
 
 ### 1.1. Lý do chọn đề tài
 
-Trong kỷ nguyên số hóa hiện nay, điện thoại thông minh (smartphone) không còn là một thiết bị xa xỉ mà đã trở thành vật bất ly thân của đại đa số người dân. Sự bùng nổ của hạ tầng mạng 4G/5G cùng với các ứng dụng di động đã thay đổi hoàn toàn cách thức con người tiếp cận thông tin và dịch vụ. Trong lĩnh vực giải trí, nhu cầu thưởng thức điện ảnh tại rạp luôn chiếm một tỷ trọng lớn. Tuy nhiên, quy trình mua vé truyền thống đang bộc lộ nhiều bất cập: khách hàng phải tốn thời gian di chuyển đến rạp mà không chắc chắn còn vé hay không, việc xếp hàng chờ đợi trong các dịp lễ hay phim "bom tấn" gây ra sự mệt mỏi và ức chế.
+Trong kỷ nguyên số hóa hiện nay, điện thoại thông minh (smartphone) không còn là một thiết bị xa xỉ mà đã trở thành vật bất ly thân của đại đa số người dân Việt Nam. Theo thống kê từ Statista năm 2024, Việt Nam có khoảng 70 triệu người dùng smartphone, chiếm hơn 70% dân số. Sự bùng nổ của hạ tầng mạng 4G/5G cùng với hệ sinh thái ứng dụng di động phong phú đã thay đổi hoàn toàn cách thức con người tiếp cận thông tin, giải trí và sử dụng dịch vụ.
 
-Hơn nữa, việc thiếu thông tin trực quan về vị trí ghế ngồi, lịch chiếu cập nhật theo thời gian thực khiến người dùng khó lòng sắp xếp kế hoạch cá nhân một cách tối ưu. Đối với các đơn vị vận hành, việc quản lý thủ công cũng dẫn đến sai sót và khó khăn trong việc phân tích hành vi khách hàng. Chính vì vậy, việc phát triển một ứng dụng đặt vé xem phim trên nền tảng Android là một yêu cầu tất yếu, nhằm giải quyết triệt để các vấn đề trên, mang lại sự tiện lợi tối đa cho người dùng và nâng cao hiệu quả kinh doanh cho doanh nghiệp.
+Trong lĩnh vực giải trí, nhu cầu thưởng thức điện ảnh tại rạp luôn chiếm một tỷ trọng lớn trong chi tiêu của người tiêu dùng. Theo báo cáo của CJ CGV Việt Nam, thị trường rạp chiếu phim Việt Nam đạt doanh thu hơn 4.500 tỷ đồng vào năm 2023, với tốc độ tăng trưởng trung bình 15-20% mỗi năm. Tuy nhiên, quy trình mua vé truyền thống vẫn đang bộc lộ nhiều bất cập nghiêm trọng:
+
+- **Về phía người dùng:** Khách hàng phải tốn thời gian di chuyển đến rạp mà không chắc chắn còn vé hay không, đặc biệt vào các dịp cuối tuần, lễ Tết hoặc khi có phim "bom tấn" ra mắt. Việc xếp hàng chờ đợi từ 15-30 phút gây ra sự mệt mỏi và ức chế, ảnh hưởng tiêu cực đến trải nghiệm xem phim tổng thể. Ngoài ra, người dùng thiếu thông tin trực quan về vị trí ghế ngồi thực tế, lịch chiếu cập nhật theo thời gian thực khiến việc sắp xếp kế hoạch cá nhân trở nên khó khăn.
+
+- **Về phía rạp chiếu phim:** Việc quản lý thủ công dẫn đến sai sót trong việc ghi nhận giao dịch, khó khăn trong việc thống kê doanh thu theo thời gian thực và hạn chế khả năng phân tích hành vi khách hàng để đưa ra các chiến lược marketing hiệu quả.
+
+- **Về xu hướng công nghệ:** Sự phát triển mạnh mẽ của trí tuệ nhân tạo (AI), đặc biệt là các mô hình ngôn ngữ lớn (LLM) như GPT, Gemini, Ollama, mở ra cơ hội tích hợp các tính năng thông minh như chatbot tư vấn phim, gợi ý cá nhân hóa dựa trên sở thích người dùng.
+
+Chính vì những lý do trên, việc phát triển một **ứng dụng đặt vé xem phim trên nền tảng Android** là một yêu cầu tất yếu của thời đại, nhằm giải quyết triệt để các vấn đề nêu trên, mang lại sự tiện lợi tối đa cho người dùng, đồng thời nâng cao hiệu quả vận hành và kinh doanh cho các cụm rạp chiếu phim.
 
 ### 1.2. Mục tiêu đề tài
 
 Đồ án hướng tới việc đạt được các mục tiêu cụ thể sau đây:
 
-- **Về mặt kỹ thuật:** Xây dựng thành công một ứng dụng di động hoàn chỉnh chạy trên hệ điều hành Android, sử dụng các ngôn ngữ lập trình hiện đại như Kotlin/Java kết hợp với kiến trúc MVVM để đảm bảo tính dễ bảo trì và mở rộng của mã nguồn.
-- **Về mặt trải nghiệm người dùng (UX):** Thiết kế giao diện trực quan, thân thiện, giúp người dùng có thể hoàn tất quy trình đặt vé từ bước chọn phim đến khi thanh toán chỉ trong vòng chưa đầy 2 phút. Tối ưu hóa tốc độ tải dữ liệu và hiển thị sơ đồ ghế ngồi một cách sinh động.
-- **Về tính năng nâng cao:** Tích hợp các công nghệ tiên tiến nhằm tạo sự khác biệt, bao gồm:
-  - **AI Chatbot:** Hỗ trợ tư vấn phim, giải đáp thắc mắc về giá vé và rạp chiếu tự động 24/7.
-  - **Bảo mật đa lớp:** Triển khai xác thực qua mã PIN hoặc sinh trắc học (vân tay/khuôn mặt) để bảo vệ thông tin thanh toán và ví điện tử tích hợp.
-  - **Hệ thống thông báo (Push Notifications):** Nhắc lịch xem phim và cập nhật các chương trình khuyến mãi cá nhân hóa.
+**Về mặt kỹ thuật:**
+- Xây dựng thành công một ứng dụng di động hoàn chỉnh chạy trên hệ điều hành Android (API 24 - Android 7.0 trở lên), sử dụng ngôn ngữ lập trình **Java** kết hợp với kiến trúc **Single Activity - Multiple Fragments** để đảm bảo tính module hóa, dễ bảo trì và mở rộng mã nguồn.
+- Tích hợp hệ sinh thái **Firebase** làm Backend-as-a-Service (BaaS), bao gồm Firebase Realtime Database để lưu trữ và đồng bộ dữ liệu thời gian thực, Firebase Authentication để quản lý xác thực người dùng an toàn.
+- Xây dựng **AI Server** kết hợp với ứng dụng mô hình ngôn ngữ lớn **Ollama** (chạy local), expose ra Internet thông qua **ngrok** để cung cấp API cho tính năng Chatbot tư vấn phim thông minh.
+- Áp dụng các nguyên tắc thiết kế Android hiện đại với **Material Design Components**, **ViewBinding** và các thư viện hỗ trợ mạnh mẽ như Glide (tải và cache ảnh), ExoPlayer (phát trailer video HLS), OkHttp (kết nối mạng HTTP), Gson (xử lý JSON), CircleImageView (hiển thị avatar tròn) và tích hợp **VNPay SDK** để mô phỏng thanh toán.
+
+**Về mặt trải nghiệm người dùng (UX):**
+- Thiết kế giao diện theo phong cách "**Cinematic Dark Mode**" lấy cảm hứng từ Netflix, với tông màu tối làm nổi bật poster phim và tạo không khí rạp chiếu phim ngay trên thiết bị di động.
+- Đảm bảo người dùng có thể hoàn tất quy trình đặt vé từ bước chọn phim đến khi thanh toán chỉ trong vòng **chưa đầy 3 phút** với tối đa 5 bước thao tác.
+- Tối ưu hóa tốc độ tải dữ liệu bằng cơ chế caching thông minh, hiển thị sơ đồ ghế ngồi trực quan với phân biệt màu sắc rõ ràng cho từng trạng thái ghế.
+
+**Về tính năng nâng cao:**
+- **AI Chatbot thông minh:** Tích hợp mô hình ngôn ngữ lớn **Ollama** (chạy local) thông qua server từ xa và **ngrok** để hỗ trợ tư vấn phim dựa trên sở thích, giải đáp thắc mắc về lịch chiếu, giá vé một cách tự nhiên như trò chuyện với người thật.
+- **Bảo mật đa lớp:** Triển khai xác thực qua **mã PIN 6 chữ số** để khóa ứng dụng, bảo vệ thông tin cá nhân và lịch sử giao dịch. PIN tự động được reset khi người dùng đăng xuất để đảm bảo quyền riêng tư.
+- **Hỗ trợ đa ngôn ngữ:** Ứng dụng hỗ trợ chuyển đổi linh hoạt giữa 6 ngôn ngữ: Tiếng Việt, Tiếng Anh, Tiếng Nhật, Tiếng Hàn, Tiếng Nga và Tiếng Trung, phục vụ cả du khách quốc tế và người Việt ở nước ngoài.
+- **Cá nhân hóa trải nghiệm:** Lưu trữ sở thích thể loại phim và thời gian xem phim ưa thích của người dùng để Chatbot AI có thể đưa ra gợi ý phù hợp nhất.
 
 ### 1.3. Phạm vi đề tài
 
 Đề tài tập trung nghiên cứu và triển khai trong các phạm vi giới hạn sau:
 
-- **Đối tượng người dùng:**
-  - **Khách hàng (End User):** Người dùng cuối cùng, bao gồm cả khách hàng mới và khách hàng cũ.
-  - **Admin (Backend):** Người dùng có quyền truy cập vào hệ thống quản lý, bao gồm cả việc thêm, sửa, xóa thông tin phim, suất chiếu, và các thông tin khác.
+**Về đối tượng người dùng:**
+- **Khách hàng (End User):** Người dùng cuối cùng sử dụng ứng dụng di động Android để tra cứu thông tin phim, đặt vé, thanh toán và tương tác với các tính năng như Chatbot, quản lý tài khoản cá nhân. Bao gồm cả khách hàng mới (chưa có tài khoản) và khách hàng cũ (đã đăng ký).
+- **Quản trị viên (Admin):** Người dùng có quyền truy cập trực tiếp vào Firebase Console để quản lý dữ liệu phim (thêm, sửa, xóa thông tin phim, suất chiếu, banner quảng cáo) và quản lý tài khoản người dùng. Trong phạm vi đồ án, chức năng Admin được thực hiện thông qua Firebase Console thay vì xây dựng giao diện quản trị riêng.
+
+**Về nền tảng triển khai:**
+- Ứng dụng được phát triển và kiểm thử trên nền tảng **Android** với phiên bản tối thiểu là **Android 7.0 (API 24)** và phiên bản mục tiêu là **Android 14 (API 34)**.
+- Dữ liệu được lưu trữ trên nền tảng đám mây **Firebase** của Google, đảm bảo tính sẵn sàng cao và khả năng mở rộng.
+
+**Về chức năng:**
+- Đồ án tập trung vào các chức năng cốt lõi của một ứng dụng đặt vé xem phim: hiển thị danh sách phim, xem chi tiết và trailer, chọn suất chiếu và ghế ngồi, mô phỏng thanh toán.
+- Tính năng thanh toán hiện ở mức **mô phỏng (demo)**, chưa tích hợp với các cổng thanh toán thực như VNPay, Momo do yêu cầu đăng ký tài khoản doanh nghiệp.
+- Tính năng Chatbot AI hoạt động khi có server local chạy Ollama và ngrok expose ra Internet.
+
+**Về giới hạn:**
+- Ứng dụng chưa hỗ trợ nền tảng iOS hoặc Web.
+- Chưa tích hợp hệ thống thông báo đẩy (Push Notifications) do nằm ngoài phạm vi thời gian thực hiện.
+- Dữ liệu phim được nhập thủ công vào Firebase, chưa tích hợp với API của các rạp phim thực tế (CGV, Lotte Cinema, Galaxy...).
+- Chưa hỗ trợ **Offline Mode**: Ứng dụng yêu cầu kết nối Internet để hoạt động, chưa tận dụng tính năng Disk Persistence của Firebase để lưu cache dữ liệu phim.
+- Tính năng **Chatbot AI phụ thuộc vào server**: Nếu server Ollama hoặc ngrok không hoạt động, Chatbot sẽ không phản hồi được.
+- **Ghế ngồi mô phỏng**: Sơ đồ ghế ngồi là dữ liệu tĩnh, chưa đồng bộ thời gian thực giữa các người dùng đang đặt vé cùng suất chiếu (có thể xảy ra trùng ghế trong thực tế).
+- Chưa tích hợp xác thực **sinh trắc học** (vân tay/Face ID), hiện chỉ hỗ trợ mã PIN 6 chữ số.
+- Người dùng chưa thể **đánh giá và bình luận phim** trực tiếp trong ứng dụng, điểm IMDb chỉ hiển thị dữ liệu có sẵn.
+
+### 1.4. Phương pháp nghiên cứu
+
+Để hoàn thành đồ án, nhóm đã áp dụng các phương pháp nghiên cứu sau:
+
+**Phương pháp nghiên cứu lý thuyết:**
+- Tìm hiểu, nghiên cứu tài liệu về lập trình Android từ các nguồn chính thức như Android Developers Documentation, Firebase Documentation.
+- Nghiên cứu các nguyên tắc thiết kế giao diện người dùng theo Material Design Guidelines của Google.
+- Tìm hiểu về các mô hình ngôn ngữ lớn (LLM) và cách tích hợp AI vào ứng dụng di động thông qua REST API.
+- Nghiên cứu kiến thức cơ bản về **triển khai AI Server đơn giản**: cài đặt và sử dụng **Ollama** để chạy các mô hình LLM trên máy local, xây dựng API endpoint bằng ứng dụng riêng, sử dụng **ngrok** để tạo đường hầm (tunnel) expose server local ra Internet cho ứng dụng di động truy cập.
+
+**Phương pháp thực nghiệm:**
+- Xây dựng ứng dụng theo mô hình phát triển **Agile** với các vòng lặp (sprint) ngắn, liên tục cải tiến dựa trên phản hồi.
+- Kiểm thử ứng dụng trên cả thiết bị thật (Samsung Galaxy A52, Xiaomi Redmi Note 11) và trình giả lập Android Studio để đảm bảo tính tương thích.
+- Thu thập ý kiến phản hồi từ người dùng thử nghiệm để cải thiện trải nghiệm sử dụng.
+
+**Công cụ và môi trường phát triển:**
+- **IDE:** Android Studio (phiên bản Koala 2024.1.1)
+- **Ngôn ngữ:** Java (JDK 11), XML (giao diện)
+- **Backend:** Firebase Realtime Database, Firebase Authentication
+- **AI Server:** Ollama, vibecoding, ngrok
+- **Quản lý phiên bản:** Git, GitHub
 
 ---
 
@@ -131,25 +232,30 @@ Hơn nữa, việc thiếu thông tin trực quan về vị trí ghế ngồi, l
 
 ### 2.2. Cơ sở dữ liệu và lưu trữ dữ liệu
 
-- **Firebase Realtime Database:** Là hệ thống cơ sở dữ liệu NoSQL dựa trên nền tảng đám mây, cho phép lưu trữ và đồng bộ hóa dữ liệu giữa các người dùng theo thời gian thực. Trong ứng dụng, Realtime Database được sử dụng để quản lý các cấu trúc dữ liệu phức tạp như danh sách phim (`Items`), phim sắp chiếu (`Upcomming`), hệ thống `Banners` và thông tin người dùng (`users`). Với cơ chế lắng nghe sự kiện (Event Listeners), mọi thay đổi về dữ liệu trên server sẽ được phản chiếu ngay lập tức lên giao diện người dùng mà không cần thực hiện các yêu cầu HTTP thủ công. Ngoài ra, tính năng lưu trữ đệm (Disk Persistence) giúp ứng dụng duy trì khả năng hoạt động ngay cả trong điều kiện kết nối mạng không ổn định.
+- **Firebase Realtime Database:** Là hệ thống cơ sở dữ liệu NoSQL dựa trên nền tảng đám mây, cho phép lưu trữ và đồng bộ hóa dữ liệu giữa các người dùng theo thời gian thực. Trong ứng dụng, Realtime Database được sử dụng để quản lý các cấu trúc dữ liệu phức tạp như danh sách phim (`Items`), phim sắp chiếu (`Upcomming`), hệ thống `Banners` và thông tin người dùng (`users`). Với cơ chế lắng nghe sự kiện (Event Listeners), mọi thay đổi về dữ liệu trên server sẽ được phản chiếu ngay lập tức lên giao diện người dùng mà không cần thực hiện các yêu cầu HTTP thủ công.
 - **Firebase Authentication:** Cung cấp giải pháp xác thực người dùng toàn diện và bảo mật. Ứng dụng triển khai phương thức đăng ký và đăng nhập bằng Email/Mật khẩu, giúp quản lý danh tính người dùng một cách hiệu quả. Firebase Authentication tự động xử lý các tác vụ phức tạp như gửi email xác thực, khôi phục mật khẩu và lưu trữ token phiên làm việc. Mỗi tài khoản người dùng được định danh bằng một mã UID duy nhất, làm cơ sở để phân quyền truy cập và liên kết dữ liệu cá nhân trong cơ sở dữ liệu, đảm bảo an toàn thông tin tuyệt đối.
-- **Giao tiếp RESTful API và Định dạng JSON:** Để tích hợp trí tuệ nhân tạo (Chatbot), ứng dụng sử dụng kiến trúc RESTful API để thực hiện các yêu cầu mạng đến máy chủ xử lý ngôn ngữ tự nhiên. Dữ liệu trao đổi được chuẩn hóa dưới định dạng JSON (JavaScript Object Notation), giúp tối ưu hóa băng thông và dễ dàng phân tích (parse) dữ liệu trên Android thông qua các thư viện hỗ trợ.
+- **SharedPreferences (Lưu trữ cục bộ):** Ứng dụng sử dụng SharedPreferences để lưu trữ các cài đặt và dữ liệu nhỏ trên thiết bị người dùng, bao gồm: mã PIN khóa ứng dụng, ngôn ngữ hiển thị, cài đặt âm thanh, theme giao diện và trạng thái đăng nhập. SharedPreferences cung cấp cách lưu trữ key-value đơn giản, nhanh chóng và bảo mật cho các dữ liệu cấu hình.
+- **Giao tiếp RESTful API và Định dạng JSON:** Để tích hợp trí tuệ nhân tạo (Chatbot), ứng dụng sử dụng kiến trúc RESTful API để thực hiện các yêu cầu mạng đến máy chủ xử lý ngôn ngữ tự nhiên. Dữ liệu trao đổi được chuẩn hóa dưới định dạng JSON (JavaScript Object Notation), sử dụng thư viện **Gson** để chuyển đổi (serialize/deserialize) giữa đối tượng Java và JSON một cách hiệu quả.
 - **OkHttp và ngrok:** Thư viện **OkHttp** được sử dụng làm tầng xử lý mạng (Networking Layer), hỗ trợ các giao thức HTTP/2, quản lý kết nối hiệu quả và xử lý lỗi mạng linh hoạt. Trong quá trình phát triển, công cụ **ngrok** được sử dụng để thiết lập một đường hầm (tunnel) bảo mật, cho phép ứng dụng di động giao tiếp trực tiếp với server AI đang chạy tại môi trường phát triển cục bộ (localhost) một cách minh bạch và nhanh chóng.
 
 ### 2.3. Các công nghệ và thư viện hỗ trợ
 
 - **Kiến trúc ứng dụng:** Ứng dụng được xây dựng dựa trên kiến trúc **Single Activity** (sử dụng một Activity chính quản lý nhiều Fragment) kết hợp với **ViewBinding**. ViewBinding giúp tương tác với các thành phần giao diện một cách an toàn (null-safety) và nhanh chóng hơn so với phương pháp `findViewById` truyền thống.
 - **Giao diện người dùng (UI/UX):**
-  - **Material Design Components:** Sử dụng bộ thư viện chuẩn của Google để xây dựng các thành phần giao diện hiện đại, nhất quán như `MaterialButton`, `TextInputEditText`, `CardView`.
-  - **ViewPager2:** Được sử dụng để tạo slide banner quảng cáo phim mượt mà và hiệu ứng chuyển trang đẹp mắt.
+  - **Material Design Components:** Sử dụng bộ thư viện chuẩn của Google để xây dựng các thành phần giao diện hiện đại, nhất quán như `MaterialButton`, `TextInputEditText`, `CardView`, `BottomNavigationView`.
+  - **ConstraintLayout:** Layout linh hoạt cho phép xây dựng giao diện phức tạp với hiệu suất cao, giảm số lớp View lồng nhau.
+  - **RecyclerView:** Thành phần hiển thị danh sách hiệu quả với cơ chế tái sử dụng ViewHolder, được sử dụng rộng rãi trong ứng dụng với 8 Adapter khác nhau (TopMovieAdapter, TicketAdapter, ChatMessageAdapter, CastListAdapter, NotificationAdapter...).
+  - **ViewPager2:** Được sử dụng để tạo slide banner quảng cáo phim mượt mà và hiệu ứng chuyển trang đẹp mắt với tự động chuyển trang.
   - **CircleImageView:** Thư viện hỗ trợ hiển thị hình ảnh (avatar người dùng, diễn viên) dưới dạng hình tròn chuyên nghiệp.
 - **Xử lý đa phương tiện:**
   - **Glide:** Thư viện tải và hiển thị ảnh mạnh mẽ, hỗ trợ caching thông minh giúp tối ưu hóa băng thông và tăng tốc độ tải trang khi hiển thị poster phim từ URL.
-  - **ExoPlayer:** Trình phát video mã nguồn mở của Google, được tích hợp để phát trailer phim chất lượng cao (HLS/Dash) trực tiếp trong ứng dụng với độ trễ thấp và khả năng tùy biến giao diện cao.
+  - **ExoPlayer:** Trình phát video mã nguồn mở của Google, được tích hợp để phát trailer phim chất lượng cao (hỗ trợ HLS streaming) trực tiếp trong ứng dụng với độ trễ thấp và khả năng tùy biến giao diện cao.
 - **Xử lý dữ liệu và kết nối mạng:**
-  - **Gson (Google Json):** Thư viện dùng để chuyển đổi (serialize/deserialize) các đối tượng Java sang định dạng JSON và ngược lại, phục vụ cho việc lưu trữ và trao đổi dữ liệu.
-  - **OkHttp:** Thư viện HTTP Client hiệu suất cao, đóng vai trò quan trọng trong việc thiết lập kết nối mạng ổn định để giao tiếp với Chatbot Server.
-- **Tích hợp AI (Chatbot):** Ứng dụng tích hợp mô hình ngôn ngữ lớn (LLM) thông qua **Gemini CLI** (được bọc bởi server Python local) và **ngrok**. Hệ thống này cho phép người dùng trò chuyện tự nhiên để nhận gợi ý phim, tra cứu lịch chiếu.
+  - **Gson (Google Json):** Thư viện dùng để chuyển đổi (serialize/deserialize) các đối tượng Java sang định dạng JSON và ngược lại, phục vụ cho việc lưu trữ và trao đổi dữ liệu với server.
+  - **OkHttp:** Thư viện HTTP Client hiệu suất cao, hỗ trợ HTTP/2, đóng vai trò quan trọng trong việc thiết lập kết nối mạng ổn định để giao tiếp với AI Chatbot Server.
+- **Tích hợp thanh toán:**
+  - **VNPay SDK:** Tích hợp bộ SDK thanh toán VNPay (`merchant-1.0.25.aar`) để mô phỏng quy trình thanh toán trực tuyến, hỗ trợ thanh toán qua ví điện tử VNPay và các phương thức thanh toán khác.
+- **Tích hợp AI (Chatbot):** Ứng dụng tích hợp trí tuệ nhân tạo thông qua **AI Server từ xa** (sử dụng mô hình ngôn ngữ lớn Ollama) được expose qua **ngrok**. Giao tiếp qua REST API với OkHttp, cho phép người dùng trò chuyện tự nhiên để nhận gợi ý phim, hỏi về lịch chiếu và giá vé dựa trên sở thích cá nhân đã lưu.
 
 ---
 
@@ -162,32 +268,37 @@ Hơn nữa, việc thiếu thông tin trực quan về vị trí ghế ngồi, l
 Hệ thống được thiết kế để đáp ứng đầy đủ chu trình trải nghiệm của người dùng xem phim:
 
 - **Quản lý tài khoản (Authentication & Authorization):**
-  - Cho phép người dùng đăng ký tài khoản mới với các thông tin cơ bản.
-  - Đăng nhập hệ thống bảo mật qua Email/Password.
-  - Tính năng "Quên mật khẩu" hỗ trợ khôi phục quyền truy cập nhanh chóng.
-  - Đăng xuất an toàn.
+  - Cho phép người dùng đăng ký tài khoản mới với các thông tin cơ bản (họ tên, email, mật khẩu).
+  - Đăng nhập hệ thống bảo mật qua Email/Password với xác minh email.
+  - Tính năng "Quên mật khẩu" hỗ trợ khôi phục quyền truy cập nhanh chóng qua email.
+  - Đăng xuất an toàn, tự động xóa dữ liệu nhạy cảm (PIN Lock) khi đăng xuất.
 - **Tra cứu và Tìm kiếm phim (Discovery):**
-  - Hiển thị danh sách phim nổi bật ("Hot/Trending") và phim sắp chiếu ("Upcoming") ngay tại màn hình chính.
-  - Tìm kiếm phim thông minh theo từ khóa (tên phim).
-  - Xem chi tiết thông tin phim: Nội dung tóm tắt, diễn viên, đạo diễn, thời lượng, điểm đánh giá IMDb.
-  - Phát Trailer phim trực tuyến chất lượng cao.
+  - Hiển thị danh sách phim nổi bật ("Top Movies") và phim sắp chiếu ("Upcoming") ngay tại màn hình chính với giao diện cuộn ngang.
+  - Banner quảng cáo slideshow tự động chuyển trang.
+  - Tìm kiếm phim thông minh theo từ khóa (tên phim) với hiệu ứng animation.
+  - Xem chi tiết thông tin phim: Nội dung tóm tắt, danh sách diễn viên (với ảnh), thể loại, thời lượng, năm sản xuất, điểm đánh giá IMDb.
+  - Phát Trailer phim trực tuyến chất lượng cao (hỗ trợ HLS streaming) bằng ExoPlayer.
 - **Đặt vé và Thanh toán (Booking & Payment):**
-  - Lựa chọn ngày chiếu và suất chiếu phù hợp.
-  - Sơ đồ ghế ngồi trực quan: Phân biệt rõ ghế đã đặt, ghế đang chọn và ghế trống.
-  - Tính toán tổng tiền tự động dựa trên số lượng ghế.
-  - Mô phỏng quy trình thanh toán và xuất vé điện tử (QR Code/Mã vé).
+  - Lựa chọn ngày chiếu và suất chiếu phù hợp với giao diện cuộn ngang.
+  - Sơ đồ ghế ngồi trực quan (GridLayout 8 cột): Phân biệt rõ ghế đã đặt (xám), ghế đang chọn (hồng đậm) và ghế trống (trắng/hồng nhạt).
+  - Tính toán tổng tiền tự động theo thời gian thực dựa trên số lượng ghế được chọn.
+  - Mô phỏng quy trình thanh toán qua VNPay hoặc số dư tài khoản, xuất vé điện tử sau khi thanh toán thành công.
 - **Tiện ích cá nhân và Nâng cao:**
-  - Quản lý thông tin cá nhân (Profile): Cập nhật avatar, đổi mật khẩu.
-  - Lịch sử đặt vé: Xem lại danh sách các vé đã mua.
-  - **AI Chatbot:** Trợ lý ảo hỗ trợ tư vấn phim và giải đáp thắc mắc.
-  - **Cài đặt nâng cao:** Thiết lập ngôn ngữ, bật/tắt thông báo, và đặc biệt là tính năng **Khóa ứng dụng (PIN Lock/App Lock)** để bảo vệ quyền riêng tư.
+  - Quản lý thông tin cá nhân (Profile): Cập nhật họ tên, avatar (chụp ảnh hoặc chọn từ thư viện), đổi mật khẩu.
+  - Lịch sử đặt vé: Xem lại danh sách các vé đã mua với đầy đủ thông tin (phim, ngày, ghế, giá).
+  - **Sở thích phim:** Lưu trữ thể loại phim yêu thích và thời gian xem phim ưa thích để cá nhân hóa gợi ý từ Chatbot.
+  - **AI Chatbot:** Trợ lý ảo thông minh hỗ trợ tư vấn phim dựa trên sở thích, giải đáp thắc mắc về lịch chiếu và giá vé.
+  - **Cài đặt nâng cao:** Thiết lập ngôn ngữ (6 ngôn ngữ), bật/tắt âm thanh ứng dụng, chế độ tối (Dark Mode), và đặc biệt là tính năng **Khóa ứng dụng (PIN Lock 6 số)** để bảo vệ quyền riêng tư.
 
 #### 3.1.2. Yêu cầu phi chức năng (Non-Functional Requirements)
 
-- **Hiệu năng (Performance):** Ứng dụng phải phản hồi thao tác người dùng dưới 1 giây. Việc tải danh sách phim và ảnh phải được tối ưu hóa (caching) để hoạt động mượt mà ngay cả khi mạng yếu.
-- **Bảo mật (Security):** Mật khẩu người dùng không được lưu trữ plain-text trên local. Dữ liệu thanh toán và thông tin cá nhân phải được bảo vệ. Tính năng khóa PIN phải hoạt động chính xác khi ứng dụng chạy nền.
-- **Giao diện và Trải nghiệm (UI/UX):** Giao diện thiết kế theo phong cách hiện đại (Modern UI), sử dụng tông màu tối (Dark Theme) phù hợp với rạp chiếu phim. Các thao tác chuyển màn hình phải có hiệu ứng (animation) mượt mà.
-- **Độ tin cậy (Reliability):** Ứng dụng phải xử lý tốt các ngoại lệ (mất mạng, lỗi server) và không bị crash đột ngột (Force Close).
+- **Hiệu năng (Performance):** Ứng dụng phải phản hồi thao tác người dùng một cách nhanh chóng. Việc tải và hiển thị ảnh poster phim được tối ưu hóa thông qua cơ chế caching của thư viện Glide, giúp giảm băng thông và tăng tốc độ hiển thị khi xem lại các phim đã tải trước đó.
+- **Bảo mật (Security):** Mật khẩu người dùng được quản lý hoàn toàn bởi Firebase Authentication, không lưu trữ plain-text trên thiết bị. Mã PIN khóa ứng dụng được lưu trong SharedPreferences. Tính năng khóa PIN hoạt động khi ứng dụng chuyển về từ nền (background) và tự động reset khi người dùng đăng xuất.
+- **Giao diện và Trải nghiệm (UI/UX):** Giao diện thiết kế theo phong cách "Cinematic Dark Mode" lấy cảm hứng từ Netflix, sử dụng tông màu tối kết hợp điểm nhấn đỏ (#E50914) phù hợp với không khí rạp chiếu phim. Các thao tác chuyển màn hình có hiệu ứng animation mượt mà, tuân thủ Material Design Guidelines.
+- **Độ tin cậy (Reliability):** Ứng dụng xử lý tốt các ngoại lệ thông qua việc kiểm tra kết nối mạng trước khi thực hiện các tác vụ, hiển thị thông báo lỗi thân thiện khi mất mạng hoặc server Chatbot không phản hồi, tránh crash đột ngột (Force Close).
+- **Tương thích (Compatibility):** Ứng dụng hỗ trợ các thiết bị Android từ phiên bản 7.0 (API 24) đến Android 14 (API 34), đảm bảo hoạt động trên đa dạng kích thước màn hình từ 5 inch đến 7 inch.
+- **Khả năng mở rộng (Scalability):** Mã nguồn được tổ chức theo kiến trúc Single Activity - Multiple Fragments, phân chia rõ ràng theo module (activities, fragments, adapters, models, extras) giúp dễ dàng thêm mới chức năng trong tương lai.
+- **Khả năng bảo trì (Maintainability):** Sử dụng ViewBinding để truy cập View an toàn, đặt tên file và class theo quy ước nhất quán, comment code đầy đủ cho các phương thức quan trọng.
 
 ### 3.2. Thiết kế hệ thống
 
@@ -394,6 +505,81 @@ Tính năng trợ lý ảo thông minh:
 - Người dùng có thể hỏi "Phim nào hay đang chiếu?", bot sẽ trả lời dựa trên dữ liệu phim hiện có.
 - Hỗ trợ các câu trả lời nhanh (Quick Replies).
   _(Hình 4.7: Giao diện Chatbot tư vấn phim)_
+
+#### 4.3.8. Màn hình Đăng ký tài khoản
+
+Cho phép người dùng mới tạo tài khoản:
+
+- Nhập thông tin: Họ tên, Email, Mật khẩu và Xác nhận mật khẩu.
+- Validation kiểm tra định dạng email, độ dài mật khẩu tối thiểu.
+- Sau khi đăng ký, hệ thống gửi email xác thực đến địa chỉ email đã đăng ký.
+  _(Hình 4.8: Giao diện màn hình Đăng ký)_
+
+#### 4.3.9. Màn hình Quên mật khẩu
+
+Hỗ trợ người dùng khôi phục tài khoản:
+
+- Nhập địa chỉ email đã đăng ký.
+- Hệ thống gửi link reset mật khẩu qua Firebase Authentication.
+- Thông báo thành công hoặc lỗi (email không tồn tại).
+  _(Hình 4.9: Giao diện màn hình Quên mật khẩu)_
+
+#### 4.3.10. Màn hình Lịch sử đặt vé
+
+Hiển thị danh sách các vé đã mua:
+
+- Thông tin mỗi vé: Poster phim, tên phim, ngày chiếu, vị trí ghế, tổng tiền.
+- Sắp xếp theo thời gian (vé mới nhất hiển thị trước).
+- Có thể xem chi tiết từng vé.
+  _(Hình 4.10: Giao diện Lịch sử đặt vé)_
+
+#### 4.3.11. Màn hình Chỉnh sửa hồ sơ
+
+Cho phép người dùng cập nhật thông tin cá nhân:
+
+- Thay đổi Avatar: Chụp ảnh mới hoặc chọn từ thư viện.
+- Cập nhật Họ tên hiển thị.
+- Xem email tài khoản (không cho phép thay đổi).
+- Nút Lưu thay đổi và Hủy.
+  _(Hình 4.11: Giao diện Chỉnh sửa hồ sơ)_
+
+#### 4.3.12. Màn hình Đổi mật khẩu
+
+Cho phép người dùng thay đổi mật khẩu:
+
+- Nhập mật khẩu hiện tại để xác thực.
+- Nhập mật khẩu mới và xác nhận mật khẩu mới.
+- Kiểm tra độ khớp giữa mật khẩu mới và xác nhận.
+  _(Hình 4.12: Giao diện Đổi mật khẩu)_
+
+#### 4.3.13. Màn hình Sở thích phim
+
+Cá nhân hóa trải nghiệm người dùng:
+
+- Chọn các thể loại phim yêu thích (Hành động, Kinh dị, Hài, Lãng mạn...).
+- Chọn thời gian xem phim ưa thích (Buổi sáng, Buổi chiều, Buổi tối).
+- Dữ liệu được lưu vào Firebase và sử dụng bởi Chatbot AI để gợi ý phim phù hợp.
+  _(Hình 4.13: Giao diện Sở thích phim)_
+
+#### 4.3.14. Màn hình Cài đặt nâng cao
+
+Quản lý các thiết lập ứng dụng:
+
+- **Chế độ tối (Dark Mode):** Bật/tắt giao diện tối.
+- **Âm thanh:** Bật/tắt âm thanh phản hồi khi thao tác.
+- **Ngôn ngữ:** Chuyển đổi giữa 6 ngôn ngữ (Việt, Anh, Nhật, Hàn, Nga, Trung).
+- **Khóa ứng dụng (PIN Lock):** Bật/tắt và thiết lập mã PIN 6 chữ số.
+  _(Hình 4.14: Giao diện Cài đặt nâng cao)_
+
+#### 4.3.15. Màn hình Khóa ứng dụng (PIN Lock)
+
+Bảo vệ quyền riêng tư người dùng:
+
+- Hiển thị khi mở ứng dụng từ nền (nếu đã bật PIN Lock).
+- Giao diện nhập 6 chữ số với bàn phím số.
+- Tính năng "Quên PIN" cho phép reset bằng cách đăng xuất tài khoản.
+- Phản hồi bằng màu sắc khi nhập đúng/sai.
+  _(Hình 4.15: Giao diện Khóa ứng dụng)
 
 ### 4.4. Đoạn code nổi bật
 
@@ -762,49 +948,114 @@ Sau quá trình nghiên cứu, thiết kế và triển khai, đồ án "Ứng d
 
 ```json
 {
-  "Banners": {
-    "0": "https://example.com/banner1.jpg",
-    "1": "https://example.com/banner2.jpg"
-  },
-  "Items": [
+  "Banners": [
     {
-      "Title": "Tên phim",
-      "Description": "Mô tả nội dung phim",
-      "Poster": "URL ảnh poster",
-      "Trailer": "URL video trailer",
-      "Time": "120 phút",
-      "Imdb": 8.5,
-      "Year": 2024,
-      "price": 90000,
-      "Genre": ["Hành động", "Phiêu lưu"],
-      "Casts": [
-        {"Actor": "Tên diễn viên", "PicUrl": "URL ảnh"}
-      ]
+      "age": "+13",
+      "genre": "War Action Adventure",
+      "image": "https://example.com/banner.jpg",
+      "name": "1917",
+      "time": "2 Hour",
+      "year": "2023"
     }
   ],
-  "Upcomming": [...],
+  "Items": [
+    {
+      "Title": "Dune: Part Two",
+      "Description": "Paul Atreides unites with Chani and the Fremen...",
+      "Poster": "https://firebasestorage.googleapis.com/.../Dune.jpg",
+      "Trailer": "https://www.imdb.com/video/...",
+      "Time": "2h 46m",
+      "Imdb": 8.5,
+      "Year": 2024,
+      "price": 120,
+      "Genre": ["Adventure", "Action", "Drama"],
+      "Casts": [
+        {"Actor": "Timothée Chalamet", "PicUrl": "https://..."},
+        {"Actor": "Zendaya", "PicUrl": "https://..."}
+      ],
+      "Pcitures": ["https://...", "https://..."]
+    }
+  ],
+  "Upcomming": [
+    // Cấu trúc giống Items
+  ],
+  "Bookings": {
+    "Tên phim": {
+      "2025-11-08_18:00": {
+        "pricePerSeat": 90000,
+        "seats": {
+          "A1": "booked",
+          "A2": "available",
+          "B1": "available"
+          // ... 8 cột x 11 hàng (A-K)
+        }
+      }
+    }
+  },
+  "tickets": {
+    "-ticketId": {
+      "createdAt": 1765862120547,
+      "date": "2025-11-08",
+      "movieTitle": "The Gorge",
+      "posterUrl": "https://...",
+      "seats": ["C5", "C6", "D5", "D6"],
+      "time": "15:15",
+      "totalPrice": 280000,
+      "userId": "xS5e9wtrraOkikepokVdjNcIFYq1",
+      "status": "PAID",
+      "payment": {
+        "method": "VNPAY",
+        "paidAt": 1765862120547,
+        "status": "PAID"
+      }
+    }
+  },
+  "notifications": {
+    "userId": {
+      "-notificationId": {
+        "title": "Hoàn tiền thành công",
+        "message": "Bạn đã được hoàn 95000đ cho vé Rebel Moon",
+        "type": "REFUND",
+        "read": false,
+        "timestamp": 1766038881130,
+        "ticketId": "-OggpFLq1G7ydiTFDw9F"
+      }
+    }
+  },
   "users": {
     "userId": {
+      "uid": "CU6DPufQVadwqpI7GbT40KKsvPy1",
       "fullName": "Họ và tên",
-      "email": "email@example.com",
-      "avatarUrl": "URL ảnh đại diện",
-      "balance": 500000,
+      "email": "email@gmail.com",
+      "phone": "+84397107173",
+      "avatarUrl": "https://i.ibb.co/.../avatar.jpg",
+      "balance": 475000,
+      "dateOfBirth": "03/12/2025",
+      "gender": "Nữ",
+      "phoneVerified": true,
       "moviePreferences": {
-        "favoriteGenres": ["Hành động", "Hài"],
-        "preferredWatchTime": "Cuối tuần - Buổi tối"
-      },
-      "tickets": {
-        "ticketId": {
-          "movieTitle": "Tên phim",
-          "seatCoordinates": ["A1", "A2"],
-          "totalPrice": 180000,
-          "bookingDate": "2024-12-19"
-        }
+        "favoriteGenre": "Drama",
+        "favoriteLanguage": "French",
+        "genreIndex": 2,
+        "languageIndex": 7,
+        "subtitlePreference": "both"
       }
     }
   }
 }
 ```
+
+**Giải thích các node chính:**
+
+| Node            | Mô tả                                               | Các trường quan trọng                                                                             |
+| --------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `Banners`       | Danh sách banner quảng cáo slideshow trên trang chủ | `name`, `image`, `genre`, `age`, `year`, `time`                                                   |
+| `Items`         | Danh sách phim đang chiếu (Top Movies)              | `Title`, `Poster`, `Trailer`, `Imdb`, `Genre`, `Casts`, `Description`, `Time`, `Year`, `price`    |
+| `Upcomming`     | Danh sách phim sắp chiếu (cấu trúc giống Items)     | Tương tự `Items`                                                                                  |
+| `Bookings`      | Trạng thái ghế theo phim và suất chiếu              | Key: `"Tên phim"/"ngày_giờ"`, `pricePerSeat`, `seats` (A1-K8: available/booked)                   |
+| `tickets`       | Lịch sử vé đã đặt của tất cả người dùng             | `movieTitle`, `date`, `time`, `seats[]`, `totalPrice`, `userId`, `status`, `payment`              |
+| `notifications` | Thông báo theo từng userId                          | `title`, `message`, `type` (REFUND/PROFILE), `read`, `timestamp`, `ticketId`                      |
+| `users`         | Thông tin tài khoản và sở thích phim                | `fullName`, `email`, `phone`, `avatarUrl`, `balance`, `gender`, `dateOfBirth`, `moviePreferences` |
 
 ### Phụ lục C: API Endpoints (Chatbot Server)
 
