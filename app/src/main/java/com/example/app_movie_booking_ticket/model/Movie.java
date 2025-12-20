@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Movie implements Serializable {
     private String Title;
+    private String movieID;
     private String Poster;
     private double Imdb;
     private List<String> Pcitures;
@@ -21,7 +22,7 @@ public class Movie implements Serializable {
 
     public Movie(String title, String poster, double imdb, List<String> pictures, List<String> genre,
                  String description, String time, int year, int price,
-                 String trailer, List<Cast> casts) {
+                 String trailer, List<Cast> casts, String movieID ) {
         this.Title = title;
         this.Poster = poster;
         this.Imdb = imdb;
@@ -33,6 +34,7 @@ public class Movie implements Serializable {
         this.price = price;
         this.Trailer = trailer;
         this.Casts = casts;
+        this.movieID = movieID;
     }
 
     // Getters
@@ -77,7 +79,7 @@ public class Movie implements Serializable {
     public List<Cast> getCasts() {
         return Casts;
     }
-
+    public String getMovieID() { return movieID;}
     // Inner class for Cast objects
     public static class Cast implements Serializable{
         private String Actor;
