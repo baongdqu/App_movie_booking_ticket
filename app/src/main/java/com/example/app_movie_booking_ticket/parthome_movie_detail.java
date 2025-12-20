@@ -65,6 +65,8 @@ public class parthome_movie_detail extends AppCompatActivity {
         binding.button2.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(this);
             Intent intent2 = new Intent(parthome_movie_detail.this, parthome_SeatSelectionActivity.class);
+            intent2.putExtra("movieID", movie.getMovieID());
+            intent2.putExtra("posterUrl", movie.getPoster());
             intent2.putExtra("movieTitle", movie.getTitle());
             intent2.putExtra("price", movie.getPrice());
             startActivity(intent2);
