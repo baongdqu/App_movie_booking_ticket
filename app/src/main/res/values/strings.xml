@@ -284,7 +284,7 @@
     <string name="notification_profile_update_message">Bạn đã thay đổi thông tin cá nhân</string>
 
     <!-- Gemini CLI Server -->
-    <string name="gemini_cli_server_url">https://81c2bb6905fe.ngrok-free.app</string>
+    <string name="gemini_cli_server_url">https://unbadgered-deangelo-unforeknowable.ngrok-free.dev</string>
     <string name="use_local_ai_server">true</string>
 
 

@@ -258,7 +258,7 @@
     <string name="chip_showtime">今日の上映時間</string>
     <string name="chip_ticket_price">チケット価格</string>
     <string name="gemini_api_key">YOUR_GEMINI_API_KEY_HERE</string>
-    <string name="gemini_cli_server_url">https://81c2bb6905fe.ngrok-free.app</string>
+    <string name="gemini_cli_server_url">https://unbadgered-deangelo-unforeknowable.ngrok-free.dev</string>
     <string name="use_local_ai_server">true</string>
 
     <!-- Chatbot Error Messages -->
