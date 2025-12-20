@@ -60,6 +60,7 @@ public class AllMoviesAdapter extends RecyclerView.Adapter<AllMoviesAdapter.Movi
         holder.btnBuy.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(v.getContext());
             Intent intent = new Intent(context, parthome_SeatSelectionActivity.class);
+            intent.putExtra("movieID", movie.getMovieID());
             intent.putExtra("movieTitle", movie.getTitle());
             intent.putExtra("posterUrl", movie.getPoster());
             context.startActivity(intent);
