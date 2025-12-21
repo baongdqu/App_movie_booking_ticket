@@ -3,6 +3,7 @@ package com.example.app_movie_booking_ticket;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,6 +33,7 @@ public class parthome_movie_detail extends AppCompatActivity {
 
         Intent intent = getIntent();
         Movie movie = (Movie) intent.getSerializableExtra("movie");
+        Log.d("DEBUG_RATING", "Movie ID nhận được là: " + movie.getMovieID());
         if (movie == null)
             return;
 
@@ -106,10 +108,8 @@ public class parthome_movie_detail extends AppCompatActivity {
             buyIntent.putExtra("price", movie.getPrice());
             startActivity(buyIntent);
         });
-        // Trong onCreate của parthome_movie_detail
         binding.llToRatingLists.setOnClickListener(v -> {
             Intent ratingIntent = new Intent(parthome_movie_detail.this, parthome_RatingListActivity.class);
-            // Giả sử 'movie' là đối tượng phim bạn đang hiển thị
             ratingIntent.putExtra("movieID", movie.getMovieID());
             ratingIntent.putExtra("movieTitle", movie.getTitle());
             startActivity(ratingIntent);
