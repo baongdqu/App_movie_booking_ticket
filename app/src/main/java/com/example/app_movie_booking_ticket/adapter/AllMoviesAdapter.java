@@ -48,12 +48,17 @@ public class AllMoviesAdapter extends RecyclerView.Adapter<AllMoviesAdapter.Movi
         holder.tvMovieDate.setText(String.valueOf(movie.getYear()));
         Glide.with(context).load(movie.getPoster()).into(holder.imgMovie);
 
-        // Chi tiết phim
-        holder.btnDetail.setOnClickListener(v -> {
+        // OPEN DETAILS (Card Click)
+        holder.itemView.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(v.getContext());
             Intent intent = new Intent(context, parthome_movie_detail.class);
             intent.putExtra("movie", movie);
             context.startActivity(intent);
+        });
+
+        // Chi tiết phim (btnDetail - hidden but kept for legacy/safety)
+        holder.btnDetail.setOnClickListener(v -> {
+            holder.itemView.performClick();
         });
 
         // Mua vé
