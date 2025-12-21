@@ -23,6 +23,11 @@ import com.google.firebase.database.*;
 
 import java.util.*;
 
+/**
+ * Fragment Hộp thư (Mail) / Vé của tôi
+ * Hiển thị danh sách vé đã đặt của người dùng.
+ * Hỗ trợ chức năng xem chi tiết vé và hoàn vé (Refund).
+ */
 public class fragments_mail extends Fragment {
 
         private RecyclerView rvTickets;
@@ -39,6 +44,10 @@ public class fragments_mail extends Fragment {
 
         private final Map<String, Movie> movieMap = new HashMap<>();
 
+        /**
+         * Tạo View cho fragment.
+         * Khởi tạo RecyclerView và Adapter.
+         */
         @Nullable
         @Override
         public View onCreateView(

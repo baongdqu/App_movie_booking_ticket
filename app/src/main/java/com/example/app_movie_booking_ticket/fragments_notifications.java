@@ -25,6 +25,11 @@ import com.google.firebase.database.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Fragment Thông báo (Notifications)
+ * Hiển thị danh sách thông báo từ hệ thống (hoàn vé, khuyến mãi, v.v.).
+ * Hỗ trợ xoá thông báo (vuốt hoặc xoá tất cả).
+ */
 public class fragments_notifications extends Fragment {
 
     private RecyclerView rvNotifications;
@@ -37,6 +42,10 @@ public class fragments_notifications extends Fragment {
 
     private DatabaseReference ref;
 
+    /**
+     * Tạo View cho fragment.
+     * Khởi tạo RecyclerView, Adapter và logic xoá thông báo.
+     */
     @Nullable
     @Override
     public View onCreateView(
