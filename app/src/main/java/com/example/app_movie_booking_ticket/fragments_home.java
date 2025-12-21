@@ -86,7 +86,7 @@ public class fragments_home extends Fragment {
         loadUpcomingMovies();
 
         // =========================
-        // 🔍 SETUP SEARCH
+        //  SETUP SEARCH
         // =========================
         ImageView btnSearch = binding.imgSearch;
         TextInputLayout searchBox = binding.searchBoxLayout;
@@ -132,13 +132,13 @@ public class fragments_home extends Fragment {
         // XEM TẤT CẢ PHIM
         // =========================
         binding.tvViewAll.setOnClickListener(v -> {
-            // 🔊 Âm thanh click
+            // Âm thanh click
             extra_sound_manager.playUiClick(requireContext());
             startActivity(new Intent(requireContext(), parthome_AllMoviesActivity.class));
         });
 
         binding.tvViewAllUpcoming.setOnClickListener(v -> {
-            // 🔊 Âm thanh click
+            // Âm thanh click
             extra_sound_manager.playUiClick(requireContext());
             startActivity(new Intent(requireContext(), parthome_AllUpcomingActivity.class));
         });
@@ -169,7 +169,7 @@ public class fragments_home extends Fragment {
         binding.tvFullName.setOnClickListener(v -> binding.userInfoLayout.performClick());
 
         // =========================
-        // 🤖 CHATBOT FAB
+        // CHATBOT FAB
         // =========================
         binding.fabChatbot.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(requireContext());
@@ -178,7 +178,7 @@ public class fragments_home extends Fragment {
     }
 
     // =====================================================
-    // 🔥 LOAD TOP MOVIES VÀ KẾT HỢP SEARCH
+    //  LOAD TOP MOVIES VÀ KẾT HỢP SEARCH
     // =====================================================
     private void loadTopMovies() {
         DatabaseReference movieRef = FirebaseDatabase.getInstance().getReference("Items");
@@ -202,7 +202,7 @@ public class fragments_home extends Fragment {
                 movieListTop.sort((m1, m2) -> Double.compare(m2.getImdb(), m1.getImdb()));
                 topMovieAdapter.updateList(movieListTop);
 
-                // ✅ Cập nhật allMoviesList
+                //  Cập nhật allMoviesList
                 updateAllMoviesList();
             }
 
@@ -213,7 +213,7 @@ public class fragments_home extends Fragment {
     }
 
     // =====================================================
-    // 🔥 LOAD UPCOMING MOVIES
+    //  LOAD UPCOMING MOVIES
     // =====================================================
     private void loadUpcomingMovies() {
         DatabaseReference upcomingRef = FirebaseDatabase.getInstance().getReference("Upcomming");
@@ -235,7 +235,7 @@ public class fragments_home extends Fragment {
                 upcomingMoviesList.sort((m1, m2) -> Integer.compare(m2.getYear(), m1.getYear()));
                 upcomingAdapter.notifyDataSetChanged();
 
-                // ✅ Cập nhật allMoviesList
+                // Cập nhật allMoviesList
                 updateAllMoviesList();
             }
 
@@ -246,7 +246,7 @@ public class fragments_home extends Fragment {
     }
 
     // =====================================================
-    // 🔍 FILTER PHIM THEO TÊN - TÌM TRONG TẤT CẢ PHIM
+    // FILTER PHIM THEO TÊN - TÌM TRONG TẤT CẢ PHIM
     // =====================================================
     private void filterMovies(String keyword) {
         if (keyword == null || keyword.trim().isEmpty()) {
@@ -293,7 +293,7 @@ public class fragments_home extends Fragment {
     }
 
     // =====================================================
-    // 🔥 CẬP NHẬT DANH SÁCH TẤT CẢ PHIM
+    // CẬP NHẬT DANH SÁCH TẤT CẢ PHIM
     // =====================================================
     private void updateAllMoviesList() {
         allMoviesList.clear();
@@ -302,7 +302,7 @@ public class fragments_home extends Fragment {
     }
 
     // =====================================================
-    // 🔥 BANNER
+    // BANNER
     // =====================================================
     private void initBanner() {
         DatabaseReference myRef = database.getReference("Banners");
@@ -332,7 +332,7 @@ public class fragments_home extends Fragment {
     }
 
     // =====================================================
-    // 🔥 USER INFO
+    // USER INFO
     // =====================================================
     private void loadUserInfo() {
         FirebaseUser currentUser = auth.getCurrentUser();
