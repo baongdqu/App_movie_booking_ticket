@@ -10,6 +10,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -22,12 +24,13 @@ import com.vnpay.authentication.VNP_SdkCompletedCallback;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.net.URLEncoder;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -42,7 +45,6 @@ import javax.crypto.spec.SecretKeySpec;
 import com.google.firebase.database.Transaction;
 import com.google.firebase.database.MutableData;
 
-
 public class PaymentActivity extends AppCompatActivity {
 
     private FirebaseAuth auth;
@@ -56,14 +58,19 @@ public class PaymentActivity extends AppCompatActivity {
     private ArrayList<String> seats;
     private int totalPrice;
 
+    // Payment method selection
+    private RadioButton rbVnpay;
+    private RadioButton rbBalance;
+    private long userBalance = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         auth = FirebaseAuth.getInstance();
         userRef = FirebaseDatabase.getInstance().getReference("users");
         setContentView(R.layout.activity_payment);
+
         // ===== NHẬN DATA TỪ INTENT =====
         Intent intent = getIntent();
 
@@ -85,15 +92,15 @@ public class PaymentActivity extends AppCompatActivity {
         TextView txtPhone = findViewById(R.id.txtPhone);
         TextView txtEmail = findViewById(R.id.txtEmail);
 
-        Button btnContinue = findViewById(R.id.btnContinue);
-        Button btnPayByBalance = findViewById(R.id.btnPayByBalance);
+        // Payment method RadioButtons
+        rbVnpay = findViewById(R.id.rbVnpay);
+        rbBalance = findViewById(R.id.rbBalance);
 
-       // ===== CLICK THANH TOÁN BẰNG SỐ DƯ =====
-        btnPayByBalance.setOnClickListener(v -> {
-            Log.d("PAY_BALANCE", "Clicked pay by balance");
-            payByBalance();
-        });
+        // Single payment button
+        MaterialButton btnContinue = findViewById(R.id.btnContinue);
 
+        // Load user balance and display
+        loadUserBalance();
 
         Log.d("PAYMENT", "posterUrl = " + posterUrl);
 
@@ -101,34 +108,30 @@ public class PaymentActivity extends AppCompatActivity {
         txtTitle.setText(movieTitle);
         Glide.with(this)
                 .load(posterUrl)
+                .placeholder(R.drawable.placeholder_movie)
+                .error(R.drawable.placeholder_movie)
                 .into(imagePoster);
-        txtTime.setText(time + "\n" + date);
+        txtTime.setText(date + "\n" + time);
 
         if (seats != null && !seats.isEmpty()) {
             txtSeat.setText(android.text.TextUtils.join(", ", seats));
         }
 
-        txtTotal.setText(totalPrice + "đ");
+        // Format total price with thousand separator
+        DecimalFormat formatter = new DecimalFormat("#,###");
+        txtTotal.setText(formatter.format(totalPrice) + "đ");
 
         // Demo thông tin user (sau này lấy từ Firebase)
         loadUserInfo(txtUser, txtEmail, txtPhone);
 
-        // ===== MỞ VNPAY =====
-        String paymentUrl = null;
-        try {
-            paymentUrl = createVnpayUrl(totalPrice);
-            String finalPaymentUrl = paymentUrl;
-            btnContinue.setOnClickListener(v -> openSdk(finalPaymentUrl));
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        // ===== SETUP RADIO BUTTON GROUPS =====
+        setupPaymentMethodSelection();
 
-//        findViewById(R.id.btnContinue).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                openSdk();
-//            }
-//        });
+        // ===== CLICK THANH TOÁN =====
+        btnContinue.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
+            processPayment();
+        });
 
         btnBack.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(this);
@@ -137,14 +140,111 @@ public class PaymentActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Setup payment method selection với RadioButton
+     */
+    private void setupPaymentMethodSelection() {
+        // Default: VNPay selected
+        rbVnpay.setChecked(true);
+
+        // Make the entire card clickable - cast ViewParent to View
+        View vnpayCard = (View) rbVnpay.getParent().getParent();
+        View balanceCard = (View) rbBalance.getParent().getParent();
+
+        if (vnpayCard instanceof MaterialCardView) {
+            vnpayCard.setOnClickListener(v -> {
+                rbVnpay.setChecked(true);
+                rbBalance.setChecked(false);
+            });
+        }
+
+        if (balanceCard instanceof MaterialCardView) {
+            balanceCard.setOnClickListener(v -> {
+                rbBalance.setChecked(true);
+                rbVnpay.setChecked(false);
+            });
+        }
+
+        // RadioButton click handlers
+        rbVnpay.setOnClickListener(v -> {
+            rbBalance.setChecked(false);
+        });
+
+        rbBalance.setOnClickListener(v -> {
+            rbVnpay.setChecked(false);
+        });
+    }
+
+    /**
+     * Load user balance from Firebase and update UI
+     */
+    private void loadUserBalance() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null)
+            return;
+
+        String uid = user.getUid();
+        DatabaseReference balanceRef = FirebaseDatabase.getInstance()
+                .getReference("users")
+                .child(uid)
+                .child("balance");
+
+        balanceRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Long balance = snapshot.getValue(Long.class);
+                userBalance = balance != null ? balance : 0;
+
+                // Update balance display in UI
+                TextView txtBalance = findViewById(R.id.txtBalance);
+                if (txtBalance != null) {
+                    DecimalFormat formatter = new DecimalFormat("#,###");
+                    txtBalance.setText(getString(R.string.balance_desc, formatter.format(userBalance)));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("PAYMENT", "Error loading balance", error.toException());
+            }
+        });
+    }
+
+    /**
+     * Process payment based on selected method
+     */
+    private void processPayment() {
+        if (rbVnpay.isChecked()) {
+            // Pay with VNPay
+            try {
+                String paymentUrl = createVnpayUrl(totalPrice);
+                if (paymentUrl != null) {
+                    openSdk(paymentUrl);
+                } else {
+                    Toast.makeText(this, getString(R.string.toast_payment_failed, "URL error"), Toast.LENGTH_SHORT)
+                            .show();
+                }
+            } catch (Exception e) {
+                Toast.makeText(this, getString(R.string.toast_payment_failed, e.getMessage()), Toast.LENGTH_SHORT)
+                        .show();
+            }
+        } else if (rbBalance.isChecked()) {
+            // Pay with Balance
+            payByBalance();
+        } else {
+            // No method selected
+            Toast.makeText(this, R.string.toast_select_payment_method, Toast.LENGTH_SHORT).show();
+        }
+    }
 
     public void openSdk(String paymentUrl) {
 
         Intent intent = new Intent(this, VNP_AuthenticationActivity.class);
-        intent.putExtra("url", paymentUrl); //bắt buộc, VNPAY cung cấp
-        intent.putExtra("tmn_code", "C1C16DDU"); //bắt buộc, VNPAY cung cấp
-        intent.putExtra("scheme", "resultactivity"); //bắt buộc, scheme để mở lại app khi có kết quả thanh toán từ mobile banking
-        intent.putExtra("is_sandbox", true); //bắt buộc, true <=> môi trường test, true <=> môi trường live
+        intent.putExtra("url", paymentUrl); // bắt buộc, VNPAY cung cấp
+        intent.putExtra("tmn_code", "C1C16DDU"); // bắt buộc, VNPAY cung cấp
+        intent.putExtra("scheme", "resultactivity"); // bắt buộc, scheme để mở lại app khi có kết quả thanh toán từ
+                                                     // mobile banking
+        intent.putExtra("is_sandbox", true); // bắt buộc, true <=> môi trường test, true <=> môi trường live
         VNP_AuthenticationActivity.setSdkCompletedCallback(new VNP_SdkCompletedCallback() {
             @Override
             public void sdkAction(String action) {
@@ -156,6 +256,8 @@ public class PaymentActivity extends AppCompatActivity {
                         // 1. Lưu Firebase
                         bookSeats(movieTitle, date, time, seats);
                         saveTicketSuccess();
+                        Toast.makeText(PaymentActivity.this, R.string.toast_payment_success, Toast.LENGTH_SHORT).show();
+                        finish();
                         break;
 
                     case "FaildBackAction":
@@ -174,21 +276,23 @@ public class PaymentActivity extends AppCompatActivity {
 
     private void loadUserInfo(TextView txtUser, TextView txtEmail, TextView txtPhone) {
         currentUser = auth.getCurrentUser();
-        if (currentUser == null) return;
+        if (currentUser == null)
+            return;
 
         String uid = currentUser.getUid();
 
         userRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (!snapshot.exists()) return;
+                if (!snapshot.exists())
+                    return;
 
                 String fullName = snapshot.child("fullName").getValue(String.class);
                 String email = snapshot.child("email").getValue(String.class);
                 String phone = snapshot.child("phone").getValue(String.class);
                 txtUser.setText(fullName != null ? fullName : "Người dùng");
                 txtEmail.setText(email != null ? email : "");
-                txtPhone.setText(phone != null ? phone : "");
+                txtPhone.setText(phone != null ? phone : "Chưa cập nhật");
 
             }
 
@@ -267,18 +371,19 @@ public class PaymentActivity extends AppCompatActivity {
         }
 
     }
+
     private void payByBalance() {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null) return;
+        if (user == null)
+            return;
 
         String uid = user.getUid();
 
-        DatabaseReference balanceRef =
-                FirebaseDatabase.getInstance()
-                        .getReference("users")
-                        .child(uid)
-                        .child("balance");
+        DatabaseReference balanceRef = FirebaseDatabase.getInstance()
+                .getReference("users")
+                .child(uid)
+                .child("balance");
 
         balanceRef.runTransaction(new Transaction.Handler() {
 
@@ -290,7 +395,8 @@ public class PaymentActivity extends AppCompatActivity {
                 Long balance = currentData.getValue(Long.class);
 
                 // 🔥 balance null = 0
-                if (balance == null) balance = 0L;
+                if (balance == null)
+                    balance = 0L;
 
                 // ❌ KHÔNG ĐỦ TIỀN
                 if (balance < totalPrice) {
@@ -312,9 +418,8 @@ public class PaymentActivity extends AppCompatActivity {
                 if (!committed) {
                     Toast.makeText(
                             PaymentActivity.this,
-                            "Số dư không đủ để thanh toán",
-                            Toast.LENGTH_SHORT
-                    ).show();
+                            R.string.toast_insufficient_balance,
+                            Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -324,24 +429,25 @@ public class PaymentActivity extends AppCompatActivity {
 
                 Toast.makeText(
                         PaymentActivity.this,
-                        "Thanh toán bằng số dư thành công",
-                        Toast.LENGTH_SHORT
-                ).show();
+                        R.string.toast_payment_success,
+                        Toast.LENGTH_SHORT).show();
 
                 finish();
             }
         });
     }
+
     private void saveTicketSuccessByBalance() {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null) return;
+        if (user == null)
+            return;
 
-        DatabaseReference ref =
-                FirebaseDatabase.getInstance().getReference("tickets");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("tickets");
 
         String ticketId = ref.push().getKey();
-        if (ticketId == null) return;
+        if (ticketId == null)
+            return;
 
         Map<String, Object> payment = new HashMap<>();
         payment.put("method", "BALANCE");
@@ -363,10 +469,9 @@ public class PaymentActivity extends AppCompatActivity {
         ref.child(ticketId).setValue(ticket);
     }
 
-
-
     private void saveTicketSuccess() {
-        if (currentUser == null) return;
+        if (currentUser == null)
+            return;
 
         DatabaseReference ref = FirebaseDatabase.getInstance()
                 .getReference("tickets");
@@ -397,8 +502,7 @@ public class PaymentActivity extends AppCompatActivity {
             String movieTitle,
             String date,
             String time,
-            List<String> selectedSeats
-    ) {
+            List<String> selectedSeats) {
         DatabaseReference seatsRef = FirebaseDatabase.getInstance()
                 .getReference("Bookings")
                 .child(movieTitle)
@@ -412,10 +516,8 @@ public class PaymentActivity extends AppCompatActivity {
         }
 
         seatsRef.updateChildren(updates)
-                .addOnSuccessListener(unused ->
-                        Log.d("BOOK_SEAT", "Book ghế thành công"))
-                .addOnFailureListener(e ->
-                        Log.e("BOOK_SEAT", "Lỗi book ghế", e));
+                .addOnSuccessListener(unused -> Log.d("BOOK_SEAT", "Book ghế thành công"))
+                .addOnFailureListener(e -> Log.e("BOOK_SEAT", "Lỗi book ghế", e));
     }
 
 }
