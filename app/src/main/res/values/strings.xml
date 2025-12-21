@@ -360,4 +360,13 @@
     <string name="toast_payment_success">Thanh toán thành công!</string>
     <string name="toast_payment_failed">Thanh toán thất bại: %1$s</string>
 
+    <!-- Notifications Screen -->
+    <string name="clear_all">Xóa tất cả</string>
+    <string name="notification_deleted">Đã xóa thông báo</string>
+    <string name="all_notifications_cleared">Đã xóa tất cả thông báo</string>
+    <string name="just_now">Vừa xong</string>
+    <string name="minutes_ago">%1$d phút trước</string>
+    <string name="hours_ago">%1$d giờ trước</string>
+    <string name="days_ago">%1$d ngày trước</string>
+
 </resources>

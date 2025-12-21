@@ -65,4 +65,5 @@ dependencies {
     implementation("com.google.android.exoplayer:exoplayer-ui:2.19.1")
     implementation(files("libs/merchant-1.0.25.aar"))
     implementation("com.google.code.gson:gson:2.8.5")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 }
