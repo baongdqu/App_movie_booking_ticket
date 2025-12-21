@@ -2,12 +2,8 @@ package com.example.app_movie_booking_ticket;
 
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.button.MaterialButton;
@@ -50,7 +46,7 @@ import com.google.firebase.database.MutableData;
  * Xử lý việc thanh toán vé xem phim.
  * Hỗ trợ các phương thức: Ví VNPAY (Sandbox) và Số dư ví nội bộ (Balance).
  */
-public class PaymentActivity extends AppCompatActivity {
+public class parthome_PaymentActivity extends AppCompatActivity {
 
     private FirebaseAuth auth;
     private DatabaseReference userRef;
@@ -78,7 +74,7 @@ public class PaymentActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         userRef = FirebaseDatabase.getInstance().getReference("users");
-        setContentView(R.layout.activity_payment);
+        setContentView(R.layout.parthome_payment);
 
         // ===== NHẬN DATA TỪ INTENT =====
         Intent intent = getIntent();
@@ -265,7 +261,7 @@ public class PaymentActivity extends AppCompatActivity {
                         // 1. Lưu Firebase
                         bookSeats(movieTitle, date, time, seats);
                         saveTicketSuccess();
-                        Toast.makeText(PaymentActivity.this, R.string.toast_payment_success, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(parthome_PaymentActivity.this, R.string.toast_payment_success, Toast.LENGTH_SHORT).show();
                         finish();
                         break;
 
@@ -426,7 +422,7 @@ public class PaymentActivity extends AppCompatActivity {
                 // ❌ TRANSACTION FAIL
                 if (!committed) {
                     Toast.makeText(
-                            PaymentActivity.this,
+                            parthome_PaymentActivity.this,
                             R.string.toast_insufficient_balance,
                             Toast.LENGTH_SHORT).show();
                     return;
@@ -437,7 +433,7 @@ public class PaymentActivity extends AppCompatActivity {
                 saveTicketSuccessByBalance();
 
                 Toast.makeText(
-                        PaymentActivity.this,
+                        parthome_PaymentActivity.this,
                         R.string.toast_payment_success,
                         Toast.LENGTH_SHORT).show();
 
