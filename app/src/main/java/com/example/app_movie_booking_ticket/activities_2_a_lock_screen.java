@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
  * nhạy cảm.
  * Hỗ trợ các chức năng: Nhập PIN, Xóa PIN, Quên mã PIN.
  */
-public class activities_lock_screen extends extra_manager_language {
+public class activities_2_a_lock_screen extends extra_manager_language {
 
     private ImageView[] dots;
     private StringBuilder currentPin = new StringBuilder();
@@ -41,7 +41,7 @@ public class activities_lock_screen extends extra_manager_language {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         extra_themeutils.applySavedTheme(this);
-        setContentView(R.layout.activity_lock_screen);
+        setContentView(R.layout.layouts_2_a_lock_screen);
 
         SharedPreferences prefs = getSharedPreferences("AppSettings", MODE_PRIVATE);
         storedPin = prefs.getString("app_pin", "");
