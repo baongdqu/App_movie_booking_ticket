@@ -78,7 +78,7 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
             int total = selectedSeats.size() * pricePerSeat;
             Toast.makeText(this, String.format(getString(R.string.toast_seat_total), selectedSeats.toString(),
                     String.valueOf(total)), Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(parthome_SeatSelectionActivity.this, PaymentActivity.class);
+            Intent intent = new Intent(parthome_SeatSelectionActivity.this, parthome_PaymentActivity.class);
 
             intent.putExtra("movieTitle", movieTitle);
             intent.putExtra("date", selectedDate);
