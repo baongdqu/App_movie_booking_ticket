@@ -222,7 +222,7 @@ public class activities_0_loading extends extra_manager_language {
 
             if (isPinEnabled) {
                 // Nếu bật PIN -> Chuyển hướng sang Lock Screen, truyền Intent đích theo
-                Intent lockIntent = new Intent(activities_0_loading.this, activities_lock_screen.class);
+                Intent lockIntent = new Intent(activities_0_loading.this, activities_2_a_lock_screen.class);
                 lockIntent.putExtra("target_intent", targetIntent);
                 startActivity(lockIntent);
             } else {
