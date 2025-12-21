@@ -8,6 +8,16 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+/**
+ * Activity 'Menu Manage Fragments'
+ * Đây là màn hình chính của ứng dụng chứa Bottom Navigation.
+ * Quản lý việc hiển thị và chuyển đổi giữa các Fragment chính:
+ * - Home (Trang chủ)
+ * - Mail (Thông báo/Tin nhắn)
+ * - Chatbot (Trợ lý AI) (Mở activity riêng)
+ * - Notifications (Thông báo)
+ * - User (Thông tin cá nhân)
+ */
 public class activities_2_a_menu_manage_fragments extends extra_manager_language {
 
     private BottomNavigationView bottomNavigationView;

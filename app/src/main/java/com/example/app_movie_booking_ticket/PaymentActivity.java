@@ -45,6 +45,11 @@ import javax.crypto.spec.SecretKeySpec;
 import com.google.firebase.database.Transaction;
 import com.google.firebase.database.MutableData;
 
+/**
+ * Activity Thanh toán (Payment)
+ * Xử lý việc thanh toán vé xem phim.
+ * Hỗ trợ các phương thức: Ví VNPAY (Sandbox) và Số dư ví nội bộ (Balance).
+ */
 public class PaymentActivity extends AppCompatActivity {
 
     private FirebaseAuth auth;
@@ -63,6 +68,10 @@ public class PaymentActivity extends AppCompatActivity {
     private RadioButton rbBalance;
     private long userBalance = 0;
 
+    /**
+     * Khởi tạo màn hình thanh toán.
+     * Nhận thông tin vé từ Intent và thiết lập giao diện thanh toán.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

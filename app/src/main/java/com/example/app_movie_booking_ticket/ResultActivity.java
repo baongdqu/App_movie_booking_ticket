@@ -8,6 +8,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+/**
+ * Activity Kết quả (Result)
+ * Màn hình hiển thị kết quả sau khi thực hiện hành động (thường là thanh toán).
+ * (Hiện tại đang sử dụng cấu hình mặc định).
+ */
 public class ResultActivity extends AppCompatActivity {
 
     @Override

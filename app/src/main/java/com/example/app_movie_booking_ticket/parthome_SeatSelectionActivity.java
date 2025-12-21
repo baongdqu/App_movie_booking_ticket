@@ -25,6 +25,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Activity Chọn ghế (Seat Selection)
+ * Cho phép người dùng chọn ngày, giờ chiếu và vị trí ghế ngồi.
+ * Tính toán tổng tiền vé dựa trên số ghế đã chọn.
+ */
 public class parthome_SeatSelectionActivity extends AppCompatActivity {
 
     private TextView tvMovieTitle, tvTotalPrice;
@@ -40,6 +45,10 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
 
     private DatabaseReference dbRef;
 
+    /**
+     * Khởi tạo màn hình chọn ghế.
+     * Load danh sách ngày/giờ chiếu từ Firebase.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

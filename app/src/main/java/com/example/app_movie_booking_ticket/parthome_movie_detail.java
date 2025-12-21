@@ -18,12 +18,21 @@ import com.example.app_movie_booking_ticket.model.Movie;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Activity Chi tiết phim
+ * Hiển thị đầy đủ thông tin về bộ phim: Poster, Trailer, Diễn viên, Nội dung.
+ * Cung cấp chức năng xem trailer và chuyển sang màn hình đặt vé.
+ */
 public class parthome_movie_detail extends AppCompatActivity {
 
     private CastListAdapter castAdapter;
     private MovieImageAdapter imageAdapter;
     private ParthomeMovieDetailsBinding binding;
 
+    /**
+     * Khởi tạo giao diện chi tiết phim.
+     * Nhận dữ liệu Movie từ Intent và hiển thị lên các view.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +42,8 @@ public class parthome_movie_detail extends AppCompatActivity {
         // ================= GET DATA =================
         Intent intent = getIntent();
         Movie movie = (Movie) intent.getSerializableExtra("movie");
-        if (movie == null) return;
+        if (movie == null)
+            return;
 
         // ================= SET DATA =================
         binding.textTitle.setText(movie.getTitle());
@@ -54,7 +64,8 @@ public class parthome_movie_detail extends AppCompatActivity {
 
         // ================= IMAGES =================
         List<String> imagesList = movie.getPicture();
-        if (imagesList == null) imagesList = new ArrayList<>();
+        if (imagesList == null)
+            imagesList = new ArrayList<>();
 
         imageAdapter = new MovieImageAdapter(this, imagesList);
         binding.recyclerImages.setLayoutManager(
@@ -77,10 +88,9 @@ public class parthome_movie_detail extends AppCompatActivity {
                 return;
             }
 
-            CustomTabsIntent customTabsIntent =
-                    new CustomTabsIntent.Builder()
-                            .setShowTitle(true)
-                            .build();
+            CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder()
+                    .setShowTitle(true)
+                    .build();
 
             // 🔴 ÉP DÙNG CHROME → KHÔNG MỞ APP YOUTUBE
             customTabsIntent.intent.setPackage("com.android.chrome");
@@ -99,8 +109,7 @@ public class parthome_movie_detail extends AppCompatActivity {
 
             Intent buyIntent = new Intent(
                     parthome_movie_detail.this,
-                    parthome_SeatSelectionActivity.class
-            );
+                    parthome_SeatSelectionActivity.class);
             buyIntent.putExtra("movieID", movie.getMovieID());
             buyIntent.putExtra("posterUrl", movie.getPoster());
             buyIntent.putExtra("movieTitle", movie.getTitle());
