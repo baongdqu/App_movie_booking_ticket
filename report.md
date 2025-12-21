@@ -1,4 +1,25 @@
-# BÁO CÁO ĐỒ ÁN: ỨNG DỤNG ĐẶT VÉ XEM PHIM (MOVIE BOOKING APP)
+# BÁO CÁO CUỐI KỲ ĐỒ ÁN MÔN HỌC
+# ĐỀ TÀI: ỨNG DỤNG ĐẶT VÉ XEM PHIM (MOVIE BOOKING APP)
+
+---
+
+**Môn học:** NT118.Q13 - Phát triển ứng dụng trên thiết bị di động
+
+**Giảng viên hướng dẫn:** ThS. Trần Hồng Nghi
+
+**Thực hiện bởi Nhóm 11:**
+
+| Họ và tên           | MSSV     | Vai trò     |
+| ------------------- | -------- | ----------- |
+| Nguyễn Trường Duy   | 23520380 | Trưởng nhóm |
+| Võ Minh Dương       | 23520358 | Thành viên  |
+| Nguyễn Duy Quốc Bảo | 23520119 | Thành viên  |
+
+**Thời gian thực hiện:** 15/11/2025 - 23/12/2025
+
+**Khoa:** Mạng máy tính và Truyền thông
+
+**Trường:** Đại học Công nghệ Thông tin - Đại học Quốc gia Thành phố Hồ Chí Minh (UIT - VNU-HCM)
 
 ---
 
@@ -6,7 +27,7 @@
 
 1. [Lời mở đầu](#lời-mở-đầu)
 2. [Lời cảm ơn](#lời-cảm-ơn)
-3. [Tóm tắt khóa luận, đồ án](#tóm-tắt-khóa-luận-đồ-án)
+3. [Tóm tắt đồ án môn học](#tóm-tắt-đồ-án-môn-học)
 4. [Danh mục hình ảnh](#danh-mục-hình-ảnh)
 5. [Danh mục bảng](#danh-mục-bảng)
 6. [Danh mục từ viết tắt](#danh-mục-từ-viết-tắt)
@@ -33,21 +54,21 @@ Báo cáo này sẽ trình bày một cách hệ thống và chi tiết toàn b�
 
 ## Lời cảm ơn
 
-Lời đầu tiên, em xin bày tỏ lòng biết ơn sâu sắc và chân thành nhất tới Thầy/Cô hướng dẫn **[Tên Giảng Viên]**. Trong suốt quá trình thực hiện đồ án, Thầy/Cô đã dành rất nhiều thời gian và tâm huyết để chỉ dẫn, định hướng cho em từ những bước đầu tiên của đề tài cho đến khi hoàn thiện sản phẩm. Những lời khuyên chuyên môn quý báu cùng thái độ làm việc nghiêm túc của Thầy/Cô không chỉ giúp em vượt qua những khó khăn về mặt kỹ thuật mà còn là bài học lớn về tư duy logic và phong cách làm việc chuyên nghiệp.
+Lời đầu tiên, nhóm em xin bày tỏ lòng biết ơn sâu sắc và chân thành nhất tới Cô hướng dẫn **ThS. Trần Hồng Nghi**. Trong suốt quá trình thực hiện đồ án môn học NT118.Q13 - Phát triển ứng dụng trên thiết bị di động, Cô đã dành rất nhiều thời gian và tâm huyết để chỉ dẫn, định hướng cho nhóm từ những bước đầu tiên của đề tài cho đến khi hoàn thiện sản phẩm. Tuy ban đầu nhóm còn bỡ ngỡ với môn học này, nhưng nhờ sự hướng dẫn tận tình của Cô, nhóm đã dần có định hướng rõ ràng hơn cho đồ án. Mặc dù tiến độ có phần chậm hơn so với kế hoạch ban đầu, nhóm đã nhận ra những giá trị quý báu mà môn học mang lại và ngày càng yêu thích nội dung đề tài này.
 
-Em cũng xin gửi lời cảm ơn trân trọng đến quý Thầy/Cô thuộc khoa **[Tên Khoa]**, trường **[Tên Trường]**. Trong suốt những năm tháng học tập tại giảng đường, em đã được truyền đạt những kiến thức nền tảng vững chắc và tiếp cận với những công nghệ hiện đại. Sự tận tâm trong giảng dạy và môi trường học tập năng động mà quý Thầy/Cô tạo ra chính là bệ phóng quan trọng giúp em có đủ tự tin và kỹ năng để hiện thực hóa ý tưởng trong đồ án này.
+Nhóm cũng xin gửi lời cảm ơn trân trọng đến quý Thầy/Cô thuộc khoa **Mạng máy tính và Truyền thông**, trường **Đại học Công nghệ Thông tin - Đại học Quốc gia Thành phố Hồ Chí Minh (UIT - VNU-HCM)**. Trong suốt những năm tháng học tập tại giảng đường, nhóm đã được truyền đạt những kiến thức nền tảng vững chắc và tiếp cận với những công nghệ hiện đại. Sự tận tâm trong giảng dạy và môi trường học tập năng động mà quý Thầy/Cô tạo ra chính là bệ phóng quan trọng giúp nhóm có đủ tự tin và kỹ năng để hiện thực hóa ý tưởng trong đồ án này.
 
-Bên cạnh đó, em xin dành lời cảm ơn đặc biệt đến gia đình – điểm tựa tinh thần vững chắc nhất. Cảm ơn bố mẹ và người thân đã luôn tin tưởng, động viên và tạo mọi điều kiện tốt nhất về cả vật chất lẫn tinh thần để em có thể tập trung hoàn toàn vào việc học tập và nghiên cứu. Sự ủng hộ vô điều kiện của gia đình chính là động lực lớn lao nhất giúp em vượt qua những giai đoạn áp lực và thử thách trong suốt chặng đường vừa qua.
+Bên cạnh đó, nhóm xin dành lời cảm ơn đặc biệt đến gia đình – điểm tựa tinh thần vững chắc nhất. Cảm ơn bố mẹ và người thân đã luôn tin tưởng, động viên và tạo mọi điều kiện tốt nhất về cả vật chất lẫn tinh thần để chúng em có thể tập trung hoàn toàn vào việc học tập và nghiên cứu. Sự ủng hộ vô điều kiện của gia đình chính là động lực lớn lao nhất giúp nhóm vượt qua những giai đoạn áp lực và thử thách trong suốt chặng đường vừa qua.
 
-Em cũng không quên gửi lời cảm ơn đến các bạn bè và đồng nghiệp đã đồng hành cùng em. Cảm ơn mọi người đã luôn sẵn sàng chia sẻ kinh nghiệm, đóng góp ý kiến và cùng nhau thảo luận để tìm ra giải pháp cho những bài toán hóc búa trong quá trình phát triển ứng dụng. Những kỷ niệm và sự hỗ trợ nhiệt tình từ các bạn là một phần không thể thiếu tạo nên thành công của đồ án này.
+Cuối cùng, mặc dù đã dành nhiều tâm huyết và nỗ lực để hoàn thành đồ án một cách chỉn chu nhất, nhưng do kiến thức và kinh nghiệm thực tế còn hạn chế, sản phẩm chắc chắn không tránh khỏi những thiếu sót nhất định. Nhóm rất mong nhận được những ý kiến đóng góp, phê bình quý báu từ quý Thầy/Cô để có thể rút kinh nghiệm và hoàn thiện ứng dụng hơn nữa trong tương lai.
 
-Cuối cùng, mặc dù đã dành nhiều tâm huyết và nỗ lực để hoàn thành đồ án một cách chỉn chu nhất, nhưng do kiến thức và kinh nghiệm thực tế còn hạn chế, sản phẩm chắc chắn không tránh khỏi những thiếu sót nhất định. Em rất mong nhận được những ý kiến đóng góp, phê bình quý báu từ quý Thầy/Cô để em có thể rút kinh nghiệm và hoàn thiện ứng dụng hơn nữa trong tương lai.
+Nhóm xin chân thành cảm ơn!
 
-Em xin chân thành cảm ơn!
+## Tóm tắt đồ án môn học
 
-## Tóm tắt khóa luận, đồ án
+Đồ án "**Ứng dụng Đặt Vé Xem Phim**" được thực hiện bởi **Nhóm 11** thuộc môn học NT118.Q13 - Phát triển ứng dụng trên thiết bị di động, khoa **Mạng máy tính và Truyền thông**, trường **Đại học Công nghệ Thông tin - ĐHQG TP.HCM**. Nhóm bao gồm: **Nguyễn Trường Duy** (23520380 - Trưởng nhóm), **Võ Minh Dương** (23520358) và **Nguyễn Duy Quốc Bảo** (23520119). Ứng dụng được xây dựng trên nền tảng **Android Native** sử dụng ngôn ngữ **Java**, kết hợp với hệ sinh thái **Firebase** để quản lý dữ liệu và xác thực người dùng theo thời gian thực.
 
-Đồ án "**Ứng dụng Đặt Vé Xem Phim**" được phát triển bởi nhóm sinh viên trường **Đại học Công Nghệ Thông Tin – ĐHQG TP.HCM**, bao gồm: **Nguyễn Trường Duy** (Trưởng nhóm), **Võ Minh Dương** và **Nguyễn Duy Quốc Bảo**. Ứng dụng được xây dựng trên nền tảng **Android Native** sử dụng ngôn ngữ **Java**, kết hợp với hệ sinh thái **Firebase** để quản lý dữ liệu và xác thực người dùng theo thời gian thực.
+**Link GitHub Repository:** https://github.com/baongdqu/App_movie_booking_ticket
 
 **Các module chức năng chính đã được hiện thực:**
 
@@ -61,15 +82,17 @@ Em xin chân thành cảm ơn!
 
 - **Module Thanh toán (`PaymentActivity`):** Mô phỏng quy trình thanh toán với 2 phương thức: Ví VNPay và Số dư tài khoản. Sau khi thanh toán thành công, vé được lưu vào lịch sử và hiển thị mã QR/mã vé điện tử.
 
-- **Module Trang cá nhân (`fragments_user`, `partuser_edit_profile`, `partuser_change_password`):** Quản lý thông tin cá nhân, cập nhật avatar (tích hợp upload ảnh), đổi mật khẩu và xem lịch sử vé đã đặt.
+- **Module Trang cá nhân (`fragments_user`, `partuser_edit_profile`, `partuser_change_password`):** Quản lý thông tin cá nhân toàn diện với các tính năng: cập nhật avatar (tích hợp upload ảnh qua ImgBB API), đổi mật khẩu, xác thực số điện thoại với OTP, chỉnh sửa ngày sinh và giới tính, xem lịch sử vé đã đặt.
 
-- **Module Chatbot AI (`activities_2_chatbot`):** Trợ lý ảo thông minh tích hợp mô hình ngôn ngữ lớn **Ollama** thông qua server Python và **ngrok**. Hỗ trợ tư vấn phim dựa trên sở thích, trả lời câu hỏi về lịch chiếu, giá vé với giao diện chat hiện đại kèm Quick Replies.
+- **Module Chatbot AI (`activities_2_chatbot`):** Trợ lý ảo thông minh tích hợp mô hình ngôn ngữ lớn **Ollama** thông qua server Python và **ngrok**. Hỗ trợ tư vấn phim dựa trên sở thích, trả lời câu hỏi về lịch chiếu, giá vé với giao diện chat hiện đại kèm Quick Replies. Tự động gửi email người dùng làm context cho AI.
 
-- **Module Bảo mật nâng cao (`activities_lock_screen`, `partuser_advanced_settings`):** Tính năng khóa ứng dụng bằng mã PIN 6 chữ số, tự động reset PIN khi đăng xuất để đảm bảo quyền riêng tư.
+- **Module Bảo mật nâng cao (`activities_lock_screen`, `partuser_advanced_settings`):** Tính năng khóa ứng dụng bằng mã PIN 6 chữ số (chỉ kích hoạt khi đã đăng nhập), tự động reset PIN khi đăng xuất để đảm bảo quyền riêng tư, hỗ trợ tính năng "Quên PIN" để reset.
 
 - **Module Đa ngôn ngữ (`extra_language_helper`):** Hỗ trợ chuyển đổi linh hoạt giữa nhiều ngôn ngữ: Tiếng Việt, Tiếng Anh, Tiếng Nhật, Tiếng Hàn, Tiếng Nga và Tiếng Trung.
 
-- **Module Sở thích phim (`partuser_movie_preferences`):** Lưu trữ thể loại phim yêu thích và thời gian xem phim ưa thích của người dùng, phục vụ cho việc cá nhân hóa gợi ý từ Chatbot AI.
+- **Module Sở thích phim (`partuser_movie_preferences`):** Lưu trữ thể loại phim yêu thích, ngôn ngữ phim yêu thích và tùy chọn phụ đề của người dùng, phục vụ cho việc cá nhân hóa gợi ý từ Chatbot AI.
+
+- **Module Thông báo (`fragments_notifications`):** Hiển thị danh sách thông báo theo thời gian thực từ Firebase, bao gồm thông báo hoàn tiền, cập nhật hồ sơ và các thông tin khuyến mãi.
 
 **Công nghệ sử dụng:** Java, Android SDK (API 24-34), Firebase (Realtime Database, Authentication), Glide, ExoPlayer, OkHttp, Gson, Material Design Components.
 
@@ -98,6 +121,8 @@ Em xin chân thành cảm ơn!
 | 15  | Hình 4.13: Giao diện Sở thích phim                | Chụp màn hình ứng dụng |
 | 16  | Hình 4.14: Giao diện Cài đặt nâng cao             | Chụp màn hình ứng dụng |
 | 17  | Hình 4.15: Giao diện Khóa ứng dụng (PIN Lock)     | Chụp màn hình ứng dụng |
+| 18  | Hình 4.16: Giao diện Xác thực số điện thoại       | Chụp màn hình ứng dụng |
+| 19  | Hình 4.17: Giao diện Hệ thống thông báo           | Chụp màn hình ứng dụng |
 
 ## Danh mục bảng
 
@@ -130,6 +155,9 @@ Em xin chân thành cảm ơn!
 | QR          | Quick Response                    | Mã phản hồi nhanh              |
 | IMDB        | Internet Movie Database           | Cơ sở dữ liệu phim trực tuyến  |
 | VNPay       | Vietnam Payment                   | Cổng thanh toán Việt Nam       |
+| OTP         | One-Time Password                 | Mật khẩu dùng một lần          |
+| ANR         | Application Not Responding        | Ứng dụng không phản hồi        |
+| BaaS        | Backend-as-a-Service              | Backend như một dịch vụ        |
 
 ---
 
@@ -284,11 +312,13 @@ Hệ thống được thiết kế để đáp ứng đầy đủ chu trình tr�
   - Tính toán tổng tiền tự động theo thời gian thực dựa trên số lượng ghế được chọn.
   - Mô phỏng quy trình thanh toán qua VNPay hoặc số dư tài khoản, xuất vé điện tử sau khi thanh toán thành công.
 - **Tiện ích cá nhân và Nâng cao:**
-  - Quản lý thông tin cá nhân (Profile): Cập nhật họ tên, avatar (chụp ảnh hoặc chọn từ thư viện), đổi mật khẩu.
-  - Lịch sử đặt vé: Xem lại danh sách các vé đã mua với đầy đủ thông tin (phim, ngày, ghế, giá).
-  - **Sở thích phim:** Lưu trữ thể loại phim yêu thích và thời gian xem phim ưa thích để cá nhân hóa gợi ý từ Chatbot.
-  - **AI Chatbot:** Trợ lý ảo thông minh hỗ trợ tư vấn phim dựa trên sở thích, giải đáp thắc mắc về lịch chiếu và giá vé.
-  - **Cài đặt nâng cao:** Thiết lập ngôn ngữ (6 ngôn ngữ), bật/tắt âm thanh ứng dụng, chế độ tối (Dark Mode), và đặc biệt là tính năng **Khóa ứng dụng (PIN Lock 6 số)** để bảo vệ quyền riêng tư.
+  - Quản lý thông tin cá nhân (Profile): Cập nhật họ tên, avatar (chụp ảnh hoặc chọn từ thư viện, upload qua ImgBB API), đổi mật khẩu, chỉnh sửa ngày sinh và giới tính.
+  - **Xác thực số điện thoại:** Liên kết và xác thực số điện thoại với mã OTP qua Firebase Phone Auth, tăng cường bảo mật tài khoản.
+  - Lịch sử đặt vé: Xem lại danh sách các vé đã mua với đầy đủ thông tin (phim, ngày, ghế, giá), hỗ trợ huỷ vé và hoàn tiền.
+  - **Sở thích phim:** Lưu trữ thể loại phim yêu thích, ngôn ngữ phim và tùy chọn phụ đề để cá nhân hóa gợi ý từ Chatbot.
+  - **AI Chatbot:** Trợ lý ảo thông minh hỗ trợ tư vấn phim dựa trên sở thích, giải đáp thắc mắc về lịch chiếu và giá vé. Tự động gửi context bao gồm email người dùng.
+  - **Cài đặt nâng cao:** Thiết lập ngôn ngữ (6 ngôn ngữ), bật/tắt âm thanh ứng dụng, chế độ tối (Dark Mode), và đặc biệt là tính năng **Khóa ứng dụng (PIN Lock 6 số)** với các tùy chọn: bật/tắt, đổi PIN, Quên PIN để bảo vệ quyền riêng tư.
+  - **Hệ thống thông báo:** Hiển thị thông báo hoàn tiền, cập nhật hồ sơ và các thông tin khuyến mãi theo thời gian thực từ Firebase.
 
 #### 3.1.2. Yêu cầu phi chức năng (Non-Functional Requirements)
 
@@ -405,14 +435,140 @@ Hệ thống được thiết kế để đáp ứng đầy đủ chu trình tr�
 
 ### 3.4. Timeline đồ án (Kế hoạch thực hiện)
 
-| Giai đoạn | Thời gian | Công việc chính                                     | Người thực hiện |
-| --------- | --------- | --------------------------------------------------- | --------------- |
-| 1         | Tuần 1-2  | Nghiên cứu đề tài, thu thập yêu cầu                 | ...             |
-| 2         | Tuần 3-4  | Phân tích và thiết kế hệ thống, CSDL                | ...             |
-| 3         | Tuần 5-8  | Code các chức năng chính (Frontend + Backend)       | ...             |
-| 4         | Tuần 9    | Tích hợp các tính năng nâng cao (Chatbot, PIN lock) | ...             |
-| 5         | Tuần 10   | Kiểm thử và sửa lỗi                                 | ...             |
-| 6         | Tuần 11   | Viết báo cáo và chuẩn bị slide                      | ...             |
+**Thời gian thực hiện:** 18/09/2025 - 23/12/2025
+
+#### Giai đoạn 1: Lên ý tưởng đồ án (18/09 - 24/09/2025)
+
+| Công việc                     | Người thực hiện     | Thời gian     | Trạng thái   | Commit liên quan         |
+| ----------------------------- | ------------------- | ------------- | ------------ | ------------------------ |
+| Lên ý tưởng đồ án             | Cả nhóm             | 18/09 - 20/09 | ✅ Hoàn thành | -                        |
+| Tạo repository GitHub         | Nguyễn Duy Quốc Bảo | 10/09         | ✅ Hoàn thành | `efc9a5b` Initial commit |
+| Tìm hiểu các tính năng        | Cả nhóm             | 22/09 - 23/09 | ✅ Hoàn thành | -                        |
+| Chọn các tính năng triển khai | Cả nhóm             | 24/09         | ✅ Hoàn thành | -                        |
+
+#### Giai đoạn 2: Thiết kế hệ thống (07/10 - 13/10/2025)
+
+| Công việc                   | Người thực hiện     | Thời gian     | Trạng thái   | Commit liên quan                   |
+| --------------------------- | ------------------- | ------------- | ------------ | ---------------------------------- |
+| Thiết kế kiến trúc hệ thống | Cả nhóm             | 07/10 - 10/10 | ✅ Hoàn thành | -                                  |
+| Phân tích & thiết kế CSDL   | Cả nhóm             | 07/10 - 10/10 | ✅ Hoàn thành | -                                  |
+| Sơ đồ Use Case              | Nguyễn Trường Duy   | 10/10 - 11/10 | ✅ Hoàn thành | -                                  |
+| Xây dựng Firebase Database  | Cả nhóm             | 11/10 - 12/10 | ✅ Hoàn thành | `bf297e1` Khởi tạo firebase_helper |
+| Thiết kế luồng ứng dụng     | Nguyễn Duy Quốc Bảo | 11/10 - 13/10 | ✅ Hoàn thành | `6fe9b4e` Khởi tạo các layout mẫu  |
+
+#### Giai đoạn 3: Thiết kế giao diện (09/10 - 05/11/2025)
+
+| Công việc                          | Người thực hiện     | Thời gian     | Trạng thái   | Commit liên quan                              |
+| ---------------------------------- | ------------------- | ------------- | ------------ | --------------------------------------------- |
+| Thống nhất palette màu (Dark Mode) | Cả nhóm             | 09/10 - 05/11 | ✅ Hoàn thành | Lấy cảm hứng từ Netflix UI                    |
+| Giao diện Đăng nhập/Đăng ký        | Nguyễn Duy Quốc Bảo | 09/10 - 13/10 | ✅ Hoàn thành | `layouts_1_login.xml`, `layouts_1_signup.xml` |
+| Giao diện Trang chủ (Home)         | Nguyễn Trường Duy   | 09/10 - 13/10 | ✅ Hoàn thành | `layouts_fragments_home.xml`                  |
+| Giao diện Hồ sơ cá nhân            | Nguyễn Duy Quốc Bảo | 09/10 - 13/10 | ✅ Hoàn thành | `layouts_fragments_user.xml`                  |
+| Giao diện Chi tiết phim            | Nguyễn Trường Duy   | 09/10 - 13/10 | ✅ Hoàn thành | `parthome_movie_details.xml`                  |
+| Giao diện Chọn ghế/Suất chiếu      | Võ Minh Dương       | 09/10 - 13/10 | ✅ Hoàn thành | `parthome_seat_selection.xml`                 |
+| Giao diện Thanh toán               | Võ Minh Dương       | 09/10 - 13/10 | ✅ Hoàn thành | `activity_payment.xml`                        |
+
+#### Giai đoạn 4: Thực hiện đồ án (13/10 - 20/12/2025)
+
+**Module Xác thực người dùng (Authentication)**
+
+| Công việc                         | Người thực hiện     | Thời gian     | Trạng thái   | Commit liên quan                                        |
+| --------------------------------- | ------------------- | ------------- | ------------ | ------------------------------------------------------- |
+| Đăng nhập/Đăng ký/Quên mật khẩu   | Nguyễn Duy Quốc Bảo | 13/10 - 18/10 | ✅ Hoàn thành | `7d7b8da` Đã code chức năng đăng nhập, đăng ký, quên MK |
+| API xác thực Firebase Auth        | Nguyễn Duy Quốc Bảo | 13/10 - 18/10 | ✅ Hoàn thành | `73d7a4f` Code chức năng màn hình chờ, đăng nhập        |
+| Gửi lại email xác minh            | Nguyễn Duy Quốc Bảo | 18/10         | ✅ Hoàn thành | `c88477b` Thêm chức năng gửi lại email xác minh         |
+| Thay đổi mật khẩu & Xóa tài khoản | Nguyễn Duy Quốc Bảo | 26/10         | ✅ Hoàn thành | `0574df9` Thêm tính năng thay đổi mật khẩu, xóa TK      |
+
+**Module Trang chủ & Xem phim**
+
+| Công việc                     | Người thực hiện     | Thời gian     | Trạng thái   | Commit liên quan                                  |
+| ----------------------------- | ------------------- | ------------- | ------------ | ------------------------------------------------- |
+| Movie Slider (Banner)         | Nguyễn Trường Duy   | 22/10 - 23/10 | ✅ Hoàn thành | `dc95a78` feat: added Movie slider for menu       |
+| Converted Slider to Fragment  | Nguyễn Trường Duy   | 07/11         | ✅ Hoàn thành | `536e8f9` Converted Slider Activity to a Fragment |
+| Top Movies & View All         | Võ Minh Dương       | 22/10 - 25/10 | ✅ Hoàn thành | `358ddaf` thêm phần top movie                     |
+| Upcoming Movies               | Võ Minh Dương       | 07/11         | ✅ Hoàn thành | `e54e23c` them upcomming                          |
+| Chi tiết phim (Movie Details) | Nguyễn Trường Duy   | 23/10 - 24/10 | ✅ Hoàn thành | `5c51c43` feat: Movie Details                     |
+| Tính năng tìm kiếm phim       | Nguyễn Duy Quốc Bảo | 05/11         | ✅ Hoàn thành | `7f4d0a9` fix: hoàn thiện tính năng tìm kiếm phim |
+
+**Module Cá nhân hóa người dùng (User Profile)**
+
+| Công việc                             | Người thực hiện     | Thời gian     | Trạng thái   | Commit liên quan                                           |
+| ------------------------------------- | ------------------- | ------------- | ------------ | ---------------------------------------------------------- |
+| Chỉnh sửa thông tin cá nhân           | Nguyễn Duy Quốc Bảo | 15/10 - 26/10 | ✅ Hoàn thành | `2d4eea3` Thêm tính năng chỉnh sửa thông tin người dùng    |
+| Ngày sinh & Giới tính user            | Nguyễn Duy Quốc Bảo | 06/12         | ✅ Hoàn thành | `6b934c0` feat: thêm trường thông tin ngày sinh, giới tính |
+| Thông tin bổ sung (Movie Preferences) | Nguyễn Duy Quốc Bảo | 11/12         | ✅ Hoàn thành | `adc409b` feat: thêm trường thông tin bổ sung cho user     |
+| Verify số điện thoại OTP              | Nguyễn Duy Quốc Bảo | 10/12         | ✅ Hoàn thành | `8f34b67` feat: thêm tính năng verify số điện thoại        |
+| Thông báo khi sửa thông tin           | Võ Minh Dương       | 13/12         | ✅ Hoàn thành | `9273358` feat: thêm thông báo khi sửa thông tin cá nhân   |
+
+**Module Đặt vé & Thanh toán**
+
+| Công việc                           | Người thực hiện   | Thời gian     | Trạng thái   | Commit liên quan                                    |
+| ----------------------------------- | ----------------- | ------------- | ------------ | --------------------------------------------------- |
+| Giao diện chọn suất chiếu, chỗ ngồi | Võ Minh Dương     | 20/10 - 07/11 | ✅ Hoàn thành | `d6a874f` thêm phần đặt chỗ                         |
+| Logic đặt vé & kiểm tra ghế         | Võ Minh Dương     | 07/11         | ✅ Hoàn thành | `1c51b5f` thêm phần đặt vé                          |
+| Cập nhật chi tiết mua vé            | Võ Minh Dương     | 07/11         | ✅ Hoàn thành | `e22b10e` cập nhập phần mua vé cho chi tiết         |
+| VNPay Payment System                | Nguyễn Trường Duy | 16/12         | ✅ Hoàn thành | `db11952` feat: VNPay payment system                |
+| Thanh toán bằng số dư               | Võ Minh Dương     | 18/12         | ✅ Hoàn thành | `8ad9feb` mua ve bang so du                         |
+| Load poster URL cho Payment         | Nguyễn Trường Duy | 20/12         | ✅ Hoàn thành | `3090167` fix: Load poster URL for Payment activity |
+
+**Module Hủy vé & Hoàn tiền**
+
+| Công việc                   | Người thực hiện | Thời gian | Trạng thái   | Commit liên quan               |
+| --------------------------- | --------------- | --------- | ------------ | ------------------------------ |
+| Quản lý danh sách vé đã đặt | Võ Minh Dương   | 17/12     | ✅ Hoàn thành | `c46084a` thêm phan list vé    |
+| Chức năng Refund            | Võ Minh Dương   | 18/12     | ✅ Hoàn thành | `83e3809` refund               |
+| Thông báo khi hoàn tiền     | Võ Minh Dương   | 18/12     | ✅ Hoàn thành | `c4e87b8` thông báo khi refund |
+
+**Module Chatbot AI**
+
+| Công việc                                | Người thực hiện     | Thời gian | Trạng thái   | Commit liên quan                                            |
+| ---------------------------------------- | ------------------- | --------- | ------------ | ----------------------------------------------------------- |
+| Thiết kế giao diện Chatbot               | Nguyễn Duy Quốc Bảo | 12/12     | ✅ Hoàn thành | `c2eeabe` style: thiết kế giao diện cho botchat             |
+| Cải thiện giao diện Chatbot              | Nguyễn Duy Quốc Bảo | 12/12     | ✅ Hoàn thành | `4833ce7` style: cải thiện thêm về giao diện cho botchat    |
+| Tích hợp API dịch vụ AI (Ollama + ngrok) | Nguyễn Duy Quốc Bảo | 13/12     | ✅ Hoàn thành | `b629fcb` feat: cài đặt api dịch vụ AI vào botchat          |
+| Giao diện đa ngôn ngữ cho Chatbot        | Nguyễn Duy Quốc Bảo | 13/12     | ✅ Hoàn thành | `8044108` style: cập nhật giao diện đa ngôn ngữ cho botchat |
+| Thêm data cho Chatbot                    | Nguyễn Duy Quốc Bảo | 16/12     | ✅ Hoàn thành | `5de51b1` docs: thêm data cho chatbot                       |
+| Gửi thông tin user đến server Chatbot    | Nguyễn Duy Quốc Bảo | 17/12     | ✅ Hoàn thành | `97be6e5` feat: gửi thông tin của bản thân user đến botchat |
+| Cập nhật Chatbot API mới                 | Nguyễn Duy Quốc Bảo | 20/12     | ✅ Hoàn thành | `22c539a` fix: cập nhật lại chatbotapi                      |
+
+**Module Tính năng nâng cao**
+
+| Công việc                 | Người thực hiện     | Thời gian | Trạng thái   | Commit liên quan                                            |
+| ------------------------- | ------------------- | --------- | ------------ | ----------------------------------------------------------- |
+| Âm thanh cho ứng dụng     | Nguyễn Duy Quốc Bảo | 05/11     | ✅ Hoàn thành | `a91f61f` feat: đã thêm âm thanh vào trong ứng dụng         |
+| Bật/tắt chế độ âm thanh   | Nguyễn Duy Quốc Bảo | 05/11     | ✅ Hoàn thành | `aa11c53` feat: thêm tính năng bật tắt chế độ âm thanh      |
+| Dark Mode cho ứng dụng    | Nguyễn Duy Quốc Bảo | 26/10     | ✅ Hoàn thành | `0a0d392` Thêm tính năng sáng tối cho ứng dụng              |
+| Đa ngôn ngữ (6 ngôn ngữ)  | Nguyễn Duy Quốc Bảo | 10/12     | ✅ Hoàn thành | `e0a7047` feat: thêm chức năng thay đổi ngôn ngữ cho app    |
+| Thêm các ngôn ngữ bổ sung | Nguyễn Duy Quốc Bảo | 10/12     | ✅ Hoàn thành | `8bb95b8` feat: thêm 1 số ngôn ngữ cần thiết khác           |
+| Kiểm tra kết nối mạng     | Nguyễn Duy Quốc Bảo | 14/12     | ✅ Hoàn thành | `7596abb` feat: kiểm tra kết nối mạng trước khi vào app     |
+| Khóa mã PIN 6 số          | Nguyễn Duy Quốc Bảo | 17/12     | ✅ Hoàn thành | `31dc319` feat: thêm khóa mã pin cho ứng dụng trước khi vào |
+
+#### Giai đoạn 5: Kiểm tra & Tối ưu (19/12 - 21/12/2025)
+
+| Công việc                                | Người thực hiện     | Thời gian     | Trạng thái   | Commit liên quan                                          |
+| ---------------------------------------- | ------------------- | ------------- | ------------ | --------------------------------------------------------- |
+| Sửa lỗi giao diện ngôn ngữ               | Nguyễn Duy Quốc Bảo | 10/12         | ✅ Hoàn thành | `9445af4` fix: sửa lỗi giao diện về ngôn ngữ và nút bấm   |
+| Fix lỗi giao diện chồng lấp edit profile | Nguyễn Duy Quốc Bảo | 06/12         | ✅ Hoàn thành | `338ae33` fix: fix lỗi giao diện chồng lấp ở edit profile |
+| Refactor tên file theo chức năng         | Nguyễn Duy Quốc Bảo | 09/12         | ✅ Hoàn thành | `ab1d505` refactor: đổi tên lại các file mã nguồn         |
+| Xóa file không cần thiết                 | Nguyễn Duy Quốc Bảo | 13/12         | ✅ Hoàn thành | `33a087d` chore: xóa các file và thư mục không cần thiết  |
+| Kiểm thử UI/UX                           | Cả nhóm             | 19/12 - 21/12 | ✅ Hoàn thành | -                                                         |
+
+#### Giai đoạn 6: Hoàn thành & Báo cáo (19/12 - 23/12/2025)
+
+| Công việc                      | Người thực hiện     | Thời gian     | Trạng thái   | Commit liên quan                                            |
+| ------------------------------ | ------------------- | ------------- | ------------ | ----------------------------------------------------------- |
+| Thêm document kỹ thuật         | Nguyễn Duy Quốc Bảo | 06/12         | ✅ Hoàn thành | `caa32b7` docs: thêm document kỹ thuật cho dự án            |
+| Viết báo cáo tổng kết ứng dụng | Nguyễn Duy Quốc Bảo | 19/12         | ✅ Hoàn thành | `63eb03f` docs: viết báo cáo tổng kết ứng dụng              |
+| Merge final PR (ReviewRatings) | Nguyễn Trường Duy   | 20/12         | ✅ Hoàn thành | `c89cbd3` Merge pull request #8 from baongdqu/ReviewRatings |
+| Chuẩn bị slide thuyết trình    | Cả nhóm             | 21/12 - 23/12 | ✅ Hoàn thành | -                                                           |
+
+#### Thống kê đóng góp (Commits)
+
+| Thành viên          | GitHub Username | Số commits | Vai trò chính                                                    |
+| ------------------- | --------------- | ---------- | ---------------------------------------------------------------- |
+| Nguyễn Duy Quốc Bảo | baongdqu        | ~55+       | Auth, User Profile, Chatbot AI, Đa ngôn ngữ, PIN Lock, Báo cáo   |
+| Nguyễn Trường Duy   | duyimew         | ~15+       | Movie Slider, Movie Details, VNPay Payment, Merge PRs            |
+| Võ Minh Dương       | vominhduong     | ~12+       | Đặt vé, Chọn ghế, Thanh toán số dư, Refund, Top Movies, Upcoming |
 
 ---
 
@@ -794,16 +950,19 @@ Nhóm đã áp dụng phương pháp **Kiểm thử hộp đen (Black-box Testin
 - **Số lượng Đạt (Pass):** 26
 - **Số lượng Không đạt (Fail):** 0
 - **Tỷ lệ thành công:** 100%
+- **Ngày kiểm thử cuối cùng:** 21/12/2024
 
 #### 5.3.2. Bảng tổng hợp các lỗi đã phát hiện và khắc phục
 
-| ID     | Mô tả lỗi                                                         | Mức độ     | Ngày phát hiện | Ngày khắc phục | Trạng thái   |
-| ------ | ----------------------------------------------------------------- | ---------- | -------------- | -------------- | ------------ |
-| BUG-01 | Ứng dụng crash khi mất mạng đột ngột trên màn hình Home.          | Cao        | 10/12/2024     | 11/12/2024     | ✅ Đã sửa     |
-| BUG-02 | Thiếu thông báo khi người dùng không chọn ghế mà nhấn "Tiếp tục". | Trung bình | 12/12/2024     | 12/12/2024     | ✅ Đã sửa     |
-| BUG-03 | Hình ảnh poster bị lỗi tải trên một số thiết bị Android 8.0.      | Thấp       | 14/12/2024     | 15/12/2024     | ✅ Đã sửa     |
-| BUG-04 | PIN Lock vẫn được yêu cầu sau khi đăng xuất.                      | Cao        | 16/12/2024     | 17/12/2024     | ✅ Đã sửa     |
-| BUG-05 | Chatbot phản hồi chậm trên kết nối 3G.                            | Thấp       | 18/12/2024     | Đang theo dõi  | ⏳ Đang xử lý |
+| ID     | Mô tả lỗi                                                         | Mức độ     | Ngày phát hiện | Ngày khắc phục | Trạng thái |
+| ------ | ----------------------------------------------------------------- | ---------- | -------------- | -------------- | ---------- |
+| BUG-01 | Ứng dụng crash khi mất mạng đột ngột trên màn hình Home.          | Cao        | 10/12/2024     | 11/12/2024     | ✅ Đã sửa   |
+| BUG-02 | Thiếu thông báo khi người dùng không chọn ghế mà nhấn "Tiếp tục". | Trung bình | 12/12/2024     | 12/12/2024     | ✅ Đã sửa   |
+| BUG-03 | Hình ảnh poster bị lỗi tải trên một số thiết bị Android 8.0.      | Thấp       | 14/12/2024     | 15/12/2024     | ✅ Đã sửa   |
+| BUG-04 | PIN Lock vẫn được yêu cầu sau khi đăng xuất.                      | Cao        | 16/12/2024     | 17/12/2024     | ✅ Đã sửa   |
+| BUG-05 | Chatbot phản hồi chậm trên kết nối 3G.                            | Thấp       | 18/12/2024     | 20/12/2024     | ✅ Đã sửa   |
+| BUG-06 | Ứng dụng ANR khi tải danh sách ứng dụng cài đặt.                  | Cao        | 21/12/2024     | 21/12/2024     | ✅ Đã sửa   |
+| BUG-07 | PIN Lock không reset khi người dùng chọn "Quên PIN".              | Trung bình | 17/12/2024     | 17/12/2024     | ✅ Đã sửa   |
 
 ---
 
@@ -940,7 +1099,7 @@ Sau quá trình nghiên cứu, thiết kế và triển khai, đồ án "Ứng d
 ### Phụ lục A: Mã nguồn và Repository
 
 **Link GitHub Repository:**
-- **Source Code:** https://github.com/[username]/App_movie_booking_ticket
+- **Source Code:** https://github.com/baongdqu/App_movie_booking_ticket
 - **Nhánh chính (Main branch):** Chứa phiên bản ổn định của ứng dụng
 - **Nhánh phát triển (Dev branch):** Chứa các tính năng đang được phát triển
 
@@ -1077,7 +1236,7 @@ Sau quá trình nghiên cứu, thiết kế và triển khai, đồ án "Ứng d
 #### D.2. Các bước cài đặt
 1. Clone repository từ GitHub:
    ```bash
-   git clone https://github.com/[username]/App_movie_booking_ticket.git
+   git clone https://github.com/baongdqu/App_movie_booking_ticket.git
    ```
 2. Mở project bằng Android Studio
 3. Đợi Gradle sync hoàn tất
@@ -1175,16 +1334,22 @@ dependencies {
 
 ### Phụ lục G: Danh mục hình ảnh minh họa
 
-| STT | Tên file                        | Mô tả                     |
-| --- | ------------------------------- | ------------------------- |
-| 1   | `screenshot_login.png`          | Màn hình đăng nhập        |
-| 2   | `screenshot_home.png`           | Màn hình trang chủ        |
-| 3   | `screenshot_movie_detail.png`   | Màn hình chi tiết phim    |
-| 4   | `screenshot_seat_selection.png` | Màn hình chọn ghế         |
-| 5   | `screenshot_payment.png`        | Màn hình thanh toán       |
-| 6   | `screenshot_profile.png`        | Màn hình trang cá nhân    |
-| 7   | `screenshot_chatbot.png`        | Màn hình Chatbot AI       |
-| 8   | `screenshot_settings.png`       | Màn hình cài đặt          |
-| 9   | `diagram_usecase.png`           | Sơ đồ Use Case tổng quát  |
-| 10  | `diagram_erd.png`               | Biểu đồ ERD cơ sở dữ liệu |
-| 11  | `diagram_architecture.png`      | Sơ đồ kiến trúc hệ thống  |
+| STT | Tên file                        | Mô tả                        |
+| --- | ------------------------------- | ---------------------------- |
+| 1   | `screenshot_login.png`          | Màn hình đăng nhập           |
+| 2   | `screenshot_home.png`           | Màn hình trang chủ           |
+| 3   | `screenshot_movie_detail.png`   | Màn hình chi tiết phim       |
+| 4   | `screenshot_seat_selection.png` | Màn hình chọn ghế            |
+| 5   | `screenshot_payment.png`        | Màn hình thanh toán          |
+| 6   | `screenshot_profile.png`        | Màn hình trang cá nhân       |
+| 7   | `screenshot_chatbot.png`        | Màn hình Chatbot AI          |
+| 8   | `screenshot_settings.png`       | Màn hình cài đặt             |
+| 9   | `screenshot_notifications.png`  | Màn hình thông báo           |
+| 10  | `screenshot_phone_verify.png`   | Màn hình xác thực điện thoại |
+| 11  | `screenshot_preferences.png`    | Màn hình sở thích phim       |
+| 12  | `screenshot_pin_lock.png`       | Màn hình khóa PIN            |
+| 13  | `diagram_usecase.png`           | Sơ đồ Use Case tổng quát     |
+| 14  | `diagram_erd.png`               | Biểu đồ ERD cơ sở dữ liệu    |
+| 15  | `diagram_architecture.png`      | Sơ đồ kiến trúc hệ thống     |
+| 16  | `diagram_sequence_booking.png`  | Sơ đồ tuần tự đặt vé         |
+| 17  | `diagram_sequence_chat.png`     | Sơ đồ tuần tự Chatbot AI     |

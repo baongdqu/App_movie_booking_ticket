@@ -15,7 +15,13 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class activities_lock_screen extends extra_manager_language {
+/**
+ * Activity Màn hình khóa (Lock Screen)
+ * Yêu cầu người dùng nhập mã PIN 6 số để mở khóa ứng dụng hoặc thực hiện tác vụ
+ * nhạy cảm.
+ * Hỗ trợ các chức năng: Nhập PIN, Xóa PIN, Quên mã PIN.
+ */
+public class activities_2_a_lock_screen extends extra_manager_language {
 
     private ImageView[] dots;
     private StringBuilder currentPin = new StringBuilder();
@@ -25,11 +31,17 @@ public class activities_lock_screen extends extra_manager_language {
     // Intent target to launch after unlock
     private Intent targetIntent;
 
+    /**
+     * Khởi tạo giao diện Lock Screen.
+     * Kiểm tra mã PIN đã lưu và thiết lập bàn phím số.
+     *
+     * @param savedInstanceState Bundle trạng thái đã lưu
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         extra_themeutils.applySavedTheme(this);
-        setContentView(R.layout.activity_lock_screen);
+        setContentView(R.layout.layouts_2_a_lock_screen);
 
         SharedPreferences prefs = getSharedPreferences("AppSettings", MODE_PRIVATE);
         storedPin = prefs.getString("app_pin", "");

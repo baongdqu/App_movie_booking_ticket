@@ -25,6 +25,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Activity Chọn ghế (Seat Selection)
+ * Cho phép người dùng chọn ngày, giờ chiếu và vị trí ghế ngồi.
+ * Tính toán tổng tiền vé dựa trên số ghế đã chọn.
+ */
 public class parthome_SeatSelectionActivity extends AppCompatActivity {
 
     private TextView tvMovieTitle, tvTotalPrice;
@@ -40,6 +45,10 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
 
     private DatabaseReference dbRef;
 
+    /**
+     * Khởi tạo màn hình chọn ghế.
+     * Load danh sách ngày/giờ chiếu từ Firebase.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +78,7 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
             int total = selectedSeats.size() * pricePerSeat;
             Toast.makeText(this, String.format(getString(R.string.toast_seat_total), selectedSeats.toString(),
                     String.valueOf(total)), Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(parthome_SeatSelectionActivity.this, PaymentActivity.class);
+            Intent intent = new Intent(parthome_SeatSelectionActivity.this, parthome_PaymentActivity.class);
 
             intent.putExtra("movieTitle", movieTitle);
             intent.putExtra("date", selectedDate);
