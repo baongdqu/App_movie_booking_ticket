@@ -39,6 +39,11 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Fragment Trang chủ (Home)
+ * Hiển thị các danh sách phim nổi bật, phim sắp chiếu, banner quảng cáo.
+ * Cung cấp chức năng tìm kiếm phim và xem thông tin người dùng cơ bản.
+ */
 public class fragments_home extends Fragment {
 
     private LayoutsFragmentsHomeBinding binding;
@@ -63,11 +68,14 @@ public class fragments_home extends Fragment {
     private final Runnable sliderRunnable = () -> binding.viewPager2
             .setCurrentItem(binding.viewPager2.getCurrentItem() + 1);
 
+    /**
+     * Tạo View cho fragment.
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+            @Nullable ViewGroup container,
+            @Nullable Bundle savedInstanceState) {
         binding = LayoutsFragmentsHomeBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
@@ -353,14 +361,13 @@ public class fragments_home extends Fragment {
                 String email = snapshot.child("email").getValue(String.class);
                 String avatarUrl = snapshot.child("avatarUrl").getValue(String.class);
                 Long balance = snapshot.child("balance").getValue(Long.class);
-                if (balance == null) balance = 0L;
+                if (balance == null)
+                    balance = 0L;
 
                 binding.tvFullName.setText(fullName != null ? fullName : getString(R.string.user_name));
                 binding.tvEmail.setText(email != null ? email : "");
                 binding.tvBalance.setText(
-                        "Số dư: " + formatMoney(balance) + " đ"
-                );
-
+                        "Số dư: " + formatMoney(balance) + " đ");
 
                 if (avatarUrl != null && !avatarUrl.isEmpty()) {
                     Glide.with(requireContext())
@@ -413,6 +420,7 @@ public class fragments_home extends Fragment {
         sliderHandler.removeCallbacks(sliderRunnable);
         binding = null;
     }
+
     private String formatMoney(long amount) {
         return String.format("%,d", amount).replace(',', '.');
     }

@@ -22,6 +22,15 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/**
+ * Activity Loading (Màn hình chờ)
+ * Màn hình đầu tiên xuất hiện khi mở ứng dụng.
+ * Thực hiện các tác vụ:
+ * 1. Kiểm tra kết nối mạng.
+ * 2. Hiển thị animation logo (Fade in).
+ * 3. Kiểm tra trạng thái đăng nhập (Firebase Auth).
+ * 4. Chuyển hướng người dùng đến màn hình phù hợp (Login hoặc Home).
+ */
 public class activities_0_loading extends extra_manager_language {
 
     private FirebaseAuth mAuth;
@@ -41,6 +50,12 @@ public class activities_0_loading extends extra_manager_language {
     // Key để truyền kết quả kiểm tra mạng qua Intent
     public static final String EXTRA_NO_INTERNET = "extra_no_internet";
 
+    /**
+     * Phương thức khởi tạo.
+     * Bắt đầu kiểm tra mạng và chạy animation.
+     *
+     * @param savedInstanceState Bundle chứa trạng thái
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -207,7 +222,7 @@ public class activities_0_loading extends extra_manager_language {
 
             if (isPinEnabled) {
                 // Nếu bật PIN -> Chuyển hướng sang Lock Screen, truyền Intent đích theo
-                Intent lockIntent = new Intent(activities_0_loading.this, activities_lock_screen.class);
+                Intent lockIntent = new Intent(activities_0_loading.this, activities_2_a_lock_screen.class);
                 lockIntent.putExtra("target_intent", targetIntent);
                 startActivity(lockIntent);
             } else {

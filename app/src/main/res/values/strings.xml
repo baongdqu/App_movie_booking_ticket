@@ -344,4 +344,29 @@
     <string name="pin_status_active">Mã PIN đang hoạt động</string>
     <string name="pin_status_inactive">Chưa thiết lập mã PIN</string>
 
+    <!-- Payment Screen -->
+    <string name="payment_info_title">Thông tin thanh toán</string>
+    <string name="ticket_info">THÔNG TIN VÉ</string>
+    <string name="recipient_info">THÔNG TIN NGƯỜI NHẬN</string>
+    <string name="payment_method">PHƯƠNG THỨC THANH TOÁN</string>
+    <string name="total_payment">Tổng thanh toán</string>
+    <string name="pay_now">Thanh toán</string>
+    <string name="secure_payment">Thanh toán an toàn</string>
+    <string name="movie_poster">Poster phim</string>
+    <string name="vnpay_desc">Thanh toán qua ví điện tử VNPay</string>
+    <string name="balance_desc">Số dư: %1$sđ</string>
+    <string name="toast_select_payment_method">Vui lòng chọn phương thức thanh toán!</string>
+    <string name="toast_insufficient_balance">Số dư không đủ để thanh toán!</string>
+    <string name="toast_payment_success">Thanh toán thành công!</string>
+    <string name="toast_payment_failed">Thanh toán thất bại: %1$s</string>
+
+    <!-- Notifications Screen -->
+    <string name="clear_all">Xóa tất cả</string>
+    <string name="notification_deleted">Đã xóa thông báo</string>
+    <string name="all_notifications_cleared">Đã xóa tất cả thông báo</string>
+    <string name="just_now">Vừa xong</string>
+    <string name="minutes_ago">%1$d phút trước</string>
+    <string name="hours_ago">%1$d giờ trước</string>
+    <string name="days_ago">%1$d ngày trước</string>
+
 </resources>

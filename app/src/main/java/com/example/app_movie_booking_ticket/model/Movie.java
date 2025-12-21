@@ -3,6 +3,12 @@ package com.example.app_movie_booking_ticket.model;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * Model class đại diện cho đối tượng Phim (Movie).
+ * Chứa các thông tin chi tiết về phim như tiêu đề, poster, diễn viên, thể loại,
+ * v.v.
+ * Implement Serializable để có thể truyền giữa các Activity qua Intent.
+ */
 public class Movie implements Serializable {
     private String Title;
     private String movieID;
@@ -18,11 +24,17 @@ public class Movie implements Serializable {
     private List<Cast> Casts;
 
     // Firebase requires a no-argument constructor
-    public Movie() {}
+    // Constructor rỗng bắt buộc cho Firebase
+    public Movie() {
+    }
+
+    /**
+     * Constructor đầy đủ tham số.
+     */
 
     public Movie(String title, String poster, double imdb, List<String> pictures, List<String> genre,
-                 String description, String time, int year, int price,
-                 String trailer, List<Cast> casts, String movieID ) {
+            String description, String time, int year, int price,
+            String trailer, List<Cast> casts, String movieID) {
         this.Title = title;
         this.Poster = poster;
         this.Imdb = imdb;
@@ -37,7 +49,7 @@ public class Movie implements Serializable {
         this.movieID = movieID;
     }
 
-    // Getters
+    // ================== Getters ==================
     public String getTitle() {
         return Title;
     }
@@ -49,9 +61,11 @@ public class Movie implements Serializable {
     public double getImdb() {
         return Imdb;
     }
-    public List<String> getPicture(){
+
+    public List<String> getPicture() {
         return Pcitures;
     }
+
     public List<String> getGenre() {
         return Genre;
     }
@@ -79,13 +93,21 @@ public class Movie implements Serializable {
     public List<Cast> getCasts() {
         return Casts;
     }
-    public String getMovieID() { return movieID;}
+
+    public String getMovieID() {
+        return movieID;
+    }
+
     // Inner class for Cast objects
-    public static class Cast implements Serializable{
+    /**
+     * Inner class đại diện cho Diễn viên (Cast).
+     */
+    public static class Cast implements Serializable {
         private String Actor;
         private String PicUrl;
 
-        public Cast() {}
+        public Cast() {
+        }
 
         public Cast(String actor, String picUrl) {
             this.Actor = actor;

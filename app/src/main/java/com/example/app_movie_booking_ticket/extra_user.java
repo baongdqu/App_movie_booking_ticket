@@ -2,6 +2,11 @@ package com.example.app_movie_booking_ticket;
 
 import java.util.Map;
 
+/**
+ * Model class đại diện cho Người dùng (User).
+ * Chứa thông tin cá nhân, ví điện tử và các tùy chọn của người dùng.
+ * Cấu trúc tương thích với Firebase Realtime Database.
+ */
 public class extra_user {
     public String uid;
     public String fullName;
@@ -24,7 +29,7 @@ public class extra_user {
 
     // ✅ Constructor đầy đủ
     public extra_user(String uid, String fullName, String email,
-                      String phone, String dateOfBirth, String gender) {
+            String phone, String dateOfBirth, String gender) {
         this.uid = uid;
         this.fullName = fullName;
         this.email = email;
