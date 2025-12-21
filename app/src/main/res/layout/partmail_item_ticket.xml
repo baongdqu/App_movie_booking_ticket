@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="4dp"
+    android:layout_marginVertical="8dp"
+    app:cardBackgroundColor="#1C1C1C"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <!-- Poster with overlay gradient -->
+        <FrameLayout
+            android:layout_width="100dp"
+            android:layout_height="150dp">
+
+            <ImageView
+                android:id="@+id/imgPoster"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_poster_round"
+                android:clipToOutline="true"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/ic_default_poster"/>
+
+            <!-- Movie badge -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|end"
+                android:layout_margin="6dp"
+                android:background="@drawable/bg_format_badge"
+                android:paddingHorizontal="6dp"
+                android:paddingVertical="2dp"
+                android:text="HD"
+                android:textColor="#FFFFFF"
+                android:textSize="9sp"
+                android:textStyle="bold"/>
+
+        </FrameLayout>
+
+        <!-- Info Section -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- Movie Title -->
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="#FFFFFF"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"
+                tools:text="Avengers: Endgame"/>
+
+            <!-- Date & Time with icon -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_calendar_small"/>
+
+                <TextView
+                    android:id="@+id/tvInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textColor="#B3B3B3"
+                    android:textSize="13sp"
+                    tools:text="2025-11-08 • 15:15"/>
+
+            </LinearLayout>
+
+            <!-- Seats with icon -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_seat_small"/>
+
+                <TextView
+                    android:id="@+id/tvSeats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textColor="#B3B3B3"
+                    android:textSize="13sp"
+                    tools:text="Ghế: C5, C6, D5, D6"/>
+
+            </LinearLayout>
+
+            <!-- Status Badge -->
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_netflix_button"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:text="Đã thanh toán"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                tools:visibility="visible"/>
+
+            <!-- Buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:orientation="horizontal">
+
+                <!-- Details Button - Netflix Red -->
+                <Button
+                    android:id="@+id/btnDetails"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_button_netflix_filled"
+                    android:text="Chi tiết"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"/>
+
+                <!-- Refund Button - Outline -->
+                <Button
+                    android:id="@+id/btnRefund"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_button_netflix_outline"
+                    android:text="Hoàn vé"
+                    android:textAllCaps="false"
+                    android:textColor="#B3B3B3"
+                    android:textSize="13sp"
+                    android:fontFamily="sans-serif-medium"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Decorative ticket notch left -->
+    <View
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_gravity="start|center_vertical"
+        android:background="@drawable/bg_ticket_notch_left"
+        android:translationX="-8dp"/>
+
+    <!-- Decorative ticket notch right -->
+    <View
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_gravity="end|center_vertical"
+        android:background="@drawable/bg_ticket_notch_right"
+        android:translationX="8dp"/>
+
+</androidx.cardview.widget.CardView>

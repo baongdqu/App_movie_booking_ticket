@@ -22,6 +22,11 @@ import com.google.android.gms.tasks.Task;
 
 import java.util.Objects;
 
+/**
+ * Activity Đăng ký (Sign Up)
+ * Cho phép người dùng tạo tài khoản mới.
+ * Lưu thông tin người dùng vào Firebase Realtime Database.
+ */
 public class activities_1_signup extends AppCompatActivity {
 
     private TextInputEditText inputFullName, inputEmailSignup, inputPasswordSignup, inputConfirmPassword, inputPhone;
@@ -57,6 +62,13 @@ public class activities_1_signup extends AppCompatActivity {
         });
     }
 
+    /**
+     * Xử lý logic đăng ký người dùng mới.
+     * 1. Validate thông tin nhập (Tên, Email, Pass, Phone).
+     * 2. Tạo tài khoản trên Firebase Auth.
+     * 3. Lưu thông tin bổ sung vào Firebase Database.
+     * 4. Gửi email xác thực.
+     */
     private void registerUser() {
         String fullName = Objects.requireNonNull(inputFullName.getText()).toString().trim();
         String email = Objects.requireNonNull(inputEmailSignup.getText()).toString().trim();

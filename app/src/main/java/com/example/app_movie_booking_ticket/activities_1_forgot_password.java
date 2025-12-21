@@ -18,6 +18,10 @@ import com.google.android.gms.tasks.Task;
 
 import java.util.Objects;
 
+/**
+ * Activity Quên mật khẩu (Forgot Password)
+ * Cho phép người dùng yêu cầu gửi email reset mật khẩu từ Firebase.
+ */
 public class activities_1_forgot_password extends AppCompatActivity {
 
     private TextInputEditText inputEmailForgot;
@@ -47,6 +51,10 @@ public class activities_1_forgot_password extends AppCompatActivity {
         });
     }
 
+    /**
+     * Gửi yêu cầu reset mật khẩu đến email.
+     * Validate email và gọi Firebase sendPasswordResetEmail.
+     */
     private void resetPassword() {
         String email = Objects.requireNonNull(inputEmailForgot.getText()).toString().trim();
 

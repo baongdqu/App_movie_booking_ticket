@@ -37,7 +37,8 @@ public class parthome_AllMoviesActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btnBack);
         movieList = new ArrayList<>();
 
-        recyclerAllMovies.setLayoutManager(new LinearLayoutManager(this));
+        // Use GridLayoutManager with 2 columns
+        recyclerAllMovies.setLayoutManager(new androidx.recyclerview.widget.GridLayoutManager(this, 2));
         adapter = new AllMoviesAdapter(this, movieList);
         recyclerAllMovies.setAdapter(adapter);
 
