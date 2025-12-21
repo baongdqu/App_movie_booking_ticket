@@ -21,6 +21,12 @@ import com.google.android.gms.tasks.Task;
 
 import java.util.Objects;
 
+/**
+ * Activity Login (Đăng nhập)
+ * Xử lý việc đăng nhập người dùng bằng Email/Password thông qua Firebase
+ * Authentication.
+ * Cung cấp các chức năng: Đăng nhập, Chuyển sang Đăng ký, Quên mật khẩu.
+ */
 public class activities_1_login extends extra_manager_language {
 
     // 🔹 Khai báo các thành phần giao diện
@@ -33,6 +39,12 @@ public class activities_1_login extends extra_manager_language {
     private TextView btntxtForgotPassword;
     private TextView txtResendVerify; // mới
 
+    /**
+     * Phương thức khởi tạo Activity.
+     * Thiết lập giao diện, khởi tạo các view và các sự kiện click.
+     *
+     * @param savedInstanceState Bundle chứa trạng thái đã lưu của activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -141,6 +153,13 @@ public class activities_1_login extends extra_manager_language {
 
     // ==============================================================
 
+    /**
+     * Xử lý logic đăng nhập người dùng.
+     * 1. Validate input.
+     * 2. Gọi Firebase Auth để sign in.
+     * 3. Kiểm tra xác thực email.
+     * 4. Điều hướng vào màn hình chính nếu thành công.
+     */
     private void loginUser() {
         // Lấy dữ liệu từ input
         String email = Objects.requireNonNull(inputEmail.getText()).toString().trim();

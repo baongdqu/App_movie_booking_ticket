@@ -28,7 +28,7 @@
             android:name=".adapter.TicketAdapter"
             android:exported="false" />
         <activity
-            android:name=".PaymentActivity"
+            android:name=".parthome_PaymentActivity"
             android:exported="false" />
         <activity
             android:name=".parthome_SeatSelectionActivity"
@@ -67,7 +67,7 @@
             android:name=".partuser_movie_preferences"
             android:exported="true" />
         <activity
-            android:name=".activities_lock_screen"
+            android:name=".activities_2_a_lock_screen"
             android:exported="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
@@ -82,7 +82,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ResultActivity"
+            android:name=".extra_ResultActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

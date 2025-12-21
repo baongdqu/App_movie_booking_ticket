@@ -54,4 +54,8 @@
     <color name="chat_chip_stroke">#E50914</color>
     <color name="chat_chip_text">#E50914</color>
 
+    <!-- Payment Screen Colors -->
+    <color name="divider">#E0E0E0</color>
+    <color name="accent_blue">#1976D2</color>
+
 </resources>

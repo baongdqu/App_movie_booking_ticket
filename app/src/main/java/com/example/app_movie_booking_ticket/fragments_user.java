@@ -22,6 +22,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.*;
 
+/**
+ * Fragment Hồ sơ người dùng (User Profile)
+ * Hiển thị thông tin cá nhân (Avatar, Tên, Email).
+ * Cung cấp menu truy cập: Chỉnh sửa hồ sơ, Sở thích phim, Cài đặt nâng cao,
+ * Đăng xuất.
+ */
 public class fragments_user extends Fragment {
 
     // ============================
@@ -56,6 +62,10 @@ public class fragments_user extends Fragment {
         return inflater.inflate(R.layout.layouts_fragments_user, container, false);
     }
 
+    /**
+     * Được gọi sau khi view đã được tạo.
+     * Ánh xạ view, load dữ liệu user từ Firebase và xử lý các sự kiện click.
+     */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
