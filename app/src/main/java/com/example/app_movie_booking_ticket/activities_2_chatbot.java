@@ -20,6 +20,13 @@ import com.example.app_movie_booking_ticket.extra.extra_gemini_cli_helper;
 import com.example.app_movie_booking_ticket.model.ChatMessage;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * Activity cho màn hình Chatbot
@@ -50,6 +57,11 @@ public class activities_2_chatbot extends AppCompatActivity {
     private ChatMessageAdapter adapter;
     private extra_gemini_cli_helper geminiHelper; // Sử dụng Gemini CLI Server
 
+    // User Preferences Context (Sở thích phim)
+    private String userFavoriteGenre = "";
+    private String userFavoriteLanguage = "";
+    private String userSubtitlePreference = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +72,7 @@ public class activities_2_chatbot extends AppCompatActivity {
         setupRecyclerView();
         setupListeners();
         initGeminiHelper();
+        loadUserPreferences(); // Load sở thích phim từ Firebase
 
         // Tin nhắn chào mừng
         showWelcomeMessage();
@@ -207,13 +220,49 @@ public class activities_2_chatbot extends AppCompatActivity {
         showTypingIndicator(true);
         setInputEnabled(false);
 
-        // Chuẩn bị tin nhắn gửi đi (kèm Email người dùng)
-        String messageToSend = message;
-        com.google.firebase.auth.FirebaseUser user = com.google.firebase.auth.FirebaseAuth.getInstance()
-                .getCurrentUser();
+        // Chuẩn bị tin nhắn gửi đi (kèm thông tin người dùng)
+        StringBuilder contextBuilder = new StringBuilder();
+
+        // Thêm Email người dùng
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null && user.getEmail() != null) {
-            // Thêm thông tin email vào đầu prompt để Bot nhận biết
-            messageToSend = "User Email: " + user.getEmail() + "\n\n" + message;
+            contextBuilder.append("User Email: ").append(user.getEmail()).append("\n");
+        }
+
+        // Thêm sở thích phim (User Preferences Context)
+        if (!userFavoriteGenre.isEmpty() || !userFavoriteLanguage.isEmpty() || !userSubtitlePreference.isEmpty()) {
+            contextBuilder.append("Sở thích phim của người dùng:\n");
+            if (!userFavoriteGenre.isEmpty()) {
+                contextBuilder.append("- Thể loại yêu thích: ").append(userFavoriteGenre).append("\n");
+            }
+            if (!userFavoriteLanguage.isEmpty()) {
+                contextBuilder.append("- Ngôn ngữ phim: ").append(userFavoriteLanguage).append("\n");
+            }
+            if (!userSubtitlePreference.isEmpty()) {
+                String subtitleText;
+                switch (userSubtitlePreference) {
+                    case "dubbed":
+                        subtitleText = "Lồng tiếng";
+                        break;
+                    case "subtitled":
+                        subtitleText = "Phụ đề";
+                        break;
+                    case "both":
+                        subtitleText = "Cả hai (lồng tiếng và phụ đề)";
+                        break;
+                    default:
+                        subtitleText = userSubtitlePreference;
+                }
+                contextBuilder.append("- Tùy chọn: ").append(subtitleText).append("\n");
+            }
+        }
+
+        // Ghép context với tin nhắn người dùng
+        String messageToSend;
+        if (contextBuilder.length() > 0) {
+            messageToSend = contextBuilder.toString() + "\nCâu hỏi: " + message;
+        } else {
+            messageToSend = message;
         }
 
         geminiHelper.sendMessage(messageToSend, adapter.getMessages(), new extra_gemini_cli_helper.ChatCallback() {
@@ -277,6 +326,53 @@ public class activities_2_chatbot extends AppCompatActivity {
                 .alpha(enabled ? 1.0f : 0.5f)
                 .setDuration(150)
                 .start();
+    }
+
+    /**
+     * Load sở thích phim của người dùng từ Firebase
+     * Dữ liệu này sẽ được đưa vào prompt để AI cá nhân hóa câu trả lời
+     */
+    private void loadUserPreferences() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {
+            return;
+        }
+
+        DatabaseReference userRef = FirebaseDatabase.getInstance()
+                .getReference("users")
+                .child(user.getUid())
+                .child("moviePreferences");
+
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@androidx.annotation.NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    // Load thể loại yêu thích
+                    String genre = snapshot.child("favoriteGenre").getValue(String.class);
+                    if (genre != null && !genre.isEmpty()) {
+                        userFavoriteGenre = genre;
+                    }
+
+                    // Load ngôn ngữ phim yêu thích
+                    String language = snapshot.child("favoriteLanguage").getValue(String.class);
+                    if (language != null && !language.isEmpty()) {
+                        userFavoriteLanguage = language;
+                    }
+
+                    // Load tùy chọn lồng tiếng/phụ đề
+                    String subtitle = snapshot.child("subtitlePreference").getValue(String.class);
+                    if (subtitle != null && !subtitle.isEmpty()) {
+                        userSubtitlePreference = subtitle;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@androidx.annotation.NonNull DatabaseError error) {
+                // Không hiển thị lỗi cho user, chỉ log
+                android.util.Log.w("ChatbotPrefs", "Failed to load preferences: " + error.getMessage());
+            }
+        });
     }
 
     @Override
