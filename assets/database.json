@@ -1,0 +1,2199 @@
+{
+  "Banners": [
+    {
+      "age": "+13",
+      "genre": "War Action Adventure",
+      "image": "https://res.cloudinary.com/df0fkfeyl/image/upload/v1761473805/wide_urzyt2.jpg",
+      "name": "1917",
+      "time": "2 Hour",
+      "year": "2023"
+    },
+    {
+      "age": "+17",
+      "genre": "War Action Adventure",
+      "image": "https://res.cloudinary.com/df0fkfeyl/image/upload/v1761473802/img_9027_oroolo.jpg",
+      "name": "1917",
+      "time": "2 Hour",
+      "year": "2024"
+    },
+    {
+      "age": "15+",
+      "genre": "Adventure",
+      "image": "https://res.cloudinary.com/df0fkfeyl/image/upload/v1761473805/wide1_tmzedk.jpg",
+      "name": "Avengers",
+      "time": "2 Hour",
+      "year": "2023"
+    }
+  ],
+  "Bookings": {
+    "Damaged": {
+      "2025-11-08_18:45": {
+        "pricePerSeat": 2000,
+        "seats": {
+          "A1": "booked",
+          "A2": "booked",
+          "A3": "available",
+          "A4": "booked",
+          "A5": "available",
+          "A6": "available",
+          "A7": "available",
+          "A8": "available",
+          "B1": "available",
+          "B2": "available",
+          "B3": "available",
+          "B4": "available",
+          "B5": "available",
+          "B6": "available",
+          "B7": "available",
+          "B8": "available",
+          "C1": "available",
+          "C2": "available",
+          "C3": "available",
+          "C4": "available",
+          "C5": "available",
+          "C6": "available",
+          "C7": "available",
+          "C8": "available",
+          "D1": "available",
+          "D2": "available",
+          "D3": "booked",
+          "D4": "booked",
+          "D5": "available",
+          "D6": "available",
+          "D7": "available",
+          "D8": "available",
+          "E1": "available",
+          "E2": "available",
+          "E3": "available",
+          "E4": "available",
+          "E5": "available",
+          "E6": "available",
+          "E7": "available",
+          "E8": "available",
+          "F1": "available",
+          "F2": "available",
+          "F3": "available",
+          "F4": "available",
+          "F5": "available",
+          "F6": "available",
+          "F7": "booked",
+          "F8": "available",
+          "G1": "available",
+          "G2": "available",
+          "G3": "available",
+          "G4": "available",
+          "G5": "available",
+          "G6": "available",
+          "G7": "available",
+          "G8": "available",
+          "H1": "available",
+          "H2": "available",
+          "H3": "available",
+          "H4": "available",
+          "H5": "available",
+          "H6": "available",
+          "H7": "available",
+          "H8": "available",
+          "I1": "available",
+          "I2": "available",
+          "I3": "available",
+          "I4": "available",
+          "I5": "available",
+          "I6": "available",
+          "I7": "available",
+          "I8": "available",
+          "J1": "available",
+          "J2": "available",
+          "J3": "available",
+          "J4": "available",
+          "J5": "available",
+          "J6": "available",
+          "J7": "available",
+          "J8": "available",
+          "K1": "available",
+          "K2": "available",
+          "K3": "available",
+          "K4": "available",
+          "K5": "available",
+          "K6": "available",
+          "K7": "available",
+          "K8": "available"
+        }
+      }
+    },
+    "Dune: Part Two": {
+      "2025-11-08_18:00": {
+        "pricePerSeat": 90000,
+        "seats": {
+          "A1": "booked",
+          "A2": "booked",
+          "A3": "available",
+          "A4": "booked",
+          "A5": "available",
+          "A6": "available",
+          "A7": "available",
+          "A8": "available",
+          "B1": "available",
+          "B2": "available",
+          "B3": "available",
+          "B4": "booked",
+          "B5": "available",
+          "B6": "available",
+          "B7": "available",
+          "B8": "available",
+          "C1": "available",
+          "C2": "available",
+          "C3": "available",
+          "C4": "available",
+          "C5": "available",
+          "C6": "available",
+          "C7": "available",
+          "C8": "available",
+          "D1": "available",
+          "D2": "available",
+          "D3": "available",
+          "D4": "available",
+          "D5": "booked",
+          "D6": "available",
+          "D7": "booked",
+          "D8": "available",
+          "E1": "available",
+          "E2": "available",
+          "E3": "available",
+          "E4": "available",
+          "E5": "available",
+          "E6": "available",
+          "E7": "available",
+          "E8": "available",
+          "F1": "available",
+          "F2": "available",
+          "F3": "available",
+          "F4": "available",
+          "F5": "available",
+          "F6": "available",
+          "F7": "available",
+          "F8": "available",
+          "G1": "available",
+          "G2": "available",
+          "G3": "available",
+          "G4": "available",
+          "G5": "available",
+          "G6": "available",
+          "G7": "available",
+          "G8": "available",
+          "H1": "available",
+          "H2": "available",
+          "H3": "available",
+          "H4": "available",
+          "H5": "available",
+          "H6": "available",
+          "H7": "available",
+          "H8": "available",
+          "I1": "available",
+          "I2": "available",
+          "I3": "available",
+          "I4": "available",
+          "I5": "available",
+          "I6": "available",
+          "I7": "available",
+          "I8": "available"
+        }
+      }
+    },
+    "Godzilla-Kong": {
+      "2025-11-08_22:00": {
+        "pricePerSeat": 100000,
+        "seats": {
+          "A1": "booked",
+          "A2": "available",
+          "A3": "available",
+          "A4": "booked",
+          "A5": "available",
+          "A6": "available",
+          "A7": "available",
+          "A8": "available",
+          "B1": "available",
+          "B2": "available",
+          "B3": "available",
+          "B4": "available",
+          "B5": "available",
+          "B6": "available",
+          "B7": "available",
+          "B8": "available",
+          "C1": "available",
+          "C2": "available",
+          "C3": "available",
+          "C4": "available",
+          "C5": "available",
+          "C6": "available",
+          "C7": "available",
+          "C8": "available",
+          "E1": "available",
+          "E2": "available",
+          "E3": "available",
+          "E4": "available",
+          "E5": "available",
+          "E6": "available",
+          "E7": "available",
+          "E8": "available",
+          "F1": "available",
+          "F2": "available",
+          "F3": "available",
+          "F4": "available",
+          "F5": "available",
+          "F6": "available",
+          "F7": "available",
+          "F8": "available",
+          "G1": "available",
+          "G2": "available",
+          "G3": "available",
+          "G4": "available",
+          "G5": "available",
+          "G6": "available",
+          "G7": "available",
+          "G8": "available",
+          "H1": "available",
+          "H2": "available",
+          "H3": "available",
+          "H4": "available",
+          "H5": "available",
+          "H6": "available",
+          "H7": "available",
+          "H8": "available",
+          "I1": "available",
+          "I2": "available",
+          "I3": "available",
+          "I4": "available",
+          "I5": "available",
+          "I6": "available",
+          "I7": "available",
+          "I8": "available",
+          "J1": "available",
+          "J2": "available",
+          "J3": "available",
+          "J4": "available",
+          "J5": "available",
+          "J6": "available",
+          "J7": "available",
+          "J8": "available",
+          "K1": "available",
+          "K2": "available",
+          "K3": "available",
+          "K4": "available",
+          "K5": "available",
+          "K6": "available",
+          "K7": "available",
+          "K8": "available"
+        }
+      }
+    },
+    "Immaculate": {
+      "2025-11-08_13:30": {
+        "pricePerSeat": 70000,
+        "seats": {
+          "A1": "available",
+          "A2": "booked",
+          "A3": "available",
+          "A4": "available",
+          "A5": "available",
+          "A6": "available",
+          "A7": "available",
+          "A8": "available",
+          "B1": "available",
+          "B2": "available",
+          "B3": "booked",
+          "B4": "available",
+          "B5": "available",
+          "B6": "available",
+          "B7": "available",
+          "B8": "available",
+          "D1": "available",
+          "D2": "available",
+          "D3": "available",
+          "D4": "available",
+          "D5": "available",
+          "D6": "available",
+          "D7": "available",
+          "D8": "available",
+          "E1": "available",
+          "E2": "available",
+          "E3": "available",
+          "E4": "available",
+          "E5": "available",
+          "E6": "available",
+          "E7": "available",
+          "E8": "available",
+          "F1": "available",
+          "F2": "available",
+          "F3": "available",
+          "F4": "available",
+          "F5": "available",
+          "F6": "available",
+          "F7": "available",
+          "F8": "available",
+          "G1": "available",
+          "G2": "available",
+          "G3": "available",
+          "G4": "available",
+          "G5": "available",
+          "G6": "available",
+          "G7": "available",
+          "G8": "available",
+          "H1": "available",
+          "H2": "available",
+          "H3": "available",
+          "H4": "available",
+          "H5": "available",
+          "H6": "available",
+          "H7": "available",
+          "H8": "available",
+          "I1": "available",
+          "I2": "available",
+          "I3": "available",
+          "I4": "available",
+          "I5": "available",
+          "I6": "available",
+          "I7": "available",
+          "I8": "available",
+          "J1": "available",
+          "J2": "available",
+          "J3": "available",
+          "J4": "available",
+          "J5": "available",
+          "J6": "available",
+          "J7": "available",
+          "J8": "available",
+          "K1": "available",
+          "K2": "available",
+          "K3": "available",
+          "K4": "available",
+          "K5": "available",
+          "K6": "available",
+          "K7": "available",
+          "K8": "available"
+        }
+      }
+    },
+    "Kung Fu Panda 4": {
+      "2025-11-08_10:00": {
+        "pricePerSeat": 65000,
+        "seats": {
+          "A1": "available",
+          "A2": "available",
+          "A3": "available",
+          "A4": "available",
+          "A5": "available",
+          "A6": "available",
+          "A7": "available",
+          "A8": "available",
+          "B1": "booked",
+          "B2": "booked",
+          "B3": "available",
+          "B4": "available",
+          "B5": "available",
+          "B6": "available",
+          "B7": "available",
+          "B8": "available",
+          "C1": "available",
+          "C2": "available",
+          "C3": "available",
+          "C4": "available",
+          "C5": "available",
+          "C6": "available",
+          "C7": "available",
+          "C8": "available",
+          "D1": "available",
+          "D2": "available",
+          "D3": "available",
+          "D4": "available",
+          "D5": "available",
+          "D6": "available",
+          "D7": "available",
+          "D8": "available",
+          "E1": "available",
+          "E2": "available",
+          "E3": "available",
+          "E4": "available",
+          "E5": "available",
+          "E6": "available",
+          "E7": "available",
+          "E8": "available",
+          "F1": "available",
+          "F2": "available",
+          "F3": "available",
+          "F4": "available",
+          "F5": "available",
+          "F6": "available",
+          "F7": "available",
+          "F8": "available",
+          "G1": "available",
+          "G2": "available",
+          "G3": "available",
+          "G4": "available",
+          "G5": "available",
+          "G6": "available",
+          "G7": "available",
+          "G8": "available",
+          "H1": "available",
+          "H2": "available",
+          "H3": "available",
+          "H4": "available",
+          "H5": "available",
+          "H6": "available",
+          "H7": "available",
+          "H8": "available",
+          "I1": "available",
+          "I2": "available",
+          "I3": "available",
+          "I4": "available",
+          "I5": "available",
+          "I6": "available",
+          "I7": "available",
+          "I8": "available",
+          "J1": "available",
+          "J2": "available",
+          "J3": "available",
+          "J4": "available",
+          "J5": "available",
+          "J6": "available",
+          "J7": "available",
+          "J8": "available",
+          "K1": "available",
+          "K2": "available",
+          "K3": "available",
+          "K4": "available",
+          "K5": "available",
+          "K6": "available",
+          "K7": "available",
+          "K8": "available"
+        }
+      }
+    },
+    "No Way Up": {
+      "2025-11-08_17:00": {
+        "pricePerSeat": 75000,
+        "seats": {
+          "C1": "available",
+          "C2": "available",
+          "C3": "available",
+          "C4": "available",
+          "C5": "available",
+          "C6": "available",
+          "C7": "available",
+          "C8": "available",
+          "D1": "available",
+          "D2": "available",
+          "D3": "available",
+          "D4": "available",
+          "D5": "available",
+          "D6": "available",
+          "D7": "available",
+          "D8": "available",
+          "E1": "available",
+          "E2": "available",
+          "E3": "available",
+          "E4": "available",
+          "E5": "available",
+          "E6": "available",
+          "E7": "available",
+          "E8": "available",
+          "F1": "available",
+          "F2": "available",
+          "F3": "available",
+          "F4": "available",
+          "F5": "available",
+          "F6": "available",
+          "F7": "available",
+          "F8": "available",
+          "G1": "available",
+          "G2": "available",
+          "G3": "available",
+          "G4": "available",
+          "G5": "available",
+          "G6": "available",
+          "G7": "available",
+          "G8": "available",
+          "H1": "available",
+          "H2": "available",
+          "H3": "available",
+          "H4": "available",
+          "H5": "available",
+          "H6": "available",
+          "H7": "available",
+          "H8": "available",
+          "I1": "available",
+          "I2": "available",
+          "I3": "available",
+          "I4": "available",
+          "I5": "available",
+          "I6": "available",
+          "I7": "available",
+          "I8": "available",
+          "J1": "available",
+          "J2": "available",
+          "J3": "available",
+          "J4": "available",
+          "J5": "available",
+          "J6": "available",
+          "J7": "available",
+          "J8": "available",
+          "K1": "available",
+          "K2": "available",
+          "K3": "available",
+          "K4": "available",
+          "K5": "available",
+          "K6": "available",
+          "K7": "available",
+          "K8": "available"
+        }
+      }
+    },
+    "Ordinary Angels": {
+      "2025-11-08_14:30": {
+        "pricePerSeat": 80000,
+        "seats": {
+          "A1": "available",
+          "A2": "available",
+          "A3": "available",
+          "A4": "available",
+          "A5": "available",
+          "A6": "available",
+          "A7": "available",
+          "A8": "available",
+          "B1": "booked",
+          "B2": "available",
+          "B3": "available",
+          "B4": "booked",
+          "B5": "available",
+          "B6": "available",
+          "B7": "available",
+          "B8": "available",
+          "C1": "available",
+          "C2": "available",
+          "C3": "available",
+          "C4": "available",
+          "C5": "available",
+          "C6": "available",
+          "C7": "available",
+          "C8": "available",
+          "D1": "available",
+          "D2": "available",
+          "D3": "available",
+          "D4": "available",
+          "D5": "available",
+          "D6": "available",
+          "D7": "available",
+          "D8": "available",
+          "E1": "available",
+          "E2": "available",
+          "E3": "available",
+          "E4": "available",
+          "E5": "available",
+          "E6": "available",
+          "E7": "available",
+          "E8": "available",
+          "F1": "available",
+          "F2": "available",
+          "F3": "available",
+          "F4": "available",
+          "F5": "available",
+          "F6": "available",
+          "F7": "available",
+          "F8": "available",
+          "G1": "available",
+          "G2": "available",
+          "G3": "available",
+          "G4": "available",
+          "G5": "available",
+          "G6": "available",
+          "G7": "available",
+          "G8": "available",
+          "H1": "available",
+          "H2": "available",
+          "H3": "available",
+          "H4": "available",
+          "H5": "available",
+          "H6": "available",
+          "H7": "available",
+          "H8": "available",
+          "I1": "available",
+          "I2": "available",
+          "I3": "available",
+          "I4": "available",
+          "I5": "available",
+          "I6": "available",
+          "I7": "available",
+          "I8": "available",
+          "J1": "available",
+          "J2": "available",
+          "J3": "available",
+          "J4": "available",
+          "J5": "available",
+          "J6": "available",
+          "J7": "available",
+          "J8": "available"
+        }
+      }
+    },
+    "Rebel Moon": {
+      "2025-11-08_21:00": {
+        "pricePerSeat": 95000,
+        "seats": {
+          "B1": "booked",
+          "B2": "booked",
+          "B3": "available",
+          "B4": "booked",
+          "B5": "available",
+          "B6": "available",
+          "B7": "available",
+          "B8": "available",
+          "C1": "available",
+          "C2": "available",
+          "C3": "booked",
+          "C4": "available",
+          "C5": "booked",
+          "C6": "available",
+          "C7": "available",
+          "C8": "available",
+          "D1": "available",
+          "D2": "available",
+          "D3": "booked",
+          "D4": "available",
+          "D5": "available",
+          "D6": "available",
+          "D7": "available",
+          "D8": "booked",
+          "E1": "available",
+          "E2": "available",
+          "E3": "available",
+          "E4": "available",
+          "E5": "available",
+          "E6": "available",
+          "E7": "available",
+          "E8": "available",
+          "F1": "available",
+          "F2": "available",
+          "F3": "available",
+          "F4": "available",
+          "F5": "available",
+          "F6": "available",
+          "F7": "available",
+          "F8": "available",
+          "G1": "available",
+          "G2": "available",
+          "G3": "available",
+          "G4": "available",
+          "G5": "available",
+          "G6": "available",
+          "G7": "available",
+          "G8": "available",
+          "H1": "available",
+          "H2": "available",
+          "H3": "available",
+          "H4": "available",
+          "H5": "available",
+          "H6": "available",
+          "H7": "available",
+          "H8": "available",
+          "I1": "available",
+          "I2": "available",
+          "I3": "available",
+          "I4": "available",
+          "I5": "available",
+          "I6": "available",
+          "I7": "available",
+          "I8": "available",
+          "J1": "available",
+          "J2": "available",
+          "J3": "available",
+          "J4": "available",
+          "J5": "available",
+          "J6": "available",
+          "J7": "available",
+          "J8": "available",
+          "K1": "available",
+          "K2": "available",
+          "K3": "available",
+          "K4": "available",
+          "K5": "available",
+          "K6": "available",
+          "K7": "available",
+          "K8": "available"
+        }
+      }
+    },
+    "The Fall Guy": {
+      "2025-11-08_20:00": {
+        "pricePerSeat": 85000,
+        "seats": {
+          "A1": "available",
+          "A2": "available",
+          "A3": "booked",
+          "A4": "available",
+          "A5": "available",
+          "A6": "available",
+          "A7": "available",
+          "A8": "available",
+          "C1": "available",
+          "C2": "available",
+          "C3": "available",
+          "C4": "available",
+          "C5": "available",
+          "C6": "available",
+          "C7": "available",
+          "C8": "available",
+          "D1": "available",
+          "D2": "available",
+          "D3": "available",
+          "D4": "available",
+          "D5": "available",
+          "D6": "available",
+          "D7": "available",
+          "D8": "available",
+          "E1": "available",
+          "E2": "available",
+          "E3": "available",
+          "E4": "available",
+          "E5": "available",
+          "E6": "available",
+          "E7": "available",
+          "E8": "available",
+          "F1": "available",
+          "F2": "available",
+          "F3": "available",
+          "F4": "available",
+          "F5": "available",
+          "F6": "available",
+          "F7": "available",
+          "F8": "available",
+          "G1": "available",
+          "G2": "available",
+          "G3": "available",
+          "G4": "available",
+          "G5": "available",
+          "G6": "available",
+          "G7": "available",
+          "G8": "available",
+          "H1": "available",
+          "H2": "available",
+          "H3": "available",
+          "H4": "available",
+          "H5": "available",
+          "H6": "available",
+          "H7": "available",
+          "H8": "available",
+          "I1": "available",
+          "I2": "available",
+          "I3": "available",
+          "I4": "available",
+          "I5": "available",
+          "I6": "available",
+          "I7": "available",
+          "I8": "available",
+          "J1": "available",
+          "J2": "available",
+          "J3": "available",
+          "J4": "available",
+          "J5": "available",
+          "J6": "available",
+          "J7": "available",
+          "J8": "available",
+          "K1": "available",
+          "K2": "available",
+          "K3": "available",
+          "K4": "available",
+          "K5": "available",
+          "K6": "available",
+          "K7": "available",
+          "K8": "available"
+        }
+      }
+    },
+    "The Gorge": {
+      "2025-11-08_15:15": {
+        "pricePerSeat": 70000,
+        "seats": {
+          "A1": "available",
+          "A2": "available",
+          "A3": "booked",
+          "A4": "available",
+          "A5": "available",
+          "A6": "available",
+          "A7": "available",
+          "A8": "available",
+          "B1": "available",
+          "B2": "booked",
+          "B3": "available",
+          "B4": "available",
+          "B5": "available",
+          "B6": "available",
+          "B7": "available",
+          "B8": "available",
+          "C1": "available",
+          "C2": "available",
+          "C3": "available",
+          "C4": "available",
+          "C5": "booked",
+          "C6": "booked",
+          "C7": "available",
+          "C8": "available",
+          "D1": "available",
+          "D2": "available",
+          "D3": "available",
+          "D4": "booked",
+          "D5": "booked",
+          "D6": "booked",
+          "D7": "available",
+          "D8": "available",
+          "E1": "available",
+          "E2": "available",
+          "E3": "available",
+          "E4": "available",
+          "E5": "available",
+          "E6": "available",
+          "E7": "available",
+          "E8": "available",
+          "F1": "available",
+          "F2": "available",
+          "F3": "available",
+          "F4": "available",
+          "F5": "available",
+          "F6": "available",
+          "F7": "available",
+          "F8": "available",
+          "G1": "available",
+          "G2": "available",
+          "G3": "available",
+          "G4": "available",
+          "G5": "available",
+          "G6": "available",
+          "G7": "available",
+          "G8": "available",
+          "H1": "available",
+          "H2": "available",
+          "H3": "available",
+          "H4": "available",
+          "H5": "available",
+          "H6": "available",
+          "H7": "available",
+          "H8": "available",
+          "I1": "available",
+          "I2": "available",
+          "I3": "available",
+          "I4": "available",
+          "I5": "available",
+          "I6": "available",
+          "I7": "available",
+          "I8": "available",
+          "J1": "available",
+          "J2": "available",
+          "J3": "available",
+          "J4": "available",
+          "J5": "available",
+          "J6": "available",
+          "J7": "available",
+          "J8": "available"
+        }
+      },
+      "2025-11-08_19:00": {
+        "pricePerSeat": 70000,
+        "seats": {
+          "A1": "available",
+          "A2": "available",
+          "A3": "available",
+          "A4": "available",
+          "A5": "available",
+          "A6": "available",
+          "A7": "available",
+          "A8": "available",
+          "B1": "booked",
+          "B2": "booked",
+          "B3": "available",
+          "B4": "available",
+          "B5": "available",
+          "B6": "available",
+          "B7": "available",
+          "B8": "available",
+          "C1": "available",
+          "C2": "available",
+          "C3": "available",
+          "C4": "available",
+          "C5": "available",
+          "C6": "available",
+          "C7": "available",
+          "C8": "available",
+          "D1": "available",
+          "D2": "available",
+          "D3": "available",
+          "D4": "available",
+          "D5": "available",
+          "D6": "available",
+          "D7": "available",
+          "D8": "available",
+          "E1": "available",
+          "E2": "available",
+          "E3": "available",
+          "E4": "available",
+          "E5": "available",
+          "E6": "booked",
+          "E7": "available",
+          "E8": "available",
+          "F1": "available",
+          "F2": "available",
+          "F3": "available",
+          "F4": "available",
+          "F5": "available",
+          "F6": "available",
+          "F7": "available",
+          "F8": "available",
+          "G1": "available",
+          "G2": "available",
+          "G3": "available",
+          "G4": "available",
+          "G5": "available",
+          "G6": "available",
+          "G7": "available",
+          "G8": "available",
+          "H1": "available",
+          "H2": "available",
+          "H3": "available",
+          "H4": "available",
+          "H5": "available",
+          "H6": "available",
+          "H7": "available",
+          "H8": "available",
+          "I1": "available",
+          "I2": "available",
+          "I3": "available",
+          "I4": "available",
+          "I5": "available",
+          "I6": "available",
+          "I7": "available",
+          "I8": "available",
+          "J1": "available",
+          "J2": "available",
+          "J3": "available",
+          "J4": "available",
+          "J5": "available",
+          "J6": "available",
+          "J7": "available",
+          "J8": "available",
+          "K1": "available",
+          "K2": "available",
+          "K3": "available",
+          "K4": "available",
+          "K5": "available",
+          "K6": "available",
+          "K7": "available",
+          "K8": "available"
+        }
+      }
+    },
+    "The Three Musketeers": {
+      "2025-11-08_16:45": {
+        "pricePerSeat": 80000,
+        "seats": {
+          "A1": "available",
+          "A2": "available",
+          "A3": "available",
+          "A4": "booked",
+          "A5": "available",
+          "A6": "available",
+          "A7": "available",
+          "A8": "available",
+          "B1": "booked",
+          "B2": "available",
+          "B3": "available",
+          "B4": "booked",
+          "B5": "available",
+          "B6": "available",
+          "B7": "available",
+          "B8": "available",
+          "C1": "available",
+          "C2": "available",
+          "C3": "available",
+          "C4": "available",
+          "C5": "available",
+          "C6": "available",
+          "C7": "available",
+          "C8": "available",
+          "D1": "available",
+          "D2": "available",
+          "D3": "available",
+          "D4": "available",
+          "D5": "available",
+          "D6": "available",
+          "D7": "available",
+          "D8": "available",
+          "E1": "available",
+          "E2": "available",
+          "E3": "available",
+          "E4": "available",
+          "E5": "available",
+          "E6": "available",
+          "E7": "available",
+          "E8": "available",
+          "F1": "available",
+          "F2": "available",
+          "F3": "available",
+          "F4": "available",
+          "F5": "available",
+          "F6": "available",
+          "F7": "available",
+          "F8": "available",
+          "G1": "available",
+          "G2": "available",
+          "G3": "available",
+          "G4": "available",
+          "G5": "available",
+          "G6": "available",
+          "G7": "available",
+          "G8": "available",
+          "H1": "available",
+          "H2": "available",
+          "H3": "available",
+          "H4": "available",
+          "H5": "available",
+          "H6": "available",
+          "H7": "available",
+          "H8": "available",
+          "I1": "available",
+          "I2": "available",
+          "I3": "available",
+          "I4": "available",
+          "I5": "available",
+          "I6": "available",
+          "I7": "available",
+          "I8": "available",
+          "J1": "available",
+          "J2": "available",
+          "J3": "available",
+          "J4": "available",
+          "J5": "available",
+          "J6": "available",
+          "J7": "available",
+          "J8": "available",
+          "K1": "available",
+          "K2": "available",
+          "K3": "available",
+          "K4": "available",
+          "K5": "available",
+          "K6": "available",
+          "K7": "available",
+          "K8": "available"
+        }
+      }
+    }
+  },
+  "Items": [
+    {
+      "Casts": [
+        {
+          "Actor": "Miles Teller",
+          "PicUrl": "https://res.cloudinary.com/dkikc5ywq/image/upload/v1757057685/Miles_Teller_cdgafx.png"
+        },
+        {
+          "Actor": "Anya Taylor",
+          "PicUrl": "https://res.cloudinary.com/dkikc5ywq/image/upload/v1757057685/Anya_Taylor_qkbwhw.png"
+        },
+        {
+          "Actor": "Sigourney Weaver",
+          "PicUrl": "https://res.cloudinary.com/dkikc5ywq/image/upload/v1757063011/Sigourney_Weaver_ry4wzi.png"
+        },
+        {
+          "Actor": "Sope Dirisu",
+          "PicUrl": "https://res.cloudinary.com/dkikc5ywq/image/upload/v1757057684/Sope_Dirisu_hrrxkj.png"
+        }
+      ],
+      "Description": "Two operatives are appointed to posts in guard towers on opposite sides of a classified gorge.",
+      "Genre": [
+        "Adventure",
+        "Action",
+        "Romance",
+        "Horror",
+        "Drama"
+      ],
+      "Imdb": 6.7,
+      "Pcitures": [
+        "https://res.cloudinary.com/df0fkfeyl/image/upload/v1762502168/MV5BMDFkMjRmZTQtNGE1Yi00NmRiLWJhOWMtY2UyZTk3M2FhYTc5XkEyXkFqcGc._V1_QL75_UX328__dpvaux.jpg",
+        "https://res.cloudinary.com/df0fkfeyl/image/upload/v1762502170/MV5BNDVmODhhYzYtN2FiNC00MzY1LWE2NTktYjNkODJjZTBiYmI3XkEyXkFqcGc._V1_QL75_UX328__uoetq8.jpg",
+        "https://res.cloudinary.com/df0fkfeyl/image/upload/v1762502169/MV5BOGJhMmNhNTYtMzFkMS00MGFiLWIyOTUtZDFhN2U2YTg1YjUxXkEyXkFqcGc._V1_QL75_UX328__qejotz.jpg",
+        "https://res.cloudinary.com/df0fkfeyl/image/upload/v1762502169/MV5BMWY3NTVlYzUtMTdlZS00YjM1LThhMzAtNzMxZTBjMmRmZTAzXkEyXkFqcGc._V1_QL75_UX328__ffnbwo.jpg"
+      ],
+      "Poster": "https://res.cloudinary.com/df0fkfeyl/image/upload/v1762501997/The_Gorge_rbbpfo.jpg",
+      "Time": "1h 55m",
+      "Title": "The Gorge",
+      "Trailer": "https://www.imdb.com/video/vi2559363353/?ref_=tt_vids_vi_1",
+      "Year": 2025,
+      "movieID": "movie001",
+      "price": 120
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Timothée Chalamet",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project201-af261.appspot.com/o/Timoth%C3%A9e%20Chalamet.jpg?alt=media&token=2e549653-8518-4644-8af5-aa47be7c09d2"
+        },
+        {
+          "Actor": "Zendaya",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project201-af261.appspot.com/o/Zendaya.jpg?alt=media&token=8e8fe906-4da5-4553-8279-8a9956599e07"
+        },
+        {
+          "Actor": "Rebecca Ferguson",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project201-af261.appspot.com/o/Rebecca%20Ferguson.jpg?alt=media&token=c805751e-2844-48ce-8610-166cd282286b"
+        },
+        {
+          "Actor": "Javier Bardem",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project201-af261.appspot.com/o/Javier%20Bardem.jpg?alt=media&token=1ea7f871-6562-4977-81f9-596fb71d1c23"
+        }
+      ],
+      "Description": "Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family.",
+      "Genre": [
+        "Adventure",
+        "Action",
+        "Drama"
+      ],
+      "Imdb": 8.5,
+      "Poster": "https://firebasestorage.googleapis.com/v0/b/project201-af261.appspot.com/o/Dune%20Part%20Two.jpg?alt=media&token=439f8a72-c685-46ed-aac5-7117de77cf17",
+      "Time": "2h 46m",
+      "Title": "Dune: Part Two",
+      "Trailer": "https://www.imdb.com/video/vi3332425241/?playlistId=tt15239678&ref_=tt_pr_ov_vi",
+      "Year": 2024,
+      "movieID": "movie002",
+      "price": 120
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Hilary Swank",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project201-af261.appspot.com/o/Hilary%20Swank.jpg?alt=media&token=a1c53ac6-ee4a-4e88-8096-f8578f86a8d4"
+        },
+        {
+          "Actor": "Alan Ritchson",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project201-af261.appspot.com/o/Alan%20Ritchson.jpg?alt=media&token=162a6fdb-eccc-41af-91a8-408b718eaa41"
+        },
+        {
+          "Actor": "Don Mike",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project201-af261.appspot.com/o/Don%20Mike.jpg?alt=media&token=920a766c-ee5f-4a93-8b12-ca2950092e33"
+        },
+        {
+          "Actor": "Tamala Jones",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project201-af261.appspot.com/o/Tamala%20Jones.jpg?alt=media&token=89d7d610-5603-46a7-8264-e90f8c30835b"
+        }
+      ],
+      "Description": "Inspired by the incredible true story of a hairdresser who single-handedly rallies an entire community to help a widowed father save the life of his critically ill young daughter.",
+      "Genre": [
+        "Drama"
+      ],
+      "Imdb": 7.4,
+      "Poster": "https://firebasestorage.googleapis.com/v0/b/project201-af261.appspot.com/o/Ordinary%20Angels.jpg?alt=media&token=e94f3d09-3505-4993-9208-785052b4db5a",
+      "Time": "2h 6m",
+      "Title": "Ordinary Angels",
+      "Trailer": "https://www.imdb.com/video/vi3745105689/?ref_=tt_vi_i_2",
+      "Year": 2024,
+      "movieID": "movie003",
+      "price": 120
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Ryan Gosling",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project201-af261.appspot.com/o/Ryan%20Gosling.jpg?alt=media&token=a2599fe3-4e38-430b-bd56-21c552358a6c"
+        },
+        {
+          "Actor": "Emily Blunt",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project201-af261.appspot.com/o/Emily%20Blunt.jpg?alt=media&token=fa22e23f-0c53-461f-babb-e4474f2dccbb"
+        },
+        {
+          "Actor": "Aaron Johnson",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project201-af261.appspot.com/o/Aaron%20Taylor-Johnson.jpg?alt=media&token=c5230f42-0e53-49c8-9981-ae7d461bb569"
+        },
+        {
+          "Actor": "Hannah Waddingham",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project201-af261.appspot.com/o/Hannah%20Waddingham.jpg?alt=media&token=87bc9b3e-d3b5-4ded-8330-c4f69477049f"
+        }
+      ],
+      "Description": "A stuntman, fresh off an almost career-ending accident, has to track down a missing movie star, solve a conspiracy and try to win back the love of his life while still doing his day job. What could possibly go right?",
+      "Genre": [
+        "Comedy",
+        "Action",
+        "Drama"
+      ],
+      "Imdb": 6.9,
+      "Poster": "https://firebasestorage.googleapis.com/v0/b/project201-af261.appspot.com/o/The%20Fall%20Guy.jpg?alt=media&token=c2d9354e-a240-4441-9a5c-3a556830e5d0",
+      "Time": "2h 6m",
+      "Title": "The Fall Guy",
+      "Trailer": "https://www.imdb.com/video/vi1681377049/?ref_=ttvi_vi_imdb_21",
+      "Year": 2024,
+      "movieID": "movie004",
+      "price": 120
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Sofia Boutella",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Sofia-Boutella.png?alt=media&token=5228f685-402e-427d-806c-ba232fc8105e"
+        },
+        {
+          "Actor": "Ed Skrein",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Ed-Skrein.png?alt=media&token=10ca5ad3-df69-4659-b93b-ac51d210e9cc"
+        },
+        {
+          "Actor": "Michiel Huisman",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Michiel-Huisman.png?alt=media&token=4af024cc-bcaf-4e29-9419-92329a0ace57"
+        },
+        {
+          "Actor": "Djimon Hounsou",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Djimon-Hounsou.png?alt=media&token=8b948e3f-19bf-48c3-8368-73da254038b2"
+        }
+      ],
+      "Description": "A young woman with a mysterious past is tasked with uniting different tribes to fight against an oppressive warlord who threatens their peaceful colony.",
+      "Genre": [
+        "Adventure",
+        "Action",
+        "Sci-Fi"
+      ],
+      "Imdb": 9,
+      "Poster": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/aqKtSJdsUYNhEYfV42AYpamhEle.jpg?alt=media&token=91799666-41bd-4640-8470-07b3147da3b7",
+      "Time": "2h 22m",
+      "Title": "Rebel Moon",
+      "Trailer": "https://www.youtube.com/watch?v=UEJuNHOd8Dw",
+      "Year": 2023,
+      "movieID": "movie005",
+      "price": 120
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Sydney Sweeney",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Sydney-Sweeney.png?alt=media&token=c8cecc39-ffbb-4893-9993-182c8078055a"
+        },
+        {
+          "Actor": " lvaro Morte",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Alvaro-Morte.png?alt=media&token=23a796f0-ad84-4332-83f3-2282eb9ee1bb"
+        },
+        {
+          "Actor": "Simona Tabasco",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Simona-Tabasco.png?alt=media&token=2817ec96-323e-4b69-a129-cfbc121159e3"
+        },
+        {
+          "Actor": "Benedetta Porcaroli",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Benedetta-Porcaroli.png?alt=media&token=e1038e80-48ce-43af-9346-d3073cca74df"
+        }
+      ],
+      "Description": "A young woman who possesses the ability to heal others must fight to protect her gift from those who would exploit it.",
+      "Genre": [
+        "Drama",
+        "Fantasy"
+      ],
+      "Imdb": 8.3,
+      "Poster": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/fdZpvODTX5wwkD0ikZNaClE4AoW.jpg?alt=media&token=d669f273-9633-4cb5-b416-e0f79a610ea7",
+      "Time": "1h 36m",
+      "Title": "Immaculate",
+      "Trailer": "https://www.youtube.com/watch?v=ewxS9Z-XXYo",
+      "Year": 2023,
+      "movieID": "movie006",
+      "price": 120
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Rebecca Hall",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Rebecca-Hall.png?alt=media&token=fff9a405-c20c-4704-855f-d40e4cb75ecd"
+        },
+        {
+          "Actor": "Brian Tyree Henry",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Brian-Tyree-Henry.png?alt=media&token=2dc8ae1d-cce1-4106-8cc6-5ea2a98998eb"
+        },
+        {
+          "Actor": "Dan Stevens",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Dan-Stevens.png?alt=media&token=da50ebb6-4d3e-4e78-918e-0094cb8279d2"
+        },
+        {
+          "Actor": "Kaylee Hottle",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Kaylee-Hottle.png?alt=media&token=ea367e94-8d40-4df3-9274-03e69c1df736"
+        }
+      ],
+      "Description": "Godzilla and Kong must team up to battle a common enemy that threatens to destroy both of their worlds.",
+      "Genre": [
+        "Action",
+        "Adventure",
+        "Sci-Fi"
+      ],
+      "Imdb": 8.5,
+      "Poster": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/gmGK5Gw5CIGMPhOmTO0bNA9Q66c.jpg?alt=media&token=734fca39-eff1-4cb1-93be-308b6187c2b3",
+      "Time": "1h 56m",
+      "Title": "Godzilla-Kong",
+      "Trailer": "https://www.youtube.com/watch?v=qqrpMRDuPfc",
+      "Year": 2023,
+      "movieID": "movie007",
+      "price": 120
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Colm Meaney",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Colm-Meaney.png?alt=media&token=2650c663-7b88-47e1-941f-f0e9103ef60b"
+        },
+        {
+          "Actor": "Will Attenborough",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Will-Attenborough.png?alt=media&token=0cf07591-e278-4584-979a-02c1a408ec1a"
+        },
+        {
+          "Actor": "Jeremias Amoore",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Jeremias-Amoore.png?alt=media&token=4bca63fb-2558-4016-a798-52cf2f25b003"
+        },
+        {
+          "Actor": "Sophie McIntosh",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Sophie-McIntosh.png?alt=media&token=ca25c8be-b0e0-447a-93fc-e459abe33990"
+        }
+      ],
+      "Description": "A group of strangers trapped in an elevator must find a way to escape before they run out of air.",
+      "Genre": [
+        "Thriller",
+        "Drama"
+      ],
+      "Imdb": 7.5,
+      "Poster": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/hu40Uxp9WtpL34jv3zyWLb5zEVY.jpg?alt=media&token=32f2c83f-de98-4e6e-a5cc-81d33d5323e0",
+      "Time": "1h 38m",
+      "Title": "No Way Up",
+      "Trailer": "https://www.youtube.com/watch?v=PSEoAaSswgo",
+      "Year": 2023,
+      "movieID": "movie008",
+      "price": 120
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Jack Black",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Jack-Black.png?alt=media&token=5d8b70cf-1e8e-4423-8028-03dd19277c64"
+        },
+        {
+          "Actor": "Awkwafina",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Awkwafina.png?alt=media&token=79dff5eb-ecf4-4cbb-939f-98901aa504fa"
+        },
+        {
+          "Actor": "Viola Davis",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Viola-Davis.png?alt=media&token=af35c531-e268-426d-bd70-89cdf6002450"
+        },
+        {
+          "Actor": "Djimon Hounsou",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Djimon-Hounsou.png?alt=media&token=8b948e3f-19bf-48c3-8368-73da254038b2"
+        }
+      ],
+      "Description": "Po and the Furious Five must once again defend the Jade Palace from a new threat.",
+      "Genre": [
+        "Thriller",
+        "Drama"
+      ],
+      "Imdb": 7.5,
+      "Poster": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/kDp1vUBnMpe8ak4rjgl3cLELqjU.jpg?alt=media&token=e2eeb516-64dd-4f7d-8bc6-268f85be28ec",
+      "Time": "1h 42m",
+      "Title": "Kung Fu Panda 4",
+      "Trailer": "https://www.youtube.com/watch?v=_inKs4eeHiI",
+      "Year": 2024,
+      "movieID": "movie009",
+      "price": 120
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Fran ois Civil",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Fran%C3%A7ois-Civil.png?alt=media&token=940f3c2c-4a7a-488a-b7e3-d580f2fc4266"
+        },
+        {
+          "Actor": "Vincent Cassel",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Vincent-Cassel.png?alt=media&token=3747bb32-c5fa-4169-ae27-878bb28d0b46"
+        },
+        {
+          "Actor": "Romain Duris",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Romain-Duris.png?alt=media&token=50aade39-e5cb-477f-b9e2-63772cdce96b"
+        },
+        {
+          "Actor": "Pio Marma ",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Pio-Marma%C3%AF.png?alt=media&token=ed5926d4-9466-451c-bb66-5d839405febb"
+        }
+      ],
+      "Description": "A young man named D'Artagnan travels to Paris to become a musketeer and joins forces with Athos, Porthos, and Aramis to stop a plot to overthrow the king.",
+      "Genre": [
+        "Action",
+        "Adventure"
+      ],
+      "Imdb": 8.2,
+      "Poster": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/rtosxP5sXuoRFPH4sVbMccLIPiV.jpg?alt=media&token=f93e0560-0869-4fef-a258-adcf0b1cc6f5",
+      "Time": "2h 7m",
+      "Title": "The Three Musketeers",
+      "Trailer": "https://www.youtube.com/watch?v=FsuJMqePZtg",
+      "Year": 2023,
+      "movieID": "movie010",
+      "price": 120
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Samuel L. Jackson",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Samuel-L.-Jackson.png?alt=media&token=d0ac6db1-21e8-463d-a563-b8d66de8da46"
+        },
+        {
+          "Actor": "Vincent Cassel",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Vincent-Cassel.png?alt=media&token=3747bb32-c5fa-4169-ae27-878bb28d0b46"
+        },
+        {
+          "Actor": "Gianni Capaldi",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Gianni-Capaldi.png?alt=media&token=3d8b9882-c4c5-4526-be4e-db26dc2a65fe"
+        },
+        {
+          "Actor": "Laura Haddock",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Laura-Haddock.png?alt=media&token=8df65136-003d-48bf-99de-58ef7f745696"
+        }
+      ],
+      "Description": "A war veteran struggling with PTSD seeks revenge on the people who killed his family.",
+      "Genre": [
+        "Action",
+        "Thriller"
+      ],
+      "Imdb": 8.6,
+      "Poster": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/tMO0YLXgJZBnIAjoTSz26zE33YN.jpg?alt=media&token=71387566-ab09-4901-9fd2-117b9b567488",
+      "Time": "1h 54m",
+      "Title": "Damaged",
+      "Trailer": "https://www.youtube.com/watch?v=Sg8NuJL5P_8",
+      "Year": 2023,
+      "movieID": "movie011",
+      "price": 120
+    }
+  ],
+  "Upcomming": [
+    {
+      "Casts": [
+        {
+          "Actor": "Scarlett Johansson",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project201-af261.appspot.com/o/Scarlett%20Johansson.jpg?alt=media&token=3f47f029-7206-4d1e-89b4-7b9c89169924"
+        },
+        {
+          "Actor": "Channing Tatum",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project201-af261.appspot.com/o/Channing%20Tatum.jpg?alt=media&token=7f0fbdb0-c51b-4819-a7b6-9186cc54d2d3"
+        },
+        {
+          "Actor": "Woody Harrelson",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project201-af261.appspot.com/o/Woody%20Harrelson.jpg?alt=media&token=ef5c2d2a-29a1-46c5-b393-1540015fb84e"
+        },
+        {
+          "Actor": "Ray Romano",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project201-af261.appspot.com/o/Ray%20Romano.jpg?alt=media&token=5b919a6d-1675-42e2-ac51-affde8bbe841"
+        }
+      ],
+      "Description": "Marketing maven Kelly Jones wreaks havoc on launch director Cole Davis's already difficult task. When the White House deems the mission too important to fail, the countdown truly begins.",
+      "Genre": [
+        "Comedy",
+        "Ramonce"
+      ],
+      "Imdb": 6.6,
+      "Poster": "https://firebasestorage.googleapis.com/v0/b/project201-af261.appspot.com/o/Fly%20Me%20to%20the%20Moon.jpg?alt=media&token=53642115-ee98-4ba9-913a-c153bab3751d",
+      "Time": "2h 12m",
+      "Title": "Fly Me to the Moon",
+      "Trailer": "https://www.imdb.com/video/vi2956707353/?playlistId=tt1896747&ref_=tt_ov_vi",
+      "Year": 2024,
+      "price": 120
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Jennifer Lopez",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project201-af261.appspot.com/o/Jennifer%20Lopez.jpg?alt=media&token=1871234d-1ded-4de5-a1da-b93ec0b4baba"
+        },
+        {
+          "Actor": "Simu Liu",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project201-af261.appspot.com/o/Simu%20Liu.jpg?alt=media&token=7b5b1b25-6d52-49b9-9be7-7888ea6dbc09"
+        },
+        {
+          "Actor": "Sterling K. Brown",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project201-af261.appspot.com/o/Sterling%20Brown.jpg?alt=media&token=71870fb7-7908-47e5-8202-7b1878008601"
+        },
+        {
+          "Actor": "Greg Cohan",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project201-af261.appspot.com/o/Greg%20Cohan.jpg?alt=media&token=471c8e8d-17ec-4b9d-b3e5-ff525148d147"
+        }
+      ],
+      "Description": "In a bleak-sounding future, an A.I. soldier has determined that the only way to end war is to end humanity.",
+      "Genre": [
+        "Action",
+        "Adventure",
+        "Thriller",
+        "Drama"
+      ],
+      "Imdb": 5.6,
+      "Poster": "https://firebasestorage.googleapis.com/v0/b/project201-af261.appspot.com/o/Atlas.jpg?alt=media&token=3fce799c-91fb-415d-b571-0041ab41d2f0",
+      "Time": "1h 58m",
+      "Title": "Atlas",
+      "Trailer": "https://www.imdb.com/video/vi1105249817/?playlistId=tt14856980&ref_=tt_pr_ov_vi",
+      "Year": 2024,
+      "price": 120
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Fran ois Civil",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Fran%C3%A7ois-Civil.png?alt=media&token=940f3c2c-4a7a-488a-b7e3-d580f2fc4266"
+        },
+        {
+          "Actor": "Vincent Cassel",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Vincent-Cassel.png?alt=media&token=3747bb32-c5fa-4169-ae27-878bb28d0b46"
+        },
+        {
+          "Actor": "Romain Duris",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Romain-Duris.png?alt=media&token=50aade39-e5cb-477f-b9e2-63772cdce96b"
+        },
+        {
+          "Actor": "Pio Marma ",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Pio-Marma%C3%AF.png?alt=media&token=ed5926d4-9466-451c-bb66-5d839405febb"
+        }
+      ],
+      "Description": "A young man named D'Artagnan travels to Paris to become a musketeer and joins forces with Athos, Porthos, and Aramis to stop a plot to overthrow the king.",
+      "Genre": [
+        "Action",
+        "Adventure"
+      ],
+      "Imdb": 8.2,
+      "Poster": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/rtosxP5sXuoRFPH4sVbMccLIPiV.jpg?alt=media&token=f93e0560-0869-4fef-a258-adcf0b1cc6f5",
+      "Time": "2h 7m",
+      "Title": "The Three Musketeers",
+      "Trailer": "https://www.youtube.com/watch?v=FsuJMqePZtg",
+      "Year": 2023,
+      "price": 120
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Samuel L. Jackson",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Samuel-L.-Jackson.png?alt=media&token=d0ac6db1-21e8-463d-a563-b8d66de8da46"
+        },
+        {
+          "Actor": "Vincent Cassel",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Vincent-Cassel.png?alt=media&token=3747bb32-c5fa-4169-ae27-878bb28d0b46"
+        },
+        {
+          "Actor": "Gianni Capaldi",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Gianni-Capaldi.png?alt=media&token=3d8b9882-c4c5-4526-be4e-db26dc2a65fe"
+        },
+        {
+          "Actor": "Laura Haddock",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Laura-Haddock.png?alt=media&token=8df65136-003d-48bf-99de-58ef7f745696"
+        }
+      ],
+      "Description": "A war veteran struggling with PTSD seeks revenge on the people who killed his family.",
+      "Genre": [
+        "Action",
+        "Thriller"
+      ],
+      "Imdb": 8.6,
+      "Poster": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/tMO0YLXgJZBnIAjoTSz26zE33YN.jpg?alt=media&token=71387566-ab09-4901-9fd2-117b9b567488",
+      "Time": "1h 54m",
+      "Title": "Damaged",
+      "Trailer": "https://www.youtube.com/watch?v=Sg8NuJL5P_8",
+      "Year": 2023,
+      "price": 120
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Sofia Boutella",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Sofia-Boutella.png?alt=media&token=5228f685-402e-427d-806c-ba232fc8105e"
+        },
+        {
+          "Actor": "Ed Skrein",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Ed-Skrein.png?alt=media&token=10ca5ad3-df69-4659-b93b-ac51d210e9cc"
+        },
+        {
+          "Actor": "Michiel Huisman",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Michiel-Huisman.png?alt=media&token=4af024cc-bcaf-4e29-9419-92329a0ace57"
+        },
+        {
+          "Actor": "Djimon Hounsou",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Djimon-Hounsou.png?alt=media&token=8b948e3f-19bf-48c3-8368-73da254038b2"
+        }
+      ],
+      "Description": "A young woman with a mysterious past is tasked with uniting different tribes to fight against an oppressive warlord who threatens their peaceful colony.",
+      "Genre": [
+        "Adventure",
+        "Action",
+        "Sci-Fi"
+      ],
+      "Imdb": 9,
+      "Poster": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/aqKtSJdsUYNhEYfV42AYpamhEle.jpg?alt=media&token=91799666-41bd-4640-8470-07b3147da3b7",
+      "Time": "2h 22m",
+      "Title": "Rebel Moon",
+      "Trailer": "https://www.youtube.com/watch?v=UEJuNHOd8Dw",
+      "Year": 2023,
+      "price": 120
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Sydney Sweeney",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Sydney-Sweeney.png?alt=media&token=c8cecc39-ffbb-4893-9993-182c8078055a"
+        },
+        {
+          "Actor": " lvaro Morte",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Alvaro-Morte.png?alt=media&token=23a796f0-ad84-4332-83f3-2282eb9ee1bb"
+        },
+        {
+          "Actor": "Simona Tabasco",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Simona-Tabasco.png?alt=media&token=2817ec96-323e-4b69-a129-cfbc121159e3"
+        },
+        {
+          "Actor": "Benedetta Porcaroli",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Benedetta-Porcaroli.png?alt=media&token=e1038e80-48ce-43af-9346-d3073cca74df"
+        }
+      ],
+      "Description": "A young woman who possesses the ability to heal others must fight to protect her gift from those who would exploit it.",
+      "Genre": [
+        "Drama",
+        "Fantasy"
+      ],
+      "Imdb": 8.3,
+      "Poster": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/fdZpvODTX5wwkD0ikZNaClE4AoW.jpg?alt=media&token=d669f273-9633-4cb5-b416-e0f79a610ea7",
+      "Time": "1h 36m",
+      "Title": "Immaculate",
+      "Trailer": "https://www.youtube.com/watch?v=ewxS9Z-XXYo",
+      "Year": 2023,
+      "price": 120
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Rebecca Hall",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Rebecca-Hall.png?alt=media&token=fff9a405-c20c-4704-855f-d40e4cb75ecd"
+        },
+        {
+          "Actor": "Brian Tyree Henry",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Brian-Tyree-Henry.png?alt=media&token=2dc8ae1d-cce1-4106-8cc6-5ea2a98998eb"
+        },
+        {
+          "Actor": "Dan Stevens",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Dan-Stevens.png?alt=media&token=da50ebb6-4d3e-4e78-918e-0094cb8279d2"
+        },
+        {
+          "Actor": "Kaylee Hottle",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Kaylee-Hottle.png?alt=media&token=ea367e94-8d40-4df3-9274-03e69c1df736"
+        }
+      ],
+      "Description": "Godzilla and Kong must team up to battle a common enemy that threatens to destroy both of their worlds.",
+      "Genre": [
+        "Action",
+        "Adventure",
+        "Sci-Fi"
+      ],
+      "Imdb": 8.5,
+      "Poster": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/gmGK5Gw5CIGMPhOmTO0bNA9Q66c.jpg?alt=media&token=734fca39-eff1-4cb1-93be-308b6187c2b3",
+      "Time": "1h 56m",
+      "Title": "Godzilla-Kong",
+      "Trailer": "https://www.youtube.com/watch?v=qqrpMRDuPfc",
+      "Year": 2023,
+      "price": 120
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Colm Meaney",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Colm-Meaney.png?alt=media&token=2650c663-7b88-47e1-941f-f0e9103ef60b"
+        },
+        {
+          "Actor": "Will Attenborough",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Will-Attenborough.png?alt=media&token=0cf07591-e278-4584-979a-02c1a408ec1a"
+        },
+        {
+          "Actor": "Jeremias Amoore",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Jeremias-Amoore.png?alt=media&token=4bca63fb-2558-4016-a798-52cf2f25b003"
+        },
+        {
+          "Actor": "Sophie McIntosh",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Sophie-McIntosh.png?alt=media&token=ca25c8be-b0e0-447a-93fc-e459abe33990"
+        }
+      ],
+      "Description": "A group of strangers trapped in an elevator must find a way to escape before they run out of air.",
+      "Genre": [
+        "Thriller",
+        "Drama"
+      ],
+      "Imdb": 7.5,
+      "Poster": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/hu40Uxp9WtpL34jv3zyWLb5zEVY.jpg?alt=media&token=32f2c83f-de98-4e6e-a5cc-81d33d5323e0",
+      "Time": "1h 38m",
+      "Title": "No Way Up",
+      "Trailer": "https://www.youtube.com/watch?v=PSEoAaSswgo",
+      "Year": 2023,
+      "price": 120
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Jack Black",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Jack-Black.png?alt=media&token=5d8b70cf-1e8e-4423-8028-03dd19277c64"
+        },
+        {
+          "Actor": "Awkwafina",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Awkwafina.png?alt=media&token=79dff5eb-ecf4-4cbb-939f-98901aa504fa"
+        },
+        {
+          "Actor": "Viola Davis",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Viola-Davis.png?alt=media&token=af35c531-e268-426d-bd70-89cdf6002450"
+        },
+        {
+          "Actor": "Djimon Hounsou",
+          "PicUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/Djimon-Hounsou.png?alt=media&token=8b948e3f-19bf-48c3-8368-73da254038b2"
+        }
+      ],
+      "Description": "Po and the Furious Five must once again defend the Jade Palace from a new threat.",
+      "Genre": [
+        "Thriller",
+        "Drama"
+      ],
+      "Imdb": 7.5,
+      "Poster": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/kDp1vUBnMpe8ak4rjgl3cLELqjU.jpg?alt=media&token=e2eeb516-64dd-4f7d-8bc6-268f85be28ec",
+      "Time": "1h 42m",
+      "Title": "Kung Fu Panda 4",
+      "Trailer": "https://www.youtube.com/watch?v=_inKs4eeHiI",
+      "Year": 2024,
+      "price": 120
+    }
+  ],
+  "notifications": {
+    "CU6DPufQVadwqpI7GbT40KKsvPy1": {
+      "-OgLWdlFaGFG8_jlb7BV": {
+        "message": "Bạn đã thay đổi thông tin cá nhân",
+        "read": false,
+        "timestamp": 1765609478689,
+        "title": "Cập nhật tài khoản",
+        "type": "PROFILE"
+      },
+      "-OgLWjOBmhM33c1T2nqd": {
+        "message": "Bạn đã thay đổi thông tin cá nhân",
+        "read": false,
+        "timestamp": 1765609501723,
+        "title": "Cập nhật tài khoản",
+        "type": "PROFILE"
+      },
+      "-OgzqIQbrSb6kS9Y8lma": {
+        "message": "Bạn đã thay đổi thông tin cá nhân",
+        "read": false,
+        "timestamp": 1766302758540,
+        "title": "Cập nhật tài khoản",
+        "type": "PROFILE"
+      },
+      "-Oh-0q3dP4arsnCyVP3d": {
+        "message": "Bạn đã được hoàn 2,000đ cho vé Damaged",
+        "read": true,
+        "ticketId": "-OgzuyPWi39blUrNDiuv",
+        "timestamp": 1766305784015,
+        "title": "Hoàn tiền thành công",
+        "type": "REFUND"
+      },
+      "-Oh-2-PtoxUrOh3s3rzE": {
+        "message": "Bạn đã thay đổi thông tin cá nhân",
+        "read": false,
+        "timestamp": 1766306088540,
+        "title": "Cập nhật tài khoản",
+        "type": "PROFILE"
+      }
+    },
+    "xS5e9wtrraOkikepokVdjNcIFYq1": {
+      "-OgttOKQ6Zt70Y-dG8Jr": {
+        "message": "Bạn đã được hoàn 280000đ cho vé The Gorge",
+        "read": true,
+        "ticketId": "-Og__RX11ZSwkhvDDqtj",
+        "timestamp": 1766202899308,
+        "title": "Hoàn tiền thành công",
+        "type": "REFUND"
+      },
+      "-Oh0E5ku6YYreaFVuh6V": {
+        "message": "Bạn đã được hoàn 70,000đ cho vé The Gorge",
+        "read": false,
+        "ticketId": "-Ogb0X4vKatpLDpia-3N",
+        "timestamp": 1766326028586,
+        "title": "Hoàn tiền thành công",
+        "type": "REFUND"
+      },
+      "-Oh0ECfB0ziCU1veOHa8": {
+        "message": "Bạn đã được hoàn 70,000đ cho vé The Gorge",
+        "read": false,
+        "ticketId": "-OgttG1Icx4q_tJVcPqn",
+        "timestamp": 1766326056892,
+        "title": "Hoàn tiền thành công",
+        "type": "REFUND"
+      }
+    }
+  },
+  "tickets": {
+    "-Og__RX11ZSwkhvDDqtj": {
+      "createdAt": 1765862120547,
+      "date": "2025-11-08",
+      "movieTitle": "The Gorge",
+      "payment": {
+        "method": "VNPAY",
+        "paidAt": 1765862120547,
+        "status": "PAID"
+      },
+      "posterUrl": "https://res.cloudinary.com/df0fkfeyl/image/upload/v1762501997/The_Gorge_rbbpfo.jpg",
+      "seats": [
+        "C5",
+        "C6",
+        "D5",
+        "D6"
+      ],
+      "status": "REFUNDED",
+      "time": "15:15",
+      "totalPrice": 280000,
+      "userId": "xS5e9wtrraOkikepokVdjNcIFYq1"
+    },
+    "-Ogb0X4vKatpLDpia-3N": {
+      "createdAt": 1765886264763,
+      "date": "2025-11-08",
+      "movieTitle": "The Gorge",
+      "payment": {
+        "method": "VNPAY",
+        "paidAt": 1765886264763,
+        "status": "PAID"
+      },
+      "posterUrl": "https://res.cloudinary.com/df0fkfeyl/image/upload/v1762501997/The_Gorge_rbbpfo.jpg",
+      "seats": [
+        "D4"
+      ],
+      "status": "REFUNDED",
+      "time": "15:15",
+      "totalPrice": 70000,
+      "userId": "xS5e9wtrraOkikepokVdjNcIFYq1"
+    },
+    "-OggpFLq1G7ydiTFDw9F": {
+      "createdAt": 1765983718820,
+      "date": "2025-11-08",
+      "movieTitle": "Rebel Moon",
+      "payment": {
+        "method": "VNPAY",
+        "paidAt": 1765983718820,
+        "status": "PAID"
+      },
+      "seats": [
+        "D3"
+      ],
+      "status": "REFUNDED",
+      "time": "21:00",
+      "totalPrice": 95000,
+      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
+    },
+    "-OggqgEYTZNKvqnRxqiX": {
+      "createdAt": 1765984095077,
+      "date": "2025-11-08",
+      "movieTitle": "Rebel Moon",
+      "payment": {
+        "method": "VNPAY",
+        "paidAt": 1765984095077,
+        "status": "PAID"
+      },
+      "seats": [
+        "C3"
+      ],
+      "status": "REFUNDED",
+      "time": "21:00",
+      "totalPrice": 95000,
+      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
+    },
+    "-Ogj60H0W3qLKcx5TF5c": {
+      "createdAt": 1766021927152,
+      "date": "2025-11-08",
+      "movieTitle": "Rebel Moon",
+      "payment": {
+        "method": "VNPAY",
+        "paidAt": 1766021927152,
+        "status": "PAID"
+      },
+      "seats": [
+        "C5"
+      ],
+      "status": "REFUNDED",
+      "time": "21:00",
+      "totalPrice": 95000,
+      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
+    },
+    "-OgkLKMzHZJnz0wNYDxU": {
+      "createdAt": 1766042718938,
+      "date": "2025-11-08",
+      "movieTitle": "Rebel Moon",
+      "payment": {
+        "method": "BALANCE",
+        "paidAt": 1766042718938,
+        "status": "PAID"
+      },
+      "seats": [
+        "B2"
+      ],
+      "status": "REFUNDED",
+      "time": "21:00",
+      "totalPrice": 95000,
+      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
+    },
+    "-OgkLKRnxVaKU_Mvujyc": {
+      "createdAt": 1766042719245,
+      "date": "2025-11-08",
+      "movieTitle": "Rebel Moon",
+      "payment": {
+        "method": "BALANCE",
+        "paidAt": 1766042719245,
+        "status": "PAID"
+      },
+      "seats": [
+        "B2"
+      ],
+      "status": "REFUNDED",
+      "time": "21:00",
+      "totalPrice": 95000,
+      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
+    },
+    "-OgkLRLe21SibA-I2MWk": {
+      "createdAt": 1766042747524,
+      "date": "2025-11-08",
+      "movieTitle": "Damaged",
+      "payment": {
+        "method": "BALANCE",
+        "paidAt": 1766042747524,
+        "status": "PAID"
+      },
+      "seats": [
+        "A2"
+      ],
+      "status": "REFUNDED",
+      "time": "18:45",
+      "totalPrice": 85000,
+      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
+    },
+    "-OgkLYg8iZV_S9ml_Xcc": {
+      "createdAt": 1766042777571,
+      "date": "2025-11-08",
+      "movieTitle": "Dune: Part Two",
+      "payment": {
+        "method": "BALANCE",
+        "paidAt": 1766042777571,
+        "status": "PAID"
+      },
+      "seats": [
+        "B4"
+      ],
+      "status": "REFUNDED",
+      "time": "18:00",
+      "totalPrice": 90000,
+      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
+    },
+    "-OgkMfTbHTZSr0m_thOD": {
+      "createdAt": 1766043071757,
+      "date": "2025-11-08",
+      "movieTitle": "Dune: Part Two",
+      "payment": {
+        "method": "BALANCE",
+        "paidAt": 1766043071757,
+        "status": "PAID"
+      },
+      "seats": [
+        "A2"
+      ],
+      "status": "REFUNDED",
+      "time": "18:00",
+      "totalPrice": 90000,
+      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
+    },
+    "-OgkPjqnorXmjOPdMFjM": {
+      "createdAt": 1766043876124,
+      "date": "2025-11-08",
+      "movieTitle": "Dune: Part Two",
+      "payment": {
+        "method": "BALANCE",
+        "paidAt": 1766043876124,
+        "status": "PAID"
+      },
+      "seats": [
+        "D5",
+        "D7"
+      ],
+      "status": "REFUNDED",
+      "time": "18:00",
+      "totalPrice": 180000,
+      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
+    },
+    "-OgkSeA0c9rUgIfJANfq": {
+      "createdAt": 1766044639097,
+      "date": "2025-11-08",
+      "movieTitle": "Damaged",
+      "payment": {
+        "method": "BALANCE",
+        "paidAt": 1766044639097,
+        "status": "PAID"
+      },
+      "seats": [
+        "D4"
+      ],
+      "status": "REFUNDED",
+      "time": "18:45",
+      "totalPrice": 85000,
+      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
+    },
+    "-OgkUJi7oN2tgH2dbHNf": {
+      "createdAt": 1766045075521,
+      "date": "2025-11-08",
+      "movieTitle": "Rebel Moon",
+      "payment": {
+        "method": "BALANCE",
+        "paidAt": 1766045075521,
+        "status": "PAID"
+      },
+      "seats": [
+        "D8"
+      ],
+      "status": "REFUNDED",
+      "time": "21:00",
+      "totalPrice": 95000,
+      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
+    },
+    "-OgttG1Icx4q_tJVcPqn": {
+      "createdAt": 1766202865316,
+      "date": "2025-11-08",
+      "movieTitle": "The Gorge",
+      "payment": {
+        "method": "VNPAY",
+        "paidAt": 1766202865316,
+        "status": "PAID"
+      },
+      "posterUrl": "https://res.cloudinary.com/df0fkfeyl/image/upload/v1762501997/The_Gorge_rbbpfo.jpg",
+      "seats": [
+        "E6"
+      ],
+      "status": "REFUNDED",
+      "time": "19:00",
+      "totalPrice": 70000,
+      "userId": "xS5e9wtrraOkikepokVdjNcIFYq1"
+    },
+    "-Ogzfzz5zGLfwX_54pH4": {
+      "createdAt": 1766300059512,
+      "date": "2025-11-08",
+      "movieTitle": "Rebel Moon",
+      "payment": {
+        "method": "BALANCE",
+        "paidAt": 1766300059512,
+        "status": "PAID"
+      },
+      "posterUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/aqKtSJdsUYNhEYfV42AYpamhEle.jpg?alt=media&token=91799666-41bd-4640-8470-07b3147da3b7",
+      "seats": [
+        "B1"
+      ],
+      "status": "PAID",
+      "time": "21:00",
+      "totalPrice": 95000,
+      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
+    },
+    "-OgzuyPWi39blUrNDiuv": {
+      "createdAt": 1766303983151,
+      "date": "2025-11-08",
+      "movieTitle": "Damaged",
+      "payment": {
+        "method": "VNPAY",
+        "paidAt": 1766303983151,
+        "status": "PAID"
+      },
+      "posterUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/tMO0YLXgJZBnIAjoTSz26zE33YN.jpg?alt=media&token=71387566-ab09-4901-9fd2-117b9b567488",
+      "seats": [
+        "F7"
+      ],
+      "status": "REFUNDED",
+      "time": "18:45",
+      "totalPrice": 2000,
+      "userId": "CU6DPufQVadwqpI7GbT40KKsvPy1"
+    },
+    "-Oh-27BLp6bfAIKGXilr": {
+      "createdAt": 1766306120378,
+      "date": "2025-11-08",
+      "movieTitle": "Damaged",
+      "payment": {
+        "method": "BALANCE",
+        "paidAt": 1766306120378,
+        "status": "PAID"
+      },
+      "posterUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/tMO0YLXgJZBnIAjoTSz26zE33YN.jpg?alt=media&token=71387566-ab09-4901-9fd2-117b9b567488",
+      "seats": [
+        "D3"
+      ],
+      "status": "PAID",
+      "time": "18:45",
+      "totalPrice": 2000,
+      "userId": "CU6DPufQVadwqpI7GbT40KKsvPy1"
+    }
+  },
+  "users": {
+    "CU6DPufQVadwqpI7GbT40KKsvPy1": {
+      "avatarUrl": "https://i.ibb.co/ynBWcqhR/ac04723b9e8b.jpg",
+      "balance": 0,
+      "dateOfBirth": "03/12/2025",
+      "email": "baongdqu@gmail.com",
+      "fullName": "s3cr3t",
+      "gender": "Nam",
+      "isPhoneVerified": false,
+      "moviePreferences": {
+        "favoriteGenre": "Drama",
+        "favoriteLanguage": "French",
+        "genreIndex": 2,
+        "languageIndex": 7,
+        "subtitlePreference": "both"
+      },
+      "phone": "+84397107173",
+      "phoneVerified": true,
+      "uid": "CU6DPufQVadwqpI7GbT40KKsvPy1"
+    },
+    "GX3KTOBQhRgslL5rVBmoMoHKbEv1": {
+      "avatarUrl": "https://i.ibb.co/C3JdHS1r/Avatar-trang-den.png",
+      "balance": 475000,
+      "dateOfBirth": "",
+      "email": "vominhduong2005@gmail.com",
+      "fullName": "vmd001",
+      "gender": "Female",
+      "phone": "01234567890",
+      "uid": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
+    },
+    "R65jtmoTwSfrSBbD9LUywX8gZaz1": {
+      "avatarUrl": "https://i.ibb.co/twLKnYFg/c1f2e9bc4ece.jpg",
+      "email": "23520380@gm.uit.edu.vn",
+      "fullName": "hello",
+      "phone": "131412321",
+      "uid": "R65jtmoTwSfrSBbD9LUywX8gZaz1"
+    },
+    "fFKNVRrsPcXKmiGxaIoSYgPgMi52": {
+      "email": "usr1@gmail.com",
+      "fullName": "usr1",
+      "phone": "123456789",
+      "uid": "fFKNVRrsPcXKmiGxaIoSYgPgMi52"
+    },
+    "hwtruR4sbdZLLGQ1cbsjM10GQQH2": {
+      "avatarUrl": "https://i.ibb.co/C3JdHS1r/Avatar-trang-den.png",
+      "email": "aaa@gmail.com",
+      "fullName": "dd",
+      "phone": "0000000000",
+      "uid": "hwtruR4sbdZLLGQ1cbsjM10GQQH2"
+    },
+    "xS5e9wtrraOkikepokVdjNcIFYq1": {
+      "avatarUrl": "https://i.ibb.co/twLKnYFg/c1f2e9bc4ece.jpg",
+      "balance": 420000,
+      "email": "akudoreki123@gmail.com",
+      "fullName": "123test123",
+      "moviePreferences": {
+        "favoriteGenre": "Sci-Fi",
+        "favoriteLanguage": "English",
+        "genreIndex": 5,
+        "languageIndex": 1,
+        "subtitlePreference": "dubbed"
+      },
+      "phone": "1234567",
+      "uid": "xS5e9wtrraOkikepokVdjNcIFYq1"
+    },
+    "zF7LkgO3bKh6Bn4LVqjQM4HKCUl1": {
+      "avatarUrl": "https://i.ibb.co/C3JdHS1r/Avatar-trang-den.png",
+      "email": "s3cr3tofme@gmail.com",
+      "fullName": "baong",
+      "phone": "0397107174",
+      "uid": "zF7LkgO3bKh6Bn4LVqjQM4HKCUl1"
+    }
+  }
+}
