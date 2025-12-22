@@ -2,8 +2,12 @@ package com.example.app_movie_booking_ticket;
 
 import android.os.Bundle;
 
+import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.button.MaterialButton;
@@ -20,6 +24,7 @@ import com.vnpay.authentication.VNP_SdkCompletedCallback;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -54,6 +59,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
 
     private String posterUrl;
     private String movieTitle;
+    private String movieID;
     private String date;
     private String time;
     private ArrayList<String> seats;
@@ -72,6 +78,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         auth = FirebaseAuth.getInstance();
         userRef = FirebaseDatabase.getInstance().getReference("users");
         setContentView(R.layout.parthome_payment);
@@ -85,6 +92,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         time = intent.getStringExtra("time");
         seats = intent.getStringArrayListExtra("seats");
         totalPrice = intent.getIntExtra("totalPrice", 0);
+        movieID = intent.getStringExtra("movieID");
 
         // ===== MAP VIEW =====
         ImageView imagePoster = findViewById(R.id.imagePoster);
@@ -399,16 +407,16 @@ public class parthome_PaymentActivity extends AppCompatActivity {
 
                 Long balance = currentData.getValue(Long.class);
 
-                // 🔥 balance null = 0
+                //  balance null = 0
                 if (balance == null)
                     balance = 0L;
 
-                // ❌ KHÔNG ĐỦ TIỀN
+                //  KHÔNG ĐỦ TIỀN
                 if (balance < totalPrice) {
                     return Transaction.abort();
                 }
 
-                // ✅ TRỪ TIỀN
+                //  TRỪ TIỀN
                 currentData.setValue(balance - totalPrice);
                 return Transaction.success(currentData);
             }
@@ -419,7 +427,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
                     boolean committed,
                     DataSnapshot snapshot) {
 
-                // ❌ TRANSACTION FAIL
+                //  TRANSACTION FAIL
                 if (!committed) {
                     Toast.makeText(
                             parthome_PaymentActivity.this,
@@ -428,7 +436,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
                     return;
                 }
 
-                // ✅ THANH TOÁN THÀNH CÔNG
+                //  THANH TOÁN THÀNH CÔNG
                 bookSeats(movieTitle, date, time, seats);
                 saveTicketSuccessByBalance();
 
@@ -460,6 +468,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         payment.put("paidAt", System.currentTimeMillis());
 
         Map<String, Object> ticket = new HashMap<>();
+        ticket.put("movieId", movieID);
         ticket.put("userId", user.getUid());
         ticket.put("movieTitle", movieTitle);
         ticket.put("posterUrl", posterUrl);

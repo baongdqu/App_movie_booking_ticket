@@ -19,6 +19,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App_movie_booking_ticket">
         <activity
+            android:name=".parthome_WriteReview"
+            android:exported="false" />
+        <activity
+            android:name=".parthome_RatingListActivity"
+            android:exported="false" />
+        <activity
             android:name=".adapter.TicketAdapter"
             android:exported="false" />
         <activity

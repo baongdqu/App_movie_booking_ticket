@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 public class NotificationAdapter
         extends RecyclerView.Adapter<NotificationAdapter.ViewHolder> {
 
-    // 🔥 CALLBACK
+    //  CALLBACK
     public interface OnNotificationClickListener {
         void onNotificationClick(AppNotification notification);
     }
@@ -31,7 +31,7 @@ public class NotificationAdapter
     private final List<AppNotification> list;
     private final OnNotificationClickListener listener;
 
-    // ✅ Constructor mới
+    //  Constructor mới
     public NotificationAdapter(Context context,
             List<AppNotification> list,
             OnNotificationClickListener listener) {

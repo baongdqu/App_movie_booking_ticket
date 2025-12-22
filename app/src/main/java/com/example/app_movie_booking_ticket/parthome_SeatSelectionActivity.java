@@ -38,6 +38,7 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
     private Button btnContinue;
     private String posterUrl;
     private String movieTitle;
+    private String movieID;
     private String selectedDate = "";
     private String selectedShowtime = "";
     private int pricePerSeat = 0;
@@ -65,6 +66,7 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
         if (movieTitle == null || movieTitle.isEmpty())
             movieTitle = getString(R.string.movie_name);
         posterUrl = getIntent().getStringExtra("posterUrl");
+        movieID = getIntent().getStringExtra("movieID");
         tvMovieTitle.setText(movieTitle);
 
         dbRef = FirebaseDatabase.getInstance().getReference("Bookings").child(movieTitle);
@@ -79,7 +81,7 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
             Toast.makeText(this, String.format(getString(R.string.toast_seat_total), selectedSeats.toString(),
                     String.valueOf(total)), Toast.LENGTH_LONG).show();
             Intent intent = new Intent(parthome_SeatSelectionActivity.this, parthome_PaymentActivity.class);
-
+            intent.putExtra("movieID", movieID);
             intent.putExtra("movieTitle", movieTitle);
             intent.putExtra("date", selectedDate);
             intent.putExtra("time", selectedShowtime);
@@ -94,7 +96,7 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> finish());
     }
 
-    // 🔹 Lấy danh sách các ngày chiếu có thật trong database
+    //  Lấy danh sách các ngày chiếu có thật trong database
     private void loadAvailableDates() {
         dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

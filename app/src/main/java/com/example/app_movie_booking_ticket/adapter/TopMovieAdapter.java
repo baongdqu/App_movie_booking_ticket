@@ -24,9 +24,11 @@ public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.MovieV
     private Context context;
     private List<Movie> movieList;
 
+
     public TopMovieAdapter(Context context, List<Movie> movieList) {
         this.context = context;
         this.movieList = movieList;
+
     }
 
     @NonNull
