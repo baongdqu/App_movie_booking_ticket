@@ -1,6 +1,7 @@
 package com.example.app_movie_booking_ticket.adapter;
 
 
+import android.graphics.Color;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import com.bumptech.glide.Glide; // Cần thư viện Glide để load ảnh
 import com.example.app_movie_booking_ticket.R;
 import com.example.app_movie_booking_ticket.databinding.ParthomeViewholderReviewBinding;
 import com.example.app_movie_booking_ticket.model.ReviewModel;
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
@@ -39,7 +42,12 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ReviewModel review = items.get(position);
-
+        // Trong ReviewAdapter.java, hàm onBindViewHolder
+        String currentUid = FirebaseAuth.getInstance().getUid();
+        if (review.getUserId().equals(currentUid)) {
+            holder.binding.tvUserNameReview.setText(review.getUserName() + " (Bạn)");
+            //holder.binding.getRoot().setCardBackgroundColor(Color.parseColor("#FFF5F8"));
+        }
         holder.binding.tvUserNameReview.setText(review.getUserName());
         holder.binding.tvCommentReview.setText(review.getComment());
         holder.binding.tvStarCountReview.setText(review.getRating() + " ★");

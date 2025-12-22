@@ -1,5 +1,7 @@
 package com.example.app_movie_booking_ticket.model;
 
+import com.google.firebase.database.PropertyName;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -22,7 +24,7 @@ public class Movie implements Serializable {
     private int price;
     private String Trailer;
     private List<Cast> Casts;
-
+    private boolean isUpcoming;
     // Firebase requires a no-argument constructor
     // Constructor rỗng bắt buộc cho Firebase
     public Movie() {
@@ -34,7 +36,7 @@ public class Movie implements Serializable {
 
     public Movie(String title, String poster, double imdb, List<String> pictures, List<String> genre,
             String description, String time, int year, int price,
-            String trailer, List<Cast> casts, String movieID) {
+            String trailer, List<Cast> casts, String movieID, boolean isUpcoming) {
         this.Title = title;
         this.Poster = poster;
         this.Imdb = imdb;
@@ -47,6 +49,7 @@ public class Movie implements Serializable {
         this.Trailer = trailer;
         this.Casts = casts;
         this.movieID = movieID;
+        this.isUpcoming = isUpcoming;
     }
 
     // ================== Getters ==================
@@ -97,7 +100,9 @@ public class Movie implements Serializable {
     public String getMovieID() {
         return movieID;
     }
-
+    public boolean getIsUpcoming() {
+        return isUpcoming;
+    }
     // Inner class for Cast objects
     /**
      * Inner class đại diện cho Diễn viên (Cast).

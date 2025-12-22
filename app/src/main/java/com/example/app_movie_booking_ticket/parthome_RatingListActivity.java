@@ -48,7 +48,15 @@ public class parthome_RatingListActivity extends AppCompatActivity {
         // Các nút lọc
         binding.btnFilterAll.setOnClickListener(v -> filter(0));
         binding.btnFilter5.setOnClickListener(v -> filter(5));
-        // ... tương tự cho 4,3,2,1 sao
+        binding.btnFilter4.setOnClickListener(v -> filter(4));
+        binding.btnFilter3.setOnClickListener(v -> filter(3));
+        binding.btnFilter2.setOnClickListener(v -> filter(2));
+        binding.btnFilter1.setOnClickListener(v -> filter(1));
+
+        binding.btnBacktoMovieDetail.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
+            finish();
+        });
     }
 
     private void filter(int star) {
@@ -91,6 +99,7 @@ public class parthome_RatingListActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         });
+
     }
 
     private void loadReviews(String type) {
@@ -113,5 +122,31 @@ public class parthome_RatingListActivity extends AppCompatActivity {
         adapter = new ReviewAdapter(fullList);
         binding.rvReviews.setLayoutManager(new LinearLayoutManager(this));
         binding.rvReviews.setAdapter(adapter);
+    }
+
+    private void checkUserReviewStatus() {
+        String currentUid = FirebaseAuth.getInstance().getUid();
+        if (currentUid == null) return;
+
+        DatabaseReference reviewRef = FirebaseDatabase.getInstance().getReference("Reviews")
+                .child(movieID).child(currentUid);
+
+        reviewRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    // Nếu đã tồn tại đánh giá, đổi icon và text của nút
+                    binding.btnWriteReview.setText("Sửa đánh giá");
+                    binding.btnWriteReview.setIconResource(android.R.drawable.ic_menu_edit);
+                } else {
+                    // Nếu chưa có, để mặc định
+                    binding.btnWriteReview.setText("Viết đánh giá");
+                    binding.btnWriteReview.setIconResource(android.R.drawable.ic_input_add);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
     }
 }
