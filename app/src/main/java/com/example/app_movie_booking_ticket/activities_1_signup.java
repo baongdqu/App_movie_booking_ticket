@@ -164,7 +164,8 @@ public class activities_1_signup extends AppCompatActivity {
 
         btnGoogleSignUp.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(this);
-            googleSignInLauncher.launch(googleSignInHelper.getSignInIntent());
+            // Đăng xuất Google trước để LUÔN hiển thị danh sách chọn tài khoản
+            googleSignInHelper.revokeAccessAndSignIn(googleSignInLauncher);
         });
     }
 

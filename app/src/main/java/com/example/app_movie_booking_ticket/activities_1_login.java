@@ -231,7 +231,8 @@ public class activities_1_login extends extra_manager_language {
         ImageButton btnGoogleSignIn = findViewById(R.id.btnGoogleSignIn);
         btnGoogleSignIn.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(this);
-            googleSignInLauncher.launch(googleSignInHelper.getSignInIntent());
+            // Đăng xuất Google trước để LUÔN hiển thị danh sách chọn tài khoản
+            googleSignInHelper.revokeAccessAndSignIn(googleSignInLauncher);
         });
     }
 

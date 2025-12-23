@@ -203,4 +203,17 @@ public class extra_google_signin_helper {
     public void signInWithGoogleCredential(String idToken, GoogleSignInCallback callback) {
         firebaseAuthWithGoogle(idToken, callback);
     }
+
+    /**
+     * Đăng xuất Google trước rồi mở danh sách chọn tài khoản
+     * Sử dụng signOut() để xóa cache tài khoản và luôn hiển thị Account Picker
+     * 
+     * @param launcher ActivityResultLauncher để khởi động Sign-In Intent
+     */
+    public void revokeAccessAndSignIn(androidx.activity.result.ActivityResultLauncher<Intent> launcher) {
+        googleSignInClient.signOut().addOnCompleteListener(task -> {
+            // Sau khi đăng xuất xong, mở danh sách chọn tài khoản
+            launcher.launch(googleSignInClient.getSignInIntent());
+        });
+    }
 }
