@@ -178,12 +178,22 @@
     <string name="toast_email_error">错误: %1$s</string>
     <string name="toast_account_created">帐户创建成功！请验证您的邮箱。</string>
     <string name="toast_email_exists">电子邮箱已存在。</string>
+    <string name="toast_email_already_registered">此电子邮箱已被注册。请使用其他邮箱或登录。</string>
     <string name="toast_weak_password">密码太弱。</string>
     <string name="toast_login_success">登录成功！</string>
     <string name="toast_login_failed">登录失败: %1$s</string>
     <string name="toast_verify_email">请在登录前验证您的邮箱。</string>
     <string name="toast_verification_sent">验证邮件已重新发送。请检查收件箱。</string>
     <string name="toast_verification_send_error">邮件发送错误: %1$s</string>
+
+    <!-- Google Sign-In -->
+    <string name="btn_google_signin">使用 Google 登录</string>
+    <string name="btn_google_signup">使用 Google 注册</string>
+    <string name="or_divider">或</string>
+    <string name="toast_google_signin_failed">Google 登录失败: %1$s</string>
+    <string name="toast_google_signin_cancelled">Google 登录已取消</string>
+    <string name="toast_email_not_registered">邮箱未注册，请创建新账户。</string>
+    <string name="toast_google_account_linked">Google 账户已成功关联！</string>
 
     <!-- Dialogs -->
     <string name="dialog_confirm_delete_title">⚠️ 确认删除帐户</string>

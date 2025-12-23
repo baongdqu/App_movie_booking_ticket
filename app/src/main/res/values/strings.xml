@@ -178,12 +178,22 @@
     <string name="toast_email_error">Lỗi: %1$s</string>
     <string name="toast_account_created">Tạo tài khoản thành công! Vui lòng xác minh email.</string>
     <string name="toast_email_exists">Email đã tồn tại.</string>
+    <string name="toast_email_already_registered">Email này đã được đăng ký. Vui lòng sử dụng email khác hoặc đăng nhập.</string>
     <string name="toast_weak_password">Mật khẩu quá yếu.</string>
     <string name="toast_login_success">Đăng nhập thành công!</string>
     <string name="toast_login_failed">Đăng nhập thất bại: %1$s</string>
     <string name="toast_verify_email">Vui lòng xác minh email trước khi đăng nhập.</string>
     <string name="toast_verification_sent">Đã gửi lại email xác minh. Vui lòng kiểm tra hộp thư.</string>
     <string name="toast_verification_send_error">Lỗi gửi email: %1$s</string>
+
+    <!-- Google Sign-In -->
+    <string name="btn_google_signin">Đăng nhập với Google</string>
+    <string name="btn_google_signup">Đăng ký với Google</string>
+    <string name="or_divider">hoặc</string>
+    <string name="toast_google_signin_failed">Đăng nhập Google thất bại: %1$s</string>
+    <string name="toast_google_signin_cancelled">Đã hủy đăng nhập Google</string>
+    <string name="toast_email_not_registered">Email chưa được đăng ký. Vui lòng đăng ký tài khoản mới.</string>
+    <string name="toast_google_account_linked">Tài khoản Google đã được liên kết thành công!</string>
 
     <!-- Dialogs -->
     <string name="dialog_confirm_delete_title">⚠️ Xác nhận xóa tài khoản</string>

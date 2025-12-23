@@ -174,19 +174,41 @@
                 android:paddingVertical="16dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- 🔘 Create Account Button -->
-        <Button
-            android:id="@+id/btnCreateAccount"
+        <!-- 🔘 Create Account Buttons Row (Google + Create) -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_marginTop="32dp"
-            android:text="@string/t_o_t_i_kho_n"
-            android:textAllCaps="false"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif-medium"
-            android:background="@drawable/bg_netflix_button"
-            android:textColor="@color/netflix_text_white" />
+            android:gravity="center_vertical">
+
+            <!-- 🔘 Google Sign-Up Button (Small Square, Red) -->
+            <ImageButton
+                android:id="@+id/btnGoogleSignUp"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:src="@drawable/ic_google"
+                android:background="@drawable/bg_netflix_button"
+                android:scaleType="center"
+                android:padding="14dp"
+                android:contentDescription="@string/btn_google_signup" />
+
+            <!-- 🔘 Create Account Button -->
+            <Button
+                android:id="@+id/btnCreateAccount"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="56dp"
+                android:layout_marginStart="12dp"
+                android:text="@string/t_o_t_i_kho_n"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"
+                android:background="@drawable/bg_netflix_button"
+                android:textColor="@color/netflix_text_white" />
+
+        </LinearLayout>
 
         <!-- 🔹 Back to Login Link -->
         <TextView

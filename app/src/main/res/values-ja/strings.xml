@@ -178,12 +178,22 @@
     <string name="toast_email_error">エラー: %1$s</string>
     <string name="toast_account_created">アカウント作成完了！メールを確認してください。</string>
     <string name="toast_email_exists">このメールアドレスは既に存在します。</string>
+    <string name="toast_email_already_registered">このメールアドレスは既に登録されています。別のメールアドレスを使用するか、ログインしてください。</string>
     <string name="toast_weak_password">パスワードが弱すぎます。</string>
     <string name="toast_login_success">ログインに成功しました！</string>
     <string name="toast_login_failed">ログインに失敗しました: %1$s</string>
     <string name="toast_verify_email">ログイン前にメールを確認してください。</string>
     <string name="toast_verification_sent">確認メールを再送しました。受信箱を確認してください。</string>
     <string name="toast_verification_send_error">メール送信エラー: %1$s</string>
+
+    <!-- Google Sign-In -->
+    <string name="btn_google_signin">Googleでログイン</string>
+    <string name="btn_google_signup">Googleで登録</string>
+    <string name="or_divider">または</string>
+    <string name="toast_google_signin_failed">Googleログインに失敗しました: %1$s</string>
+    <string name="toast_google_signin_cancelled">Googleログインがキャンセルされました</string>
+    <string name="toast_email_not_registered">メールが未登録です。新規アカウントを作成してください。</string>
+    <string name="toast_google_account_linked">Googleアカウントが正常にリンクされました！</string>
 
     <!-- Dialogs -->
     <string name="dialog_confirm_delete_title">⚠️ アカウント削除の確認</string>

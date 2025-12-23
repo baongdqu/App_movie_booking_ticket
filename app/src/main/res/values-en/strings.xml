@@ -178,12 +178,22 @@
     <string name="toast_email_error">Error: %1$s</string>
     <string name="toast_account_created">Account created! Please verify your email.</string>
     <string name="toast_email_exists">Email already exists.</string>
+    <string name="toast_email_already_registered">This email is already registered. Please use a different email or log in.</string>
     <string name="toast_weak_password">Password is too weak.</string>
     <string name="toast_login_success">Login successful!</string>
     <string name="toast_login_failed">Login failed: %1$s</string>
     <string name="toast_verify_email">Please verify your email before logging in.</string>
     <string name="toast_verification_sent">Verification email resent. Please check your inbox.</string>
     <string name="toast_verification_send_error">Error sending email: %1$s</string>
+
+    <!-- Google Sign-In -->
+    <string name="btn_google_signin">Sign in with Google</string>
+    <string name="btn_google_signup">Sign up with Google</string>
+    <string name="or_divider">or</string>
+    <string name="toast_google_signin_failed">Google sign-in failed: %1$s</string>
+    <string name="toast_google_signin_cancelled">Google sign-in cancelled</string>
+    <string name="toast_email_not_registered">Email not registered. Please sign up for a new account.</string>
+    <string name="toast_google_account_linked">Google account linked successfully!</string>
 
     <!-- Dialogs -->
     <string name="dialog_confirm_delete_title">⚠️ Confirm Account Deletion</string>

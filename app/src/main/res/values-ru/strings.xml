@@ -178,12 +178,22 @@
     <string name="toast_email_error">Ошибка: %1$s</string>
     <string name="toast_account_created">Аккаунт создан! Подтвердите email.</string>
     <string name="toast_email_exists">Email уже существует.</string>
+    <string name="toast_email_already_registered">Этот email уже зарегистрирован. Пожалуйста, используйте другой email или войдите в систему.</string>
     <string name="toast_weak_password">Слишком слабый пароль.</string>
     <string name="toast_login_success">Успешный вход!</string>
     <string name="toast_login_failed">Ошибка входа: %1$s</string>
     <string name="toast_verify_email">Подтвердите email перед входом.</string>
     <string name="toast_verification_sent">Письмо подтверждения отправлено. Проверьте почту.</string>
     <string name="toast_verification_send_error">Ошибка отправки email: %1$s</string>
+
+    <!-- Google Sign-In -->
+    <string name="btn_google_signin">Войти через Google</string>
+    <string name="btn_google_signup">Зарегистрироваться через Google</string>
+    <string name="or_divider">или</string>
+    <string name="toast_google_signin_failed">Ошибка входа через Google: %1$s</string>
+    <string name="toast_google_signin_cancelled">Вход через Google отменён</string>
+    <string name="toast_email_not_registered">Email не зарегистрирован. Создайте новый аккаунт.</string>
+    <string name="toast_google_account_linked">Аккаунт Google успешно связан!</string>
 
     <!-- Dialogs -->
     <string name="dialog_confirm_delete_title">⚠️ Подтвердите удаление аккаунта</string>

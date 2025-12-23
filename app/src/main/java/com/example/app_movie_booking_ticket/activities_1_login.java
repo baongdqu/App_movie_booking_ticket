@@ -6,9 +6,12 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -38,6 +41,10 @@ public class activities_1_login extends extra_manager_language {
     // Giao diện
     private TextView btntxtForgotPassword;
     private TextView txtResendVerify; // mới
+
+    // 🔹 Google Sign-In
+    private extra_google_signin_helper googleSignInHelper;
+    private ActivityResultLauncher<Intent> googleSignInLauncher;
 
     /**
      * Phương thức khởi tạo Activity.
@@ -148,6 +155,83 @@ public class activities_1_login extends extra_manager_language {
                                     Toast.LENGTH_LONG).show();
                         }
                     });
+        });
+
+        // ================== 🔘 GOOGLE SIGN-IN ==================
+        // Khởi tạo Google Sign-In helper
+        googleSignInHelper = new extra_google_signin_helper(this);
+
+        // Đăng ký ActivityResultLauncher cho Google Sign-In
+        googleSignInLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        googleSignInHelper.handleSignInResultForLogin(result.getData(),
+                                new extra_google_signin_helper.GoogleSignInCallback() {
+                                    @Override
+                                    public void onLoginSuccess(FirebaseUser user) {
+                                        extra_sound_manager.playSuccess(activities_1_login.this);
+                                        Toast.makeText(activities_1_login.this,
+                                                getString(R.string.toast_login_success),
+                                                Toast.LENGTH_SHORT).show();
+
+                                        // Lưu thông tin người dùng vào SharedPreferences
+                                        getSharedPreferences("UserPrefs", MODE_PRIVATE)
+                                                .edit()
+                                                .putString("email", user.getEmail())
+                                                .putString("username",
+                                                        user.getDisplayName() != null ? user.getDisplayName()
+                                                                : "Người dùng")
+                                                .putString("uid", user.getUid())
+                                                .apply();
+
+                                        // Chuyển sang màn hình Menu
+                                        Intent intent = new Intent(activities_1_login.this,
+                                                activities_2_a_menu_manage_fragments.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+
+                                    @Override
+                                    public void onNeedRegistration(String email, String displayName, String photoUrl) {
+                                        // Email chưa đăng ký → chuyển sang trang đăng ký với email đã điền sẵn
+                                        extra_sound_manager.playUiClick(activities_1_login.this);
+                                        Toast.makeText(activities_1_login.this,
+                                                getString(R.string.toast_email_not_registered),
+                                                Toast.LENGTH_LONG).show();
+
+                                        Intent signupIntent = new Intent(activities_1_login.this,
+                                                activities_1_signup.class);
+                                        signupIntent.putExtra("google_email", email);
+                                        signupIntent.putExtra("google_name", displayName);
+                                        signupIntent.putExtra("google_photo", photoUrl);
+                                        startActivity(signupIntent);
+                                    }
+
+                                    @Override
+                                    public void onError(String errorMessage) {
+                                        extra_sound_manager.playError(activities_1_login.this);
+                                        Toast.makeText(activities_1_login.this,
+                                                String.format(getString(R.string.toast_google_signin_failed),
+                                                        errorMessage),
+                                                Toast.LENGTH_LONG).show();
+                                    }
+
+                                    @Override
+                                    public void onCancelled() {
+                                        Toast.makeText(activities_1_login.this,
+                                                getString(R.string.toast_google_signin_cancelled),
+                                                Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                    }
+                });
+
+        // Nút Google Sign-In
+        ImageButton btnGoogleSignIn = findViewById(R.id.btnGoogleSignIn);
+        btnGoogleSignIn.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
+            googleSignInLauncher.launch(googleSignInHelper.getSignInIntent());
         });
     }
 
