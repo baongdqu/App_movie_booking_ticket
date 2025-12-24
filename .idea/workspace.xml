@@ -316,8 +316,15 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="844f1ce6-039a-4511-a069-8979768ecd95" name="Changes" comment="fix: sửa lỗi không giao diện Mail tự động sáng tối.">
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/fragments_home.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/fragments_home.java" afterDir="false" />
+    <list default="true" id="844f1ce6-039a-4511-a069-8979768ecd95" name="Changes" comment="fix: sửa lỗi không tự mất dấu tích new khi bấm lại thông báo cập nhật tài khoản.">
+      <change beforePath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.13/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/parthome_movie_detail.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/parthome_movie_detail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/problems/problems-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/problems/problems-report.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -837,7 +844,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766593095614</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="fix: sửa lỗi không tự mất dấu tích new khi bấm lại thông báo cập nhật tài khoản.">
+      <option name="closed" value="true" />
+      <created>1766593344501</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1766593344502</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -872,7 +887,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Cải thiện âm thanh của chương trình." />
     <MESSAGE value="Thêm icon đại diện cho app." />
     <MESSAGE value="Hoàn thiện và tạo giao diện cho chức năng tìm kiếm phim theo yêu cầu." />
     <MESSAGE value="Thêm âm thanh cho các nút còn thiếu." />
@@ -897,7 +911,8 @@
     <MESSAGE value="fix: sửa lại giao diện Rạp phim gần đây 1 chút." />
     <MESSAGE value="style: tối ưu thêm giao diện Rạp phim gần đây." />
     <MESSAGE value="fix: sửa lỗi không giao diện Mail tự động sáng tối." />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: sửa lỗi không giao diện Mail tự động sáng tối." />
+    <MESSAGE value="fix: sửa lỗi không tự mất dấu tích new khi bấm lại thông báo cập nhật tài khoản." />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: sửa lỗi không tự mất dấu tích new khi bấm lại thông báo cập nhật tài khoản." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

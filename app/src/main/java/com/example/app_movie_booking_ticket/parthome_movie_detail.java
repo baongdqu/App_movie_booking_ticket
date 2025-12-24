@@ -42,25 +42,27 @@ public class parthome_movie_detail extends AppCompatActivity {
         Intent intent = getIntent();
         Movie movie = (Movie) intent.getSerializableExtra("movie");
 
-
         if (movie == null)
             return;
         mDatabase = FirebaseDatabase.getInstance().getReference();
         boolean isUpcoming = movie.getIsUpcoming();
         Log.d("DEBUG_STATE", "Phim: " + movie.getTitle() + " | isUpcoming: " + isUpcoming);
         if (isUpcoming) {
-            // 1. Ẩn nút Mua vé (Phim sắp chiếu chưa bán vé)
-            binding.button2.setVisibility(View.GONE);
+            // Phim sắp chiếu: Hiện nút mua vé, ẩn phần đánh giá và hình ảnh
+            binding.button2.setVisibility(View.VISIBLE);
 
-            // 2. Ẩn nút mở danh sách đánh giá
+            // Ẩn nút mở danh sách đánh giá (chưa có đánh giá)
             binding.llStarRatingInfo.setVisibility(View.GONE);
-
             binding.cvSummaryRatingInfo.setVisibility(View.GONE);
+
+            // Ẩn phần hình ảnh
+            binding.llImagesSection.setVisibility(View.GONE);
         } else {
-            // Nếu là phim đang chiếu thì mới load đánh giá
+            // Nếu là phim đang chiếu thì hiện đầy đủ
             binding.button2.setVisibility(View.VISIBLE);
             binding.llStarRatingInfo.setVisibility(View.VISIBLE);
             binding.cvSummaryRatingInfo.setVisibility(View.VISIBLE);
+            binding.llImagesSection.setVisibility(View.VISIBLE);
             loadMovieRatings(movie.getMovieID());
         }
 
@@ -111,7 +113,7 @@ public class parthome_movie_detail extends AppCompatActivity {
                     .setShowTitle(true)
                     .build();
 
-            //  ÉP DÙNG CHROME → KHÔNG MỞ APP YOUTUBE
+            // ÉP DÙNG CHROME → KHÔNG MỞ APP YOUTUBE
             customTabsIntent.intent.setPackage("com.android.chrome");
 
             try {
@@ -142,8 +144,8 @@ public class parthome_movie_detail extends AppCompatActivity {
             startActivity(ratingIntent);
         });
 
-
     }
+
     private void loadMovieRatings(String movieID) {
         // Lắng nghe dữ liệu tại node Reviews/[movieID]
         mDatabase.child("Reviews").child(movieID).addValueEventListener(new ValueEventListener() {
