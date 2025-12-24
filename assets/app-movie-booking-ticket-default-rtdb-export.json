@@ -1085,7 +1085,627 @@
       }
     }
   },
-  "Trends": [
+  "Reviews": {
+    "movie001": {
+      "xS5e9wtrraOkikepokVdjNcIFYq1": {
+        "comment": "Day la mot bo phim rat dang trai nghiem tai rap chieu phim!",
+        "rating": 5,
+        "timestamp": 1766381573211,
+        "userAvatar": "https://i.ibb.co/twLKnYFg/c1f2e9bc4ece.jpg",
+        "userId": "xS5e9wtrraOkikepokVdjNcIFYq1",
+        "userName": "123test123"
+      }
+    }
+  },
+  "notifications": {
+    "CU6DPufQVadwqpI7GbT40KKsvPy1": {
+      "-OgLWdlFaGFG8_jlb7BV": {
+        "message": "Bạn đã thay đổi thông tin cá nhân",
+        "read": false,
+        "timestamp": 1765609478689,
+        "title": "Cập nhật tài khoản",
+        "type": "PROFILE"
+      },
+      "-OgLWjOBmhM33c1T2nqd": {
+        "message": "Bạn đã thay đổi thông tin cá nhân",
+        "read": false,
+        "timestamp": 1765609501723,
+        "title": "Cập nhật tài khoản",
+        "type": "PROFILE"
+      },
+      "-OgzqIQbrSb6kS9Y8lma": {
+        "message": "Bạn đã thay đổi thông tin cá nhân",
+        "read": false,
+        "timestamp": 1766302758540,
+        "title": "Cập nhật tài khoản",
+        "type": "PROFILE"
+      },
+      "-Oh-0q3dP4arsnCyVP3d": {
+        "message": "Bạn đã được hoàn 2,000đ cho vé Damaged",
+        "read": true,
+        "ticketId": "-OgzuyPWi39blUrNDiuv",
+        "timestamp": 1766305784015,
+        "title": "Hoàn tiền thành công",
+        "type": "REFUND"
+      },
+      "-Oh-2-PtoxUrOh3s3rzE": {
+        "message": "Bạn đã thay đổi thông tin cá nhân",
+        "read": false,
+        "timestamp": 1766306088540,
+        "title": "Cập nhật tài khoản",
+        "type": "PROFILE"
+      }
+    },
+    "xS5e9wtrraOkikepokVdjNcIFYq1": {
+      "-OgttOKQ6Zt70Y-dG8Jr": {
+        "message": "Bạn đã được hoàn 280000đ cho vé The Gorge",
+        "read": true,
+        "ticketId": "-Og__RX11ZSwkhvDDqtj",
+        "timestamp": 1766202899308,
+        "title": "Hoàn tiền thành công",
+        "type": "REFUND"
+      },
+      "-Oh0E5ku6YYreaFVuh6V": {
+        "message": "Bạn đã được hoàn 70,000đ cho vé The Gorge",
+        "read": false,
+        "ticketId": "-Ogb0X4vKatpLDpia-3N",
+        "timestamp": 1766326028586,
+        "title": "Hoàn tiền thành công",
+        "type": "REFUND"
+      },
+      "-Oh0ECfB0ziCU1veOHa8": {
+        "message": "Bạn đã được hoàn 70,000đ cho vé The Gorge",
+        "read": false,
+        "ticketId": "-OgttG1Icx4q_tJVcPqn",
+        "timestamp": 1766326056892,
+        "title": "Hoàn tiền thành công",
+        "type": "REFUND"
+      }
+    }
+  },
+  "tickets": {
+    "-Og__RX11ZSwkhvDDqtj": {
+      "createdAt": 1765862120547,
+      "date": "2025-11-08",
+      "movieTitle": "The Gorge",
+      "payment": {
+        "method": "VNPAY",
+        "paidAt": 1765862120547,
+        "status": "PAID"
+      },
+      "posterUrl": "https://res.cloudinary.com/df0fkfeyl/image/upload/v1762501997/The_Gorge_rbbpfo.jpg",
+      "seats": [
+        "C5",
+        "C6",
+        "D5",
+        "D6"
+      ],
+      "status": "REFUNDED",
+      "time": "15:15",
+      "totalPrice": 280000,
+      "userId": "xS5e9wtrraOkikepokVdjNcIFYq1"
+    },
+    "-Ogb0X4vKatpLDpia-3N": {
+      "createdAt": 1765886264763,
+      "date": "2025-11-08",
+      "movieTitle": "The Gorge",
+      "payment": {
+        "method": "VNPAY",
+        "paidAt": 1765886264763,
+        "status": "PAID"
+      },
+      "posterUrl": "https://res.cloudinary.com/df0fkfeyl/image/upload/v1762501997/The_Gorge_rbbpfo.jpg",
+      "seats": [
+        "D4"
+      ],
+      "status": "REFUNDED",
+      "time": "15:15",
+      "totalPrice": 70000,
+      "userId": "xS5e9wtrraOkikepokVdjNcIFYq1"
+    },
+    "-OggpFLq1G7ydiTFDw9F": {
+      "createdAt": 1765983718820,
+      "date": "2025-11-08",
+      "movieTitle": "Rebel Moon",
+      "payment": {
+        "method": "VNPAY",
+        "paidAt": 1765983718820,
+        "status": "PAID"
+      },
+      "seats": [
+        "D3"
+      ],
+      "status": "REFUNDED",
+      "time": "21:00",
+      "totalPrice": 95000,
+      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
+    },
+    "-OggqgEYTZNKvqnRxqiX": {
+      "createdAt": 1765984095077,
+      "date": "2025-11-08",
+      "movieTitle": "Rebel Moon",
+      "payment": {
+        "method": "VNPAY",
+        "paidAt": 1765984095077,
+        "status": "PAID"
+      },
+      "seats": [
+        "C3"
+      ],
+      "status": "REFUNDED",
+      "time": "21:00",
+      "totalPrice": 95000,
+      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
+    },
+    "-Ogj60H0W3qLKcx5TF5c": {
+      "createdAt": 1766021927152,
+      "date": "2025-11-08",
+      "movieTitle": "Rebel Moon",
+      "payment": {
+        "method": "VNPAY",
+        "paidAt": 1766021927152,
+        "status": "PAID"
+      },
+      "seats": [
+        "C5"
+      ],
+      "status": "REFUNDED",
+      "time": "21:00",
+      "totalPrice": 95000,
+      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
+    },
+    "-OgkLKMzHZJnz0wNYDxU": {
+      "createdAt": 1766042718938,
+      "date": "2025-11-08",
+      "movieTitle": "Rebel Moon",
+      "payment": {
+        "method": "BALANCE",
+        "paidAt": 1766042718938,
+        "status": "PAID"
+      },
+      "seats": [
+        "B2"
+      ],
+      "status": "REFUNDED",
+      "time": "21:00",
+      "totalPrice": 95000,
+      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
+    },
+    "-OgkLKRnxVaKU_Mvujyc": {
+      "createdAt": 1766042719245,
+      "date": "2025-11-08",
+      "movieTitle": "Rebel Moon",
+      "payment": {
+        "method": "BALANCE",
+        "paidAt": 1766042719245,
+        "status": "PAID"
+      },
+      "seats": [
+        "B2"
+      ],
+      "status": "REFUNDED",
+      "time": "21:00",
+      "totalPrice": 95000,
+      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
+    },
+    "-OgkLRLe21SibA-I2MWk": {
+      "createdAt": 1766042747524,
+      "date": "2025-11-08",
+      "movieTitle": "Damaged",
+      "payment": {
+        "method": "BALANCE",
+        "paidAt": 1766042747524,
+        "status": "PAID"
+      },
+      "seats": [
+        "A2"
+      ],
+      "status": "REFUNDED",
+      "time": "18:45",
+      "totalPrice": 85000,
+      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
+    },
+    "-OgkLYg8iZV_S9ml_Xcc": {
+      "createdAt": 1766042777571,
+      "date": "2025-11-08",
+      "movieTitle": "Dune: Part Two",
+      "payment": {
+        "method": "BALANCE",
+        "paidAt": 1766042777571,
+        "status": "PAID"
+      },
+      "seats": [
+        "B4"
+      ],
+      "status": "REFUNDED",
+      "time": "18:00",
+      "totalPrice": 90000,
+      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
+    },
+    "-OgkMfTbHTZSr0m_thOD": {
+      "createdAt": 1766043071757,
+      "date": "2025-11-08",
+      "movieTitle": "Dune: Part Two",
+      "payment": {
+        "method": "BALANCE",
+        "paidAt": 1766043071757,
+        "status": "PAID"
+      },
+      "seats": [
+        "A2"
+      ],
+      "status": "REFUNDED",
+      "time": "18:00",
+      "totalPrice": 90000,
+      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
+    },
+    "-OgkPjqnorXmjOPdMFjM": {
+      "createdAt": 1766043876124,
+      "date": "2025-11-08",
+      "movieTitle": "Dune: Part Two",
+      "payment": {
+        "method": "BALANCE",
+        "paidAt": 1766043876124,
+        "status": "PAID"
+      },
+      "seats": [
+        "D5",
+        "D7"
+      ],
+      "status": "REFUNDED",
+      "time": "18:00",
+      "totalPrice": 180000,
+      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
+    },
+    "-OgkSeA0c9rUgIfJANfq": {
+      "createdAt": 1766044639097,
+      "date": "2025-11-08",
+      "movieTitle": "Damaged",
+      "payment": {
+        "method": "BALANCE",
+        "paidAt": 1766044639097,
+        "status": "PAID"
+      },
+      "seats": [
+        "D4"
+      ],
+      "status": "REFUNDED",
+      "time": "18:45",
+      "totalPrice": 85000,
+      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
+    },
+    "-OgkUJi7oN2tgH2dbHNf": {
+      "createdAt": 1766045075521,
+      "date": "2025-11-08",
+      "movieTitle": "Rebel Moon",
+      "payment": {
+        "method": "BALANCE",
+        "paidAt": 1766045075521,
+        "status": "PAID"
+      },
+      "seats": [
+        "D8"
+      ],
+      "status": "REFUNDED",
+      "time": "21:00",
+      "totalPrice": 95000,
+      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
+    },
+    "-OgttG1Icx4q_tJVcPqn": {
+      "createdAt": 1766202865316,
+      "date": "2025-11-08",
+      "movieTitle": "The Gorge",
+      "payment": {
+        "method": "VNPAY",
+        "paidAt": 1766202865316,
+        "status": "PAID"
+      },
+      "posterUrl": "https://res.cloudinary.com/df0fkfeyl/image/upload/v1762501997/The_Gorge_rbbpfo.jpg",
+      "seats": [
+        "E6"
+      ],
+      "status": "REFUNDED",
+      "time": "19:00",
+      "totalPrice": 70000,
+      "userId": "xS5e9wtrraOkikepokVdjNcIFYq1"
+    },
+    "-Ogzfzz5zGLfwX_54pH4": {
+      "createdAt": 1766300059512,
+      "date": "2025-11-08",
+      "movieTitle": "Rebel Moon",
+      "payment": {
+        "method": "BALANCE",
+        "paidAt": 1766300059512,
+        "status": "PAID"
+      },
+      "posterUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/aqKtSJdsUYNhEYfV42AYpamhEle.jpg?alt=media&token=91799666-41bd-4640-8470-07b3147da3b7",
+      "seats": [
+        "B1"
+      ],
+      "status": "PAID",
+      "time": "21:00",
+      "totalPrice": 95000,
+      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
+    },
+    "-OgzuyPWi39blUrNDiuv": {
+      "createdAt": 1766303983151,
+      "date": "2025-11-08",
+      "movieTitle": "Damaged",
+      "payment": {
+        "method": "VNPAY",
+        "paidAt": 1766303983151,
+        "status": "PAID"
+      },
+      "posterUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/tMO0YLXgJZBnIAjoTSz26zE33YN.jpg?alt=media&token=71387566-ab09-4901-9fd2-117b9b567488",
+      "seats": [
+        "F7"
+      ],
+      "status": "REFUNDED",
+      "time": "18:45",
+      "totalPrice": 2000,
+      "userId": "CU6DPufQVadwqpI7GbT40KKsvPy1"
+    },
+    "-Oh-27BLp6bfAIKGXilr": {
+      "createdAt": 1766306120378,
+      "date": "2025-11-08",
+      "movieTitle": "Damaged",
+      "payment": {
+        "method": "BALANCE",
+        "paidAt": 1766306120378,
+        "status": "PAID"
+      },
+      "posterUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/tMO0YLXgJZBnIAjoTSz26zE33YN.jpg?alt=media&token=71387566-ab09-4901-9fd2-117b9b567488",
+      "seats": [
+        "D3"
+      ],
+      "status": "PAID",
+      "time": "18:45",
+      "totalPrice": 2000,
+      "userId": "CU6DPufQVadwqpI7GbT40KKsvPy1"
+    },
+    "-Oh3PIMrRQdDFiVKjbdH": {
+      "createdAt": 1766379305708,
+      "date": "2025-11-08",
+      "movieId": "movie001",
+      "movieTitle": "The Gorge",
+      "payment": {
+        "method": "BALANCE",
+        "paidAt": 1766379305708,
+        "status": "PAID"
+      },
+      "posterUrl": "https://res.cloudinary.com/df0fkfeyl/image/upload/v1762501997/The_Gorge_rbbpfo.jpg",
+      "seats": [
+        "D4"
+      ],
+      "status": "PAID",
+      "time": "19:00",
+      "totalPrice": 70000,
+      "userId": "xS5e9wtrraOkikepokVdjNcIFYq1"
+    }
+  },
+  "users": {
+    "CU6DPufQVadwqpI7GbT40KKsvPy1": {
+      "avatarUrl": "https://i.ibb.co/ynBWcqhR/ac04723b9e8b.jpg",
+      "balance": 0,
+      "dateOfBirth": "03/12/2025",
+      "email": "baongdqu@gmail.com",
+      "fullName": "s3cr3t",
+      "gender": "Nam",
+      "isPhoneVerified": false,
+      "moviePreferences": {
+        "favoriteGenre": "Drama",
+        "favoriteLanguage": "French",
+        "genreIndex": 2,
+        "languageIndex": 7,
+        "subtitlePreference": "both"
+      },
+      "phone": "+84397107173",
+      "phoneVerified": true,
+      "uid": "CU6DPufQVadwqpI7GbT40KKsvPy1"
+    },
+    "GX3KTOBQhRgslL5rVBmoMoHKbEv1": {
+      "avatarUrl": "https://i.ibb.co/C3JdHS1r/Avatar-trang-den.png",
+      "balance": 475000,
+      "dateOfBirth": "",
+      "email": "vominhduong2005@gmail.com",
+      "fullName": "vmd001",
+      "gender": "Female",
+      "phone": "01234567890",
+      "uid": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
+    },
+    "R65jtmoTwSfrSBbD9LUywX8gZaz1": {
+      "avatarUrl": "https://i.ibb.co/twLKnYFg/c1f2e9bc4ece.jpg",
+      "email": "23520380@gm.uit.edu.vn",
+      "fullName": "hello",
+      "phone": "131412321",
+      "uid": "R65jtmoTwSfrSBbD9LUywX8gZaz1"
+    },
+    "U4MjsS664HPCq2prFCVurIk9KPS2": {
+      "avatarUrl": "https://i.ibb.co/FMvB1WC/61c13a789cde.jpg",
+      "balance": 0,
+      "dateOfBirth": "",
+      "email": "s3cr3tofme@gmail.com",
+      "fullName": "s3cr3t",
+      "gender": "",
+      "phone": "",
+      "uid": "U4MjsS664HPCq2prFCVurIk9KPS2"
+    },
+    "fFKNVRrsPcXKmiGxaIoSYgPgMi52": {
+      "email": "usr1@gmail.com",
+      "fullName": "usr1",
+      "phone": "123456789",
+      "uid": "fFKNVRrsPcXKmiGxaIoSYgPgMi52"
+    },
+    "hwtruR4sbdZLLGQ1cbsjM10GQQH2": {
+      "avatarUrl": "https://i.ibb.co/C3JdHS1r/Avatar-trang-den.png",
+      "email": "aaa@gmail.com",
+      "fullName": "dd",
+      "phone": "0000000000",
+      "uid": "hwtruR4sbdZLLGQ1cbsjM10GQQH2"
+    },
+    "xS5e9wtrraOkikepokVdjNcIFYq1": {
+      "avatarUrl": "https://i.ibb.co/twLKnYFg/c1f2e9bc4ece.jpg",
+      "balance": 350000,
+      "email": "akudoreki123@gmail.com",
+      "fullName": "123test123",
+      "moviePreferences": {
+        "favoriteGenre": "Sci-Fi",
+        "favoriteLanguage": "English",
+        "genreIndex": 5,
+        "languageIndex": 1,
+        "subtitlePreference": "dubbed"
+      },
+      "phone": "1234567",
+      "uid": "xS5e9wtrraOkikepokVdjNcIFYq1"
+    },
+    "zF7LkgO3bKh6Bn4LVqjQM4HKCUl1": {
+      "avatarUrl": "https://i.ibb.co/C3JdHS1r/Avatar-trang-den.png",
+      "email": "s3cr3tofme@gmail.com",
+      "fullName": "baong",
+      "phone": "0397107174",
+      "uid": "zF7LkgO3bKh6Bn4LVqjQM4HKCUl1"
+    }
+  },
+  "Cinemas": [
+    {
+      "id": "galaxy_linh_trung",
+      "name": "Galaxy Linh Trung Thủ Đức",
+      "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
+      "latitude": 10.8642,
+      "longitude": 106.7867,
+      "rating": 4.3,
+      "userRatingsTotal": 1250,
+      "phone": "1900 2088",
+      "screens": 5,
+      "amenities": [
+        "2D",
+        "3D",
+        "Dolby 7.1"
+      ],
+      "workingHours": "09:00 - 23:30",
+      "image": "https://images.pexels.com/photos/7991579/pexels-photo-7991579.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "distanceFromUIT": 1.8
+    },
+    {
+      "id": "lotte_thu_duc",
+      "name": "Lotte Cinema Thủ Đức",
+      "address": "Tầng 2, Joy Citipoint, 2 QL1A, P. Linh Xuân, TP. Thủ Đức",
+      "latitude": 10.8753,
+      "longitude": 106.7689,
+      "rating": 4.2,
+      "userRatingsTotal": 980,
+      "phone": "1900 6017 ext 101",
+      "screens": 5,
+      "amenities": [
+        "2D",
+        "3D",
+        "Dolby 7.1"
+      ],
+      "workingHours": "08:00 - 24:00",
+      "image": "https://images.pexels.com/photos/7991158/pexels-photo-7991158.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "distanceFromUIT": 3.8
+    },
+    {
+      "id": "cgv_giga_mall",
+      "name": "CGV Giga Mall Thủ Đức",
+      "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
+      "latitude": 10.8358,
+      "longitude": 106.7242,
+      "rating": 4.4,
+      "userRatingsTotal": 2150,
+      "phone": "028 7300 8881",
+      "screens": 8,
+      "amenities": [
+        "2D",
+        "3D",
+        "4DX",
+        "IMAX",
+        "ScreenX"
+      ],
+      "workingHours": "08:00 - 24:00",
+      "image": "https://images.pexels.com/photos/7234389/pexels-photo-7234389.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "distanceFromUIT": 9.1
+    },
+    {
+      "id": "cgv_vincom_thu_duc",
+      "name": "CGV Vincom Thủ Đức",
+      "address": "Tầng 5, Vincom Thủ Đức, 216 Võ Văn Ngân, P. Bình Thọ, TP. Thủ Đức",
+      "latitude": 10.8507,
+      "longitude": 106.773,
+      "rating": 4.5,
+      "userRatingsTotal": 3200,
+      "phone": "028 7300 8882",
+      "screens": 7,
+      "amenities": [
+        "2D",
+        "3D",
+        "Dolby Atmos"
+      ],
+      "workingHours": "08:00 - 24:00",
+      "image": "https://images.pexels.com/photos/8263358/pexels-photo-8263358.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "distanceFromUIT": 4.0
+    },
+    {
+      "id": "lotte_moonlight",
+      "name": "Lotte Moonlight Thủ Đức",
+      "address": "Moonlight Residences, 102 Đặng Văn Bi, Bình Thọ, TP. Thủ Đức",
+      "latitude": 10.8472,
+      "longitude": 106.7653,
+      "rating": 4.1,
+      "userRatingsTotal": 620,
+      "phone": "1900 6017 ext 102",
+      "screens": 4,
+      "amenities": [
+        "2D",
+        "3D"
+      ],
+      "workingHours": "09:00 - 23:00",
+      "image": "https://images.pexels.com/photos/436413/pexels-photo-436413.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "distanceFromUIT": 5.2
+    },
+    {
+      "id": "bhd_le_van_viet",
+      "name": "BHD Star Vincom Lê Văn Việt",
+      "address": "Tầng 5, Vincom Plaza Lê Văn Việt, 50 Lê Văn Việt, P. Hiệp Phú, TP. Thủ Đức",
+      "latitude": 10.8475,
+      "longitude": 106.7843,
+      "rating": 4.3,
+      "userRatingsTotal": 1890,
+      "phone": "1900 2099",
+      "screens": 6,
+      "amenities": [
+        "2D",
+        "3D",
+        "Dolby 7.1"
+      ],
+      "workingHours": "08:00 - 24:00",
+      "image": "https://images.pexels.com/photos/7991486/pexels-photo-7991486.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "distanceFromUIT": 3.1
+    },
+    {
+      "id": "cgv_grand_park",
+      "name": "CGV Vincom Mega Mall Grand Park",
+      "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
+      "latitude": 10.8425,
+      "longitude": 106.8456,
+      "rating": 4.6,
+      "userRatingsTotal": 1560,
+      "phone": "028 7300 8883",
+      "screens": 10,
+      "amenities": [
+        "2D",
+        "3D",
+        "IMAX",
+        "4DX",
+        "ScreenX",
+        "Gold Class"
+      ],
+      "workingHours": "08:00 - 24:00",
+      "image": "https://images.pexels.com/photos/7991534/pexels-photo-7991534.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "distanceFromUIT": 5.4
+    }
+  ],
+  "Movies": [
     {
       "Casts": [
         {
@@ -2722,21 +3342,7 @@
       "isUpcoming": false,
       "movieID": "movie018",
       "price": 120
-    }
-  ],
-  "Reviews": {
-    "movie001": {
-      "xS5e9wtrraOkikepokVdjNcIFYq1": {
-        "comment": "Day la mot bo phim rat dang trai nghiem tai rap chieu phim!",
-        "rating": 5,
-        "timestamp": 1766381573211,
-        "userAvatar": "https://i.ibb.co/twLKnYFg/c1f2e9bc4ece.jpg",
-        "userId": "xS5e9wtrraOkikepokVdjNcIFYq1",
-        "userName": "123test123"
-      }
-    }
-  },
-  "Upcomming": [
+    },
     {
       "Casts": [
         {
@@ -3521,614 +4127,6 @@
       "isUpcoming": true,
       "movieID": "movie023",
       "price": 120
-    }
-  ],
-  "notifications": {
-    "CU6DPufQVadwqpI7GbT40KKsvPy1": {
-      "-OgLWdlFaGFG8_jlb7BV": {
-        "message": "Bạn đã thay đổi thông tin cá nhân",
-        "read": false,
-        "timestamp": 1765609478689,
-        "title": "Cập nhật tài khoản",
-        "type": "PROFILE"
-      },
-      "-OgLWjOBmhM33c1T2nqd": {
-        "message": "Bạn đã thay đổi thông tin cá nhân",
-        "read": false,
-        "timestamp": 1765609501723,
-        "title": "Cập nhật tài khoản",
-        "type": "PROFILE"
-      },
-      "-OgzqIQbrSb6kS9Y8lma": {
-        "message": "Bạn đã thay đổi thông tin cá nhân",
-        "read": false,
-        "timestamp": 1766302758540,
-        "title": "Cập nhật tài khoản",
-        "type": "PROFILE"
-      },
-      "-Oh-0q3dP4arsnCyVP3d": {
-        "message": "Bạn đã được hoàn 2,000đ cho vé Damaged",
-        "read": true,
-        "ticketId": "-OgzuyPWi39blUrNDiuv",
-        "timestamp": 1766305784015,
-        "title": "Hoàn tiền thành công",
-        "type": "REFUND"
-      },
-      "-Oh-2-PtoxUrOh3s3rzE": {
-        "message": "Bạn đã thay đổi thông tin cá nhân",
-        "read": false,
-        "timestamp": 1766306088540,
-        "title": "Cập nhật tài khoản",
-        "type": "PROFILE"
-      }
-    },
-    "xS5e9wtrraOkikepokVdjNcIFYq1": {
-      "-OgttOKQ6Zt70Y-dG8Jr": {
-        "message": "Bạn đã được hoàn 280000đ cho vé The Gorge",
-        "read": true,
-        "ticketId": "-Og__RX11ZSwkhvDDqtj",
-        "timestamp": 1766202899308,
-        "title": "Hoàn tiền thành công",
-        "type": "REFUND"
-      },
-      "-Oh0E5ku6YYreaFVuh6V": {
-        "message": "Bạn đã được hoàn 70,000đ cho vé The Gorge",
-        "read": false,
-        "ticketId": "-Ogb0X4vKatpLDpia-3N",
-        "timestamp": 1766326028586,
-        "title": "Hoàn tiền thành công",
-        "type": "REFUND"
-      },
-      "-Oh0ECfB0ziCU1veOHa8": {
-        "message": "Bạn đã được hoàn 70,000đ cho vé The Gorge",
-        "read": false,
-        "ticketId": "-OgttG1Icx4q_tJVcPqn",
-        "timestamp": 1766326056892,
-        "title": "Hoàn tiền thành công",
-        "type": "REFUND"
-      }
-    }
-  },
-  "tickets": {
-    "-Og__RX11ZSwkhvDDqtj": {
-      "createdAt": 1765862120547,
-      "date": "2025-11-08",
-      "movieTitle": "The Gorge",
-      "payment": {
-        "method": "VNPAY",
-        "paidAt": 1765862120547,
-        "status": "PAID"
-      },
-      "posterUrl": "https://res.cloudinary.com/df0fkfeyl/image/upload/v1762501997/The_Gorge_rbbpfo.jpg",
-      "seats": [
-        "C5",
-        "C6",
-        "D5",
-        "D6"
-      ],
-      "status": "REFUNDED",
-      "time": "15:15",
-      "totalPrice": 280000,
-      "userId": "xS5e9wtrraOkikepokVdjNcIFYq1"
-    },
-    "-Ogb0X4vKatpLDpia-3N": {
-      "createdAt": 1765886264763,
-      "date": "2025-11-08",
-      "movieTitle": "The Gorge",
-      "payment": {
-        "method": "VNPAY",
-        "paidAt": 1765886264763,
-        "status": "PAID"
-      },
-      "posterUrl": "https://res.cloudinary.com/df0fkfeyl/image/upload/v1762501997/The_Gorge_rbbpfo.jpg",
-      "seats": [
-        "D4"
-      ],
-      "status": "REFUNDED",
-      "time": "15:15",
-      "totalPrice": 70000,
-      "userId": "xS5e9wtrraOkikepokVdjNcIFYq1"
-    },
-    "-OggpFLq1G7ydiTFDw9F": {
-      "createdAt": 1765983718820,
-      "date": "2025-11-08",
-      "movieTitle": "Rebel Moon",
-      "payment": {
-        "method": "VNPAY",
-        "paidAt": 1765983718820,
-        "status": "PAID"
-      },
-      "seats": [
-        "D3"
-      ],
-      "status": "REFUNDED",
-      "time": "21:00",
-      "totalPrice": 95000,
-      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
-    },
-    "-OggqgEYTZNKvqnRxqiX": {
-      "createdAt": 1765984095077,
-      "date": "2025-11-08",
-      "movieTitle": "Rebel Moon",
-      "payment": {
-        "method": "VNPAY",
-        "paidAt": 1765984095077,
-        "status": "PAID"
-      },
-      "seats": [
-        "C3"
-      ],
-      "status": "REFUNDED",
-      "time": "21:00",
-      "totalPrice": 95000,
-      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
-    },
-    "-Ogj60H0W3qLKcx5TF5c": {
-      "createdAt": 1766021927152,
-      "date": "2025-11-08",
-      "movieTitle": "Rebel Moon",
-      "payment": {
-        "method": "VNPAY",
-        "paidAt": 1766021927152,
-        "status": "PAID"
-      },
-      "seats": [
-        "C5"
-      ],
-      "status": "REFUNDED",
-      "time": "21:00",
-      "totalPrice": 95000,
-      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
-    },
-    "-OgkLKMzHZJnz0wNYDxU": {
-      "createdAt": 1766042718938,
-      "date": "2025-11-08",
-      "movieTitle": "Rebel Moon",
-      "payment": {
-        "method": "BALANCE",
-        "paidAt": 1766042718938,
-        "status": "PAID"
-      },
-      "seats": [
-        "B2"
-      ],
-      "status": "REFUNDED",
-      "time": "21:00",
-      "totalPrice": 95000,
-      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
-    },
-    "-OgkLKRnxVaKU_Mvujyc": {
-      "createdAt": 1766042719245,
-      "date": "2025-11-08",
-      "movieTitle": "Rebel Moon",
-      "payment": {
-        "method": "BALANCE",
-        "paidAt": 1766042719245,
-        "status": "PAID"
-      },
-      "seats": [
-        "B2"
-      ],
-      "status": "REFUNDED",
-      "time": "21:00",
-      "totalPrice": 95000,
-      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
-    },
-    "-OgkLRLe21SibA-I2MWk": {
-      "createdAt": 1766042747524,
-      "date": "2025-11-08",
-      "movieTitle": "Damaged",
-      "payment": {
-        "method": "BALANCE",
-        "paidAt": 1766042747524,
-        "status": "PAID"
-      },
-      "seats": [
-        "A2"
-      ],
-      "status": "REFUNDED",
-      "time": "18:45",
-      "totalPrice": 85000,
-      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
-    },
-    "-OgkLYg8iZV_S9ml_Xcc": {
-      "createdAt": 1766042777571,
-      "date": "2025-11-08",
-      "movieTitle": "Dune: Part Two",
-      "payment": {
-        "method": "BALANCE",
-        "paidAt": 1766042777571,
-        "status": "PAID"
-      },
-      "seats": [
-        "B4"
-      ],
-      "status": "REFUNDED",
-      "time": "18:00",
-      "totalPrice": 90000,
-      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
-    },
-    "-OgkMfTbHTZSr0m_thOD": {
-      "createdAt": 1766043071757,
-      "date": "2025-11-08",
-      "movieTitle": "Dune: Part Two",
-      "payment": {
-        "method": "BALANCE",
-        "paidAt": 1766043071757,
-        "status": "PAID"
-      },
-      "seats": [
-        "A2"
-      ],
-      "status": "REFUNDED",
-      "time": "18:00",
-      "totalPrice": 90000,
-      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
-    },
-    "-OgkPjqnorXmjOPdMFjM": {
-      "createdAt": 1766043876124,
-      "date": "2025-11-08",
-      "movieTitle": "Dune: Part Two",
-      "payment": {
-        "method": "BALANCE",
-        "paidAt": 1766043876124,
-        "status": "PAID"
-      },
-      "seats": [
-        "D5",
-        "D7"
-      ],
-      "status": "REFUNDED",
-      "time": "18:00",
-      "totalPrice": 180000,
-      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
-    },
-    "-OgkSeA0c9rUgIfJANfq": {
-      "createdAt": 1766044639097,
-      "date": "2025-11-08",
-      "movieTitle": "Damaged",
-      "payment": {
-        "method": "BALANCE",
-        "paidAt": 1766044639097,
-        "status": "PAID"
-      },
-      "seats": [
-        "D4"
-      ],
-      "status": "REFUNDED",
-      "time": "18:45",
-      "totalPrice": 85000,
-      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
-    },
-    "-OgkUJi7oN2tgH2dbHNf": {
-      "createdAt": 1766045075521,
-      "date": "2025-11-08",
-      "movieTitle": "Rebel Moon",
-      "payment": {
-        "method": "BALANCE",
-        "paidAt": 1766045075521,
-        "status": "PAID"
-      },
-      "seats": [
-        "D8"
-      ],
-      "status": "REFUNDED",
-      "time": "21:00",
-      "totalPrice": 95000,
-      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
-    },
-    "-OgttG1Icx4q_tJVcPqn": {
-      "createdAt": 1766202865316,
-      "date": "2025-11-08",
-      "movieTitle": "The Gorge",
-      "payment": {
-        "method": "VNPAY",
-        "paidAt": 1766202865316,
-        "status": "PAID"
-      },
-      "posterUrl": "https://res.cloudinary.com/df0fkfeyl/image/upload/v1762501997/The_Gorge_rbbpfo.jpg",
-      "seats": [
-        "E6"
-      ],
-      "status": "REFUNDED",
-      "time": "19:00",
-      "totalPrice": 70000,
-      "userId": "xS5e9wtrraOkikepokVdjNcIFYq1"
-    },
-    "-Ogzfzz5zGLfwX_54pH4": {
-      "createdAt": 1766300059512,
-      "date": "2025-11-08",
-      "movieTitle": "Rebel Moon",
-      "payment": {
-        "method": "BALANCE",
-        "paidAt": 1766300059512,
-        "status": "PAID"
-      },
-      "posterUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/aqKtSJdsUYNhEYfV42AYpamhEle.jpg?alt=media&token=91799666-41bd-4640-8470-07b3147da3b7",
-      "seats": [
-        "B1"
-      ],
-      "status": "PAID",
-      "time": "21:00",
-      "totalPrice": 95000,
-      "userId": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
-    },
-    "-OgzuyPWi39blUrNDiuv": {
-      "createdAt": 1766303983151,
-      "date": "2025-11-08",
-      "movieTitle": "Damaged",
-      "payment": {
-        "method": "VNPAY",
-        "paidAt": 1766303983151,
-        "status": "PAID"
-      },
-      "posterUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/tMO0YLXgJZBnIAjoTSz26zE33YN.jpg?alt=media&token=71387566-ab09-4901-9fd2-117b9b567488",
-      "seats": [
-        "F7"
-      ],
-      "status": "REFUNDED",
-      "time": "18:45",
-      "totalPrice": 2000,
-      "userId": "CU6DPufQVadwqpI7GbT40KKsvPy1"
-    },
-    "-Oh-27BLp6bfAIKGXilr": {
-      "createdAt": 1766306120378,
-      "date": "2025-11-08",
-      "movieTitle": "Damaged",
-      "payment": {
-        "method": "BALANCE",
-        "paidAt": 1766306120378,
-        "status": "PAID"
-      },
-      "posterUrl": "https://firebasestorage.googleapis.com/v0/b/project182-1.appspot.com/o/tMO0YLXgJZBnIAjoTSz26zE33YN.jpg?alt=media&token=71387566-ab09-4901-9fd2-117b9b567488",
-      "seats": [
-        "D3"
-      ],
-      "status": "PAID",
-      "time": "18:45",
-      "totalPrice": 2000,
-      "userId": "CU6DPufQVadwqpI7GbT40KKsvPy1"
-    },
-    "-Oh3PIMrRQdDFiVKjbdH": {
-      "createdAt": 1766379305708,
-      "date": "2025-11-08",
-      "movieId": "movie001",
-      "movieTitle": "The Gorge",
-      "payment": {
-        "method": "BALANCE",
-        "paidAt": 1766379305708,
-        "status": "PAID"
-      },
-      "posterUrl": "https://res.cloudinary.com/df0fkfeyl/image/upload/v1762501997/The_Gorge_rbbpfo.jpg",
-      "seats": [
-        "D4"
-      ],
-      "status": "PAID",
-      "time": "19:00",
-      "totalPrice": 70000,
-      "userId": "xS5e9wtrraOkikepokVdjNcIFYq1"
-    }
-  },
-  "users": {
-    "CU6DPufQVadwqpI7GbT40KKsvPy1": {
-      "avatarUrl": "https://i.ibb.co/ynBWcqhR/ac04723b9e8b.jpg",
-      "balance": 0,
-      "dateOfBirth": "03/12/2025",
-      "email": "baongdqu@gmail.com",
-      "fullName": "s3cr3t",
-      "gender": "Nam",
-      "isPhoneVerified": false,
-      "moviePreferences": {
-        "favoriteGenre": "Drama",
-        "favoriteLanguage": "French",
-        "genreIndex": 2,
-        "languageIndex": 7,
-        "subtitlePreference": "both"
-      },
-      "phone": "+84397107173",
-      "phoneVerified": true,
-      "uid": "CU6DPufQVadwqpI7GbT40KKsvPy1"
-    },
-    "GX3KTOBQhRgslL5rVBmoMoHKbEv1": {
-      "avatarUrl": "https://i.ibb.co/C3JdHS1r/Avatar-trang-den.png",
-      "balance": 475000,
-      "dateOfBirth": "",
-      "email": "vominhduong2005@gmail.com",
-      "fullName": "vmd001",
-      "gender": "Female",
-      "phone": "01234567890",
-      "uid": "GX3KTOBQhRgslL5rVBmoMoHKbEv1"
-    },
-    "R65jtmoTwSfrSBbD9LUywX8gZaz1": {
-      "avatarUrl": "https://i.ibb.co/twLKnYFg/c1f2e9bc4ece.jpg",
-      "email": "23520380@gm.uit.edu.vn",
-      "fullName": "hello",
-      "phone": "131412321",
-      "uid": "R65jtmoTwSfrSBbD9LUywX8gZaz1"
-    },
-    "U4MjsS664HPCq2prFCVurIk9KPS2": {
-      "avatarUrl": "https://i.ibb.co/FMvB1WC/61c13a789cde.jpg",
-      "balance": 0,
-      "dateOfBirth": "",
-      "email": "s3cr3tofme@gmail.com",
-      "fullName": "s3cr3t",
-      "gender": "",
-      "phone": "",
-      "uid": "U4MjsS664HPCq2prFCVurIk9KPS2"
-    },
-    "fFKNVRrsPcXKmiGxaIoSYgPgMi52": {
-      "email": "usr1@gmail.com",
-      "fullName": "usr1",
-      "phone": "123456789",
-      "uid": "fFKNVRrsPcXKmiGxaIoSYgPgMi52"
-    },
-    "hwtruR4sbdZLLGQ1cbsjM10GQQH2": {
-      "avatarUrl": "https://i.ibb.co/C3JdHS1r/Avatar-trang-den.png",
-      "email": "aaa@gmail.com",
-      "fullName": "dd",
-      "phone": "0000000000",
-      "uid": "hwtruR4sbdZLLGQ1cbsjM10GQQH2"
-    },
-    "xS5e9wtrraOkikepokVdjNcIFYq1": {
-      "avatarUrl": "https://i.ibb.co/twLKnYFg/c1f2e9bc4ece.jpg",
-      "balance": 350000,
-      "email": "akudoreki123@gmail.com",
-      "fullName": "123test123",
-      "moviePreferences": {
-        "favoriteGenre": "Sci-Fi",
-        "favoriteLanguage": "English",
-        "genreIndex": 5,
-        "languageIndex": 1,
-        "subtitlePreference": "dubbed"
-      },
-      "phone": "1234567",
-      "uid": "xS5e9wtrraOkikepokVdjNcIFYq1"
-    },
-    "zF7LkgO3bKh6Bn4LVqjQM4HKCUl1": {
-      "avatarUrl": "https://i.ibb.co/C3JdHS1r/Avatar-trang-den.png",
-      "email": "s3cr3tofme@gmail.com",
-      "fullName": "baong",
-      "phone": "0397107174",
-      "uid": "zF7LkgO3bKh6Bn4LVqjQM4HKCUl1"
-    }
-  },
-  "Cinemas": [
-    {
-      "id": "galaxy_linh_trung",
-      "name": "Galaxy Linh Trung Thủ Đức",
-      "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
-      "latitude": 10.8642,
-      "longitude": 106.7867,
-      "rating": 4.3,
-      "userRatingsTotal": 1250,
-      "phone": "1900 2088",
-      "screens": 5,
-      "amenities": [
-        "2D",
-        "3D",
-        "Dolby 7.1"
-      ],
-      "workingHours": "09:00 - 23:30",
-      "image": "https://images.pexels.com/photos/7991579/pexels-photo-7991579.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "distanceFromUIT": 1.8
-    },
-    {
-      "id": "lotte_thu_duc",
-      "name": "Lotte Cinema Thủ Đức",
-      "address": "Tầng 2, Joy Citipoint, 2 QL1A, P. Linh Xuân, TP. Thủ Đức",
-      "latitude": 10.8753,
-      "longitude": 106.7689,
-      "rating": 4.2,
-      "userRatingsTotal": 980,
-      "phone": "1900 6017 ext 101",
-      "screens": 5,
-      "amenities": [
-        "2D",
-        "3D",
-        "Dolby 7.1"
-      ],
-      "workingHours": "08:00 - 24:00",
-      "image": "https://images.pexels.com/photos/7991158/pexels-photo-7991158.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "distanceFromUIT": 3.8
-    },
-    {
-      "id": "cgv_giga_mall",
-      "name": "CGV Giga Mall Thủ Đức",
-      "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
-      "latitude": 10.8358,
-      "longitude": 106.7242,
-      "rating": 4.4,
-      "userRatingsTotal": 2150,
-      "phone": "028 7300 8881",
-      "screens": 8,
-      "amenities": [
-        "2D",
-        "3D",
-        "4DX",
-        "IMAX",
-        "ScreenX"
-      ],
-      "workingHours": "08:00 - 24:00",
-      "image": "https://images.pexels.com/photos/7234389/pexels-photo-7234389.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "distanceFromUIT": 9.1
-    },
-    {
-      "id": "cgv_vincom_thu_duc",
-      "name": "CGV Vincom Thủ Đức",
-      "address": "Tầng 5, Vincom Thủ Đức, 216 Võ Văn Ngân, P. Bình Thọ, TP. Thủ Đức",
-      "latitude": 10.8507,
-      "longitude": 106.7730,
-      "rating": 4.5,
-      "userRatingsTotal": 3200,
-      "phone": "028 7300 8882",
-      "screens": 7,
-      "amenities": [
-        "2D",
-        "3D",
-        "Dolby Atmos"
-      ],
-      "workingHours": "08:00 - 24:00",
-      "image": "https://images.pexels.com/photos/8263358/pexels-photo-8263358.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "distanceFromUIT": 4.0
-    },
-    {
-      "id": "lotte_moonlight",
-      "name": "Lotte Moonlight Thủ Đức",
-      "address": "Moonlight Residences, 102 Đặng Văn Bi, Bình Thọ, TP. Thủ Đức",
-      "latitude": 10.8472,
-      "longitude": 106.7653,
-      "rating": 4.1,
-      "userRatingsTotal": 620,
-      "phone": "1900 6017 ext 102",
-      "screens": 4,
-      "amenities": [
-        "2D",
-        "3D"
-      ],
-      "workingHours": "09:00 - 23:00",
-      "image": "https://images.pexels.com/photos/436413/pexels-photo-436413.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "distanceFromUIT": 5.2
-    },
-    {
-      "id": "bhd_le_van_viet",
-      "name": "BHD Star Vincom Lê Văn Việt",
-      "address": "Tầng 5, Vincom Plaza Lê Văn Việt, 50 Lê Văn Việt, P. Hiệp Phú, TP. Thủ Đức",
-      "latitude": 10.8475,
-      "longitude": 106.7843,
-      "rating": 4.3,
-      "userRatingsTotal": 1890,
-      "phone": "1900 2099",
-      "screens": 6,
-      "amenities": [
-        "2D",
-        "3D",
-        "Dolby 7.1"
-      ],
-      "workingHours": "08:00 - 24:00",
-      "image": "https://images.pexels.com/photos/7991486/pexels-photo-7991486.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "distanceFromUIT": 3.1
-    },
-    {
-      "id": "cgv_grand_park",
-      "name": "CGV Vincom Mega Mall Grand Park",
-      "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
-      "latitude": 10.8425,
-      "longitude": 106.8456,
-      "rating": 4.6,
-      "userRatingsTotal": 1560,
-      "phone": "028 7300 8883",
-      "screens": 10,
-      "amenities": [
-        "2D",
-        "3D",
-        "IMAX",
-        "4DX",
-        "ScreenX",
-        "Gold Class"
-      ],
-      "workingHours": "08:00 - 24:00",
-      "image": "https://images.pexels.com/photos/7991534/pexels-photo-7991534.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "distanceFromUIT": 5.4
     }
   ]
 }

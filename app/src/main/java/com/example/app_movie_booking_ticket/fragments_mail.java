@@ -118,7 +118,7 @@ public class fragments_mail extends Fragment {
         private void loadMoviesThenTickets() {
                 showLoading();
 
-                db.child("Trends")
+                db.child("Movies")
                                 .addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {

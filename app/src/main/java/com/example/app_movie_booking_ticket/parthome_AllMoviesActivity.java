@@ -42,7 +42,7 @@ public class parthome_AllMoviesActivity extends AppCompatActivity {
         adapter = new AllMoviesAdapter(this, movieList);
         recyclerAllMovies.setAdapter(adapter);
 
-        dbRef = FirebaseDatabase.getInstance().getReference("Trends");
+        dbRef = FirebaseDatabase.getInstance().getReference("Movies");
         loadMoviesFromFirebase();
 
         btnBack.setOnClickListener(v -> {
@@ -58,7 +58,8 @@ public class parthome_AllMoviesActivity extends AppCompatActivity {
                 movieList.clear();
                 for (DataSnapshot movieSnap : snapshot.getChildren()) {
                     Movie movie = movieSnap.getValue(Movie.class);
-                    if (movie != null) {
+                    // Only add non-upcoming movies (Phim thịnh hành)
+                    if (movie != null && !movie.getIsUpcoming()) {
                         movieList.add(movie);
                     }
                 }

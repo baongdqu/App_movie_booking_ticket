@@ -44,7 +44,7 @@ public class parthome_AllUpcomingActivity extends AppCompatActivity {
         recyclerAllUpcoming.setLayoutManager(new androidx.recyclerview.widget.GridLayoutManager(this, 2));
         recyclerAllUpcoming.setAdapter(adapter);
 
-        dbRef = FirebaseDatabase.getInstance().getReference("Upcomming");
+        dbRef = FirebaseDatabase.getInstance().getReference("Movies");
         loadUpcomingMovies();
     }
 
@@ -55,7 +55,8 @@ public class parthome_AllUpcomingActivity extends AppCompatActivity {
                 movieList.clear();
                 for (DataSnapshot data : snapshot.getChildren()) {
                     Movie movie = data.getValue(Movie.class);
-                    if (movie != null)
+                    // Only add upcoming movies (Phim sắp chiếu)
+                    if (movie != null && movie.getIsUpcoming())
                         movieList.add(movie);
                 }
                 adapter.notifyDataSetChanged();

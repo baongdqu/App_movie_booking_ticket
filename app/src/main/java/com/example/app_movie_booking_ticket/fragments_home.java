@@ -59,9 +59,10 @@ public class fragments_home extends Fragment {
     private List<Movie> upcomingMoviesList = new ArrayList<>();
     private TopMovieAdapter upcomingAdapter;
 
-    // Danh sách TẤT CẢ phim (Top + Upcoming) cho search
+    // Danh sách TẤT CẢ phim (Top + Upcoming) cho search và All Movies section
     private List<Movie> allMoviesList = new ArrayList<>();
     private TopMovieAdapter searchAdapter;
+    private TopMovieAdapter allMoviesAdapter;
 
     private final Handler sliderHandler = new Handler();
 
@@ -92,6 +93,7 @@ public class fragments_home extends Fragment {
         loadUserInfo();
         loadTopMovies();
         loadUpcomingMovies();
+        loadAllMovies();
 
         // =========================
         // SETUP SEARCH
@@ -189,7 +191,7 @@ public class fragments_home extends Fragment {
     // LOAD TOP MOVIES VÀ KẾT HỢP SEARCH
     // =====================================================
     private void loadTopMovies() {
-        DatabaseReference movieRef = FirebaseDatabase.getInstance().getReference("Trends");
+        DatabaseReference movieRef = FirebaseDatabase.getInstance().getReference("Movies");
 
         topMovieAdapter = new TopMovieAdapter(requireContext(), movieListTop);
         binding.recyclerTopMovie.setLayoutManager(
@@ -200,15 +202,28 @@ public class fragments_home extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 movieListTop.clear();
+                upcomingMoviesList.clear();
+
                 for (DataSnapshot itemSnap : snapshot.getChildren()) {
                     Movie movie = itemSnap.getValue(Movie.class);
-                    if (movie != null)
-                        movieListTop.add(movie);
+                    if (movie != null) {
+                        if (movie.getIsUpcoming()) {
+                            upcomingMoviesList.add(movie);
+                        } else {
+                            movieListTop.add(movie);
+                        }
+                    }
                 }
 
                 // Sắp xếp theo IMDb giảm dần
                 movieListTop.sort((m1, m2) -> Double.compare(m2.getImdb(), m1.getImdb()));
                 topMovieAdapter.updateList(movieListTop);
+
+                // Sắp xếp upcoming theo năm
+                upcomingMoviesList.sort((m1, m2) -> Integer.compare(m2.getYear(), m1.getYear()));
+                if (upcomingAdapter != null) {
+                    upcomingAdapter.notifyDataSetChanged();
+                }
 
                 // Cập nhật allMoviesList
                 updateAllMoviesList();
@@ -221,35 +236,29 @@ public class fragments_home extends Fragment {
     }
 
     // =====================================================
-    // LOAD UPCOMING MOVIES
+    // LOAD UPCOMING MOVIES - Setup adapter only
     // =====================================================
     private void loadUpcomingMovies() {
-        DatabaseReference upcomingRef = FirebaseDatabase.getInstance().getReference("Upcomming");
-
         upcomingAdapter = new TopMovieAdapter(requireContext(), upcomingMoviesList);
         binding.recyclerUpcomingMovies.setLayoutManager(
                 new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
         binding.recyclerUpcomingMovies.setAdapter(upcomingAdapter);
+        // Data is loaded from loadTopMovies since they share the same "Movies" node
+    }
 
-        upcomingRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                upcomingMoviesList.clear();
-                for (DataSnapshot itemSnap : snapshot.getChildren()) {
-                    Movie movie = itemSnap.getValue(Movie.class);
-                    if (movie != null)
-                        upcomingMoviesList.add(movie);
-                }
-                upcomingMoviesList.sort((m1, m2) -> Integer.compare(m2.getYear(), m1.getYear()));
-                upcomingAdapter.notifyDataSetChanged();
+    // =====================================================
+    // LOAD ALL MOVIES - Setup adapter for all movies section
+    // =====================================================
+    private void loadAllMovies() {
+        allMoviesAdapter = new TopMovieAdapter(requireContext(), allMoviesList);
+        binding.recyclerAllMovies.setLayoutManager(
+                new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+        binding.recyclerAllMovies.setAdapter(allMoviesAdapter);
 
-                // Cập nhật allMoviesList
-                updateAllMoviesList();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
+        // View All button click - opens AllMoviesActivity showing ALL movies
+        binding.tvViewAllMovies.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(requireContext());
+            startActivity(new Intent(requireContext(), parthome_AllMoviesActivity.class));
         });
     }
 
@@ -307,6 +316,11 @@ public class fragments_home extends Fragment {
         allMoviesList.clear();
         allMoviesList.addAll(movieListTop);
         allMoviesList.addAll(upcomingMoviesList);
+
+        // Notify adapter for All Movies section
+        if (allMoviesAdapter != null) {
+            allMoviesAdapter.notifyDataSetChanged();
+        }
     }
 
     // =====================================================

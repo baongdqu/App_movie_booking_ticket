@@ -63,6 +63,7 @@
     <string name="top_movie">Phim thịnh hành</string>
     <string name="view_all">Xem tất cả</string>
     <string name="upcoming_movies">Phim sắp chiếu</string>
+    <string name="all_movies">Tất cả phim</string>
 
     <!-- Mail & Notifications -->
     <string name="empty_mailbox">Hộp thư trống</string>
@@ -74,7 +75,6 @@
     <string name="advanced_settings">Cài đặt nâng cao</string>
 
     <!-- Movie List -->
-    <string name="all_movies">Tất cả phim</string>
     <string name="genre">Thể loại</string>
     <string name="duration_placeholder">1 giờ 41 phút</string>
     <string name="date_placeholder">31/10/2025</string>
