@@ -1,10 +1,14 @@
 package com.example.app_movie_booking_ticket;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Model class representing a Cinema/Movie Theater
- * Used with Google Places API Nearby Search results
+ * Used with Firebase Realtime Database
  */
-public class Cinema {
+public class Cinema implements Serializable {
     private String placeId;
     private String name;
     private String address;
@@ -17,8 +21,15 @@ public class Cinema {
     private boolean isOpenNow;
     private boolean hasOpeningHours;
 
+    // Additional fields for detail screen
+    private String phone;
+    private int screens;
+    private List<String> amenities;
+    private String workingHours;
+
     public Cinema() {
         // Default constructor
+        this.amenities = new ArrayList<>();
     }
 
     public Cinema(String placeId, String name, String address, double latitude, double longitude) {
@@ -27,6 +38,7 @@ public class Cinema {
         this.address = address;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.amenities = new ArrayList<>();
     }
 
     // Getters and Setters
@@ -118,11 +130,50 @@ public class Cinema {
         this.hasOpeningHours = hasOpeningHours;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public int getScreens() {
+        return screens;
+    }
+
+    public void setScreens(int screens) {
+        this.screens = screens;
+    }
+
+    public List<String> getAmenities() {
+        return amenities;
+    }
+
+    public void setAmenities(List<String> amenities) {
+        this.amenities = amenities != null ? amenities : new ArrayList<>();
+    }
+
+    public String getWorkingHours() {
+        return workingHours;
+    }
+
+    public void setWorkingHours(String workingHours) {
+        this.workingHours = workingHours;
+    }
+
+    /**
+     * Get formatted amenities string
+     */
+    public String getFormattedAmenities() {
+        if (amenities == null || amenities.isEmpty()) {
+            return "";
+        }
+        return String.join(" • ", amenities);
+    }
+
     /**
      * Calculate distance between two points using Haversine formula
-     * 
-     * @param userLat User's latitude
-     * @param userLng User's longitude
      */
     public void calculateDistance(double userLat, double userLng) {
         final int R = 6371; // Radius of the Earth in km
@@ -141,10 +192,6 @@ public class Cinema {
 
     /**
      * Get photo URL from Google Places API
-     * 
-     * @param apiKey   Google API Key
-     * @param maxWidth Max width of the photo
-     * @return Photo URL or null if no photo reference
      */
     public String getPhotoUrl(String apiKey, int maxWidth) {
         if (photoReference == null || photoReference.isEmpty()) {
@@ -157,8 +204,6 @@ public class Cinema {
 
     /**
      * Get formatted distance string
-     * 
-     * @return Distance string like "1.2 km" or "500 m"
      */
     public String getFormattedDistance() {
         if (distance < 1) {

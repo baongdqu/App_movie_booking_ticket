@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.app_movie_booking_ticket.Cinema;
+import com.example.app_movie_booking_ticket.CinemaDetailActivity;
 import com.example.app_movie_booking_ticket.R;
 import com.google.android.material.button.MaterialButton;
 
@@ -114,9 +115,11 @@ public class CinemaAdapter extends RecyclerView.Adapter<CinemaAdapter.CinemaView
             }
         });
 
-        // Card click - same as directions
+        // Card click - open Cinema Detail Activity
         holder.itemView.setOnClickListener(v -> {
-            holder.btnDirections.performClick();
+            Intent intent = new Intent(context, CinemaDetailActivity.class);
+            intent.putExtra(CinemaDetailActivity.EXTRA_CINEMA, cinema);
+            context.startActivity(intent);
         });
     }
 

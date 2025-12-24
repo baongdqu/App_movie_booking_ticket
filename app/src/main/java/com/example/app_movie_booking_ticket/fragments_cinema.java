@@ -387,9 +387,40 @@ public class fragments_cinema extends Fragment {
                             cinema.setPhotoReference(imageUrl);
                         }
 
-                        // Set always open for now
+                        // Get phone
+                        String phone = cinemaSnapshot.child("phone").getValue(String.class);
+                        if (phone != null) {
+                            cinema.setPhone(phone);
+                        }
+
+                        // Get screens count
+                        Integer screens = cinemaSnapshot.child("screens").getValue(Integer.class);
+                        if (screens != null) {
+                            cinema.setScreens(screens);
+                        }
+
+                        // Get working hours
+                        String workingHours = cinemaSnapshot.child("workingHours").getValue(String.class);
+                        if (workingHours != null) {
+                            cinema.setWorkingHours(workingHours);
+                        }
+
+                        // Get amenities
+                        DataSnapshot amenitiesSnapshot = cinemaSnapshot.child("amenities");
+                        if (amenitiesSnapshot.exists()) {
+                            List<String> amenitiesList = new ArrayList<>();
+                            for (DataSnapshot amenity : amenitiesSnapshot.getChildren()) {
+                                String value = amenity.getValue(String.class);
+                                if (value != null) {
+                                    amenitiesList.add(value);
+                                }
+                            }
+                            cinema.setAmenities(amenitiesList);
+                        }
+
+                        // Check if cinema is currently open based on working hours
                         cinema.setHasOpeningHours(true);
-                        cinema.setOpenNow(true);
+                        cinema.setOpenNow(isCinemaOpen(cinema.getWorkingHours()));
 
                         cinemaList.add(cinema);
                     } catch (Exception e) {
@@ -446,7 +477,7 @@ public class fragments_cinema extends Fragment {
         cinemaAdapter.setCinemaList(cinemas);
 
         // Show cinema count
-        tvCinemaCount.setText("Hiện có " + cinemas.size() + " rạp gần bạn");
+        tvCinemaCount.setText("hiện đang có " + cinemas.size() + " rạp gần bạn");
         tvCinemaCount.setVisibility(View.VISIBLE);
 
         // Update last updated time
@@ -474,5 +505,56 @@ public class fragments_cinema extends Fragment {
         tvEmptyMessage.setText(message);
 
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Check if cinema is currently open based on working hours string
+     * Format expected: "HH:mm - HH:mm" (e.g., "09:00 - 23:30")
+     */
+    private boolean isCinemaOpen(String workingHours) {
+        if (workingHours == null || workingHours.isEmpty()) {
+            return true; // Assume open if no data
+        }
+
+        try {
+            // Parse working hours (format: "09:00 - 23:30")
+            String[] parts = workingHours.split(" - ");
+            if (parts.length != 2) {
+                return true;
+            }
+
+            String openTime = parts[0].trim();
+            String closeTime = parts[1].trim();
+
+            // Get current time
+            java.util.Calendar now = java.util.Calendar.getInstance();
+            int currentHour = now.get(java.util.Calendar.HOUR_OF_DAY);
+            int currentMinute = now.get(java.util.Calendar.MINUTE);
+            int currentTimeMinutes = currentHour * 60 + currentMinute;
+
+            // Parse open time
+            String[] openParts = openTime.split(":");
+            int openHour = Integer.parseInt(openParts[0]);
+            int openMinute = Integer.parseInt(openParts[1]);
+            int openTimeMinutes = openHour * 60 + openMinute;
+
+            // Parse close time
+            String[] closeParts = closeTime.split(":");
+            int closeHour = Integer.parseInt(closeParts[0]);
+            int closeMinute = Integer.parseInt(closeParts[1]);
+            int closeTimeMinutes = closeHour * 60 + closeMinute;
+
+            // Handle overnight hours (e.g., 08:00 - 24:00 or 08:00 - 02:00)
+            if (closeTimeMinutes <= openTimeMinutes) {
+                // Overnight: open if current is after open OR before close
+                return currentTimeMinutes >= openTimeMinutes || currentTimeMinutes < closeTimeMinutes;
+            } else {
+                // Normal: open if current is between open and close
+                return currentTimeMinutes >= openTimeMinutes && currentTimeMinutes < closeTimeMinutes;
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Error parsing working hours: " + e.getMessage());
+            return true; // Assume open on error
+        }
     }
 }

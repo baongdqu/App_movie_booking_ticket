@@ -101,6 +101,10 @@
             android:exported="false"
             android:label="@string/chatbot_title"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".CinemaDetailActivity"
+            android:exported="false"
+            android:parentActivityName=".activities_2_a_menu_manage_fragments" />
     </application>
 
 </manifest>
