@@ -85,9 +85,9 @@ public class CinemaAdapter extends RecyclerView.Adapter<CinemaAdapter.CinemaView
             holder.tvStatus.setVisibility(View.GONE);
         }
 
-        // Load photo
-        String photoUrl = cinema.getPhotoUrl(apiKey, 400);
-        if (photoUrl != null) {
+        // Load photo - now photoReference contains direct URL from Firebase
+        String photoUrl = cinema.getPhotoReference();
+        if (photoUrl != null && !photoUrl.isEmpty()) {
             Glide.with(context)
                     .load(photoUrl)
                     .placeholder(R.drawable.ic_cinema)

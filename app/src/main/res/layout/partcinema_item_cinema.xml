@@ -4,179 +4,210 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="12dp"
+    android:layout_marginBottom="16dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
     app:cardBackgroundColor="@color/card_background"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="4dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="6dp"
     app:strokeWidth="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:layout_height="wrap_content">
 
-        <!-- Cinema Image -->
+        <!-- Cinema Image with Gradient Overlay -->
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgCinema"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_cinema"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/RoundedImageView" />
+            app:shapeAppearanceOverlay="@style/TopRoundedImageView" />
 
-        <!-- Cinema Name -->
-        <TextView
-            android:id="@+id/tvCinemaName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="8dp"
-            android:ellipsize="end"
-            android:fontFamily="sans-serif-medium"
-            android:maxLines="2"
-            android:textColor="@color/text_primary"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@id/tvDistance"
-            app:layout_constraintStart_toEndOf="@id/imgCinema"
-            app:layout_constraintTop_toTopOf="@id/imgCinema"
-            tools:text="CGV Vincom Center Landmark 81" />
+        <!-- Gradient Overlay on Image -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/bg_gradient_bottom"
+            app:layout_constraintBottom_toBottomOf="@id/imgCinema"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <!-- Distance Badge -->
+        <!-- Distance Badge (Top Right) -->
         <TextView
             android:id="@+id/tvDistance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_rating_badge"
-            android:paddingHorizontal="8dp"
-            android:paddingVertical="4dp"
+            android:layout_margin="12dp"
+            android:background="@drawable/bg_distance_badge"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp"
             android:textColor="@android:color/white"
-            android:textSize="12sp"
+            android:textSize="13sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/imgCinema"
-            tools:text="1.2 km" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="1.8 km" />
 
-        <!-- Address -->
-        <TextView
-            android:id="@+id/tvAddress"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="4dp"
-            android:drawableStart="@drawable/ic_cinema"
-            android:drawablePadding="4dp"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:textColor="@color/text_secondary"
-            android:textSize="13sp"
-            app:drawableTint="@color/text_secondary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/imgCinema"
-            app:layout_constraintTop_toBottomOf="@id/tvCinemaName"
-            tools:text="Tầng B1, TTTM Vincom Center, 772 Điện Biên Phủ" />
-
-        <!-- Rating & Status -->
+        <!-- Rating Badge (Top Left) -->
         <LinearLayout
-            android:id="@+id/layoutRatingStatus"
-            android:layout_width="0dp"
+            android:id="@+id/layoutRating"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="8dp"
+            android:layout_margin="12dp"
+            android:background="@drawable/bg_rating_gold_badge"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/imgCinema"
-            app:layout_constraintTop_toBottomOf="@id/tvAddress">
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="5dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible">
 
-            <!-- Rating -->
-            <LinearLayout
-                android:id="@+id/layoutRating"
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:src="@drawable/ic_star_gold" />
+
+            <TextView
+                android:id="@+id/tvRating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:textColor="#FFD700"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                tools:text="4.5" />
+        </LinearLayout>
+
+        <!-- Open Status Badge (Bottom of Image) -->
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_status_open"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="4dp"
+            android:text="@string/cinema_open_now"
+            android:textColor="@android:color/white"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/imgCinema"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:visibility="visible" />
+
+        <!-- Content Section -->
+        <LinearLayout
+            android:id="@+id/contentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imgCinema">
+
+            <!-- Cinema Name -->
+            <TextView
+                android:id="@+id/tvCinemaName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="1"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="Galaxy Linh Trung Thủ Đức" />
+
+            <!-- Address with Icon -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:visibility="gone"
-                tools:visibility="visible">
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="16dp"
                     android:layout_height="16dp"
-                    android:src="@drawable/ic_star_gold" />
+                    android:src="@drawable/ic_location"
+                    app:tint="@color/text_secondary" />
 
                 <TextView
-                    android:id="@+id/tvRating"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tvAddress"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:textColor="@color/text_primary"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textColor="@color/text_secondary"
                     android:textSize="13sp"
-                    android:textStyle="bold"
-                    tools:text="4.5" />
+                    tools:text="934 QL1A, P. Linh Trung, TP. Thủ Đức" />
             </LinearLayout>
 
-            <!-- Spacer -->
+            <!-- Divider -->
             <View
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_weight="1" />
+                android:layout_marginTop="12dp"
+                android:background="@color/divider_color" />
 
-            <!-- Open/Closed Status -->
-            <TextView
-                android:id="@+id/tvStatus"
-                android:layout_width="wrap_content"
+            <!-- Action Buttons Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_format_badge"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="4dp"
-                android:text="@string/cinema_open_now"
-                android:textColor="@color/text_primary"
-                android:textSize="11sp"
-                android:visibility="gone"
-                tools:visibility="visible" />
-        </LinearLayout>
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-        <!-- Action Buttons -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:gravity="end"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layoutRatingStatus">
+                <!-- Call Button (Hidden by default) -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCall"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:text="@string/cinema_call"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp"
+                    android:visibility="gone"
+                    app:cornerRadius="12dp"
+                    app:icon="@drawable/ic_phone"
+                    app:iconGravity="textStart"
+                    app:iconSize="18dp"
+                    app:iconTint="@color/text_secondary"
+                    app:rippleColor="@color/profile_accent" />
 
-            <!-- Call Button -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnCall"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:text="@string/cinema_call"
-                android:textColor="@color/text_secondary"
-                android:textSize="12sp"
-                android:visibility="gone"
-                app:cornerRadius="20dp"
-                app:icon="@drawable/ic_phone"
-                app:iconSize="16dp"
-                app:iconTint="@color/text_secondary"
-                app:strokeColor="@color/text_secondary" />
-
-            <!-- Directions Button -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnDirections"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="@string/cinema_directions"
-                android:textSize="12sp"
-                app:backgroundTint="@color/profile_accent"
-                app:cornerRadius="20dp"
-                app:icon="@drawable/ic_cinema"
-                app:iconSize="16dp" />
+                <!-- Directions Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnDirections"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/cinema_directions"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/profile_accent"
+                    app:cornerRadius="12dp"
+                    app:icon="@drawable/ic_directions"
+                    app:iconGravity="textStart"
+                    app:iconPadding="8dp"
+                    app:iconSize="20dp"
+                    app:iconTint="@android:color/white" />
+            </LinearLayout>
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

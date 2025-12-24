@@ -398,5 +398,10 @@
     <string name="cinema_pull_to_refresh">Kéo xuống để làm mới</string>
     <string name="cinema_last_updated">Cập nhật lúc: %1$s</string>
     <string name="google_places_api_key">YOUR_GOOGLE_API_KEY</string>
+    <string name="cinema_current_location">📍 Vị trí hiện tại của bạn</string>
+    <string name="cinema_detecting_location">Đang xác định vị trí...</string>
+    <string name="cinema_location_found">Đã xác định vị trí</string>
+    <string name="cinema_using_default_location">Sử dụng vị trí mặc định (UIT)</string>
+    <string name="cinema_uit_location">Đại học Công nghệ Thông tin (UIT)</string>
 
 </resources>

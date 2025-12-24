@@ -3991,5 +3991,144 @@
       "phone": "0397107174",
       "uid": "zF7LkgO3bKh6Bn4LVqjQM4HKCUl1"
     }
-  }
+  },
+  "Cinemas": [
+    {
+      "id": "galaxy_linh_trung",
+      "name": "Galaxy Linh Trung Thủ Đức",
+      "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
+      "latitude": 10.8642,
+      "longitude": 106.7867,
+      "rating": 4.3,
+      "userRatingsTotal": 1250,
+      "phone": "1900 2088",
+      "screens": 5,
+      "amenities": [
+        "2D",
+        "3D",
+        "Dolby 7.1"
+      ],
+      "workingHours": "09:00 - 23:30",
+      "image": "https://images.pexels.com/photos/7991579/pexels-photo-7991579.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "distanceFromUIT": 1.8
+    },
+    {
+      "id": "lotte_thu_duc",
+      "name": "Lotte Cinema Thủ Đức",
+      "address": "Tầng 2, Joy Citipoint, 2 QL1A, P. Linh Xuân, TP. Thủ Đức",
+      "latitude": 10.8753,
+      "longitude": 106.7689,
+      "rating": 4.2,
+      "userRatingsTotal": 980,
+      "phone": "1900 6017",
+      "screens": 5,
+      "amenities": [
+        "2D",
+        "3D",
+        "Dolby 7.1"
+      ],
+      "workingHours": "08:00 - 24:00",
+      "image": "https://images.pexels.com/photos/7991158/pexels-photo-7991158.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "distanceFromUIT": 3.8
+    },
+    {
+      "id": "cgv_giga_mall",
+      "name": "CGV Giga Mall Thủ Đức",
+      "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
+      "latitude": 10.8358,
+      "longitude": 106.7242,
+      "rating": 4.4,
+      "userRatingsTotal": 2150,
+      "phone": "1900 6017",
+      "screens": 8,
+      "amenities": [
+        "2D",
+        "3D",
+        "4DX",
+        "IMAX",
+        "ScreenX"
+      ],
+      "workingHours": "08:00 - 24:00",
+      "image": "https://images.pexels.com/photos/7234389/pexels-photo-7234389.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "distanceFromUIT": 9.1
+    },
+    {
+      "id": "cgv_vincom_thu_duc",
+      "name": "CGV Vincom Thủ Đức",
+      "address": "Tầng 5, Vincom Thủ Đức, 216 Võ Văn Ngân, P. Bình Thọ, TP. Thủ Đức",
+      "latitude": 10.8507,
+      "longitude": 106.7730,
+      "rating": 4.5,
+      "userRatingsTotal": 3200,
+      "phone": "1900 6017",
+      "screens": 7,
+      "amenities": [
+        "2D",
+        "3D",
+        "Dolby Atmos"
+      ],
+      "workingHours": "08:00 - 24:00",
+      "image": "https://images.pexels.com/photos/8263358/pexels-photo-8263358.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "distanceFromUIT": 4.0
+    },
+    {
+      "id": "lotte_moonlight",
+      "name": "Lotte Moonlight Thủ Đức",
+      "address": "Moonlight Residences, 102 Đặng Văn Bi, Bình Thọ, TP. Thủ Đức",
+      "latitude": 10.8472,
+      "longitude": 106.7653,
+      "rating": 4.1,
+      "userRatingsTotal": 620,
+      "phone": "1900 6017",
+      "screens": 4,
+      "amenities": [
+        "2D",
+        "3D"
+      ],
+      "workingHours": "09:00 - 23:00",
+      "image": "https://images.pexels.com/photos/436413/pexels-photo-436413.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "distanceFromUIT": 5.2
+    },
+    {
+      "id": "bhd_le_van_viet",
+      "name": "BHD Star Vincom Lê Văn Việt",
+      "address": "Tầng 5, Vincom Plaza Lê Văn Việt, 50 Lê Văn Việt, P. Hiệp Phú, TP. Thủ Đức",
+      "latitude": 10.8475,
+      "longitude": 106.7843,
+      "rating": 4.3,
+      "userRatingsTotal": 1890,
+      "phone": "1900 2099",
+      "screens": 6,
+      "amenities": [
+        "2D",
+        "3D",
+        "Dolby 7.1"
+      ],
+      "workingHours": "08:00 - 24:00",
+      "image": "https://images.pexels.com/photos/7991486/pexels-photo-7991486.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "distanceFromUIT": 3.1
+    },
+    {
+      "id": "cgv_grand_park",
+      "name": "CGV Vincom Mega Mall Grand Park",
+      "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
+      "latitude": 10.8425,
+      "longitude": 106.8456,
+      "rating": 4.6,
+      "userRatingsTotal": 1560,
+      "phone": "1900 6017",
+      "screens": 10,
+      "amenities": [
+        "2D",
+        "3D",
+        "IMAX",
+        "4DX",
+        "ScreenX",
+        "Gold Class"
+      ],
+      "workingHours": "08:00 - 24:00",
+      "image": "https://images.pexels.com/photos/7991534/pexels-photo-7991534.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "distanceFromUIT": 5.4
+    }
+  ]
 }

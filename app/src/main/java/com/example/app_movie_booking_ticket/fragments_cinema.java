@@ -3,6 +3,8 @@ package com.example.app_movie_booking_ticket;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,10 +33,12 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.Priority;
 import com.google.android.gms.tasks.CancellationTokenSource;
 import com.google.android.material.button.MaterialButton;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.google.android.material.card.MaterialCardView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -43,21 +48,18 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-
 /**
  * Fragment for displaying nearby movie theaters/cinemas
- * Uses Google Places API Nearby Search to find cinemas near user's location
- * Results are sorted by distance from nearest to farthest
+ * Shows current location and calculates real-time distances
+ * Reads cinema data from Firebase Realtime Database
  */
 public class fragments_cinema extends Fragment {
 
     private static final String TAG = "fragments_cinema";
-    private static final int SEARCH_RADIUS = 10000; // 10km radius
+
+    // Default UIT coordinates
+    private static final double DEFAULT_LAT = 10.8700;
+    private static final double DEFAULT_LNG = 106.8031;
 
     // Views
     private RecyclerView recyclerCinemas;
@@ -69,12 +71,24 @@ public class fragments_cinema extends Fragment {
     private MaterialButton btnGrantPermission;
     private ImageView btnRefresh;
 
+    // Location card views
+    private MaterialCardView locationCard;
+    private TextView tvCurrentLocation;
+    private TextView tvCoordinates;
+    private ProgressBar progressLocation;
+    private ImageView imgLocationStatus;
+    private TextView tvCinemaCount;
+
     // Data
     private CinemaAdapter cinemaAdapter;
+    private List<Cinema> cinemaList = new ArrayList<>();
+    private DatabaseReference cinemasRef;
     private FusedLocationProviderClient fusedLocationClient;
-    private String apiKey;
-    private double userLatitude = 0;
-    private double userLongitude = 0;
+
+    // Current location
+    private double userLatitude = DEFAULT_LAT;
+    private double userLongitude = DEFAULT_LNG;
+    private boolean hasRealLocation = false;
 
     // Permission launcher
     private final ActivityResultLauncher<String[]> locationPermissionLauncher = registerForActivityResult(
@@ -84,10 +98,10 @@ public class fragments_cinema extends Fragment {
 
                 if (Boolean.TRUE.equals(fineLocation) || Boolean.TRUE.equals(coarseLocation)) {
                     // Permission granted, get location
-                    getCurrentLocationAndLoadCinemas();
+                    getCurrentLocation();
                 } else {
-                    // Permission denied
-                    showPermissionDenied();
+                    // Permission denied, use default location
+                    useDefaultLocation();
                 }
             });
 
@@ -105,8 +119,11 @@ public class fragments_cinema extends Fragment {
         // Initialize views
         initViews(view);
 
-        // Get API key from strings.xml
-        apiKey = getString(R.string.google_places_api_key);
+        // Initialize Firebase reference
+        cinemasRef = FirebaseDatabase.getInstance().getReference("Cinemas");
+
+        // Initialize location client
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
 
         // Setup RecyclerView
         setupRecyclerView();
@@ -114,20 +131,22 @@ public class fragments_cinema extends Fragment {
         // Setup SwipeRefreshLayout
         setupSwipeRefresh();
 
-        // Initialize location client
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
-
-        // Check permissions and load cinemas
-        checkPermissionAndLoadCinemas();
+        // Check permissions and get location
+        checkPermissionAndGetLocation();
 
         // Refresh button click
         btnRefresh.setOnClickListener(v -> {
-            checkPermissionAndLoadCinemas();
+            checkPermissionAndGetLocation();
         });
 
         // Grant permission button
         btnGrantPermission.setOnClickListener(v -> {
             requestLocationPermission();
+        });
+
+        // Location card click - retry getting location
+        locationCard.setOnClickListener(v -> {
+            checkPermissionAndGetLocation();
         });
     }
 
@@ -140,10 +159,18 @@ public class fragments_cinema extends Fragment {
         tvLastUpdated = view.findViewById(R.id.tvLastUpdated);
         btnGrantPermission = view.findViewById(R.id.btnGrantPermission);
         btnRefresh = view.findViewById(R.id.btnRefresh);
+
+        // Location card views
+        locationCard = view.findViewById(R.id.locationCard);
+        tvCurrentLocation = view.findViewById(R.id.tvCurrentLocation);
+        tvCoordinates = view.findViewById(R.id.tvCoordinates);
+        progressLocation = view.findViewById(R.id.progressLocation);
+        imgLocationStatus = view.findViewById(R.id.imgLocationStatus);
+        tvCinemaCount = view.findViewById(R.id.tvCinemaCount);
     }
 
     private void setupRecyclerView() {
-        cinemaAdapter = new CinemaAdapter(requireContext(), apiKey);
+        cinemaAdapter = new CinemaAdapter(requireContext(), "");
         recyclerCinemas.setLayoutManager(new LinearLayoutManager(requireContext()));
         recyclerCinemas.setAdapter(cinemaAdapter);
     }
@@ -154,12 +181,14 @@ public class fragments_cinema extends Fragment {
                 android.R.color.holo_green_dark,
                 android.R.color.holo_orange_dark,
                 android.R.color.holo_blue_dark);
-        swipeRefreshLayout.setOnRefreshListener(this::checkPermissionAndLoadCinemas);
+        swipeRefreshLayout.setOnRefreshListener(this::checkPermissionAndGetLocation);
     }
 
-    private void checkPermissionAndLoadCinemas() {
+    private void checkPermissionAndGetLocation() {
+        showLocationLoading();
+
         if (hasLocationPermission()) {
-            getCurrentLocationAndLoadCinemas();
+            getCurrentLocation();
         } else {
             requestLocationPermission();
         }
@@ -180,8 +209,8 @@ public class fragments_cinema extends Fragment {
     }
 
     @SuppressLint("MissingPermission")
-    private void getCurrentLocationAndLoadCinemas() {
-        showLoading();
+    private void getCurrentLocation() {
+        showLocationLoading();
 
         CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 
@@ -191,8 +220,10 @@ public class fragments_cinema extends Fragment {
                     if (location != null) {
                         userLatitude = location.getLatitude();
                         userLongitude = location.getLongitude();
+                        hasRealLocation = true;
                         Log.d(TAG, "Location obtained: " + userLatitude + ", " + userLongitude);
-                        loadNearbyCinemas();
+                        updateLocationDisplay(location);
+                        loadCinemasFromFirebase();
                     } else {
                         // Try to get last known location
                         getLastKnownLocation();
@@ -211,139 +242,199 @@ public class fragments_cinema extends Fragment {
                     if (location != null) {
                         userLatitude = location.getLatitude();
                         userLongitude = location.getLongitude();
-                        loadNearbyCinemas();
+                        hasRealLocation = true;
+                        updateLocationDisplay(location);
+                        loadCinemasFromFirebase();
                     } else {
-                        showError(getString(R.string.cinema_location_disabled));
+                        // Use default location
+                        useDefaultLocation();
                     }
                 })
                 .addOnFailureListener(e -> {
                     Log.e(TAG, "Failed to get last location", e);
-                    showError(getString(R.string.cinema_location_disabled));
+                    useDefaultLocation();
                 });
     }
 
-    private void loadNearbyCinemas() {
-        String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
-                + "location=" + userLatitude + "," + userLongitude
-                + "&radius=" + SEARCH_RADIUS
-                + "&type=movie_theater"
-                + "&language=vi"
-                + "&key=" + apiKey;
+    private void useDefaultLocation() {
+        userLatitude = DEFAULT_LAT;
+        userLongitude = DEFAULT_LNG;
+        hasRealLocation = false;
 
-        Log.d(TAG, "Fetching cinemas from: " + url);
+        // Update UI
+        progressLocation.setVisibility(View.GONE);
+        imgLocationStatus.setVisibility(View.VISIBLE);
+        tvCurrentLocation.setText(R.string.cinema_uit_location);
+        tvCoordinates.setText(String.format(Locale.US, "%.4f, %.4f", userLatitude, userLongitude));
+        tvCoordinates.setVisibility(View.VISIBLE);
 
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
+        btnGrantPermission.setVisibility(View.VISIBLE);
 
-        client.newCall(request).enqueue(new Callback() {
+        // Load cinemas with default location
+        loadCinemasFromFirebase();
+    }
+
+    private void updateLocationDisplay(Location location) {
+        progressLocation.setVisibility(View.GONE);
+        imgLocationStatus.setVisibility(View.VISIBLE);
+        btnGrantPermission.setVisibility(View.GONE);
+
+        // Show coordinates
+        tvCoordinates.setText(String.format(Locale.US, "%.4f, %.4f", location.getLatitude(), location.getLongitude()));
+        tvCoordinates.setVisibility(View.VISIBLE);
+
+        // Try to get address from coordinates
+        getAddressFromLocation(location.getLatitude(), location.getLongitude());
+    }
+
+    private void getAddressFromLocation(double latitude, double longitude) {
+        new Thread(() -> {
+            try {
+                Geocoder geocoder = new Geocoder(requireContext(), Locale.getDefault());
+                List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
+
+                if (addresses != null && !addresses.isEmpty()) {
+                    Address address = addresses.get(0);
+                    String addressText;
+
+                    // Build a short address string
+                    if (address.getThoroughfare() != null) {
+                        addressText = address.getThoroughfare();
+                        if (address.getSubLocality() != null) {
+                            addressText += ", " + address.getSubLocality();
+                        }
+                    } else if (address.getSubLocality() != null) {
+                        addressText = address.getSubLocality();
+                        if (address.getLocality() != null) {
+                            addressText += ", " + address.getLocality();
+                        }
+                    } else if (address.getLocality() != null) {
+                        addressText = address.getLocality();
+                    } else {
+                        addressText = getString(R.string.cinema_location_found);
+                    }
+
+                    final String finalAddress = addressText;
+                    if (getActivity() != null) {
+                        getActivity().runOnUiThread(() -> {
+                            tvCurrentLocation.setText(finalAddress);
+                        });
+                    }
+                } else {
+                    if (getActivity() != null) {
+                        getActivity().runOnUiThread(() -> {
+                            tvCurrentLocation.setText(R.string.cinema_location_found);
+                        });
+                    }
+                }
+            } catch (IOException e) {
+                Log.e(TAG, "Geocoder error", e);
+                if (getActivity() != null) {
+                    getActivity().runOnUiThread(() -> {
+                        tvCurrentLocation.setText(R.string.cinema_location_found);
+                    });
+                }
+            }
+        }).start();
+    }
+
+    private void showLocationLoading() {
+        progressLocation.setVisibility(View.VISIBLE);
+        imgLocationStatus.setVisibility(View.GONE);
+        tvCurrentLocation.setText(R.string.cinema_detecting_location);
+        tvCoordinates.setVisibility(View.GONE);
+    }
+
+    private void loadCinemasFromFirebase() {
+        showLoading();
+
+        cinemasRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                Log.e(TAG, "API call failed", e);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                cinemaList.clear();
+
+                for (DataSnapshot cinemaSnapshot : snapshot.getChildren()) {
+                    try {
+                        Cinema cinema = new Cinema();
+
+                        cinema.setPlaceId(cinemaSnapshot.child("id").getValue(String.class));
+                        cinema.setName(cinemaSnapshot.child("name").getValue(String.class));
+                        cinema.setAddress(cinemaSnapshot.child("address").getValue(String.class));
+
+                        // Get coordinates
+                        Double lat = cinemaSnapshot.child("latitude").getValue(Double.class);
+                        Double lng = cinemaSnapshot.child("longitude").getValue(Double.class);
+                        if (lat != null)
+                            cinema.setLatitude(lat);
+                        if (lng != null)
+                            cinema.setLongitude(lng);
+
+                        // Get rating
+                        Double rating = cinemaSnapshot.child("rating").getValue(Double.class);
+                        if (rating != null)
+                            cinema.setRating(rating);
+
+                        Integer userRatingsTotal = cinemaSnapshot.child("userRatingsTotal").getValue(Integer.class);
+                        if (userRatingsTotal != null)
+                            cinema.setUserRatingsTotal(userRatingsTotal);
+
+                        // Calculate distance from user's current location
+                        cinema.calculateDistance(userLatitude, userLongitude);
+
+                        // Get image URL
+                        String imageUrl = cinemaSnapshot.child("image").getValue(String.class);
+                        if (imageUrl != null && !imageUrl.isEmpty()) {
+                            cinema.setPhotoReference(imageUrl);
+                        }
+
+                        // Set always open for now
+                        cinema.setHasOpeningHours(true);
+                        cinema.setOpenNow(true);
+
+                        cinemaList.add(cinema);
+                    } catch (Exception e) {
+                        Log.e(TAG, "Error parsing cinema: " + e.getMessage());
+                    }
+                }
+
+                // Sort by calculated distance (nearest first)
+                Collections.sort(cinemaList, (c1, c2) -> Double.compare(c1.getDistance(), c2.getDistance()));
+
+                // Limit to 7 nearest cinemas only
+                if (cinemaList.size() > 7) {
+                    cinemaList = new ArrayList<>(cinemaList.subList(0, 7));
+                }
+
+                if (getActivity() != null) {
+                    getActivity().runOnUiThread(() -> {
+                        if (cinemaList.isEmpty()) {
+                            showEmpty(getString(R.string.cinema_no_results));
+                        } else {
+                            showCinemas(cinemaList);
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e(TAG, "Firebase error: " + error.getMessage());
                 if (getActivity() != null) {
                     getActivity().runOnUiThread(() -> {
                         showError(getString(R.string.cinema_error));
                     });
                 }
             }
-
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                if (response.isSuccessful() && response.body() != null) {
-                    String jsonData = response.body().string();
-                    Log.d(TAG, "API response received");
-
-                    try {
-                        List<Cinema> cinemas = parseCinemasFromJson(jsonData);
-
-                        if (getActivity() != null) {
-                            getActivity().runOnUiThread(() -> {
-                                if (cinemas.isEmpty()) {
-                                    showEmpty(getString(R.string.cinema_no_results));
-                                } else {
-                                    showCinemas(cinemas);
-                                }
-                            });
-                        }
-                    } catch (JSONException e) {
-                        Log.e(TAG, "JSON parsing error", e);
-                        if (getActivity() != null) {
-                            getActivity().runOnUiThread(() -> {
-                                showError(getString(R.string.cinema_error));
-                            });
-                        }
-                    }
-                } else {
-                    Log.e(TAG, "API response not successful: " + response.code());
-                    if (getActivity() != null) {
-                        getActivity().runOnUiThread(() -> {
-                            showError(getString(R.string.cinema_error));
-                        });
-                    }
-                }
-            }
         });
     }
 
-    private List<Cinema> parseCinemasFromJson(String jsonData) throws JSONException {
-        List<Cinema> cinemas = new ArrayList<>();
-        JSONObject jsonObject = new JSONObject(jsonData);
-        JSONArray results = jsonObject.getJSONArray("results");
-
-        for (int i = 0; i < results.length(); i++) {
-            JSONObject place = results.getJSONObject(i);
-
-            Cinema cinema = new Cinema();
-            cinema.setPlaceId(place.optString("place_id", ""));
-            cinema.setName(place.optString("name", ""));
-            cinema.setAddress(place.optString("vicinity", ""));
-
-            // Get location
-            JSONObject geometry = place.optJSONObject("geometry");
-            if (geometry != null) {
-                JSONObject location = geometry.optJSONObject("location");
-                if (location != null) {
-                    cinema.setLatitude(location.optDouble("lat", 0));
-                    cinema.setLongitude(location.optDouble("lng", 0));
-                }
-            }
-
-            // Get rating
-            cinema.setRating(place.optDouble("rating", 0));
-            cinema.setUserRatingsTotal(place.optInt("user_ratings_total", 0));
-
-            // Get opening hours
-            JSONObject openingHours = place.optJSONObject("opening_hours");
-            if (openingHours != null) {
-                cinema.setHasOpeningHours(true);
-                cinema.setOpenNow(openingHours.optBoolean("open_now", false));
-            }
-
-            // Get photo reference
-            JSONArray photos = place.optJSONArray("photos");
-            if (photos != null && photos.length() > 0) {
-                JSONObject firstPhoto = photos.getJSONObject(0);
-                cinema.setPhotoReference(firstPhoto.optString("photo_reference", null));
-            }
-
-            // Calculate distance from user
-            cinema.calculateDistance(userLatitude, userLongitude);
-
-            cinemas.add(cinema);
-        }
-
-        // Sort by distance (nearest first)
-        Collections.sort(cinemas, (c1, c2) -> Double.compare(c1.getDistance(), c2.getDistance()));
-
-        return cinemas;
-    }
-
     private void showLoading() {
-        loadingLayout.setVisibility(View.VISIBLE);
+        // Keep SwipeRefreshLayout indicator if it's refreshing (pull-to-refresh)
+        if (!swipeRefreshLayout.isRefreshing()) {
+            loadingLayout.setVisibility(View.VISIBLE);
+        }
         emptyLayout.setVisibility(View.GONE);
         recyclerCinemas.setVisibility(View.GONE);
-        swipeRefreshLayout.setRefreshing(false);
     }
 
     private void showCinemas(List<Cinema> cinemas) {
@@ -353,6 +444,10 @@ public class fragments_cinema extends Fragment {
         swipeRefreshLayout.setRefreshing(false);
 
         cinemaAdapter.setCinemaList(cinemas);
+
+        // Show cinema count
+        tvCinemaCount.setText("Đang có " + cinemas.size() + " rạp gần bạn");
+        tvCinemaCount.setVisibility(View.VISIBLE);
 
         // Update last updated time
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
@@ -368,7 +463,6 @@ public class fragments_cinema extends Fragment {
         swipeRefreshLayout.setRefreshing(false);
 
         tvEmptyMessage.setText(message);
-        btnGrantPermission.setVisibility(View.GONE);
     }
 
     private void showError(String message) {
@@ -378,18 +472,7 @@ public class fragments_cinema extends Fragment {
         swipeRefreshLayout.setRefreshing(false);
 
         tvEmptyMessage.setText(message);
-        btnGrantPermission.setVisibility(View.GONE);
 
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
-    }
-
-    private void showPermissionDenied() {
-        loadingLayout.setVisibility(View.GONE);
-        emptyLayout.setVisibility(View.VISIBLE);
-        recyclerCinemas.setVisibility(View.GONE);
-        swipeRefreshLayout.setRefreshing(false);
-
-        tvEmptyMessage.setText(R.string.cinema_location_permission_denied);
-        btnGrantPermission.setVisibility(View.VISIBLE);
     }
 }
