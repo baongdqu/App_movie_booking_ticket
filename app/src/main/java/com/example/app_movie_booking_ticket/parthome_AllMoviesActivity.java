@@ -58,8 +58,8 @@ public class parthome_AllMoviesActivity extends AppCompatActivity {
                 movieList.clear();
                 for (DataSnapshot movieSnap : snapshot.getChildren()) {
                     Movie movie = movieSnap.getValue(Movie.class);
-                    // Only add non-upcoming movies (Phim thịnh hành)
-                    if (movie != null && !movie.getIsUpcoming()) {
+                    // Only add trending movies (Phim thịnh hành)
+                    if (movie != null && movie.isTrendingMovie()) {
                         movieList.add(movie);
                     }
                 }

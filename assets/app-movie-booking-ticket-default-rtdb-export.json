@@ -2253,7 +2253,7 @@
       "Title": "Rebel Moon",
       "Trailer": "https://www.youtube.com/watch?v=zUTQ8atM_9U",
       "Year": 2023,
-      "isUpcoming": false,
+      "isUpcoming": true,
       "movieID": "movie005",
       "price": 120
     },
@@ -2296,7 +2296,7 @@
       "Title": "Immaculate",
       "Trailer": "https://www.youtube.com/watch?v=st7gTecMRMQ",
       "Year": 2023,
-      "isUpcoming": false,
+      "isUpcoming": true,
       "movieID": "movie006",
       "price": 120
     },
@@ -2405,7 +2405,7 @@
       "Title": "Godzilla-Kong",
       "Trailer": "https://www.youtube.com/watch?v=IVONRrcn9TI",
       "Year": 2023,
-      "isUpcoming": false,
+      "isUpcoming": true,
       "movieID": "movie007",
       "price": 120
     },
@@ -2468,7 +2468,7 @@
       "Title": "No Way Up",
       "Trailer": "https://www.youtube.com/watch?v=e1k1PC0TtmE",
       "Year": 2023,
-      "isUpcoming": false,
+      "isUpcoming": true,
       "movieID": "movie008",
       "price": 120
     },
@@ -2586,7 +2586,7 @@
       "Title": "Kung Fu Panda 4",
       "Trailer": "https://www.youtube.com/watch?v=_inKs4eeHiI",
       "Year": 2024,
-      "isUpcoming": false,
+      "isUpcoming": true,
       "movieID": "movie009",
       "price": 120
     },
@@ -2704,7 +2704,7 @@
       "Title": "The Three Musketeers",
       "Trailer": "https://www.youtube.com/watch?v=Ubpu8IGJpNc",
       "Year": 2023,
-      "isUpcoming": false,
+      "isUpcoming": true,
       "movieID": "movie010",
       "price": 120
     },
@@ -2767,7 +2767,7 @@
       "Title": "Damaged",
       "Trailer": "https://www.youtube.com/watch?v=cUN3JebTthc",
       "Year": 2023,
-      "isUpcoming": false,
+      "isUpcoming": true,
       "movieID": "movie011",
       "price": 120
     },
@@ -2862,7 +2862,7 @@
       "Title": "Moana 2",
       "Trailer": "https://www.youtube.com/watch?v=hDZ7y8RP5HE",
       "Year": 2024,
-      "isUpcoming": false,
+      "isUpcoming": true,
       "movieID": "movie014",
       "price": 120
     },
@@ -2981,7 +2981,7 @@
       "Title": "Gladiator II",
       "Trailer": "https://www.youtube.com/watch?v=4rgYUipGJNo",
       "Year": 2024,
-      "isUpcoming": false,
+      "isUpcoming": true,
       "movieID": "movie015",
       "price": 120
     },
@@ -3100,7 +3100,7 @@
       "Title": "Wicked",
       "Trailer": "https://www.youtube.com/watch?v=pqi45Qhq3CI",
       "Year": 2024,
-      "isUpcoming": false,
+      "isUpcoming": true,
       "movieID": "movie016",
       "price": 120
     },
@@ -3219,7 +3219,7 @@
       "Title": "Kraven the Hunter",
       "Trailer": "https://www.youtube.com/watch?v=rze8QYwWGMs",
       "Year": 2024,
-      "isUpcoming": false,
+      "isUpcoming": true,
       "movieID": "movie017",
       "price": 120
     },
@@ -3339,7 +3339,7 @@
       "Title": "Sonic the Hedgehog 3",
       "Trailer": "https://www.youtube.com/watch?v=LH1J1EbqCaI",
       "Year": 2024,
-      "isUpcoming": false,
+      "isUpcoming": true,
       "movieID": "movie018",
       "price": 120
     },
@@ -4127,6 +4127,2309 @@
       "isUpcoming": true,
       "movieID": "movie023",
       "price": 120
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Cường Seven",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/sCMSbkE6eSXkmvN3naHAONJNiqH.jpg",
+          "Character": "Tâm"
+        },
+        {
+          "Actor": "Nhã Phương",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/g30B4Cg6fgFiK6ovsWeGztpyiZH.jpg",
+          "Character": "Linh"
+        },
+        {
+          "Actor": "Simba A Pù",
+          "PicUrl": "",
+          "Character": "khỉnh Pù"
+        },
+        {
+          "Actor": "Hoàng Sơn",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/okM8AnoW7YMlcgCKE8aO9O3OJ3n.jpg",
+          "Character": "Mã"
+        },
+        {
+          "Actor": "Quách Ngọc Ngoan",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/p32g3Q2XCeJI7kfaspocATeQqnq.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "Jason Ninh Cao",
+          "PicUrl": "",
+          "Character": ""
+        }
+      ],
+      "Description": "Tâm (Cường Seven) là một họa sĩ truyện tranh có cuộc sống hạnh phúc bên cạnh người vợ hiền Linh (Nhã Phương) và cậu con trai kháu khỉnh Pù (Simba A Pù).  Khi đang dồn hết tâm sức để hoàn thiện tác phẩm ấp ủ suốt nhiều năm, anh bỗng phát hiện ra mình bị ung thư phổi và chỉ còn sống được một khoảng thời gian ngắn.  Khi biết bi kịch của Tâm, chú Mã (Hoàng Sơn) - một người quen của gia đình anh - đã đưa ra giải pháp không tưởng để có thể cứu sống chàng trai: đổi đầu Tâm vào một cơ thể mới. Sau cuộc phẫu thuật, chàng họa sĩ truyện tranh không chỉ hoàn toàn khỏi bệnh mà còn sở hữu sức mạnh vượt trội.  Tâm bắt đầu dùng khả năng của mình để giúp đỡ mọi người, trở thành người hùng tại nơi thị trấn anh đang sinh sống. Nhưng mọi chuyện diễn ra không đơn giản như thế. Những ký ức mơ hồ về một người con gái bí ẩn (Vũ Ngọc Anh) bắt đầu xuất hiện trong tâm trí anh. Sau hàng loạt pha cứu người, Tâm đồng thời lọt vào tầm ngắm của một tổ chức tội phạm bí ẩn.",
+      "Genre": [
+        "Phim Hành Động",
+        "Phim Khoa Học Viễn Tưởng"
+      ],
+      "Imdb": 5.3,
+      "Poster": "https://image.tmdb.org/t/p/w500/c1xHiB4t70GtfF0EFNdqtaJXtBN.jpg",
+      "Price": 75000,
+      "Time": "1h 30m",
+      "Title": "Lôi Báo",
+      "Trailer": "https://www.youtube.com/watch?v=f_pmSmrR0VU",
+      "Year": 2017,
+      "isUpcoming": false,
+      "movieID": "vn_494053",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Alexandre Nguyen",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/r0dGwxq1Ys5H70ea6FeihSsPns6.jpg",
+          "Character": "Hùng"
+        },
+        {
+          "Actor": "Thanh Thảo",
+          "PicUrl": "",
+          "Character": "Be An"
+        },
+        {
+          "Actor": "H'Hen Niê",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/ry2XUGnRyZzukq0bXBqX7s6EDeB.jpg",
+          "Character": "Bao Vi"
+        },
+        {
+          "Actor": "Hoàng Phúc",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/e7FbI3qYXQJZBxBlitSoAioDZL4.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "Ngọc Tình",
+          "PicUrl": "",
+          "Character": ""
+        },
+        {
+          "Actor": "Tuấn Hạc",
+          "PicUrl": "",
+          "Character": ""
+        }
+      ],
+      "Description": "Hùng, một người cha sẵn sàng đánh đổi mọi thứ, thậm chí đặt mạng sống của mình vào hiểm nguy trong cuộc truy đuổi đơn độc nhưng vô cùng khốc liệt với kẻ ác để tìm lại công lý cho cô con gái bé nhỏ của mình. Nhưng điều anh không ngờ rằng phía sau kẻ ác đó lại là cả một thế lực ngầm …",
+      "Genre": [
+        "Phim Hành Động",
+        "Phim Gây Cấn"
+      ],
+      "Imdb": 6.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/cPTphSqJ0dF0EPeeAR1qeeNbMPV.jpg",
+      "Price": 75000,
+      "Time": "1h 35m",
+      "Title": "578: Phát Đạn Của Kẻ Điên",
+      "Trailer": "https://www.youtube.com/watch?v=NPFxwf3MuAQ",
+      "Year": 2022,
+      "isUpcoming": false,
+      "movieID": "vn_821937",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Kathy Uyen",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/kx9KtkQrNNVmRpqmncBdPVVoR2I.jpg",
+          "Character": "Anne"
+        },
+        {
+          "Actor": "Petey Majik Nguyễn",
+          "PicUrl": "",
+          "Character": "Kiet"
+        },
+        {
+          "Actor": "Don Nguyễn",
+          "PicUrl": "",
+          "Character": "Danny"
+        },
+        {
+          "Actor": "Hứa Vĩ Văn",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/kX5YSIonNV4nj97MVmSGf8ZR1nF.jpg",
+          "Character": "Tuấn"
+        },
+        {
+          "Actor": "YaYa Trương Nhi",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/4Zr1c83D1bMdmIMzZDTzrGUEYwR.jpg",
+          "Character": "Mimi"
+        },
+        {
+          "Actor": "Trương Tri Trúc Diễm",
+          "PicUrl": "",
+          "Character": "Hà My"
+        }
+      ],
+      "Description": "Anne là cô gái có tài năng thiết kế thời trang, đang có cuộc sống hạnh phúc tại New York, cô có sự nghiệp ổn định và được chồng sắp cưới yêu thương hết mực. Sau này Kiệt - chồng sắp cưới của Anne phải đi công tác ở Việt Nam. Trong lúc chat bằng Skype với Kiệt, Anne phát hiện ra trong nhà Kiệt có đôi giày phụ nữ. Anne nghi ngờ Kiệt ngoại tình và bí mật về Việt Nam điều tra việc này.",
+      "Genre": [
+        "Phim Lãng Mạn",
+        "Phim Hài"
+      ],
+      "Imdb": 6.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/xvHlIszGNqvkRzBdT0ygXZ8jMgi.jpg",
+      "Price": 75000,
+      "Time": "1h 31m",
+      "Title": "Âm Mưu Giày Gót Nhọn",
+      "Trailer": "",
+      "Year": 2013,
+      "isUpcoming": false,
+      "movieID": "vn_277520",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Le Van Loc",
+          "PicUrl": "",
+          "Character": "Cyclo"
+        },
+        {
+          "Actor": "Lương Triều Vỹ",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/nQbSQAws5BdakPEB5MtiqWVeaMV.jpg",
+          "Character": "Poet"
+        },
+        {
+          "Actor": "Nhu Quynh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/tFiRXaXxqYPU9IVyTUtG821DRqq.jpg",
+          "Character": "Madam"
+        },
+        {
+          "Actor": "Hoàng Phúc",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/e7FbI3qYXQJZBxBlitSoAioDZL4.jpg",
+          "Character": "Tooth"
+        },
+        {
+          "Actor": "Ngo Quang Hai",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/jbtp59jD9xaZnBNZbKyX3wYvtI3.jpg",
+          "Character": "Knife"
+        },
+        {
+          "Actor": "Tuyết Ngân",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/643Wt4BOop39sKrZjlm4kiA2Tez.jpg",
+          "Character": "Happy Woman"
+        }
+      ],
+      "Description": "Bộ phim lấy bối cảnh của Thành phố Hồ Chí Minh, kể về câu chuyện một anh thanh niên làm nghề lái xe xích lô, vì khó khăn mưu sinh mà phải tham gia vào một băng đảng tội ác. Từ đó anh phải sống trong sự dằn vặt và sợ hãi, nhiều lần tính chuyện rút chân khỏi băng đảng nhưng đều thất bại.",
+      "Genre": [
+        "Phim Chính Kịch",
+        "Phim Hình Sự"
+      ],
+      "Imdb": 7.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/mdOsnSVTLwHMEH1juOLMiwXcO5o.jpg",
+      "Price": 75000,
+      "Time": "2h 3m",
+      "Title": "Xích lô",
+      "Trailer": "",
+      "Year": 1995,
+      "isUpcoming": null,
+      "movieID": "vn_36266",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Tran Nu Yen Khe",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/2FrKJzUH1BV2mM1XRz4lpCjhLZB.jpg",
+          "Character": "Lien"
+        },
+        {
+          "Actor": "Nhu Quynh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/tFiRXaXxqYPU9IVyTUtG821DRqq.jpg",
+          "Character": "Suong"
+        },
+        {
+          "Actor": "Lê Khanh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/vMSeM896P8NkW6uWZdZvu9XXMjs.jpg",
+          "Character": "Khanh"
+        },
+        {
+          "Actor": "Ngo Quang Hai",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/jbtp59jD9xaZnBNZbKyX3wYvtI3.jpg",
+          "Character": "Hai"
+        },
+        {
+          "Actor": "Chu Hùng",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/1BYtjzGeSvR4LwPxxY0iqCQkgCL.jpg",
+          "Character": "Quoc"
+        },
+        {
+          "Actor": "Mạnh Cường",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/29gOl2FLxehlLaY5T725y2i9heQ.jpg",
+          "Character": "Kien"
+        }
+      ],
+      "Description": "Mùa hè chiều thẳng đứng kể về câu chuyện gia đình của 3 chị em gái: Sương (Như Quỳnh), Khanh (Lê Khanh) và Liên (Trần Nữ Yên Khê) quanh ngày giỗ mẹ tại Hà Nội.",
+      "Genre": [
+        "Phim Chính Kịch",
+        "Phim Lãng Mạn"
+      ],
+      "Imdb": 6.6,
+      "Poster": "https://image.tmdb.org/t/p/w500/euPQrn3gULVuBQdfD0NNcG4Xh7P.jpg",
+      "Price": 75000,
+      "Time": "1h 52m",
+      "Title": "Mùa hè chiều thẳng đứng",
+      "Trailer": "",
+      "Year": 2000,
+      "isUpcoming": null,
+      "movieID": "vn_34899",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Olegunleko Ezekiel Gbenga",
+          "PicUrl": "",
+          "Character": "Bassley"
+        },
+        {
+          "Actor": "Khuong Thi Minh Nga",
+          "PicUrl": "",
+          "Character": "Miên"
+        },
+        {
+          "Actor": "Vu Thi Tham Thin",
+          "PicUrl": "",
+          "Character": "Thương"
+        },
+        {
+          "Actor": "Le Thi Dung",
+          "PicUrl": "",
+          "Character": "Trang"
+        },
+        {
+          "Actor": "Nguyen Thi Cam Xuan",
+          "PicUrl": "",
+          "Character": "Hạnh"
+        }
+      ],
+      "Description": "Bassley, một cầu thủ bóng đá người Nigeria sống tại Việt Nam, không thể kiếm sống kể từ khi anh bị gãy chân. Anh và bốn người phụ nữ trung niên mà anh đôi khi làm việc cùng quyết định trốn thoát khỏi nỗi thất vọng trong cuộc sống hàng ngày của họ. Họ đến một ngôi nhà cũ, nơi họ cùng nhau tạo ra một thế giới đặc biệt cho riêng mình. Nhưng thế giới lý tưởng thân mật này không thể tồn tại mãi mãi.",
+      "Genre": [
+        "Phim Chính Kịch"
+      ],
+      "Imdb": 4.5,
+      "Poster": "https://image.tmdb.org/t/p/w500/yXynG3oMtYu7pNGzRBf4W9LnmAJ.jpg",
+      "Price": 75000,
+      "Time": "1h 37m",
+      "Title": "Vị",
+      "Trailer": "",
+      "Year": 2021,
+      "isUpcoming": null,
+      "movieID": "vn_795757",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Minh Châu",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/95grEJDTkChT5QiEDvi0RpVW5wO.jpg",
+          "Character": "Huyền"
+        },
+        {
+          "Actor": "Duong Don",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/8J7ekjASe85or26TyFRyUS5Bwad.jpg",
+          "Character": "Thai"
+        },
+        {
+          "Actor": "Trần Hạnh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/rRqgOtynSttykcKY3msJnwoxqGF.jpg",
+          "Character": "Bố của Lực"
+        },
+        {
+          "Actor": "Hồng Sơn",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/expLuvWdFoJfs6aXggCxsiCDVtL.jpg",
+          "Character": "Quảng"
+        },
+        {
+          "Actor": "Ngo Quang Hai",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/jbtp59jD9xaZnBNZbKyX3wYvtI3.jpg",
+          "Character": "Phi"
+        },
+        {
+          "Actor": "Minh Vượng",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/ioCDGHt6dq7ecMfM8T8yeBPaNza.jpg",
+          "Character": "Vợ của Nhỉ"
+        }
+      ],
+      "Description": "Phim Cỏ lau được chuyển thể từ truyện ngắn nổi tiếng cùng tên của nhà văn Nguyễn Minh Châu. Cỏ lau là câu chuyện đầy ám ảnh mang nhiều tính tâm linh có sức lôi cuốn mạnh mẽ, chạm đến cả những góc sâu kín nhất của tâm hồn con người…",
+      "Genre": [
+        "Phim Việt Nam"
+      ],
+      "Imdb": 0.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/fdfczjfc90wPqjzqTXUpfNsie4w.jpg",
+      "Price": 75000,
+      "Time": "1h 29m",
+      "Title": "Cỏ Lau",
+      "Trailer": "",
+      "Year": 1993,
+      "isUpcoming": null,
+      "movieID": "vn_677692",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Hứa Minh Đạt",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/2Vp47Z2LnQpQOBzDZpwNU84yRlv.jpg",
+          "Character": "Bay Ga"
+        },
+        {
+          "Actor": "Tiến Luật",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/oF3y6nJ4R9EmzHfynPcQ58BN6Gr.jpg",
+          "Character": "Duong Bang"
+        },
+        {
+          "Actor": "Khương Ngọc",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/nGoTVXd9pealFhTuCVtZmMs1CpN.jpg",
+          "Character": "Bi Long"
+        },
+        {
+          "Actor": "Diệu Nhi",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/egzQEkov9l6qHSrwHGuddOrZbbQ.jpg",
+          "Character": "Hong Phat Nu"
+        },
+        {
+          "Actor": "Thu Trang",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/oSpHBUKu9vNcmQTJD9w936jJD7R.jpg",
+          "Character": "Chi Muoi Ba"
+        }
+      ],
+      "Description": "Nội dung phim là cái kết cho câu chuyện mà ba tập phim chiếu mạng thực hiện trước đó. Ở phim này, vai trò của cảnh sát hình sự được tôn vinh hơn so với các tác phẩm cần sự xuất hiện của lực lượng cảnh sát khác. Phim quy tụ dàn diễn viên: Thu Trang, Tiến Luật, Khương Ngọc..",
+      "Genre": [
+        "Phim Việt Nam"
+      ],
+      "Imdb": 6.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/69uhupU1S1AyepNXmkQxXEuxNTp.jpg",
+      "Price": 75000,
+      "Time": "1h 37m",
+      "Title": "Chị Mười Ba – Phần kết Thập Tam Muội",
+      "Trailer": "",
+      "Year": 2019,
+      "isUpcoming": null,
+      "movieID": "vn_592544",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Quốc Trọng",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/1CCFhaLV704XweUIDHbshxvTwy3.jpg",
+          "Character": "Red-haired Xuân"
+        },
+        {
+          "Actor": "Thanh Trầm",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/6aPvEuN2ummU0v6o08yIbYVycqs.jpg",
+          "Character": "Mrs. Đoan"
+        },
+        {
+          "Actor": "Nhu Quynh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/tFiRXaXxqYPU9IVyTUtG821DRqq.jpg",
+          "Character": "Mrs. Văn Minh (Mrs. Civilized)"
+        },
+        {
+          "Actor": "Phạm Bằng",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/ijrKwmptdySiOBX1F4mEQZPwN31.jpg",
+          "Character": "Great grandfather Hồng"
+        },
+        {
+          "Actor": "Lộng Chương",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/bO1mZNXacnr0RnjV5CBXGnvolVK.jpg",
+          "Character": "Great-great grandfather"
+        },
+        {
+          "Actor": "Hoàng Yến",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/8ma3DjpOfXuUEqbTH5fP0xIJWHt.jpg",
+          "Character": "Great grandmother Hồng"
+        }
+      ],
+      "Description": "Xuân tóc đỏ - một nhân vật từng làm đảo điên khắp Hà thành trong những năm 30 - 40 thế kỷ XX. Vậy, Xuân tóc đỏ là ai ?  Một thằng bé mồ côi lém lỉnh nhờ thời cuộc \"Âu hóa\", nhờ \"số đỏ\" mà trở thành me xừ, thành đốc tờ...  Mọi chuyện bắt đầu khi bà phó Đoan đến chơi ở sân quần nơi Xuân tóc đỏ làm nghề nhặt banh. Bữa đó, hắn bị bắt giam ở bót cảnh sát vì xem trộm một cô đầm thay đồ, may nhờ được bà phó Đoan bảo lãnh. Sau đó, bà ta giới thiệu Xuân đến làm việc ở tiệm may Âu Hóa của vợ chồng Văn Minh, từ đó Xuân bắt đầu tham gia vào việc \"cải cách xã hội\".",
+      "Genre": [
+        "Phim Hài"
+      ],
+      "Imdb": 0.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/rktymvH4msh9LKBJTc9ATDu2kp6.jpg",
+      "Price": 75000,
+      "Time": "4h 14m",
+      "Title": "Số Đỏ",
+      "Trailer": "",
+      "Year": 1990,
+      "isUpcoming": null,
+      "movieID": "vn_678247",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Mai Thành",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/xeOTCeya6Nto6MpZ13cI0cK5h2.jpg",
+          "Character": "Thậm"
+        },
+        {
+          "Actor": "Duong Don",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/8J7ekjASe85or26TyFRyUS5Bwad.jpg",
+          "Character": "Ba Tuấn"
+        },
+        {
+          "Actor": "Minh Trang",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/tO2VEM6N1AWFxnG4ffBivbNkR3j.jpg",
+          "Character": "Ánh"
+        },
+        {
+          "Actor": "Hồng Ánh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/g9MsEJKKrRSZp5UR6XIuj6KAzFo.jpg",
+          "Character": "Minh Ly"
+        },
+        {
+          "Actor": "Quyền Linh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/hkgcs8DCXVVUctXQNXXM6KcfRqi.jpg",
+          "Character": "Hùng"
+        },
+        {
+          "Actor": "Kim Xuân",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/cFZ9utZC32ZqqdcLO9uSMwDWKoc.jpg",
+          "Character": "Auntie Sáu"
+        }
+      ],
+      "Description": "",
+      "Genre": [
+        "Phim Chính Kịch"
+      ],
+      "Imdb": 0.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/mqlCjKy1w6w9StwBVCPX3XdswxH.jpg",
+      "Price": 75000,
+      "Time": "1h 30m",
+      "Title": "Chung cư",
+      "Trailer": "",
+      "Year": 1999,
+      "isUpcoming": null,
+      "movieID": "vn_270398",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Quốc Huy",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/aGRdsKpcafM8NweSjxxvGDiBTRi.jpg",
+          "Character": "Thám tử Kiên"
+        },
+        {
+          "Actor": "Ngọc Diệp",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/ueXSVd0DSgAgml3QCIC1fKrfMZN.jpg",
+          "Character": "Hai Mẫn"
+        },
+        {
+          "Actor": "Minh Anh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/2cYI7LjDsFeTrLOc2EdMBXamhem.jpg",
+          "Character": "Nga"
+        },
+        {
+          "Actor": "Quốc Anh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/rfF99VklCwmkymfSeYQse63xMFW.jpg",
+          "Character": "Thạc"
+        },
+        {
+          "Actor": "Tín Nguyễn",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/g3wYpq0M6QCw4i5Pj53oNaMQlGb.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "Phạm Quỳnh Anh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/hVW6ZmMd7I3y4Yrn3LHtFiAlzHn.jpg",
+          "Character": "Tuyết"
+        }
+      ],
+      "Description": "Một chuỗi án mạng kinh hoàng tại một ngôi làng hẻo lánh – nơi liên tiếp xảy ra tám vụ giết người với cùng một đặc điểm rợn người: tất cả nạn nhân đều không còn đầu.\r Thám Tử Kiên phải đối mặt với vụ án khủng khiếp gây hoang mang tột độ cho dân làng. Ai sẽ là nạn nhân tiếp theo trong chuỗi án mạng rùng rợn? Kiên có tìm ra mấu chốt để lần theo dấu vết hung thủ?",
+      "Genre": [
+        "Phim Kinh Dị",
+        "Phim Hình Sự",
+        "Phim Lịch Sử"
+      ],
+      "Imdb": 7.9,
+      "Poster": "https://image.tmdb.org/t/p/w500/51aFpeW0cxIiI5XPrDXo6jTTDKT.jpg",
+      "Price": 75000,
+      "Time": "2h 11m",
+      "Title": "Thám Tử Kiên: Kỳ Án Không Đầu",
+      "Trailer": "https://www.youtube.com/watch?v=QiXNbEKF3U0",
+      "Year": 2025,
+      "isUpcoming": true,
+      "movieID": "vn_1448353",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Thu Hien Nguyen",
+          "PicUrl": "",
+          "Character": ""
+        },
+        {
+          "Actor": "Trần Lực",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/d87Br7NgYCMwtd1VHH7aJD7B9GF.jpg",
+          "Character": "Tuấn"
+        },
+        {
+          "Actor": "Mạnh Cường",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/29gOl2FLxehlLaY5T725y2i9heQ.jpg",
+          "Character": "Hùng"
+        },
+        {
+          "Actor": "Hà Xuyên",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/pOROEjIjGFS1SJNCETfY3M1BHJS.jpg",
+          "Character": "Thoa"
+        },
+        {
+          "Actor": "Le Trac",
+          "PicUrl": "",
+          "Character": "Hùng’s father"
+        },
+        {
+          "Actor": "Diễm Kiều",
+          "PicUrl": "",
+          "Character": "Hùng’s mother"
+        }
+      ],
+      "Description": "Trở Về là hình ảnh thu nhỏ của xã hội Việt Nam lúc bắt đầu thời mở cửa với những mâu thuẫn, những mối quan hệ bị chi phối bởi sức mạnh đồng tiền. Người xem sẽ lặng lẽ theo dõi số phận của Loan (Thu Hiền) xem cô sẽ chọn con đường nào giữa một bên là người chồng tiêu biểu cho một mẫu “người hùng thời mở cửa” và một bên là những tình cảm cô trò trong sáng, hồn nhiên, và có cả một người đàn ông luôn yêu cô với sự ngưỡng mộ…",
+      "Genre": [
+        "Phim Chính Kịch"
+      ],
+      "Imdb": 0.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/jSHM19IdX7h44oGU7sBlT0UVv1Y.jpg",
+      "Price": 75000,
+      "Time": "1h 50m",
+      "Title": "Trở về",
+      "Trailer": "",
+      "Year": 1994,
+      "isUpcoming": null,
+      "movieID": "vn_299818",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Quý Bình",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/hmpMdKpkNl2L64r4r26aHNnIitk.jpg",
+          "Character": "Giang"
+        },
+        {
+          "Actor": "Quỳnh Hoa",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/wKgkRqb7qFUZSbTJvjXQKOmdqRm.jpg",
+          "Character": "Sáo"
+        },
+        {
+          "Actor": "Thạch Kim Long",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/6NQHEtDthsWoxC44eV4XtiZndnj.jpg",
+          "Character": "Thi"
+        },
+        {
+          "Actor": "Hoàng Trần Minh Đức",
+          "PicUrl": "",
+          "Character": "Thủy"
+        },
+        {
+          "Actor": "Hoàng Phi",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/6eYYsnwt628UyUj26jiuRVSvf8F.jpg",
+          "Character": "Thành"
+        }
+      ],
+      "Description": "",
+      "Genre": [
+        "Phim Khoa Học Viễn Tưởng",
+        "Phim Chính Kịch",
+        "Phim Bí Ẩn",
+        "Phim Lãng Mạn"
+      ],
+      "Imdb": 4.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/oiLm7sSaUfP1tfvgJQd9RRSwSv3.jpg",
+      "Price": 75000,
+      "Time": "1h 38m",
+      "Title": "Nước",
+      "Trailer": "",
+      "Year": 2014,
+      "isUpcoming": null,
+      "movieID": "vn_250961",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Thành Lộc",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/lu2hxqCqiB2TMgd8iYyl3JBYraf.jpg",
+          "Character": "Thầy Hoàn Sinh"
+        },
+        {
+          "Actor": "Đỗ Văn Hoàng",
+          "PicUrl": "",
+          "Character": "Tùy"
+        },
+        {
+          "Actor": "Trịnh Minh Huy",
+          "PicUrl": "",
+          "Character": "Khải"
+        },
+        {
+          "Actor": "Phan Anh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/qq5sJ6T1eBc5eSbQf3tN8xwadDW.jpg",
+          "Character": "Bình"
+        },
+        {
+          "Actor": "Yu Dương",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/xOTf2Tncz5HXsuqPCV3ho41qXWE.jpg",
+          "Character": "Chiêu Dương"
+        },
+        {
+          "Actor": "Nhu Quynh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/tFiRXaXxqYPU9IVyTUtG821DRqq.jpg",
+          "Character": ""
+        }
+      ],
+      "Description": "Chuyện phim xoay quanh việc ba cậu sinh viên - Bình, Tùy và Khải - tìm thấy chiếc hộp gỗ, trong có chứa mẩu cây khô héo và câu bùa chú trong ngăn kéo của thầy giáo Hoàn Sinh. Khi biết đây là loài ngải hút máu người của dân tộc Sắng La và có thể chữa bệnh, cả ba lao vào nghiên cứu. Trong công cuộc tìm hiểu về loại cây kỳ lạ này, ba cậu sinh viên tìm tới một ngôi nhà u ám - nơi có một cô bé được mệnh danh là Thánh cô, vẫn mở cửa vào những đêm trăng rằm để chữa bệnh cho người dân. Thánh cô tên thật là Chiêu Dương, 16 tuổi, có vẻ đẹp ngây thơ nhưng đầy chất ma mị, và rất thích lang thang đi chơi vào đêm khuya.",
+      "Genre": [
+        "Phim Kinh Dị"
+      ],
+      "Imdb": 6.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/3Cri1ZjpwWMa8ZMqfLHOMZ72fKd.jpg",
+      "Price": 75000,
+      "Time": "1h 30m",
+      "Title": "Lời Nguyền Huyết Ngải",
+      "Trailer": "",
+      "Year": 2012,
+      "isUpcoming": null,
+      "movieID": "vn_143669",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Khương Ngọc",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/nGoTVXd9pealFhTuCVtZmMs1CpN.jpg",
+          "Character": "Hai"
+        },
+        {
+          "Actor": "Quỳnh Hoa",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/wKgkRqb7qFUZSbTJvjXQKOmdqRm.jpg",
+          "Character": "Kim"
+        },
+        {
+          "Actor": "Elly Nguyen",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/dHTu9NmFSIM2GjeKLjNCpgefWMF.jpg",
+          "Character": "Hoa"
+        },
+        {
+          "Actor": "Phan Tấn Thi",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/pclUFK0oET1KTWBqWYq83UKfzA7.jpg",
+          "Character": "Professor"
+        },
+        {
+          "Actor": "Vân Trang",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/bkNkbvoTdqMY36kcWx6l7cyXZuO.jpg",
+          "Character": "Mai"
+        },
+        {
+          "Actor": "Hà Hiền",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/zzk8uDyp4RcTJjR8Y0dojB0NrB5.jpg",
+          "Character": "Do-Boy"
+        }
+      ],
+      "Description": "Ôm ấp ước mơ thành vũ công múa lụa chuyên nghiệp, Mai rời Bạc Liêu lên Sài Gòn để thi vào trường múa nhưng không may thi trượt. Mai đành xin vào làm phụ việc cho một quán ăn và kết thân với Kim, cô bạn cá tính trong nhóm nhảy Hip hop Sai Gon Fresh. Họ quyết tâm đưa nhóm nhảy chiến thắng ở giải Samsung, nhưng vô số trở ngại bắt đầu nảy sinh, nhất là khi Kim gặp rắc rối trong tình yêu và xích mích với trưởng nhóm... Được đánh giá là thể hiện sinh động “những lát cắt” về Sài Gòn trên nền nhạc Hip hop, bộ phim về giới trẻ này đã đoạt giải Cánh Diều Bạc năm 2011 và mang về cho Quỳnh Hoa (vai Kim) giải “Nữ diễn viên chính xuất sắc”.",
+      "Genre": [
+        "Phim Nhạc"
+      ],
+      "Imdb": 7.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/6XcFBkLxGjaVfOFWESfXzSivwSq.jpg",
+      "Price": 75000,
+      "Time": "1h 46m",
+      "Title": "Sài Gòn Yo!",
+      "Trailer": "",
+      "Year": 2011,
+      "isUpcoming": null,
+      "movieID": "vn_111058",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Trần Anh Khoa",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/iSHKOC3l9d8RXj04IsK17tXf0cx.jpg",
+          "Character": "Ròm"
+        },
+        {
+          "Actor": "Cát Phượng",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/upEwqbgL12LRywLaAKAmAYqoiiq.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "Thanh Tú",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/tKA5ZiHrenm7rlcPJ9MruLs5hhi.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "Hải Triều",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/dpf5mWNVcF57eSN9UUkaRptyiCu.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "Mai Tran",
+          "PicUrl": "",
+          "Character": "Mr. Khac"
+        },
+        {
+          "Actor": "Mai Thế Hiệp",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/xiQvhsoWPSrQr9f1is0RhwlLvQx.jpg",
+          "Character": "Husband"
+        }
+      ],
+      "Description": "Lấy bối cảnh một khu chung cư cũ đang chờ giải tỏa tại Sài Gòn, Ròm kể câu chuyện về cuộc sống của những người dân lao động nơi đây. Họ đều chơi số đề với hy vọng kiếm được một khoản tiền lớn để đổi đời. Ròm là cậu bé làm “cò đề” để kiếm sống qua ngày, chuyên tư vấn cho người dân những con số may mắn để họ có cơ may trúng đề.",
+      "Genre": [
+        "Phim Chính Kịch",
+        "Phim Hành Động"
+      ],
+      "Imdb": 6.8,
+      "Poster": "https://image.tmdb.org/t/p/w500/ta7x5lTDmzxxz3HScDyGoUucBGH.jpg",
+      "Price": 75000,
+      "Time": "1h 19m",
+      "Title": "Ròm",
+      "Trailer": "https://www.youtube.com/watch?v=AFLHDs1MUGw",
+      "Year": 2020,
+      "isUpcoming": null,
+      "movieID": "vn_637997",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Truong Ngoc Anh",
+          "PicUrl": "",
+          "Character": "An"
+        },
+        {
+          "Actor": "Marcus Guilhem",
+          "PicUrl": "",
+          "Character": "Hai"
+        },
+        {
+          "Actor": "Mike Leeder",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/lJXCbG1Fjn84GdKQnNNxL89Ww1L.jpg",
+          "Character": "Mr. Cruise, Crime Lord"
+        },
+        {
+          "Actor": "Trung Ly",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/55WhDmDC8W1ilTt4SNnisxOWI0u.jpg",
+          "Character": "Mr. Seng , Drug Lord"
+        },
+        {
+          "Actor": "Antony Nguyen",
+          "PicUrl": "",
+          "Character": "Mr. Cruise Personal Bodyguard"
+        },
+        {
+          "Actor": "Hiếu Nguyễn",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/kFWOvH570XA8DR9yg57gw9NFmUs.jpg",
+          "Character": "Dau Bac"
+        }
+      ],
+      "Description": "Một băng đảng ma túy quốc tế đã nhắm tới Việt Nam, và nữ cảnh sát cứng rắn nhất Việt Nam phải có nhiệm vụ đưa chúng ra trước công lý một lần và mãi mãi.",
+      "Genre": [
+        "Phim Hành Động"
+      ],
+      "Imdb": 7.8,
+      "Poster": "https://image.tmdb.org/t/p/w500/bqxIQesxPPlRrOqfKqV10zTOXtX.jpg",
+      "Price": 75000,
+      "Time": "0m",
+      "Title": "Truy Sát",
+      "Trailer": "",
+      "Year": 2016,
+      "isUpcoming": null,
+      "movieID": "vn_408165",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Ninh Dương Lan Ngọc",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/ypwd4glGKnAoiLMWH0DuxDkPvKE.jpg",
+          "Character": "Ms. Q / Quyen"
+        },
+        {
+          "Actor": "Lê Xuân Tiền",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/hCz3ZU3iKtlMALJASsRE23pqJT6.jpg",
+          "Character": "Jack"
+        },
+        {
+          "Actor": "Hồng Vân",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/xGtcfiU98EWtTMi3YVWoRfIvCrc.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "Thùy Anh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/pDw9ILgFvNkpqp3wsSEs8c0wetx.jpg",
+          "Character": "Kiki Ngo"
+        },
+        {
+          "Actor": "Jun Vũ",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/sVahWPH9MdHXOkdWW5ZQRhrV6L6.jpg",
+          "Character": "Khanh My"
+        },
+        {
+          "Actor": "Thoại Tiên",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/1aMe3xCUZR5MkAWbLwhlqBXNzUB.jpg",
+          "Character": "Maria Cao"
+        }
+      ],
+      "Description": "Phim xoay quanh câu chuyện về một gia tộc siêu giàu, trong đấy nàng dâu Ninh Dương Lan Ngọc tiếp tục là tâm điểm với vai cô con dâu siêu chảnh. Miss Q lắm tai tiếng của showbiz sẽ bước vào hào môn xứ Huế và đối đầu với mẹ chồng tương lai - cựu minh tinh nổi tiếng Thái Tuyết Mai.",
+      "Genre": [
+        "Phim Việt Nam"
+      ],
+      "Imdb": 4.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/tH92dHWRnzDuQ8jJya8co47PwuI.jpg",
+      "Price": 75000,
+      "Time": "1h 30m",
+      "Title": "Gái Già Lắm Chiêu 3",
+      "Trailer": "https://www.youtube.com/watch?v=Vw-gr7Kg2UI",
+      "Year": 2020,
+      "isUpcoming": null,
+      "movieID": "vn_663745",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Kathy Uyen",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/kx9KtkQrNNVmRpqmncBdPVVoR2I.jpg",
+          "Character": "Tiffany"
+        },
+        {
+          "Actor": "Huy Khánh",
+          "PicUrl": "",
+          "Character": "Hieu"
+        },
+        {
+          "Actor": "Bình Minh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/6zzhORhh46Bx8wA5VBkGFdBHG3J.jpg",
+          "Character": "Khanh"
+        },
+        {
+          "Actor": "Ngọc Diệp",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/ueXSVd0DSgAgml3QCIC1fKrfMZN.jpg",
+          "Character": "Jennifer"
+        },
+        {
+          "Actor": "Tăng Bảo Quyên",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/nsjaLLhT9CtcyAENNlheSdubW9w.jpg",
+          "Character": "Thao"
+        },
+        {
+          "Actor": "Mario E. Garcia",
+          "PicUrl": "",
+          "Character": "Officer in Patrol Car"
+        }
+      ],
+      "Description": "Một chàng công tử không thể sống thiếu gái đẹp và một anh mọt sách nhà nghèo cùng rơi vào vòng xoáy tình yêu trên đất Mỹ nhiều cám dỗ. Ai sẽ tìm được tình yêu đích thực?",
+      "Genre": [
+        "Phim Chính Kịch",
+        "Phim Hài",
+        "Phim Lãng Mạn"
+      ],
+      "Imdb": 5.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/33Zu7QcGKUoPXNZRJlle9flshPj.jpg",
+      "Price": 75000,
+      "Time": "2h 0m",
+      "Title": "Chuyen tinh xa xu",
+      "Trailer": "https://www.youtube.com/watch?v=Qj9EDnsT0QU",
+      "Year": 2009,
+      "isUpcoming": null,
+      "movieID": "vn_64937",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Ninh Dương Lan Ngọc",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/ypwd4glGKnAoiLMWH0DuxDkPvKE.jpg",
+          "Character": "Ms. Q / Hoàng Quyên"
+        },
+        {
+          "Actor": "Kaity Nguyễn",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/n78QM4icCLlhWLBn1eXhRSX21Lg.jpg",
+          "Character": "Quỳnh Yên"
+        },
+        {
+          "Actor": "NSND Lê Khanh",
+          "PicUrl": "",
+          "Character": ""
+        },
+        {
+          "Actor": "Lãnh Thanh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/tK4oyJlIivbvFu82CYOQ4hZVDxb.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "Lê Xuân Tiền",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/hCz3ZU3iKtlMALJASsRE23pqJT6.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "Hữu Châu",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/caVtPnyYY2vg32XyVYl2yKxwEcK.jpg",
+          "Character": ""
+        }
+      ],
+      "Description": "Đang tất bật chuẩn bị cho đám cưới triệu đô cùng chàng Jack điển trai, đại mỹ nhân showbiz Ms. Q/Hoàng Quyên (Ninh Dương Lan Ngọc) bất ngờ mất tích một cách bí ẩn ngay sau khi gặp lại Quỳnh Yên (Kaity Nguyễn), một người bạn đã mất liên lạc từ 15 năm trước. Ngay lập tức, các rắc rối liên tục ập đến, kéo theo những bí mật đen tối của cả hai dần bị lột trần. Ai là kẻ thủ ác? Ai mới là nạn nhân?  P/S: Bất kể cô ta có nói gì thì cũng nên nhớ: Đừng tin lời cô ta nói!",
+      "Genre": [
+        "Phim Gây Cấn",
+        "Phim Bí Ẩn",
+        "Phim Chính Kịch"
+      ],
+      "Imdb": 5.5,
+      "Poster": "https://image.tmdb.org/t/p/w500/lYDNKPS46HQ06VAkY97OuQpoyAc.jpg",
+      "Price": 75000,
+      "Time": "1h 45m",
+      "Title": "Cô gái từ quá khứ",
+      "Trailer": "https://www.youtube.com/watch?v=ILu_lNbJ4aA",
+      "Year": 2022,
+      "isUpcoming": null,
+      "movieID": "vn_1018565",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Quách Ngọc Ngoan",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/p32g3Q2XCeJI7kfaspocATeQqnq.jpg",
+          "Character": "Nguyễn Du/Tố Như"
+        },
+        {
+          "Actor": "Nhật Kim Anh",
+          "PicUrl": "",
+          "Character": "Cam"
+        },
+        {
+          "Actor": "Trần Lực",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/d87Br7NgYCMwtd1VHH7aJD7B9GF.jpg",
+          "Character": "Nguyễn Khản"
+        },
+        {
+          "Actor": "Bùi Bài Bình",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/vTnTV0hKvBe8N8KGMRd7c2RjAnw.jpg",
+          "Character": "Thuỳ Trung Hầu"
+        },
+        {
+          "Actor": "Mai Thành",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/xeOTCeya6Nto6MpZ13cI0cK5h2.jpg",
+          "Character": "Thầy Nguyễn"
+        },
+        {
+          "Actor": "Trần Hạnh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/rRqgOtynSttykcKY3msJnwoxqGF.jpg",
+          "Character": "Ông lão kéo vó"
+        }
+      ],
+      "Description": "",
+      "Genre": [
+        "Phim Lãng Mạn"
+      ],
+      "Imdb": 0.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/4QhIwU8q0mkQJgsghDx79Ig6P3m.jpg",
+      "Price": 75000,
+      "Time": "2h 0m",
+      "Title": "Long thành cầm giả ca",
+      "Trailer": "",
+      "Year": 2010,
+      "isUpcoming": null,
+      "movieID": "vn_374321",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Nhung Kate",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/hYLUp9Q2OA5P76kthfuerJtYStj.jpg",
+          "Character": "Linh"
+        },
+        {
+          "Actor": "Jean-Michel Richaud",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/dZYdnxo2iX3mbKsu3LjcM51VWfv.jpg",
+          "Character": "Captain Sebastien Laurent"
+        },
+        {
+          "Actor": "Kim Xuân",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/cFZ9utZC32ZqqdcLO9uSMwDWKoc.jpg",
+          "Character": "Mrs. Han / Ba Han"
+        },
+        {
+          "Actor": "Svitlana Kovalenko",
+          "PicUrl": "",
+          "Character": "Madame Camille"
+        },
+        {
+          "Actor": "Kiến An",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/8xRAsbv0j98v9iFWfZhWV5ie4sm.jpg",
+          "Character": "Mr. Chau / Ong Chau"
+        },
+        {
+          "Actor": "Rosie Fellner",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/bqrtweToc04YuNr0nsXxKgamSlX.jpg",
+          "Character": "Madeleine"
+        }
+      ],
+      "Description": "Năm 2007, các nhà làm phim Việt Nam đã có một bước đi khá táo bạo khi hợp tác cùng điện ảnh Hàn Quốc trong một bộ phim kinh dị được đầu tư rất công phu mang tên “Mười”, sự thành công của Muoi chính là chất xúc tác quan trọng để những sản phẩm hợp tác tiếp theo được ra đời, trong đó mới đây nhất chính là Cô Hầu Gái của đạo diễn Derek Nguyen. Ra mắt vào năm 2016, có một điểm khá thú vị khi tên của phim trùng với tên của một sản phẩm điện ảnh của điện ảnh Hàn cũng phát hành trong năm 2016, một “siêu phẩm” 18+ của đạo diễn Chan-wook Park với vai nữ chính được đảm nhiệm bởi Min-hee Kim, chính vì vậy mà để phân biệt, chúng ta sẽ gọi The Housemaid là Cô Hầu Gái (bản Việt Nam).",
+      "Genre": [
+        "Phim Lãng Mạn",
+        "Phim Kinh Dị"
+      ],
+      "Imdb": 6.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/uDS7ZNsMViDSXAb37txP1AL5Rcb.jpg",
+      "Price": 75000,
+      "Time": "1h 45m",
+      "Title": "Cô Hầu Gái",
+      "Trailer": "",
+      "Year": 2016,
+      "isUpcoming": null,
+      "movieID": "vn_413416",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Pham Thanh Hai",
+          "PicUrl": "",
+          "Character": "Nam"
+        },
+        {
+          "Actor": "Đào Duy Bảo Định",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/wQKJB90EnWjMAHawQtAgLnRxVsp.jpg",
+          "Character": "Việt"
+        },
+        {
+          "Actor": "Nguyên Thį Nga",
+          "PicUrl": "",
+          "Character": "Hoa"
+        },
+        {
+          "Actor": "Lê Viêt Tųng",
+          "PicUrl": "",
+          "Character": "Ba"
+        },
+        {
+          "Actor": "Ngân Khánh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/p9S13nwfmQizcnohUzjZD9bAng0.jpg",
+          "Character": "Psychic"
+        }
+      ],
+      "Description": "Phim xoay quanh hai thợ mỏ là Nam và người yêu là Việt phải làm việc bên dưới lòng đất sâu 300 m, nơi được xem là chứa đầy nguy hiểm và bóng tối bao trùm. Lúc này, Nam không muốn tiếp tục tương lai của bản thân mình ở một nơi chỉ quanh quẩn là than đá nên đã nhờ những kẻ buôn người đưa mình đến phương Tây để đổi đời. Trước khi rời đi, Nam cùng với Việt và mẹ của anh đã đi tìm hài cốt của cha mình khi linh hồn cha anh là một người lính của Quân đội nhân dân Việt Nam báo mộng giấc mơ của mẹ. Tuy nhiên, sau cùng, cuộc tìm kiếm của họ lại không mang về kết quả nào. Sau đó, cả hai người phải quay về khu mỏ và bị mắc kẹt lại đây sau cơn mưa dữ dội. Tại đây, Nam chợt nhìn thấy được tương lai sắp tới của mình, bị nhốt trong thùng xe tải, trong bóng tối, trong cái nóng bức và ngột ngạt của quá khứ. Nam và Việt cả hai vẫn nằm cạnh nhau, cởi trần, nóng bức.",
+      "Genre": [
+        "Phim Chính Kịch"
+      ],
+      "Imdb": 7.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/axtvB6qoORMZQ2qPZdaFcBOM8g3.jpg",
+      "Price": 75000,
+      "Time": "2h 4m",
+      "Title": "Trong lòng đất",
+      "Trailer": "",
+      "Year": 2024,
+      "isUpcoming": true,
+      "movieID": "vn_846586",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Sơn Tùng M-TP",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/cuDTsHul5WFLmOylgx0CWkH4R4Z.jpg",
+          "Character": "Đình Phong"
+        },
+        {
+          "Actor": "Ngô Kiến Huy",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/gbTEXwPVTiDys2RXVROGjm7sF6s.jpg",
+          "Character": "Ha"
+        },
+        {
+          "Actor": "Phạm Quỳnh Anh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/jkG2IQ43elwXBlh5xG46azYBPov.jpg",
+          "Character": "Phạm Quỳnh Băng"
+        },
+        {
+          "Actor": "Hari Won",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/A17FhdIjdqYdL9weo97w5D04wDK.jpg",
+          "Character": "Sky"
+        },
+        {
+          "Actor": "Hứa Vĩ Văn",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/kX5YSIonNV4nj97MVmSGf8ZR1nF.jpg",
+          "Character": "Lâm"
+        },
+        {
+          "Actor": "Don Nguyễn",
+          "PicUrl": "",
+          "Character": "Quang Huy"
+        }
+      ],
+      "Description": "Đình Phong là một ca sĩ trẻ nổi tiếng, ước mơ tổ chức liveshow của riêng mình. Thế nhưng, cuộc đời không mỉm cười với chàng trai ấy khi anh bị chẩn đoán mắc căn bệnh nan y. Kiên cường sống, chàng ca sĩ vẫn làm việc chăm chỉ và phấn đấu hết mình. May mắn thay, bên anh luôn có những người bạn hết lòng quan tâm, chăm sóc và yêu thương.  Chàng Trai Năm Ấy là bộ phim gây tiếng vang lớn trong năm 2015, đưa tên tuổi Sơn Tùng M-TP trở thành ngôi sao hàng đầu Việt Nam. Ngoài ra, phim có sự xuất hiện của nhiều ngôi sao nổi tiếng như Hari Won, Phạm Quỳnh Anh, Hứa Vĩ Văn… Bộ phim được lấy cảm hứng từ câu chuyện có thật của chàng ca sĩ quá cố Wanbi Tuấn Anh.",
+      "Genre": [
+        "Phim Hài",
+        "Phim Chính Kịch",
+        "Phim Lãng Mạn"
+      ],
+      "Imdb": 3.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/aKE6msLmCm6Ks46EcTbqvlMe00Q.jpg",
+      "Price": 75000,
+      "Time": "1h 59m",
+      "Title": "Chàng Trai Năm Ấy",
+      "Trailer": "",
+      "Year": 2014,
+      "isUpcoming": null,
+      "movieID": "vn_385102",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Liên Bỉnh Phát",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/terLx4VOqH8Xm0cpAloH3DdNm4X.jpg",
+          "Character": "Khang"
+        },
+        {
+          "Actor": "Do Thi Hai Yen",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/jz3oiYpF2XCw7OjXkrYo0BRD6Pa.jpg",
+          "Character": "Ky Nam"
+        },
+        {
+          "Actor": "Phương Bình",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/2O0wXIWrdzVtGWY4iUsDuxYrcJw.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "Lý Kiều Hạnh",
+          "PicUrl": "",
+          "Character": ""
+        },
+        {
+          "Actor": "Trần Thế Mạnh",
+          "PicUrl": "",
+          "Character": ""
+        },
+        {
+          "Actor": "Ngo Hong Ngoc",
+          "PicUrl": "",
+          "Character": ""
+        }
+      ],
+      "Description": "Với sự nâng đỡ của người chú quyền lực, Khang được giao cho công việc dịch cuốn “Hoàng Tử Bé” và dọn vào căn hộ bỏ trống ở khu chung cư cũ. Anh làm quen với cô hàng xóm tên Kỳ Nam, một góa phụ từng nổi danh trong giới nữ công gia chánh và giờ lặng lẽ với nghề nấu cơm tháng. Một tai nạn xảy ra khiến Kỳ Nam không thể tiếp tục công việc của mình. Khang đề nghị giúp đỡ và mối quan hệ của họ dần trở nên sâu sắc, gắn bó. Liệu mối quan hệ của họ có thể tồn tại lâu dài giữa những biến động củа xã hội thời bấy giờ?",
+      "Genre": [
+        "Phim Lãng Mạn"
+      ],
+      "Imdb": 7.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/yNdB4HKfOXPaQLzUlRq81DbTKnh.jpg",
+      "Price": 75000,
+      "Time": "2h 15m",
+      "Title": "Quán Kỳ Nam",
+      "Trailer": "https://www.youtube.com/watch?v=6bW9byYRhz8",
+      "Year": 2025,
+      "isUpcoming": true,
+      "movieID": "vn_1516884",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Ngọc Phước",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/7oDrQOldot0gpLONfqGK3ATt1ea.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "Khả Như",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/paI6LnQlNbxXZyXoAY2JY2w8MU8.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "BB Trần",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/qzPIMdkunkOwgZSQZwV6DUNBtNy.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "Hải Triều",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/dpf5mWNVcF57eSN9UUkaRptyiCu.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "Quốc Khánh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/jLQfOdeD4m4Palbf9rcNok8JOqw.jpg",
+          "Character": ""
+        }
+      ],
+      "Description": "",
+      "Genre": [
+        "Phim Chính Kịch"
+      ],
+      "Imdb": 0.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/blbtbc8DiZeuUzRdu7FXrbz3gTf.jpg",
+      "Price": 75000,
+      "Time": "1h 31m",
+      "Title": "Live - #pháttrựctiếp",
+      "Trailer": "",
+      "Year": 2023,
+      "isUpcoming": null,
+      "movieID": "vn_1151711",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Trần Lực",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/d87Br7NgYCMwtd1VHH7aJD7B9GF.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "Hồ Ngọc Hà",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/8dNjvCdlrodl8BuKrjQMIhGNrLC.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "Nguyễn Ngọc Thái Duy",
+          "PicUrl": "",
+          "Character": ""
+        }
+      ],
+      "Description": "Chiến dịch trái tim bên phải là bộ phim Việt Nam thuộc thể loại hài hước – tâm lý – tình cảm lãng mạn của đạo diễn Đào Duy Phúc, được Hãng phim truyện Việt Nam sản xuất năm 2005. Phim nói về một nhóm học sinh lớp 10 có tên là “nhóm Bát Quái” rất tinh nghịch nhưng cũng không kém phần thông minh.",
+      "Genre": [
+        "Phim Chính Kịch"
+      ],
+      "Imdb": 0.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/rzmCDdBzE3k3BjDM4ganmogH5Wx.jpg",
+      "Price": 75000,
+      "Time": "1h 38m",
+      "Title": "Chiến Dịch Trái Tim Bên Phải",
+      "Trailer": "",
+      "Year": 2005,
+      "isUpcoming": null,
+      "movieID": "vn_677284",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Johnny Trí Nguyễn",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/jm5FUULyRkqL587mHi8OlvyepTD.jpg",
+          "Character": "Quan"
+        },
+        {
+          "Actor": "Ngô Thanh Vân",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/uvmZVmCbo7d9Zpc9cNEYvqhFKpU.jpg",
+          "Character": "Trinh"
+        },
+        {
+          "Actor": "Hiếu Hiền",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/wMaTO0ONwAk6UQSjaRJ2DuAMFQx.jpg",
+          "Character": "Phong"
+        },
+        {
+          "Actor": "Hoàng Phúc",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/e7FbI3qYXQJZBxBlitSoAioDZL4.jpg",
+          "Character": "Long"
+        },
+        {
+          "Actor": "Lâm Minh Thắng",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/wsWWcMHJOJqTlxSDf6FqCmZrwXj.jpg",
+          "Character": "Cang"
+        },
+        {
+          "Actor": "Nguyễn Hậu",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/4uuBe51OEM0NuUPmz8OpEUfV5RO.jpg",
+          "Character": "A Thoòng"
+        }
+      ],
+      "Description": "Câu chuyện trong Bẫy rồng được mở đầu đầy ẩn dụ về những mối quan hệ lắt léo trong giới giang hồ, ở đó kẻ đặt bẫy người khác có khi cũng chính là con mồi, và ngược lại.Câu chuyện bắt đầu khi một băng nhóm giang hồ do Trinh, biệt danh Phượng Hoàng (Ngô Thanh Vân) nhận nhiệm vụ giành giật một chiếc máy tính xách tay có khả năng xâm nhập và điều khiển vệ tinh Vinasat 1, đang nằm trong tay một băng mafia người Pháp – những tên này tới Sài Gòn với mục đích rao bán chiếc máy tính xách tay trên với số tiền khổng lồ.Để thực hiện phi vụ, Trinh chiêu mộ một số tay giang hồ cộm cán – trong đó có Quân, biệt danh Hổ (Johnny Trí Nguyễn) và mua vũ khí từ các băng đảng khác. Những cuộc xung đột nảy lửa diễn ra ngay từ đầu bởi ...",
+      "Genre": [
+        "Phim Hành Động",
+        "Phim Gây Cấn",
+        "Phim Lãng Mạn"
+      ],
+      "Imdb": 5.1,
+      "Poster": "https://image.tmdb.org/t/p/w500/ArtKpRv3pqwISJp1yEbUJA8w2ZP.jpg",
+      "Price": 75000,
+      "Time": "1h 30m",
+      "Title": "Bẫy Rồng",
+      "Trailer": "",
+      "Year": 2009,
+      "isUpcoming": null,
+      "movieID": "vn_55208",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Nhã Phương",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/g30B4Cg6fgFiK6ovsWeGztpyiZH.jpg",
+          "Character": "Nhã Ca"
+        },
+        {
+          "Actor": "Diễm My 9x",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/9seJmlinOz2gHm4OfYS0XBRjxwB.jpg",
+          "Character": "Jessica"
+        },
+        {
+          "Actor": "Ninh Dương Lan Ngọc",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/ypwd4glGKnAoiLMWH0DuxDkPvKE.jpg",
+          "Character": "Linh Lan"
+        },
+        {
+          "Actor": "Gin Tuấn Kiệt",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/vwGY7QF3busBsAXTVVNGtWZj7ra.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "Mạc Văn Khoa",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/5IKZTF7PLbxo3uUOufpJn1atCF2.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "Ngô Quang Tuấn",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/phycXzKyBl7eKvO07vmnjvD94ej.jpg",
+          "Character": ""
+        }
+      ],
+      "Description": "Bộ phim 1990 là cú bắt tay giữa ba ngọc nữ tuổi Ngọ của Điện ảnh Việt - Diễm My, Lan Ngọc, Nhã Phương. 1990 thuộc thể loại hài, tình cảm có nội dung xoay quanh một hội bạn thân gồm 3 cô gái với 3 cá tính khác nhau. Khi ngưỡng tuổi 30 chênh vênh ập đến cả 3 cùng 1 thời điểm, hàng loạt những vấn đề về hôn nhân, tình yêu, sự nghiệp,... lần lượt xuất hiện buộc các cô gái phải giúp đỡ nhau vượt qua cột mốc đầy sóng gió này.",
+      "Genre": [
+        "Phim Hài",
+        "Phim Lãng Mạn"
+      ],
+      "Imdb": 4.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/8vyMHkehBL05O5D1GNKbi6SPh2a.jpg",
+      "Price": 75000,
+      "Time": "0m",
+      "Title": "1990",
+      "Trailer": "",
+      "Year": 2022,
+      "isUpcoming": null,
+      "movieID": "vn_924026",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Thái Hòa",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/1WUpCLAEOAXgTRWrtAJmIX0S9Yh.jpg",
+          "Character": "Hoi"
+        },
+        {
+          "Actor": "Kathy Uyen",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/kx9KtkQrNNVmRpqmncBdPVVoR2I.jpg",
+          "Character": "Mai"
+        },
+        {
+          "Actor": "Johnny Trí Nguyễn",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/jm5FUULyRkqL587mHi8OlvyepTD.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "Lam Thanh My",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/be3nDi7ZV0FPAjblGmf93tus4VC.jpg",
+          "Character": "An"
+        },
+        {
+          "Actor": "Hoàng Phúc",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/e7FbI3qYXQJZBxBlitSoAioDZL4.jpg",
+          "Character": "Thu Le's father"
+        },
+        {
+          "Actor": "Diễm My 9x",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/9seJmlinOz2gHm4OfYS0XBRjxwB.jpg",
+          "Character": "Thu Le"
+        }
+      ],
+      "Description": "Phim Để Mai Tính 2 (tên cũ: Để Hội Tính) của đạo diễn Charlie Nguyễn là phần ngoại truyện hài hước chưa kể của Để Mai Tính. Xoay quanh nhân vật Phạm Hương Hội (Thái Hòa). Từ một nhân vật phụ đã rất ấn tượng trong Để Mai Tính, nay còn tỏa sáng hơn với diện mạo mới, lý lịch mới, trong vai chính của phim Để Hội Tính. Là chủ tịch của một tập đoàn lớn, giàu có, nhưng Hội lại đem lòng yêu anh chàng họa sĩ phong trần tên Nam (Quang Sự). Dưới sự chỉ dẫn của trợ lý đắc lực (Huy Khánh), Hội đã \"giả trai\" để tiếp cận Nam. Nhưng Nam đang rất ngọt ngào bên người yêu Thư Lê (Diễm My 9x). Tan vỡ trong Để Mai Tính, liệu lần này Hội có chấp nhận tiếp tục thất bại trong tình yêu? Hội sẽ làm gì để loại bỏ tình địch Thư Lê và giành lấy tình yêu của mình?",
+      "Genre": [
+        "Phim Hài"
+      ],
+      "Imdb": 7.4,
+      "Poster": "https://image.tmdb.org/t/p/w500/twaynwko42GtnWDqSN7nQ9xBkEl.jpg",
+      "Price": 75000,
+      "Time": "1h 34m",
+      "Title": "Để Mai Tính 2",
+      "Trailer": "",
+      "Year": 2014,
+      "isUpcoming": null,
+      "movieID": "vn_329851",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Ngô Thanh Vân",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/uvmZVmCbo7d9Zpc9cNEYvqhFKpU.jpg",
+          "Character": "Đan Nương"
+        },
+        {
+          "Actor": "Petey Nguyễn",
+          "PicUrl": "",
+          "Character": "Long"
+        },
+        {
+          "Actor": "Lê Khánh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/wTyWQIs57ZJYhZomV9kpO5Cw3OZ.jpg",
+          "Character": "Tiểu Duyên"
+        },
+        {
+          "Actor": "Diễm My",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/a3iSyyqXxOFJ8yBev8sVBwiXyog.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "Thành Lộc",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/lu2hxqCqiB2TMgd8iYyl3JBYraf.jpg",
+          "Character": "Vua Rồng"
+        }
+      ],
+      "Description": "Bộ phim Ngày Nảy Ngày Nay xoay quanh chuyến hành trình gian nan nhưng không kém phần hài hước của hai nàng tiên khi xuống trần gian làm nhiệm vụ. Chính trong hành trình trải nghiệm làm con người dưới trần thế, hai nàng tiên đã hiểu được tình người, tình yêu và những điều ở nhân gian khác xa với nơi hai cô đang sống. Bộ phim còn có sự tham gia của diễn viên Ngô Thanh Vân, Lê Khánh, diễn viên trẻ Quốc Dũng, ảo thuật gia Petey Nguyễn,…Đặc biệt, phim có sự tham gia biên soạn kịch bản của Jun Phạm – thành viên nhóm 365.",
+      "Genre": [
+        "Phim Hài"
+      ],
+      "Imdb": 6.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/3KOIK2wNB8bNX4njeJoT0fPiJgB.jpg",
+      "Price": 75000,
+      "Time": "1h 44m",
+      "Title": "Ngày Nảy Ngày Nay",
+      "Trailer": "",
+      "Year": 2015,
+      "isUpcoming": null,
+      "movieID": "vn_324801",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Lý Huỳnh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/3QxThkYjwVqUCKWu8ExCJm3Zl6B.jpg",
+          "Character": "Hai Cũ"
+        },
+        {
+          "Actor": "Duong Don",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/8J7ekjASe85or26TyFRyUS5Bwad.jpg",
+          "Character": "Thắng"
+        },
+        {
+          "Actor": "Lý Hùng",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/8Rr8kBfOGFAwCEepUgovJcSxZZQ.jpg",
+          "Character": "Thắng (lúc nhỏ)"
+        },
+        {
+          "Actor": "Nguyễn Văn Đây",
+          "PicUrl": "",
+          "Character": "Hứng"
+        },
+        {
+          "Actor": "Thương Tín",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/gDAz8eZTFln5S8jyGGZ1IgZLmwS.jpg",
+          "Character": "Tám Kỷ"
+        },
+        {
+          "Actor": "Phương Thanh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/2p2hs9tC74DffeE3xFXFaGXJmm1.jpg",
+          "Character": "Yến"
+        }
+      ],
+      "Description": "",
+      "Genre": [
+        "Phim Chính Kịch"
+      ],
+      "Imdb": 0.0,
+      "Poster": "",
+      "Price": 75000,
+      "Time": "1h 7m",
+      "Title": "Hai Cũ",
+      "Trailer": "",
+      "Year": 1986,
+      "isUpcoming": null,
+      "movieID": "vn_1583581",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Nhu Quynh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/tFiRXaXxqYPU9IVyTUtG821DRqq.jpg",
+          "Character": "Nết"
+        },
+        {
+          "Actor": "Vũ Tự Lẫm",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/aDhsAwQ99N5HZ14kjIbuFGEoBuc.jpg",
+          "Character": "Chi"
+        },
+        {
+          "Actor": "Vũ Đình Thân",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/eDn2iXrZA7yX6ZvB4T2EVB7UPmE.jpg",
+          "Character": "An"
+        },
+        {
+          "Actor": "Cao Khương",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/9YtP4ECmQaklh4JJMc50nJSbPfL.jpg",
+          "Character": "Bình"
+        },
+        {
+          "Actor": "Kim Xuân",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/wnOV2RLjDQ0krAZA8ZARpIJ3Me5.jpg",
+          "Character": "Nết (20 years later)"
+        },
+        {
+          "Actor": "Thi-Loan Nguyen",
+          "PicUrl": "",
+          "Character": "Nhung"
+        }
+      ],
+      "Description": "",
+      "Genre": [
+        "Phim Chính Kịch",
+        "Phim Chiến Tranh"
+      ],
+      "Imdb": 0.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/1bZ22LBiFJlocIbO8BhBDOBliaA.jpg",
+      "Price": 75000,
+      "Time": "1h 44m",
+      "Title": "Đến Hẹn Lại Lên",
+      "Trailer": "",
+      "Year": 1974,
+      "isUpcoming": null,
+      "movieID": "vn_453577",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Trần Vĩnh",
+          "PicUrl": "",
+          "Character": ""
+        },
+        {
+          "Actor": "Trần Lực",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/d87Br7NgYCMwtd1VHH7aJD7B9GF.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "Phương Thanh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/2p2hs9tC74DffeE3xFXFaGXJmm1.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "Nhu Quynh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/tFiRXaXxqYPU9IVyTUtG821DRqq.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "Ngọc Thu",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/xtruHEcv0gEfVQfgPjbJoea5mh5.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "Ngọc Hiền",
+          "PicUrl": "",
+          "Character": ""
+        }
+      ],
+      "Description": "\"Sẽ Đến Một Tình Yêu\" lấy bối cảnh tại một công trình đang được tiến hành xây dựng với một quy mô lớn thì công trình bên phát hiện có túi nước khi tham dò địa chất. Túi nước cũng là cái cớ để miêu tả tính cách từng con người trong phim, nói về tình yêu, tình bạn…",
+      "Genre": [
+        "Phim Việt Nam"
+      ],
+      "Imdb": 0.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/pMLo8ylDmeZuyHkciyayDsk0Mt8.jpg",
+      "Price": 75000,
+      "Time": "1h 11m",
+      "Title": "Sẽ Đến Một Tình Yêu",
+      "Trailer": "",
+      "Year": 1983,
+      "isUpcoming": null,
+      "movieID": "vn_678245",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Vân Trang",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/bkNkbvoTdqMY36kcWx6l7cyXZuO.jpg",
+          "Character": "Ý Linh"
+        },
+        {
+          "Actor": "Maya",
+          "PicUrl": "",
+          "Character": "Trà My"
+        },
+        {
+          "Actor": "Khương Ngọc",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/nGoTVXd9pealFhTuCVtZmMs1CpN.jpg",
+          "Character": "Lê Hùng"
+        },
+        {
+          "Actor": "Mai Thế Hiệp",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/xiQvhsoWPSrQr9f1is0RhwlLvQx.jpg",
+          "Character": "Quan Ly"
+        },
+        {
+          "Actor": "Minh Thuận",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/8TgODx8ypAkNxZtdePKJPMsLINr.jpg",
+          "Character": "Thiện"
+        }
+      ],
+      "Description": "Bộ phim Scandal nêu lên những scandal thường được nghe kể trong làng giải trí showbiz Việt Nam như chơi bùa ngải để hại nhau, tung clip sex lên mạng, người đẹp bán dâm giá nghìn đô, tố nhau trên mặt báo,... nhưng lại được đan xen và ráp nối vào phim một cách khéo léo.",
+      "Genre": [
+        "Phim Gây Cấn",
+        "Phim Chính Kịch",
+        "Phim Bí Ẩn"
+      ],
+      "Imdb": 7.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/t5QE1ouqklOy8AdqwoTKd5W5Y2c.jpg",
+      "Price": 75000,
+      "Time": "1h 40m",
+      "Title": "Scandal: Bí mật thảm đỏ",
+      "Trailer": "",
+      "Year": 2012,
+      "isUpcoming": null,
+      "movieID": "vn_265198",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Cao Thị Thuỳ Linh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/AuOvsfWN0j7i2GzpNtd5yf0BFsk.jpg",
+          "Character": "Cô gái"
+        },
+        {
+          "Actor": "Doãn Quốc Đam",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/eCOEQ5cipsB1M7MWVSNzd2DGzSJ.jpg",
+          "Character": "Chàng trai"
+        },
+        {
+          "Actor": "Trần Lực",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/d87Br7NgYCMwtd1VHH7aJD7B9GF.jpg",
+          "Character": "Ông hoạ sỹ"
+        },
+        {
+          "Actor": "Trung Hiếu",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/hFPIWF6A4dZ91ZY1oy37fI12Gxf.jpg",
+          "Character": "Cha xứ"
+        },
+        {
+          "Actor": "Nguyễn Tuấn Hưng",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/hTIY0sYisFn2QATH5ql0oOGeOMU.jpg",
+          "Character": "Me-xừ Phán"
+        },
+        {
+          "Actor": "Nguyễn Thiện Hùng",
+          "PicUrl": "",
+          "Character": "Chú bé đánh giày"
+        }
+      ],
+      "Description": "Lấy bối cảnh trận chiến đông xuân kéo dài 60 ngày đêm từ cuối năm 1946 đến đầu năm 1947 ở Hà Nội, câu chuyện theo chân chàng dân quân Văn Dân và chuyện tình với nàng tiểu thư đam mê dương cầm Thục Hương. Khi những người khác đã di tản lên chiến khu, họ quyết định cố thủ lại mảnh đất thủ đô đã tan hoang vì bom đạn, mặc cho những hiểm nguy đang chờ đợi trước mắt.",
+      "Genre": [
+        "Phim Chiến Tranh",
+        "Phim Lãng Mạn"
+      ],
+      "Imdb": 6.2,
+      "Poster": "https://image.tmdb.org/t/p/w500/ntbSqpJD8OY8rvx98iNpHVJsWjW.jpg",
+      "Price": 75000,
+      "Time": "1h 40m",
+      "Title": "Đào, Phở và Piano",
+      "Trailer": "https://www.youtube.com/watch?v=OrkpnMV3d3Y",
+      "Year": 2024,
+      "isUpcoming": true,
+      "movieID": "vn_1247240",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Claire Louise Amias",
+          "PicUrl": "",
+          "Character": ""
+        },
+        {
+          "Actor": "Bruce Chong",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/r6HfbtqInwCFlA9j8324KqMb14o.jpg",
+          "Character": ""
+        }
+      ],
+      "Description": "",
+      "Genre": [
+        "Phim Hình Sự",
+        "Phim Chính Kịch"
+      ],
+      "Imdb": 0.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/fwqGMGIYTj2sgD49Q7c0c7Ov5U.jpg",
+      "Price": 75000,
+      "Time": "10m",
+      "Title": "The Trip",
+      "Trailer": "",
+      "Year": 2013,
+      "isUpcoming": null,
+      "movieID": "vn_697649",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Trung Dũng",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/csXwcVlHgpSBRRbSffM2CI4MV0H.jpg",
+          "Character": "Trung"
+        },
+        {
+          "Actor": "Mai Thu Huyền",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/msaazITlOJxW7OEtmS1c1OVTGJD.jpg",
+          "Character": "Kim"
+        },
+        {
+          "Actor": "Bình An",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/wVf5pGVEe53lr8jcJcE8B6JNHsV.jpg",
+          "Character": "Hải"
+        },
+        {
+          "Actor": "Vũ Tuấn Việt",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/iTPA9JAOSDMaBEF3ldSxbg376i7.jpg",
+          "Character": "Policer"
+        },
+        {
+          "Actor": "Thành Lộc",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/lu2hxqCqiB2TMgd8iYyl3JBYraf.jpg",
+          "Character": "Chủ quán"
+        },
+        {
+          "Actor": "Mai Hồ",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/qsLcaaM7gdJqK3l0WwPgNJrMBl5.jpg",
+          "Character": ""
+        }
+      ],
+      "Description": "“Lạc giới” là một câu chuyện tình yêu hiện đại, lãng mạn, nhưng trĩu nặng tâm tư của những người trong cuộc, khiến người xem động lòng trắc ẩn. Thông qua câu chuyện éo le, đầy kịch tính về số phận của những người được coi là “lạc giới” trong đời sống xã hội, bộ phim nêu lên thông điệp: “Trong hành trình đi tìm hạnh phúc và hoàn thiện bản thân, con người cần được sống đúng với bản ngã của mình, miễn điều đó không làm tổn hại đến người khác và cả cộng đồng. Trong cuộc sống chúng ta hãy nên tôn trọng sự khác biệt”.",
+      "Genre": [
+        "Phim Chính Kịch",
+        "Phim Lãng Mạn"
+      ],
+      "Imdb": 3.6,
+      "Poster": "https://image.tmdb.org/t/p/w500/1aKZESKWZWQs2AMNZ0nGyaKDxSp.jpg",
+      "Price": 75000,
+      "Time": "1h 33m",
+      "Title": "Lạc Giới",
+      "Trailer": "https://www.youtube.com/watch?v=7OQz0THoRHo",
+      "Year": 2014,
+      "isUpcoming": null,
+      "movieID": "vn_298713",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Lam Thanh My",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/be3nDi7ZV0FPAjblGmf93tus4VC.jpg",
+          "Character": "Linh"
+        },
+        {
+          "Actor": "Ngô Quang Tuấn",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/phycXzKyBl7eKvO07vmnjvD94ej.jpg",
+          "Character": "Thanh"
+        },
+        {
+          "Actor": "Mai Cat Vi",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/xcjRlBAvH8CrGKvdJ5wclJfYimF.jpg",
+          "Character": "Yen"
+        },
+        {
+          "Actor": "Diệu Nhi",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/egzQEkov9l6qHSrwHGuddOrZbbQ.jpg",
+          "Character": "Hanh"
+        }
+      ],
+      "Description": "Sau khi trải qua bi kịch gia đình, một góa phụ tên Thanh đã chuyển hai cô con gái của mình đến một ngôi nhà tổ tiên đã tồn tại hàng thế kỷ. Cả hai cô con gái đều bị chứng tê liệt khi ngủ và những cơn ác mộng ban đêm. Người cha tìm đến sự giúp đỡ của một nhà tâm lý học địa phương, nhưng những bí mật và ảo giác rùng rợn cuối cùng đã chứng minh rằng mọi thứ không như vẻ bề ngoài trong ngôi nhà cổ của gia đình.",
+      "Genre": [
+        "Phim Kinh Dị"
+      ],
+      "Imdb": 6.4,
+      "Poster": "https://image.tmdb.org/t/p/w500/nVSpK8qzaKUyLDUhIZvgfSGmM1u.jpg",
+      "Price": 75000,
+      "Time": "1h 41m",
+      "Title": "Bóng Ðè",
+      "Trailer": "",
+      "Year": 2022,
+      "isUpcoming": null,
+      "movieID": "vn_947890",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Le Quynh",
+          "PicUrl": "",
+          "Character": "Major Ngọc Minh"
+        },
+        {
+          "Actor": "Kiều Chinh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/8cma5eMGXLc9ED9DMYfMCmjteVp.jpg",
+          "Character": "Kiều Loan"
+        },
+        {
+          "Actor": "Thẩm Thúy Hằng",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/ruZltjeH1Yb8IRrheyK8sny2UtE.jpg",
+          "Character": "Lệ Hằng"
+        },
+        {
+          "Actor": "Đoàn Châu Mậu",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/4dficyuClzBcgYHQFGCDRLoKNQ1.jpg",
+          "Character": "Colonel Lâm"
+        },
+        {
+          "Actor": "Yu Tian",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/3DvEcHCp8vSppJ9bGZ7hlfhXbkX.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "Lily Chen Ching",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/njyhYszvNUAe3nauW3WooNKZEb4.jpg",
+          "Character": ""
+        }
+      ],
+      "Description": "",
+      "Genre": [
+        "Phim Chính Kịch",
+        "Phim Chiến Tranh"
+      ],
+      "Imdb": 0.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/ylJpUheM8FvuV4IXVp0W1EzMH93.jpg",
+      "Price": 75000,
+      "Time": "1h 40m",
+      "Title": "Từ Sài Gòn đến Điện Biên Phủ",
+      "Trailer": "",
+      "Year": 1967,
+      "isUpcoming": null,
+      "movieID": "vn_1387366",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Linh-Dan Pham",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/y9EYVSaEgjBZLchxShXa45FTszf.jpg",
+          "Character": "Cầm"
+        },
+        {
+          "Actor": "Duy Khoa",
+          "PicUrl": "",
+          "Character": "Hải"
+        },
+        {
+          "Actor": "Do Thi Hai Yen",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/jz3oiYpF2XCw7OjXkrYo0BRD6Pa.jpg",
+          "Character": "Duyên"
+        },
+        {
+          "Actor": "Johnny Trí Nguyễn",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/jm5FUULyRkqL587mHi8OlvyepTD.jpg",
+          "Character": "Thổ"
+        },
+        {
+          "Actor": "Nhu Quynh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/tFiRXaXxqYPU9IVyTUtG821DRqq.jpg",
+          "Character": "Ms. Vân (Hải's mum)"
+        },
+        {
+          "Actor": "Bùi Bài Bình",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/vTnTV0hKvBe8N8KGMRd7c2RjAnw.jpg",
+          "Character": "Dũng"
+        }
+      ],
+      "Description": "Bộ phim Chơi Vơi kể về nữ nhà văn Cầm và cô hướng dẫn viên Duyên không chỉ là bạn bè thân thiết mà giữa họ còn tồn tại thứ tình cảm gọi là “Yêu”. Nhưng xung quanh họ còn có những mối quan hệ tình cảm chồng chéo phức tạp. Kể từ khi Duyên kết hôn với anh chàng lái taxi Hải, Cầm mang trong mình mối ghen tuông mơ hồ. Để che giấu điều đó, Cầm đưa Duyên vào tay Thổ – gã đàn ông hấp dẫn, đam mê dục vọng.",
+      "Genre": [
+        "Phim Chính Kịch"
+      ],
+      "Imdb": 5.8,
+      "Poster": "https://image.tmdb.org/t/p/w500/ebKuoVNP46uP22XfmdI2XIZ828.jpg",
+      "Price": 75000,
+      "Time": "1h 50m",
+      "Title": "Chơi Vơi",
+      "Trailer": "",
+      "Year": 2009,
+      "isUpcoming": null,
+      "movieID": "vn_111396",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Lê Vi",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/x2ZB9r5g2sPJhMDGYozyb57XRCI.jpg",
+          "Character": "Cẩm Nguyệt"
+        },
+        {
+          "Actor": "Lan Hương",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/5aGh0moDYFoeO5dv7Mwz9tsaGKL.jpg",
+          "Character": "Hà"
+        },
+        {
+          "Actor": "Luu Quang Vinh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/ntSq61GUqQprTHuTwA0b0x67UB.jpg",
+          "Character": "Phan"
+        },
+        {
+          "Actor": "Khanh Huyen",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/sxxzMxx3HgCwXbKCTrK0ByzWpoI.jpg",
+          "Character": "Mai Anh"
+        }
+      ],
+      "Description": "",
+      "Genre": [
+        "Phim Chính Kịch"
+      ],
+      "Imdb": 0.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/w6dNfvjuw3cEOzR4eWyXBhsqKRn.jpg",
+      "Price": 75000,
+      "Time": "1h 28m",
+      "Title": "Trăng trên đất khách",
+      "Trailer": "",
+      "Year": 2007,
+      "isUpcoming": null,
+      "movieID": "vn_544015",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Thu Trang",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/oSpHBUKu9vNcmQTJD9w936jJD7R.jpg",
+          "Character": "Thập Tam Muội"
+        },
+        {
+          "Actor": "Diệu Nhi",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/egzQEkov9l6qHSrwHGuddOrZbbQ.jpg",
+          "Character": "Hồng Phất Nữ"
+        },
+        {
+          "Actor": "Khương Ngọc",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/nGoTVXd9pealFhTuCVtZmMs1CpN.jpg",
+          "Character": "Bi Long"
+        },
+        {
+          "Actor": "Anh Tú Atus",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/shaY1dAn4o3P9qQTVg3J8DhWWlq.jpg",
+          "Character": "Kẽm Gai"
+        },
+        {
+          "Actor": "Tiến Luật",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/oF3y6nJ4R9EmzHfynPcQ58BN6Gr.jpg",
+          "Character": "Đường Băng"
+        }
+      ],
+      "Description": "Chuyện phim kể về cuộc sống của Thập Tam Muội, một cô gái lăn lộn chốn giang hồ và làm bảo kê cho một nhà chứa. Bên cạnh những pha hành động thể hiện đúng bản chất giang hồ, bộ phim khiến khán giả phải bật cười với những miếng hài “độc nhất vô nhị” mà chỉ có Thu Trang mới nghĩ ra.",
+      "Genre": [
+        "Phim Hài"
+      ],
+      "Imdb": 6.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/9duSy5sYtC56QkgCfaAxtKloH59.jpg",
+      "Price": 75000,
+      "Time": "1h 48m",
+      "Title": "Thập Tam Muội",
+      "Trailer": "https://www.youtube.com/watch?v=XGkybQ-IvoY",
+      "Year": 2018,
+      "isUpcoming": null,
+      "movieID": "vn_592719",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Isaac",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/2RVb2HyDHVg6wsCOO9cjeaE2232.jpg",
+          "Character": "Linh Phung"
+        },
+        {
+          "Actor": "Liên Bỉnh Phát",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/terLx4VOqH8Xm0cpAloH3DdNm4X.jpg",
+          "Character": "Dung"
+        },
+        {
+          "Actor": "Thanh Tú",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/tKA5ZiHrenm7rlcPJ9MruLs5hhi.jpg",
+          "Character": "Lan"
+        },
+        {
+          "Actor": "Ron Vuong",
+          "PicUrl": "",
+          "Character": "Bon"
+        },
+        {
+          "Actor": "Phuoc Tinh",
+          "PicUrl": "",
+          "Character": "Hien"
+        },
+        {
+          "Actor": "Vu T. Le Thi",
+          "PicUrl": "",
+          "Character": "Mother"
+        }
+      ],
+      "Description": "Phim mở đầu với những tự sự về cải lương, quá khứ của nhân vật Dũng \"Thiên Lôi\". Anh vốn sinh ra trong gia đình có truyền thống nhạc dân tộc nhưng do thời cuộc mà trở thành kẻ đòi nợ thuê. Mọi chuyện thay đổi kể từ khi Dũng gặp Linh Phụng - kép hát xem nghề diễn như hơi thở.",
+      "Genre": [
+        "Phim Chính Kịch",
+        "Phim Nhạc"
+      ],
+      "Imdb": 6.5,
+      "Poster": "https://image.tmdb.org/t/p/w500/88MrQnwHnrX1um9Gv1gaFNmsJxv.jpg",
+      "Price": 75000,
+      "Time": "1h 41m",
+      "Title": "Song Lang",
+      "Trailer": "",
+      "Year": 2018,
+      "isUpcoming": null,
+      "movieID": "vn_543294",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Việt Hương",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/9v9E5OM91kILN7zkkE2pBSRNHbZ.jpg",
+          "Character": "Uyển uyển"
+        },
+        {
+          "Actor": "Trấn Thành",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/v4lijWKgO5fwsUN7Twvi1DYBXn5.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "Hari Won",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/A17FhdIjdqYdL9weo97w5D04wDK.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "Quang Đăng",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/zjiTPTUFPdwLavPgWUuiitVRAgZ.jpg",
+          "Character": ""
+        }
+      ],
+      "Description": "Được thừa kế một trang trại cỏ đẹp như mơ nhưng anh chàng Mộc Lâm lại vung tay bán cả sản nghiệp, lên thành phố thực hiện ước mơ thành “trùm nhạc”. Mộc Lâm không ngờ từng bước chân mình đều có sự rình rập của một bộ ba quỷ quái với âm mưu khó hiểu. Câu chuyện càng trở nên oái oăm hơn khi Mộc Lâm rơi vào nhóm hút cỏ và đột ngột thăng hoa thành một ngôi sao âm nhạc với những sáng tác bay bổng, kỳ quái…",
+      "Genre": [
+        "Phim Hài"
+      ],
+      "Imdb": 2.8,
+      "Poster": "https://image.tmdb.org/t/p/w500/dFtd2tKFF8XJj9M2YGk7ZpJ6Tvk.jpg",
+      "Price": 75000,
+      "Time": "1h 34m",
+      "Title": "Trùm Cỏ",
+      "Trailer": "",
+      "Year": 2015,
+      "isUpcoming": null,
+      "movieID": "vn_380215",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Thạch Kim Long",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/6NQHEtDthsWoxC44eV4XtiZndnj.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "My Uyên Ngô",
+          "PicUrl": "",
+          "Character": ""
+        },
+        {
+          "Actor": "Ngoc Ngoan Quách",
+          "PicUrl": "",
+          "Character": ""
+        },
+        {
+          "Actor": "Vu Dình Toàn",
+          "PicUrl": "",
+          "Character": ""
+        },
+        {
+          "Actor": "Trang Thu",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/vKaOBQaqa9mm8fxuRzmqQaboJ2A.jpg",
+          "Character": ""
+        },
+        {
+          "Actor": "Leon Le",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/bdSzOsxCWC7aAv62GPXfpET8koK.jpg",
+          "Character": "Long Can"
+        }
+      ],
+      "Description": "",
+      "Genre": [
+        "Phim Hành Động",
+        "Phim Chính Kịch",
+        "Phim Lịch Sử"
+      ],
+      "Imdb": 0.0,
+      "Poster": "",
+      "Price": 75000,
+      "Time": "1h 50m",
+      "Title": "Khát vọng Thăng Long",
+      "Trailer": "",
+      "Year": 2010,
+      "isUpcoming": null,
+      "movieID": "vn_133165",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Công Lý",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/wOBZpSrZIqUpJoUvzWaRvpxNsb9.jpg",
+          "Character": ""
+        }
+      ],
+      "Description": "",
+      "Genre": [
+        "Phim Việt Nam"
+      ],
+      "Imdb": 0.0,
+      "Poster": "",
+      "Price": 75000,
+      "Time": "0m",
+      "Title": "Ảo ảnh giữa đời thường",
+      "Trailer": "",
+      "Year": 1995,
+      "isUpcoming": null,
+      "movieID": "vn_533055",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Hoàng Thùy Linh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/nQc6dl7s8MdFxXY7frbzt1JG4h3.jpg",
+          "Character": "Thuy Linh"
+        },
+        {
+          "Actor": "Harry Lu",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/aRV5yaOvfvFpZckoF3ORtT4pB9Q.jpg",
+          "Character": "Tri"
+        },
+        {
+          "Actor": "Ngô Kiến Huy",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/gbTEXwPVTiDys2RXVROGjm7sF6s.jpg",
+          "Character": "Nguyen"
+        },
+        {
+          "Actor": "Hứa Vĩ Văn",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/kX5YSIonNV4nj97MVmSGf8ZR1nF.jpg",
+          "Character": "Long"
+        },
+        {
+          "Actor": "Chi Pu",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/xjRkLWevU4XsF51isGhNbbesJ8r.jpg",
+          "Character": "Minh Tu"
+        },
+        {
+          "Actor": "Phạm Quỳnh Anh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/jkG2IQ43elwXBlh5xG46azYBPov.jpg",
+          "Character": "Tri's Mother"
+        }
+      ],
+      "Description": "Một nhà sản xuất âm nhạc giàu lý tưởng dùng cách tiếp cận độc đáo để lăng xê một thần tượng nhạc pop thuần túy, nhưng qua đó xung đột với các đối thủ mạnh trong ngành.",
+      "Genre": [
+        "Phim Lãng Mạn",
+        "Phim Hài"
+      ],
+      "Imdb": 0.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/zLreirWdFbqkeTfBxjUuNdvIwGK.jpg",
+      "Price": 75000,
+      "Time": "1h 53m",
+      "Title": "Thần Tượng",
+      "Trailer": "",
+      "Year": 2013,
+      "isUpcoming": null,
+      "movieID": "vn_390398",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Trương Ngọc Ánh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/JWw3vKczL5Pd2xUk946osUVMyn.jpg",
+          "Character": "Sac"
+        },
+        {
+          "Actor": "Kiều Chinh",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/8cma5eMGXLc9ED9DMYfMCmjteVp.jpg",
+          "Character": "Kieu"
+        },
+        {
+          "Actor": "Kris Duangphung",
+          "PicUrl": "",
+          "Character": "Brother"
+        },
+        {
+          "Actor": "Huy Hoang",
+          "PicUrl": "",
+          "Character": "Lan"
+        },
+        {
+          "Actor": "Anh Hong",
+          "PicUrl": "",
+          "Character": "Thiet Tranh"
+        },
+        {
+          "Actor": "Huy Khánh",
+          "PicUrl": "",
+          "Character": "Nguyen"
+        }
+      ],
+      "Description": "",
+      "Genre": [
+        "Phim Lãng Mạn",
+        "Phim Chính Kịch"
+      ],
+      "Imdb": 0.0,
+      "Poster": "https://image.tmdb.org/t/p/w500/tP2pleWlxzjfW9bu54FMlsJB4mW.jpg",
+      "Price": 75000,
+      "Time": "1h 43m",
+      "Title": "Ngọc Viễn Đông",
+      "Trailer": "",
+      "Year": 2012,
+      "isUpcoming": null,
+      "movieID": "vn_120696",
+      "Pictures": []
+    },
+    {
+      "Casts": [
+        {
+          "Actor": "Kathleen Luong",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/4Sfi7Xe9PVgcTFBnDBLIDnWKWvc.jpg",
+          "Character": "Linh"
+        },
+        {
+          "Actor": "Catherine Ai",
+          "PicUrl": "",
+          "Character": "Kim-Anh"
+        },
+        {
+          "Actor": "Long Nguyen",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/c47F79zg0QreGz2wZ4b78lIZC9M.jpg",
+          "Character": "Nam"
+        },
+        {
+          "Actor": "Johnny Trí Nguyễn",
+          "PicUrl": "https://image.tmdb.org/t/p/w500/jm5FUULyRkqL587mHi8OlvyepTD.jpg",
+          "Character": "Tuan"
+        },
+        {
+          "Actor": "Tom Huang",
+          "PicUrl": "",
+          "Character": ""
+        },
+        {
+          "Actor": "Dang Hung Son",
+          "PicUrl": "",
+          "Character": ""
+        }
+      ],
+      "Description": "",
+      "Genre": [
+        "Phim Chính Kịch"
+      ],
+      "Imdb": 6.0,
+      "Poster": "",
+      "Price": 75000,
+      "Time": "1h 29m",
+      "Title": "Buổi Sáng Đầu Năm",
+      "Trailer": "",
+      "Year": 2003,
+      "isUpcoming": null,
+      "movieID": "vn_386205",
+      "Pictures": []
     }
   ]
 }

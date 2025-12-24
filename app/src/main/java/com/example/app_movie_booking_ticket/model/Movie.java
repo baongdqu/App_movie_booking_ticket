@@ -24,7 +24,8 @@ public class Movie implements Serializable {
     private int price;
     private String Trailer;
     private List<Cast> Casts;
-    private boolean isUpcoming;
+    private Boolean isUpcoming;
+
     // Firebase requires a no-argument constructor
     // Constructor rỗng bắt buộc cho Firebase
     public Movie() {
@@ -100,9 +101,19 @@ public class Movie implements Serializable {
     public String getMovieID() {
         return movieID;
     }
-    public boolean getIsUpcoming() {
+
+    public Boolean getIsUpcoming() {
         return isUpcoming;
     }
+
+    public boolean isUpcomingMovie() {
+        return isUpcoming != null && isUpcoming;
+    }
+
+    public boolean isTrendingMovie() {
+        return isUpcoming != null && !isUpcoming;
+    }
+
     // Inner class for Cast objects
     /**
      * Inner class đại diện cho Diễn viên (Cast).

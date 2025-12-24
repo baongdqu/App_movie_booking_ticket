@@ -316,7 +316,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="844f1ce6-039a-4511-a069-8979768ecd95" name="Changes" comment="fix: tối ưu lại giao diện Chi tiết phim trong phần Phim sắp chiếu đi.">
+    <list default="true" id="844f1ce6-039a-4511-a069-8979768ecd95" name="Changes" comment="fix: sửa lại chút lỗi nhỏ ở việc phân loại các phim.">
+      <change afterPath="$PROJECT_DIR$/add_vietnamese_movies.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/parthome_AllMoviesFullActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fix_movie_categories.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.bin" afterDir="false" />
@@ -324,13 +327,14 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.13/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/fragments_home.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/fragments_home.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/fragments_mail.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/fragments_mail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/model/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/model/Movie.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/parthome_AllMoviesActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/parthome_AllMoviesActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/parthome_AllUpcomingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/parthome_AllUpcomingActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layouts_fragments_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layouts_fragments_home.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/parthome_movie_detail.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/parthome_movie_detail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/app-movie-booking-ticket-default-rtdb-export.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app-movie-booking-ticket-default-rtdb-export.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/problems/problems-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/problems/problems-report.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -866,7 +870,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766593975712</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="feat: thêm chỉ mục tất cả các phim đang có ở các rạp.">
+      <option name="closed" value="true" />
+      <created>1766595160109</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1766595160109</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -901,9 +913,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Hoàn thiện và tạo giao diện cho chức năng tìm kiếm phim theo yêu cầu." />
-    <MESSAGE value="Thêm âm thanh cho các nút còn thiếu." />
-    <MESSAGE value="Hoàn thiện tính năng tìm kiếm phim." />
     <MESSAGE value="Cập nhật giao diện cho ứng dụng." />
     <MESSAGE value="feat: thêm trường thông tin ngày sinh và giới tính của 1 user." />
     <MESSAGE value="feat: thêm document kỹ thuật cho dự án." />
@@ -926,7 +935,10 @@
     <MESSAGE value="fix: sửa lỗi không giao diện Mail tự động sáng tối." />
     <MESSAGE value="fix: sửa lỗi không tự mất dấu tích new khi bấm lại thông báo cập nhật tài khoản." />
     <MESSAGE value="fix: tối ưu lại giao diện Chi tiết phim trong phần Phim sắp chiếu đi." />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: tối ưu lại giao diện Chi tiết phim trong phần Phim sắp chiếu đi." />
+    <MESSAGE value="feat: thêm chỉ mục tất cả các phim đang có ở các rạp." />
+    <MESSAGE value="feat: tối ưu hóa các mục phim phần Trang chủ." />
+    <MESSAGE value="fix: sửa lại chút lỗi nhỏ ở việc phân loại các phim." />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: sửa lại chút lỗi nhỏ ở việc phân loại các phim." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

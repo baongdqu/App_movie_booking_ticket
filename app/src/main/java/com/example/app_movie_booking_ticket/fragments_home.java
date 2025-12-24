@@ -207,11 +207,12 @@ public class fragments_home extends Fragment {
                 for (DataSnapshot itemSnap : snapshot.getChildren()) {
                     Movie movie = itemSnap.getValue(Movie.class);
                     if (movie != null) {
-                        if (movie.getIsUpcoming()) {
+                        if (movie.isUpcomingMovie()) {
                             upcomingMoviesList.add(movie);
-                        } else {
+                        } else if (movie.isTrendingMovie()) {
                             movieListTop.add(movie);
                         }
+                        // Movies with isUpcoming = null will only be in allMoviesList
                     }
                 }
 
@@ -255,10 +256,10 @@ public class fragments_home extends Fragment {
                 new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
         binding.recyclerAllMovies.setAdapter(allMoviesAdapter);
 
-        // View All button click - opens AllMoviesActivity showing ALL movies
+        // View All button click - opens AllMoviesFullActivity showing ALL movies
         binding.tvViewAllMovies.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(requireContext());
-            startActivity(new Intent(requireContext(), parthome_AllMoviesActivity.class));
+            startActivity(new Intent(requireContext(), parthome_AllMoviesFullActivity.class));
         });
     }
 

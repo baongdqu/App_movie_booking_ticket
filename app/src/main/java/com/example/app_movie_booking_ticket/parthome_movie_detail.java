@@ -45,26 +45,15 @@ public class parthome_movie_detail extends AppCompatActivity {
         if (movie == null)
             return;
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        boolean isUpcoming = movie.getIsUpcoming();
+        boolean isUpcoming = movie.isUpcomingMovie();
         Log.d("DEBUG_STATE", "Phim: " + movie.getTitle() + " | isUpcoming: " + isUpcoming);
-        if (isUpcoming) {
-            // Phim sắp chiếu: Hiện nút mua vé, ẩn phần đánh giá và hình ảnh
-            binding.button2.setVisibility(View.VISIBLE);
 
-            // Ẩn nút mở danh sách đánh giá (chưa có đánh giá)
-            binding.llStarRatingInfo.setVisibility(View.GONE);
-            binding.cvSummaryRatingInfo.setVisibility(View.GONE);
-
-            // Ẩn phần hình ảnh
-            binding.llImagesSection.setVisibility(View.GONE);
-        } else {
-            // Nếu là phim đang chiếu thì hiện đầy đủ
-            binding.button2.setVisibility(View.VISIBLE);
-            binding.llStarRatingInfo.setVisibility(View.VISIBLE);
-            binding.cvSummaryRatingInfo.setVisibility(View.VISIBLE);
-            binding.llImagesSection.setVisibility(View.VISIBLE);
-            loadMovieRatings(movie.getMovieID());
-        }
+        // Hiển thị đầy đủ cho tất cả phim (kể cả sắp chiếu)
+        binding.button2.setVisibility(View.VISIBLE);
+        binding.llStarRatingInfo.setVisibility(View.VISIBLE);
+        binding.cvSummaryRatingInfo.setVisibility(View.VISIBLE);
+        binding.llImagesSection.setVisibility(View.VISIBLE);
+        loadMovieRatings(movie.getMovieID());
 
         // ================= SET DATA =================
         binding.textTitle.setText(movie.getTitle());

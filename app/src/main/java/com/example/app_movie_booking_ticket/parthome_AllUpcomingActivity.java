@@ -56,7 +56,7 @@ public class parthome_AllUpcomingActivity extends AppCompatActivity {
                 for (DataSnapshot data : snapshot.getChildren()) {
                     Movie movie = data.getValue(Movie.class);
                     // Only add upcoming movies (Phim sắp chiếu)
-                    if (movie != null && movie.getIsUpcoming())
+                    if (movie != null && movie.isUpcomingMovie())
                         movieList.add(movie);
                 }
                 adapter.notifyDataSetChanged();
