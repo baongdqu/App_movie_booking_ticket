@@ -94,7 +94,7 @@ public class fragments_home extends Fragment {
         loadUpcomingMovies();
 
         // =========================
-        //  SETUP SEARCH
+        // SETUP SEARCH
         // =========================
         ImageView btnSearch = binding.imgSearch;
         TextInputLayout searchBox = binding.searchBoxLayout;
@@ -186,10 +186,10 @@ public class fragments_home extends Fragment {
     }
 
     // =====================================================
-    //  LOAD TOP MOVIES VÀ KẾT HỢP SEARCH
+    // LOAD TOP MOVIES VÀ KẾT HỢP SEARCH
     // =====================================================
     private void loadTopMovies() {
-        DatabaseReference movieRef = FirebaseDatabase.getInstance().getReference("Items");
+        DatabaseReference movieRef = FirebaseDatabase.getInstance().getReference("Trends");
 
         topMovieAdapter = new TopMovieAdapter(requireContext(), movieListTop);
         binding.recyclerTopMovie.setLayoutManager(
@@ -210,7 +210,7 @@ public class fragments_home extends Fragment {
                 movieListTop.sort((m1, m2) -> Double.compare(m2.getImdb(), m1.getImdb()));
                 topMovieAdapter.updateList(movieListTop);
 
-                //  Cập nhật allMoviesList
+                // Cập nhật allMoviesList
                 updateAllMoviesList();
             }
 
@@ -221,7 +221,7 @@ public class fragments_home extends Fragment {
     }
 
     // =====================================================
-    //  LOAD UPCOMING MOVIES
+    // LOAD UPCOMING MOVIES
     // =====================================================
     private void loadUpcomingMovies() {
         DatabaseReference upcomingRef = FirebaseDatabase.getInstance().getReference("Upcomming");

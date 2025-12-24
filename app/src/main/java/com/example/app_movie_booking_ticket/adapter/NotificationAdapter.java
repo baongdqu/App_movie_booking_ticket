@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 public class NotificationAdapter
         extends RecyclerView.Adapter<NotificationAdapter.ViewHolder> {
 
-    //  CALLBACK
+    // CALLBACK
     public interface OnNotificationClickListener {
         void onNotificationClick(AppNotification notification);
     }
@@ -31,7 +31,7 @@ public class NotificationAdapter
     private final List<AppNotification> list;
     private final OnNotificationClickListener listener;
 
-    //  Constructor mới
+    // Constructor mới
     public NotificationAdapter(Context context,
             List<AppNotification> list,
             OnNotificationClickListener listener) {
@@ -98,16 +98,15 @@ public class NotificationAdapter
         // ===== CLICK =====
         holder.itemView.setOnClickListener(v -> {
 
-            // PROFILE giữ hành vi cũ
+            // Mark as read via listener for all types
+            if (listener != null) {
+                listener.onNotificationClick(noti);
+            }
+
+            // PROFILE -> open edit profile
             if ("PROFILE".equals(type)) {
                 Intent intent = new Intent(context, partuser_edit_profile.class);
                 context.startActivity(intent);
-                return;
-            }
-
-            // LOGIN / REFUND → fragment xử lý
-            if (listener != null) {
-                listener.onNotificationClick(noti);
             }
         });
     }
