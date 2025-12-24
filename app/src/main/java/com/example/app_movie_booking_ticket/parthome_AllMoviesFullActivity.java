@@ -73,6 +73,8 @@ public class parthome_AllMoviesFullActivity extends AppCompatActivity {
                         movieList.add(movie);
                     }
                 }
+                // Shuffle ngẫu nhiên
+                java.util.Collections.shuffle(movieList);
                 adapter.notifyDataSetChanged();
             }
 

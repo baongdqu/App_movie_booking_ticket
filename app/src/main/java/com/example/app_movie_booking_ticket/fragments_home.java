@@ -216,12 +216,12 @@ public class fragments_home extends Fragment {
                     }
                 }
 
-                // Sắp xếp theo IMDb giảm dần
-                movieListTop.sort((m1, m2) -> Double.compare(m2.getImdb(), m1.getImdb()));
+                // Shuffle ngẫu nhiên mỗi lần load
+                java.util.Collections.shuffle(movieListTop);
                 topMovieAdapter.updateList(movieListTop);
 
-                // Sắp xếp upcoming theo năm
-                upcomingMoviesList.sort((m1, m2) -> Integer.compare(m2.getYear(), m1.getYear()));
+                // Shuffle upcoming movies ngẫu nhiên
+                java.util.Collections.shuffle(upcomingMoviesList);
                 if (upcomingAdapter != null) {
                     upcomingAdapter.notifyDataSetChanged();
                 }
@@ -317,6 +317,8 @@ public class fragments_home extends Fragment {
         allMoviesList.clear();
         allMoviesList.addAll(movieListTop);
         allMoviesList.addAll(upcomingMoviesList);
+        // Shuffle ngẫu nhiên
+        java.util.Collections.shuffle(allMoviesList);
 
         // Notify adapter for All Movies section
         if (allMoviesAdapter != null) {
