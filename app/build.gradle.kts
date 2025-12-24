@@ -70,4 +70,7 @@ dependencies {
     implementation("com.google.code.gson:gson:2.8.5")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation("androidx.browser:browser:1.7.0")
+    
+    // Google Play Services Location for Cinema nearby feature
+    implementation("com.google.android.gms:play-services-location:21.0.0")
 }

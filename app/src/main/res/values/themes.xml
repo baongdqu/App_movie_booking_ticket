@@ -6,4 +6,10 @@
     </style>
 
     <style name="Theme.App_movie_booking_ticket" parent="Base.Theme.App_movie_booking_ticket" />
+
+    <!-- Rounded Image Style for Cinema images -->
+    <style name="RoundedImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
 </resources>

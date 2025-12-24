@@ -45,6 +45,10 @@ public class activities_2_a_menu_manage_fragments extends extra_manager_language
             if (id == R.id.nav_home) {
                 loadFragment(new fragments_home());
                 return true;
+            } else if (id == R.id.nav_cinema) {
+                // Mở tab Rạp phim gần đây
+                loadFragment(new fragments_cinema());
+                return true;
             } else if (id == R.id.nav_mail) {
                 loadFragment(new fragments_mail());
                 return true;

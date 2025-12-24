@@ -379,4 +379,24 @@
     <string name="hours_ago">%1$d giờ trước</string>
     <string name="days_ago">%1$d ngày trước</string>
 
+    <!-- Cinema Tab / Nearby Cinemas -->
+    <string name="rap_phim">Rạp phim</string>
+    <string name="cinema_nearby">Rạp phim gần đây</string>
+    <string name="cinema_loading">Đang tìm rạp phim gần bạn...</string>
+    <string name="cinema_no_results">Không tìm thấy rạp phim nào gần đây</string>
+    <string name="cinema_error">Lỗi khi tải danh sách rạp</string>
+    <string name="cinema_distance">%1$.1f km</string>
+    <string name="cinema_open_now">Đang mở cửa</string>
+    <string name="cinema_closed">Đã đóng cửa</string>
+    <string name="cinema_directions">Chỉ đường</string>
+    <string name="cinema_call">Gọi điện</string>
+    <string name="cinema_location_permission_title">Cần quyền vị trí</string>
+    <string name="cinema_location_permission_message">Để tìm rạp phim gần bạn, vui lòng cấp quyền truy cập vị trí.</string>
+    <string name="cinema_location_permission_denied">Không thể tìm rạp gần đây mà không có quyền vị trí</string>
+    <string name="cinema_grant_permission">Cấp quyền</string>
+    <string name="cinema_location_disabled">Vui lòng bật định vị để tìm rạp gần bạn</string>
+    <string name="cinema_pull_to_refresh">Kéo xuống để làm mới</string>
+    <string name="cinema_last_updated">Cập nhật lúc: %1$s</string>
+    <string name="google_places_api_key">YOUR_GOOGLE_API_KEY</string>
+
 </resources>

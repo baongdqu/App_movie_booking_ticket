@@ -7,6 +7,11 @@
         android:title="@string/trang_ch" />
 
     <item
+        android:id="@+id/nav_cinema"
+        android:icon="@drawable/ic_cinema"
+        android:title="@string/rap_phim" />
+
+    <item
         android:id="@+id/nav_mail"
         android:icon="@drawable/ic_mail"
         android:title="@string/th" />
