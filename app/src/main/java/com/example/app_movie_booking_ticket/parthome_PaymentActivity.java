@@ -85,7 +85,10 @@ public class parthome_PaymentActivity extends AppCompatActivity {
 
         // ===== NHẬN DATA TỪ INTENT =====
         Intent intent = getIntent();
-
+        if (intent != null && intent.getData() != null) {
+            String data = intent.getData().toString();
+            Log.d("VNPAY_RETURN", "Data nhận được: " + data);
+        }
         posterUrl = intent.getStringExtra("posterUrl");
         movieTitle = intent.getStringExtra("movieTitle");
         date = intent.getStringExtra("date");
@@ -251,7 +254,6 @@ public class parthome_PaymentActivity extends AppCompatActivity {
     }
 
     public void openSdk(String paymentUrl) {
-        // Bước 1: Tạo vé ở trạng thái chờ trước
         createPendingTicket("VNPAY");
 
         Intent intent = new Intent(this, VNP_AuthenticationActivity.class);
@@ -263,11 +265,9 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         VNP_AuthenticationActivity.setSdkCompletedCallback(action -> {
             Log.d("VNPAY_SDK", "Action: " + action);
 
-            if (action != null && action.contains("vnp_ResponseCode=00")) {
-                // THỰC SỰ THÀNH CÔNG
+            if (action != null) {
                 updateTicketToPaid(currentTicketId);
                 Toast.makeText(this, R.string.toast_payment_success, Toast.LENGTH_SHORT).show();
-                finish();
             } else {
                 // HỦY HOẶC LỖI
                 updateTicketStatus(currentTicketId, "CANCELLED");
