@@ -316,14 +316,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="844f1ce6-039a-4511-a069-8979768ecd95" name="Changes" comment="fix: tối ưu hóa các phim để xem.">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.13/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/fragments_home.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/fragments_home.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/parthome_AllMoviesActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/parthome_AllMoviesActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/parthome_AllMoviesFullActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/parthome_AllMoviesFullActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/parthome_AllUpcomingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/parthome_AllUpcomingActivity.java" afterDir="false" />
+    <list default="true" id="844f1ce6-039a-4511-a069-8979768ecd95" name="Changes" comment="fix: sửa lại giao diện out padding giữa các poster nếu phim có tên ở dưới poster quá dài.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -875,7 +869,23 @@
       <option name="project" value="LOCAL" />
       <updated>1766596669384</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="feat: thêm tính năng xáo trộn các bảng liệt kê phim mỗi khi refresh.">
+      <option name="closed" value="true" />
+      <created>1766596933990</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1766596933990</updated>
+    </task>
+    <task id="LOCAL-00044" summary="fix: sửa lại giao diện out padding giữa các poster nếu phim có tên ở dưới poster quá dài.">
+      <option name="closed" value="true" />
+      <created>1766597248165</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1766597248165</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -910,8 +920,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: thêm trường thông tin ngày sinh và giới tính của 1 user." />
-    <MESSAGE value="feat: thêm document kỹ thuật cho dự án." />
     <MESSAGE value="fix: fix lỗi giao diện chồng lấp ở edit profile." />
     <MESSAGE value="feat: thêm chức năng thay đổi ngôn ngữ cho app với 2 ngôn ngữ chinh." />
     <MESSAGE value="feat: thêm 1 số ngôn ngữ cần thiết khác cho ứng dụng." />
@@ -935,7 +943,9 @@
     <MESSAGE value="feat: tối ưu hóa các mục phim phần Trang chủ." />
     <MESSAGE value="fix: sửa lại chút lỗi nhỏ ở việc phân loại các phim." />
     <MESSAGE value="fix: tối ưu hóa các phim để xem." />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: tối ưu hóa các phim để xem." />
+    <MESSAGE value="feat: thêm tính năng xáo trộn các bảng liệt kê phim mỗi khi refresh." />
+    <MESSAGE value="fix: sửa lại giao diện out padding giữa các poster nếu phim có tên ở dưới poster quá dài." />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: sửa lại giao diện out padding giữa các poster nếu phim có tên ở dưới poster quá dài." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
