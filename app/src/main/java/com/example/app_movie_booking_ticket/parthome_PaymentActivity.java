@@ -56,7 +56,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private DatabaseReference userRef;
     private FirebaseUser currentUser;
-
+    private String currentTicketId;
     private String posterUrl;
     private String movieTitle;
     private String movieID;
@@ -251,37 +251,27 @@ public class parthome_PaymentActivity extends AppCompatActivity {
     }
 
     public void openSdk(String paymentUrl) {
+        // Bước 1: Tạo vé ở trạng thái chờ trước
+        createPendingTicket("VNPAY");
 
         Intent intent = new Intent(this, VNP_AuthenticationActivity.class);
-        intent.putExtra("url", paymentUrl); // bắt buộc, VNPAY cung cấp
-        intent.putExtra("tmn_code", "C1C16DDU"); // bắt buộc, VNPAY cung cấp
-        intent.putExtra("scheme", "resultactivity"); // bắt buộc, scheme để mở lại app khi có kết quả thanh toán từ
-                                                     // mobile banking
-        intent.putExtra("is_sandbox", true); // bắt buộc, true <=> môi trường test, true <=> môi trường live
-        VNP_AuthenticationActivity.setSdkCompletedCallback(new VNP_SdkCompletedCallback() {
-            @Override
-            public void sdkAction(String action) {
-                Log.wtf("SplashActivity", "action: " + action);
+        intent.putExtra("url", paymentUrl);
+        intent.putExtra("tmn_code", "C1C16DDU");
+        intent.putExtra("scheme", "resultactivity");
+        intent.putExtra("is_sandbox", true);
 
-                switch (action) {
+        VNP_AuthenticationActivity.setSdkCompletedCallback(action -> {
+            Log.d("VNPAY_SDK", "Action: " + action);
 
-                    case "SuccessBackAction":
-                        // 1. Lưu Firebase
-                        bookSeats(movieTitle, date, time, seats);
-                        saveTicketSuccess();
-                        Toast.makeText(parthome_PaymentActivity.this, R.string.toast_payment_success, Toast.LENGTH_SHORT).show();
-                        finish();
-                        break;
-
-                    case "FaildBackAction":
-                    case "WebBackAction":
-                        // Không làm gì
-                        break;
-
-                    case "AppBackAction":
-                        // User thoát
-                        break;
-                }
+            if (action != null && action.contains("vnp_ResponseCode=00")) {
+                // THỰC SỰ THÀNH CÔNG
+                updateTicketToPaid(currentTicketId);
+                Toast.makeText(this, R.string.toast_payment_success, Toast.LENGTH_SHORT).show();
+                finish();
+            } else {
+                // HỦY HOẶC LỖI
+                updateTicketStatus(currentTicketId, "CANCELLED");
+                Toast.makeText(this, "Thanh toán không thành công hoặc đã bị hủy", Toast.LENGTH_SHORT).show();
             }
         });
         startActivity(intent);
@@ -511,7 +501,60 @@ public class parthome_PaymentActivity extends AppCompatActivity {
 
         ref.child(ticketId).setValue(ticket);
     }
+    // Tạo một biến toàn cục để lưu ID vé hiện tại
 
+
+    private void createPendingTicket(String method) {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("tickets");
+        currentTicketId = ref.push().getKey();
+
+        Map<String, Object> ticket = new HashMap<>();
+        ticket.put("ticketId", currentTicketId);
+        ticket.put("movieId", movieID);
+        ticket.put("userId", auth.getCurrentUser().getUid());
+        ticket.put("movieTitle", movieTitle);
+        ticket.put("posterUrl", posterUrl);
+        ticket.put("date", date);
+        ticket.put("time", time);
+        ticket.put("seats", seats);
+        ticket.put("totalPrice", totalPrice);
+        ticket.put("status", "PENDING");
+        ticket.put("createdAt", System.currentTimeMillis());
+
+        Map<String, Object> payment = new HashMap<>();
+        payment.put("method", method);
+        payment.put("status", "PENDING");
+        ticket.put("payment", payment);
+
+        ref.child(currentTicketId).setValue(ticket);
+    }
+    private void updateTicketStatus(String ticketId, String newStatus) {
+        if (ticketId == null) return;
+
+        DatabaseReference ref = FirebaseDatabase.getInstance()
+                .getReference("tickets")
+                .child(ticketId);
+
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("status", newStatus);
+        updates.put("paidAt", System.currentTimeMillis());
+
+        ref.updateChildren(updates);
+    }
+    private void updateTicketToPaid(String ticketId) {
+        if (ticketId == null) return;
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("tickets").child(ticketId);
+
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("status", "PAID");
+        updates.put("payment/status", "PAID");
+        updates.put("payment/paidAt", System.currentTimeMillis());
+
+        ref.updateChildren(updates).addOnSuccessListener(unused -> {
+            // Chỉ khóa ghế khi trạng thái vé đã là PAID
+            bookSeats(movieTitle, date, time, seats);
+        });
+    }
     private void bookSeats(
             String movieTitle,
             String date,
