@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/bg_color">
 
+    <!-- Toolbar -->
     <RelativeLayout
         android:id="@+id/toolbarRating"
         android:layout_width="match_parent"
@@ -26,8 +27,8 @@
             android:src="@drawable/ic_back_arrow"
             app:tint="@color/text_primary" />
 
-
         <TextView
+            android:id="@+id/tvToolbarTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -37,84 +38,475 @@
             android:textStyle="bold" />
     </RelativeLayout>
 
-    <HorizontalScrollView
-        android:id="@+id/filterScroll"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingVertical="12dp"
-        android:scrollbars="none"
-        app:layout_constraintTop_toBottomOf="@id/toolbarRating">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingHorizontal="16dp">
-
-            <Button
-                android:id="@+id/btnFilterAll"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:text="Tất cả"
-                app:cornerRadius="20dp" />
-
-            <Button
-                android:id="@+id/btnFilter5"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="60dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:text="5 ★"
-                app:cornerRadius="20dp" />
-
-            <Button
-                android:id="@+id/btnFilter4"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="60dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:text="4 ★"
-                app:cornerRadius="20dp" />
-
-            <Button
-                android:id="@+id/btnFilter3"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="60dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:text="3 ★"
-                app:cornerRadius="20dp" />
-
-            <Button
-                android:id="@+id/btnFilter2"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="60dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:text="2 ★"
-                app:cornerRadius="20dp" />
-
-            <Button
-                android:id="@+id/btnFilter1"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="60dp"
-                android:layout_height="40dp"
-                android:text="1 ★"
-                app:cornerRadius="20dp" />
-        </LinearLayout>
-    </HorizontalScrollView>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvReviews"
+    <!-- Scrollable Content -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollContent"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingHorizontal="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filterScroll"
-        tools:listitem="@layout/viewholder_review" />
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/toolbarRating"
+        app:layout_constraintBottom_toBottomOf="parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="80dp">
+
+            <!-- Summary Section -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvSummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/card_background">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Average Rating Row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <!-- Left: Score -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_marginEnd="24dp">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="bottom">
+
+                                <ImageView
+                                    android:layout_width="28dp"
+                                    android:layout_height="28dp"
+                                    android:layout_marginEnd="4dp"
+                                    android:layout_marginBottom="8dp"
+                                    android:src="@drawable/ic_star_gold" />
+
+                                <TextView
+                                    android:id="@+id/tvAverageScore"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textSize="40sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/text_primary" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="/5"
+                                    android:textSize="16sp"
+                                    android:layout_marginBottom="8dp"
+                                    android:textColor="@color/text_secondary" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/tvTotalReviews"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="(0 đánh giá)"
+                                android:textSize="13sp"
+                                android:textColor="@color/text_secondary" />
+
+                        </LinearLayout>
+
+                        <!-- Right: Star Distribution -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <!-- 5 Star -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:layout_marginBottom="4dp">
+
+                                <TextView
+                                    android:layout_width="15dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="5"
+                                    android:textSize="11sp"
+                                    android:textColor="@color/text_secondary" />
+
+                                <ImageView
+                                    android:layout_width="12dp"
+                                    android:layout_height="12dp"
+                                    android:src="@drawable/ic_star_gray"
+                                    android:layout_marginEnd="8dp"/>
+
+                                <ProgressBar
+                                    android:id="@+id/pb5Star"
+                                    style="?android:attr/progressBarStyleHorizontal"
+                                    android:layout_width="0dp"
+                                    android:layout_height="6dp"
+                                    android:layout_weight="1"
+                                    android:progress="0"
+                                    android:progressDrawable="@drawable/custom_rating_bar" />
+
+                                <TextView
+                                    android:id="@+id/tvCount5Star"
+                                    android:layout_width="30dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textSize="11sp"
+                                    android:gravity="end"
+                                    android:textColor="@color/text_secondary" />
+                            </LinearLayout>
+
+                            <!-- 4 Star -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:layout_marginBottom="4dp">
+
+                                <TextView
+                                    android:layout_width="15dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="4"
+                                    android:textSize="11sp"
+                                    android:textColor="@color/text_secondary" />
+
+                                <ImageView
+                                    android:layout_width="12dp"
+                                    android:layout_height="12dp"
+                                    android:src="@drawable/ic_star_gray"
+                                    android:layout_marginEnd="8dp"/>
+
+                                <ProgressBar
+                                    android:id="@+id/pb4Star"
+                                    style="?android:attr/progressBarStyleHorizontal"
+                                    android:layout_width="0dp"
+                                    android:layout_height="6dp"
+                                    android:layout_weight="1"
+                                    android:progress="0"
+                                    android:progressDrawable="@drawable/custom_rating_bar" />
+
+                                <TextView
+                                    android:id="@+id/tvCount4Star"
+                                    android:layout_width="30dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textSize="11sp"
+                                    android:gravity="end"
+                                    android:textColor="@color/text_secondary" />
+                            </LinearLayout>
+
+                            <!-- 3 Star -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:layout_marginBottom="4dp">
+
+                                <TextView
+                                    android:layout_width="15dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="3"
+                                    android:textSize="11sp"
+                                    android:textColor="@color/text_secondary" />
+
+                                <ImageView
+                                    android:layout_width="12dp"
+                                    android:layout_height="12dp"
+                                    android:src="@drawable/ic_star_gray"
+                                    android:layout_marginEnd="8dp"/>
+
+                                <ProgressBar
+                                    android:id="@+id/pb3Star"
+                                    style="?android:attr/progressBarStyleHorizontal"
+                                    android:layout_width="0dp"
+                                    android:layout_height="6dp"
+                                    android:layout_weight="1"
+                                    android:progress="0"
+                                    android:progressDrawable="@drawable/custom_rating_bar" />
+
+                                <TextView
+                                    android:id="@+id/tvCount3Star"
+                                    android:layout_width="30dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textSize="11sp"
+                                    android:gravity="end"
+                                    android:textColor="@color/text_secondary" />
+                            </LinearLayout>
+
+                            <!-- 2 Star -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:layout_marginBottom="4dp">
+
+                                <TextView
+                                    android:layout_width="15dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="2"
+                                    android:textSize="11sp"
+                                    android:textColor="@color/text_secondary" />
+
+                                <ImageView
+                                    android:layout_width="12dp"
+                                    android:layout_height="12dp"
+                                    android:src="@drawable/ic_star_gray"
+                                    android:layout_marginEnd="8dp"/>
+
+                                <ProgressBar
+                                    android:id="@+id/pb2Star"
+                                    style="?android:attr/progressBarStyleHorizontal"
+                                    android:layout_width="0dp"
+                                    android:layout_height="6dp"
+                                    android:layout_weight="1"
+                                    android:progress="0"
+                                    android:progressDrawable="@drawable/custom_rating_bar" />
+
+                                <TextView
+                                    android:id="@+id/tvCount2Star"
+                                    android:layout_width="30dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textSize="11sp"
+                                    android:gravity="end"
+                                    android:textColor="@color/text_secondary" />
+                            </LinearLayout>
+
+                            <!-- 1 Star -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical">
+
+                                <TextView
+                                    android:layout_width="15dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="1"
+                                    android:textSize="11sp"
+                                    android:textColor="@color/text_secondary" />
+
+                                <ImageView
+                                    android:layout_width="12dp"
+                                    android:layout_height="12dp"
+                                    android:src="@drawable/ic_star_gray"
+                                    android:layout_marginEnd="8dp"/>
+
+                                <ProgressBar
+                                    android:id="@+id/pb1Star"
+                                    style="?android:attr/progressBarStyleHorizontal"
+                                    android:layout_width="0dp"
+                                    android:layout_height="6dp"
+                                    android:layout_weight="1"
+                                    android:progress="0"
+                                    android:progressDrawable="@drawable/custom_rating_bar" />
+
+                                <TextView
+                                    android:id="@+id/tvCount1Star"
+                                    android:layout_width="30dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textSize="11sp"
+                                    android:gravity="end"
+                                    android:textColor="@color/text_secondary" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Sentiment Badge -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:background="@drawable/bg_rating_badge"
+                        android:padding="12dp">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_badge"
+                            android:layout_marginEnd="12dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvSentiment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Chưa có đánh giá"
+                                android:textColor="@color/text_primary"
+                                android:textStyle="bold"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/tvSentimentDescription"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Hãy là người đầu tiên đánh giá!"
+                                android:textSize="12sp"
+                                android:textColor="@color/text_secondary" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Filter Buttons -->
+            <HorizontalScrollView
+                android:id="@+id/filterScroll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp"
+                    android:paddingBottom="12dp">
+
+                    <Button
+                        android:id="@+id/btnFilterAll"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="Tất cả"
+                        android:textSize="12sp"
+                        app:cornerRadius="18dp" />
+
+                    <Button
+                        android:id="@+id/btnFilter5"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="5 ★"
+                        android:textSize="12sp"
+                        app:cornerRadius="18dp" />
+
+                    <Button
+                        android:id="@+id/btnFilter4"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="4 ★"
+                        android:textSize="12sp"
+                        app:cornerRadius="18dp" />
+
+                    <Button
+                        android:id="@+id/btnFilter3"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="3 ★"
+                        android:textSize="12sp"
+                        app:cornerRadius="18dp" />
+
+                    <Button
+                        android:id="@+id/btnFilter2"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="2 ★"
+                        android:textSize="12sp"
+                        app:cornerRadius="18dp" />
+
+                    <Button
+                        android:id="@+id/btnFilter1"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:text="1 ★"
+                        android:textSize="12sp"
+                        app:cornerRadius="18dp" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- Reviews Section Header -->
+            <TextView
+                android:id="@+id/tvReviewsHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
+                android:paddingBottom="8dp"
+                android:text="Tất cả đánh giá"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Empty State -->
+            <LinearLayout
+                android:id="@+id/llEmptyState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="48dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_star_gray"
+                    android:alpha="0.5" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Chưa có đánh giá nào"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Hãy là người đầu tiên chia sẻ cảm nhận!"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Reviews RecyclerView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvReviews"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:paddingHorizontal="16dp"
+                tools:listitem="@layout/parthome_viewholder_review" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Floating Action Button -->
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/btnWriteReview"
         android:layout_width="wrap_content"

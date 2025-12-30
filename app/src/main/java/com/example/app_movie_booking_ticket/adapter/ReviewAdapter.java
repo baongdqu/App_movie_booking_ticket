@@ -1,6 +1,5 @@
 package com.example.app_movie_booking_ticket.adapter;
 
-
 import android.graphics.Color;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
@@ -42,13 +41,19 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ReviewModel review = items.get(position);
-        // Trong ReviewAdapter.java, hàm onBindViewHolder
         String currentUid = FirebaseAuth.getInstance().getUid();
-        if (review.getUserId().equals(currentUid)) {
+
+        // Kiểm tra xem đây có phải đánh giá của người dùng hiện tại không
+        boolean isCurrentUser = currentUid != null && currentUid.equals(review.getUserId());
+
+        if (isCurrentUser) {
             holder.binding.tvUserNameReview.setText(review.getUserName() + " (Bạn)");
-            //holder.binding.getRoot().setCardBackgroundColor(Color.parseColor("#FFF5F8"));
+            holder.binding.getRoot().setCardBackgroundColor(Color.parseColor("#2A2A3A")); // Highlight nhẹ
+        } else {
+            holder.binding.tvUserNameReview.setText(review.getUserName());
+            holder.binding.getRoot().setCardBackgroundColor(Color.TRANSPARENT);
         }
-        holder.binding.tvUserNameReview.setText(review.getUserName());
+
         holder.binding.tvCommentReview.setText(review.getComment());
         holder.binding.tvStarCountReview.setText(review.getRating() + " ★");
 
