@@ -66,6 +66,17 @@
     <string name="all_movies">Tất cả phim</string>
     <string name="now_showing_movies">Phim đang chiếu</string>
 
+    <!-- Cinema Selection -->
+    <string name="select_cinema">Chọn rạp chiếu</string>
+    <string name="select_cinema_instructions">Chọn ngày, giờ và rạp chiếu phim</string>
+    <string name="select_date">Chọn ngày</string>
+    <string name="select_time">Chọn giờ chiếu</string>
+    <string name="select">Chọn rạp này</string>
+    <string name="continue_text">Tiếp tục</string>
+    <string name="no_cinema_available">Không có rạp chiếu</string>
+    <string name="please_select_date_time">Vui lòng chọn ngày và giờ chiếu</string>
+    <string name="selected">Đã chọn</string>
+
     <!-- Mail & Notifications -->
     <string name="empty_mailbox">Hộp thư trống</string>
     <string name="new_messages_here">Tin nhắn mới sẽ hiển thị ở đây</string>

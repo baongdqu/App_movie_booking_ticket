@@ -316,16 +316,22 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="844f1ce6-039a-4511-a069-8979768ecd95" name="Changes" comment="fix: sửa lại giao diện out padding giữa các poster nếu phim có tên ở dưới poster quá dài.">
+    <list default="true" id="844f1ce6-039a-4511-a069-8979768ecd95" name="Changes" comment="feat: thêm tính năng phim đang chiếu để mô tả các phim mà các rạp đang chiếu trong thời gian gần đây.">
+      <change beforePath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.13/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/fragments_home.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/fragments_home.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layouts_fragments_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layouts_fragments_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/parthome_SeatSelectionActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/parthome_SeatSelectionActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/parthome_movie_detail.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/parthome_movie_detail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/parthome_seat_selection.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/parthome_seat_selection.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/app-movie-booking-ticket-default-rtdb-export.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app-movie-booking-ticket-default-rtdb-export.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/problems/problems-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/problems/problems-report.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -893,7 +899,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766597248165</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="feat: thêm tính năng phim đang chiếu để mô tả các phim mà các rạp đang chiếu trong thời gian gần đây.">
+      <option name="closed" value="true" />
+      <created>1767118620710</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1767118620711</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -928,7 +942,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix: fix lỗi giao diện chồng lấp ở edit profile." />
     <MESSAGE value="feat: thêm chức năng thay đổi ngôn ngữ cho app với 2 ngôn ngữ chinh." />
     <MESSAGE value="feat: thêm 1 số ngôn ngữ cần thiết khác cho ứng dụng." />
     <MESSAGE value="style: thiết kế giao diện cho botchat." />
@@ -953,7 +966,8 @@
     <MESSAGE value="fix: tối ưu hóa các phim để xem." />
     <MESSAGE value="feat: thêm tính năng xáo trộn các bảng liệt kê phim mỗi khi refresh." />
     <MESSAGE value="fix: sửa lại giao diện out padding giữa các poster nếu phim có tên ở dưới poster quá dài." />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: sửa lại giao diện out padding giữa các poster nếu phim có tên ở dưới poster quá dài." />
+    <MESSAGE value="feat: thêm tính năng phim đang chiếu để mô tả các phim mà các rạp đang chiếu trong thời gian gần đây." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: thêm tính năng phim đang chiếu để mô tả các phim mà các rạp đang chiếu trong thời gian gần đây." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

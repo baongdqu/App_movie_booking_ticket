@@ -70,6 +70,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/labelDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/label_select_date"
@@ -98,6 +99,7 @@
             </HorizontalScrollView>
 
             <TextView
+                android:id="@+id/labelTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/label_select_time"

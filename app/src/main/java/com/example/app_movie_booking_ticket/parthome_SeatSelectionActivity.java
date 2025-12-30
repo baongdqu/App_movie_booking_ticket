@@ -41,14 +41,17 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
     private String movieID;
     private String selectedDate = "";
     private String selectedShowtime = "";
+    private String selectedCinemaId = "";
+    private String selectedCinemaName = "";
     private int pricePerSeat = 0;
     private List<String> selectedSeats = new ArrayList<>();
+    private boolean fromCinemaSelection = false;
 
     private DatabaseReference dbRef;
 
     /**
      * Khởi tạo màn hình chọn ghế.
-     * Load danh sách ngày/giờ chiếu từ Firebase.
+     * Load danh sách ngày/giờ chiếu từ Firebase hoặc trực tiếp từ Cinema Selection.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,10 +70,31 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
             movieTitle = getString(R.string.movie_name);
         posterUrl = getIntent().getStringExtra("posterUrl");
         movieID = getIntent().getStringExtra("movieID");
-        tvMovieTitle.setText(movieTitle);
 
-        dbRef = FirebaseDatabase.getInstance().getReference("Bookings").child(movieTitle);
-        loadAvailableDates();
+        // Check if coming from Cinema Selection
+        selectedCinemaId = getIntent().getStringExtra("cinemaId");
+        selectedCinemaName = getIntent().getStringExtra("cinemaName");
+        selectedDate = getIntent().getStringExtra("date");
+        selectedShowtime = getIntent().getStringExtra("time");
+        pricePerSeat = getIntent().getIntExtra("pricePerSeat", 0);
+
+        fromCinemaSelection = selectedCinemaId != null && !selectedCinemaId.isEmpty();
+
+        if (fromCinemaSelection) {
+            // Show cinema name in title
+            tvMovieTitle.setText(movieTitle + "\n" + selectedCinemaName);
+            // Hide date/time selection since already selected
+            layoutDates.setVisibility(View.GONE);
+            layoutTimes.setVisibility(View.GONE);
+            findViewById(R.id.labelDate).setVisibility(View.GONE);
+            findViewById(R.id.labelTime).setVisibility(View.GONE);
+            // Load seats directly
+            loadSeatsFromCinema();
+        } else {
+            tvMovieTitle.setText(movieTitle);
+            dbRef = FirebaseDatabase.getInstance().getReference("Bookings").child(movieTitle);
+            loadAvailableDates();
+        }
 
         btnContinue.setOnClickListener(v -> {
             if (selectedSeats.isEmpty()) {
@@ -85,6 +109,8 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
             intent.putExtra("movieTitle", movieTitle);
             intent.putExtra("date", selectedDate);
             intent.putExtra("time", selectedShowtime);
+            intent.putExtra("cinemaId", selectedCinemaId);
+            intent.putExtra("cinemaName", selectedCinemaName);
             intent.putStringArrayListExtra("seats", new ArrayList<>(selectedSeats));
             intent.putExtra("pricePerSeat", pricePerSeat);
             intent.putExtra("totalPrice", total);
@@ -96,7 +122,83 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> finish());
     }
 
-    //  Lấy danh sách các ngày chiếu có thật trong database
+    private void loadSeatsFromCinema() {
+        String showtimeKey = selectedDate + "_" + selectedShowtime;
+        String sanitizedTitle = sanitizeFirebaseKey(movieTitle);
+        DatabaseReference seatRef = FirebaseDatabase.getInstance()
+                .getReference("Bookings")
+                .child(sanitizedTitle)
+                .child(showtimeKey)
+                .child("cinemas")
+                .child(selectedCinemaId)
+                .child("seats");
+
+        seatRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                displaySeats(snapshot);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+            }
+        });
+    }
+
+    private void displaySeats(DataSnapshot seatsSnapshot) {
+        gridSeats.removeAllViews();
+
+        // Căn giữa GridLayout
+        ViewGroup.LayoutParams lp = gridSeats.getLayoutParams();
+        if (lp instanceof LinearLayout.LayoutParams) {
+            LinearLayout.LayoutParams llp = (LinearLayout.LayoutParams) lp;
+            llp.width = LinearLayout.LayoutParams.WRAP_CONTENT;
+            llp.gravity = android.view.Gravity.CENTER_HORIZONTAL;
+            gridSeats.setLayoutParams(llp);
+        }
+
+        gridSeats.setAlignmentMode(GridLayout.ALIGN_MARGINS);
+        gridSeats.setUseDefaultMargins(true);
+        gridSeats.setColumnCount(8);
+
+        selectedSeats.clear();
+        tvTotalPrice.setText(getString(R.string.total_price));
+
+        if (seatsSnapshot.exists()) {
+            for (DataSnapshot seat : seatsSnapshot.getChildren()) {
+                String seatName = seat.getKey();
+                String status = seat.getValue(String.class);
+
+                Button seatBtn = new Button(parthome_SeatSelectionActivity.this);
+                seatBtn.setText(seatName);
+                seatBtn.setTextSize(12);
+                seatBtn.setTextColor(Color.WHITE);
+                seatBtn.setAllCaps(false);
+                seatBtn.setPadding(0, 0, 0, 0);
+
+                GridLayout.LayoutParams params = new GridLayout.LayoutParams();
+                params.width = 90;
+                params.height = 90;
+                params.setMargins(8, 8, 8, 8);
+                seatBtn.setLayoutParams(params);
+
+                seatBtn.setBackgroundResource(R.drawable.bg_seat_selector);
+
+                if ("booked".equals(status)) {
+                    seatBtn.setEnabled(false);
+                    seatBtn.setSelected(false);
+                } else {
+                    seatBtn.setEnabled(true);
+                    seatBtn.setSelected(false);
+                    seatBtn.setOnClickListener(v -> toggleSeat(seatBtn, seatName));
+                }
+
+                gridSeats.addView(seatBtn);
+            }
+        }
+    }
+
+    // Lấy danh sách các ngày chiếu có thật trong database
     private void loadAvailableDates() {
         dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -294,5 +396,14 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
         }
         tvTotalPrice.setText(
                 String.format(getString(R.string.price_format), String.valueOf(selectedSeats.size() * pricePerSeat)));
+    }
+
+    /**
+     * Remove invalid Firebase key characters: $ # [ ] . /
+     */
+    private String sanitizeFirebaseKey(String key) {
+        if (key == null)
+            return "";
+        return key.replaceAll("[$#\\[\\]./]", "").trim();
     }
 }

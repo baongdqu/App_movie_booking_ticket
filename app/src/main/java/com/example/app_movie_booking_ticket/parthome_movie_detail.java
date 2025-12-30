@@ -117,13 +117,13 @@ public class parthome_movie_detail extends AppCompatActivity {
         binding.button2.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(this);
 
+            // Navigate to Cinema Selection first
             Intent buyIntent = new Intent(
                     parthome_movie_detail.this,
-                    parthome_SeatSelectionActivity.class);
+                    parthome_CinemaSelectionActivity.class);
             buyIntent.putExtra("movieID", movie.getMovieID());
             buyIntent.putExtra("posterUrl", movie.getPoster());
             buyIntent.putExtra("movieTitle", movie.getTitle());
-            buyIntent.putExtra("price", movie.getPrice());
             startActivity(buyIntent);
         });
         binding.llToRatingLists.setOnClickListener(v -> {
