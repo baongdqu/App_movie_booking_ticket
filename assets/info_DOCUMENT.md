@@ -388,64 +388,174 @@ private void uploadToImgBB(Uri imageUri, String uid, Map<String, Object> updates
 
 ### 5.1. Firebase Realtime Database Structure
 
+Cấu trúc cơ sở dữ liệu đã được cập nhật để phản ánh chính xác dữ liệu thực tế:
+
 ```
 app-movie-booking/
 │
-├── users/
-│   ├── {uid}/
-│   │   ├── uid: String
-│   │   ├── fullName: String
-│   │   ├── email: String
-│   │   ├── phone: String
-│   │   ├── dateOfBirth: String (format: dd/MM/yyyy)
-│   │   ├── gender: String ("Nam", "Nữ", "Khác")
-│   │   └── avatarUrl: String
-│   │
+├── Banners/                   # Banner quảng cáo
+│   └── [Index]/
+│       ├── name: String
+│       ├── image: String
+│       ├── genre: String
+│       ├── age: String
+│       └── time: String
 │
-├── movies/
-│   ├── {movieId}/
-│   │   ├── title: String
-│   │   ├── description: String
-│   │   ├── genre: String
-│   │   ├── duration: Number
-│   │   ├── rating: Number
-│   │   ├── posterUrl: String
-│   │   ├── trailerUrl: String
-│   │   ├── releaseDate: String
-│   │   ├── status: String (now_showing, upcoming)
-│   │   └── cast: Array
-│   │
+├── Movies/                    # Danh sách phim chi tiết
+│   └── [Index]/
+│       ├── movieID: String
+│       ├── Title: String
+│       ├── Description: String
+│       ├── Genre: List
+│       ├── Time: String
+│       ├── Year: Number
+│       ├── price: Number
+│       ├── Poster: String
+│       ├── Trailer: String
+│       ├── Casts: List
+│       └── isUpcoming: Boolean
 │
-├── bookings/
-│   ├── {bookingId}/
-│   │   ├── userId: String
-│   │   ├── movieId: String
-│   │   ├── seats: Array
-│   │   ├── showtime: String
-│   │   ├── totalPrice: Number
-│   │   ├── status: String
-│   │   └── createdAt: Timestamp
-│   │
+├── Cinemas/                   # Danh sách rạp chiếu
+│   └── [Index]/
+│       ├── id: String
+│       ├── name: String
+│       ├── address: String
+│       ├── phone: String
+│       ├── rating: Number
+│       ├── workingHours: String
+│       ├── distanceFromUIT: Number
+│       ├── latitude: Number
+│       ├── longitude: Number
+│       └── amenities: List
 │
-└── settings/
-    ├── {userId}/
-    │   ├── theme: String
-    │   ├── notifications: Boolean
-    │   └── sound: Boolean
-    │
-    └── users/
-        └── {uid}/
-            └── moviePreferences/
-                ├── favoriteGenre: String
-                ├── favoriteLanguage: String
-                ├── subtitlePreference: String
-                ├── genreIndex: Integer (Index thể loại đã chọn)
-                └── languageIndex: Integer (Index ngôn ngữ đã chọn)
+├── Bookings/                  # Trạng thái ghế ngồi
+│   └── {MovieTitle}/
+│       └── {Showtime}/        # Format: YYYY-MM-DD_HH:mm
+│           ├── pricePerSeat: Number
+│           └── seats/
+│               └── {SeatID}: String ("available", "booked")
+│
+├── users/                     # Thông tin người dùng
+│   └── {uid}/
+│       ├── uid: String
+│       ├── fullName: String
+│       ├── email: String
+│       ├── phone: String
+│       ├── dateOfBirth: String
+│       ├── gender: String
+│       ├── avatarUrl: String
+│       ├── balance: Number
+│       └── moviePreferences/
+│
+├── tickets/                   # Lịch sử vé đã đặt
+│   └── {ticketId}/
+│       ├── ticketId: String
+│       ├── userId: String
+│       ├── movieTitle: String
+│       ├── posterUrl: String
+│       ├── date: String
+│       ├── time: String
+│       ├── seats: List
+│       ├── totalPrice: Number
+│       ├── status: String
+│       ├── createdAt: Timestamp
+│       └── payment: Object
+│
+└── notifications/             # Thông báo người dùng
+    └── {uid}/
+        └── {notificationId}/
+            ├── title: String
+            ├── message: String
+            ├── type: String
+            └── read: Boolean
 ```
 
-### 5.2. Model Classes
+### 5.2. Chi Tiết Schema (Database Schema Details)
 
-#### 5.2.1. User Model (`extra_user.java`)
+Dưới đây là mô tả chi tiết từng node và các trường dữ liệu quan trọng:
+
+#### 1. `Banners` (List)
+Danh sách các phim nổi bật hiển thị trên slider/banner quảng cáo.
+*   `name` (Display Name): Tên phim hiển thị.
+*   `image` (URL): Đường dẫn ảnh nền chất lượng cao.
+*   `genre` (String): Thể loại phim.
+*   `age` (String): Giới hạn độ tuổi (VD: "+13", "18+").
+*   `time`: Thời lượng phim.
+*   `year`: Năm phát hành.
+
+#### 2. `Items` (List) & `Upcomming` (List)
+Chứa thông tin chi tiết về phim ("Đang chiếu" và "Sắp chiếu").
+*   `Title`: Tên phim.
+*   `movieID` (Unique ID): Mã định danh phim (VD: `movie001`).
+*   `Poster` (URL): URL ảnh bìa phim (Poster dọc).
+*   `Pcitures` (Array of URLs): Danh sách các ảnh chi tiết/cảnh trong phim.
+*   `Trailer` (URL): Link video trailer (Youtube).
+*   `Description`: Mô tả tóm tắt nội dung phim.
+*   `Imdb` (Number): Điểm đánh giá (VD: 8.5).
+*   `Time`: Thời lượng (VD: "2h 46m").
+*   `Year`: Năm sản xuất.
+*   `price` (Number): Giá vé cơ bản (Base Price).
+*   `Genre` (Array): Danh sách thể loại (VD: `["Action", "Adventure"]`).
+*   `Casts` (Array): Danh sách diễn viên tham gia.
+    *   `Actor`: Tên diễn viên.
+    *   `PicUrl`: Ảnh đại diện diễn viên.
+
+#### 3. `Bookings` (Deep Nested Map)
+Hệ thống quản lý trạng thái ghế ngồi theo thời gian thực.
+*   **Level 1**: `Tên Phim` (VD: "Dune: Part Two")
+    *   **Level 2**: `Suất chiếu` (Format: `YYYY-MM-DD_HH:mm`, VD: `2025-11-08_18:00`)
+        *   `pricePerSeat`: Giá vé cụ thể áp dụng cho suất chiếu này.
+        *   `seats`: Map trạng thái các ghế.
+            *   Key: Số ghế (VD: "A1", "B4").
+            *   Value: Trạng thái (`"available"`: Trống, `"booked"`: Đã đặt).
+
+#### 4. `users` (Map)
+Thông tin hồ sơ người dùng, định danh bằng User UID (từ Firebase Auth).
+*   `uid`: User ID duy nhất.
+*   `email`: Email đăng nhập.
+*   `fullName`: Tên hiển thị người dùng.
+*   `phone`: Số điện thoại liên lạc.
+*   `avatarUrl`: Đường dẫn ảnh đại diện.
+*   `balance` (Number): Số dư ví thanh toán nội bộ.
+*   `dateOfBirth`: Ngày sinh.
+*   `gender`: Giới tính.
+*   `moviePreferences` (Object): Sở thích xem phim (personalized).
+    *   `favoriteGenre`: Thể loại yêu thích.
+    *   `favoriteLanguage`: Ngôn ngữ yêu thích.
+*   `isPhoneVerified` (Boolean): Trạng thái xác thực số điện thoại.
+
+#### 5. `tickets` (Map)
+Lưu trữ lịch sử đặt vé toàn hệ thống. Key là Ticket ID (auto-generated).
+*   `ticketId`: ID vé duy nhất.
+*   `userId`: ID người đặt vé.
+*   `movieTitle`: Tên phim đã đặt.
+*   `posterUrl`: Ảnh phim (dùng để hiển thị lịch sử).
+*   `date`: Ngày chiếu.
+*   `time`: Giờ chiếu.
+*   `seats` (Array): Danh sách ghế đã đặt (VD: `["D5", "D7"]`).
+*   `totalPrice`: Tổng số tiền đã thanh toán.
+*   `status`: Trạng thái vé.
+    *   `"PAID"`: Đã thanh toán thành công.
+    *   `"PENDING"`: Đang chờ xử lý.
+    *   `"CANCELLED"`: Đã hủy.
+*   `createdAt`: Thời gian tạo vé.
+*   `payment` (Object): Chi tiết thanh toán.
+    *   `method`: Phương thức (`"VNPAY"`, `"BALANCE"`).
+    *   `status`: Trạng thái giao dịch.
+
+#### 6. `notifications` (Map)
+Hệ thống thông báo người dùng.
+*   Key cấp 1: `UserID`
+*   Key cấp 2: `NotificationID`
+*   `title`: Tiêu đề thông báo.
+*   `message`: Nội dung chi tiết.
+*   `type`: Loại thông báo (`"REFUND"`, `"SYSTEM"`, `"PROMOTION"`).
+*   `read` (Boolean): Trạng thái đã đọc/chưa đọc.
+*   `timestamp`: Thời gian gửi thông báo.
+
+### 5.3. Model Classes
+
+#### 5.3.1. User Model (`extra_user.java`)
 
 ```java
 public class extra_user {
@@ -477,7 +587,7 @@ public class extra_user {
 }
 ```
 
-#### 5.2.2. Movie Model (`model/Movie.java`)
+#### 5.3.2. Movie Model (`model/Movie.java`)
 
 ```java
 public class Movie {
@@ -497,7 +607,7 @@ public class Movie {
 }
 ```
 
-### 5.3. SharedPreferences
+### 5.4. SharedPreferences
 
 **Lưu trữ local:**
 ```java
@@ -960,6 +1070,142 @@ Nếu sử dụng **Mode Local (Server)**, ứng dụng Android sẽ giao tiếp
 - **Developer:** [Tên của bạn]
 - **Email:** [Email của bạn]
 - **GitHub:** [GitHub repository]
+
+---
+
+## 10. PHỤ LỤC B: CHI TIẾT DỮ LIỆU HỆ THỐNG (Snapshot)
+
+### 10.1. Danh Sách Rạp Chiếu (Cinemas)
+
+| ID                   | Tên Rạp                         | Địa Chỉ                                      | Đánh Giá |
+| :------------------- | :------------------------------ | :------------------------------------------- | :------- |
+| `galaxy_linh_trung`  | Galaxy Linh Trung Thủ Đức       | 934 QL1A, P. Linh Trung, TP. Thủ Đức         | 4.3 ★    |
+| `lotte_thu_duc`      | Lotte Cinema Thủ Đức            | Tầng 2, Joy Citipoint, 2 QL1A, P. Linh Xuân  | 4.2 ★    |
+| `cgv_giga_mall`      | CGV Giga Mall Thủ Đức           | Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng | 4.4 ★    |
+| `cgv_vincom_thu_duc` | CGV Vincom Thủ Đức              | Tầng 5, Vincom Thủ Đức, 216 Võ Văn Ngân      | 4.5 ★    |
+| `lotte_moonlight`    | Lotte Moonlight Thủ Đức         | 102 Đặng Văn Bi, Bình Thọ, TP. Thủ Đức       | 4.1 ★    |
+| `bhd_le_van_viet`    | BHD Star Vincom Lê Văn Việt     | Tầng 5, Vincom Plaza Lê Văn Việt             | 4.3 ★    |
+| `cgv_grand_park`     | CGV Vincom Mega Mall Grand Park | Tầng L5, Vincom Mega Mall Grand Park         | 4.6 ★    |
+
+### 10.2. Danh Sách Phim (Movies Database)
+
+> **Ghi chú:** Giá vé hiển thị là giá vé cơ bản (Base Price). Giá thực tế có thể thay đổi tùy thuộc vào suất chiếu, loại ghế, và chương trình khuyến mãi.
+
+#### a. Phim Quốc Tế (International Movies)
+
+| Tên Phim                  | Thể Loại                    | Thời Lượng | IMDb | Giá Vé |
+| :------------------------ | :-------------------------- | :--------- | :--- | :----- |
+| **The Gorge**             | Adventure, Action, Romance  | 2h 6m      | 7.8  | 70k    |
+| **Dune: Part Two**        | Adventure, Action, Drama    | 2h 47m     | 8.5  | 80k    |
+| **Ordinary Angels**       | Drama                       | 1h 58m     | 7.5  | 75k    |
+| **The Fall Guy**          | Comedy, Action, Drama       | 2h 6m      | 7.3  | 85k    |
+| **Rebel Moon**            | Adventure, Action, Sci-Fi   | 2h 14m     | 5.7  | 90k    |
+| **Immaculate**            | Drama, Fantasy              | 1h 29m     | 6.3  | 82k    |
+| **Godzilla-Kong**         | Action, Adventure, Sci-Fi   | 1h 55m     | 6.5  | 95k    |
+| **No Way Up**             | Thriller, Drama             | 1h 30m     | 5.8  | 78k    |
+| **Kung Fu Panda 4**       | Thriller, Drama             | 1h 34m     | 7.6  | 80k    |
+| **The Three Musketeers**  | Action, Adventure           | 2h 1m      | 6.7  | 85k    |
+| **Damaged**               | Action, Thriller            | 1h 37m     | 4.8  | 75k    |
+| **Moana 2**               | Animation, Adventure        | 1h 40m     | 7.2  | 85k    |
+| **Gladiator II**          | Action, Adventure, Drama    | 2h 28m     | 8.5  | 120k   |
+| **Wicked**                | Fantasy, Musical, Drama     | 2h 40m     | 8.0  | 110k   |
+| **Kraven the Hunter**     | Action, Adventure           | 1h 59m     | 7.2  | 100k   |
+| **Sonic the Hedgehog 3**  | Action, Adventure, Comedy   | 1h 50m     | 7.5  | 90k    |
+| **Fly Me to the Moon**    | Comedy, Romance             | 2h 12m     | 6.8  | 95k    |
+| **Atlas**                 | Action, Adventure, Thriller | 1h 58m     | 6.1  | 95k    |
+| **Mufasa: The Lion King** | Animation, Adventure        | 1h 58m     | 7.5  | 90k    |
+| **War of the Rohirrim**   | Animation, Action           | 2h 10m     | 6.8  | 100k   |
+| **Wolf Man**              | Horror, Thriller            | 1h 50m     | 6.5  | 110k   |
+| **Dog Man**               | Animation, Action, Comedy   | 1h 30m     | 7.0  | 90k    |
+| **Nosferatu**             | Horror, Fantasy, Drama      | 2h 12m     | 8.0  | 120k   |
+
+#### b. Phim Việt Nam (Vietnamese Movies)
+
+> **Đồng giá vé:** 75,000 VND (trừ khi có ưu đãi đặc biệt)
+
+| Tên Phim                         | Thể Loại                       | Thời Lượng | IMDb |
+| :------------------------------- | :----------------------------- | :--------- | :--- |
+| **Lôi Báo**                      | Hành Động, Khoa Học Viễn Tưởng | 1h 30m     | 5.3  |
+| **578: Phát Đạn Của Kẻ Điên**    | Hành Động, Gây Cấn             | 1h 35m     | 6.0  |
+| **Âm Mưu Giày Gót Nhọn**         | Lãng Mạn, Hài                  | 1h 31m     | 6.0  |
+| **Xích lô**                      | Chính Kịch, Hình Sự            | 2h 3m      | 7.0  |
+| **Mùa hè chiều thẳng đứng**      | Chính Kịch, Lãng Mạn           | 1h 52m     | 6.6  |
+| **Vị**                           | Chính Kịch                     | 1h 37m     | 4.5  |
+| **Cỏ Lau**                       | Phim Việt Nam                  | 1h 29m     | N/A  |
+| **Chị Mười Ba: Phần kết**        | Phim Việt Nam                  | 1h 37m     | 6.0  |
+| **Số Đỏ**                        | Hài                            | 4h 14m     | N/A  |
+| **Chung cư**                     | Chính Kịch                     | 1h 30m     | N/A  |
+| **Thám Tử Kiên**                 | Kinh Dị, Hình Sự               | 2h 11m     | 7.9  |
+| **Trở về**                       | Chính Kịch                     | 1h 50m     | N/A  |
+| **Nước**                         | KHVT, Chính Kịch               | 1h 38m     | 4.0  |
+| **Lời Nguyền Huyết Ngải**        | Kinh Dị                        | 1h 30m     | 6.0  |
+| **Sài Gòn Yo!**                  | Phim Nhạc                      | 1h 46m     | 7.0  |
+| **Ròm**                          | Chính Kịch, Hành Động          | 1h 19m     | 6.8  |
+| **Truy Sát**                     | Hành Động                      | 1h 30m     | 7.8  |
+| **Gái Già Lắm Chiêu 3**          | Phim Việt Nam                  | 1h 30m     | 4.0  |
+| **Chuyện Tình Xa Xứ**            | Chính Kịch, Hài                | 2h 0m      | 5.0  |
+| **Cô Gái Từ Quá Khứ**            | Gây Cấn, Bí Ẩn                 | 1h 45m     | 5.5  |
+| **Long Thành Cầm Giả Ca**        | Lãng Mạn                       | 2h 0m      | N/A  |
+| **Cô Hầu Gái**                   | Lãng Mạn, Kinh Dị              | 1h 45m     | 6.0  |
+| **Trong Lòng Đất**               | Chính Kịch                     | 2h 4m      | 7.0  |
+| **Chàng Trai Năm Ấy**            | Hài, Chính Kịch                | 1h 59m     | 3.0  |
+| **Quán Kỳ Nam**                  | Lãng Mạn                       | 2h 15m     | 7.0  |
+| **Live - #PhátTrựcTiếp**         | Chính Kịch                     | 1h 31m     | N/A  |
+| **Chiến Dịch Trái Tim Bên Phải** | Chính Kịch                     | 1h 38m     | N/A  |
+| **Bẫy Rồng**                     | Hành Động, Gây Cấn             | 1h 30m     | 5.1  |
+| **1990**                         | Hài, Lãng Mạn                  | N/A        | 4.0  |
+| **Để Mai Tính 2**                | Hài                            | 1h 34m     | 7.4  |
+| **Ngày Nảy Ngày Nay**            | Hài                            | 1h 44m     | 6.0  |
+| **Hai Cũ**                       | Chính Kịch                     | 1h 7m      | N/A  |
+| **Đến Hẹn Lại Lên**              | Chính Kịch, Chiến Tranh        | 1h 44m     | N/A  |
+| **Sẽ Đến Một Tình Yêu**          | Phim Việt Nam                  | 1h 11m     | N/A  |
+| **Scandal: Bí Mật Thảm Đỏ**      | Gây Cấn, Chính Kịch            | 1h 40m     | 7.0  |
+| **Đào, Phở và Piano**            | Chiến Tranh, Lãng Mạn          | 1h 40m     | 6.2  |
+| **The Trip**                     | Hình Sự, Chính Kịch            | 10m        | N/A  |
+| **Lạc Giới**                     | Chính Kịch, Lãng Mạn           | 1h 33m     | 3.6  |
+| **Bóng Đè**                      | Kinh Dị                        | 1h 41m     | 6.4  |
+| **Từ Sài Gòn Đến Điện Biên Phủ** | Chính Kịch, Chiến Tranh        | 1h 40m     | N/A  |
+| **Chơi Vơi**                     | Chính Kịch                     | 1h 50m     | 5.8  |
+| **Trăng Trên Đất Khách**         | Chính Kịch                     | 1h 28m     | N/A  |
+| **Thập Tam Muội**                | Hài                            | 1h 48m     | 6.0  |
+| **Song Lang**                    | Chính Kịch, Nhạc               | 1h 41m     | 6.5  |
+| **Trùm Cỏ**                      | Hài                            | 1h 34m     | 2.8  |
+| **Khát Vọng Thăng Long**         | Hành Động, Lịch Sử             | 1h 50m     | N/A  |
+| **Ảo Ảnh Giữa Đời Thường**       | Phim Việt Nam                  | N/A        | N/A  |
+| **Thần Tượng**                   | Lãng Mạn, Hài                  | 1h 53m     | N/A  |
+| **Ngọc Viễn Đông**               | Lãng Mạn, Chính Kịch           | 1h 43m     | N/A  |
+| **Buổi Sáng Đầu Năm**            | Chính Kịch                     | 1h 29m     | 6.0  |
+
+### 10.3. Dữ Liệu Banner (Marketing Items)
+
+| Phim         | Đối Tượng | Genres               | Banner URL (Preview)      |
+| :----------- | :-------- | :------------------- | :------------------------ |
+| **1917**     | 13+       | War Action Adventure | `wide_urzyt2.jpg` ...     |
+| **1917**     | 17+       | War Action Adventure | `img_9027_oroolo.jpg` ... |
+| **Avengers** | 15+       | Adventure            | `wide1_tmzedk.jpg` ...    |
+
+### 10.4. Chi Tiết Suất Chiếu & Giá Vé Thực Tế (Bookings Snapshot)
+
+Dữ liệu này được trích xuất trực tiếp từ node `Bookings`, thể hiện các suất chiếu đang mở bán và giá vé áp dụng cho từng suất.
+
+| Tên Phim                 | Suất Chiếu (Ngày_Giờ) | Giá Vé (seat) | Trạng Thái Ghế (Sample)    |
+| :----------------------- | :-------------------- | :------------ | :------------------------- |
+| **Damaged**              | 2025-11-08 18:45      | **2,000 đ**   | A1:booked, A3:available... |
+| **Dune: Part Two**       | 2025-11-08 18:00      | **90,000 đ**  | A1:booked, A3:available... |
+| **Godzilla-Kong**        | 2025-11-08 22:00      | **100,000 đ** | A1:booked, A2:available... |
+| **Immaculate**           | 2025-11-08 13:30      | **70,000 đ**  | A1:available, A2:booked... |
+| **Kung Fu Panda 4**      | 2025-11-08 10:00      | **65,000 đ**  | B1:booked, A1:available... |
+| **No Way Up**            | 2025-11-08 17:00      | **75,000 đ**  | C1:available...            |
+| **Ordinary Angels**      | 2025-11-08 14:30      | **80,000 đ**  | B1:booked, B4:booked...    |
+| **Rebel Moon**           | 2025-11-08 21:00      | **95,000 đ**  | B1:booked, C3:booked...    |
+| **The Fall Guy**         | 2025-11-08 20:00      | **85,000 đ**  | A3:booked, E3:booked...    |
+| **The Gorge**            | 2025-11-08 15:15      | **70,000 đ**  | A3:booked, B2:booked...    |
+| **The Gorge**            | 2025-11-08 19:00      | **70,000 đ**  | B1:booked, D4:booked...    |
+| **The Three Musketeers** | 2025-11-08 16:45      | **80,000 đ**  | A4:booked, B1:booked...    |
+
+> **Lưu ý:**
+> - Giá vé tại `Bookings` (10.4) có độ ưu tiên cao hơn giá vé cơ bản tại mục `Movies` (10.2).
+> - Suất chiếu của phim **Damaged** có giá vé 2,000đ, đây có thể là suất chiếu thử nghiệm (Test Screening).
 
 ---
 

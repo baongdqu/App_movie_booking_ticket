@@ -16,23 +16,23 @@ Dữ liệu được trích xuất từ hệ thống cho người dùng: **s3cr3
 - **Email:** baongdqu@gmail.com
 - **Phone:** +84397107173 (Verified)
 - **Date of Birth:** 03/12/2025
-- **Gender:** Nữ
+- **Gender:** Nam
 - **Avatar:** [Link](https://i.ibb.co/ynBWcqhR/ac04723b9e8b.jpg)
 
 ## Recent Activity (Tickets)
 
-### Ticket ID: -Og__RX11ZSwkhvDDqtj
-- **Movie:** The Gorge
+### Ticket ID: -OgzuyPWi39blUrNDiuv
+- **Movie:** Damaged
 - **Date:** 2025-11-08
-- **Time:** 15:15
-- **Seats:** C5, C6, D5, D6
-- **Total Price:** 280,000 VND
-- **Status:** PAID (VNPAY)
+- **Time:** 18:45
+- **Seats:** F7
+- **Total Price:** 2,000 VND
+- **Status:** REFUNDED (VNPAY)
 
-### Ticket ID: -Ogb0X4vKatpLDpia-3N
-- **Movie:** The Gorge
+### Ticket ID: -Oh-27BLp6bfAIKGXilr
+- **Movie:** Damaged
 - **Date:** 2025-11-08
-- **Time:** 15:15
-- **Seats:** D4
-- **Total Price:** 70,000 VND
-- **Status:** PAID (VNPAY)
+- **Time:** 18:45
+- **Seats:** D3
+- **Total Price:** 2,000 VND
+- **Status:** PAID (BALANCE)

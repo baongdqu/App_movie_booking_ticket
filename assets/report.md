@@ -86,6 +86,10 @@ Nhóm xin chân thành cảm ơn!
 
 - **Module Chatbot AI (`activities_2_chatbot`):** Trợ lý ảo thông minh tích hợp mô hình ngôn ngữ lớn **Ollama** thông qua server Python và **ngrok**. Hỗ trợ tư vấn phim dựa trên sở thích, trả lời câu hỏi về lịch chiếu, giá vé với giao diện chat hiện đại kèm Quick Replies. Tự động gửi email người dùng làm context cho AI.
 
+- **Module Rạp chiếu phim (`fragments_cinema`):** Tìm và hiển thị danh sách các rạp chiếu phim gần vị trí hiện tại của người dùng (sử dụng GPS/Location Service). Tính toán khoảng cách thời gian thực, hiển thị trạng thái mở/đóng cửa dựa trên giờ hoạt động và cung cấp địa chỉ chi tiết.
+
+- **Module Đánh giá phim (`parthome_WriteReview`):** Cho phép người dùng đánh giá số sao (Rating Bar) và viết bình luận cảm nhận về bộ phim. Dữ liệu đánh giá được lưu trữ và hiển thị công khai, giúp người dùng khác tham khảo ý kiến.
+
 - **Module Bảo mật nâng cao (`activities_lock_screen`, `partuser_advanced_settings`):** Tính năng khóa ứng dụng bằng mã PIN 6 chữ số (chỉ kích hoạt khi đã đăng nhập), tự động reset PIN khi đăng xuất để đảm bảo quyền riêng tư, hỗ trợ tính năng "Quên PIN" để reset.
 
 - **Module Đa ngôn ngữ (`extra_language_helper`):** Hỗ trợ chuyển đổi linh hoạt giữa nhiều ngôn ngữ: Tiếng Việt, Tiếng Anh, Tiếng Nhật, Tiếng Hàn, Tiếng Nga và Tiếng Trung.
@@ -94,9 +98,9 @@ Nhóm xin chân thành cảm ơn!
 
 - **Module Thông báo (`fragments_notifications`):** Hiển thị danh sách thông báo theo thời gian thực từ Firebase, bao gồm thông báo hoàn tiền, cập nhật hồ sơ và các thông tin khuyến mãi.
 
-**Công nghệ sử dụng:** Java, Android SDK (API 24-34), Firebase (Realtime Database, Authentication), Glide, ExoPlayer, OkHttp, Gson, Material Design Components.
+**Công nghệ sử dụng:** Java, Android SDK (API 24-34), Firebase (Realtime Database, Authentication), Glide, ExoPlayer, OkHttp, Gson, Material Design Components, Google Location Services.
 
-**Kết quả đạt được:** Ứng dụng hoàn thiện với giao diện "Cinematic Dark Mode" lấy cảm hứng từ Netflix, hoạt động ổn định trên nhiều thiết bị Android. Sản phẩm đáp ứng đầy đủ quy trình đặt vé trực tuyến từ A-Z, có tính thực tiễn cao và khả năng mở rộng cho môi trường vận hành thực tế.
+**Kết quả đạt được:** Ứng dụng hoàn thiện với giao diện "Cinematic Dark Mode" lấy cảm hứng từ Netflix, hoạt động ổn định trên nhiều thiết bị Android. Sản phẩm đáp ứng đầy đủ quy trình đặt vé trực tuyến từ A-Z, có tính năng xã hội (đánh giá) và tiện ích vị trí (tìm rạp), có tính thực tiễn cao và khả năng mở rộng cho môi trường vận hành thực tế.
 
 ---
 
@@ -223,7 +227,6 @@ Chính vì những lý do trên, việc phát triển một **ứng dụng đặ
 - Tính năng **Chatbot AI phụ thuộc vào server**: Nếu server Ollama hoặc ngrok không hoạt động, Chatbot sẽ không phản hồi được.
 - **Ghế ngồi mô phỏng**: Sơ đồ ghế ngồi là dữ liệu tĩnh, chưa đồng bộ thời gian thực giữa các người dùng đang đặt vé cùng suất chiếu (có thể xảy ra trùng ghế trong thực tế).
 - Chưa tích hợp xác thực **sinh trắc học** (vân tay/Face ID), hiện chỉ hỗ trợ mã PIN 6 chữ số.
-- Người dùng chưa thể **đánh giá và bình luận phim** trực tiếp trong ứng dụng, điểm IMDb chỉ hiển thị dữ liệu có sẵn.
 
 ### 1.4. Phương pháp nghiên cứu
 
@@ -317,6 +320,8 @@ Hệ thống được thiết kế để đáp ứng đầy đủ chu trình tr�
   - Lịch sử đặt vé: Xem lại danh sách các vé đã mua với đầy đủ thông tin (phim, ngày, ghế, giá), hỗ trợ huỷ vé và hoàn tiền.
   - **Sở thích phim:** Lưu trữ thể loại phim yêu thích, ngôn ngữ phim và tùy chọn phụ đề để cá nhân hóa gợi ý từ Chatbot.
   - **AI Chatbot:** Trợ lý ảo thông minh hỗ trợ tư vấn phim dựa trên sở thích, giải đáp thắc mắc về lịch chiếu và giá vé. Tự động gửi context bao gồm email người dùng.
+  - **Rạp chiếu phim gần đây:** Tự động định vị vị trí người dùng và đề xuất danh sách các rạp chiếu phim gần nhất, sắp xếp theo khoảng cách. Hiển thị thông tin trạng thái mở/đóng cửa và địa chỉ.
+  - **Đánh giá & Bình luận:** Cho phép người dùng chia sẻ ý kiến, chấm điểm sao cho phim đã xem.
   - **Cài đặt nâng cao:** Thiết lập ngôn ngữ (6 ngôn ngữ), bật/tắt âm thanh ứng dụng, chế độ tối (Dark Mode), và đặc biệt là tính năng **Khóa ứng dụng (PIN Lock 6 số)** với các tùy chọn: bật/tắt, đổi PIN, Quên PIN để bảo vệ quyền riêng tư.
   - **Hệ thống thông báo:** Hiển thị thông báo hoàn tiền, cập nhật hồ sơ và các thông tin khuyến mãi theo thời gian thực từ Firebase.
 
@@ -737,6 +742,24 @@ Bảo vệ quyền riêng tư người dùng:
 - Phản hồi bằng màu sắc khi nhập đúng/sai.
   _(Hình 4.15: Giao diện Khóa ứng dụng)
 
+#### 4.3.16. Màn hình Rạp chiếu phim (Cinema Finder)
+
+Giúp người dùng tìm kiếm rạp phim thuận tiện:
+
+- **Định vị tự động:** Sử dụng GPS để xác định vị trí hiện tại.
+- **Danh sách rạp:** Hiển thị các rạp gần nhất với khoảng cách cụ thể (km).
+- **Trạng thái hoạt động:** Báo "Đang mở cửa" hoặc "Đã đóng cửa" dựa trên giờ hệ thống.
+  _(Hình 4.16: Giao diện Tìm rạp chiếu phim)_
+
+#### 4.3.17. Màn hình Đánh giá phim (Review & Rating)
+
+Tăng tính tương tác cộng đồng:
+
+- **Chấm điểm:** Thanh RatingBar (1-5 sao).
+- **Bình luận:** Ô nhập nội dung text (giới hạn 200 ký tự).
+- **Quản lý:** Người dùng có thể xem lại, chỉnh sửa hoặc xóa đánh giá của chính mình.
+  _(Hình 4.17: Giao diện Viết đánh giá phim)_
+
 ### 4.4. Đoạn code nổi bật
 
 Dưới đây là một số đoạn mã nguồn tiêu biểu thể hiện các kỹ thuật chính được sử dụng trong dự án.
@@ -985,7 +1008,7 @@ Sau quá trình nghiên cứu, thiết kế và triển khai, đồ án "Ứng d
   - **Quản lý tài khoản:** Đăng ký, Đăng nhập, Quên mật khẩu, Xác minh email, Chỉnh sửa hồ sơ, Đổi mật khẩu, Đăng xuất.
   - **Tra cứu phim:** Hiển thị danh sách phim đang chiếu/sắp chiếu, Tìm kiếm theo tên, Xem chi tiết phim (thông tin, diễn viên, trailer).
   - **Đặt vé:** Chọn ngày/giờ chiếu, Chọn ghế trực quan trên sơ đồ, Tính toán giá vé tự động, Mô phỏng thanh toán (VNPay/Số dư).
-  - **Tiện ích nâng cao:** Chatbot tư vấn phim AI, Khóa ứng dụng bằng mã PIN 6 số, Đa ngôn ngữ (Việt, Anh, Nhật, Hàn...), Quản lý sở thích phim.
+  - **Tiện ích nâng cao:** Chatbot tư vấn phim AI, Khóa ứng dụng bằng mã PIN 6 số, Đa ngôn ngữ (Việt, Anh, Nhật, Hàn...), Quản lý sở thích phim, Tìm rạp gần đây, Đánh giá phim.
 
 - **Về mặt trải nghiệm người dùng (UX):**
   - Giao diện được thiết kế theo phong cách "Cinematic Dark Mode" lấy cảm hứng từ Netflix, mang lại cảm giác chuyên nghiệp và phù hợp với ngữ cảnh xem phim.
@@ -1044,8 +1067,7 @@ Sau quá trình nghiên cứu, thiết kế và triển khai, đồ án "Ứng d
 
 - **Push Notifications:** Tích hợp Firebase Cloud Messaging (FCM) để gửi thông báo nhắc lịch xem phim trước 1-2 giờ, thông báo phim mới ra mắt và các chương trình khuyến mãi cá nhân hóa.
 - **Offline Mode:** Lưu cache dữ liệu phim và lịch sử vé đã đặt để người dùng có thể xem lại ngay cả khi mất mạng.
-- **Đánh giá và Bình luận phim:** Cho phép người dùng đánh giá sao và viết review sau khi xem phim, tạo cộng đồng chia sẻ trong ứng dụng.
-- **Tích hợp bản đồ rạp chiếu:** Sử dụng Google Maps SDK để hiển thị vị trí các rạp chiếu gần nhất và chỉ đường đến rạp.
+- **Tích hợp bản đồ rạp chiếu:** Sử dụng Google Maps SDK Visual để hiển thị vị trí các rạp chiếu trực quan trên bản đồ thay vì chỉ dạng danh sách.
 - **Chương trình khách hàng thân thiết (Loyalty Program):** Tích điểm mỗi lần đặt vé để đổi lấy voucher giảm giá hoặc quà tặng, khuyến khích người dùng quay lại.
 
 ---
@@ -1138,6 +1160,29 @@ Sau quá trình nghiên cứu, thiết kế và triển khai, đồ án "Ứng d
   "Upcomming": [
     // Cấu trúc giống Items
   ],
+  "Cinemas": [
+    {
+      "id": "cinema_01",
+      "name": "CGV Vincom Thu Duc",
+      "address": "216 Vo Van Ngan, Binh Tho, Thu Duc",
+      "latitude": 10.850,
+      "longitude": 106.770,
+      "rating": 4.5,
+      "workingHours": "09:00 - 23:00",
+      "userRatingsTotal": 500
+    }
+  ],
+  "Reviews": {
+    "movieId_123": {
+      "userId_abc": {
+        "userName": "Nguyen Van A",
+        "userAvatar": "https://...",
+        "rating": 5,
+        "comment": "Phim rất hay, kỹ xảo đẹp!",
+        "timestamp": 1765862120547
+      }
+    }
+  },
   "Bookings": {
     "Tên phim": {
       "2025-11-08_18:00": {
@@ -1215,6 +1260,8 @@ Sau quá trình nghiên cứu, thiết kế và triển khai, đồ án "Ứng d
 | `tickets`       | Lịch sử vé đã đặt của tất cả người dùng             | `movieTitle`, `date`, `time`, `seats[]`, `totalPrice`, `userId`, `status`, `payment`              |
 | `notifications` | Thông báo theo từng userId                          | `title`, `message`, `type` (REFUND/PROFILE), `read`, `timestamp`, `ticketId`                      |
 | `users`         | Thông tin tài khoản và sở thích phim                | `fullName`, `email`, `phone`, `avatarUrl`, `balance`, `gender`, `dateOfBirth`, `moviePreferences` |
+| `Cinemas`       | Danh sách rạp chiếu phim                            | `name`, `address`, `latitude`, `longitude`, `workingHours`, `rating`                              |
+| `Reviews`       | Đánh giá phim từ người dùng                         | `userName`, `rating`, `comment`, `timestamp`                                                      |
 
 ### Phụ lục C: API Endpoints (Chatbot Server)
 
