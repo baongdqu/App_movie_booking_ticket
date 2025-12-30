@@ -57,6 +57,9 @@
             android:name=".parthome_AllMoviesFullActivity"
             android:exported="false" />
         <activity
+            android:name=".parthome_AllNowShowingActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities_1_login"
             android:exported="true" />
         <activity

@@ -59,6 +59,10 @@ public class fragments_home extends Fragment {
     private List<Movie> upcomingMoviesList = new ArrayList<>();
     private TopMovieAdapter upcomingAdapter;
 
+    // Danh sách phim ĐANG CHIẾU và Adapter
+    private List<Movie> nowShowingMoviesList = new ArrayList<>();
+    private TopMovieAdapter nowShowingAdapter;
+
     // Danh sách TẤT CẢ phim (Top + Upcoming) cho search và All Movies section
     private List<Movie> allMoviesList = new ArrayList<>();
     private TopMovieAdapter searchAdapter;
@@ -91,6 +95,7 @@ public class fragments_home extends Fragment {
 
         initBanner();
         loadUserInfo();
+        loadNowShowingMovies();
         loadTopMovies();
         loadUpcomingMovies();
         loadAllMovies();
@@ -118,6 +123,7 @@ public class fragments_home extends Fragment {
                     binding.tvNoResults.setVisibility(View.GONE);
                     binding.recyclerTopMovie.setVisibility(View.VISIBLE);
                     binding.recyclerUpcomingMovies.setVisibility(View.VISIBLE);
+                    binding.recyclerNowShowingMovies.setVisibility(View.VISIBLE);
                 }).start();
             }
         });
@@ -151,6 +157,12 @@ public class fragments_home extends Fragment {
             // Âm thanh click
             extra_sound_manager.playUiClick(requireContext());
             startActivity(new Intent(requireContext(), parthome_AllUpcomingActivity.class));
+        });
+
+        // Xem tất cả Phim đang chiếu
+        binding.tvViewAllNowShowing.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(requireContext());
+            startActivity(new Intent(requireContext(), parthome_AllNowShowingActivity.class));
         });
 
         // =========================
@@ -248,6 +260,38 @@ public class fragments_home extends Fragment {
     }
 
     // =====================================================
+    // LOAD NOW SHOWING MOVIES - Phim đang chiếu
+    // =====================================================
+    private void loadNowShowingMovies() {
+        nowShowingAdapter = new TopMovieAdapter(requireContext(), nowShowingMoviesList);
+        binding.recyclerNowShowingMovies.setLayoutManager(
+                new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+        binding.recyclerNowShowingMovies.setAdapter(nowShowingAdapter);
+
+        DatabaseReference movieRef = FirebaseDatabase.getInstance().getReference("Movies");
+        movieRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                nowShowingMoviesList.clear();
+                for (DataSnapshot itemSnap : snapshot.getChildren()) {
+                    Movie movie = itemSnap.getValue(Movie.class);
+                    // Phim đang chiếu: isUpcoming = false hoặc null
+                    if (movie != null && !movie.isUpcomingMovie()) {
+                        nowShowingMoviesList.add(movie);
+                    }
+                }
+                // Shuffle ngẫu nhiên
+                java.util.Collections.shuffle(nowShowingMoviesList);
+                nowShowingAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
+    // =====================================================
     // LOAD ALL MOVIES - Setup adapter for all movies section
     // =====================================================
     private void loadAllMovies() {
@@ -273,6 +317,7 @@ public class fragments_home extends Fragment {
             binding.tvNoResults.setVisibility(View.GONE);
             binding.recyclerTopMovie.setVisibility(View.VISIBLE);
             binding.recyclerUpcomingMovies.setVisibility(View.VISIBLE);
+            binding.recyclerNowShowingMovies.setVisibility(View.VISIBLE);
             return;
         }
 
@@ -291,11 +336,13 @@ public class fragments_home extends Fragment {
             binding.tvNoResults.setVisibility(View.VISIBLE);
             binding.recyclerTopMovie.setVisibility(View.GONE);
             binding.recyclerUpcomingMovies.setVisibility(View.GONE);
+            binding.recyclerNowShowingMovies.setVisibility(View.GONE);
         } else {
             // Có kết quả -> hiển thị RecyclerView search
             binding.tvNoResults.setVisibility(View.GONE);
             binding.recyclerTopMovie.setVisibility(View.GONE);
             binding.recyclerUpcomingMovies.setVisibility(View.GONE);
+            binding.recyclerNowShowingMovies.setVisibility(View.GONE);
             binding.recyclerSearchResults.setVisibility(View.VISIBLE);
 
             // Khởi tạo adapter nếu chưa có

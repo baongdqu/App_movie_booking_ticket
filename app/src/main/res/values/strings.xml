@@ -64,6 +64,7 @@
     <string name="view_all">Xem tất cả</string>
     <string name="upcoming_movies">Phim sắp chiếu</string>
     <string name="all_movies">Tất cả phim</string>
+    <string name="now_showing_movies">Phim đang chiếu</string>
 
     <!-- Mail & Notifications -->
     <string name="empty_mailbox">Hộp thư trống</string>
