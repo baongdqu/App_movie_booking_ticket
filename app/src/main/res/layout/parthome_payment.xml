@@ -125,9 +125,10 @@
 
                             <!-- Badge rạp -->
                             <TextView
+                                android:id="@+id/txtCinemaName"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="🎬 CGV Cinema"
+                                android:text="🎬 Rạp phim"
                                 android:textSize="12sp"
                                 android:textColor="@color/text_secondary"
                                 android:background="@drawable/bg_badge_outline"

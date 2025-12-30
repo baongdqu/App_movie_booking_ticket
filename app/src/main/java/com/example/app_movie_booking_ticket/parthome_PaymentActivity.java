@@ -60,6 +60,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
     private String posterUrl;
     private String movieTitle;
     private String movieID;
+    private String cinemaName;
     private String date;
     private String time;
     private ArrayList<String> seats;
@@ -78,7 +79,6 @@ public class parthome_PaymentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         auth = FirebaseAuth.getInstance();
         userRef = FirebaseDatabase.getInstance().getReference("users");
         setContentView(R.layout.parthome_payment);
@@ -96,10 +96,12 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         seats = intent.getStringArrayListExtra("seats");
         totalPrice = intent.getIntExtra("totalPrice", 0);
         movieID = intent.getStringExtra("movieID");
+        cinemaName = intent.getStringExtra("cinemaName");
 
         // ===== MAP VIEW =====
         ImageView imagePoster = findViewById(R.id.imagePoster);
         TextView txtTitle = findViewById(R.id.txtTitle);
+        TextView txtCinemaName = findViewById(R.id.txtCinemaName);
         TextView txtTime = findViewById(R.id.txtTime);
         TextView txtSeat = findViewById(R.id.txtSeat);
         TextView txtTotal = findViewById(R.id.txtTotal);
@@ -127,6 +129,13 @@ public class parthome_PaymentActivity extends AppCompatActivity {
                 .placeholder(R.drawable.placeholder_movie)
                 .error(R.drawable.placeholder_movie)
                 .into(imagePoster);
+
+        if (cinemaName != null && !cinemaName.isEmpty()) {
+            txtCinemaName.setText("🎬 " + cinemaName);
+        } else {
+            txtCinemaName.setVisibility(View.GONE);
+        }
+
         txtTime.setText(date + "\n" + time);
 
         if (seats != null && !seats.isEmpty()) {
@@ -397,16 +406,16 @@ public class parthome_PaymentActivity extends AppCompatActivity {
 
                 Long balance = currentData.getValue(Long.class);
 
-                //  balance null = 0
+                // balance null = 0
                 if (balance == null)
                     balance = 0L;
 
-                //  KHÔNG ĐỦ TIỀN
+                // KHÔNG ĐỦ TIỀN
                 if (balance < totalPrice) {
                     return Transaction.abort();
                 }
 
-                //  TRỪ TIỀN
+                // TRỪ TIỀN
                 currentData.setValue(balance - totalPrice);
                 return Transaction.success(currentData);
             }
@@ -417,7 +426,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
                     boolean committed,
                     DataSnapshot snapshot) {
 
-                //  TRANSACTION FAIL
+                // TRANSACTION FAIL
                 if (!committed) {
                     Toast.makeText(
                             parthome_PaymentActivity.this,
@@ -426,7 +435,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
                     return;
                 }
 
-                //  THANH TOÁN THÀNH CÔNG
+                // THANH TOÁN THÀNH CÔNG
                 bookSeats(movieTitle, date, time, seats);
                 saveTicketSuccessByBalance();
 
@@ -503,7 +512,6 @@ public class parthome_PaymentActivity extends AppCompatActivity {
     }
     // Tạo một biến toàn cục để lưu ID vé hiện tại
 
-
     private void createPendingTicket(String method) {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("tickets");
         currentTicketId = ref.push().getKey();
@@ -528,8 +536,10 @@ public class parthome_PaymentActivity extends AppCompatActivity {
 
         ref.child(currentTicketId).setValue(ticket);
     }
+
     private void updateTicketStatus(String ticketId, String newStatus) {
-        if (ticketId == null) return;
+        if (ticketId == null)
+            return;
 
         DatabaseReference ref = FirebaseDatabase.getInstance()
                 .getReference("tickets")
@@ -541,8 +551,10 @@ public class parthome_PaymentActivity extends AppCompatActivity {
 
         ref.updateChildren(updates);
     }
+
     private void updateTicketToPaid(String ticketId) {
-        if (ticketId == null) return;
+        if (ticketId == null)
+            return;
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("tickets").child(ticketId);
 
         Map<String, Object> updates = new HashMap<>();
@@ -555,6 +567,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
             bookSeats(movieTitle, date, time, seats);
         });
     }
+
     private void bookSeats(
             String movieTitle,
             String date,
