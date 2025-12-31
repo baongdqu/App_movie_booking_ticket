@@ -29,7 +29,31 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/placeholder_movie" />
             
-            <!-- Rating Badge (Optional) -->
+            <!-- Overlay mờ cho phim đã chiếu -->
+            <View
+                android:id="@+id/viewExpiredOverlay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#66000000"
+                android:visibility="gone" />
+            
+            <!-- Badge Đã chiếu -->
+            <TextView
+                android:id="@+id/tvExpiredBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:layout_margin="8dp"
+                android:background="@drawable/bg_badge_expired"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:text="Đã chiếu"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+            
+            <!-- Rating Badge (Year) -->
             <TextView
                 android:id="@+id/tvMovieDate"
                 android:layout_width="wrap_content"

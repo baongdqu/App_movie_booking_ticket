@@ -33,6 +33,12 @@ public class parthome_movie_detail extends AppCompatActivity {
     private MovieImageAdapter imageAdapter;
     private ParthomeMovieDetailsBinding binding;
 
+    // Thông tin từ rạp (nếu mở từ CinemaDetailActivity)
+    private boolean fromCinema = false;
+    private String cinemaName;
+    private String cinemaId;
+    private int showtimeCount;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,10 +52,35 @@ public class parthome_movie_detail extends AppCompatActivity {
             return;
         mDatabase = FirebaseDatabase.getInstance().getReference();
         boolean isUpcoming = movie.isUpcomingMovie();
-        Log.d("DEBUG_STATE", "Phim: " + movie.getTitle() + " | isUpcoming: " + isUpcoming);
+        boolean isExpired = intent.getBooleanExtra("isExpired", false);
 
-        // Hiển thị đầy đủ cho tất cả phim (kể cả sắp chiếu)
-        binding.button2.setVisibility(View.VISIBLE);
+        // Kiểm tra xem có mở từ rạp không
+        fromCinema = intent.getBooleanExtra("fromCinema", false);
+        if (fromCinema) {
+            cinemaName = intent.getStringExtra("cinemaName");
+            cinemaId = intent.getStringExtra("cinemaId");
+            showtimeCount = intent.getIntExtra("showtimeCount", 0);
+        }
+
+        Log.d("DEBUG_STATE",
+                "Phim: " + movie.getTitle() + " | isUpcoming: " + isUpcoming + " | isExpired: " + isExpired
+                        + " | fromCinema: " + fromCinema);
+
+        // Xử lý hiển thị dựa trên trạng thái phim
+        if (isExpired) {
+            // Phim đã chiếu - ẩn nút đặt vé, hiển thị thông báo
+            binding.button2.setVisibility(View.GONE);
+            // Có thể thêm TextView thông báo "Phim đã ngừng chiếu" nếu có trong layout
+        } else {
+            // Phim còn chiếu hoặc sắp chiếu - hiển thị nút đặt vé
+            binding.button2.setVisibility(View.VISIBLE);
+
+            // Nếu mở từ rạp, đổi text nút
+            if (fromCinema && cinemaName != null) {
+                binding.button2.setText("Đặt vé tại " + shortenCinemaName(cinemaName));
+            }
+        }
+
         binding.llStarRatingInfo.setVisibility(View.VISIBLE);
         binding.cvSummaryRatingInfo.setVisibility(View.VISIBLE);
         binding.llImagesSection.setVisibility(View.VISIBLE);
@@ -117,13 +148,20 @@ public class parthome_movie_detail extends AppCompatActivity {
         binding.button2.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(this);
 
-            // Navigate to Cinema Selection first
+            // Navigate to Cinema Selection
             Intent buyIntent = new Intent(
                     parthome_movie_detail.this,
                     parthome_CinemaSelectionActivity.class);
             buyIntent.putExtra("movieID", movie.getMovieID());
             buyIntent.putExtra("posterUrl", movie.getPoster());
             buyIntent.putExtra("movieTitle", movie.getTitle());
+
+            // Nếu mở từ rạp, truyền thông tin rạp để pre-select
+            if (fromCinema && cinemaName != null) {
+                buyIntent.putExtra("preselectedCinemaId", cinemaId);
+                buyIntent.putExtra("preselectedCinemaName", cinemaName);
+            }
+
             startActivity(buyIntent);
         });
         binding.llToRatingLists.setOnClickListener(v -> {
@@ -133,6 +171,28 @@ public class parthome_movie_detail extends AppCompatActivity {
             startActivity(ratingIntent);
         });
 
+    }
+
+    /**
+     * Rút gọn tên rạp cho phù hợp button
+     */
+    private String shortenCinemaName(String name) {
+        if (name == null)
+            return "";
+        // Lấy phần chính của tên rạp (ví dụ: "CGV Giga Mall" từ "CGV Giga Mall Thủ
+        // Đức")
+        if (name.length() > 20) {
+            // Tìm và cắt tại từ khóa địa điểm
+            String[] locationKeywords = { "Thủ Đức", "Quận", "TP.", "P.", "Bình", "Phú", "Tân", "District" };
+            for (String keyword : locationKeywords) {
+                int idx = name.indexOf(keyword);
+                if (idx > 10) {
+                    return name.substring(0, idx).trim();
+                }
+            }
+            return name.substring(0, 17) + "...";
+        }
+        return name;
     }
 
     private void loadMovieRatings(String movieID) {

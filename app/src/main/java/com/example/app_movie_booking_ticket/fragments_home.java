@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ import com.bumptech.glide.Glide;
 import com.example.app_movie_booking_ticket.adapter.SliderAdapter;
 import com.example.app_movie_booking_ticket.adapter.TopMovieAdapter;
 import com.example.app_movie_booking_ticket.databinding.LayoutsFragmentsHomeBinding;
+import com.example.app_movie_booking_ticket.extra.MovieCacheManager;
 import com.example.app_movie_booking_ticket.model.Movie;
 import com.example.app_movie_booking_ticket.model.SliderItems;
 import com.google.android.material.textfield.TextInputEditText;
@@ -68,6 +70,9 @@ public class fragments_home extends Fragment {
     private TopMovieAdapter searchAdapter;
     private TopMovieAdapter allMoviesAdapter;
 
+    // Cache Manager cho dữ liệu phim đã được preload
+    private MovieCacheManager movieCacheManager;
+
     private final Handler sliderHandler = new Handler();
 
     private final Runnable sliderRunnable = () -> binding.viewPager2
@@ -95,10 +100,11 @@ public class fragments_home extends Fragment {
 
         initBanner();
         loadUserInfo();
-        loadNowShowingMovies();
-        loadTopMovies();
-        loadUpcomingMovies();
-        loadAllMovies();
+
+        // Sử dụng MovieCacheManager để lấy dữ liệu phim đã được preload
+        movieCacheManager = MovieCacheManager.getInstance();
+        setupRecyclerViews();
+        loadMoviesFromCache();
 
         // =========================
         // SETUP SEARCH
@@ -200,111 +206,102 @@ public class fragments_home extends Fragment {
     }
 
     // =====================================================
-    // LOAD TOP MOVIES VÀ KẾT HỢP SEARCH
+    // SETUP RECYCLER VIEWS - Khởi tạo adapters
     // =====================================================
-    private void loadTopMovies() {
-        DatabaseReference movieRef = FirebaseDatabase.getInstance().getReference("Movies");
-
+    private void setupRecyclerViews() {
+        // Trending / Top Movies
         topMovieAdapter = new TopMovieAdapter(requireContext(), movieListTop);
         binding.recyclerTopMovie.setLayoutManager(
                 new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
         binding.recyclerTopMovie.setAdapter(topMovieAdapter);
 
-        movieRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                movieListTop.clear();
-                upcomingMoviesList.clear();
-
-                for (DataSnapshot itemSnap : snapshot.getChildren()) {
-                    Movie movie = itemSnap.getValue(Movie.class);
-                    if (movie != null) {
-                        if (movie.isUpcomingMovie()) {
-                            upcomingMoviesList.add(movie);
-                        } else if (movie.isTrendingMovie()) {
-                            movieListTop.add(movie);
-                        }
-                        // Movies with isUpcoming = null will only be in allMoviesList
-                    }
-                }
-
-                // Shuffle ngẫu nhiên mỗi lần load
-                java.util.Collections.shuffle(movieListTop);
-                topMovieAdapter.updateList(movieListTop);
-
-                // Shuffle upcoming movies ngẫu nhiên
-                java.util.Collections.shuffle(upcomingMoviesList);
-                if (upcomingAdapter != null) {
-                    upcomingAdapter.notifyDataSetChanged();
-                }
-
-                // Cập nhật allMoviesList
-                updateAllMoviesList();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-    }
-
-    // =====================================================
-    // LOAD UPCOMING MOVIES - Setup adapter only
-    // =====================================================
-    private void loadUpcomingMovies() {
-        upcomingAdapter = new TopMovieAdapter(requireContext(), upcomingMoviesList);
-        binding.recyclerUpcomingMovies.setLayoutManager(
-                new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
-        binding.recyclerUpcomingMovies.setAdapter(upcomingAdapter);
-        // Data is loaded from loadTopMovies since they share the same "Movies" node
-    }
-
-    // =====================================================
-    // LOAD NOW SHOWING MOVIES - Phim đang chiếu
-    // =====================================================
-    private void loadNowShowingMovies() {
+        // Now Showing Movies
         nowShowingAdapter = new TopMovieAdapter(requireContext(), nowShowingMoviesList);
         binding.recyclerNowShowingMovies.setLayoutManager(
                 new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
         binding.recyclerNowShowingMovies.setAdapter(nowShowingAdapter);
 
-        DatabaseReference movieRef = FirebaseDatabase.getInstance().getReference("Movies");
-        movieRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                nowShowingMoviesList.clear();
-                for (DataSnapshot itemSnap : snapshot.getChildren()) {
-                    Movie movie = itemSnap.getValue(Movie.class);
-                    // Phim đang chiếu: isUpcoming = false hoặc null
-                    if (movie != null && !movie.isUpcomingMovie()) {
-                        nowShowingMoviesList.add(movie);
-                    }
-                }
-                // Shuffle ngẫu nhiên
-                java.util.Collections.shuffle(nowShowingMoviesList);
-                nowShowingAdapter.notifyDataSetChanged();
-            }
+        // Upcoming Movies
+        upcomingAdapter = new TopMovieAdapter(requireContext(), upcomingMoviesList);
+        binding.recyclerUpcomingMovies.setLayoutManager(
+                new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+        binding.recyclerUpcomingMovies.setAdapter(upcomingAdapter);
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-    }
-
-    // =====================================================
-    // LOAD ALL MOVIES - Setup adapter for all movies section
-    // =====================================================
-    private void loadAllMovies() {
+        // All Movies
         allMoviesAdapter = new TopMovieAdapter(requireContext(), allMoviesList);
         binding.recyclerAllMovies.setLayoutManager(
                 new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
         binding.recyclerAllMovies.setAdapter(allMoviesAdapter);
 
-        // View All button click - opens AllMoviesFullActivity showing ALL movies
+        // View All button - All movies
         binding.tvViewAllMovies.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(requireContext());
             startActivity(new Intent(requireContext(), parthome_AllMoviesFullActivity.class));
         });
+    }
+
+    // =====================================================
+    // LOAD MOVIES FROM CACHE
+    // Sử dụng dữ liệu đã được preload từ loading screen
+    // =====================================================
+    private void loadMoviesFromCache() {
+        movieCacheManager.getFilteredMovies((nowShowing, upcoming, trending, allMovies) -> {
+            if (getContext() == null || binding == null)
+                return;
+
+            // Cập nhật danh sách Phim đang chiếu (có suất chiếu trong 7 ngày)
+            nowShowingMoviesList.clear();
+            nowShowingMoviesList.addAll(nowShowing);
+            nowShowingAdapter.notifyDataSetChanged();
+            Log.d("HomeFragment", "Now Showing: " + nowShowing.size() + " movies (from cache)");
+
+            // Cập nhật danh sách Phim sắp chiếu (có suất chiếu sau 7 ngày)
+            upcomingMoviesList.clear();
+            upcomingMoviesList.addAll(upcoming);
+            upcomingAdapter.notifyDataSetChanged();
+            Log.d("HomeFragment", "Upcoming: " + upcoming.size() + " movies (from cache)");
+
+            // Cập nhật danh sách Phim thịnh hành (top 10% đánh giá cao nhất)
+            movieListTop.clear();
+            movieListTop.addAll(trending);
+            topMovieAdapter.notifyDataSetChanged();
+            Log.d("HomeFragment", "Trending: " + trending.size() + " movies (from cache)");
+
+            // Cập nhật danh sách Tất cả phim
+            allMoviesList.clear();
+            allMoviesList.addAll(allMovies);
+            java.util.Collections.shuffle(allMoviesList);
+            allMoviesAdapter.notifyDataSetChanged();
+            Log.d("HomeFragment", "All Movies: " + allMovies.size() + " movies (from cache)");
+        });
+    }
+
+    // =====================================================
+    // [DEPRECATED] LOAD TOP MOVIES - giữ lại cho tương thích
+    // =====================================================
+    private void loadTopMovies() {
+        // Logic đã chuyển sang loadMoviesWithSmartFiltering()
+    }
+
+    // =====================================================
+    // [DEPRECATED] LOAD UPCOMING MOVIES
+    // =====================================================
+    private void loadUpcomingMovies() {
+        // Logic đã chuyển sang loadMoviesWithSmartFiltering()
+    }
+
+    // =====================================================
+    // [DEPRECATED] LOAD NOW SHOWING MOVIES
+    // =====================================================
+    private void loadNowShowingMovies() {
+        // Logic đã chuyển sang loadMoviesWithSmartFiltering()
+    }
+
+    // =====================================================
+    // [DEPRECATED] LOAD ALL MOVIES
+    // =====================================================
+    private void loadAllMovies() {
+        // Logic đã chuyển sang loadMoviesWithSmartFiltering()
     }
 
     // =====================================================

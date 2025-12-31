@@ -27,7 +27,7 @@
   ],
   "Bookings": {
     "1990": {
-      "2025-01-16_10:30": {
+      "2025-01-03_10:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -316,7 +316,7 @@
           }
         }
       },
-      "2025-01-16_17:30": {
+      "2025-01-03_17:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -510,7 +510,7 @@
           }
         }
       },
-      "2025-01-17_20:30": {
+      "2025-01-04_20:30": {
         "cinemas": {
           "lotte_cantavil": {
             "address": "Tầng 7, Cantavil Premier, 1 Song Hành, An Phú, Quận 2, TP.HCM",
@@ -609,7 +609,7 @@
           }
         }
       },
-      "2025-01-20_09:00": {
+      "2025-01-08_09:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -900,7 +900,7 @@
       }
     },
     "578 Phát Đạn Của Kẻ Điên": {
-      "2025-01-03_20:30": {
+      "2024-12-17_20:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -1189,7 +1189,7 @@
           }
         }
       },
-      "2025-01-03_21:00": {
+      "2024-12-17_21:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -1383,7 +1383,7 @@
           }
         }
       },
-      "2025-01-04_20:30": {
+      "2024-12-18_20:30": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -1577,7 +1577,7 @@
           }
         }
       },
-      "2025-01-06_17:30": {
+      "2024-12-21_17:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -1771,7 +1771,7 @@
           }
         }
       },
-      "2025-01-06_21:00": {
+      "2024-12-21_21:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -1967,7 +1967,7 @@
       }
     },
     "Atlas": {
-      "2025-01-27_20:30": {
+      "2025-01-17_20:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -2256,7 +2256,7 @@
           }
         }
       },
-      "2025-01-29_19:00": {
+      "2025-01-20_19:00": {
         "cinemas": {
           "lotte_cantavil": {
             "address": "Tầng 7, Cantavil Premier, 1 Song Hành, An Phú, Quận 2, TP.HCM",
@@ -2355,7 +2355,7 @@
           }
         }
       },
-      "2025-01-29_20:30": {
+      "2025-01-20_20:30": {
         "cinemas": {
           "lotte_cantavil": {
             "address": "Tầng 7, Cantavil Premier, 1 Song Hành, An Phú, Quận 2, TP.HCM",
@@ -2549,7 +2549,7 @@
           }
         }
       },
-      "2025-01-29_21:00": {
+      "2025-01-20_21:00": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -2838,7 +2838,7 @@
           }
         }
       },
-      "2025-01-30_16:00": {
+      "2025-01-21_16:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -3032,7 +3032,7 @@
           }
         }
       },
-      "2025-01-30_17:30": {
+      "2025-01-21_17:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -3131,7 +3131,7 @@
           }
         }
       },
-      "2025-01-30_22:00": {
+      "2025-01-21_22:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -3422,7 +3422,7 @@
       }
     },
     "Buổi Sáng Đầu Năm": {
-      "2025-01-14_20:30": {
+      "2024-12-31_20:30": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -3523,7 +3523,7 @@
       }
     },
     "Bóng Ðè": {
-      "2025-01-08_16:00": {
+      "2024-12-24_16:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -3717,7 +3717,7 @@
           }
         }
       },
-      "2025-01-08_21:00": {
+      "2024-12-24_21:00": {
         "cinemas": {
           "lotte_thu_duc": {
             "address": "Tầng 2, Joy Citipoint, 2 QL1A, P. Linh Xuân, TP. Thủ Đức",
@@ -3816,7 +3816,7 @@
           }
         }
       },
-      "2025-01-11_22:00": {
+      "2024-12-28_22:00": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -4012,7 +4012,7 @@
       }
     },
     "Bẫy Rồng": {
-      "2025-01-03_10:30": {
+      "2024-12-17_10:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -4111,7 +4111,7 @@
           }
         }
       },
-      "2025-01-03_17:30": {
+      "2024-12-17_17:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -4400,7 +4400,7 @@
           }
         }
       },
-      "2025-01-05_17:30": {
+      "2024-12-20_17:30": {
         "cinemas": {
           "lotte_moonlight": {
             "address": "Moonlight Residences, 102 Đặng Văn Bi, Bình Thọ, TP. Thủ Đức",
@@ -4499,7 +4499,7 @@
           }
         }
       },
-      "2025-01-06_12:00": {
+      "2024-12-21_12:00": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -4598,7 +4598,7 @@
           }
         }
       },
-      "2025-01-06_17:30": {
+      "2024-12-21_17:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -4889,7 +4889,7 @@
       }
     },
     "Chiến Dịch Trái Tim Bên Phải": {
-      "2025-01-14_17:30": {
+      "2024-12-31_17:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -5178,7 +5178,7 @@
           }
         }
       },
-      "2025-01-14_19:00": {
+      "2024-12-31_19:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -5372,7 +5372,7 @@
           }
         }
       },
-      "2025-01-15_22:00": {
+      "2025-01-02_22:00": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -5566,7 +5566,7 @@
           }
         }
       },
-      "2025-01-18_17:30": {
+      "2025-01-06_17:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -5857,7 +5857,7 @@
       }
     },
     "Chung cư": {
-      "2025-01-11_14:30": {
+      "2024-12-28_14:30": {
         "cinemas": {
           "lotte_thu_duc": {
             "address": "Tầng 2, Joy Citipoint, 2 QL1A, P. Linh Xuân, TP. Thủ Đức",
@@ -5956,7 +5956,7 @@
           }
         }
       },
-      "2025-01-11_22:00": {
+      "2024-12-28_22:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -6150,7 +6150,7 @@
           }
         }
       },
-      "2025-01-13_14:30": {
+      "2024-12-30_14:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -6344,7 +6344,7 @@
           }
         }
       },
-      "2025-01-13_19:00": {
+      "2024-12-30_19:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -6538,7 +6538,7 @@
           }
         }
       },
-      "2025-01-14_17:30": {
+      "2024-12-31_17:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -6734,7 +6734,7 @@
       }
     },
     "Chuyen tinh xa xu": {
-      "2025-01-28_19:00": {
+      "2025-01-19_19:00": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -6833,7 +6833,7 @@
           }
         }
       },
-      "2025-01-28_22:00": {
+      "2025-01-19_22:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -7122,7 +7122,7 @@
           }
         }
       },
-      "2025-01-31_12:00": {
+      "2025-01-23_12:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -7316,7 +7316,7 @@
           }
         }
       },
-      "2025-01-31_21:00": {
+      "2025-01-23_21:00": {
         "cinemas": {
           "lotte_thu_duc": {
             "address": "Tầng 2, Joy Citipoint, 2 QL1A, P. Linh Xuân, TP. Thủ Đức",
@@ -7415,7 +7415,7 @@
           }
         }
       },
-      "2025-02-01_09:00": {
+      "2025-01-24_09:00": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -7704,7 +7704,7 @@
           }
         }
       },
-      "2025-02-01_16:00": {
+      "2025-01-24_16:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -7898,7 +7898,7 @@
           }
         }
       },
-      "2025-02-01_19:00": {
+      "2025-01-24_19:00": {
         "cinemas": {
           "lotte_moonlight": {
             "address": "Moonlight Residences, 102 Đặng Văn Bi, Bình Thọ, TP. Thủ Đức",
@@ -7999,7 +7999,7 @@
       }
     },
     "Chàng Trai Năm Ấy": {
-      "2025-01-03_16:00": {
+      "2024-12-17_16:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -8288,7 +8288,7 @@
           }
         }
       },
-      "2025-01-03_22:00": {
+      "2024-12-17_22:00": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -8387,7 +8387,7 @@
           }
         }
       },
-      "2025-01-04_20:30": {
+      "2024-12-18_20:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -8676,7 +8676,7 @@
           }
         }
       },
-      "2025-01-07_09:00": {
+      "2024-12-22_09:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -8965,7 +8965,7 @@
           }
         }
       },
-      "2025-01-07_12:00": {
+      "2024-12-22_12:00": {
         "cinemas": {
           "lotte_moonlight": {
             "address": "Moonlight Residences, 102 Đặng Văn Bi, Bình Thọ, TP. Thủ Đức",
@@ -9066,7 +9066,7 @@
       }
     },
     "Chơi Vơi": {
-      "2025-01-17_19:00": {
+      "2025-01-04_19:00": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -9165,7 +9165,7 @@
           }
         }
       },
-      "2025-01-17_22:00": {
+      "2025-01-04_22:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -9264,7 +9264,7 @@
           }
         }
       },
-      "2025-01-20_14:30": {
+      "2025-01-08_14:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -9458,7 +9458,7 @@
           }
         }
       },
-      "2025-01-20_19:00": {
+      "2025-01-08_19:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -9747,7 +9747,7 @@
           }
         }
       },
-      "2025-01-21_10:30": {
+      "2025-01-10_10:30": {
         "cinemas": {
           "lotte_cantavil": {
             "address": "Tầng 7, Cantavil Premier, 1 Song Hành, An Phú, Quận 2, TP.HCM",
@@ -9848,7 +9848,7 @@
       }
     },
     "Chị Mười Ba – Phần kết Thập Tam Muội": {
-      "2025-01-17_12:00": {
+      "2025-01-04_12:00": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -10137,7 +10137,7 @@
           }
         }
       },
-      "2025-01-19_16:00": {
+      "2025-01-07_16:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -10426,7 +10426,7 @@
           }
         }
       },
-      "2025-01-19_17:30": {
+      "2025-01-07_17:30": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -10715,7 +10715,7 @@
           }
         }
       },
-      "2025-01-20_19:00": {
+      "2025-01-08_19:00": {
         "cinemas": {
           "lotte_thu_duc": {
             "address": "Tầng 2, Joy Citipoint, 2 QL1A, P. Linh Xuân, TP. Thủ Đức",
@@ -10814,7 +10814,7 @@
           }
         }
       },
-      "2025-01-21_09:00": {
+      "2025-01-10_09:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -11105,7 +11105,7 @@
       }
     },
     "Cô Hầu Gái": {
-      "2025-01-03_09:00": {
+      "2024-12-17_09:00": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -11394,7 +11394,7 @@
           }
         }
       },
-      "2025-01-03_17:30": {
+      "2024-12-17_17:30": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -11588,7 +11588,7 @@
           }
         }
       },
-      "2025-01-05_14:30": {
+      "2024-12-20_14:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -11782,7 +11782,7 @@
           }
         }
       },
-      "2025-01-05_17:30": {
+      "2024-12-20_17:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -12071,7 +12071,7 @@
           }
         }
       },
-      "2025-01-05_20:30": {
+      "2024-12-20_20:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -12360,7 +12360,7 @@
           }
         }
       },
-      "2025-01-08_17:30": {
+      "2024-12-24_17:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -12649,7 +12649,7 @@
           }
         }
       },
-      "2025-01-10_21:00": {
+      "2024-12-26_21:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -12750,7 +12750,7 @@
       }
     },
     "Cô gái từ quá khứ": {
-      "2025-01-10_10:30": {
+      "2024-12-26_10:30": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -12944,7 +12944,7 @@
           }
         }
       },
-      "2025-01-12_10:30": {
+      "2024-12-29_10:30": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -13043,7 +13043,7 @@
           }
         }
       },
-      "2025-01-12_14:30": {
+      "2024-12-29_14:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -13237,7 +13237,7 @@
           }
         }
       },
-      "2025-01-14_10:30": {
+      "2024-12-31_10:30": {
         "cinemas": {
           "lotte_thu_duc": {
             "address": "Tầng 2, Joy Citipoint, 2 QL1A, P. Linh Xuân, TP. Thủ Đức",
@@ -13336,7 +13336,7 @@
           }
         }
       },
-      "2025-01-14_12:00": {
+      "2024-12-31_12:00": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -13437,7 +13437,7 @@
       }
     },
     "Cỏ Lau": {
-      "2025-01-31_16:00": {
+      "2025-01-23_16:00": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -13536,7 +13536,7 @@
           }
         }
       },
-      "2025-01-31_21:00": {
+      "2025-01-23_21:00": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -13825,7 +13825,7 @@
           }
         }
       },
-      "2025-02-03_12:00": {
+      "2025-01-27_12:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -14114,7 +14114,7 @@
           }
         }
       },
-      "2025-02-03_17:30": {
+      "2025-01-27_17:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -14403,7 +14403,7 @@
           }
         }
       },
-      "2025-02-06_17:30": {
+      "2025-01-31_17:30": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -14597,7 +14597,7 @@
           }
         }
       },
-      "2025-02-06_21:00": {
+      "2025-01-31_21:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -14888,7 +14888,7 @@
       }
     },
     "Damaged": {
-      "2025-01-11_10:30": {
+      "2024-12-28_10:30": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -15082,7 +15082,7 @@
           }
         }
       },
-      "2025-01-11_14:30": {
+      "2024-12-28_14:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -15371,7 +15371,7 @@
           }
         }
       },
-      "2025-01-11_20:30": {
+      "2024-12-28_20:30": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -15470,7 +15470,7 @@
           }
         }
       },
-      "2025-01-13_10:30": {
+      "2024-12-30_10:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -15759,7 +15759,7 @@
           }
         }
       },
-      "2025-01-13_21:00": {
+      "2024-12-30_21:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -15858,7 +15858,7 @@
           }
         }
       },
-      "2025-01-15_20:30": {
+      "2025-01-02_20:30": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -16147,7 +16147,7 @@
           }
         }
       },
-      "2025-01-15_22:00": {
+      "2025-01-02_22:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -16343,7 +16343,7 @@
       }
     },
     "Dog Man": {
-      "2025-01-11_19:00": {
+      "2024-12-28_19:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -16537,7 +16537,7 @@
           }
         }
       },
-      "2025-01-12_16:00": {
+      "2024-12-29_16:00": {
         "cinemas": {
           "lotte_moonlight": {
             "address": "Moonlight Residences, 102 Đặng Văn Bi, Bình Thọ, TP. Thủ Đức",
@@ -16636,7 +16636,7 @@
           }
         }
       },
-      "2025-01-14_12:00": {
+      "2024-12-31_12:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -16735,7 +16735,7 @@
           }
         }
       },
-      "2025-01-14_17:30": {
+      "2024-12-31_17:30": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -16929,7 +16929,7 @@
           }
         }
       },
-      "2025-01-16_21:00": {
+      "2025-01-03_21:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -17123,7 +17123,7 @@
           }
         }
       },
-      "2025-01-16_22:00": {
+      "2025-01-03_22:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -17319,7 +17319,7 @@
       }
     },
     "Dune Part Two": {
-      "2025-01-04_14:30": {
+      "2024-12-18_14:30": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -17418,7 +17418,7 @@
           }
         }
       },
-      "2025-01-05_19:00": {
+      "2024-12-20_19:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -17612,7 +17612,7 @@
           }
         }
       },
-      "2025-01-06_09:00": {
+      "2024-12-21_09:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -17808,7 +17808,7 @@
       }
     },
     "Fly Me to the Moon": {
-      "2025-01-21_10:30": {
+      "2025-01-10_10:30": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -18002,7 +18002,7 @@
           }
         }
       },
-      "2025-01-24_14:30": {
+      "2025-01-14_14:30": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -18101,7 +18101,7 @@
           }
         }
       },
-      "2025-01-24_21:00": {
+      "2025-01-14_21:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -18295,7 +18295,7 @@
           }
         }
       },
-      "2025-01-25_19:00": {
+      "2025-01-15_19:00": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -18489,7 +18489,7 @@
           }
         }
       },
-      "2025-01-28_19:00": {
+      "2025-01-19_19:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -18683,7 +18683,7 @@
           }
         }
       },
-      "2025-01-28_20:30": {
+      "2025-01-19_20:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -18877,7 +18877,7 @@
           }
         }
       },
-      "2025-01-28_22:00": {
+      "2025-01-19_22:00": {
         "cinemas": {
           "lotte_cantavil": {
             "address": "Tầng 7, Cantavil Premier, 1 Song Hành, An Phú, Quận 2, TP.HCM",
@@ -19073,7 +19073,7 @@
       }
     },
     "Gladiator II": {
-      "2025-01-20_17:30": {
+      "2025-01-08_17:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -19362,7 +19362,7 @@
           }
         }
       },
-      "2025-01-21_09:00": {
+      "2025-01-10_09:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -19653,7 +19653,7 @@
       }
     },
     "Godzilla-Kong": {
-      "2025-01-28_16:00": {
+      "2025-01-19_16:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -19942,7 +19942,7 @@
           }
         }
       },
-      "2025-01-28_19:00": {
+      "2025-01-19_19:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -20231,7 +20231,7 @@
           }
         }
       },
-      "2025-01-31_10:30": {
+      "2025-01-23_10:30": {
         "cinemas": {
           "lotte_moonlight": {
             "address": "Moonlight Residences, 102 Đặng Văn Bi, Bình Thọ, TP. Thủ Đức",
@@ -20330,7 +20330,7 @@
           }
         }
       },
-      "2025-02-02_16:00": {
+      "2025-01-25_16:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -20619,7 +20619,7 @@
           }
         }
       },
-      "2025-02-02_19:00": {
+      "2025-01-25_19:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -20720,7 +20720,7 @@
       }
     },
     "Gái Già Lắm Chiêu 3": {
-      "2025-01-04_10:30": {
+      "2024-12-18_10:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -21009,7 +21009,7 @@
           }
         }
       },
-      "2025-01-04_17:30": {
+      "2024-12-18_17:30": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -21298,7 +21298,7 @@
           }
         }
       },
-      "2025-01-07_22:00": {
+      "2024-12-22_22:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -21587,7 +21587,7 @@
           }
         }
       },
-      "2025-01-08_12:00": {
+      "2024-12-24_12:00": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -21781,7 +21781,7 @@
           }
         }
       },
-      "2025-01-09_12:00": {
+      "2024-12-25_12:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -21880,7 +21880,7 @@
           }
         }
       },
-      "2025-01-09_19:00": {
+      "2024-12-25_19:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -21979,7 +21979,7 @@
           }
         }
       },
-      "2025-01-09_20:30": {
+      "2024-12-25_20:30": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -22175,7 +22175,7 @@
       }
     },
     "Hai Cũ": {
-      "2025-01-25_14:30": {
+      "2025-01-15_14:30": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -22274,7 +22274,7 @@
           }
         }
       },
-      "2025-01-25_22:00": {
+      "2025-01-15_22:00": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -22373,7 +22373,7 @@
           }
         }
       },
-      "2025-01-26_16:00": {
+      "2025-01-16_16:00": {
         "cinemas": {
           "lotte_thu_duc": {
             "address": "Tầng 2, Joy Citipoint, 2 QL1A, P. Linh Xuân, TP. Thủ Đức",
@@ -22472,7 +22472,7 @@
           }
         }
       },
-      "2025-01-29_14:30": {
+      "2025-01-20_14:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -22761,7 +22761,7 @@
           }
         }
       },
-      "2025-01-29_22:00": {
+      "2025-01-20_22:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -22862,7 +22862,7 @@
       }
     },
     "Immaculate": {
-      "2025-01-28_19:00": {
+      "2025-01-19_19:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -23151,7 +23151,7 @@
           }
         }
       },
-      "2025-01-29_16:00": {
+      "2025-01-20_16:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -23440,7 +23440,7 @@
           }
         }
       },
-      "2025-01-30_12:00": {
+      "2025-01-21_12:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -23634,7 +23634,7 @@
           }
         }
       },
-      "2025-01-30_14:30": {
+      "2025-01-21_14:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -23923,7 +23923,7 @@
           }
         }
       },
-      "2025-01-30_17:30": {
+      "2025-01-21_17:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -24212,7 +24212,7 @@
           }
         }
       },
-      "2025-01-31_12:00": {
+      "2025-01-23_12:00": {
         "cinemas": {
           "lotte_cantavil": {
             "address": "Tầng 7, Cantavil Premier, 1 Song Hành, An Phú, Quận 2, TP.HCM",
@@ -24313,7 +24313,7 @@
       }
     },
     "Khát vọng Thăng Long": {
-      "2025-01-29_09:00": {
+      "2025-01-20_09:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -24507,7 +24507,7 @@
           }
         }
       },
-      "2025-01-29_19:00": {
+      "2025-01-20_19:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -24606,7 +24606,7 @@
           }
         }
       },
-      "2025-01-30_22:00": {
+      "2025-01-21_22:00": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -24705,7 +24705,7 @@
           }
         }
       },
-      "2025-01-31_12:00": {
+      "2025-01-23_12:00": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -24804,7 +24804,7 @@
           }
         }
       },
-      "2025-01-31_14:30": {
+      "2025-01-23_14:30": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -24903,7 +24903,7 @@
           }
         }
       },
-      "2025-01-31_21:00": {
+      "2025-01-23_21:00": {
         "cinemas": {
           "lotte_moonlight": {
             "address": "Moonlight Residences, 102 Đặng Văn Bi, Bình Thọ, TP. Thủ Đức",
@@ -25002,7 +25002,7 @@
           }
         }
       },
-      "2025-02-03_09:00": {
+      "2025-01-27_09:00": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -25198,7 +25198,7 @@
       }
     },
     "Kraven the Hunter": {
-      "2025-01-17_10:30": {
+      "2025-01-04_10:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -25487,7 +25487,7 @@
           }
         }
       },
-      "2025-01-17_19:00": {
+      "2025-01-04_19:00": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -25776,7 +25776,7 @@
           }
         }
       },
-      "2025-01-18_09:00": {
+      "2025-01-06_09:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -25970,7 +25970,7 @@
           }
         }
       },
-      "2025-01-18_17:30": {
+      "2025-01-06_17:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -26164,7 +26164,7 @@
           }
         }
       },
-      "2025-01-18_22:00": {
+      "2025-01-06_22:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -26453,7 +26453,7 @@
           }
         }
       },
-      "2025-01-20_17:30": {
+      "2025-01-08_17:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -26647,7 +26647,7 @@
           }
         }
       },
-      "2025-01-20_22:00": {
+      "2025-01-08_22:00": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -26748,7 +26748,7 @@
       }
     },
     "Kung Fu Panda 4": {
-      "2025-01-23_14:30": {
+      "2025-01-12_14:30": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -26847,7 +26847,7 @@
           }
         }
       },
-      "2025-01-23_21:00": {
+      "2025-01-12_21:00": {
         "cinemas": {
           "lotte_cantavil": {
             "address": "Tầng 7, Cantavil Premier, 1 Song Hành, An Phú, Quận 2, TP.HCM",
@@ -26946,7 +26946,7 @@
           }
         }
       },
-      "2025-01-25_09:00": {
+      "2025-01-15_09:00": {
         "cinemas": {
           "lotte_cantavil": {
             "address": "Tầng 7, Cantavil Premier, 1 Song Hành, An Phú, Quận 2, TP.HCM",
@@ -27045,7 +27045,7 @@
           }
         }
       },
-      "2025-01-28_14:30": {
+      "2025-01-19_14:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -27146,7 +27146,7 @@
       }
     },
     "Live - pháttrựctiếp": {
-      "2025-01-08_22:00": {
+      "2024-12-24_22:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -27342,7 +27342,7 @@
       }
     },
     "Long thành cầm giả ca": {
-      "2025-01-28_09:00": {
+      "2025-01-19_09:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -27631,7 +27631,7 @@
           }
         }
       },
-      "2025-01-28_22:00": {
+      "2025-01-19_22:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -27920,7 +27920,7 @@
           }
         }
       },
-      "2025-01-30_21:00": {
+      "2025-01-21_21:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -28209,7 +28209,7 @@
           }
         }
       },
-      "2025-02-02_21:00": {
+      "2025-01-25_21:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -28310,7 +28310,7 @@
       }
     },
     "Lôi Báo": {
-      "2025-01-25_09:00": {
+      "2025-01-15_09:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -28599,7 +28599,7 @@
           }
         }
       },
-      "2025-01-25_17:30": {
+      "2025-01-15_17:30": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -28793,7 +28793,7 @@
           }
         }
       },
-      "2025-01-25_22:00": {
+      "2025-01-15_22:00": {
         "cinemas": {
           "lotte_thu_duc": {
             "address": "Tầng 2, Joy Citipoint, 2 QL1A, P. Linh Xuân, TP. Thủ Đức",
@@ -28892,7 +28892,7 @@
           }
         }
       },
-      "2025-01-27_22:00": {
+      "2025-01-17_22:00": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -29183,7 +29183,7 @@
       }
     },
     "Lạc Giới": {
-      "2025-01-27_16:00": {
+      "2025-01-17_16:00": {
         "cinemas": {
           "lotte_thu_duc": {
             "address": "Tầng 2, Joy Citipoint, 2 QL1A, P. Linh Xuân, TP. Thủ Đức",
@@ -29284,7 +29284,7 @@
       }
     },
     "Lời Nguyền Huyết Ngải": {
-      "2025-01-27_10:30": {
+      "2025-01-17_10:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -29573,7 +29573,7 @@
           }
         }
       },
-      "2025-01-29_09:00": {
+      "2025-01-20_09:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -29767,7 +29767,7 @@
           }
         }
       },
-      "2025-01-29_14:30": {
+      "2025-01-20_14:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -29961,7 +29961,7 @@
           }
         }
       },
-      "2025-01-29_20:30": {
+      "2025-01-20_20:30": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -30250,7 +30250,7 @@
           }
         }
       },
-      "2025-01-31_21:00": {
+      "2025-01-23_21:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -30351,7 +30351,7 @@
       }
     },
     "Moana 2": {
-      "2025-01-26_14:30": {
+      "2025-01-16_14:30": {
         "cinemas": {
           "lotte_moonlight": {
             "address": "Moonlight Residences, 102 Đặng Văn Bi, Bình Thọ, TP. Thủ Đức",
@@ -30450,7 +30450,7 @@
           }
         }
       },
-      "2025-01-28_10:30": {
+      "2025-01-19_10:30": {
         "cinemas": {
           "lotte_cantavil": {
             "address": "Tầng 7, Cantavil Premier, 1 Song Hành, An Phú, Quận 2, TP.HCM",
@@ -30551,7 +30551,7 @@
       }
     },
     "Mufasa The Lion King": {
-      "2025-01-28_09:00": {
+      "2025-01-19_09:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -30745,7 +30745,7 @@
           }
         }
       },
-      "2025-01-29_14:30": {
+      "2025-01-20_14:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -31036,7 +31036,7 @@
       }
     },
     "Mùa hè chiều thẳng đứng": {
-      "2025-01-18_10:30": {
+      "2025-01-06_10:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -31230,7 +31230,7 @@
           }
         }
       },
-      "2025-01-18_22:00": {
+      "2025-01-06_22:00": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -31329,7 +31329,7 @@
           }
         }
       },
-      "2025-01-21_09:00": {
+      "2025-01-10_09:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -31618,7 +31618,7 @@
           }
         }
       },
-      "2025-01-21_21:00": {
+      "2025-01-10_21:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -31814,7 +31814,7 @@
       }
     },
     "Ngày Nảy Ngày Nay": {
-      "2025-01-25_20:30": {
+      "2025-01-15_20:30": {
         "cinemas": {
           "lotte_thu_duc": {
             "address": "Tầng 2, Joy Citipoint, 2 QL1A, P. Linh Xuân, TP. Thủ Đức",
@@ -31913,7 +31913,7 @@
           }
         }
       },
-      "2025-01-25_21:00": {
+      "2025-01-15_21:00": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -32107,7 +32107,7 @@
           }
         }
       },
-      "2025-01-25_22:00": {
+      "2025-01-15_22:00": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -32206,7 +32206,7 @@
           }
         }
       },
-      "2025-01-27_14:30": {
+      "2025-01-17_14:30": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -32305,7 +32305,7 @@
           }
         }
       },
-      "2025-01-27_17:30": {
+      "2025-01-17_17:30": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -32594,7 +32594,7 @@
           }
         }
       },
-      "2025-01-29_09:00": {
+      "2025-01-20_09:00": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -32788,7 +32788,7 @@
           }
         }
       },
-      "2025-01-29_17:30": {
+      "2025-01-20_17:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -33077,7 +33077,7 @@
           }
         }
       },
-      "2025-01-29_20:30": {
+      "2025-01-20_20:30": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -33273,7 +33273,7 @@
       }
     },
     "Ngọc Viễn Đông": {
-      "2025-01-16_14:30": {
+      "2025-01-03_14:30": {
         "cinemas": {
           "lotte_moonlight": {
             "address": "Moonlight Residences, 102 Đặng Văn Bi, Bình Thọ, TP. Thủ Đức",
@@ -33372,7 +33372,7 @@
           }
         }
       },
-      "2025-01-18_09:00": {
+      "2025-01-06_09:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -33661,7 +33661,7 @@
           }
         }
       },
-      "2025-01-18_21:00": {
+      "2025-01-06_21:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -33950,7 +33950,7 @@
           }
         }
       },
-      "2025-01-19_14:30": {
+      "2025-01-07_14:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -34144,7 +34144,7 @@
           }
         }
       },
-      "2025-01-20_09:00": {
+      "2025-01-08_09:00": {
         "cinemas": {
           "lotte_moonlight": {
             "address": "Moonlight Residences, 102 Đặng Văn Bi, Bình Thọ, TP. Thủ Đức",
@@ -34243,7 +34243,7 @@
           }
         }
       },
-      "2025-01-20_17:30": {
+      "2025-01-08_17:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -34437,7 +34437,7 @@
           }
         }
       },
-      "2025-01-20_19:00": {
+      "2025-01-08_19:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -34728,7 +34728,7 @@
       }
     },
     "No Way Up": {
-      "2025-01-30_14:30": {
+      "2025-01-21_14:30": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -35017,7 +35017,7 @@
           }
         }
       },
-      "2025-01-30_16:00": {
+      "2025-01-21_16:00": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -35306,7 +35306,7 @@
           }
         }
       },
-      "2025-01-30_17:30": {
+      "2025-01-21_17:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -35595,7 +35595,7 @@
           }
         }
       },
-      "2025-01-31_12:00": {
+      "2025-01-23_12:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -35884,7 +35884,7 @@
           }
         }
       },
-      "2025-01-31_17:30": {
+      "2025-01-23_17:30": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -35983,7 +35983,7 @@
           }
         }
       },
-      "2025-01-31_21:00": {
+      "2025-01-23_21:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -36272,7 +36272,7 @@
           }
         }
       },
-      "2025-02-03_10:30": {
+      "2025-01-27_10:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -36561,7 +36561,7 @@
           }
         }
       },
-      "2025-02-03_14:30": {
+      "2025-01-27_14:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -36850,7 +36850,7 @@
           }
         }
       },
-      "2025-02-05_10:30": {
+      "2025-01-29_10:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -37044,7 +37044,7 @@
           }
         }
       },
-      "2025-02-05_16:00": {
+      "2025-01-29_16:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -37240,7 +37240,7 @@
       }
     },
     "Nosferatu": {
-      "2025-01-12_09:00": {
+      "2024-12-29_09:00": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -37339,7 +37339,7 @@
           }
         }
       },
-      "2025-01-13_14:30": {
+      "2024-12-30_14:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -37533,7 +37533,7 @@
           }
         }
       },
-      "2025-01-13_16:00": {
+      "2024-12-30_16:00": {
         "cinemas": {
           "lotte_cantavil": {
             "address": "Tầng 7, Cantavil Premier, 1 Song Hành, An Phú, Quận 2, TP.HCM",
@@ -37632,7 +37632,7 @@
           }
         }
       },
-      "2025-01-14_10:30": {
+      "2024-12-31_10:30": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -37828,7 +37828,7 @@
       }
     },
     "Nước": {
-      "2025-01-29_20:30": {
+      "2025-01-20_20:30": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -38022,7 +38022,7 @@
           }
         }
       },
-      "2025-01-31_20:30": {
+      "2025-01-23_20:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -38123,7 +38123,7 @@
       }
     },
     "Ordinary Angels": {
-      "2025-01-16_17:30": {
+      "2025-01-03_17:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -38412,7 +38412,7 @@
           }
         }
       },
-      "2025-01-19_17:30": {
+      "2025-01-07_17:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -38606,7 +38606,7 @@
           }
         }
       },
-      "2025-01-19_19:00": {
+      "2025-01-07_19:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -38705,7 +38705,7 @@
           }
         }
       },
-      "2025-01-20_12:00": {
+      "2025-01-08_12:00": {
         "cinemas": {
           "lotte_cantavil": {
             "address": "Tầng 7, Cantavil Premier, 1 Song Hành, An Phú, Quận 2, TP.HCM",
@@ -38899,7 +38899,7 @@
           }
         }
       },
-      "2025-01-20_19:00": {
+      "2025-01-08_19:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -39093,7 +39093,7 @@
           }
         }
       },
-      "2025-01-23_17:30": {
+      "2025-01-12_17:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -39287,7 +39287,7 @@
           }
         }
       },
-      "2025-01-23_20:30": {
+      "2025-01-12_20:30": {
         "cinemas": {
           "lotte_thu_duc": {
             "address": "Tầng 2, Joy Citipoint, 2 QL1A, P. Linh Xuân, TP. Thủ Đức",
@@ -39388,7 +39388,7 @@
       }
     },
     "Quán Kỳ Nam": {
-      "2025-01-17_14:30": {
+      "2025-01-04_14:30": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -39487,7 +39487,7 @@
           }
         }
       },
-      "2025-01-20_16:00": {
+      "2025-01-08_16:00": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -39776,7 +39776,7 @@
           }
         }
       },
-      "2025-01-21_22:00": {
+      "2025-01-10_22:00": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -40067,7 +40067,7 @@
       }
     },
     "Rebel Moon": {
-      "2025-01-25_10:30": {
+      "2025-01-15_10:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -40356,7 +40356,7 @@
           }
         }
       },
-      "2025-01-25_22:00": {
+      "2025-01-15_22:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -40550,7 +40550,7 @@
           }
         }
       },
-      "2025-01-27_12:00": {
+      "2025-01-17_12:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -40841,7 +40841,7 @@
       }
     },
     "Ròm": {
-      "2025-01-13_19:00": {
+      "2024-12-30_19:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -41035,7 +41035,7 @@
           }
         }
       },
-      "2025-01-15_09:00": {
+      "2025-01-02_09:00": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -41229,7 +41229,7 @@
           }
         }
       },
-      "2025-01-15_17:30": {
+      "2025-01-02_17:30": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -41520,7 +41520,7 @@
       }
     },
     "Scandal Bí mật thảm đỏ": {
-      "2025-01-16_17:30": {
+      "2025-01-03_17:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -41714,7 +41714,7 @@
           }
         }
       },
-      "2025-01-17_17:30": {
+      "2025-01-04_17:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -41908,7 +41908,7 @@
           }
         }
       },
-      "2025-01-20_10:30": {
+      "2025-01-08_10:30": {
         "cinemas": {
           "lotte_thu_duc": {
             "address": "Tầng 2, Joy Citipoint, 2 QL1A, P. Linh Xuân, TP. Thủ Đức",
@@ -42007,7 +42007,7 @@
           }
         }
       },
-      "2025-01-20_12:00": {
+      "2025-01-08_12:00": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -42106,7 +42106,7 @@
           }
         }
       },
-      "2025-01-20_17:30": {
+      "2025-01-08_17:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -42205,7 +42205,7 @@
           }
         }
       },
-      "2025-01-21_17:30": {
+      "2025-01-10_17:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -42496,7 +42496,7 @@
       }
     },
     "Song Lang": {
-      "2025-01-07_12:00": {
+      "2024-12-22_12:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -42690,7 +42690,7 @@
           }
         }
       },
-      "2025-01-07_16:00": {
+      "2024-12-22_16:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -42979,7 +42979,7 @@
           }
         }
       },
-      "2025-01-07_19:00": {
+      "2024-12-22_19:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -43268,7 +43268,7 @@
           }
         }
       },
-      "2025-01-10_14:30": {
+      "2024-12-26_14:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -43367,7 +43367,7 @@
           }
         }
       },
-      "2025-01-10_16:00": {
+      "2024-12-26_16:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -43656,7 +43656,7 @@
           }
         }
       },
-      "2025-01-11_14:30": {
+      "2024-12-28_14:30": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -43850,7 +43850,7 @@
           }
         }
       },
-      "2025-01-11_19:00": {
+      "2024-12-28_19:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -44141,7 +44141,7 @@
       }
     },
     "Sonic the Hedgehog 3": {
-      "2025-01-24_09:00": {
+      "2025-01-14_09:00": {
         "cinemas": {
           "lotte_cantavil": {
             "address": "Tầng 7, Cantavil Premier, 1 Song Hành, An Phú, Quận 2, TP.HCM",
@@ -44240,7 +44240,7 @@
           }
         }
       },
-      "2025-01-24_12:00": {
+      "2025-01-14_12:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -44434,7 +44434,7 @@
           }
         }
       },
-      "2025-01-24_17:30": {
+      "2025-01-14_17:30": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -44628,7 +44628,7 @@
           }
         }
       },
-      "2025-01-26_22:00": {
+      "2025-01-16_22:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -44919,7 +44919,7 @@
       }
     },
     "Sài Gòn Yo!": {
-      "2025-01-18_17:30": {
+      "2025-01-06_17:30": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -45018,7 +45018,7 @@
           }
         }
       },
-      "2025-01-19_09:00": {
+      "2025-01-07_09:00": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -45214,7 +45214,7 @@
       }
     },
     "Sẽ Đến Một Tình Yêu": {
-      "2025-01-25_16:00": {
+      "2025-01-15_16:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -45313,7 +45313,7 @@
           }
         }
       },
-      "2025-01-28_12:00": {
+      "2025-01-19_12:00": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -45602,7 +45602,7 @@
           }
         }
       },
-      "2025-01-28_22:00": {
+      "2025-01-19_22:00": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -45701,7 +45701,7 @@
           }
         }
       },
-      "2025-01-29_09:00": {
+      "2025-01-20_09:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -45990,7 +45990,7 @@
           }
         }
       },
-      "2025-01-29_21:00": {
+      "2025-01-20_21:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -46186,7 +46186,7 @@
       }
     },
     "Số Đỏ": {
-      "2025-01-14_14:30": {
+      "2024-12-31_14:30": {
         "cinemas": {
           "lotte_thu_duc": {
             "address": "Tầng 2, Joy Citipoint, 2 QL1A, P. Linh Xuân, TP. Thủ Đức",
@@ -46285,7 +46285,7 @@
           }
         }
       },
-      "2025-01-14_16:00": {
+      "2024-12-31_16:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -46574,7 +46574,7 @@
           }
         }
       },
-      "2025-01-17_20:30": {
+      "2025-01-04_20:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -46865,7 +46865,7 @@
       }
     },
     "The Fall Guy": {
-      "2025-01-02_14:30": {
+      "2024-12-16_14:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -47156,7 +47156,7 @@
       }
     },
     "The Gorge": {
-      "2025-01-31_10:30": {
+      "2025-01-23_10:30": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -47255,7 +47255,7 @@
           }
         }
       },
-      "2025-01-31_12:00": {
+      "2025-01-23_12:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -47449,7 +47449,7 @@
           }
         }
       },
-      "2025-02-03_10:30": {
+      "2025-01-27_10:30": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -47738,7 +47738,7 @@
           }
         }
       },
-      "2025-02-03_12:00": {
+      "2025-01-27_12:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -48027,7 +48027,7 @@
           }
         }
       },
-      "2025-02-03_14:30": {
+      "2025-01-27_14:30": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -48126,7 +48126,7 @@
           }
         }
       },
-      "2025-02-06_09:00": {
+      "2025-01-31_09:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -48415,7 +48415,7 @@
           }
         }
       },
-      "2025-02-06_16:00": {
+      "2025-01-31_16:00": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -48516,7 +48516,7 @@
       }
     },
     "The Lord of the Rings The War of the Rohirrim": {
-      "2025-01-20_21:00": {
+      "2025-01-08_21:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -48805,7 +48805,7 @@
           }
         }
       },
-      "2025-01-20_22:00": {
+      "2025-01-08_22:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -48904,7 +48904,7 @@
           }
         }
       },
-      "2025-01-23_09:00": {
+      "2025-01-12_09:00": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -49005,7 +49005,7 @@
       }
     },
     "The Three Musketeers": {
-      "2025-01-30_12:00": {
+      "2025-01-21_12:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -49294,7 +49294,7 @@
           }
         }
       },
-      "2025-01-31_10:30": {
+      "2025-01-23_10:30": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -49393,7 +49393,7 @@
           }
         }
       },
-      "2025-01-31_20:30": {
+      "2025-01-23_20:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -49492,7 +49492,7 @@
           }
         }
       },
-      "2025-01-31_21:00": {
+      "2025-01-23_21:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -49781,7 +49781,7 @@
           }
         }
       },
-      "2025-02-02_10:30": {
+      "2025-01-25_10:30": {
         "cinemas": {
           "lotte_thu_duc": {
             "address": "Tầng 2, Joy Citipoint, 2 QL1A, P. Linh Xuân, TP. Thủ Đức",
@@ -49880,7 +49880,7 @@
           }
         }
       },
-      "2025-02-02_14:30": {
+      "2025-01-25_14:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -49981,7 +49981,7 @@
       }
     },
     "The Trip": {
-      "2025-01-12_19:00": {
+      "2024-12-29_19:00": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -50175,7 +50175,7 @@
           }
         }
       },
-      "2025-01-12_22:00": {
+      "2024-12-29_22:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -50369,7 +50369,7 @@
           }
         }
       },
-      "2025-01-13_09:00": {
+      "2024-12-30_09:00": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -50468,7 +50468,7 @@
           }
         }
       },
-      "2025-01-15_10:30": {
+      "2025-01-02_10:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -50662,7 +50662,7 @@
           }
         }
       },
-      "2025-01-15_16:00": {
+      "2025-01-02_16:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -50761,7 +50761,7 @@
           }
         }
       },
-      "2025-01-17_10:30": {
+      "2025-01-04_10:30": {
         "cinemas": {
           "lotte_moonlight": {
             "address": "Moonlight Residences, 102 Đặng Văn Bi, Bình Thọ, TP. Thủ Đức",
@@ -50862,7 +50862,7 @@
       }
     },
     "Thám Tử Kiên Kỳ Án Không Đầu": {
-      "2025-01-06_14:30": {
+      "2024-12-21_14:30": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -51056,7 +51056,7 @@
           }
         }
       },
-      "2025-01-06_16:00": {
+      "2024-12-21_16:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -51345,7 +51345,7 @@
           }
         }
       },
-      "2025-01-07_09:00": {
+      "2024-12-22_09:00": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -51444,7 +51444,7 @@
           }
         }
       },
-      "2025-01-07_19:00": {
+      "2024-12-22_19:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -51638,7 +51638,7 @@
           }
         }
       },
-      "2025-01-10_19:00": {
+      "2024-12-26_19:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -51834,7 +51834,7 @@
       }
     },
     "Thần Tượng": {
-      "2025-01-13_10:30": {
+      "2024-12-30_10:30": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -52123,7 +52123,7 @@
           }
         }
       },
-      "2025-01-13_14:30": {
+      "2024-12-30_14:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -52222,7 +52222,7 @@
           }
         }
       },
-      "2025-01-14_17:30": {
+      "2024-12-31_17:30": {
         "cinemas": {
           "lotte_moonlight": {
             "address": "Moonlight Residences, 102 Đặng Văn Bi, Bình Thọ, TP. Thủ Đức",
@@ -52321,7 +52321,7 @@
           }
         }
       },
-      "2025-01-16_21:00": {
+      "2025-01-03_21:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -52420,7 +52420,7 @@
           }
         }
       },
-      "2025-01-16_22:00": {
+      "2025-01-03_22:00": {
         "cinemas": {
           "lotte_cantavil": {
             "address": "Tầng 7, Cantavil Premier, 1 Song Hành, An Phú, Quận 2, TP.HCM",
@@ -52521,7 +52521,7 @@
       }
     },
     "Thập Tam Muội": {
-      "2025-01-13_10:30": {
+      "2024-12-30_10:30": {
         "cinemas": {
           "lotte_cantavil": {
             "address": "Tầng 7, Cantavil Premier, 1 Song Hành, An Phú, Quận 2, TP.HCM",
@@ -52810,7 +52810,7 @@
           }
         }
       },
-      "2025-01-13_16:00": {
+      "2024-12-30_16:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -52909,7 +52909,7 @@
           }
         }
       },
-      "2025-01-16_14:30": {
+      "2025-01-03_14:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -53198,7 +53198,7 @@
           }
         }
       },
-      "2025-01-16_19:00": {
+      "2025-01-03_19:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -53392,7 +53392,7 @@
           }
         }
       },
-      "2025-01-17_12:00": {
+      "2025-01-04_12:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -53681,7 +53681,7 @@
           }
         }
       },
-      "2025-01-17_19:00": {
+      "2025-01-04_19:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -53875,7 +53875,7 @@
           }
         }
       },
-      "2025-01-18_16:00": {
+      "2025-01-06_16:00": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -54069,7 +54069,7 @@
           }
         }
       },
-      "2025-01-18_21:00": {
+      "2025-01-06_21:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -54265,7 +54265,7 @@
       }
     },
     "Trong lòng đất": {
-      "2025-01-28_10:30": {
+      "2025-01-19_10:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -54554,7 +54554,7 @@
           }
         }
       },
-      "2025-01-28_21:00": {
+      "2025-01-19_21:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -54653,7 +54653,7 @@
           }
         }
       },
-      "2025-01-30_19:00": {
+      "2025-01-21_19:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -54942,7 +54942,7 @@
           }
         }
       },
-      "2025-02-02_09:00": {
+      "2025-01-25_09:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -55233,7 +55233,7 @@
       }
     },
     "Truy Sát": {
-      "2025-01-28_17:30": {
+      "2025-01-19_17:30": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -55332,7 +55332,7 @@
           }
         }
       },
-      "2025-01-30_12:00": {
+      "2025-01-21_12:00": {
         "cinemas": {
           "lotte_thu_duc": {
             "address": "Tầng 2, Joy Citipoint, 2 QL1A, P. Linh Xuân, TP. Thủ Đức",
@@ -55431,7 +55431,7 @@
           }
         }
       },
-      "2025-01-30_19:00": {
+      "2025-01-21_19:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -55530,7 +55530,7 @@
           }
         }
       },
-      "2025-01-30_22:00": {
+      "2025-01-21_22:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -55724,7 +55724,7 @@
           }
         }
       },
-      "2025-02-02_17:30": {
+      "2025-01-25_17:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -55823,7 +55823,7 @@
           }
         }
       },
-      "2025-02-02_22:00": {
+      "2025-01-25_22:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -55924,7 +55924,7 @@
       }
     },
     "Trùm Cỏ": {
-      "2025-01-21_10:30": {
+      "2025-01-10_10:30": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -56213,7 +56213,7 @@
           }
         }
       },
-      "2025-01-21_22:00": {
+      "2025-01-10_22:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -56312,7 +56312,7 @@
           }
         }
       },
-      "2025-01-22_19:00": {
+      "2025-01-11_19:00": {
         "cinemas": {
           "lotte_cantavil": {
             "address": "Tầng 7, Cantavil Premier, 1 Song Hành, An Phú, Quận 2, TP.HCM",
@@ -56411,7 +56411,7 @@
           }
         }
       },
-      "2025-01-25_21:00": {
+      "2025-01-15_21:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -56512,7 +56512,7 @@
       }
     },
     "Trăng trên đất khách": {
-      "2025-01-03_09:00": {
+      "2024-12-17_09:00": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -56611,7 +56611,7 @@
           }
         }
       },
-      "2025-01-03_10:30": {
+      "2024-12-17_10:30": {
         "cinemas": {
           "lotte_cantavil": {
             "address": "Tầng 7, Cantavil Premier, 1 Song Hành, An Phú, Quận 2, TP.HCM",
@@ -56710,7 +56710,7 @@
           }
         }
       },
-      "2025-01-03_17:30": {
+      "2024-12-17_17:30": {
         "cinemas": {
           "lotte_cantavil": {
             "address": "Tầng 7, Cantavil Premier, 1 Song Hành, An Phú, Quận 2, TP.HCM",
@@ -56904,7 +56904,7 @@
           }
         }
       },
-      "2025-01-05_19:00": {
+      "2024-12-20_19:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -57003,7 +57003,7 @@
           }
         }
       },
-      "2025-01-07_10:30": {
+      "2024-12-22_10:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -57102,7 +57102,7 @@
           }
         }
       },
-      "2025-01-07_14:30": {
+      "2024-12-22_14:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -57203,7 +57203,7 @@
       }
     },
     "Trở về": {
-      "2025-01-16_21:00": {
+      "2025-01-03_21:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -57397,7 +57397,7 @@
           }
         }
       },
-      "2025-01-17_10:30": {
+      "2025-01-04_10:30": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -57496,7 +57496,7 @@
           }
         }
       },
-      "2025-01-19_09:00": {
+      "2025-01-07_09:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -57785,7 +57785,7 @@
           }
         }
       },
-      "2025-01-19_19:00": {
+      "2025-01-07_19:00": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -57886,7 +57886,7 @@
       }
     },
     "Từ Sài Gòn đến Điện Biên Phủ": {
-      "2025-01-01_21:00": {
+      "2024-12-15_21:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -58175,7 +58175,7 @@
           }
         }
       },
-      "2025-01-04_14:30": {
+      "2024-12-18_14:30": {
         "cinemas": {
           "lotte_cantavil": {
             "address": "Tầng 7, Cantavil Premier, 1 Song Hành, An Phú, Quận 2, TP.HCM",
@@ -58274,7 +58274,7 @@
           }
         }
       },
-      "2025-01-04_17:30": {
+      "2024-12-18_17:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -58563,7 +58563,7 @@
           }
         }
       },
-      "2025-01-04_21:00": {
+      "2024-12-18_21:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -58662,7 +58662,7 @@
           }
         }
       },
-      "2025-01-07_12:00": {
+      "2024-12-22_12:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -58951,7 +58951,7 @@
           }
         }
       },
-      "2025-01-07_14:30": {
+      "2024-12-22_14:30": {
         "cinemas": {
           "lotte_moonlight": {
             "address": "Moonlight Residences, 102 Đặng Văn Bi, Bình Thọ, TP. Thủ Đức",
@@ -59052,7 +59052,7 @@
       }
     },
     "Vị": {
-      "2025-01-13_21:00": {
+      "2024-12-30_21:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -59341,7 +59341,7 @@
           }
         }
       },
-      "2025-01-16_17:30": {
+      "2025-01-03_17:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -59535,7 +59535,7 @@
           }
         }
       },
-      "2025-01-17_10:30": {
+      "2025-01-04_10:30": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -59634,7 +59634,7 @@
           }
         }
       },
-      "2025-01-17_20:30": {
+      "2025-01-04_20:30": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -59923,7 +59923,7 @@
           }
         }
       },
-      "2025-01-18_21:00": {
+      "2025-01-06_21:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -60119,7 +60119,7 @@
       }
     },
     "Wicked": {
-      "2025-01-01_17:30": {
+      "2024-12-15_17:30": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -60313,7 +60313,7 @@
           }
         }
       },
-      "2025-01-01_20:30": {
+      "2024-12-15_20:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -60412,7 +60412,7 @@
           }
         }
       },
-      "2025-01-02_19:00": {
+      "2024-12-16_19:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -60606,7 +60606,7 @@
           }
         }
       },
-      "2025-01-05_20:30": {
+      "2024-12-20_20:30": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -60895,7 +60895,7 @@
           }
         }
       },
-      "2025-01-05_22:00": {
+      "2024-12-20_22:00": {
         "cinemas": {
           "lotte_cantavil": {
             "address": "Tầng 7, Cantavil Premier, 1 Song Hành, An Phú, Quận 2, TP.HCM",
@@ -61186,7 +61186,7 @@
       }
     },
     "Wolf Man": {
-      "2025-01-27_17:30": {
+      "2025-01-17_17:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -61475,7 +61475,7 @@
           }
         }
       },
-      "2025-01-28_14:30": {
+      "2025-01-19_14:30": {
         "cinemas": {
           "lotte_cantavil": {
             "address": "Tầng 7, Cantavil Premier, 1 Song Hành, An Phú, Quận 2, TP.HCM",
@@ -61574,7 +61574,7 @@
           }
         }
       },
-      "2025-01-28_21:00": {
+      "2025-01-19_21:00": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -61673,7 +61673,7 @@
           }
         }
       },
-      "2025-01-30_22:00": {
+      "2025-01-21_22:00": {
         "cinemas": {
           "lotte_cantavil": {
             "address": "Tầng 7, Cantavil Premier, 1 Song Hành, An Phú, Quận 2, TP.HCM",
@@ -61964,7 +61964,7 @@
       }
     },
     "Xích lô": {
-      "2025-01-08_16:00": {
+      "2024-12-24_16:00": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -62063,7 +62063,7 @@
           }
         }
       },
-      "2025-01-10_22:00": {
+      "2024-12-26_22:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -62354,7 +62354,7 @@
       }
     },
     "Âm Mưu Giày Gót Nhọn": {
-      "2025-01-24_14:30": {
+      "2025-01-14_14:30": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -62548,7 +62548,7 @@
           }
         }
       },
-      "2025-01-25_17:30": {
+      "2025-01-15_17:30": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -62742,7 +62742,7 @@
           }
         }
       },
-      "2025-01-27_09:00": {
+      "2025-01-17_09:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -62936,7 +62936,7 @@
           }
         }
       },
-      "2025-01-27_10:30": {
+      "2025-01-17_10:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -63132,7 +63132,7 @@
       }
     },
     "Đào, Phở và Piano": {
-      "2025-01-08_19:00": {
+      "2024-12-24_19:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -63231,7 +63231,7 @@
           }
         }
       },
-      "2025-01-08_20:30": {
+      "2024-12-24_20:30": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -63330,7 +63330,7 @@
           }
         }
       },
-      "2025-01-11_14:30": {
+      "2024-12-28_14:30": {
         "cinemas": {
           "lotte_thu_duc": {
             "address": "Tầng 2, Joy Citipoint, 2 QL1A, P. Linh Xuân, TP. Thủ Đức",
@@ -63429,7 +63429,7 @@
           }
         }
       },
-      "2025-01-12_12:00": {
+      "2024-12-29_12:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -63625,7 +63625,7 @@
       }
     },
     "Đến Hẹn Lại Lên": {
-      "2025-01-20_16:00": {
+      "2025-01-08_16:00": {
         "cinemas": {
           "galaxy_linh_trung": {
             "address": "Siêu thị Co.opXtra Thủ Đức, 934 QL1A, P. Linh Trung, TP. Thủ Đức",
@@ -63724,7 +63724,7 @@
           }
         }
       },
-      "2025-01-23_22:00": {
+      "2025-01-12_22:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -64013,7 +64013,7 @@
           }
         }
       },
-      "2025-01-25_17:30": {
+      "2025-01-15_17:30": {
         "cinemas": {
           "cgv_thao_dien": {
             "address": "Tầng 5, Thảo Điền Pearl, 12 Quốc Hương, P. Thảo Điền, Quận 2, TP.HCM",
@@ -64112,7 +64112,7 @@
           }
         }
       },
-      "2025-01-27_12:00": {
+      "2025-01-17_12:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -64211,7 +64211,7 @@
           }
         }
       },
-      "2025-01-27_21:00": {
+      "2025-01-17_21:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -64312,7 +64312,7 @@
       }
     },
     "Để Mai Tính 2": {
-      "2025-01-15_14:30": {
+      "2025-01-02_14:30": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -64506,7 +64506,7 @@
           }
         }
       },
-      "2025-01-15_16:00": {
+      "2025-01-02_16:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -64797,7 +64797,7 @@
       }
     },
     "Ảo ảnh giữa đời thường": {
-      "2025-01-28_14:30": {
+      "2025-01-19_14:30": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -65086,7 +65086,7 @@
           }
         }
       },
-      "2025-01-28_21:00": {
+      "2025-01-19_21:00": {
         "cinemas": {
           "bhd_star_thu_duc": {
             "address": "Tầng 5, Vincom Mega Mall Thảo Điền, 161 Xa Lộ Hà Nội, P. Thảo Điền, Quận 2, TP.HCM",
@@ -65375,7 +65375,7 @@
           }
         }
       },
-      "2025-01-28_22:00": {
+      "2025-01-19_22:00": {
         "cinemas": {
           "cgv_grand_park": {
             "address": "Lô L5-01, Tầng L5, Vincom Mega Mall Grand Park, 88 Phước Thiện, P. Long Bình, TP. Thủ Đức",
@@ -65569,7 +65569,7 @@
           }
         }
       },
-      "2025-01-30_09:00": {
+      "2025-01-21_09:00": {
         "cinemas": {
           "lotte_cantavil": {
             "address": "Tầng 7, Cantavil Premier, 1 Song Hành, An Phú, Quận 2, TP.HCM",
@@ -65668,7 +65668,7 @@
           }
         }
       },
-      "2025-01-30_22:00": {
+      "2025-01-21_22:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",
@@ -65862,7 +65862,7 @@
           }
         }
       },
-      "2025-02-02_21:00": {
+      "2025-01-25_21:00": {
         "cinemas": {
           "cgv_giga_mall": {
             "address": "Tầng 6, TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P. Hiệp Bình Chánh, TP. Thủ Đức",

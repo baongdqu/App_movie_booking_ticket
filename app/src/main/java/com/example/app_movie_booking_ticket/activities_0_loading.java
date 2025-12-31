@@ -22,6 +22,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import com.example.app_movie_booking_ticket.extra.MovieCacheManager;
+
 /**
  * Activity Loading (Màn hình chờ)
  * Màn hình đầu tiên xuất hiện khi mở ứng dụng.
@@ -77,6 +79,10 @@ public class activities_0_loading extends extra_manager_language {
 
         // Khởi tạo FirebaseAuth
         mAuth = FirebaseAuth.getInstance();
+
+        // 📦 PRELOAD DỮ LIỆU PHIM ĐỂ GIẢM THỜI GIAN TẢI TRANG CHỦ
+        // Bắt đầu tải dữ liệu phim song song với kiểm tra mạng
+        MovieCacheManager.getInstance().preloadData();
 
         // 🎬 Netflix-style fade-in animation cho logo
         ImageView imgLogo = findViewById(R.id.imgLogo);

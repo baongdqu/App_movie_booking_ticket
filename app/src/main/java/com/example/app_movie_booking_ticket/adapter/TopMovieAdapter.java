@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.example.app_movie_booking_ticket.R;
 import com.example.app_movie_booking_ticket.parthome_movie_detail;
 import com.example.app_movie_booking_ticket.extra_sound_manager;
+import com.example.app_movie_booking_ticket.extra.MovieCacheManager;
 import com.example.app_movie_booking_ticket.model.Movie;
 
 import java.util.List;
@@ -23,7 +24,6 @@ public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.MovieV
 
     private Context context;
     private List<Movie> movieList;
-
 
     public TopMovieAdapter(Context context, List<Movie> movieList) {
         this.context = context;
@@ -47,11 +47,24 @@ public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.MovieV
                 .placeholder(R.drawable.ic_default_poster)
                 .into(holder.imgMovie);
 
+        // Kiểm tra xem phim đã chiếu chưa
+        boolean isExpired = MovieCacheManager.getInstance().isMovieExpired(movie.getMovieID());
+
+        if (isExpired) {
+            // Hiển thị badge và overlay cho phim đã chiếu
+            holder.tvExpiredBadge.setVisibility(View.VISIBLE);
+            holder.viewExpiredOverlay.setVisibility(View.VISIBLE);
+        } else {
+            holder.tvExpiredBadge.setVisibility(View.GONE);
+            holder.viewExpiredOverlay.setVisibility(View.GONE);
+        }
+
         // Phát âm thanh khi click
         holder.itemView.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(v.getContext());
             Intent intent = new Intent(context, parthome_movie_detail.class);
             intent.putExtra("movie", movie);
+            intent.putExtra("isExpired", isExpired); // Truyền trạng thái đã chiếu
             context.startActivity(intent);
         });
     }
@@ -65,14 +78,19 @@ public class TopMovieAdapter extends RecyclerView.Adapter<TopMovieAdapter.MovieV
         this.movieList = newList;
         notifyDataSetChanged();
     }
+
     static class MovieViewHolder extends RecyclerView.ViewHolder {
         ImageView imgMovie;
         TextView tvMovieName;
+        TextView tvExpiredBadge;
+        View viewExpiredOverlay;
 
         MovieViewHolder(@NonNull View itemView) {
             super(itemView);
             imgMovie = itemView.findViewById(R.id.imgMovie);
             tvMovieName = itemView.findViewById(R.id.tvMovieName);
+            tvExpiredBadge = itemView.findViewById(R.id.tvExpiredBadge);
+            viewExpiredOverlay = itemView.findViewById(R.id.viewExpiredOverlay);
         }
     }
 }
