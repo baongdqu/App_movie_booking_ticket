@@ -17,14 +17,15 @@ public class CastListAdapter extends RecyclerView.Adapter<CastListAdapter.CastVi
     private Context context;
     private List<Movie.Cast> casts;
 
-    public CastListAdapter(Context context, List<Movie.Cast> casts)
-    {
+    public CastListAdapter(Context context, List<Movie.Cast> casts) {
         this.context = context;
         this.casts = casts;
     }
-    public static class CastViewHolder extends RecyclerView.ViewHolder{
+
+    public static class CastViewHolder extends RecyclerView.ViewHolder {
         ParthomeItemCastBinding binding;
-        public CastViewHolder(ParthomeItemCastBinding binding){
+
+        public CastViewHolder(ParthomeItemCastBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
@@ -44,6 +45,8 @@ public class CastListAdapter extends RecyclerView.Adapter<CastListAdapter.CastVi
         holder.binding.textView2.setText(cast.getActor());
         Glide.with(context)
                 .load(cast.getPicUrl())
+                .placeholder(com.example.app_movie_booking_ticket.R.drawable.ic_default_poster)
+                .error(com.example.app_movie_booking_ticket.R.drawable.ic_default_poster)
                 .into(holder.binding.imageView);
     }
 

@@ -463,7 +463,15 @@ public class fragments_home extends Fragment {
         });
 
         binding.viewPager2.setPageTransformer(transformer);
-        binding.viewPager2.setCurrentItem(1);
+
+        // Set vị trí bắt đầu ở giữa để có thể scroll vô tận sang trái và phải
+        if (lists.size() > 0) {
+            int mid = Integer.MAX_VALUE / 2;
+            int startPosition = mid - (mid % lists.size());
+            binding.viewPager2.setCurrentItem(startPosition, false);
+        } else {
+            binding.viewPager2.setCurrentItem(0);
+        }
 
         binding.viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override

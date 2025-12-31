@@ -15,10 +15,8 @@ import com.example.app_movie_booking_ticket.model.SliderItems
 class SliderAdapter(private var sliderItems: MutableList<SliderItems>, private val viewPager2: ViewPager2
 ): RecyclerView.Adapter<SliderAdapter.SliderViewholder>(){
     private var context: Context? = null
-    private var runnable = Runnable{
-        sliderItems.addAll(sliderItems)
-        notifyDataSetChanged()
-    }
+    
+    // Runnable logic removed for true infinite scrolling
     inner class SliderViewholder(private val binding: ParthomeViewholderSliderBinding):
     RecyclerView.ViewHolder(binding.root){
         fun bind (sliderItems: SliderItems) {
@@ -44,13 +42,11 @@ class SliderAdapter(private var sliderItems: MutableList<SliderItems>, private v
         return SliderViewholder(binding)
     }
 
-    override fun onBindViewHolder(holder: SliderAdapter.SliderViewholder, position: Int) {
-        holder.bind(sliderItems[position])
-        if(position==sliderItems.size-2) {
-            viewPager2.post(runnable)
+    override fun onBindViewHolder(holder: SliderViewholder, position: Int) {
+        if (sliderItems.isNotEmpty()) {
+            holder.bind(sliderItems[position % sliderItems.size])
         }
     }
 
-
-    override fun getItemCount(): Int = sliderItems.size
+    override fun getItemCount(): Int = Int.MAX_VALUE
 }
