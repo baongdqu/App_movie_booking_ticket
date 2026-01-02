@@ -203,14 +203,15 @@ public class fragments_mail extends Fragment {
                 Intent i = new Intent(requireContext(), TicketDetailActivity.class);
                 i.putExtra(TicketDetailActivity.EXTRA_TICKET_ID, ticketId);
 
-                // ✅ launcher để nhận RESULT_OK
                 ticketDetailLauncher.launch(i);
         }
 
-        // ===== REFUND trong list (giữ nguyên như bạn đang có) =====
+        // ================== REFUND (FIX: release seat) ==================
         private void refundTicket(TicketSimple ticket) {
 
                 String ticketId = ticket.getTicketId();
+                if (ticketId == null || ticketId.trim().isEmpty()) return;
+
                 DatabaseReference ticketRef = db.child("tickets").child(ticketId);
 
                 ticketRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -227,13 +228,33 @@ public class fragments_mail extends Fragment {
                                         return;
                                 }
 
+                                // ===== LẤY DATA =====
+                                String movieTitle = snapshotTicket.child("movieTitle").getValue(String.class);
+                                String date = snapshotTicket.child("date").getValue(String.class);
+                                String time = snapshotTicket.child("time").getValue(String.class);
+                                String cinemaId = snapshotTicket.child("cinemaId").getValue(String.class); // ✅ luôn có
+
+                                List<String> seats = new ArrayList<>();
+                                if (snapshotTicket.child("seats").exists()) {
+                                        for (DataSnapshot s : snapshotTicket.child("seats").getChildren()) {
+                                                String seat = s.getValue(String.class);
+                                                if (seat != null) seats.add(seat);
+                                        }
+                                }
+
                                 Long totalPriceObj = snapshotTicket.child("totalPrice").getValue(Long.class);
                                 final long totalPrice = (totalPriceObj != null) ? totalPriceObj : 0L;
+
+                                if (movieTitle == null || date == null || time == null || cinemaId == null || seats.isEmpty()) {
+                                        Toast.makeText(getContext(), "Thiếu dữ liệu vé để hoàn", Toast.LENGTH_SHORT).show();
+                                        return;
+                                }
 
                                 DatabaseReference balanceRef = db.child("users")
                                         .child(currentUserId)
                                         .child("balance");
 
+                                // 1) CỘNG TIỀN
                                 balanceRef.runTransaction(new Transaction.Handler() {
                                         @NonNull
                                         @Override
@@ -246,11 +267,35 @@ public class fragments_mail extends Fragment {
 
                                         @Override
                                         public void onComplete(DatabaseError error, boolean committed, DataSnapshot snapshot) {
-                                                if (!committed) return;
 
-                                                ticketRef.child("status").setValue("REFUNDED");
-                                                Toast.makeText(getContext(), "Hoàn tiền thành công!", Toast.LENGTH_SHORT).show();
-                                                loadTickets();
+                                                if (error != null || !committed) {
+                                                        Toast.makeText(getContext(), "Hoàn tiền thất bại", Toast.LENGTH_SHORT).show();
+                                                        return;
+                                                }
+
+                                                // 2) UPDATE STATUS + TRẢ GHẾ VỀ "available" (KHÔNG XÓA KEY)
+                                                Map<String, Object> updates = new HashMap<>();
+                                                updates.put("tickets/" + ticketId + "/status", "REFUNDED");
+                                                updates.put("tickets/" + ticketId + "/refundedAt", System.currentTimeMillis());
+
+                                                String showtimeKey = date + "_" + time;
+
+                                                String baseSeatPath = "Bookings/" + movieTitle + "/" + showtimeKey
+                                                        + "/cinemas/" + cinemaId + "/seats/";
+
+                                                for (String seat : seats) {
+                                                        updates.put(baseSeatPath + seat, "available");
+                                                }
+
+                                                db.updateChildren(updates)
+                                                        .addOnSuccessListener(unused -> {
+                                                                Toast.makeText(getContext(), "Hoàn tiền thành công!", Toast.LENGTH_SHORT).show();
+                                                                loadTickets(); // reload list (REFUNDED sẽ bị lọc)
+                                                        })
+                                                        .addOnFailureListener(e -> {
+                                                                Toast.makeText(getContext(), "Hoàn tiền OK nhưng trả ghế lỗi", Toast.LENGTH_SHORT).show();
+                                                                loadTickets();
+                                                        });
                                         }
                                 });
                         }
@@ -259,4 +304,5 @@ public class fragments_mail extends Fragment {
                         public void onCancelled(@NonNull DatabaseError error) { }
                 });
         }
+
 }
