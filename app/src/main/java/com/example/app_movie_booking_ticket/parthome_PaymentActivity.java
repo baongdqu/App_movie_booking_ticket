@@ -1,13 +1,16 @@
 package com.example.app_movie_booking_ticket;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.button.MaterialButton;
@@ -18,17 +21,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 import com.vnpay.authentication.VNP_AuthenticationActivity;
-import com.vnpay.authentication.VNP_SdkCompletedCallback;
-
-import android.content.Intent;
-import android.util.Log;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.net.URLEncoder;
 import java.text.DecimalFormat;
@@ -44,41 +40,38 @@ import java.util.Map;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
-import com.google.firebase.database.Transaction;
-import com.google.firebase.database.MutableData;
-
 /**
  * Activity Thanh toán (Payment)
- * Xử lý việc thanh toán vé xem phim.
- * Hỗ trợ các phương thức: Ví VNPAY (Sandbox) và Số dư ví nội bộ (Balance).
+ * - VNPay (Sandbox)
+ * - Balance nội bộ (Realtime Database users/{uid}/balance)
+ *
+ * ✅ Sau khi thanh toán thành công -> quay về Movie Detail (không quay về chọn ghế)
  */
 public class parthome_PaymentActivity extends AppCompatActivity {
 
     private FirebaseAuth auth;
     private DatabaseReference userRef;
     private FirebaseUser currentUser;
+
     private String currentTicketId;
+
     private String posterUrl;
     private String movieTitle;
     private String movieID;
 
     private String cinemaName;
-    private String cinemaId; // ✅ THÊM: cinemaId
+    private String cinemaId;
 
     private String date;
     private String time;
     private ArrayList<String> seats;
     private int totalPrice;
 
-    // Payment method selection
     private RadioButton rbVnpay;
     private RadioButton rbBalance;
+
     private long userBalance = 0;
 
-    /**
-     * Khởi tạo màn hình thanh toán.
-     * Nhận thông tin vé từ Intent và thiết lập giao diện thanh toán.
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,9 +83,9 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         // ===== NHẬN DATA TỪ INTENT =====
         Intent intent = getIntent();
         if (intent != null && intent.getData() != null) {
-            String data = intent.getData().toString();
-            Log.d("VNPAY_RETURN", "Data nhận được: " + data);
+            Log.d("VNPAY_RETURN", "Data nhận được: " + intent.getData());
         }
+
         posterUrl = intent.getStringExtra("posterUrl");
         movieTitle = intent.getStringExtra("movieTitle");
         date = intent.getStringExtra("date");
@@ -100,9 +93,9 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         seats = intent.getStringArrayListExtra("seats");
         totalPrice = intent.getIntExtra("totalPrice", 0);
         movieID = intent.getStringExtra("movieID");
-        cinemaName = intent.getStringExtra("cinemaName");
 
-        cinemaId = intent.getStringExtra("cinemaId"); // ✅ THÊM: nhận cinemaId
+        cinemaName = intent.getStringExtra("cinemaName");
+        cinemaId = intent.getStringExtra("cinemaId");
 
         // ===== MAP VIEW =====
         ImageView imagePoster = findViewById(R.id.imagePoster);
@@ -116,20 +109,14 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         TextView txtPhone = findViewById(R.id.txtPhone);
         TextView txtEmail = findViewById(R.id.txtEmail);
 
-        // Payment method RadioButtons
         rbVnpay = findViewById(R.id.rbVnpay);
         rbBalance = findViewById(R.id.rbBalance);
 
-        // Single payment button
         MaterialButton btnContinue = findViewById(R.id.btnContinue);
-
-        // Load user balance and display
-        loadUserBalance();
-
-        Log.d("PAYMENT", "posterUrl = " + posterUrl);
 
         // ===== HIỂN THỊ DATA =====
         txtTitle.setText(movieTitle);
+
         Glide.with(this)
                 .load(posterUrl)
                 .placeholder(R.drawable.placeholder_movie)
@@ -148,17 +135,15 @@ public class parthome_PaymentActivity extends AppCompatActivity {
             txtSeat.setText(android.text.TextUtils.join(", ", seats));
         }
 
-        // Format total price with thousand separator
         DecimalFormat formatter = new DecimalFormat("#,###");
         txtTotal.setText(formatter.format(totalPrice) + "đ");
 
-        // Demo thông tin user (sau này lấy từ Firebase)
+        // Load user info + balance
         loadUserInfo(txtUser, txtEmail, txtPhone);
+        loadUserBalance();
 
-        // ===== SETUP RADIO BUTTON GROUPS =====
         setupPaymentMethodSelection();
 
-        // ===== CLICK THANH TOÁN =====
         btnContinue.setOnClickListener(v -> {
             extra_sound_manager.playUiClick(this);
             processPayment();
@@ -168,17 +153,12 @@ public class parthome_PaymentActivity extends AppCompatActivity {
             extra_sound_manager.playUiClick(this);
             finish();
         });
-
     }
 
-    /**
-     * Setup payment method selection với RadioButton
-     */
+    // =================== UI: chọn phương thức ===================
     private void setupPaymentMethodSelection() {
-        // Default: VNPay selected
         rbVnpay.setChecked(true);
 
-        // Make the entire card clickable - cast ViewParent to View
         View vnpayCard = (View) rbVnpay.getParent().getParent();
         View balanceCard = (View) rbBalance.getParent().getParent();
 
@@ -196,23 +176,14 @@ public class parthome_PaymentActivity extends AppCompatActivity {
             });
         }
 
-        // RadioButton click handlers
-        rbVnpay.setOnClickListener(v -> {
-            rbBalance.setChecked(false);
-        });
-
-        rbBalance.setOnClickListener(v -> {
-            rbVnpay.setChecked(false);
-        });
+        rbVnpay.setOnClickListener(v -> rbBalance.setChecked(false));
+        rbBalance.setOnClickListener(v -> rbVnpay.setChecked(false));
     }
 
-    /**
-     * Load user balance from Firebase and update UI
-     */
+    // =================== Load balance ===================
     private void loadUserBalance() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null)
-            return;
+        if (user == null) return;
 
         String uid = user.getUid();
         DatabaseReference balanceRef = FirebaseDatabase.getInstance()
@@ -223,15 +194,16 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         balanceRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Long balance = snapshot.getValue(Long.class);
-                userBalance = balance != null ? balance : 0;
 
-                // Update balance display in UI
+                userBalance = parseBalance(snapshot.getValue());
+
                 TextView txtBalance = findViewById(R.id.txtBalance);
                 if (txtBalance != null) {
                     DecimalFormat formatter = new DecimalFormat("#,###");
                     txtBalance.setText(getString(R.string.balance_desc, formatter.format(userBalance)));
                 }
+
+                Log.d("BALANCE_DEBUG", "loadUserBalance uid=" + uid + " userBalance=" + userBalance);
             }
 
             @Override
@@ -241,33 +213,31 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         });
     }
 
-    /**
-     * Process payment based on selected method
-     */
+    // =================== Process payment ===================
     private void processPayment() {
         if (rbVnpay.isChecked()) {
-            // Pay with VNPay
             try {
                 String paymentUrl = createVnpayUrl(totalPrice);
                 if (paymentUrl != null) {
                     openSdk(paymentUrl);
                 } else {
-                    Toast.makeText(this, getString(R.string.toast_payment_failed, "URL error"), Toast.LENGTH_SHORT)
-                            .show();
+                    Toast.makeText(this,
+                            getString(R.string.toast_payment_failed, "URL error"),
+                            Toast.LENGTH_SHORT).show();
                 }
             } catch (Exception e) {
-                Toast.makeText(this, getString(R.string.toast_payment_failed, e.getMessage()), Toast.LENGTH_SHORT)
-                        .show();
+                Toast.makeText(this,
+                        getString(R.string.toast_payment_failed, e.getMessage()),
+                        Toast.LENGTH_SHORT).show();
             }
         } else if (rbBalance.isChecked()) {
-            // Pay with Balance
-            payByBalance();
+            payByBalance(); // ✅ đã fix bug lần 1
         } else {
-            // No method selected
             Toast.makeText(this, R.string.toast_select_payment_method, Toast.LENGTH_SHORT).show();
         }
     }
 
+    // =================== VNPay ===================
     public void openSdk(String paymentUrl) {
         createPendingTicket("VNPAY");
 
@@ -281,55 +251,311 @@ public class parthome_PaymentActivity extends AppCompatActivity {
             Log.d("VNPAY_SDK", "Action: " + action);
 
             if (action != null) {
+                // ✅ updateTicketToPaid sẽ bookSeats + quay về movie detail
                 updateTicketToPaid(currentTicketId);
                 Toast.makeText(this, R.string.toast_payment_success, Toast.LENGTH_SHORT).show();
             } else {
-                // HỦY HOẶC LỖI
                 updateTicketStatus(currentTicketId, "CANCELLED");
-                Toast.makeText(this, "Thanh toán không thành công hoặc đã bị hủy", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,
+                        "Thanh toán không thành công hoặc đã bị hủy",
+                        Toast.LENGTH_SHORT).show();
             }
         });
+
         startActivity(intent);
     }
 
+    // =================== Load user info ===================
     private void loadUserInfo(TextView txtUser, TextView txtEmail, TextView txtPhone) {
         currentUser = auth.getCurrentUser();
-        if (currentUser == null)
-            return;
+        if (currentUser == null) return;
 
         String uid = currentUser.getUid();
 
         userRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (!snapshot.exists())
-                    return;
+                if (!snapshot.exists()) return;
 
                 String fullName = snapshot.child("fullName").getValue(String.class);
                 String email = snapshot.child("email").getValue(String.class);
                 String phone = snapshot.child("phone").getValue(String.class);
+
                 txtUser.setText(fullName != null ? fullName : "Người dùng");
                 txtEmail.setText(email != null ? email : "");
                 txtPhone.setText(phone != null ? phone : "Chưa cập nhật");
-
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
+            public void onCancelled(@NonNull DatabaseError error) { }
         });
     }
 
+    // =================== Balance (FIX “lần 1 fail, lần 2 ok”) ===================
+    private void payByBalance() {
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) return;
+
+        String uid = user.getUid();
+
+        DatabaseReference balanceRef = FirebaseDatabase.getInstance()
+                .getReference("users")
+                .child(uid)
+                .child("balance");
+
+        // ✅ Prefetch số dư từ server trước khi transaction chạy
+        balanceRef.get().addOnCompleteListener(task -> {
+
+            if (!task.isSuccessful() || task.getResult() == null) {
+                Toast.makeText(this, "Không đọc được số dư, vui lòng thử lại", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            final long serverBalance = parseBalance(task.getResult().getValue());
+
+            Log.d("BALANCE_DEBUG", "prefetch uid=" + uid
+                    + " serverBalance=" + serverBalance
+                    + " totalPrice=" + totalPrice);
+
+            balanceRef.runTransaction(new Transaction.Handler() {
+
+                @NonNull
+                @Override
+                public Transaction.Result doTransaction(@NonNull MutableData currentData) {
+
+                    Object localVal = currentData.getValue();
+
+                    // ✅ Nếu local cache null -> dùng serverBalance vừa fetch
+                    long balance = (localVal == null) ? serverBalance : parseBalance(localVal);
+
+                    Log.d("BALANCE_DEBUG", "doTransaction localVal=" + localVal
+                            + " parsedBalance=" + balance
+                            + " totalPrice=" + totalPrice);
+
+                    if (balance < totalPrice) {
+                        return Transaction.abort();
+                    }
+
+                    currentData.setValue(balance - totalPrice);
+                    return Transaction.success(currentData);
+                }
+
+                @Override
+                public void onComplete(DatabaseError error, boolean committed, DataSnapshot snapshot) {
+
+                    if (error != null) {
+                        Toast.makeText(parthome_PaymentActivity.this,
+                                "Lỗi thanh toán: " + error.getMessage(),
+                                Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    if (!committed) {
+                        Toast.makeText(parthome_PaymentActivity.this,
+                                R.string.toast_insufficient_balance,
+                                Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    // ✅ Thành công
+                    bookSeats(movieTitle, date, time, seats);
+                    saveTicketSuccessByBalance();
+
+                    Toast.makeText(parthome_PaymentActivity.this,
+                            R.string.toast_payment_success,
+                            Toast.LENGTH_SHORT).show();
+
+                    // ✅ QUAY VỀ MOVIE DETAIL (KHÔNG VỀ CHỌN GHẾ)
+                    goToMovieDetail();
+                }
+            });
+        });
+    }
+
+    // =================== Điều hướng về Movie Detail (pop SeatSelection + Payment) ===================
+    private void goToMovieDetail() {
+        Intent i = new Intent(parthome_PaymentActivity.this, parthome_movie_detail.class);
+
+        // gửi lại thông tin cơ bản để movie detail có thể reload nếu cần
+        i.putExtra("movieID", movieID);
+        i.putExtra("movieTitle", movieTitle);
+
+        // ✅ pop các màn trên movie detail (SeatSelection + Payment) nếu movie detail đang nằm dưới stack
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
+        startActivity(i);
+        finish();
+    }
+
+    // =================== Save ticket ===================
+    private void saveTicketSuccessByBalance() {
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) return;
+
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("tickets");
+        String ticketId = ref.push().getKey();
+        if (ticketId == null) return;
+
+        Map<String, Object> payment = new HashMap<>();
+        payment.put("method", "BALANCE");
+        payment.put("status", "PAID");
+        payment.put("paidAt", System.currentTimeMillis());
+
+        Map<String, Object> ticket = new HashMap<>();
+        ticket.put("movieId", movieID);
+        ticket.put("userId", user.getUid());
+        ticket.put("movieTitle", movieTitle);
+        ticket.put("posterUrl", posterUrl);
+
+        ticket.put("cinemaId", cinemaId);
+        ticket.put("cinemaName", cinemaName);
+
+        ticket.put("date", date);
+        ticket.put("time", time);
+        ticket.put("seats", seats);
+        ticket.put("totalPrice", totalPrice);
+        ticket.put("payment", payment);
+        ticket.put("status", "PAID");
+        ticket.put("createdAt", System.currentTimeMillis());
+
+        ref.child(ticketId).setValue(ticket);
+    }
+
+    private void createPendingTicket(String method) {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("tickets");
+        currentTicketId = ref.push().getKey();
+
+        Map<String, Object> ticket = new HashMap<>();
+        ticket.put("ticketId", currentTicketId);
+        ticket.put("movieId", movieID);
+        ticket.put("userId", auth.getCurrentUser().getUid());
+        ticket.put("movieTitle", movieTitle);
+        ticket.put("posterUrl", posterUrl);
+
+        ticket.put("cinemaId", cinemaId);
+        ticket.put("cinemaName", cinemaName);
+
+        ticket.put("date", date);
+        ticket.put("time", time);
+        ticket.put("seats", seats);
+        ticket.put("totalPrice", totalPrice);
+        ticket.put("status", "PENDING");
+        ticket.put("createdAt", System.currentTimeMillis());
+
+        Map<String, Object> payment = new HashMap<>();
+        payment.put("method", method);
+        payment.put("status", "PENDING");
+        ticket.put("payment", payment);
+
+        ref.child(currentTicketId).setValue(ticket);
+    }
+
+    private void updateTicketStatus(String ticketId, String newStatus) {
+        if (ticketId == null) return;
+
+        DatabaseReference ref = FirebaseDatabase.getInstance()
+                .getReference("tickets")
+                .child(ticketId);
+
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("status", newStatus);
+        updates.put("paidAt", System.currentTimeMillis());
+
+        ref.updateChildren(updates);
+    }
+
+    private void updateTicketToPaid(String ticketId) {
+        if (ticketId == null) return;
+
+        DatabaseReference ref = FirebaseDatabase.getInstance()
+                .getReference("tickets")
+                .child(ticketId);
+
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("status", "PAID");
+        updates.put("payment/status", "PAID");
+        updates.put("payment/paidAt", System.currentTimeMillis());
+
+        ref.updateChildren(updates).addOnSuccessListener(unused -> {
+            bookSeats(movieTitle, date, time, seats);
+
+            // ✅ VNPay thành công -> quay về movie detail luôn
+            goToMovieDetail();
+        });
+    }
+
+    private void bookSeats(
+            String movieTitle,
+            String date,
+            String time,
+            List<String> selectedSeats) {
+
+        String showtimeKey = date + "_" + time;
+
+        DatabaseReference seatsRef;
+
+        // ✅ Nếu có cinemaId -> ghi vào cinemas/{cinemaId}/seats (đúng như Firebase của bạn)
+        if (cinemaId != null && !cinemaId.trim().isEmpty()) {
+            seatsRef = FirebaseDatabase.getInstance()
+                    .getReference("Bookings")
+                    .child(movieTitle)
+                    .child(showtimeKey)
+                    .child("cinemas")
+                    .child(cinemaId)
+                    .child("seats");
+        } else {
+            // ✅ Trường hợp không chọn cinema -> fallback như cũ
+            seatsRef = FirebaseDatabase.getInstance()
+                    .getReference("Bookings")
+                    .child(movieTitle)
+                    .child(showtimeKey)
+                    .child("seats");
+        }
+
+        Map<String, Object> updates = new HashMap<>();
+        for (String seat : selectedSeats) {
+            updates.put(seat, "booked");
+        }
+
+        seatsRef.updateChildren(updates)
+                .addOnSuccessListener(unused -> Log.d("BOOK_SEAT", "Book ghế thành công"))
+                .addOnFailureListener(e -> Log.e("BOOK_SEAT", "Lỗi book ghế", e));
+    }
+
+
+    // =================== Helpers ===================
+    private long parseBalance(Object val) {
+        if (val == null) return 0L;
+
+        if (val instanceof Number) {
+            return ((Number) val).longValue();
+        }
+
+        if (val instanceof String) {
+            try {
+                String s = ((String) val).replaceAll("[^0-9]", "");
+                if (s.isEmpty()) return 0L;
+                return Long.parseLong(s);
+            } catch (Exception ignored) {
+                return 0L;
+            }
+        }
+
+        return 0L;
+    }
+
+    // =================== VNPay URL ===================
     public static String hmacSHA512(String key, String data) {
         try {
             Mac hmac512 = Mac.getInstance("HmacSHA512");
             SecretKeySpec secretKey = new SecretKeySpec(key.getBytes(), "HmacSHA512");
             hmac512.init(secretKey);
             byte[] bytes = hmac512.doFinal(data.getBytes());
+
             StringBuilder hash = new StringBuilder();
-            for (byte b : bytes) {
-                hash.append(String.format("%02x", b));
-            }
+            for (byte b : bytes) hash.append(String.format("%02x", b));
             return hash.toString();
         } catch (Exception e) {
             return "";
@@ -339,7 +565,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
     private String createVnpayUrl(int totalPrice) throws Exception {
         try {
             String vnp_TmnCode = "C1C16DDU";
-            String vnp_HashSecret = "8XWZ093QGUAF75SADH9B1E7KH7NM2SOR"; // TEST ONLY
+            String vnp_HashSecret = "8XWZ093QGUAF75SADH9B1E7KH7NM2SOR";
             String vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
 
             Map<String, String> params = new HashMap<>();
@@ -358,7 +584,6 @@ public class parthome_PaymentActivity extends AppCompatActivity {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault());
             params.put("vnp_CreateDate", sdf.format(new Date()));
 
-            // SORT
             List<String> fieldNames = new ArrayList<>(params.keySet());
             Collections.sort(fieldNames);
 
@@ -381,234 +606,11 @@ public class parthome_PaymentActivity extends AppCompatActivity {
             query.deleteCharAt(query.length() - 1);
 
             String secureHash = hmacSHA512(vnp_HashSecret, hashData.toString());
-
             return vnp_Url + "?" + query + "&vnp_SecureHash=" + secureHash;
+
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
-
     }
-
-    private void payByBalance() {
-
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null)
-            return;
-
-        String uid = user.getUid();
-
-        DatabaseReference balanceRef = FirebaseDatabase.getInstance()
-                .getReference("users")
-                .child(uid)
-                .child("balance");
-
-        balanceRef.runTransaction(new Transaction.Handler() {
-
-            @NonNull
-            @Override
-            public Transaction.Result doTransaction(
-                    @NonNull MutableData currentData) {
-
-                Long balance = currentData.getValue(Long.class);
-
-                // balance null = 0
-                if (balance == null)
-                    balance = 0L;
-
-                // KHÔNG ĐỦ TIỀN
-                if (balance < totalPrice) {
-                    return Transaction.abort();
-                }
-
-                // TRỪ TIỀN
-                currentData.setValue(balance - totalPrice);
-                return Transaction.success(currentData);
-            }
-
-            @Override
-            public void onComplete(
-                    DatabaseError error,
-                    boolean committed,
-                    DataSnapshot snapshot) {
-
-                // TRANSACTION FAIL
-                if (!committed) {
-                    Toast.makeText(
-                            parthome_PaymentActivity.this,
-                            R.string.toast_insufficient_balance,
-                            Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                // THANH TOÁN THÀNH CÔNG
-                bookSeats(movieTitle, date, time, seats);
-                saveTicketSuccessByBalance();
-
-                Toast.makeText(
-                        parthome_PaymentActivity.this,
-                        R.string.toast_payment_success,
-                        Toast.LENGTH_SHORT).show();
-
-                finish();
-            }
-        });
-    }
-
-    private void saveTicketSuccessByBalance() {
-
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null)
-            return;
-
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("tickets");
-
-        String ticketId = ref.push().getKey();
-        if (ticketId == null)
-            return;
-
-        Map<String, Object> payment = new HashMap<>();
-        payment.put("method", "BALANCE");
-        payment.put("status", "PAID");
-        payment.put("paidAt", System.currentTimeMillis());
-
-        Map<String, Object> ticket = new HashMap<>();
-        ticket.put("movieId", movieID);
-        ticket.put("userId", user.getUid());
-        ticket.put("movieTitle", movieTitle);
-        ticket.put("posterUrl", posterUrl);
-
-        // ✅ THÊM: cinema vào ticket
-        ticket.put("cinemaId", cinemaId);
-        ticket.put("cinemaName", cinemaName);
-
-        ticket.put("date", date);
-        ticket.put("time", time);
-        ticket.put("seats", seats);
-        ticket.put("totalPrice", totalPrice);
-        ticket.put("payment", payment);
-        ticket.put("status", "PAID");
-        ticket.put("createdAt", System.currentTimeMillis());
-
-        ref.child(ticketId).setValue(ticket);
-    }
-
-    private void saveTicketSuccess() {
-        if (currentUser == null)
-            return;
-
-        DatabaseReference ref = FirebaseDatabase.getInstance()
-                .getReference("tickets");
-
-        String ticketId = ref.push().getKey();
-
-        Map<String, Object> payment = new HashMap<>();
-        payment.put("method", "VNPAY");
-        payment.put("status", "PAID");
-        payment.put("paidAt", System.currentTimeMillis());
-
-        Map<String, Object> ticket = new HashMap<>();
-        ticket.put("userId", currentUser.getUid());
-        ticket.put("movieTitle", movieTitle);
-        ticket.put("posterUrl", posterUrl);
-
-        // ✅ THÊM: cinema vào ticket
-        ticket.put("cinemaId", cinemaId);
-        ticket.put("cinemaName", cinemaName);
-
-        ticket.put("date", date);
-        ticket.put("time", time);
-        ticket.put("seats", seats);
-        ticket.put("totalPrice", totalPrice);
-        ticket.put("payment", payment);
-        ticket.put("createdAt", System.currentTimeMillis());
-        ticket.put("status", "PAID");
-
-        ref.child(ticketId).setValue(ticket);
-    }
-    // Tạo một biến toàn cục để lưu ID vé hiện tại
-
-    private void createPendingTicket(String method) {
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("tickets");
-        currentTicketId = ref.push().getKey();
-
-        Map<String, Object> ticket = new HashMap<>();
-        ticket.put("ticketId", currentTicketId);
-        ticket.put("movieId", movieID);
-        ticket.put("userId", auth.getCurrentUser().getUid());
-        ticket.put("movieTitle", movieTitle);
-        ticket.put("posterUrl", posterUrl);
-
-        // ✅ THÊM: cinema vào ticket
-        ticket.put("cinemaId", cinemaId);
-        ticket.put("cinemaName", cinemaName);
-
-        ticket.put("date", date);
-        ticket.put("time", time);
-        ticket.put("seats", seats);
-        ticket.put("totalPrice", totalPrice);
-        ticket.put("status", "PENDING");
-        ticket.put("createdAt", System.currentTimeMillis());
-
-        Map<String, Object> payment = new HashMap<>();
-        payment.put("method", method);
-        payment.put("status", "PENDING");
-        ticket.put("payment", payment);
-
-        ref.child(currentTicketId).setValue(ticket);
-    }
-
-    private void updateTicketStatus(String ticketId, String newStatus) {
-        if (ticketId == null)
-            return;
-
-        DatabaseReference ref = FirebaseDatabase.getInstance()
-                .getReference("tickets")
-                .child(ticketId);
-
-        Map<String, Object> updates = new HashMap<>();
-        updates.put("status", newStatus);
-        updates.put("paidAt", System.currentTimeMillis());
-
-        ref.updateChildren(updates);
-    }
-
-    private void updateTicketToPaid(String ticketId) {
-        if (ticketId == null)
-            return;
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("tickets").child(ticketId);
-
-        Map<String, Object> updates = new HashMap<>();
-        updates.put("status", "PAID");
-        updates.put("payment/status", "PAID");
-        updates.put("payment/paidAt", System.currentTimeMillis());
-
-        ref.updateChildren(updates).addOnSuccessListener(unused -> {
-            // Chỉ khóa ghế khi trạng thái vé đã là PAID
-            bookSeats(movieTitle, date, time, seats);
-        });
-    }
-
-    private void bookSeats(
-            String movieTitle,
-            String date,
-            String time,
-            List<String> selectedSeats) {
-        DatabaseReference seatsRef = FirebaseDatabase.getInstance()
-                .getReference("Bookings")
-                .child(movieTitle)
-                .child(date + "_" + time)
-                .child("seats");
-
-        Map<String, Object> updates = new HashMap<>();
-
-        for (String seat : selectedSeats) {
-            updates.put(seat, "booked");
-        }
-
-        seatsRef.updateChildren(updates)
-                .addOnSuccessListener(unused -> Log.d("BOOK_SEAT", "Book ghế thành công"))
-                .addOnFailureListener(e -> Log.e("BOOK_SEAT", "Lỗi book ghế", e));
-    }
-
 }
