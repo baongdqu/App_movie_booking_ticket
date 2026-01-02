@@ -4,8 +4,7 @@
     <!-- Cho phép ứng dụng truy cập Internet -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <!-- Location permissions for Cinema nearby feature -->
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- Location permissions for Cinema nearby feature -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission
@@ -22,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App_movie_booking_ticket">
         <activity
+            android:name=".TicketDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".parthome_WriteReview"
             android:exported="false" />
         <activity
@@ -31,16 +33,21 @@
             android:name=".adapter.TicketAdapter"
             android:exported="false" />
         <activity
+            android:name=".TicketDetailActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".parthome_PaymentActivity"
             android:exported="true">
-         <intent-filter>
-            <action android:name="android.intent.action.VIEW" />
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
-            <category android:name="android.intent.category.BROWSABLE" />
-            <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
 
-            <data android:scheme="resultactivity" />
-            </intent-filter> </activity>
+                <data android:scheme="resultactivity" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".parthome_SeatSelectionActivity"
             android:exported="false" />
@@ -101,7 +108,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activities_2_chatbot"
             android:exported="false"

@@ -1,7 +1,6 @@
 package com.example.app_movie_booking_ticket.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,40 +14,32 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.app_movie_booking_ticket.R;
 import com.example.app_movie_booking_ticket.model.TicketSimple;
-import com.example.app_movie_booking_ticket.parthome_movie_detail;
 
 import java.util.List;
 
-/**
- * Adapter quản lý danh sách vé đã đặt (My Tickets).
- * Hỗ trợ hiển thị thông tin vé và xử lý sự kiện Hoàn vé (Refund).
- */
 public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder> {
 
-    // 🔥 CALLBACK REFUND
     public interface OnRefundClickListener {
         void onRefundClick(TicketSimple ticket);
+    }
+
+    public interface OnDetailClickListener {
+        void onDetailClick(TicketSimple ticket);
     }
 
     private final Context context;
     private final List<TicketSimple> list;
     private final OnRefundClickListener refundListener;
+    private final OnDetailClickListener detailListener;
 
-    // ✅ Constructor mới (có refund listener)
-    // ✅ Constructor mới (có refund listener)
-    /**
-     * Constructor cho TicketAdapter.
-     * 
-     * @param context        Context ứng dụng
-     * @param list           Danh sách vé
-     * @param refundListener Callback xử lý khi ấn nút Hoàn vé
-     */
     public TicketAdapter(Context context,
-            List<TicketSimple> list,
-            OnRefundClickListener refundListener) {
+                         List<TicketSimple> list,
+                         OnRefundClickListener refundListener,
+                         OnDetailClickListener detailListener) {
         this.context = context;
         this.list = list;
         this.refundListener = refundListener;
+        this.detailListener = detailListener;
     }
 
     @NonNull
@@ -61,7 +52,6 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
         TicketSimple ticket = list.get(position);
 
         holder.tvTitle.setText(ticket.title);
@@ -70,23 +60,16 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
 
         Glide.with(context)
                 .load(ticket.posterUrl)
+                .placeholder(R.drawable.placeholder_movie)
+                .error(R.drawable.placeholder_movie)
                 .into(holder.imgPoster);
 
-        // 👉 DETAILS (GIỮ NGUYÊN)
         holder.btnDetails.setOnClickListener(v -> {
-            if (ticket.movie == null)
-                return;
-
-            Intent intent = new Intent(context, parthome_movie_detail.class);
-            intent.putExtra("movie", ticket.movie);
-            context.startActivity(intent);
+            if (detailListener != null) detailListener.onDetailClick(ticket);
         });
 
-        // 👉 REFUND (GỌI CALLBACK)
         holder.btnRefund.setOnClickListener(v -> {
-            if (refundListener != null) {
-                refundListener.onRefundClick(ticket);
-            }
+            if (refundListener != null) refundListener.onRefundClick(ticket);
         });
     }
 
@@ -95,7 +78,6 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
         return list.size();
     }
 
-    // ===== VIEW HOLDER =====
     static class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imgPoster;
@@ -104,7 +86,6 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             imgPoster = itemView.findViewById(R.id.imgPoster);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvInfo = itemView.findViewById(R.id.tvInfo);

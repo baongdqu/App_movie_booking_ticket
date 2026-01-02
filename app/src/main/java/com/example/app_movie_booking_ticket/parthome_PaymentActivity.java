@@ -21,10 +21,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.vnpay.authentication.VNP_AuthenticationActivity;
 import com.vnpay.authentication.VNP_SdkCompletedCallback;
+
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -43,6 +43,7 @@ import java.util.Map;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
+
 import com.google.firebase.database.Transaction;
 import com.google.firebase.database.MutableData;
 
@@ -60,7 +61,10 @@ public class parthome_PaymentActivity extends AppCompatActivity {
     private String posterUrl;
     private String movieTitle;
     private String movieID;
+
     private String cinemaName;
+    private String cinemaId; // ✅ THÊM: cinemaId
+
     private String date;
     private String time;
     private ArrayList<String> seats;
@@ -97,6 +101,8 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         totalPrice = intent.getIntExtra("totalPrice", 0);
         movieID = intent.getStringExtra("movieID");
         cinemaName = intent.getStringExtra("cinemaName");
+
+        cinemaId = intent.getStringExtra("cinemaId"); // ✅ THÊM: nhận cinemaId
 
         // ===== MAP VIEW =====
         ImageView imagePoster = findViewById(R.id.imagePoster);
@@ -471,6 +477,11 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         ticket.put("userId", user.getUid());
         ticket.put("movieTitle", movieTitle);
         ticket.put("posterUrl", posterUrl);
+
+        // ✅ THÊM: cinema vào ticket
+        ticket.put("cinemaId", cinemaId);
+        ticket.put("cinemaName", cinemaName);
+
         ticket.put("date", date);
         ticket.put("time", time);
         ticket.put("seats", seats);
@@ -500,6 +511,11 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         ticket.put("userId", currentUser.getUid());
         ticket.put("movieTitle", movieTitle);
         ticket.put("posterUrl", posterUrl);
+
+        // ✅ THÊM: cinema vào ticket
+        ticket.put("cinemaId", cinemaId);
+        ticket.put("cinemaName", cinemaName);
+
         ticket.put("date", date);
         ticket.put("time", time);
         ticket.put("seats", seats);
@@ -522,6 +538,11 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         ticket.put("userId", auth.getCurrentUser().getUid());
         ticket.put("movieTitle", movieTitle);
         ticket.put("posterUrl", posterUrl);
+
+        // ✅ THÊM: cinema vào ticket
+        ticket.put("cinemaId", cinemaId);
+        ticket.put("cinemaName", cinemaName);
+
         ticket.put("date", date);
         ticket.put("time", time);
         ticket.put("seats", seats);
