@@ -1,6 +1,8 @@
 package com.example.app_movie_booking_ticket;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -40,14 +42,11 @@ import java.util.Map;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
-/**
- * Activity Thanh toán (Payment)
- * - VNPay (Sandbox)
- * - Balance nội bộ (Realtime Database users/{uid}/balance)
- *
- * ✅ Sau khi thanh toán thành công -> quay về Movie Detail (không quay về chọn ghế)
- */
 public class parthome_PaymentActivity extends AppCompatActivity {
+
+    private static final String TAG = "PAYMENT";
+    private static final String PREFS = "payment_prefs";
+    private static final String KEY_PENDING_TICKET_ID = "pending_ticket_id";
 
     private FirebaseAuth auth;
     private DatabaseReference userRef;
@@ -80,12 +79,12 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         userRef = FirebaseDatabase.getInstance().getReference("users");
         setContentView(R.layout.parthome_payment);
 
-        // ===== NHẬN DATA TỪ INTENT =====
         Intent intent = getIntent();
-        if (intent != null && intent.getData() != null) {
-            Log.d("VNPAY_RETURN", "Data nhận được: " + intent.getData());
-        }
 
+        // ✅ XỬ LÝ RETURN TỪ VNPAY (nếu có)
+        handleVnpayReturn(intent);
+
+        // ===== NHẬN DATA TỪ INTENT (extras) =====
         posterUrl = intent.getStringExtra("posterUrl");
         movieTitle = intent.getStringExtra("movieTitle");
         date = intent.getStringExtra("date");
@@ -111,10 +110,9 @@ public class parthome_PaymentActivity extends AppCompatActivity {
 
         rbVnpay = findViewById(R.id.rbVnpay);
         rbBalance = findViewById(R.id.rbBalance);
-
         MaterialButton btnContinue = findViewById(R.id.btnContinue);
 
-        // ===== HIỂN THỊ DATA =====
+        // ===== HIỂN THỊ =====
         txtTitle.setText(movieTitle);
 
         Glide.with(this)
@@ -138,10 +136,8 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         DecimalFormat formatter = new DecimalFormat("#,###");
         txtTotal.setText(formatter.format(totalPrice) + "đ");
 
-        // Load user info + balance
         loadUserInfo(txtUser, txtEmail, txtPhone);
         loadUserBalance();
-
         setupPaymentMethodSelection();
 
         btnContinue.setOnClickListener(v -> {
@@ -155,7 +151,54 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         });
     }
 
-    // =================== UI: chọn phương thức ===================
+    // ✅ Khi PaymentActivity đang mở mà nhận deep link mới
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        handleVnpayReturn(intent);
+    }
+
+    // =================== QUAN TRỌNG: xử lý kết quả VNPAY bằng intent.getData() ===================
+    private void handleVnpayReturn(Intent intent) {
+        if (intent == null) return;
+
+        Uri data = intent.getData();
+        if (data == null) return;
+
+        // Ví dụ: resultactivity://... ?vnp_ResponseCode=00&...
+        String responseCode = data.getQueryParameter("vnp_ResponseCode");
+        String txnStatus = data.getQueryParameter("vnp_TransactionStatus");
+
+        Log.d(TAG, "VNP_RETURN data=" + data);
+        Log.d(TAG, "vnp_ResponseCode=" + responseCode + " vnp_TransactionStatus=" + txnStatus);
+
+        // lấy ticket pending đã lưu
+        String pendingId = getPrefs().getString(KEY_PENDING_TICKET_ID, null);
+        if (pendingId == null) {
+            Log.w(TAG, "Không tìm thấy pending ticket id (prefs)");
+            return;
+        }
+        currentTicketId = pendingId;
+
+        // ✅ CHỈ code "00" mới là thành công
+        if ("00".equals(responseCode)) {
+            Toast.makeText(this, R.string.toast_payment_success, Toast.LENGTH_SHORT).show();
+            updateTicketToPaid(currentTicketId);
+            clearPendingTicketId();
+            return;
+        }
+
+        // ✅ Hủy / thất bại: chỉ quay về Payment, KHÔNG success
+        // (VNPay thường cancel = 24, nhưng mình không phụ thuộc, cứ !=00 là không thành công)
+        updateTicketStatus(currentTicketId, "CANCELLED");
+        Toast.makeText(this, "Bạn đã hủy thanh toán", Toast.LENGTH_SHORT).show();
+        clearPendingTicketId();
+
+        // Không finish(), không goToMovieDetail() => ở lại Payment
+    }
+
+    // =================== UI chọn phương thức ===================
     private void setupPaymentMethodSelection() {
         rbVnpay.setChecked(true);
 
@@ -194,7 +237,6 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         balanceRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                 userBalance = parseBalance(snapshot.getValue());
 
                 TextView txtBalance = findViewById(R.id.txtBalance);
@@ -208,7 +250,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Log.e("PAYMENT", "Error loading balance", error.toException());
+                Log.e(TAG, "Error loading balance", error.toException());
             }
         });
     }
@@ -231,7 +273,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
             }
         } else if (rbBalance.isChecked()) {
-            payByBalance(); // ✅ đã fix bug lần 1
+            payByBalance();
         } else {
             Toast.makeText(this, R.string.toast_select_payment_method, Toast.LENGTH_SHORT).show();
         }
@@ -239,27 +281,17 @@ public class parthome_PaymentActivity extends AppCompatActivity {
 
     // =================== VNPay ===================
     public void openSdk(String paymentUrl) {
-        createPendingTicket("VNPAY");
+        createPendingTicket("VNPAY"); // ✅ tạo pending + lưu ticket id
 
         Intent intent = new Intent(this, VNP_AuthenticationActivity.class);
         intent.putExtra("url", paymentUrl);
         intent.putExtra("tmn_code", "C1C16DDU");
-        intent.putExtra("scheme", "resultactivity");
+        intent.putExtra("scheme", "resultactivity"); // ✅ deep link return
         intent.putExtra("is_sandbox", true);
 
+        // ✅ Callback chỉ log, KHÔNG quyết định success/cancel nữa
         VNP_AuthenticationActivity.setSdkCompletedCallback(action -> {
-            Log.d("VNPAY_SDK", "Action: " + action);
-
-            if (action != null) {
-                // ✅ updateTicketToPaid sẽ bookSeats + quay về movie detail
-                updateTicketToPaid(currentTicketId);
-                Toast.makeText(this, R.string.toast_payment_success, Toast.LENGTH_SHORT).show();
-            } else {
-                updateTicketStatus(currentTicketId, "CANCELLED");
-                Toast.makeText(this,
-                        "Thanh toán không thành công hoặc đã bị hủy",
-                        Toast.LENGTH_SHORT).show();
-            }
+            Log.d("PAYMENT_SDK", "Action = " + action);
         });
 
         startActivity(intent);
@@ -291,9 +323,8 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         });
     }
 
-    // =================== Balance (FIX “lần 1 fail, lần 2 ok”) ===================
+    // =================== Balance payment ===================
     private void payByBalance() {
-
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user == null) return;
 
@@ -304,19 +335,13 @@ public class parthome_PaymentActivity extends AppCompatActivity {
                 .child(uid)
                 .child("balance");
 
-        // ✅ Prefetch số dư từ server trước khi transaction chạy
         balanceRef.get().addOnCompleteListener(task -> {
-
             if (!task.isSuccessful() || task.getResult() == null) {
                 Toast.makeText(this, "Không đọc được số dư, vui lòng thử lại", Toast.LENGTH_SHORT).show();
                 return;
             }
 
             final long serverBalance = parseBalance(task.getResult().getValue());
-
-            Log.d("BALANCE_DEBUG", "prefetch uid=" + uid
-                    + " serverBalance=" + serverBalance
-                    + " totalPrice=" + totalPrice);
 
             balanceRef.runTransaction(new Transaction.Handler() {
 
@@ -325,17 +350,9 @@ public class parthome_PaymentActivity extends AppCompatActivity {
                 public Transaction.Result doTransaction(@NonNull MutableData currentData) {
 
                     Object localVal = currentData.getValue();
-
-                    // ✅ Nếu local cache null -> dùng serverBalance vừa fetch
                     long balance = (localVal == null) ? serverBalance : parseBalance(localVal);
 
-                    Log.d("BALANCE_DEBUG", "doTransaction localVal=" + localVal
-                            + " parsedBalance=" + balance
-                            + " totalPrice=" + totalPrice);
-
-                    if (balance < totalPrice) {
-                        return Transaction.abort();
-                    }
+                    if (balance < totalPrice) return Transaction.abort();
 
                     currentData.setValue(balance - totalPrice);
                     return Transaction.success(currentData);
@@ -358,7 +375,6 @@ public class parthome_PaymentActivity extends AppCompatActivity {
                         return;
                     }
 
-                    // ✅ Thành công
                     bookSeats(movieTitle, date, time, seats);
                     saveTicketSuccessByBalance();
 
@@ -366,31 +382,24 @@ public class parthome_PaymentActivity extends AppCompatActivity {
                             R.string.toast_payment_success,
                             Toast.LENGTH_SHORT).show();
 
-                    // ✅ QUAY VỀ MOVIE DETAIL (KHÔNG VỀ CHỌN GHẾ)
                     goToMovieDetail();
                 }
             });
         });
     }
 
-    // =================== Điều hướng về Movie Detail (pop SeatSelection + Payment) ===================
+    // =================== Điều hướng về Movie Detail ===================
     private void goToMovieDetail() {
         Intent i = new Intent(parthome_PaymentActivity.this, parthome_movie_detail.class);
-
-        // gửi lại thông tin cơ bản để movie detail có thể reload nếu cần
         i.putExtra("movieID", movieID);
         i.putExtra("movieTitle", movieTitle);
-
-        // ✅ pop các màn trên movie detail (SeatSelection + Payment) nếu movie detail đang nằm dưới stack
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-
         startActivity(i);
         finish();
     }
 
     // =================== Save ticket ===================
     private void saveTicketSuccessByBalance() {
-
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user == null) return;
 
@@ -423,9 +432,14 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         ref.child(ticketId).setValue(ticket);
     }
 
+    // ✅ tạo pending + lưu ticketId để lúc return vẫn biết ticket nào cần update
     private void createPendingTicket(String method) {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("tickets");
         currentTicketId = ref.push().getKey();
+
+        if (currentTicketId == null) return;
+
+        savePendingTicketId(currentTicketId);
 
         Map<String, Object> ticket = new HashMap<>();
         ticket.put("ticketId", currentTicketId);
@@ -480,23 +494,14 @@ public class parthome_PaymentActivity extends AppCompatActivity {
 
         ref.updateChildren(updates).addOnSuccessListener(unused -> {
             bookSeats(movieTitle, date, time, seats);
-
-            // ✅ VNPay thành công -> quay về movie detail luôn
             goToMovieDetail();
         });
     }
 
-    private void bookSeats(
-            String movieTitle,
-            String date,
-            String time,
-            List<String> selectedSeats) {
-
+    private void bookSeats(String movieTitle, String date, String time, List<String> selectedSeats) {
         String showtimeKey = date + "_" + time;
 
         DatabaseReference seatsRef;
-
-        // ✅ Nếu có cinemaId -> ghi vào cinemas/{cinemaId}/seats (đúng như Firebase của bạn)
         if (cinemaId != null && !cinemaId.trim().isEmpty()) {
             seatsRef = FirebaseDatabase.getInstance()
                     .getReference("Bookings")
@@ -506,7 +511,6 @@ public class parthome_PaymentActivity extends AppCompatActivity {
                     .child(cinemaId)
                     .child("seats");
         } else {
-            // ✅ Trường hợp không chọn cinema -> fallback như cũ
             seatsRef = FirebaseDatabase.getInstance()
                     .getReference("Bookings")
                     .child(movieTitle)
@@ -515,35 +519,36 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         }
 
         Map<String, Object> updates = new HashMap<>();
-        for (String seat : selectedSeats) {
-            updates.put(seat, "booked");
-        }
+        for (String seat : selectedSeats) updates.put(seat, "booked");
 
         seatsRef.updateChildren(updates)
                 .addOnSuccessListener(unused -> Log.d("BOOK_SEAT", "Book ghế thành công"))
                 .addOnFailureListener(e -> Log.e("BOOK_SEAT", "Lỗi book ghế", e));
     }
 
-
     // =================== Helpers ===================
     private long parseBalance(Object val) {
         if (val == null) return 0L;
-
-        if (val instanceof Number) {
-            return ((Number) val).longValue();
-        }
-
+        if (val instanceof Number) return ((Number) val).longValue();
         if (val instanceof String) {
             try {
                 String s = ((String) val).replaceAll("[^0-9]", "");
-                if (s.isEmpty()) return 0L;
-                return Long.parseLong(s);
-            } catch (Exception ignored) {
-                return 0L;
-            }
+                return s.isEmpty() ? 0L : Long.parseLong(s);
+            } catch (Exception ignored) { return 0L; }
         }
-
         return 0L;
+    }
+
+    private SharedPreferences getPrefs() {
+        return getSharedPreferences(PREFS, MODE_PRIVATE);
+    }
+
+    private void savePendingTicketId(String id) {
+        getPrefs().edit().putString(KEY_PENDING_TICKET_ID, id).apply();
+    }
+
+    private void clearPendingTicketId() {
+        getPrefs().edit().remove(KEY_PENDING_TICKET_ID).apply();
     }
 
     // =================== VNPay URL ===================

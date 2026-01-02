@@ -322,7 +322,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="844f1ce6-039a-4511-a069-8979768ecd95" name="Changes" comment="fix: sửa lỗi khi thêm logic cho phim thịnh hành top review, phim đang chiếu trong vòng 7 ngày, phim sắp chiếu hơn 7 ngày, và logic phim đã chiếu.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/parthome_PaymentActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app_movie_booking_ticket/parthome_PaymentActivity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
