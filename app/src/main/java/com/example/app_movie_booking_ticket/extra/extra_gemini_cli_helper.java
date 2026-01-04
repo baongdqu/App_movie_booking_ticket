@@ -120,9 +120,8 @@ public class extra_gemini_cli_helper {
             // Build request body
             JSONObject requestBody = new JSONObject();
             requestBody.put("message", userMessage);
-            // System prompt mặc định cho chatbot phim
-            requestBody.put("system_prompt",
-                    "Bạn là trợ lý ảo của rạp chiếu phim. Hãy trả lời khán giả một cách thân thiện, ngắn gọn và hữu ích. Sử dụng tiếng Việt.");
+            // Không gửi system_prompt - để server sử dụng system prompt từ Desktop settings
+            // Điều này giúp thống nhất cấu hình giữa mobile và desktop
 
             Request request = new Request.Builder()
                     .url(serverUrl + "/chat")
@@ -180,7 +179,7 @@ public class extra_gemini_cli_helper {
                     count, genre, mood);
 
             requestBody.put("message", prompt);
-            requestBody.put("system_prompt", "Bạn là chuyên gia điện ảnh am hiểu các bộ phim.");
+            // Sử dụng system prompt từ Desktop settings
 
             Request request = new Request.Builder()
                     .url(serverUrl + "/chat")
@@ -220,6 +219,7 @@ public class extra_gemini_cli_helper {
      * Parse response từ REST API
      */
     private String parseResponse(String jsonResponse) throws JSONException {
+        Log.d(TAG, "Raw Server Response: " + jsonResponse); // Log raw response
         JSONObject obj = new JSONObject(jsonResponse);
 
         // API mới trả về field "response"
@@ -227,12 +227,24 @@ public class extra_gemini_cli_helper {
             return obj.getString("response");
         } else if (obj.has("reply")) { // Fallback, just in case
             return obj.getString("reply");
+        } else if (obj.has("candidates")) { // Google AI Studio format support
+            // Handle Google AI Studio standard response format if needed
+            // This is a guess, but helpful if they switched to direct API
+            return obj.getJSONArray("candidates").getJSONObject(0).getJSONObject("content").getJSONArray("parts")
+                    .getJSONObject(0).getString("text");
         } else {
             // Check for error field
             if (obj.has("error")) {
                 throw new JSONException(obj.getString("error"));
             }
-            return "Không có nội dung phản hồi từ server";
+
+            // Return validation error with visible keys for debugging
+            StringBuilder keys = new StringBuilder();
+            java.util.Iterator<String> iter = obj.keys();
+            while (iter.hasNext()) {
+                keys.append(iter.next()).append(", ");
+            }
+            return "Không có nội dung phản hồi hợp lệ từ server. Các trường nhận được: " + keys.toString();
         }
     }
 

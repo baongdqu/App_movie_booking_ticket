@@ -267,6 +267,10 @@
     <string name="notification_profile_update_title">Account Update</string>
     <string name="notification_profile_update_message">You have updated your personal information</string>
 
+    <!-- Gemini CLI Server -->
+    <string name="gemini_cli_server_url">https://unbadgered-deangelo-unforeknowable.ngrok-free.dev</string>
+    <string name="use_local_ai_server">true</string>
+
     <!-- Chatbot Error Messages -->
     <string name="server_not_ready">⚠️ AI Server not ready. Check connection.</string>
     <string name="server_connect_error_title">Cannot connect to AI Server.</string>
