@@ -18,7 +18,7 @@
     <color name="button_primary_profile">#E50914</color>
     <color name="button_secondary_profile">#2196F3</color>
     <color name="divider_color">#333333</color>
-    
+    <color name="review_highlight">#2A2A3A</color> ```
     <!-- 🎬 Netflix-Style Color Palette (Dark Mode) -->
     <color name="netflix_black">#0A0A0A</color>
     <color name="netflix_red">#E50914</color>
@@ -41,4 +41,5 @@
     <color name="chat_hint_text">@color/text_secondary</color>
     <color name="chat_chip_stroke">#E50914</color>
     <color name="chat_chip_text">#E50914</color>
+
 </resources>

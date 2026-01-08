@@ -5,6 +5,7 @@ import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide; // Cần thư viện Glide để load ảnh
 import com.example.app_movie_booking_ticket.R;
@@ -46,13 +47,14 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
         // Kiểm tra xem đây có phải đánh giá của người dùng hiện tại không
         boolean isCurrentUser = currentUid != null && currentUid.equals(review.getUserId());
 
-        if (isCurrentUser) {
-            holder.binding.tvUserNameReview.setText(review.getUserName() + " (Bạn)");
-            holder.binding.getRoot().setCardBackgroundColor(Color.parseColor("#2A2A3A")); // Highlight nhẹ
-        } else {
-            holder.binding.tvUserNameReview.setText(review.getUserName());
-            holder.binding.getRoot().setCardBackgroundColor(Color.TRANSPARENT);
-        }
+            if (isCurrentUser) {
+                holder.binding.tvUserNameReview.setText(review.getUserName() + " (Bạn)");
+                int highlightColor = ContextCompat.getColor(holder.itemView.getContext(), R.color.review_highlight);
+                holder.binding.getRoot().setCardBackgroundColor(highlightColor); // Highlight nhẹ
+            } else {
+                holder.binding.tvUserNameReview.setText(review.getUserName());
+                holder.binding.getRoot().setCardBackgroundColor(Color.TRANSPARENT);
+            }
 
         holder.binding.tvCommentReview.setText(review.getComment());
         holder.binding.tvStarCountReview.setText(review.getRating() + " ★");
