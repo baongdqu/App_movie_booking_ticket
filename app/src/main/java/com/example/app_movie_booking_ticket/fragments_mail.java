@@ -193,7 +193,11 @@ public class fragments_mail extends Fragment {
 
                                                 ticketList.add(ticket);
                                         }
-
+                                        Collections.sort(ticketList, (a, b) -> {
+                                                long timeA = (a.payment != null) ? a.payment.paidAt : 0;
+                                                long timeB = (b.payment != null) ? b.payment.paidAt : 0;
+                                                return Long.compare(timeB, timeA); // Sắp xếp giảm dần theo thời gian thanh toán
+                                        });
                                         adapter.notifyDataSetChanged();
 
                                         if (ticketList.isEmpty()) showEmptyState();
