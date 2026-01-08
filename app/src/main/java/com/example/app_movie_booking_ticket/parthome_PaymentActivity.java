@@ -281,17 +281,35 @@ public class parthome_PaymentActivity extends AppCompatActivity {
 
     // =================== VNPay ===================
     public void openSdk(String paymentUrl) {
-        createPendingTicket("VNPAY"); // ✅ tạo pending + lưu ticket id
+        createPendingTicket("VNPAY"); // Vẫn tạo vé PENDING trước
 
         Intent intent = new Intent(this, VNP_AuthenticationActivity.class);
         intent.putExtra("url", paymentUrl);
         intent.putExtra("tmn_code", "C1C16DDU");
-        intent.putExtra("scheme", "resultactivity"); // ✅ deep link return
+        intent.putExtra("scheme", "resultactivity");
         intent.putExtra("is_sandbox", true);
 
-        // ✅ Callback chỉ log, KHÔNG quyết định success/cancel nữa
         VNP_AuthenticationActivity.setSdkCompletedCallback(action -> {
-            Log.d("PAYMENT_SDK", "Action = " + action);
+            Log.d("PAYMENT_SDK", "Action nhận được: " + action);
+
+            // Bắt đúng chuỗi "SuccessBackAction" mà bạn đã xác định
+            if ("SuccessBackAction".equals(action)) {
+                runOnUiThread(() -> {
+                    String pendingId = getPrefs().getString(KEY_PENDING_TICKET_ID, null);
+                    if (pendingId != null) {
+                        // Thực hiện các bước "giả lập" thành công
+                        updateTicketToPaid(pendingId);
+                        clearPendingTicketId();
+
+                        Toast.makeText(this, "Xác nhận thanh toán thành công!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            } else if ("FailBackAction".equals(action)) {
+                // Trường hợp người dùng hủy bỏ giữa chừng
+                runOnUiThread(() -> {
+                    Toast.makeText(this, "Bạn đã quay lại, vé vẫn ở trạng thái chờ.", Toast.LENGTH_SHORT).show();
+                });
+            }
         });
 
         startActivity(intent);
