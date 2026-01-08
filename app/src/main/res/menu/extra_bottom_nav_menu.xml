@@ -13,7 +13,7 @@
 
     <item
         android:id="@+id/nav_mail"
-        android:icon="@drawable/ic_mail"
+        android:icon="@drawable/ic_ticket"
         android:title="@string/th" />
 
     <item

@@ -65,24 +65,32 @@ public class parthome_movie_detail extends AppCompatActivity {
         Log.d("DEBUG_STATE",
                 "Phim: " + movie.getTitle() + " | isUpcoming: " + isUpcoming + " | isExpired: " + isExpired
                         + " | fromCinema: " + fromCinema);
-
-        // Xử lý hiển thị dựa trên trạng thái phim
-        if (isExpired) {
-            // Phim đã chiếu - ẩn nút đặt vé, hiển thị thông báo
+        if (isUpcoming) {
+            // 1. Nếu là phim sắp chiếu: Ẩn nút mua vé và ẩn toàn bộ phần đánh giá
             binding.button2.setVisibility(View.GONE);
-            // Có thể thêm TextView thông báo "Phim đã ngừng chiếu" nếu có trong layout
-        } else {
-            // Phim còn chiếu hoặc sắp chiếu - hiển thị nút đặt vé
-            binding.button2.setVisibility(View.VISIBLE);
+            binding.llStarRatingInfo.setVisibility(View.GONE);
+            binding.cvSummaryRatingInfo.setVisibility(View.GONE);
 
-            // Nếu mở từ rạp, đổi text nút
-            if (fromCinema && cinemaName != null) {
-                binding.button2.setText("Đặt vé tại " + shortenCinemaName(cinemaName));
-            }
+            // Không gọi hàm loadMovieRatings để tiết kiệm tài nguyên
+        } else if (isExpired) {
+            // 2. Nếu phim đã hết hạn chiếu
+            binding.button2.setVisibility(View.GONE);
+            // Phim cũ vẫn có thể xem lại đánh giá nên có thể để Visible
+            binding.llStarRatingInfo.setVisibility(View.VISIBLE);
+            binding.cvSummaryRatingInfo.setVisibility(View.VISIBLE);
+            loadMovieRatings(movie.getMovieID());
+        } else {
+            // 3. Phim đang chiếu bình thường
+            binding.button2.setVisibility(View.VISIBLE);
+            binding.llStarRatingInfo.setVisibility(View.VISIBLE);
+            binding.cvSummaryRatingInfo.setVisibility(View.VISIBLE);
+            loadMovieRatings(movie.getMovieID());
+        }
+// Nếu là phim đang chiếu từ CinemaSelection thì đổi text nút
+        if (!isUpcoming && !isExpired && fromCinema && cinemaName != null) {
+            binding.button2.setText("Đặt vé tại " + shortenCinemaName(cinemaName));
         }
 
-        binding.llStarRatingInfo.setVisibility(View.VISIBLE);
-        binding.cvSummaryRatingInfo.setVisibility(View.VISIBLE);
         binding.llImagesSection.setVisibility(View.VISIBLE);
         loadMovieRatings(movie.getMovieID());
 
@@ -109,9 +117,6 @@ public class parthome_movie_detail extends AppCompatActivity {
             imagesList = new ArrayList<>();
 
         imageAdapter = new MovieImageAdapter(this, imagesList);
-        binding.recyclerImages.setLayoutManager(
-                new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        binding.recyclerImages.setAdapter(imageAdapter);
 
         // ================= BACK =================
         binding.btnBack.setOnClickListener(v -> {

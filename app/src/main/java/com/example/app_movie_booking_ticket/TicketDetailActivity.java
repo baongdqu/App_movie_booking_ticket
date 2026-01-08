@@ -241,7 +241,9 @@ public class TicketDetailActivity extends AppCompatActivity {
                                     Toast.makeText(TicketDetailActivity.this,
                                             "Hoàn vé thành công!",
                                             Toast.LENGTH_SHORT).show();
+                                    sendNotification(ticketUserId, "Hoàn tiền thành công", "Vé của bạn đã được hoàn tiền.", "REFUND");
 
+                                    Toast.makeText(TicketDetailActivity.this, "Hoàn vé thành công!", Toast.LENGTH_SHORT).show();
                                     // ✅ báo về Fragment reload rồi quay lại
                                     setResult(RESULT_OK);
                                     finish();
@@ -257,4 +259,23 @@ public class TicketDetailActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) { }
         });
     }
+    private void sendNotification(String userId, String title, String message, String type) {
+        DatabaseReference notifRef = FirebaseDatabase.getInstance()
+                .getReference("notifications")
+                .child(userId);
+
+        String key = notifRef.push().getKey();
+        if (key == null) return;
+
+        Map<String, Object> notif = new HashMap<>();
+        notif.put("title", title);
+        notif.put("message", message);
+        notif.put("type", type); // Truyền "REFUND"
+        notif.put("timestamp", System.currentTimeMillis());
+        notif.put("read", false);
+
+        notifRef.child(key).setValue(notif);
+    }
+
+
 }

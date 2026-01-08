@@ -306,6 +306,8 @@ public class fragments_mail extends Fragment {
                                                 db.updateChildren(updates)
                                                         .addOnSuccessListener(unused -> {
                                                                 Toast.makeText(getContext(), "Hoàn tiền thành công!", Toast.LENGTH_SHORT).show();
+                                                                String msg = "Bạn đã được hoàn " + totalPrice + "đ cho phim " + movieTitle;
+                                                                sendNotification(currentUserId, "Hoàn tiền thành công", msg, "REFUND");
                                                                 loadTickets(); // reload list (REFUNDED sẽ bị lọc)
                                                         })
                                                         .addOnFailureListener(e -> {
@@ -320,5 +322,21 @@ public class fragments_mail extends Fragment {
                         public void onCancelled(@NonNull DatabaseError error) { }
                 });
         }
+        private void sendNotification(String userId, String title, String message, String type) {
+                DatabaseReference notifRef = FirebaseDatabase.getInstance()
+                        .getReference("notifications")
+                        .child(userId);
 
+                String key = notifRef.push().getKey();
+                if (key == null) return;
+
+                Map<String, Object> notif = new HashMap<>();
+                notif.put("title", title);
+                notif.put("message", message);
+                notif.put("type", type); // Truyền "REFUND"
+                notif.put("timestamp", System.currentTimeMillis());
+                notif.put("read", false);
+
+                notifRef.child(key).setValue(notif);
+        }
 }
