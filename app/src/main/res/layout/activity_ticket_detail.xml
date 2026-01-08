@@ -101,36 +101,76 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 app:cardCornerRadius="16dp"
-                app:cardElevation="2dp"
-                android:padding="12dp">
+                app:cardElevation="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="12dp">
+                    android:padding="16dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Thông tin vé"
+                        android:text="Chi tiết giao dịch"
                         android:textStyle="bold"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp"
+                        android:textColor="?attr/colorOnSurface"/>
 
                     <TextView
                         android:id="@+id/tvSeats"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="12dp"
                         android:text="🎟 Ghế: A1, A2"
                         android:textSize="14sp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Phương thức:"
+                            android:textSize="14sp"/>
+                        <TextView
+                            android:id="@+id/tvPaymentMethod"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ví ứng dụng"
+                            android:textStyle="bold"
+                            android:textColor="@color/profile_accent"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Thời gian:"
+                            android:textSize="14sp"/>
+                        <TextView
+                            android:id="@+id/tvTransactionTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--:--, --/--/----"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginTop="12dp"
                         android:layout_marginBottom="12dp"
-                        android:background="#22000000"/>
+                        android:background="#1A000000"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -151,17 +191,19 @@
                             android:layout_height="wrap_content"
                             android:text="120,000đ"
                             android:textStyle="bold"
-                            android:textSize="16sp"/>
+                            android:textColor="#E50914"
+                            android:textSize="18sp"/>
                     </LinearLayout>
 
                     <TextView
                         android:id="@+id/tvHintRefund"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="12dp"
                         android:text="Lưu ý: Hoàn vé sẽ cộng tiền vào số dư ví nội bộ."
-                        android:textSize="12sp"
-                        android:alpha="0.8"/>
+                        android:textSize="11sp"
+                        android:textColor="#808080"
+                        android:fontFamily="sans-serif-light"/>
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>

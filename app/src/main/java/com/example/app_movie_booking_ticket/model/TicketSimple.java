@@ -1,37 +1,34 @@
 package com.example.app_movie_booking_ticket.model;
 
+import java.util.List;
+
 public class TicketSimple {
-
-    // 🔥 ID của ticket trong Firebase
     private String ticketId;
-
-    public String title;
-    public String info;
-    public String seats;
+    public String movieTitle;
     public String posterUrl;
-    public Movie movie;
+    public String cinemaName;
+    public String date;
+    public String time;
+    public List<String> seats;
+    public long totalPrice;
+    public String status;
+    public long createdAt;
+
+    // Node Payment bên trong JSON
+    public PaymentInfo payment;
 
     public TicketSimple() {}
 
-    // ✅ Constructor cũ + thêm ticketId
-    public TicketSimple(String ticketId,
-                        Movie movie,
-                        String title,
-                        String info,
-                        String seats,
-                        String posterUrl) {
+    // Lớp lồng để khớp với cấu trúc "payment": { ... } trong JSON
+    public static class PaymentInfo {
+        public String method;
+        public String status;
+        public long paidAt;
 
-        this.ticketId = ticketId;
-        this.movie = movie;
-        this.title = title;
-        this.info = info;
-        this.seats = seats;
-        this.posterUrl = posterUrl;
+        public PaymentInfo() {}
     }
 
-    // 🔥 Getter bắt buộc để refund
-    public String getTicketId() {
-        return ticketId;
-    }
+    // Getters
+    public String getTicketId() { return ticketId; }
+    public void setTicketId(String ticketId) { this.ticketId = ticketId; }
 }
-

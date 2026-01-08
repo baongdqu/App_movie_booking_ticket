@@ -25,8 +25,11 @@ import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class TicketDetailActivity extends AppCompatActivity {
@@ -35,6 +38,8 @@ public class TicketDetailActivity extends AppCompatActivity {
 
     private ImageView imgPoster;
     private TextView tvMovieTitle, tvCinema, tvDateTime, tvSeats, tvTotalPrice;
+    // --- THÊM 2 BIẾN NÀY ---
+    private TextView tvPaymentMethod, tvTransactionTime;
     private MaterialButton btnRefund;
 
     private final DecimalFormat moneyFmt = new DecimalFormat("#,###");
@@ -49,18 +54,17 @@ public class TicketDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket_detail);
 
-        // Trong TicketDetailActivity.java
+        // Toolbar navigation
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(v -> {
             Intent intent = new Intent(TicketDetailActivity.this, activities_2_a_menu_manage_fragments.class);
-            // Gửi tín hiệu để Activity chính biết cần mở Fragment nào
             intent.putExtra("OPEN_FRAGMENT", "TICKET_FRAGMENT");
-            // Dọn dẹp các Activity khác để tránh bị lặp
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
             finish();
         });
 
+        // Ánh xạ View
         imgPoster = findViewById(R.id.imgPoster);
         tvMovieTitle = findViewById(R.id.tvMovieTitle);
         tvCinema = findViewById(R.id.tvCinema);
@@ -69,12 +73,15 @@ public class TicketDetailActivity extends AppCompatActivity {
         tvTotalPrice = findViewById(R.id.tvTotalPrice);
         btnRefund = findViewById(R.id.btnRefund);
 
+        // --- ÁNH XẠ 2 VIEW MỚI (Đảm bảo ID này trùng với XML) ---
+        tvPaymentMethod = findViewById(R.id.tvPaymentMethod);
+        tvTransactionTime = findViewById(R.id.tvTransactionTime);
+
         ticketId = getIntent().getStringExtra(EXTRA_TICKET_ID);
         if (ticketId == null || ticketId.trim().isEmpty()) {
             finish();
             return;
         }
-//        ticketId = getIntent().getStringExtra("TICKET_ID");
         loadTicket(ticketId);
 
         btnRefund.setOnClickListener(v -> refundTicket());
@@ -91,11 +98,16 @@ public class TicketDetailActivity extends AppCompatActivity {
                             return;
                         }
 
+                        // Lấy dữ liệu cơ bản
                         String movieTitle = t.child("movieTitle").getValue(String.class);
                         String posterUrl = t.child("posterUrl").getValue(String.class);
                         String cinemaName = t.child("cinemaName").getValue(String.class);
                         String date = t.child("date").getValue(String.class);
                         String time = t.child("time").getValue(String.class);
+
+                        // Lấy dữ liệu thanh toán chi tiết
+                        String method = t.child("payment/method").getValue(String.class);
+                        Long paidAt = t.child("payment/paidAt").getValue(Long.class);
 
                         ticketUserId = t.child("userId").getValue(String.class);
 
@@ -105,6 +117,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                         String status = t.child("status").getValue(String.class);
                         refunded = "REFUNDED".equals(status);
 
+                        // Xử lý danh sách ghế
                         ArrayList<String> seats = new ArrayList<>();
                         if (t.child("seats").exists()) {
                             for (DataSnapshot s : t.child("seats").getChildren()) {
@@ -113,23 +126,29 @@ public class TicketDetailActivity extends AppCompatActivity {
                             }
                         }
 
+                        // Hiển thị lên UI
                         tvMovieTitle.setText(movieTitle != null ? movieTitle : "");
                         tvCinema.setText(!TextUtils.isEmpty(cinemaName) ? ("🎬 " + cinemaName) : "🎬 (Chưa có rạp)");
                         tvDateTime.setText("🕒 " + (date != null ? date : "") + " • " + (time != null ? time : ""));
-                        tvSeats.setText(seats.isEmpty()
-                                ? "🎟 Ghế: (Chưa có)"
-                                : "🎟 Ghế: " + TextUtils.join(", ", seats));
+                        tvSeats.setText(seats.isEmpty() ? "🎟 Ghế: (Chưa có)" : "🎟 Ghế: " + TextUtils.join(", ", seats));
                         tvTotalPrice.setText(moneyFmt.format(totalPrice) + "đ");
 
-                        if (!TextUtils.isEmpty(posterUrl)) {
-                            Glide.with(TicketDetailActivity.this)
-                                    .load(posterUrl)
-                                    .placeholder(R.drawable.placeholder_movie)
-                                    .error(R.drawable.placeholder_movie)
-                                    .into(imgPoster);
-                        } else {
-                            imgPoster.setImageResource(R.drawable.placeholder_movie);
+                        // Hiển thị phương thức thanh toán
+                        String paymentDisplay = ("BALANCE".equals(method) ? "Số dư" : "Cổng VNPay");
+                        if (tvPaymentMethod != null) tvPaymentMethod.setText(paymentDisplay);
+
+                        // Hiển thị thời gian giao dịch
+                        if (paidAt != null && tvTransactionTime != null) {
+                            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss, dd/MM/yyyy", Locale.getDefault());
+                            tvTransactionTime.setText(sdf.format(new Date(paidAt)));
                         }
+
+                        // Load ảnh poster
+                        Glide.with(TicketDetailActivity.this)
+                                .load(posterUrl)
+                                .placeholder(R.drawable.placeholder_movie)
+                                .error(R.drawable.placeholder_movie)
+                                .into(imgPoster);
 
                         updateRefundButtonUI();
                     }
@@ -137,7 +156,6 @@ public class TicketDetailActivity extends AppCompatActivity {
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                         Log.e("TICKET_DETAIL", "loadTicket error", error.toException());
-                        Toast.makeText(TicketDetailActivity.this, "Không tải được vé", Toast.LENGTH_SHORT).show();
                         finish();
                     }
                 });

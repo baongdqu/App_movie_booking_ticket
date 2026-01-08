@@ -163,23 +163,35 @@ public class fragments_mail extends Fragment {
                                                 String posterUrl = t.child("posterUrl").getValue(String.class);
                                                 String date = t.child("date").getValue(String.class);
                                                 String time = t.child("time").getValue(String.class);
-
+                                                String cinemaName = t.child("cinemaName").getValue(String.class); // Lấy tên rạp
+                                                Long totalPrice = t.child("totalPrice").getValue(Long.class);
+                                                TicketSimple.PaymentInfo paymentInfo = null;
+                                                DataSnapshot pSnap = t.child("payment");
+                                                if (pSnap.exists()) {
+                                                        paymentInfo = new TicketSimple.PaymentInfo();
+                                                        paymentInfo.method = pSnap.child("method").getValue(String.class);
+                                                        paymentInfo.paidAt = pSnap.child("paidAt").getValue(Long.class);
+                                                }
                                                 List<String> seats = new ArrayList<>();
                                                 if (t.child("seats").exists()) {
                                                         for (DataSnapshot s : t.child("seats").getChildren()) {
-                                                                String seat = s.getValue(String.class);
-                                                                if (seat != null) seats.add(seat);
+                                                                seats.add(s.getValue(String.class));
                                                         }
                                                 }
 
-                                                ticketList.add(new TicketSimple(
-                                                        t.getKey(), // ticketId
-                                                        movie,
-                                                        movie.getTitle(),
-                                                        date + " • " + time,
-                                                        "Ghế: " + String.join(", ", seats),
-                                                        posterUrl
-                                                ));
+                                                // Khởi tạo TicketSimple với đầy đủ thông tin mới
+                                                TicketSimple ticket = new TicketSimple();
+                                                ticket.setTicketId(t.getKey());
+                                                ticket.movieTitle = movieTitle;
+                                                ticket.posterUrl = posterUrl;
+                                                ticket.date = date;
+                                                ticket.time = time;
+                                                ticket.cinemaName = cinemaName;
+                                                ticket.totalPrice = (totalPrice != null) ? totalPrice : 0L;
+                                                ticket.seats = seats;
+                                                ticket.payment = paymentInfo;
+
+                                                ticketList.add(ticket);
                                         }
 
                                         adapter.notifyDataSetChanged();
