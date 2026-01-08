@@ -31,7 +31,14 @@ public class activities_2_a_menu_manage_fragments extends extra_manager_language
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         // Load fragment mặc định (Home)
-        loadFragment(new fragments_home());
+        // Xử lý Intent điều hướng Fragment
+        if (getIntent().hasExtra("OPEN_FRAGMENT")) {
+            handleNavigationIntent(getIntent());
+        } else {
+            // Load fragment mặc định (Home) nếu không có yêu cầu đặc biệt
+            loadFragment(new fragments_home());
+            bottomNavigationView.setSelectedItemId(R.id.nav_home);
+        }
         bottomNavigationView.setSelectedItemId(R.id.nav_home);
 
         // ================== 🌐 KIỂM TRA KẾT QUẢ MẠNG TỪ LOADING SCREEN
@@ -67,7 +74,21 @@ public class activities_2_a_menu_manage_fragments extends extra_manager_language
             return false;
         });
     }
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent); // Quan trọng để getIntent() sau này lấy được data mới
+        handleNavigationIntent(intent);
+    }
 
+    // Hàm điều hướng tab dựa trên dữ liệu từ TicketDetailActivity
+    private void handleNavigationIntent(Intent intent) {
+        String target = intent.getStringExtra("OPEN_FRAGMENT");
+        if ("TICKET_FRAGMENT".equals(target)) {
+            loadFragment(new fragments_mail());
+            bottomNavigationView.setSelectedItemId(R.id.nav_mail);
+        }
+    }
     /**
      * Kiểm tra xem có thông báo "không có mạng" từ Loading screen không
      * Nếu có thì hiển thị dialog trên màn hình Home (đẹp hơn)

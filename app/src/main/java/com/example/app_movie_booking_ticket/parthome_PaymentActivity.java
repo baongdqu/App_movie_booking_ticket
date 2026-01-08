@@ -393,14 +393,22 @@ public class parthome_PaymentActivity extends AppCompatActivity {
                         return;
                     }
 
+                    // 1. Thực hiện đặt ghế
                     bookSeats(movieTitle, date, time, seats);
-                    saveTicketSuccessByBalance();
 
-                    Toast.makeText(parthome_PaymentActivity.this,
-                            R.string.toast_payment_success,
-                            Toast.LENGTH_SHORT).show();
+                    // 2. Lưu vé và lấy ticketId trả về
+                    String newTicketId = saveTicketSuccessByBalance();
 
-                    goToMovieDetail();
+                    Toast.makeText(parthome_PaymentActivity.this, R.string.toast_payment_success, Toast.LENGTH_SHORT).show();
+
+                    // 3. CHUYỂN HƯỚNG VỀ TICKET DETAIL (Thay vì Movie Detail)
+                    if (newTicketId != null) {
+                        Intent intent = new Intent(parthome_PaymentActivity.this, TicketDetailActivity.class);
+                        intent.putExtra(TicketDetailActivity.EXTRA_TICKET_ID, newTicketId); // Dùng đúng hằng số key
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
             });
         });
@@ -417,13 +425,13 @@ public class parthome_PaymentActivity extends AppCompatActivity {
     }
 
     // =================== Save ticket ===================
-    private void saveTicketSuccessByBalance() {
+    private String saveTicketSuccessByBalance() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null) return;
+        if (user == null) return null;
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("tickets");
         String ticketId = ref.push().getKey();
-        if (ticketId == null) return;
+        if (ticketId == null) return null;
 
         Map<String, Object> payment = new HashMap<>();
         payment.put("method", "BALANCE");
@@ -448,6 +456,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         ticket.put("createdAt", System.currentTimeMillis());
 
         ref.child(ticketId).setValue(ticket);
+        return ticketId; // Trả về ID để dùng ở hàm trên
     }
 
     // ✅ tạo pending + lưu ticketId để lúc return vẫn biết ticket nào cần update
@@ -511,9 +520,35 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         updates.put("payment/paidAt", System.currentTimeMillis());
 
         ref.updateChildren(updates).addOnSuccessListener(unused -> {
+            // 1. Khóa ghế
             bookSeats(movieTitle, date, time, seats);
-            goToMovieDetail();
+
+            // 2. Chuyển hướng (Dùng Context từ Activity)
+            Intent intent = new Intent(parthome_PaymentActivity.this, TicketDetailActivity.class);
+            intent.putExtra("ticketId", ticketId);
+
+            // FLAGS QUAN TRỌNG: Xóa sạch các activity cũ bao gồm cả Payment và SDK VNPay
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+            startActivity(intent);
+            finish();
+        }).addOnFailureListener(e -> {
+            Log.e(TAG, "Lỗi cập nhật vé: " + e.getMessage());
         });
+    }
+    private void goToTicketDetail(String ticketId) {
+        // Giả sử tên Activity của bạn là TicketDetailActivity
+        Intent intent = new Intent(parthome_PaymentActivity.this, TicketDetailActivity.class);
+
+        // Truyền ticketId để màn hình sau biết cần load vé nào
+        intent.putExtra("TICKET_ID", ticketId);
+
+        // Thêm Flag để xóa các Activity trung gian (như màn hình chọn ghế, thanh toán)
+        // Khi nhấn back ở Ticket Detail, nó sẽ về màn hình chính hoặc Movie Detail
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        startActivity(intent);
+        finish(); // Đóng màn hình Payment
     }
 
     private void bookSeats(String movieTitle, String date, String time, List<String> selectedSeats) {

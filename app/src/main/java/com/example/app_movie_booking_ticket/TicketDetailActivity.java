@@ -1,5 +1,6 @@
 package com.example.app_movie_booking_ticket;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -48,8 +49,17 @@ public class TicketDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket_detail);
 
+        // Trong TicketDetailActivity.java
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setNavigationOnClickListener(v -> finish());
+        toolbar.setNavigationOnClickListener(v -> {
+            Intent intent = new Intent(TicketDetailActivity.this, activities_2_a_menu_manage_fragments.class);
+            // Gửi tín hiệu để Activity chính biết cần mở Fragment nào
+            intent.putExtra("OPEN_FRAGMENT", "TICKET_FRAGMENT");
+            // Dọn dẹp các Activity khác để tránh bị lặp
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+            finish();
+        });
 
         imgPoster = findViewById(R.id.imgPoster);
         tvMovieTitle = findViewById(R.id.tvMovieTitle);
@@ -64,7 +74,7 @@ public class TicketDetailActivity extends AppCompatActivity {
             finish();
             return;
         }
-
+//        ticketId = getIntent().getStringExtra("TICKET_ID");
         loadTicket(ticketId);
 
         btnRefund.setOnClickListener(v -> refundTicket());
