@@ -580,4 +580,18 @@
     <!-- Cinema & Location -->
     <string name="details">Chi tiết</string>
 
+    <!-- Push Notification Channels -->
+    <string name="notification_channel_tickets">Thông báo vé</string>
+    <string name="notification_channel_tickets_desc">Thông báo khi bạn mua vé mới hoặc hoàn vé thành công</string>
+    <string name="notification_channel_general">Thông báo chung</string>
+    <string name="notification_channel_general_desc">Các thông báo từ hệ thống và cập nhật</string>
+    <string name="notification_channel_system">Hệ thống</string>
+    <string name="notification_channel_system_desc">Thông báo hệ thống quan trọng</string>
+
+    <!-- Push Notification Messages -->
+    <string name="push_notification_new_ticket_title">🎬 Đặt vé thành công!</string>
+    <string name="push_notification_new_ticket_body">Bạn đã mua vé xem phim "%1$s" tại %2$s vào %3$s lúc %4$s. Nhấn để xem chi tiết vé.</string>
+    <string name="push_notification_new_notification_title">🔔 Bạn có thông báo mới</string>
+    <string name="push_notification_new_notification_body">%1$s</string>
+
 </resources>

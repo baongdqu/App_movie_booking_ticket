@@ -146,23 +146,50 @@ public class fragments_notifications extends Fragment {
     // =====================================================
     // 🔥 LOAD NOTIFICATIONS
     // =====================================================
+    private int previousNotificationCount = 0;
+    private boolean isFirstLoad = true;
+
     private void loadNotifications() {
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 list.clear();
+                int unreadCount = 0;
 
                 for (DataSnapshot c : snapshot.getChildren()) {
                     AppNotification n = c.getValue(AppNotification.class);
                     if (n != null) {
                         n.setId(c.getKey());
                         list.add(n);
+
+                        // Đếm thông báo chưa đọc
+                        if (!n.isRead()) {
+                            unreadCount++;
+                        }
                     }
                 }
 
                 // 🔥 sort mới → cũ
                 list.sort((a, b) -> Long.compare(b.getTimestamp(), a.getTimestamp()));
+
+                // 🔔 GỬI PUSH NOTIFICATION khi có thông báo MỚI (không phải lần load đầu tiên)
+                if (!isFirstLoad && list.size() > previousNotificationCount && !list.isEmpty()) {
+                    // Lấy thông báo mới nhất
+                    AppNotification latestNotification = list.get(0);
+
+                    // Chỉ push nếu thông báo chưa đọc
+                    if (!latestNotification.isRead()) {
+                        NotificationHelper notificationHelper = new NotificationHelper(requireContext());
+                        notificationHelper.sendGeneralNotification(
+                                latestNotification.getTitle(),
+                                latestNotification.getMessage(),
+                                latestNotification.getType());
+                    }
+                }
+
+                previousNotificationCount = list.size();
+                isFirstLoad = false;
 
                 adapter.notifyDataSetChanged();
 

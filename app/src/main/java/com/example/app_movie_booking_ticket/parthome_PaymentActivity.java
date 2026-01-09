@@ -429,6 +429,15 @@ public class parthome_PaymentActivity extends extra_manager_language {
 
                     // 3. CHUYỂN HƯỚNG VỀ TICKET DETAIL (Thay vì Movie Detail)
                     if (newTicketId != null) {
+                        // GỬI PUSH NOTIFICATION VỀ VÉ MỚI
+                        NotificationHelper notificationHelper = new NotificationHelper(parthome_PaymentActivity.this);
+                        notificationHelper.sendNewTicketNotification(
+                                movieTitle,
+                                newTicketId,
+                                cinemaName != null ? cinemaName : "",
+                                date,
+                                time);
+
                         Intent intent = new Intent(parthome_PaymentActivity.this, TicketDetailActivity.class);
                         intent.putExtra(TicketDetailActivity.EXTRA_TICKET_ID, newTicketId); // Dùng đúng hằng số key
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -554,7 +563,16 @@ public class parthome_PaymentActivity extends extra_manager_language {
             // 1. Khóa ghế
             bookSeats(movieTitle, date, time, seats);
 
-            // 2. Chuyển hướng (Dùng Context từ Activity)
+            // 2. GỬI PUSH NOTIFICATION VỀ VÉ MỚI
+            NotificationHelper notificationHelper = new NotificationHelper(parthome_PaymentActivity.this);
+            notificationHelper.sendNewTicketNotification(
+                    movieTitle,
+                    ticketId,
+                    cinemaName != null ? cinemaName : "",
+                    date,
+                    time);
+
+            // 3. Chuyển hướng (Dùng Context từ Activity)
             Intent intent = new Intent(parthome_PaymentActivity.this, TicketDetailActivity.class);
             intent.putExtra("ticketId", ticketId);
 

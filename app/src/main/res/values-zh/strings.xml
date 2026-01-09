@@ -522,5 +522,19 @@
     <string name="toast_pin_disabled">PIN 锁定已禁用</string>
     <string name="pin_status_active">PIN 已激活</string>
     <string name="pin_status_inactive">PIN 未设置</string>
+
+    <!-- Push Notification Channels -->
+    <string name="notification_channel_tickets">票务通知</string>
+    <string name="notification_channel_tickets_desc">购票或退票成功时的通知</string>
+    <string name="notification_channel_general">一般通知</string>
+    <string name="notification_channel_general_desc">系统通知和更新</string>
+    <string name="notification_channel_system">系统</string>
+    <string name="notification_channel_system_desc">重要的系统通知</string>
+
+    <!-- Push Notification Messages -->
+    <string name="push_notification_new_ticket_title">🎬 购票成功！</string>
+    <string name="push_notification_new_ticket_body">您已购买"%1$s"的电影票，在%2$s，%3$s %4$s。点击查看票据详情。</string>
+    <string name="push_notification_new_notification_title">🔔 您有新通知</string>
+    <string name="push_notification_new_notification_body">%1$s</string>
     
 </resources>

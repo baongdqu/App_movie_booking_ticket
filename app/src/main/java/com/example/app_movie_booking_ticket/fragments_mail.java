@@ -343,6 +343,13 @@ public class fragments_mail extends Fragment {
                                                                                         getString(R.string.notification_refund_success_title),
                                                                                         msg,
                                                                                         "REFUND");
+
+                                                                        // 🔔 GỬI PUSH NOTIFICATION HOÀN VÉ
+                                                                        NotificationHelper notificationHelper = new NotificationHelper(
+                                                                                        requireContext());
+                                                                        notificationHelper.sendRefundNotification(
+                                                                                        movieTitle, totalPrice);
+
                                                                         loadTickets(); // reload list (REFUNDED sẽ bị
                                                                                        // lọc)
                                                                 })

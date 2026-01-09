@@ -516,6 +516,20 @@
     <string name="toast_pin_disabled">PIN lock disabled</string>
     <string name="pin_status_active">PIN is active</string>
     <string name="pin_status_inactive">PIN not set</string>
+
+    <!-- Push Notification Channels -->
+    <string name="notification_channel_tickets">Ticket Notifications</string>
+    <string name="notification_channel_tickets_desc">Notifications when you buy a ticket or get a refund</string>
+    <string name="notification_channel_general">General Notifications</string>
+    <string name="notification_channel_general_desc">System notifications and updates</string>
+    <string name="notification_channel_system">System</string>
+    <string name="notification_channel_system_desc">Important system notifications</string>
+
+    <!-- Push Notification Messages -->
+    <string name="push_notification_new_ticket_title">🎬 Ticket Booked Successfully!</string>
+    <string name="push_notification_new_ticket_body">You booked a ticket for "%1$s" at %2$s on %3$s at %4$s. Tap to view ticket details.</string>
+    <string name="push_notification_new_notification_title">🔔 You have a new notification</string>
+    <string name="push_notification_new_notification_body">%1$s</string>
     
 
 </resources>

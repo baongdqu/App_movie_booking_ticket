@@ -522,6 +522,20 @@
     <string name="toast_pin_disabled">PINロックが無効になりました</string>
     <string name="pin_status_active">PINは有効です</string>
     <string name="pin_status_inactive">PINが設定されていません</string>
-    
+
+    <!-- Push Notification Channels -->
+    <string name="notification_channel_tickets">チケット通知</string>
+    <string name="notification_channel_tickets_desc">チケット購入時または払い戻し時の通知</string>
+    <string name="notification_channel_general">一般通知</string>
+    <string name="notification_channel_general_desc">システム通知と更新</string>
+    <string name="notification_channel_system">システム</string>
+    <string name="notification_channel_system_desc">重要なシステム通知</string>
+
+    <!-- Push Notification Messages -->
+    <string name="push_notification_new_ticket_title">🎬 チケット予約成功！</string>
+    <string name="push_notification_new_ticket_body">「%1$s」のチケットを%2$sで%3$s %4$sに予約しました。タップして詳細を確認。</string>
+    <string name="push_notification_new_notification_title">🔔 新しい通知があります</string>
+    <string name="push_notification_new_notification_body">%1$s</string>
+
 
 </resources>
