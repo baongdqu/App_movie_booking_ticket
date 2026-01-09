@@ -65,6 +65,7 @@ public class activities_2_chatbot extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        extra_themeutils.applySavedTheme(this);
         setContentView(R.layout.layouts_2_chatbot);
 
         initViews();

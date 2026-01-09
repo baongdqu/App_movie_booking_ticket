@@ -52,6 +52,7 @@ public class TicketDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        extra_themeutils.applySavedTheme(this);
         setContentView(R.layout.activity_ticket_detail);
 
         // Toolbar navigation

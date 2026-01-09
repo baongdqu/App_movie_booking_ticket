@@ -52,6 +52,7 @@ public class parthome_RatingListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        extra_themeutils.applySavedTheme(this);
         binding = ParthomeRatingListBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 

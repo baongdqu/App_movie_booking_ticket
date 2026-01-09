@@ -40,7 +40,6 @@ public class activities_2_a_lock_screen extends extra_manager_language {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        extra_themeutils.applySavedTheme(this);
         setContentView(R.layout.layouts_2_a_lock_screen);
 
         SharedPreferences prefs = getSharedPreferences("AppSettings", MODE_PRIVATE);

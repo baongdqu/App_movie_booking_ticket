@@ -56,6 +56,7 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        extra_themeutils.applySavedTheme(this);
         setContentView(R.layout.parthome_seat_selection);
 
         tvMovieTitle = findViewById(R.id.tvMovieTitle);

@@ -30,6 +30,7 @@ public class parthome_WriteReview extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        extra_themeutils.applySavedTheme(this);
         binding = ParthomeWriteReviewBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 

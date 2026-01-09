@@ -35,6 +35,7 @@ public class parthome_AllNowShowingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        extra_themeutils.applySavedTheme(this);
         setContentView(R.layout.parthome_all_now_showing);
 
         recyclerNowShowingMovies = findViewById(R.id.recyclerNowShowingMovies);
