@@ -39,6 +39,15 @@ android {
     buildFeatures{
         viewBinding = true
     }
+
+    packaging {
+        resources {
+            excludes += "META-INF/NOTICE.md"
+            excludes += "META-INF/LICENSE.md"
+            excludes += "META-INF/license.txt"
+            excludes += "META-INF/notice.txt"
+        }
+    }
 }
 
 dependencies {
@@ -69,4 +78,12 @@ dependencies {
     
     // Google Play Services Location for Cinema nearby feature
     implementation("com.google.android.gms:play-services-location:21.0.0")
+    
+    // JavaMail API for sending email receipts
+    implementation("com.sun.mail:android-mail:1.6.7")
+    implementation("com.sun.mail:android-activation:1.6.7")
+
+    // QR Code Generator
+    implementation("com.journeyapps:zxing-android-embedded:4.3.0")
+    implementation("com.google.zxing:core:3.4.1")
 }

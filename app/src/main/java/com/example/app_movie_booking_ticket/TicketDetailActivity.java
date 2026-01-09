@@ -164,6 +164,22 @@ public class TicketDetailActivity extends extra_manager_language {
                                 .error(R.drawable.placeholder_movie)
                                 .into(imgPoster);
 
+                        // --- SINH MÃ QR TỪ TICKET ID ---
+                        ImageView imgQrCode = findViewById(R.id.imgQrCode);
+                        TextView tvTicketIdDisplay = findViewById(R.id.tvTicketIdDisplay);
+                        if (imgQrCode != null && tvTicketIdDisplay != null) {
+                            tvTicketIdDisplay.setText("ID: " + ticketId);
+                            try {
+                                com.google.zxing.BarcodeFormat format = com.google.zxing.BarcodeFormat.QR_CODE;
+                                com.journeyapps.barcodescanner.BarcodeEncoder barcodeEncoder = new com.journeyapps.barcodescanner.BarcodeEncoder();
+                                android.graphics.Bitmap bitmap = barcodeEncoder.encodeBitmap(ticketId, format, 400,
+                                        400);
+                                imgQrCode.setImageBitmap(bitmap);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+
                         updateRefundButtonUI();
                     }
 

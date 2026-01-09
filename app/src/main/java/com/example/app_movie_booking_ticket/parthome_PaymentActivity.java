@@ -71,6 +71,10 @@ public class parthome_PaymentActivity extends extra_manager_language {
 
     private long userBalance = 0;
 
+    // Thông tin người dùng để gửi email hóa đơn
+    private String userEmail = "";
+    private String userName = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -352,8 +356,12 @@ public class parthome_PaymentActivity extends extra_manager_language {
                 String email = snapshot.child("email").getValue(String.class);
                 String phone = snapshot.child("phone").getValue(String.class);
 
-                txtUser.setText(fullName != null ? fullName : getString(R.string.user_name));
-                txtEmail.setText(email != null ? email : "");
+                // Lưu thông tin để dùng cho gửi email hóa đơn
+                userEmail = email != null ? email : "";
+                userName = fullName != null ? fullName : getString(R.string.user_name);
+
+                txtUser.setText(userName);
+                txtEmail.setText(userEmail);
                 txtPhone.setText(phone != null ? phone : getString(R.string.info_not_updated));
             }
 
@@ -437,6 +445,9 @@ public class parthome_PaymentActivity extends extra_manager_language {
                                 cinemaName != null ? cinemaName : "",
                                 date,
                                 time);
+
+                        // 📧 GỬI EMAIL HÓA ĐƠN TỰ ĐỘNG
+                        sendEmailReceipt(newTicketId, getString(R.string.payment_balance_label));
 
                         Intent intent = new Intent(parthome_PaymentActivity.this, TicketDetailActivity.class);
                         intent.putExtra(TicketDetailActivity.EXTRA_TICKET_ID, newTicketId); // Dùng đúng hằng số key
@@ -571,6 +582,9 @@ public class parthome_PaymentActivity extends extra_manager_language {
                     cinemaName != null ? cinemaName : "",
                     date,
                     time);
+
+            // 📧 GỬI EMAIL HÓA ĐƠN TỰ ĐỘNG
+            sendEmailReceipt(ticketId, "VNPay");
 
             // 3. Chuyển hướng (Dùng Context từ Activity)
             Intent intent = new Intent(parthome_PaymentActivity.this, TicketDetailActivity.class);
@@ -728,6 +742,49 @@ public class parthome_PaymentActivity extends extra_manager_language {
             e.printStackTrace();
             return null;
         }
+    }
+
+    // =================== GỬI EMAIL HÓA ĐƠN ===================
+    /**
+     * 📧 Gửi email hóa đơn vé xem phim tự động
+     * 
+     * @param ticketId      Mã vé
+     * @param paymentMethod Phương thức thanh toán (Balance/VNPay)
+     */
+    private void sendEmailReceipt(String ticketId, String paymentMethod) {
+        // Kiểm tra email hợp lệ
+        if (userEmail == null || userEmail.isEmpty() || !userEmail.contains("@")) {
+            Log.w(TAG, "Không thể gửi email hóa đơn: Email người dùng không hợp lệ");
+            return;
+        }
+
+        EmailHelper emailHelper = new EmailHelper(this);
+        emailHelper.sendTicketReceipt(
+                userEmail,
+                userName,
+                movieTitle,
+                cinemaName != null ? cinemaName : "N/A",
+                date,
+                time,
+                seats,
+                totalPrice,
+                ticketId,
+                paymentMethod,
+                new EmailHelper.EmailCallback() {
+                    @Override
+                    public void onSuccess() {
+                        Log.d(TAG, "📧 Email hóa đơn đã gửi thành công đến: " + userEmail);
+                        // Có thể hiển thị Toast thành công nếu muốn
+                        // Toast.makeText(parthome_PaymentActivity.this,
+                        // "Hóa đơn đã được gửi đến email của bạn!", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(String errorMessage) {
+                        Log.e(TAG, "❌ Lỗi gửi email hóa đơn: " + errorMessage);
+                        // Không hiển thị lỗi cho người dùng vì đây là tính năng phụ
+                    }
+                });
     }
 
     @Override

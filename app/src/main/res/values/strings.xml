@@ -583,6 +583,7 @@
     <!-- Push Notification Channels -->
     <string name="notification_channel_tickets">Thông báo vé</string>
     <string name="notification_channel_tickets_desc">Thông báo khi bạn mua vé mới hoặc hoàn vé thành công</string>
+    <string name="qr_code_label">MÃ VÉ (QR CODE)</string>
     <string name="notification_channel_general">Thông báo chung</string>
     <string name="notification_channel_general_desc">Các thông báo từ hệ thống và cập nhật</string>
     <string name="notification_channel_system">Hệ thống</string>
