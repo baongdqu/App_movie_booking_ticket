@@ -109,7 +109,7 @@ public class fragments_cinema extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+            @Nullable Bundle savedInstanceState) {
         // Nếu rootView đã tồn tại, dùng lại nó thay vì tạo mới (inflate)
         if (rootView == null) {
             rootView = inflater.inflate(R.layout.layouts_fragments_cinema, container, false);
@@ -135,9 +135,19 @@ public class fragments_cinema extends Fragment {
         setupSwipeRefresh(); // Gán listener cho SwipeRefresh mới
 
         // Gán lại các Click Listener
-        btnRefresh.setOnClickListener(v -> checkPermissionAndGetLocation());
-        btnGrantPermission.setOnClickListener(v -> requestLocationPermission());
-        locationCard.setOnClickListener(v -> checkPermissionAndGetLocation());
+        // Gán lại các Click Listener
+        btnRefresh.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(requireContext());
+            checkPermissionAndGetLocation();
+        });
+        btnGrantPermission.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(requireContext());
+            requestLocationPermission();
+        });
+        locationCard.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(requireContext());
+            checkPermissionAndGetLocation();
+        });
 
         // 2. CHỈ TẢI DỮ LIỆU TỪ FIREBASE LẦN ĐẦU
         if (!isDataLoaded) {
@@ -300,7 +310,8 @@ public class fragments_cinema extends Fragment {
             }
 
             try {
-                // 2. Sử dụng getContext() thay vì requireContext() để tránh văng app nếu Context null
+                // 2. Sử dụng getContext() thay vì requireContext() để tránh văng app nếu
+                // Context null
                 Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
                 List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
 
@@ -336,11 +347,13 @@ public class fragments_cinema extends Fragment {
     private String formatShortAddress(Address address) {
         if (address.getThoroughfare() != null) {
             String text = address.getThoroughfare();
-            if (address.getSubLocality() != null) text += ", " + address.getSubLocality();
+            if (address.getSubLocality() != null)
+                text += ", " + address.getSubLocality();
             return text;
         } else if (address.getSubLocality() != null) {
             String text = address.getSubLocality();
-            if (address.getLocality() != null) text += ", " + address.getLocality();
+            if (address.getLocality() != null)
+                text += ", " + address.getLocality();
             return text;
         } else if (address.getLocality() != null) {
             return address.getLocality();

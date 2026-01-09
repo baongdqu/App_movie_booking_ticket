@@ -447,6 +447,7 @@ Trợ lý ảo thông minh tích hợp mô hình ngôn ngữ lớn (LLM) qua RES
 | `userFavoriteGenre`     | Thể loại phim yêu thích    |
 | `userFavoriteLanguage`  | Ngôn ngữ phim yêu thích    |
 | `loadUserPreferences()` | Load sở thích từ Firebase  |
+| 451:                    | **Privacy Note**           | **Metadata gửi đi**: Email, Thể loại yêu thích, Ngôn ngữ phim, Tùy chọn Sub/Dub |
 
 #### 5.3. Chức năng Quick Replies
 

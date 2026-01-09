@@ -57,6 +57,7 @@ public class parthome_CinemaSelectionActivity extends AppCompatActivity {
     // Thêm biến để kiểm tra luồng
     private String preselectedCinemaId = "";
     private boolean fromCinemaDetail = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,7 +92,8 @@ public class parthome_CinemaSelectionActivity extends AppCompatActivity {
             // Cập nhật tiêu đề kèm tên rạp
             tvMovieTitle.setText(movieTitle + "\n@" + shortenCinemaName(preName));
             // Ẩn tiêu đề "Chọn rạp chiếu" và danh sách rạp
-            if (tvLabelCinema != null) tvLabelCinema.setVisibility(View.GONE);
+            if (tvLabelCinema != null)
+                tvLabelCinema.setVisibility(View.GONE);
             recyclerCinemas.setVisibility(View.GONE);
         } else {
             // Chỉ gán tên phim đơn thuần nếu không đi từ CinemaDetail
@@ -122,14 +124,21 @@ public class parthome_CinemaSelectionActivity extends AppCompatActivity {
         loadAvailableDates();
 
         // Back button
-        findViewById(R.id.btnBack).setOnClickListener(v -> finish());
+        // Back button
+        findViewById(R.id.btnBack).setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
+            finish();
+        });
 
+        // Continue button
         // Continue button
         btnContinue.setOnClickListener(v -> {
             if (selectedCinemaId.isEmpty()) {
+                extra_sound_manager.playError(this);
                 Toast.makeText(this, "Vui lòng chọn suất chiếu", Toast.LENGTH_SHORT).show();
                 return;
             }
+            extra_sound_manager.playUiClick(this);
             Intent intent = new Intent(this, parthome_SeatSelectionActivity.class);
             intent.putExtra("movieID", movieID);
             intent.putExtra("movieTitle", movieTitle);
@@ -142,16 +151,20 @@ public class parthome_CinemaSelectionActivity extends AppCompatActivity {
             startActivity(intent);
         });
     }
+
     private String shortenCinemaName(String name) {
-        if (name == null) return "";
+        if (name == null)
+            return "";
         return name.replace("Thủ Đức", "").replace("Thành phố", "").trim();
     }
+
     private void loadAvailableDates() {
         android.util.Log.d("CinemaSelection", "Loading dates from: " + dbRef.toString());
         dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (!snapshot.exists()) {
+                    extra_sound_manager.playError(parthome_CinemaSelectionActivity.this);
                     Toast.makeText(parthome_CinemaSelectionActivity.this,
                             getString(R.string.toast_no_schedule), Toast.LENGTH_SHORT).show();
                     return;
@@ -258,7 +271,6 @@ public class parthome_CinemaSelectionActivity extends AppCompatActivity {
                             }
                         }
 
-
                         if (isCinemaServing) {
                             Button btnTime = new Button(parthome_CinemaSelectionActivity.this);
                             btnTime.setText(time);
@@ -342,18 +354,20 @@ public class parthome_CinemaSelectionActivity extends AppCompatActivity {
 
                 if (fromCinemaDetail && !selectedCinemaId.isEmpty()) {
                     cinemaAdapter.setPreSelectedCinema(selectedCinemaId);
-                    //  QUAN TRỌNG: Gọi hàm này để nút Tiếp tục sáng lên ngay lập tức
+                    // QUAN TRỌNG: Gọi hàm này để nút Tiếp tục sáng lên ngay lập tức
                     updateContinueButton();
                 }
             }
 
             @Override
-            public void onCancelled(DatabaseError error) {}
+            public void onCancelled(DatabaseError error) {
+            }
         });
     }
 
     private void updateContinueButton() {
-        android.util.Log.d("DEBUG_BTN", "Date: " + selectedDate + " | Time: " + selectedTime + " | ID: " + selectedCinemaId);
+        android.util.Log.d("DEBUG_BTN",
+                "Date: " + selectedDate + " | Time: " + selectedTime + " | ID: " + selectedCinemaId);
         boolean canContinue = !selectedDate.isEmpty() &&
                 !selectedTime.isEmpty() &&
                 !selectedCinemaId.isEmpty();
@@ -368,5 +382,17 @@ public class parthome_CinemaSelectionActivity extends AppCompatActivity {
         if (key == null)
             return "";
         return key.replaceAll("[$#\\[\\]./]", "").trim();
+    }
+
+    @Override
+    public void onBackPressed() {
+        extra_sound_manager.playUiClick(this);
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onUserLeaveHint() {
+        super.onUserLeaveHint();
+        extra_sound_manager.playUiClick(this);
     }
 }
