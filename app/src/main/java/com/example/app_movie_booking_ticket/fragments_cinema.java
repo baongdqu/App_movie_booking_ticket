@@ -89,7 +89,8 @@ public class fragments_cinema extends Fragment {
     private double userLatitude = DEFAULT_LAT;
     private double userLongitude = DEFAULT_LNG;
     private boolean hasRealLocation = false;
-
+    private View rootView;
+    private boolean isDataLoaded = false;
     // Permission launcher
     private final ActivityResultLauncher<String[]> locationPermissionLauncher = registerForActivityResult(
             new ActivityResultContracts.RequestMultiplePermissions(), result -> {
@@ -108,49 +109,50 @@ public class fragments_cinema extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-            @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.layouts_fragments_cinema, container, false);
+                             @Nullable Bundle savedInstanceState) {
+        // Nếu rootView đã tồn tại, dùng lại nó thay vì tạo mới (inflate)
+        if (rootView == null) {
+            rootView = inflater.inflate(R.layout.layouts_fragments_cinema, container, false);
+            // Chỉ khởi tạo views lần đầu tiên
+            initViews(rootView);
+        } else {
+            // Xóa rootView khỏi cha cũ (nếu có) trước khi trả về để tránh crash
+            if (rootView.getParent() != null) {
+                ((ViewGroup) rootView.getParent()).removeView(rootView);
+            }
+        }
+        return rootView;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Initialize views
+        // 1. LUÔN LUÔN khởi tạo lại các View tham chiếu và gán Listener
+        // vì biến view truyền vào mỗi lần quay lại tab là khác nhau
         initViews(view);
+        setupRecyclerView(); // Gán adapter lại cho RecyclerView mới
+        setupSwipeRefresh(); // Gán listener cho SwipeRefresh mới
 
-        // Initialize Firebase reference
-        cinemasRef = FirebaseDatabase.getInstance().getReference("Cinemas");
+        // Gán lại các Click Listener
+        btnRefresh.setOnClickListener(v -> checkPermissionAndGetLocation());
+        btnGrantPermission.setOnClickListener(v -> requestLocationPermission());
+        locationCard.setOnClickListener(v -> checkPermissionAndGetLocation());
 
-        // Initialize location client
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
+        // 2. CHỈ TẢI DỮ LIỆU TỪ FIREBASE LẦN ĐẦU
+        if (!isDataLoaded) {
+            cinemasRef = FirebaseDatabase.getInstance().getReference("Cinemas");
+            fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
 
-        // Setup RecyclerView
-        setupRecyclerView();
-
-        // Setup SwipeRefreshLayout
-        setupSwipeRefresh();
-
-        // Check permissions and get location
-        checkPermissionAndGetLocation();
-
-        // Refresh button click
-        btnRefresh.setOnClickListener(v -> {
-            extra_sound_manager.playUiClick(requireContext());
             checkPermissionAndGetLocation();
-        });
-
-        // Grant permission button
-        btnGrantPermission.setOnClickListener(v -> {
-            extra_sound_manager.playUiClick(requireContext());
-            requestLocationPermission();
-        });
-
-        // Location card click - retry getting location
-        locationCard.setOnClickListener(v -> {
-            extra_sound_manager.playUiClick(requireContext());
-            checkPermissionAndGetLocation();
-        });
+            isDataLoaded = true;
+        } else {
+            // Nếu đã có dữ liệu, chỉ cần hiển thị lại danh sách cũ mà không gọi Firebase
+            showCinemas(cinemaList);
+            // Cập nhật lại hiển thị vị trí cũ nếu cần
+            progressLocation.setVisibility(View.GONE);
+            imgLocationStatus.setVisibility(View.VISIBLE);
+        }
     }
 
     private void initViews(View view) {
@@ -292,53 +294,58 @@ public class fragments_cinema extends Fragment {
 
     private void getAddressFromLocation(double latitude, double longitude) {
         new Thread(() -> {
+            // 1. Kiểm tra an toàn: Fragment phải còn tồn tại và đã được gắn vào Activity
+            if (!isAdded() || getContext() == null) {
+                return;
+            }
+
             try {
-                Geocoder geocoder = new Geocoder(requireContext(), Locale.getDefault());
+                // 2. Sử dụng getContext() thay vì requireContext() để tránh văng app nếu Context null
+                Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
                 List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
 
                 if (addresses != null && !addresses.isEmpty()) {
                     Address address = addresses.get(0);
-                    String addressText;
+                    String addressText = formatShortAddress(address);
 
-                    // Build a short address string
-                    if (address.getThoroughfare() != null) {
-                        addressText = address.getThoroughfare();
-                        if (address.getSubLocality() != null) {
-                            addressText += ", " + address.getSubLocality();
-                        }
-                    } else if (address.getSubLocality() != null) {
-                        addressText = address.getSubLocality();
-                        if (address.getLocality() != null) {
-                            addressText += ", " + address.getLocality();
-                        }
-                    } else if (address.getLocality() != null) {
-                        addressText = address.getLocality();
-                    } else {
-                        addressText = getString(R.string.cinema_location_found);
-                    }
-
-                    final String finalAddress = addressText;
-                    if (getActivity() != null) {
+                    // 3. Trước khi cập nhật giao diện, kiểm tra lại trạng thái Fragment lần nữa
+                    if (isAdded() && getActivity() != null) {
+                        final String finalAddress = addressText;
                         getActivity().runOnUiThread(() -> {
                             tvCurrentLocation.setText(finalAddress);
                         });
                     }
                 } else {
-                    if (getActivity() != null) {
-                        getActivity().runOnUiThread(() -> {
-                            tvCurrentLocation.setText(R.string.cinema_location_found);
-                        });
-                    }
+                    updateLocationTextOnMainThread(R.string.cinema_location_found);
                 }
             } catch (IOException e) {
                 Log.e(TAG, "Geocoder error", e);
-                if (getActivity() != null) {
-                    getActivity().runOnUiThread(() -> {
-                        tvCurrentLocation.setText(R.string.cinema_location_found);
-                    });
-                }
+                updateLocationTextOnMainThread(R.string.cinema_location_found);
             }
         }).start();
+    }
+
+    // Hàm hỗ trợ cập nhật UI an toàn từ luồng phụ
+    private void updateLocationTextOnMainThread(int resId) {
+        if (isAdded() && getActivity() != null) {
+            getActivity().runOnUiThread(() -> tvCurrentLocation.setText(resId));
+        }
+    }
+
+    // Hàm hỗ trợ định dạng địa chỉ ngắn gọn
+    private String formatShortAddress(Address address) {
+        if (address.getThoroughfare() != null) {
+            String text = address.getThoroughfare();
+            if (address.getSubLocality() != null) text += ", " + address.getSubLocality();
+            return text;
+        } else if (address.getSubLocality() != null) {
+            String text = address.getSubLocality();
+            if (address.getLocality() != null) text += ", " + address.getLocality();
+            return text;
+        } else if (address.getLocality() != null) {
+            return address.getLocality();
+        }
+        return getString(R.string.cinema_location_found);
     }
 
     private void showLocationLoading() {

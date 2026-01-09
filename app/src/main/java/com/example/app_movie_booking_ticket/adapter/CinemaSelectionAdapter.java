@@ -100,7 +100,18 @@ public class CinemaSelectionAdapter extends RecyclerView.Adapter<CinemaSelection
             notifyItemChanged(oldPosition);
         }
     }
+    public void setPreSelectedCinema(String preSelectedId) {
+        if (preSelectedId == null || cinemaList == null) return;
 
+        for (int i = 0; i < cinemaList.size(); i++) {
+            String id = (String) cinemaList.get(i).get("id");
+            if (preSelectedId.equals(id)) {
+                selectedPosition = i; // Cập nhật vị trí được chọn trong Adapter
+                notifyDataSetChanged(); // Làm mới giao diện để hiển thị trạng thái "Đã chọn"
+                break;
+            }
+        }
+    }
     static class CinemaViewHolder extends RecyclerView.ViewHolder {
         TextView tvCinemaName, tvAddress, tvPrice;
         Button btnSelect;

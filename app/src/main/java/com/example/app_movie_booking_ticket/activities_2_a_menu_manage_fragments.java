@@ -21,7 +21,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class activities_2_a_menu_manage_fragments extends extra_manager_language {
 
     private BottomNavigationView bottomNavigationView;
-
+    private Fragment fragmentHome, fragmentCinema, fragmentMail, fragmentNotifications, fragmentUser;
+    private Fragment activeFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,15 +30,11 @@ public class activities_2_a_menu_manage_fragments extends extra_manager_language
         setContentView(R.layout.layouts_2_a_menu_manage_fragments);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-
+        initFragments();
         // Load fragment mặc định (Home)
         // Xử lý Intent điều hướng Fragment
         if (getIntent().hasExtra("OPEN_FRAGMENT")) {
             handleNavigationIntent(getIntent());
-        } else {
-            // Load fragment mặc định (Home) nếu không có yêu cầu đặc biệt
-            loadFragment(new fragments_home());
-            bottomNavigationView.setSelectedItemId(R.id.nav_home);
         }
         bottomNavigationView.setSelectedItemId(R.id.nav_home);
 
@@ -50,14 +47,14 @@ public class activities_2_a_menu_manage_fragments extends extra_manager_language
 
             int id = item.getItemId();
             if (id == R.id.nav_home) {
-                loadFragment(new fragments_home());
+                switchFragment(fragmentHome);
                 return true;
             } else if (id == R.id.nav_cinema) {
                 // Mở tab Rạp phim gần đây
-                loadFragment(new fragments_cinema());
+                switchFragment(fragmentCinema);
                 return true;
             } else if (id == R.id.nav_mail) {
-                loadFragment(new fragments_mail());
+                switchFragment(fragmentMail);
                 return true;
             } else if (id == R.id.nav_chat_bot) {
                 // Mở ChatbotActivity thay vì hiển thị toast
@@ -65,10 +62,10 @@ public class activities_2_a_menu_manage_fragments extends extra_manager_language
                 startActivity(new Intent(this, activities_2_chatbot.class));
                 return false; // Không thay đổi tab được chọn
             } else if (id == R.id.nav_notifications) {
-                loadFragment(new fragments_notifications());
+                switchFragment(fragmentNotifications);
                 return true;
             } else if (id == R.id.nav_user) {
-                loadFragment(fragments_user.newInstance());
+                switchFragment(fragmentUser);
                 return true;
             }
             return false;
@@ -86,7 +83,7 @@ public class activities_2_a_menu_manage_fragments extends extra_manager_language
     private void handleNavigationIntent(Intent intent) {
         String target = intent.getStringExtra("OPEN_FRAGMENT");
         if ("TICKET_FRAGMENT".equals(target)) {
-            loadFragment(new fragments_mail());
+            switchFragment(fragmentMail); // Dùng switchFragment
             bottomNavigationView.setSelectedItemId(R.id.nav_mail);
         }
     }
@@ -134,6 +131,33 @@ public class activities_2_a_menu_manage_fragments extends extra_manager_language
                 .beginTransaction()
                 .replace(R.id.container, fragment)
                 .commit();
+    }
+    private void initFragments() {
+        fragmentHome = new fragments_home();
+        fragmentCinema = new fragments_cinema();
+        fragmentMail = new fragments_mail();
+        fragmentNotifications = new fragments_notifications();
+        fragmentUser = fragments_user.newInstance();
+
+        // Add tất cả nhưng chỉ show Home
+        getSupportFragmentManager().beginTransaction().add(R.id.container, fragmentUser, "5").hide(fragmentUser).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.container, fragmentNotifications, "4").hide(fragmentNotifications).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.container, fragmentMail, "3").hide(fragmentMail).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.container, fragmentCinema, "2").hide(fragmentCinema).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.container, fragmentHome, "1").commit();
+
+        activeFragment = fragmentHome;
+    }
+
+    // Hàm switch fragment thay thế cho loadFragment cũ
+    public void switchFragment(Fragment target) {
+        if (activeFragment == target) return;
+
+        getSupportFragmentManager().beginTransaction()
+                .hide(activeFragment)
+                .show(target)
+                .commit();
+        activeFragment = target;
     }
 
     // Cho phép fragment chọn lại nav item
