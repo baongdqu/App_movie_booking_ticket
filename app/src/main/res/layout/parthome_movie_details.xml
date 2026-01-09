@@ -117,7 +117,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:text="Trailer"
+                            android:text="@string/trailer_button"
                             android:textColor="@color/netflix_red"
                             app:strokeColor="@color/netflix_red"
                             app:strokeWidth="1.2dp"
@@ -163,7 +163,7 @@
                     android:id="@+id/tvViewSentiment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Kén người mê"
+                    android:text="@string/sentiment_mixed"
                     android:textColor="@color/text_primary"
                     android:textStyle="bold"
                     android:textSize="16sp" />
@@ -172,7 +172,7 @@
                     android:id="@+id/tvAmountBought"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="605 đánh giá từ khán giả Việt đã mua vé"
+                    tools:text="605 đánh giá từ khán giả Việt đã mua vé"
                     android:textSize="13sp"
                     android:textColor="@color/text_secondary" />
             </LinearLayout>
@@ -218,7 +218,7 @@
                             android:id="@+id/tvAverageScore"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="4"
+                            tools:text="4"
                             android:textSize="32sp"
                             android:textStyle="bold"
                             android:textColor="@color/text_primary" />
@@ -226,7 +226,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="/5"
+                            tools:text="/5"
                             android:textSize="14sp"
                             android:layout_marginBottom="6dp"
                             android:textColor="@color/text_secondary" />
@@ -236,7 +236,7 @@
                         android:id="@+id/tvRating"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="(563 Đánh giá)"
+                        tools:text="(563 Đánh giá)"
                         android:textSize="12sp"
                         android:textColor="@color/text_secondary" />
                 </LinearLayout>

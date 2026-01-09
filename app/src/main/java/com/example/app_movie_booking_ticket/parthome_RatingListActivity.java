@@ -26,7 +26,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class parthome_RatingListActivity extends AppCompatActivity {
+public class parthome_RatingListActivity extends extra_manager_language {
 
     private ParthomeRatingListBinding binding;
     private DatabaseReference mDatabase;
@@ -256,7 +256,7 @@ public class parthome_RatingListActivity extends AppCompatActivity {
     private void updateSummaryUI() {
         // Cập nhật điểm trung bình
         binding.tvAverageScore.setText(String.format("%.1f", averageRating));
-        binding.tvTotalReviews.setText("(" + totalReviews + " đánh giá)");
+        binding.tvTotalReviews.setText(getString(R.string.reviews_count, totalReviews));
 
         // Cập nhật số lượng từng mức sao
         binding.tvCount5Star.setText(String.valueOf(starCounts[5]));
@@ -284,49 +284,50 @@ public class parthome_RatingListActivity extends AppCompatActivity {
         updateSentiment(averageRating);
 
         // Cập nhật số lượng cho các nút filter
-        binding.btnFilterAll.setText("Tất cả (" + totalReviews + ")");
-        binding.btnFilter5.setText("5 ★ (" + starCounts[5] + ")");
-        binding.btnFilter4.setText("4 ★ (" + starCounts[4] + ")");
-        binding.btnFilter3.setText("3 ★ (" + starCounts[3] + ")");
-        binding.btnFilter2.setText("2 ★ (" + starCounts[2] + ")");
-        binding.btnFilter1.setText("1 ★ (" + starCounts[1] + ")");
+        binding.btnFilterAll.setText(getString(R.string.filter_all, totalReviews));
+        binding.btnFilter5.setText(getString(R.string.filter_star, 5, starCounts[5]));
+        binding.btnFilter4.setText(getString(R.string.filter_star, 4, starCounts[4]));
+        binding.btnFilter3.setText(getString(R.string.filter_star, 3, starCounts[3]));
+        binding.btnFilter2.setText(getString(R.string.filter_star, 2, starCounts[2]));
+        binding.btnFilter1.setText(getString(R.string.filter_star, 1, starCounts[1]));
     }
 
     private void updateSentiment(double average) {
         if (totalReviews == 0) {
-            binding.tvSentiment.setText("Chưa có đánh giá");
-            binding.tvSentimentDescription.setText("Hãy là người đầu tiên đánh giá!");
+            binding.tvSentiment.setText(getString(R.string.no_reviews_yet));
+            binding.tvSentimentDescription.setText(getString(R.string.be_first_to_review));
         } else if (average >= 4.5) {
-            binding.tvSentiment.setText("Cực phẩm");
-            binding.tvSentimentDescription.setText("Phim được đánh giá rất cao!");
+            binding.tvSentiment.setText(getString(R.string.sentiment_excellent));
+            binding.tvSentimentDescription.setText(getString(R.string.sentiment_excellent_desc));
         } else if (average >= 3.5) {
-            binding.tvSentiment.setText("Đáng xem");
-            binding.tvSentimentDescription.setText("Phim nhận được nhiều phản hồi tích cực.");
+            binding.tvSentiment.setText(getString(R.string.sentiment_worth_watching));
+            binding.tvSentimentDescription.setText(getString(R.string.sentiment_worth_watching_desc));
         } else if (average >= 2.5) {
-            binding.tvSentiment.setText("Kén người mê");
-            binding.tvSentimentDescription.setText("Phim có ý kiến chia đôi từ khán giả.");
+            binding.tvSentiment.setText(getString(R.string.sentiment_mixed));
+            binding.tvSentimentDescription.setText(getString(R.string.sentiment_mixed_desc));
         } else {
-            binding.tvSentiment.setText("Cần cải thiện");
-            binding.tvSentimentDescription.setText("Phim nhận được nhiều phản hồi tiêu cực.");
+            binding.tvSentiment.setText(getString(R.string.sentiment_needs_improvement));
+            binding.tvSentimentDescription.setText(getString(R.string.sentiment_needs_improvement_desc));
         }
     }
 
     private void updateReviewsHeader(int starFilter) {
         if (starFilter == 0) {
-            binding.tvReviewsHeader.setText("Tất cả đánh giá (" + totalReviews + ")");
+            binding.tvReviewsHeader.setText(getString(R.string.all_reviews_header, totalReviews));
         } else {
-            binding.tvReviewsHeader.setText("Đánh giá " + starFilter + " sao (" + starCounts[starFilter] + ")");
+            binding.tvReviewsHeader
+                    .setText(getString(R.string.star_reviews_header, starFilter, starCounts[starFilter]));
         }
     }
 
     private void updateWriteReviewButton() {
         if (currentUserReview != null) {
             // Đã có đánh giá -> cho phép chỉnh sửa
-            binding.btnWriteReview.setText("Chỉnh sửa đánh giá");
+            binding.btnWriteReview.setText(getString(R.string.edit_review));
             binding.btnWriteReview.setIconResource(android.R.drawable.ic_menu_edit);
         } else {
             // Chưa có đánh giá
-            binding.btnWriteReview.setText("Viết đánh giá");
+            binding.btnWriteReview.setText(getString(R.string.write_review));
             binding.btnWriteReview.setIconResource(android.R.drawable.ic_menu_edit);
         }
     }

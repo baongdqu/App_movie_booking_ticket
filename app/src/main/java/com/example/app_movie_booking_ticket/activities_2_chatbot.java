@@ -37,7 +37,7 @@ import com.google.firebase.database.ValueEventListener;
  * 
  * UI/UX: Modern design với gradient, cards, shadows
  */
-public class activities_2_chatbot extends AppCompatActivity {
+public class activities_2_chatbot extends extra_manager_language {
 
     // UI Components
     private ImageView btnBack;

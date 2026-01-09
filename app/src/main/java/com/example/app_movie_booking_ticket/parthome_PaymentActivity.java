@@ -42,7 +42,7 @@ import java.util.Map;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
-public class parthome_PaymentActivity extends AppCompatActivity {
+public class parthome_PaymentActivity extends extra_manager_language {
 
     private static final String TAG = "PAYMENT";
     private static final String PREFS = "payment_prefs";
@@ -123,7 +123,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
                 .into(imagePoster);
 
         if (cinemaName != null && !cinemaName.isEmpty()) {
-            txtCinemaName.setText("🎬 " + cinemaName);
+            txtCinemaName.setText(getString(R.string.cinema_name_with_icon, cinemaName));
         } else {
             txtCinemaName.setVisibility(View.GONE);
         }
@@ -135,7 +135,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         }
 
         DecimalFormat formatter = new DecimalFormat("#,###");
-        txtTotal.setText(formatter.format(totalPrice) + "đ");
+        txtTotal.setText(getString(R.string.price_format_vnd, formatter.format(totalPrice)));
 
         loadUserInfo(txtUser, txtEmail, txtPhone);
         loadUserBalance();
@@ -199,7 +199,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         // công)
         updateTicketStatus(currentTicketId, "CANCELLED");
         extra_sound_manager.playError(this);
-        Toast.makeText(this, "Bạn đã hủy thanh toán", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.toast_payment_cancelled), Toast.LENGTH_SHORT).show();
         clearPendingTicketId();
 
         // Không finish(), không goToMovieDetail() => ở lại Payment
@@ -320,13 +320,13 @@ public class parthome_PaymentActivity extends AppCompatActivity {
                         updateTicketToPaid(pendingId);
                         clearPendingTicketId();
 
-                        Toast.makeText(this, "Xác nhận thanh toán thành công!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, getString(R.string.toast_payment_confirmed), Toast.LENGTH_SHORT).show();
                     }
                 });
             } else if ("FailBackAction".equals(action)) {
                 // Trường hợp người dùng hủy bỏ giữa chừng
                 runOnUiThread(() -> {
-                    Toast.makeText(this, "Bạn đã quay lại, vé vẫn ở trạng thái chờ.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.toast_ticket_pending), Toast.LENGTH_SHORT).show();
                 });
             }
         });
@@ -352,9 +352,9 @@ public class parthome_PaymentActivity extends AppCompatActivity {
                 String email = snapshot.child("email").getValue(String.class);
                 String phone = snapshot.child("phone").getValue(String.class);
 
-                txtUser.setText(fullName != null ? fullName : "Người dùng");
+                txtUser.setText(fullName != null ? fullName : getString(R.string.user_name));
                 txtEmail.setText(email != null ? email : "");
-                txtPhone.setText(phone != null ? phone : "Chưa cập nhật");
+                txtPhone.setText(phone != null ? phone : getString(R.string.info_not_updated));
             }
 
             @Override
@@ -378,7 +378,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
 
         balanceRef.get().addOnCompleteListener(task -> {
             if (!task.isSuccessful() || task.getResult() == null) {
-                Toast.makeText(this, "Không đọc được số dư, vui lòng thử lại", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.toast_balance_error), Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -405,7 +405,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
 
                     if (error != null) {
                         Toast.makeText(parthome_PaymentActivity.this,
-                                "Lỗi thanh toán: " + error.getMessage(),
+                                getString(R.string.error_payment_prefix, error.getMessage()),
                                 Toast.LENGTH_SHORT).show();
                         return;
                     }

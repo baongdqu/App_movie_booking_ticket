@@ -102,7 +102,7 @@ public class fragments_mail extends Fragment {
                 emptyStateLayout.setVisibility(View.GONE);
 
                 int count = ticketList.size();
-                tvTicketCount.setText(count + " vé");
+                tvTicketCount.setText(getString(R.string.ticket_count_format, count));
                 tvTicketCount.setVisibility(View.VISIBLE);
         }
 
@@ -255,7 +255,8 @@ public class fragments_mail extends Fragment {
                                         status = "PAID";
 
                                 if (!"PAID".equals(status)) {
-                                        Toast.makeText(getContext(), "Vé đã được hoàn", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getContext(), getString(R.string.toast_ticket_refunded),
+                                                        Toast.LENGTH_SHORT).show();
                                         return;
                                 }
 
@@ -279,7 +280,8 @@ public class fragments_mail extends Fragment {
 
                                 if (movieTitle == null || date == null || time == null || cinemaId == null
                                                 || seats.isEmpty()) {
-                                        Toast.makeText(getContext(), "Thiếu dữ liệu vé để hoàn", Toast.LENGTH_SHORT)
+                                        Toast.makeText(getContext(), getString(R.string.toast_ticket_data_missing),
+                                                        Toast.LENGTH_SHORT)
                                                         .show();
                                         return;
                                 }
@@ -305,7 +307,8 @@ public class fragments_mail extends Fragment {
                                                         DataSnapshot snapshot) {
 
                                                 if (error != null || !committed) {
-                                                        Toast.makeText(getContext(), "Hoàn tiền thất bại",
+                                                        Toast.makeText(getContext(),
+                                                                        getString(R.string.toast_refund_failed),
                                                                         Toast.LENGTH_SHORT).show();
                                                         return;
                                                 }
@@ -330,12 +333,15 @@ public class fragments_mail extends Fragment {
                                                                         extra_sound_manager
                                                                                         .playSuccess(requireContext());
                                                                         Toast.makeText(getContext(),
-                                                                                        "Hoàn tiền thành công!",
+                                                                                        getString(R.string.notification_refund_success_title),
                                                                                         Toast.LENGTH_SHORT).show();
-                                                                        String msg = "Bạn đã được hoàn " + totalPrice
-                                                                                        + "đ cho phim " + movieTitle;
+                                                                        String msg = getString(
+                                                                                        R.string.notification_refund_success_body_with_amount,
+                                                                                        String.valueOf(totalPrice),
+                                                                                        movieTitle);
                                                                         sendNotification(currentUserId,
-                                                                                        "Hoàn tiền thành công", msg,
+                                                                                        getString(R.string.notification_refund_success_title),
+                                                                                        msg,
                                                                                         "REFUND");
                                                                         loadTickets(); // reload list (REFUNDED sẽ bị
                                                                                        // lọc)
@@ -343,7 +349,7 @@ public class fragments_mail extends Fragment {
                                                                 .addOnFailureListener(e -> {
                                                                         extra_sound_manager.playError(requireContext());
                                                                         Toast.makeText(getContext(),
-                                                                                        "Hoàn tiền OK nhưng trả ghế lỗi",
+                                                                                        getString(R.string.refund_error_seat),
                                                                                         Toast.LENGTH_SHORT).show();
                                                                         loadTickets();
                                                                 });

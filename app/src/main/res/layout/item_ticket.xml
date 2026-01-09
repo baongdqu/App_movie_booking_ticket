@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -37,7 +38,7 @@
                 android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Movie title"
+                tools:text="Movie title"
                 android:textColor="#1A1A1A"
                 android:textSize="17sp"
                 android:textStyle="bold" />
@@ -47,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:text="2025-11-08 • 15:15 • 280.000đ"
+                tools:text="2025-11-08 • 15:15 • 280.000đ"
                 android:textColor="#6B6B6B"
                 android:textSize="13sp" />
 
@@ -56,7 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="Seats: C5, C6, D5, D6"
+                tools:text="Seats: C5, C6, D5, D6"
                 android:textColor="#6B6B6B"
                 android:textSize="13sp" />
 
@@ -72,7 +73,7 @@
                     android:layout_height="36dp"
                     android:backgroundTint="#e0e0e0"
                     android:paddingHorizontal="16dp"
-                    android:text="Details"
+                    android:text="@string/details"
                     android:textAllCaps="false"
                     android:textColor="#000000" />
 
@@ -83,7 +84,7 @@
                     android:layout_marginStart="10dp"
                     android:backgroundTint="#e0e0e0"
                     android:paddingHorizontal="16dp"
-                    android:text="Refund"
+                    android:text="@string/refund_button"
                     android:textAllCaps="false"
                     android:textColor="#000000" />
             </LinearLayout>

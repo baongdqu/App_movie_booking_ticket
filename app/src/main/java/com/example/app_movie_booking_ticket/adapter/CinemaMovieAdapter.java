@@ -128,7 +128,7 @@ public class CinemaMovieAdapter extends RecyclerView.Adapter<CinemaMovieAdapter.
         }
 
         // Hiển thị số suất chiếu và ngày chiếu sớm nhất
-        String showtimeText = cinemaMovie.getShowtimeCount() + " suất";
+        String showtimeText = context.getString(R.string.format_showtime_count, cinemaMovie.getShowtimeCount());
         if (cinemaMovie.getEarliestShowtime() != null && !cinemaMovie.getEarliestShowtime().isEmpty()) {
             showtimeText += " • " + cinemaMovie.getEarliestShowtime();
         }
@@ -137,7 +137,7 @@ public class CinemaMovieAdapter extends RecyclerView.Adapter<CinemaMovieAdapter.
         // Hiển thị badge trạng thái
         if (cinemaMovie.isUpcoming()) {
             holder.tvStatusBadge.setVisibility(View.VISIBLE);
-            holder.tvStatusBadge.setText("Sắp chiếu");
+            holder.tvStatusBadge.setText(context.getString(R.string.upcoming_badge));
             holder.tvStatusBadge.setBackgroundResource(R.drawable.bg_badge_upcoming);
             holder.viewUpcomingOverlay.setVisibility(View.VISIBLE);
         } else {

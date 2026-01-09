@@ -27,7 +27,7 @@ import org.jspecify.annotations.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class parthome_movie_detail extends AppCompatActivity {
+public class parthome_movie_detail extends extra_manager_language {
     private DatabaseReference mDatabase;
     private CastListAdapter castAdapter;
     private MovieImageAdapter imageAdapter;
@@ -89,7 +89,7 @@ public class parthome_movie_detail extends AppCompatActivity {
         }
         // Nếu là phim đang chiếu từ CinemaSelection thì đổi text nút
         if (!isUpcoming && !isExpired && fromCinema && cinemaName != null) {
-            binding.button2.setText("Đặt vé tại " + shortenCinemaName(cinemaName));
+            binding.button2.setText(getString(R.string.book_at_cinema, shortenCinemaName(cinemaName)));
         }
 
         binding.llImagesSection.setVisibility(View.VISIBLE);
@@ -131,7 +131,7 @@ public class parthome_movie_detail extends AppCompatActivity {
 
             String trailerUrl = movie.getTrailer();
             if (trailerUrl == null || trailerUrl.trim().isEmpty()) {
-                Toast.makeText(this, "Trailer chưa có sẵn", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.toast_trailer_not_available), Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -225,8 +225,8 @@ public class parthome_movie_detail extends AppCompatActivity {
 
                     // 1. Cập nhật điểm trung bình và tổng số
                     binding.tvAverageScore.setText(String.format("%.1f", average));
-                    binding.tvRating.setText("(" + totalReviews + " Đánh giá)");
-                    binding.tvAmountBought.setText(totalReviews + " đánh giá từ khán giả Việt đã mua vé");
+                    binding.tvRating.setText(getString(R.string.reviews_count, totalReviews));
+                    binding.tvAmountBought.setText(getString(R.string.verified_audience_reviews, totalReviews));
 
                     // 2. Cập nhật Trạng thái cảm xúc dựa trên điểm số
                     updateSentiment(average);
@@ -240,8 +240,8 @@ public class parthome_movie_detail extends AppCompatActivity {
                 } else {
                     // Reset UI nếu chưa có đánh giá nào
                     binding.tvAverageScore.setText("0");
-                    binding.tvRating.setText("(0 Đánh giá)");
-                    binding.tvViewSentiment.setText("Chưa có đánh giá");
+                    binding.tvRating.setText(getString(R.string.reviews_count_zero));
+                    binding.tvViewSentiment.setText(getString(R.string.no_reviews_yet));
                     resetProgressBars();
                 }
             }
@@ -255,11 +255,11 @@ public class parthome_movie_detail extends AppCompatActivity {
 
     private void updateSentiment(double average) {
         if (average >= 4.5) {
-            binding.tvViewSentiment.setText("Cực phẩm");
+            binding.tvViewSentiment.setText(getString(R.string.sentiment_excellent));
         } else if (average >= 3.5) {
-            binding.tvViewSentiment.setText("Đáng xem");
+            binding.tvViewSentiment.setText(getString(R.string.sentiment_worth_watching));
         } else {
-            binding.tvViewSentiment.setText("Kén người mê");
+            binding.tvViewSentiment.setText(getString(R.string.sentiment_mixed));
         }
     }
 

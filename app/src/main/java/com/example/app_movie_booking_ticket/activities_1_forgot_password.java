@@ -22,7 +22,7 @@ import java.util.Objects;
  * Activity Quên mật khẩu (Forgot Password)
  * Cho phép người dùng yêu cầu gửi email reset mật khẩu từ Firebase.
  */
-public class activities_1_forgot_password extends AppCompatActivity {
+public class activities_1_forgot_password extends extra_manager_language {
 
     private TextInputEditText inputEmailForgot;
     private FirebaseAuth mAuth;

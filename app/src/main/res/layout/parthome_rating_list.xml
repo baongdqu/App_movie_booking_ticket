@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Đánh giá từ khán giả"
+            android:text="@string/audience_reviews"
             android:textColor="@color/text_primary"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -101,7 +101,7 @@
                                     android:id="@+id/tvAverageScore"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="0"
+                                    tools:text="0"
                                     android:textSize="40sp"
                                     android:textStyle="bold"
                                     android:textColor="@color/text_primary" />
@@ -109,7 +109,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="/5"
+                                    tools:text="/5"
                                     android:textSize="16sp"
                                     android:layout_marginBottom="8dp"
                                     android:textColor="@color/text_secondary" />
@@ -119,7 +119,7 @@
                                 android:id="@+id/tvTotalReviews"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="(0 đánh giá)"
+                                tools:text="(0 đánh giá)"
                                 android:textSize="13sp"
                                 android:textColor="@color/text_secondary" />
 
@@ -165,7 +165,7 @@
                                     android:id="@+id/tvCount5Star"
                                     android:layout_width="30dp"
                                     android:layout_height="wrap_content"
-                                    android:text="0"
+                                    tools:text="0"
                                     android:textSize="11sp"
                                     android:gravity="end"
                                     android:textColor="@color/text_secondary" />
@@ -205,7 +205,7 @@
                                     android:id="@+id/tvCount4Star"
                                     android:layout_width="30dp"
                                     android:layout_height="wrap_content"
-                                    android:text="0"
+                                    tools:text="0"
                                     android:textSize="11sp"
                                     android:gravity="end"
                                     android:textColor="@color/text_secondary" />
@@ -245,7 +245,7 @@
                                     android:id="@+id/tvCount3Star"
                                     android:layout_width="30dp"
                                     android:layout_height="wrap_content"
-                                    android:text="0"
+                                    tools:text="0"
                                     android:textSize="11sp"
                                     android:gravity="end"
                                     android:textColor="@color/text_secondary" />
@@ -285,7 +285,7 @@
                                     android:id="@+id/tvCount2Star"
                                     android:layout_width="30dp"
                                     android:layout_height="wrap_content"
-                                    android:text="0"
+                                    tools:text="0"
                                     android:textSize="11sp"
                                     android:gravity="end"
                                     android:textColor="@color/text_secondary" />
@@ -324,7 +324,7 @@
                                     android:id="@+id/tvCount1Star"
                                     android:layout_width="30dp"
                                     android:layout_height="wrap_content"
-                                    android:text="0"
+                                    tools:text="0"
                                     android:textSize="11sp"
                                     android:gravity="end"
                                     android:textColor="@color/text_secondary" />
@@ -357,7 +357,7 @@
                                 android:id="@+id/tvSentiment"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Chưa có đánh giá"
+                                android:text="@string/no_reviews"
                                 android:textColor="@color/text_primary"
                                 android:textStyle="bold"
                                 android:textSize="14sp" />
@@ -366,7 +366,7 @@
                                 android:id="@+id/tvSentimentDescription"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Hãy là người đầu tiên đánh giá!"
+                                android:text="@string/be_first_to_review"
                                 android:textSize="12sp"
                                 android:textColor="@color/text_secondary" />
                         </LinearLayout>
@@ -394,7 +394,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="36dp"
                         android:layout_marginEnd="8dp"
-                        android:text="Tất cả"
+                        tools:text="Tất cả"
                         android:textSize="12sp"
                         app:cornerRadius="18dp" />
 
@@ -404,7 +404,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="36dp"
                         android:layout_marginEnd="8dp"
-                        android:text="5 ★"
+                        tools:text="5 ★"
                         android:textSize="12sp"
                         app:cornerRadius="18dp" />
 
@@ -414,7 +414,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="36dp"
                         android:layout_marginEnd="8dp"
-                        android:text="4 ★"
+                        tools:text="4 ★"
                         android:textSize="12sp"
                         app:cornerRadius="18dp" />
 
@@ -424,7 +424,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="36dp"
                         android:layout_marginEnd="8dp"
-                        android:text="3 ★"
+                        tools:text="3 ★"
                         android:textSize="12sp"
                         app:cornerRadius="18dp" />
 
@@ -434,7 +434,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="36dp"
                         android:layout_marginEnd="8dp"
-                        android:text="2 ★"
+                        tools:text="2 ★"
                         android:textSize="12sp"
                         app:cornerRadius="18dp" />
 
@@ -443,7 +443,7 @@
                         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                         android:layout_width="wrap_content"
                         android:layout_height="36dp"
-                        android:text="1 ★"
+                        tools:text="1 ★"
                         android:textSize="12sp"
                         app:cornerRadius="18dp" />
                 </LinearLayout>
@@ -456,7 +456,7 @@
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="16dp"
                 android:paddingBottom="8dp"
-                android:text="Tất cả đánh giá"
+                android:text="@string/all_reviews"
                 android:textColor="@color/text_primary"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -481,7 +481,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="Chưa có đánh giá nào"
+                    android:text="@string/no_reviews_yet"
                     android:textColor="@color/text_secondary"
                     android:textSize="16sp" />
 
@@ -489,7 +489,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Hãy là người đầu tiên chia sẻ cảm nhận!"
+                    android:text="@string/be_first_to_share"
                     android:textColor="@color/text_secondary"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -512,7 +512,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
-        android:text="Viết đánh giá"
+        android:text="@string/write_review_button"
         android:textColor="@color/netflix_text_white"
         app:backgroundTint="@color/netflix_red"
         app:icon="@android:drawable/ic_menu_edit"

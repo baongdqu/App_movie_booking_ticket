@@ -36,11 +36,16 @@
     <string name="back_button">Back</string>
     <string name="label_select_date">Select Date</string>
     <string name="label_select_time">Select Time</string>
+    <string name="select_date">Select Date</string>
+    <string name="select_time">Select Time</string>
     <string name="movie_title">Movie Title</string>
     <string name="btn_continue">Continue</string>
+    <string name="continue_text">Continue</string>
+    <string name="select">Select this cinema</string>
     <string name="total_price">Total: $0</string>
     <string name="label_empty">Empty</string>
     <string name="label_selected">Selected</string>
+    <string name="selected">Selected</string>
     <string name="label_booked">Booked</string>
     <string name="change_language">Change Language</string>
     <string name="language_selection_title">Choose Language</string>
@@ -63,6 +68,7 @@
     <string name="top_movie">Top Movie</string>
     <string name="view_all">View all</string>
     <string name="upcoming_movies">Upcoming Movies</string>
+    <string name="now_showing_movies">Now Showing Movies</string>
     
     <!-- Mail & Notifications -->
     <string name="empty_mailbox">Empty mailbox</string>
@@ -78,7 +84,7 @@
     <string name="genre">Genre</string>
     <string name="duration_placeholder">1h 41m</string>
     <string name="date_placeholder">10/31/2025</string>
-    <string name="details">Details</string>
+
     <string name="buy_ticket">Buy Ticket</string>
     <string name="movie_name">Movie Name</string>
     
@@ -113,6 +119,22 @@
     <string name="new_password">New Password</string>
     <string name="confirm_new_password">Confirm New Password</string>
     <string name="save_password">Save Password</string>
+    
+    <!-- Payment Screen -->
+    <string name="payment_info_title">Payment Information</string>
+    <string name="ticket_info">TICKET INFO</string>
+    <string name="recipient_info">RECIPIENT INFO</string>
+    <string name="payment_method">PAYMENT METHOD</string>
+    <string name="total_payment">Total Payment</string>
+    <string name="pay_now">Pay Now</string>
+    <string name="secure_payment">Secure Payment</string>
+    <string name="movie_poster">Movie Poster</string>
+    <string name="vnpay_desc">Pay via VNPay Wallet</string>
+    <string name="balance_desc">Balance: %1$sđ</string>
+    <string name="toast_select_payment_method">Please select a payment method!</string>
+    <string name="toast_insufficient_balance">Insufficient balance!</string>
+    <string name="toast_payment_success">Payment successful!</string>
+    <string name="toast_payment_failed">Payment failed: %1$s</string>
     
     <!-- Edit Profile -->
     <string name="full_name">Full Name</string>
@@ -288,5 +310,212 @@
     <string name="dialog_no_internet_message">You need an Internet connection to use this app. Please check your network connection and try again.</string>
     <string name="retry">Retry</string>
     <string name="exit">Exit</string>
+
+    <!-- Review -->
+    <string name="toast_review_char_limit">Content must not exceed 200 characters!</string>
+    <string name="toast_select_rating">Please select a rating!</string>
+    <string name="toast_review_saved">Your review has been saved!</string>
+    <string name="toast_review_deleted">Review deleted</string>
+    <string name="dialog_delete_review_title">Delete Review</string>
+    <string name="dialog_delete_review_message">Are you sure you want to delete this review?</string>
+    <string name="btn_update">UPDATE</string>
+
+    <!-- Ticket -->
+    <string name="toast_ticket_not_found">Ticket not found</string>
+    <string name="toast_ticket_refunded">Ticket has been refunded</string>
+    <string name="toast_not_logged_in">You are not logged in</string>
+    <string name="toast_no_refund_permission">You do not have permission to refund this ticket</string>
+    <string name="toast_ticket_data_missing">Missing ticket data for refund</string>
+    <string name="toast_refund_failed">Refund failed</string>
+
+    <!-- Cinema/Seat Selection -->
+    <string name="toast_cinema_not_found">Cinema not found</string>
+    <string name="toast_cinema_data_mismatch">Cinema data mismatch</string>
+    <string name="toast_select_showtime">Please select a showtime</string>
+
+    <!-- Payment -->
+    <string name="toast_payment_cancelled">You have cancelled the payment</string>
+    <string name="toast_payment_confirmed">Payment confirmed successfully!</string>
+    <string name="toast_ticket_pending">You returned, ticket is still pending.</string>
+    <string name="toast_balance_error">Cannot read balance, please try again</string>
+
+    <!-- Movie -->
+    <string name="toast_trailer_not_available">Trailer not available</string>
+    <string name="toast_no_trending_movies">No trending movies</string>
+
+    <!-- Ticket Detail -->
+    <string name="btn_refunded">Refunded</string>
+    <string name="btn_refund">Refund</string>
+    <string name="seat_label">Seat:</string>
+    <string name="seat_format">🎟 Seats: %1$s</string>
+    <string name="seat_not_selected">🎟 Seats: (None)</string>
+    <string name="cinema_not_selected">🎬 (No cinema)</string>
+
+    <!-- Rating -->
+    <string name="reviews_count">(%1$d reviews)</string>
+    <string name="reviews_count_zero">(0 Reviews)</string>
+    <string name="filter_all">All (%1$d)</string>
+    <string name="filter_star">%1$d ★ (%2$d)</string>
+    <string name="all_reviews_header">All reviews (%1$d)</string>
+    <string name="star_reviews_header">%1$d star reviews (%2$d)</string>
+    <string name="no_reviews_yet">No reviews yet</string>
+    <string name="be_first_to_review">Be the first to review!</string>
+    <string name="sentiment_excellent">Masterpiece</string>
+    <string name="sentiment_excellent_desc">Highly rated movie!</string>
+    <string name="sentiment_worth_watching">Worth watching</string>
+    <string name="sentiment_worth_watching_desc">Movie received positive feedback.</string>
+    <string name="sentiment_mixed">Mixed reactions</string>
+    <string name="sentiment_mixed_desc">Opinions are divided among viewers.</string>
+    <string name="sentiment_needs_improvement">Needs improvement</string>
+    <string name="sentiment_needs_improvement_desc">Movie received negative feedback.</string>
+    <string name="edit_review">Edit review</string>
+    <string name="write_review">Write review</string>
+
+    <!-- Cinema -->
+    <string name="book_at_cinema">Book at %1$s</string>
+    <string name="cinema_count">%1$d cinemas nearby</string>
+    <string name="rating_not_available">N/A</string>
+    <string name="upcoming_badge">Coming soon</string>
+
+    <!-- User -->
+    <string name="default_username">User</string>
+    <string name="user_not_found">User not found</string>
+
+    <!-- Ticket Detail Icon Formats -->
+    <string name="cinema_name_with_icon">🎬 %1$s</string>
+    <string name="time_format_with_icon">🕒 %1$s • %2$s</string>
+    <string name="verified_audience_reviews">%1$d reviews from verified audience</string>
+
+    <!-- Payment Methods & Formats -->
+    <string name="payment_method_balance">Balance</string>
+    <string name="payment_method_vnpay">VNPay Gateway</string>
+    <string name="price_format_vnd">%1$sđ</string>
+    <string name="ticket_count_format">%1$d tickets</string>
+    <string name="balance_format">Balance: %1$s đ</string>
+
+    <!-- Generic & Errors -->
+    <string name="email_not_available">No email</string>
+    <string name="choose_image">Choose image</string>
+    <string name="error_ticket_invalid_refund">Ticket refunded or invalid</string>
+    <string name="error_update_ticket_failed">Failed to update ticket</string>
+    <string name="error_load_data">Data load error: %1$s</string>
+    <string name="refund_error_seat">Refund OK but seat return failed</string>
+
+    <!-- Notifications -->
+    <string name="notification_update_account_title">Account Update</string>
+    <string name="notification_update_account_body">You updated your personal info</string>
+    <string name="notification_refund_success_title">Refund Successful</string>
+    <string name="notification_refund_success_body">Your ticket has been refunded.</string>
+    <string name="notification_refund_success_body_with_amount">You have been refunded %1$sđ for %2$s</string>
+
+    <string name="info_not_updated">Not updated</string>
+    <string name="error_payment_prefix">Payment error: %1$s</string>
+    <string name="trailer_button">Watch Trailer</string>
+
+    <!-- Missing Strings Added -->
+    <string name="transaction_details">Transaction Details</string>
+    <string name="payment_method_label">Method:</string>
+    <string name="app_wallet">App Wallet</string>
+    <string name="purchase_time_label">Purchase Time:</string>
+    <string name="total_amount_label">Total Amount</string>
+    <string name="refund_note">Note: Refund will be added to your internal wallet balance.</string>
+    <string name="refund_button">Refund Ticket</string>
+    <string name="status_now_showing">Now Showing</string>
+    <string name="address_label">Address</string>
+    <string name="phone_label">Phone</string>
+    <string name="opening_hours_label">Opening Hours</string>
+    <string name="number_of_screens_label">Number of Screens</string>
+    <string name="utilities_label">Amenities</string>
+    <string name="now_showing_label">Now Showing</string>
+    <string name="upcoming_label">Upcoming</string>
+    <string name="no_schedule_message">No showtimes available</string>
+    <string name="call_button">Call</string>
+    <string name="directions_button">Directions</string>
+    <string name="please_wait">Please wait...</string>
+    <string name="pull_to_retry">Pull to retry</string>
+    <string name="my_tickets">My Tickets</string>
+    <string name="no_tickets_yet">No tickets yet</string>
+    <string name="book_ticket_start">Book a movie ticket to get started!</string>
+    <string name="status_released">Released</string>
+    <string name="cinema_label_icon">🎬 Cinema</string>
+    <string name="schedule_label">📅 Schedule</string>
+    <string name="screen_label">🎥 Screen</string>
+    <string name="seat_label_icon">💺 Seat</string>
+    <string name="payment_vnpay_label">VNPay</string>
+    <string name="payment_vnpay_desc_text">Pay via VNPay Wallet</string>
+    <string name="payment_balance_label">Account Balance</string>
+    <string name="audience_reviews">Audience Reviews</string>
+    <string name="no_reviews">No reviews yet</string>
+    <string name="be_first_to_share">Be the first to share your experience!</string>
+    <string name="write_review_button">Write Review</string>
+    <string name="all_reviews">All Reviews</string>
+    <string name="write_review_title">Write Review</string>
+    <string name="review_hint">How was the movie?</string>
+    <string name="review_content_hint">Share your experience...</string>
+    <string name="delete_review_button">Delete Review</string>
+    <string name="send_button">Send</string>
+    <string name="format_hd">HD</string>
+    <string name="status_paid">Paid</string>
+    <string name="send_generic">Send</string>
+    <string name="you_marker"> (You)</string>
+    <string name="rating_star_format">%s ★</string>
+    <string name="ticket_cinema_label">Cinema: </string>
+    <string name="ticket_showtime_label">Showtime: </string>
+    <string name="ticket_purchase_time_label">Time: </string>
+    <string name="ticket_price_format">%sđ</string>
+    <string name="format_screens_count">%d screens</string>
+    <string name="format_movies_count">%d movies</string>
+    <string name="format_showtime_count">%d shows</string>
+
+    <!-- Cinema & Location -->
+    <string name="cinema_nearby">Nearby Cinemas</string>
+    <string name="cinema_last_updated">Updated: %s</string>
+    <string name="cinema_current_location">Current Location</string>
+    <string name="cinema_detecting_location">Detecting location...</string>
+    <string name="cinema_loading">Loading cinemas...</string>
+    <string name="cinema_no_results">No cinemas found nearby</string>
+    <string name="cinema_grant_permission">Allow Location Access</string>
+    <string name="cinema_uit_location">UIT - VNU-HCM</string>
+    <string name="cinema_location_found">Location found</string>
+    <string name="cinema_error">Error loading cinemas</string>
+    <string name="cinema_directions">Directions</string>
+    <string name="cinema_call">Call</string>
+    <string name="cinema_open_now">Open Now</string>
+    <string name="cinema_closed">Closed</string>
+    <string name="cinema_distance">%1$.1f km</string>
+    <string name="cinema_location_permission_title">Location Permission Required</string>
+    <string name="cinema_location_permission_message">To find cinemas near you, please grant location access.</string>
+    <string name="cinema_location_permission_denied">Cannot find nearby cinemas without location permission</string>
+    <string name="details">Details</string>
+
+    <string name="dialog_confirm_delete_all_notifications_message">Are you sure you want to delete all notifications?</string>
+    <string name="clear_all">Clear All</string>
+
+    <!-- PIN Security Settings -->
+    <string name="pin_settings_title">PIN Security</string>
+    <string name="pin_settings_description">Protect app with 6-digit PIN</string>
+    <string name="setup_pin">Set PIN</string>
+    <string name="change_pin">Change PIN</string>
+    <string name="remove_pin">Remove PIN</string>
+    <string name="enable_pin_lock">Enable PIN Lock</string>
+    <string name="dialog_setup_pin_title">Set up PIN</string>
+    <string name="dialog_enter_new_pin">Enter new 6-digit PIN</string>
+    <string name="dialog_confirm_pin">Confirm PIN</string>
+    <string name="dialog_enter_current_pin">Enter current PIN</string>
+    <string name="dialog_change_pin_title">Change PIN</string>
+    <string name="dialog_remove_pin_title">Remove PIN</string>
+    <string name="dialog_remove_pin_message">Are you sure you want to remove PIN? App will not be protected.</string>
+    <string name="toast_pin_set_success">PIN set successfully!</string>
+    <string name="toast_pin_changed_success">PIN changed successfully!</string>
+    <string name="toast_pin_removed">PIN removed!</string>
+    <string name="toast_pin_mismatch">PIN confirmation does not match!</string>
+    <string name="toast_pin_wrong">Incorrect PIN!</string>
+    <string name="toast_pin_invalid_length">PIN must be exactly 6 digits!</string>
+    <string name="toast_pin_enabled">PIN lock enabled</string>
+    <string name="toast_pin_disabled">PIN lock disabled</string>
+    <string name="pin_status_active">PIN is active</string>
+    <string name="pin_status_inactive">PIN not set</string>
+    
+
 </resources>
 

@@ -48,7 +48,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
         boolean isCurrentUser = currentUid != null && currentUid.equals(review.getUserId());
 
             if (isCurrentUser) {
-                holder.binding.tvUserNameReview.setText(review.getUserName() + " (Bạn)");
+                holder.binding.tvUserNameReview.setText(review.getUserName() + holder.itemView.getContext().getString(R.string.you_marker));
                 int highlightColor = ContextCompat.getColor(holder.itemView.getContext(), R.color.review_highlight);
                 holder.binding.getRoot().setCardBackgroundColor(highlightColor); // Highlight nhẹ
             } else {
@@ -57,7 +57,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
             }
 
         holder.binding.tvCommentReview.setText(review.getComment());
-        holder.binding.tvStarCountReview.setText(review.getRating() + " ★");
+        holder.binding.tvStarCountReview.setText(holder.itemView.getContext().getString(R.string.rating_star_format, String.valueOf(review.getRating())));
 
         // Format timestamp thành ngày tháng (ví dụ: 20/12/2025)
         Calendar cal = Calendar.getInstance(Locale.ENGLISH);

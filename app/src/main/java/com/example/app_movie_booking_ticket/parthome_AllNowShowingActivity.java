@@ -24,7 +24,7 @@ import java.util.List;
  * Activity hiển thị tất cả phim đang chiếu (Now Showing Movies).
  * Phim đang chiếu là những phim có isUpcoming = false.
  */
-public class parthome_AllNowShowingActivity extends AppCompatActivity {
+public class parthome_AllNowShowingActivity extends extra_manager_language {
 
     private RecyclerView recyclerNowShowingMovies;
     private AllMoviesAdapter adapter;

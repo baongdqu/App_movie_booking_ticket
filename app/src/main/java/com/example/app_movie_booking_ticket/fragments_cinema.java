@@ -500,7 +500,7 @@ public class fragments_cinema extends Fragment {
         cinemaAdapter.setCinemaList(cinemas);
 
         // Show cinema count
-        tvCinemaCount.setText("hiện đang có " + cinemas.size() + " rạp gần bạn");
+        tvCinemaCount.setText(getString(R.string.cinema_count, cinemas.size()));
         tvCinemaCount.setVisibility(View.VISIBLE);
 
         // Update last updated time

@@ -428,7 +428,7 @@ public class fragments_home extends Fragment {
                 binding.tvFullName.setText(fullName != null ? fullName : getString(R.string.user_name));
                 binding.tvEmail.setText(email != null ? email : "");
                 binding.tvBalance.setText(
-                        "Số dư: " + formatMoney(balance) + " đ");
+                        getString(R.string.balance_format, formatMoney(balance)));
 
                 if (avatarUrl != null && !avatarUrl.isEmpty()) {
                     Glide.with(requireContext())

@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Activity hiển thị tất cả phim THỊNH HÀNH (Top rated)
  */
-public class parthome_AllMoviesActivity extends AppCompatActivity {
+public class parthome_AllMoviesActivity extends extra_manager_language {
 
     private RecyclerView recyclerAllMovies;
     private AllMoviesAdapter adapter;
@@ -68,7 +68,7 @@ public class parthome_AllMoviesActivity extends AppCompatActivity {
             adapter.notifyDataSetChanged();
 
             if (movieList.isEmpty()) {
-                Toast.makeText(this, "Không có phim thịnh hành", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.toast_no_trending_movies), Toast.LENGTH_SHORT).show();
             }
         });
     }

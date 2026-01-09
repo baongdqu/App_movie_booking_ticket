@@ -28,7 +28,7 @@
             android:background="@drawable/bg_status_open"
             android:paddingHorizontal="8dp"
             android:paddingVertical="4dp"
-            android:text="Đang chiếu"
+            android:text="@string/status_now_showing"
             android:textColor="#FFFFFF"
             android:textSize="9sp"
             android:textStyle="bold"

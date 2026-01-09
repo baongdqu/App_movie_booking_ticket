@@ -206,7 +206,8 @@ public class partuser_edit_profile extends extra_manager_language {
                 Intent fallback = new Intent(Intent.ACTION_GET_CONTENT);
                 fallback.setType("image/*");
                 fallback.addCategory(Intent.CATEGORY_OPENABLE);
-                startActivityForResult(Intent.createChooser(fallback, "Chọn ảnh"), PICK_IMAGE_REQUEST);
+                startActivityForResult(Intent.createChooser(fallback, getString(R.string.choose_image)),
+                        PICK_IMAGE_REQUEST);
             }
         });
 
@@ -633,14 +634,13 @@ public class partuser_edit_profile extends extra_manager_language {
                                     .push();
 
                             Map<String, Object> notiData = new HashMap<>();
-                            notiData.put("title", "Cập nhật tài khoản");
-                            notiData.put("message", "Bạn đã thay đổi thông tin cá nhân");
+                            notiData.put("title", getString(R.string.notification_update_account_title));
+                            notiData.put("message", getString(R.string.notification_update_account_body));
                             notiData.put("timestamp", System.currentTimeMillis()); // 👈 QUAN TRỌNG
                             notiData.put("read", false);
                             notiData.put("type", "PROFILE");
 
                             notiRef.setValue(notiData);
-
 
                             finish();
                         } else {

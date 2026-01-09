@@ -32,7 +32,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-public class TicketDetailActivity extends AppCompatActivity {
+public class TicketDetailActivity extends extra_manager_language {
 
     public static final String EXTRA_TICKET_ID = "ticketId";
 
@@ -98,7 +98,8 @@ public class TicketDetailActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot t) {
                         if (!t.exists()) {
-                            Toast.makeText(TicketDetailActivity.this, "Không tìm thấy vé", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(TicketDetailActivity.this, getString(R.string.toast_ticket_not_found),
+                                    Toast.LENGTH_SHORT).show();
                             finish();
                             return;
                         }
@@ -134,14 +135,19 @@ public class TicketDetailActivity extends AppCompatActivity {
 
                         // Hiển thị lên UI
                         tvMovieTitle.setText(movieTitle != null ? movieTitle : "");
-                        tvCinema.setText(!TextUtils.isEmpty(cinemaName) ? ("🎬 " + cinemaName) : "🎬 (Chưa có rạp)");
-                        tvDateTime.setText("🕒 " + (date != null ? date : "") + " • " + (time != null ? time : ""));
+                        tvCinema.setText(
+                                !TextUtils.isEmpty(cinemaName) ? getString(R.string.cinema_name_with_icon, cinemaName)
+                                        : getString(R.string.cinema_not_selected));
+                        tvDateTime.setText(getString(R.string.time_format_with_icon, (date != null ? date : ""),
+                                (time != null ? time : "")));
                         tvSeats.setText(
-                                seats.isEmpty() ? "🎟 Ghế: (Chưa có)" : "🎟 Ghế: " + TextUtils.join(", ", seats));
-                        tvTotalPrice.setText(moneyFmt.format(totalPrice) + "đ");
+                                seats.isEmpty() ? getString(R.string.seat_not_selected)
+                                        : getString(R.string.seat_format, TextUtils.join(", ", seats)));
+                        tvTotalPrice.setText(getString(R.string.price_format_vnd, moneyFmt.format(totalPrice)));
 
                         // Hiển thị phương thức thanh toán
-                        String paymentDisplay = ("BALANCE".equals(method) ? "Số dư" : "Cổng VNPay");
+                        String paymentDisplay = ("BALANCE".equals(method) ? getString(R.string.payment_method_balance)
+                                : getString(R.string.payment_method_vnpay));
                         if (tvPaymentMethod != null)
                             tvPaymentMethod.setText(paymentDisplay);
 
@@ -172,27 +178,27 @@ public class TicketDetailActivity extends AppCompatActivity {
     private void updateRefundButtonUI() {
         if (refunded) {
             btnRefund.setEnabled(false);
-            btnRefund.setText("Đã hoàn vé");
+            btnRefund.setText(getString(R.string.btn_refunded));
         } else {
             btnRefund.setEnabled(true);
-            btnRefund.setText("Hoàn vé");
+            btnRefund.setText(getString(R.string.btn_refund));
         }
     }
 
     private void refundTicket() {
         if (refunded) {
-            Toast.makeText(this, "Vé đã được hoàn", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_ticket_refunded), Toast.LENGTH_SHORT).show();
             return;
         }
 
         FirebaseUser current = FirebaseAuth.getInstance().getCurrentUser();
         if (current == null) {
-            Toast.makeText(this, "Bạn chưa đăng nhập", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_not_logged_in), Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (ticketUserId != null && !ticketUserId.equals(current.getUid())) {
-            Toast.makeText(this, "Bạn không có quyền hoàn vé này", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_no_refund_permission), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -210,7 +216,7 @@ public class TicketDetailActivity extends AppCompatActivity {
 
                 if (!"PAID".equals(status)) {
                     Toast.makeText(TicketDetailActivity.this,
-                            "Vé đã được hoàn hoặc không hợp lệ",
+                            getString(R.string.error_ticket_invalid_refund),
                             Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -236,7 +242,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                     public void onComplete(DatabaseError error, boolean committed, DataSnapshot snapshot) {
                         if (!committed) {
                             Toast.makeText(TicketDetailActivity.this,
-                                    "Hoàn tiền thất bại",
+                                    getString(R.string.toast_refund_failed),
                                     Toast.LENGTH_SHORT).show();
                             return;
                         }
@@ -250,10 +256,11 @@ public class TicketDetailActivity extends AppCompatActivity {
                                     refunded = true;
                                     extra_sound_manager.playSuccess(TicketDetailActivity.this);
                                     Toast.makeText(TicketDetailActivity.this,
-                                            "Hoàn vé thành công!",
+                                            getString(R.string.notification_refund_success_title),
                                             Toast.LENGTH_SHORT).show();
-                                    sendNotification(ticketUserId, "Hoàn tiền thành công",
-                                            "Vé của bạn đã được hoàn tiền.", "REFUND");
+                                    sendNotification(ticketUserId,
+                                            getString(R.string.notification_refund_success_title),
+                                            getString(R.string.notification_refund_success_body), "REFUND");
 
                                     // ✅ báo về Fragment reload rồi quay lại
                                     setResult(RESULT_OK);
@@ -262,7 +269,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                                 .addOnFailureListener(e -> {
                                     extra_sound_manager.playError(TicketDetailActivity.this);
                                     Toast.makeText(TicketDetailActivity.this,
-                                            "Cập nhật vé thất bại",
+                                            getString(R.string.error_update_ticket_failed),
                                             Toast.LENGTH_SHORT).show();
                                 });
                     }

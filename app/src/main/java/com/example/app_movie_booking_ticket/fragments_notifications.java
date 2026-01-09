@@ -131,7 +131,7 @@ public class fragments_notifications extends Fragment {
     private void showClearAllConfirmation() {
         new MaterialAlertDialogBuilder(requireContext())
                 .setTitle(R.string.clear_all)
-                .setMessage(R.string.dialog_confirm_delete_message)
+                .setMessage(R.string.dialog_confirm_delete_all_notifications_message)
                 .setPositiveButton(R.string.dialog_confirm, (dialog, which) -> {
                     ref.removeValue();
                     list.clear();

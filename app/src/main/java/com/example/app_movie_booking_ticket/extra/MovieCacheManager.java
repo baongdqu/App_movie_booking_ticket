@@ -222,7 +222,8 @@ public class MovieCacheManager {
         // tương lai
         Set<String> moviesWithPastShowtimesOnly = new HashSet<>();
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH:mm", Locale.getDefault());
+        // Cleaner Date Parsing
+        SimpleDateFormat sdfStandard = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
         Date now = new Date();
 
         for (DataSnapshot movieSnap : snapshot.getChildren()) {
@@ -233,22 +234,44 @@ public class MovieCacheManager {
 
             for (DataSnapshot showtimeSnap : movieSnap.getChildren()) {
                 String showtimeKey = showtimeSnap.getKey();
+                if (showtimeKey == null)
+                    continue;
+
+                Date showtimeDate = null;
                 try {
-                    Date showtimeDate = sdf.parse(showtimeKey);
-                    if (showtimeDate != null) {
-                        if (showtimeDate.after(now)) {
-                            // Suất chiếu trong tương lai
-                            hasFutureShowtimes = true;
-                            if (earliestFuture == null || showtimeDate.before(earliestFuture)) {
-                                earliestFuture = showtimeDate;
+                    // Handle format like "Th 6, 21/11/2025_09:00"
+                    String[] parts = showtimeKey.split("_");
+                    if (parts.length >= 2) {
+                        String datePart = parts[0]; // "Th 6, 21/11/2025" or "21/11/2025"
+                        String timePart = parts[1]; // "09:00"
+
+                        // Remove "Th X, " prefix if present to get standard date
+                        if (datePart.contains(",")) {
+                            String[] dParts = datePart.split(",");
+                            if (dParts.length > 1) {
+                                datePart = dParts[1].trim();
                             }
-                        } else {
-                            // Suất chiếu trong quá khứ
-                            hasPastShowtimes = true;
                         }
+
+                        // Combine to standard format "dd/MM/yyyy HH:mm"
+                        String dateTimeStr = datePart + " " + timePart;
+                        showtimeDate = sdfStandard.parse(dateTimeStr);
                     }
-                } catch (ParseException e) {
-                    // Ignore invalid format
+                } catch (Exception e) {
+                    // Ignore parsing errors for individual showtimes
+                }
+
+                if (showtimeDate != null) {
+                    if (showtimeDate.after(now)) {
+                        // Suất chiếu trong tương lai
+                        hasFutureShowtimes = true;
+                        if (earliestFuture == null || showtimeDate.before(earliestFuture)) {
+                            earliestFuture = showtimeDate;
+                        }
+                    } else {
+                        // Suất chiếu trong quá khứ
+                        hasPastShowtimes = true;
+                    }
                 }
             }
 

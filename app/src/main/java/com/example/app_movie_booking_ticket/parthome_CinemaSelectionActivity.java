@@ -33,7 +33,7 @@ import java.util.Set;
  * Activity for selecting cinema before seat selection
  * Flow: Movie Detail -> Cinema Selection -> Seat Selection -> Payment
  */
-public class parthome_CinemaSelectionActivity extends AppCompatActivity {
+public class parthome_CinemaSelectionActivity extends extra_manager_language {
 
     private TextView tvMovieTitle;
     private ImageView ivMoviePoster;
@@ -136,7 +136,7 @@ public class parthome_CinemaSelectionActivity extends AppCompatActivity {
         btnContinue.setOnClickListener(v -> {
             if (selectedCinemaId.isEmpty()) {
                 extra_sound_manager.playError(this);
-                Toast.makeText(this, "Vui lòng chọn suất chiếu", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.toast_select_showtime), Toast.LENGTH_SHORT).show();
                 return;
             }
             extra_sound_manager.playUiClick(this);

@@ -13,7 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
  * Màn hình hiển thị kết quả sau khi thực hiện hành động (thường là thanh toán).
  * (Hiện tại đang sử dụng cấu hình mặc định).
  */
-public class extra_ResultActivity extends AppCompatActivity {
+public class extra_ResultActivity extends extra_manager_language {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

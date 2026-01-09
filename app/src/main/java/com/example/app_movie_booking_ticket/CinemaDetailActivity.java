@@ -45,7 +45,7 @@ import java.util.Set;
  * Activity to display detailed information about a cinema.
  * Bao gồm thông tin rạp và danh sách phim đang chiếu/sắp chiếu tại rạp.
  */
-public class CinemaDetailActivity extends AppCompatActivity implements CinemaMovieAdapter.OnMovieClickListener {
+public class CinemaDetailActivity extends extra_manager_language implements CinemaMovieAdapter.OnMovieClickListener {
 
     private static final String TAG = "CinemaDetailActivity";
     public static final String EXTRA_CINEMA = "extra_cinema";
@@ -190,9 +190,9 @@ public class CinemaDetailActivity extends AppCompatActivity implements CinemaMov
         // Rating
         if (cinema.getRating() > 0) {
             tvRating.setText(String.format("%.1f", cinema.getRating()));
-            tvRatingCount.setText("(" + cinema.getUserRatingsTotal() + " đánh giá)");
+            tvRatingCount.setText(getString(R.string.reviews_count, cinema.getUserRatingsTotal()));
         } else {
-            tvRating.setText("N/A");
+            tvRating.setText(getString(R.string.rating_not_available));
             tvRatingCount.setVisibility(View.GONE);
         }
 
@@ -233,7 +233,7 @@ public class CinemaDetailActivity extends AppCompatActivity implements CinemaMov
         int screens = cinema.getScreens();
         if (screens > 0) {
             layoutScreens.setVisibility(View.VISIBLE);
-            tvScreens.setText(screens + " phòng chiếu");
+            tvScreens.setText(getString(R.string.format_screens_count, screens));
         } else {
             layoutScreens.setVisibility(View.GONE);
         }
@@ -634,7 +634,7 @@ public class CinemaDetailActivity extends AppCompatActivity implements CinemaMov
             if (!nowShowingMovies.isEmpty()) {
                 layoutNowShowingMovies.setVisibility(View.VISIBLE);
                 // THÊM DÒNG NÀY để hiện số lượng phim
-                tvNowShowingCount.setText(nowShowingMovies.size() + " phim");
+                tvNowShowingCount.setText(getString(R.string.format_movies_count, nowShowingMovies.size()));
                 nowShowingAdapter.updateList(nowShowingMovies);
             } else {
                 layoutNowShowingMovies.setVisibility(View.GONE);
@@ -644,7 +644,7 @@ public class CinemaDetailActivity extends AppCompatActivity implements CinemaMov
             if (!upcomingMovies.isEmpty()) {
                 layoutUpcomingMovies.setVisibility(View.VISIBLE);
                 // THÊM DÒNG NÀY để hiện số lượng phim
-                tvUpcomingCount.setText(upcomingMovies.size() + " phim");
+                tvUpcomingCount.setText(getString(R.string.format_movies_count, upcomingMovies.size()));
                 upcomingAdapter.updateList(upcomingMovies);
             } else {
                 layoutUpcomingMovies.setVisibility(View.GONE);

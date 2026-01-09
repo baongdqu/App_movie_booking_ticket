@@ -128,7 +128,7 @@
                                 android:id="@+id/txtCinemaName"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="🎬 Rạp phim"
+                                android:text="@string/cinema_label_icon"
                                 android:textSize="12sp"
                                 android:textColor="@color/text_secondary"
                                 android:background="@drawable/bg_badge_outline"
@@ -140,7 +140,7 @@
                                 android:id="@+id/txtTitle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Movie name"
+                                tools:text="Movie name"
                                 android:textStyle="bold"
                                 android:textColor="@color/text_primary"
                                 android:textSize="18sp"
@@ -162,7 +162,7 @@
                                     android:layout_height="wrap_content"
                                     android:paddingHorizontal="8dp"
                                     android:paddingVertical="2dp"
-                                    android:text="16+"
+                                    tools:text="16+"
                                     android:textSize="11sp"
                                     android:textStyle="bold"
                                     android:textColor="@android:color/white"
@@ -172,7 +172,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:paddingStart="8dp"
-                                    android:text="Hành động, Phiêu lưu"
+                                    tools:text="Hành động, Phiêu lưu"
                                     android:textSize="12sp"
                                     android:textColor="@color/text_secondary"/>
                             </LinearLayout>
@@ -190,7 +190,7 @@
                                     android:layout_height="wrap_content"
                                     android:paddingHorizontal="10dp"
                                     android:paddingVertical="4dp"
-                                    android:text="2D Phụ đề"
+                                    tools:text="2D Phụ đề"
                                     android:textSize="12sp"
                                     android:textStyle="bold"
                                     android:textColor="@color/netflix_red"
@@ -251,7 +251,7 @@
                                 android:paddingBottom="16dp">
 
                                 <TextView
-                                    android:text="📅 Lịch chiếu"
+                                    android:text="@string/schedule_label"
                                     android:textSize="12sp"
                                     android:textColor="@color/text_secondary"
                                     android:layout_width="wrap_content"
@@ -259,7 +259,7 @@
 
                                 <TextView
                                     android:id="@+id/txtTime"
-                                    android:text="Thứ 6, 21/11/2025\n11:45 → 13:28"
+                                    tools:text="Thứ 6, 21/11/2025\n11:45 → 13:28"
                                     android:textColor="@color/text_primary"
                                     android:textSize="14sp"
                                     android:textStyle="bold"
@@ -276,7 +276,7 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    android:text="🎥 Phòng chiếu"
+                                    android:text="@string/screen_label"
                                     android:textSize="12sp"
                                     android:textColor="@color/text_secondary"
                                     android:layout_width="wrap_content"
@@ -284,7 +284,7 @@
 
                                 <TextView
                                     android:id="@+id/txtRoom"
-                                    android:text="RAP 5"
+                                    tools:text="RAP 5"
                                     android:textColor="@color/netflix_red"
                                     android:textSize="16sp"
                                     android:textStyle="bold"
@@ -310,7 +310,7 @@
                                 android:gravity="end">
 
                                 <TextView
-                                    android:text="💺 Số ghế"
+                                    android:text="@string/seat_label_icon"
                                     android:textSize="12sp"
                                     android:textColor="@color/text_secondary"
                                     android:layout_width="wrap_content"
@@ -320,7 +320,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/txtSeat"
-                                    android:text="H09, H10"
+                                    tools:text="H09, H10"
                                     android:textColor="@color/netflix_green"
                                     android:textSize="16sp"
                                     android:textStyle="bold"
@@ -383,7 +383,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/text_primary"
                             android:paddingStart="12dp"
-                            android:text="User name" />
+                            tools:text="User name" />
                     </LinearLayout>
 
                     <View
@@ -414,7 +414,7 @@
                             android:textSize="14sp"
                             android:textColor="@color/text_secondary"
                             android:paddingStart="12dp"
-                            android:text="Phone number" />
+                            tools:text="Phone number" />
                     </LinearLayout>
 
                     <View
@@ -445,7 +445,7 @@
                             android:textSize="14sp"
                             android:textColor="@color/text_secondary"
                             android:paddingStart="12dp"
-                            android:text="mail@example.com" />
+                            tools:text="mail@example.com" />
                     </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -495,7 +495,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="VNPay"
+                            android:text="@string/payment_vnpay_label"
                             android:textSize="15sp"
                             android:textStyle="bold"
                             android:textColor="@color/text_primary"/>
@@ -503,7 +503,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Thanh toán qua ví điện tử VNPay"
+                            android:text="@string/payment_vnpay_desc_text"
                             android:textSize="12sp"
                             android:textColor="@color/text_secondary"/>
                     </LinearLayout>
@@ -551,7 +551,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Số dư tài khoản"
+                            android:text="@string/payment_balance_label"
                             android:textSize="15sp"
                             android:textStyle="bold"
                             android:textColor="@color/text_primary"/>
@@ -560,7 +560,7 @@
                             android:id="@+id/txtBalance"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Số dư: 500.000đ"
+                            tools:text="Số dư: 500.000đ"
                             android:textSize="12sp"
                             android:textColor="@color/netflix_green"/>
                     </LinearLayout>
@@ -612,7 +612,7 @@
                     android:id="@+id/txtTotal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="85.000đ"
+                    tools:text="85.000đ"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     android:textColor="@color/netflix_red"/>

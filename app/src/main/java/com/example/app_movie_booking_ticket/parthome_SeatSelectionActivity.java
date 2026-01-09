@@ -30,7 +30,7 @@ import java.util.Set;
  * Cho phép người dùng chọn ngày, giờ chiếu và vị trí ghế ngồi.
  * Tính toán tổng tiền vé dựa trên số ghế đã chọn.
  */
-public class parthome_SeatSelectionActivity extends AppCompatActivity {
+public class parthome_SeatSelectionActivity extends extra_manager_language {
 
     private TextView tvMovieTitle, tvTotalPrice;
     private LinearLayout layoutDates, layoutTimes;
@@ -170,7 +170,8 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
                     // Hiển thị ghế
                     displaySeats(targetCinema.child("seats"));
                 } else {
-                    Toast.makeText(parthome_SeatSelectionActivity.this, "Không tìm thấy rạp khớp", Toast.LENGTH_SHORT)
+                    Toast.makeText(parthome_SeatSelectionActivity.this, getString(R.string.toast_cinema_not_found),
+                            Toast.LENGTH_SHORT)
                             .show();
                 }
             }
@@ -426,7 +427,8 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
                     displaySeats(targetSnapshot.child("seats"));
                 } else {
                     android.util.Log.e("SeatSelection", "Không tìm thấy rạp khớp với ID: " + selectedCinemaId);
-                    Toast.makeText(parthome_SeatSelectionActivity.this, "Dữ liệu rạp không đồng bộ", Toast.LENGTH_SHORT)
+                    Toast.makeText(parthome_SeatSelectionActivity.this, getString(R.string.toast_cinema_data_mismatch),
+                            Toast.LENGTH_SHORT)
                             .show();
                 }
             }
