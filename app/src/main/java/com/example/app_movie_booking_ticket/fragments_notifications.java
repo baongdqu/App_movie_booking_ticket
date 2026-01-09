@@ -199,24 +199,11 @@ public class fragments_notifications extends Fragment {
 
         // REFUND → mở danh sách vé đã hoàn
         if ("REFUND".equals(type)) {
-
-            Bundle bundle = new Bundle();
-            bundle.putString("filter", "REFUNDED");
-
-            fragments_mail fragment = new fragments_mail();
-            fragment.setArguments(bundle);
-
-            requireActivity()
-                    .getSupportFragmentManager()
-                    .beginTransaction()
-                    .setCustomAnimations(
-                            R.anim.slide_in_right,
-                            R.anim.slide_out_left,
-                            R.anim.slide_in_left,
-                            R.anim.slide_out_right)
-                    .replace(R.id.container, fragment)
-                    .addToBackStack(null)
-                    .commit();
+            // 🔥 GIẢI PHÁP: Gọi trực tiếp Activity quản lý để điều hướng đồng bộ
+            if (getActivity() instanceof activities_2_a_menu_manage_fragments) {
+                activities_2_a_menu_manage_fragments mainMenu = (activities_2_a_menu_manage_fragments) getActivity();
+                mainMenu.navigateToMailWithFilter("REFUNDED");
+            }
         }
         // LOGIN / loại khác → chỉ đánh dấu đã đọc
     }

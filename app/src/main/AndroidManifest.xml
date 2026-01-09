@@ -36,6 +36,7 @@
 
         <activity
             android:name=".parthome_PaymentActivity"
+            android:launchMode="singleTask"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

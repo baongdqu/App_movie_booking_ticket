@@ -296,21 +296,12 @@ public class CinemaDetailActivity extends AppCompatActivity implements CinemaMov
         bookingsRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                nowShowingMovies.clear();
-                upcomingMovies.clear();
-
-                Map<String, Integer> nowShowingShowtimes = new HashMap<>();
-                Map<String, Date> nowShowingEarliest = new HashMap<>();
-                Map<String, Integer> upcomingShowtimes = new HashMap<>();
-                Map<String, Date> upcomingEarliest = new HashMap<>();
+                // Map để lưu: Tên phim -> {Số suất chiếu, Ngày sớm nhất}
+                Map<String, Integer> movieShowtimeCounts = new HashMap<>();
+                Map<String, Date> movieEarliestDates = new HashMap<>();
 
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH:mm", Locale.getDefault());
                 Date now = new Date();
-
-                // Ngưỡng 7 ngày để phân loại phim sắp chiếu
-                Calendar cal = Calendar.getInstance();
-                cal.add(Calendar.DAY_OF_YEAR, 7);
-                Date upcomingThreshold = cal.getTime();
 
                 for (DataSnapshot movieSnap : snapshot.getChildren()) {
                     String movieTitle = movieSnap.getKey();
@@ -319,41 +310,33 @@ public class CinemaDetailActivity extends AppCompatActivity implements CinemaMov
                         String showtimeKey = showtimeSnap.getKey();
                         try {
                             Date showtimeDate = sdf.parse(showtimeKey);
-                            if (showtimeDate == null || showtimeDate.before(now)) {
-                                continue;
-                            }
+                            // Chỉ lấy các suất chiếu trong tương lai
+                            if (showtimeDate == null || showtimeDate.before(now)) continue;
 
-                            // --- ĐOẠN QUAN TRỌNG NHẤT ---
                             DataSnapshot cinemasSnap = showtimeSnap.child("cinemas");
                             boolean matchFound = false;
 
                             for (DataSnapshot cinemaInDb : cinemasSnap.getChildren()) {
-                                String dbCinemaKey = cinemaInDb.getKey();
-                                String dbCinemaName = cinemaInDb.child("name").getValue(String.class);
-
-                                if (matchesCinema(dbCinemaKey, dbCinemaName)) {
+                                if (matchesCinema(cinemaInDb.getKey(), cinemaInDb.child("name").getValue(String.class))) {
                                     matchFound = true;
                                     break;
                                 }
                             }
 
-                            // CHỈ KHI MATCH MỚI PUT VÀO MAP
                             if (matchFound) {
-                                if (showtimeDate.before(upcomingThreshold)) {
-                                    updateShowtimeMap(nowShowingShowtimes, nowShowingEarliest, movieTitle, showtimeDate);
-                                } else {
-                                    updateShowtimeMap(upcomingShowtimes, upcomingEarliest, movieTitle, showtimeDate);
+                                // Cập nhật map chung, chưa phân loại vội
+                                movieShowtimeCounts.put(movieTitle, movieShowtimeCounts.getOrDefault(movieTitle, 0) + 1);
+                                if (!movieEarliestDates.containsKey(movieTitle) || showtimeDate.before(movieEarliestDates.get(movieTitle))) {
+                                    movieEarliestDates.put(movieTitle, showtimeDate);
                                 }
                             }
-                            // ---------------------------
-
                         } catch (ParseException e) {
                             Log.e(TAG, "Lỗi định dạng ngày: " + showtimeKey);
                         }
                     }
                 }
-                // Sau khi lọc xong mới load chi tiết phim từ Cache
-                loadMovieDetailsFromCache(nowShowingShowtimes, nowShowingEarliest, upcomingShowtimes, upcomingEarliest);
+                // Gọi hàm xử lý chi tiết
+                processAndCategorizeMovies(movieShowtimeCounts, movieEarliestDates);
             }
 
             @Override
@@ -362,7 +345,54 @@ public class CinemaDetailActivity extends AppCompatActivity implements CinemaMov
             }
         });
     }
+    private void processAndCategorizeMovies(Map<String, Integer> showtimeCounts, Map<String, Date> earliestDates) {
+        nowShowingMovies.clear();
+        upcomingMovies.clear();
 
+        movieCacheManager.getFilteredMovies((nowShowing, upcoming, trending, allMovies) -> {
+            Map<String, Movie> movieMap = new HashMap<>();
+            for (Movie movie : allMovies) {
+                if (movie.getTitle() != null) {
+                    movieMap.put(movie.getTitle().toLowerCase().trim(), movie);
+                }
+            }
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM", Locale.getDefault());
+            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
+
+            for (Map.Entry<String, Integer> entry : showtimeCounts.entrySet()) {
+                String titleFromFb = entry.getKey();
+                Movie movie = movieMap.get(titleFromFb.toLowerCase().trim());
+
+                if (movie != null) {
+                    int count = entry.getValue();
+                    Date earliest = earliestDates.get(titleFromFb);
+                    String dateStr = "";
+
+                    if (earliest != null) {
+                        dateStr = android.text.format.DateUtils.isToday(earliest.getTime())
+                                ? "Hôm nay " + timeFormat.format(earliest)
+                                : dateFormat.format(earliest);
+                    }
+
+                    CinemaMovieAdapter.CinemaMovie cinemaMovie = new CinemaMovieAdapter.CinemaMovie(
+                            movie, count, movie.isUpcomingMovie(), movie.getImdb(), dateStr);
+
+                    // --- PHÂN LOẠI CHÍNH XÁC Ở ĐÂY ---
+                    if (movie.isUpcomingMovie()) {
+                        upcomingMovies.add(cinemaMovie);
+                    } else {
+                        nowShowingMovies.add(cinemaMovie);
+                    }
+                }
+            }
+
+            runOnUiThread(() -> {
+                progressBarMovies.setVisibility(View.GONE);
+                updateMoviesUI();
+            });
+        });
+    }
     // Hàm hỗ trợ cập nhật Map suất chiếu
     private void updateShowtimeMap(Map<String, Integer> counts, Map<String, Date> earliest, String title, Date date) {
         counts.put(title, counts.getOrDefault(title, 0) + 1);

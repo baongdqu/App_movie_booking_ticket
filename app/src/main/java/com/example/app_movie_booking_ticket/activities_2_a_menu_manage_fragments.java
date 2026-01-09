@@ -128,6 +128,19 @@ public class activities_2_a_menu_manage_fragments extends extra_manager_language
                 .replace(R.id.container, fragment)
                 .commit();
     }
+    // Thêm vào trong lớp activities_2_a_menu_manage_fragments
+    public void navigateToMailWithFilter(String filterValue) {
+        // 1. Chuẩn bị dữ liệu filter cho fragments_mail
+        Bundle bundle = new Bundle();
+        bundle.putString("filter", filterValue);
+        fragmentMail.setArguments(bundle);
+
+        // 2. Sử dụng hàm switchFragment có sẵn để đảm bảo logic hide/show
+        switchFragment(fragmentMail);
+
+        // 3. Cập nhật UI của thanh Bottom Navigation
+        bottomNavigationView.setSelectedItemId(R.id.nav_mail);
+    }
     private void initFragments() {
         fragmentHome = new fragments_home();
         fragmentCinema = new fragments_cinema();
