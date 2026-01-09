@@ -376,6 +376,7 @@
     <string name="cinema_count">%1$d cinemas nearby</string>
     <string name="rating_not_available">N/A</string>
     <string name="upcoming_badge">Coming soon</string>
+    <string name="expired_badge">Ended</string>
 
     <!-- User -->
     <string name="default_username">User</string>

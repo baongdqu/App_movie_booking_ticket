@@ -584,8 +584,10 @@ public class CinemaDetailActivity extends extra_manager_language implements Cine
                             dateStr = dateFormat.format(earliest);
                         }
                     }
+                    // Kiểm tra phim đã hết lịch chiếu chưa
+                    boolean isExpired = MovieCacheManager.getInstance().isMovieExpired(movie.getMovieID());
                     nowShowingMovies.add(new CinemaMovieAdapter.CinemaMovie(
-                            movie, showtimeCount, false, rating, dateStr));
+                            movie, showtimeCount, false, isExpired, rating, dateStr));
                 }
             }
 
@@ -604,8 +606,9 @@ public class CinemaDetailActivity extends extra_manager_language implements Cine
                     if (earliest != null) {
                         dateStr = dateFormat.format(earliest);
                     }
+                    // Phim sắp chiếu không thể là phim đã hết hạn
                     upcomingMovies.add(new CinemaMovieAdapter.CinemaMovie(
-                            movie, showtimeCount, true, rating, dateStr));
+                            movie, showtimeCount, true, false, rating, dateStr));
                 }
             }
 
@@ -681,8 +684,12 @@ public class CinemaDetailActivity extends extra_manager_language implements Cine
     public void onMovieClick(Movie movie, String cinemaName, String cinemaIdParam, int showtimeCount) {
         extra_sound_manager.playUiClick(this);
 
+        // Kiểm tra phim đã hết lịch chiếu chưa
+        boolean isExpired = MovieCacheManager.getInstance().isMovieExpired(movie.getMovieID());
+
         Intent intent = new Intent(this, parthome_movie_detail.class);
         intent.putExtra("movie", movie);
+        intent.putExtra("isExpired", isExpired); // Truyền trạng thái đã chiếu
         intent.putExtra("fromCinema", true);
         intent.putExtra("cinemaName", cinemaName);
         intent.putExtra("cinemaId", cinemaIdParam);

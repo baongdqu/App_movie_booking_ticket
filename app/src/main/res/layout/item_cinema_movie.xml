@@ -34,12 +34,36 @@
             android:textStyle="bold"
             android:visibility="gone" />
 
+        <!-- Badge đã chiếu -->
+        <TextView
+            android:id="@+id/tvExpiredBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|start"
+            android:layout_margin="6dp"
+            android:background="@drawable/bg_badge_expired"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp"
+            android:text="@string/expired_badge"
+            android:textColor="#FFFFFF"
+            android:textSize="9sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
         <!-- Overlay mờ cho phim sắp chiếu -->
         <View
             android:id="@+id/viewUpcomingOverlay"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#33000000"
+            android:visibility="gone" />
+
+        <!-- Overlay mờ cho phim đã chiếu -->
+        <View
+            android:id="@+id/viewExpiredOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#66000000"
             android:visibility="gone" />
 
     </FrameLayout>

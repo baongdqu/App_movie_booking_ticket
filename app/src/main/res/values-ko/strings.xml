@@ -366,6 +366,7 @@
     <string name="cinema_count">근처에 %1$d개 영화관</string>
     <string name="rating_not_available">N/A</string>
     <string name="upcoming_badge">개봉 예정</string>
+    <string name="expired_badge">상영 종료</string>
 
     <!-- User -->
     <string name="default_username">사용자</string>

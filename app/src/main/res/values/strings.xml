@@ -483,6 +483,7 @@
     <string name="cinema_count">hiện đang có %1$d rạp gần bạn</string>
     <string name="rating_not_available">N/A</string>
     <string name="upcoming_badge">Sắp chiếu</string>
+    <string name="expired_badge">Đã chiếu</string>
 
     <!-- User -->
     <string name="default_username">Người dùng</string>

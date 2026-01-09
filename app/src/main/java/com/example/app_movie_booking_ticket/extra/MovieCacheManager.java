@@ -349,16 +349,16 @@ public class MovieCacheManager {
         Log.d(TAG, "Thời điểm hiện tại: " + now.toString());
 
         // Ngày thứ 8 (bắt đầu của "sắp chiếu")
-        cal.add(Calendar.DAY_OF_YEAR, 8);
-        cal.set(Calendar.HOUR_OF_DAY, 0);
-        cal.set(Calendar.MINUTE, 0);
-        cal.set(Calendar.SECOND, 0);
-        cal.set(Calendar.MILLISECOND, 0);
-        Date nowShowingStartDate = cal.getTime(); // 00:00 ngày thứ 8
+        cal.add(Calendar.DAY_OF_YEAR, 7);
+        cal.set(Calendar.HOUR_OF_DAY, 23);
+        cal.set(Calendar.MINUTE, 59);
+        cal.set(Calendar.SECOND, 59);
+        cal.set(Calendar.MILLISECOND, 999);
+        Date nowShowingEndDate = cal.getTime(); // 23:59:59 ngày thứ 7
 
-        Log.d(TAG, "Ngày bắt đầu đang chiếu (ngày 8): " + nowShowingStartDate.toString());
-        Log.d(TAG, "Phạm vi SẮP CHIẾU: " + now.toString() + " đến trước " + nowShowingStartDate.toString());
-        Log.d(TAG, "Phạm vi ĐANG CHIẾU: từ " + nowShowingStartDate.toString() + " trở đi");
+        Log.d(TAG, "Ngày kết thúc đang chiếu (cuối ngày 7): " + nowShowingEndDate.toString());
+        Log.d(TAG, "Phạm vi ĐANG CHIẾU: " + now.toString() + " đến " + nowShowingEndDate.toString());
+        Log.d(TAG, "Phạm vi SẮP CHIẾU: sau " + nowShowingEndDate.toString());
 
         // Phân loại theo suất chiếu
         for (Movie movie : cachedAllMovies) {
@@ -377,14 +377,14 @@ public class MovieCacheManager {
 
             if (earliestShowtime != null) {
                 // Có suất chiếu trong tương lai
-                if (earliestShowtime.before(nowShowingStartDate)) {
-                    // Suất chiếu trong 7 ngày -> SẮP CHIẾU (phim sắp ra mắt)
-                    cachedUpcoming.add(movie);
-                    Log.d(TAG, "[SẮP CHIẾU] " + movie.getTitle() + " - Suất sớm nhất: " + earliestShowtime.toString());
-                } else {
-                    // Suất chiếu từ ngày 8 trở đi -> ĐANG CHIẾU (phim đã công chiếu)
+                if (earliestShowtime.before(nowShowingEndDate) || earliestShowtime.equals(nowShowingEndDate)) {
+                    // Suất chiếu trong 7 ngày tới -> ĐANG CHIẾU
                     cachedNowShowing.add(movie);
                     Log.d(TAG, "[ĐANG CHIẾU] " + movie.getTitle() + " - Suất sớm nhất: " + earliestShowtime.toString());
+                } else {
+                    // Suất chiếu từ ngày 8 trở đi -> SẮP CHIẾU
+                    cachedUpcoming.add(movie);
+                    Log.d(TAG, "[SẮP CHIẾU] " + movie.getTitle() + " - Suất sớm nhất: " + earliestShowtime.toString());
                 }
             } else {
                 // Không có suất chiếu trong database -> dựa vào field isUpcoming

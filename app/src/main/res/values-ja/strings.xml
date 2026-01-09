@@ -366,6 +366,7 @@
     <string name="cinema_count">%1$d件の近くの映画館</string>
     <string name="rating_not_available">N/A</string>
     <string name="upcoming_badge">公開予定</string>
+    <string name="expired_badge">上映終了</string>
 
     <!-- User -->
     <string name="default_username">ユーザー</string>

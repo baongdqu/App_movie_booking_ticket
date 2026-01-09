@@ -365,6 +365,7 @@
     <string name="cinema_count">%1$d кинотеатров рядом</string>
     <string name="rating_not_available">N/A</string>
     <string name="upcoming_badge">Скоро</string>
+    <string name="expired_badge">Завершено</string>
 
     <!-- User -->
     <string name="default_username">Пользователь</string>

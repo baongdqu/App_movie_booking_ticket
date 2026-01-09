@@ -43,6 +43,7 @@ public class CinemaMovieAdapter extends RecyclerView.Adapter<CinemaMovieAdapter.
         private Movie movie;
         private int showtimeCount;
         private boolean isUpcoming;
+        private boolean isExpired; // Phim đã hết lịch chiếu
         private double rating;
         private String earliestShowtime; // Ngày chiếu sớm nhất (format: "dd/MM")
 
@@ -50,6 +51,7 @@ public class CinemaMovieAdapter extends RecyclerView.Adapter<CinemaMovieAdapter.
             this.movie = movie;
             this.showtimeCount = showtimeCount;
             this.isUpcoming = isUpcoming;
+            this.isExpired = false;
             this.rating = rating;
             this.earliestShowtime = null;
         }
@@ -58,6 +60,17 @@ public class CinemaMovieAdapter extends RecyclerView.Adapter<CinemaMovieAdapter.
             this.movie = movie;
             this.showtimeCount = showtimeCount;
             this.isUpcoming = isUpcoming;
+            this.isExpired = false;
+            this.rating = rating;
+            this.earliestShowtime = earliestShowtime;
+        }
+
+        public CinemaMovie(Movie movie, int showtimeCount, boolean isUpcoming, boolean isExpired, double rating,
+                String earliestShowtime) {
+            this.movie = movie;
+            this.showtimeCount = showtimeCount;
+            this.isUpcoming = isUpcoming;
+            this.isExpired = isExpired;
             this.rating = rating;
             this.earliestShowtime = earliestShowtime;
         }
@@ -72,6 +85,14 @@ public class CinemaMovieAdapter extends RecyclerView.Adapter<CinemaMovieAdapter.
 
         public boolean isUpcoming() {
             return isUpcoming;
+        }
+
+        public boolean isExpired() {
+            return isExpired;
+        }
+
+        public void setExpired(boolean expired) {
+            isExpired = expired;
         }
 
         public double getRating() {
@@ -134,15 +155,27 @@ public class CinemaMovieAdapter extends RecyclerView.Adapter<CinemaMovieAdapter.
         }
         holder.tvShowtimeCount.setText(showtimeText);
 
-        // Hiển thị badge trạng thái
-        if (cinemaMovie.isUpcoming()) {
+        // Hiển thị badge trạng thái - ưu tiên expired > upcoming
+        if (cinemaMovie.isExpired()) {
+            // Phim đã chiếu
+            holder.tvStatusBadge.setVisibility(View.GONE);
+            holder.viewUpcomingOverlay.setVisibility(View.GONE);
+            holder.tvExpiredBadge.setVisibility(View.VISIBLE);
+            holder.viewExpiredOverlay.setVisibility(View.VISIBLE);
+        } else if (cinemaMovie.isUpcoming()) {
+            // Phim sắp chiếu
             holder.tvStatusBadge.setVisibility(View.VISIBLE);
             holder.tvStatusBadge.setText(context.getString(R.string.upcoming_badge));
             holder.tvStatusBadge.setBackgroundResource(R.drawable.bg_badge_upcoming);
             holder.viewUpcomingOverlay.setVisibility(View.VISIBLE);
+            holder.tvExpiredBadge.setVisibility(View.GONE);
+            holder.viewExpiredOverlay.setVisibility(View.GONE);
         } else {
+            // Phim đang chiếu
             holder.tvStatusBadge.setVisibility(View.GONE);
             holder.viewUpcomingOverlay.setVisibility(View.GONE);
+            holder.tvExpiredBadge.setVisibility(View.GONE);
+            holder.viewExpiredOverlay.setVisibility(View.GONE);
         }
 
         // Click listener
@@ -170,7 +203,9 @@ public class CinemaMovieAdapter extends RecyclerView.Adapter<CinemaMovieAdapter.
         TextView tvMovieRating;
         TextView tvShowtimeCount;
         TextView tvStatusBadge;
+        TextView tvExpiredBadge;
         View viewUpcomingOverlay;
+        View viewExpiredOverlay;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -179,7 +214,9 @@ public class CinemaMovieAdapter extends RecyclerView.Adapter<CinemaMovieAdapter.
             tvMovieRating = itemView.findViewById(R.id.tvMovieRating);
             tvShowtimeCount = itemView.findViewById(R.id.tvShowtimeCount);
             tvStatusBadge = itemView.findViewById(R.id.tvStatusBadge);
+            tvExpiredBadge = itemView.findViewById(R.id.tvExpiredBadge);
             viewUpcomingOverlay = itemView.findViewById(R.id.viewUpcomingOverlay);
+            viewExpiredOverlay = itemView.findViewById(R.id.viewExpiredOverlay);
         }
     }
 }

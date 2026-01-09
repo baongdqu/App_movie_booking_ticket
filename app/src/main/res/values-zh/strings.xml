@@ -366,6 +366,7 @@
     <string name="cinema_count">附近有%1$d家影院</string>
     <string name="rating_not_available">N/A</string>
     <string name="upcoming_badge">即将上映</string>
+    <string name="expired_badge">已结束</string>
 
     <!-- User -->
     <string name="default_username">用户</string>
