@@ -67,7 +67,7 @@ public class parthome_CinemaSelectionActivity extends AppCompatActivity {
         String preName = getIntent().getStringExtra("preselectedCinemaName");
         // Phải gán giá trị cho fromCinemaDetail ở đây
         fromCinemaDetail = (preselectedCinemaId != null && !preselectedCinemaId.isEmpty());
-
+        android.util.Log.d("CHECK_INTENT", "Cinema ID nhan duoc: " + preselectedCinemaId);
         movieTitle = getIntent().getStringExtra("movieTitle");
         movieID = getIntent().getStringExtra("movieID");
         posterUrl = getIntent().getStringExtra("posterUrl");
@@ -151,8 +151,6 @@ public class parthome_CinemaSelectionActivity extends AppCompatActivity {
         dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                android.util.Log.d("CinemaSelection", "Snapshot exists: " + snapshot.exists());
-                android.util.Log.d("CinemaSelection", "Children count: " + snapshot.getChildrenCount());
                 if (!snapshot.exists()) {
                     Toast.makeText(parthome_CinemaSelectionActivity.this,
                             getString(R.string.toast_no_schedule), Toast.LENGTH_SHORT).show();
@@ -163,14 +161,34 @@ public class parthome_CinemaSelectionActivity extends AppCompatActivity {
                 Set<String> uniqueDates = new HashSet<>();
 
                 for (DataSnapshot timeSnap : snapshot.getChildren()) {
-                    String key = timeSnap.getKey();
-                    if (key != null && key.contains("_")) {
-                        String date = key.split("_")[0];
-                        uniqueDates.add(date);
+                    // 1. Kiểm tra suất chiếu này có dành cho rạp đã chọn không?
+                    boolean isCinemaServing = true;
+                    if (fromCinemaDetail) {
+                        // 🔥 SỬA TẠI ĐÂY: Duyệt qua các rạp để so khớp mờ
+                        isCinemaServing = false;
+                        DataSnapshot cinemasSnap = timeSnap.child("cinemas");
+                        for (DataSnapshot c : cinemasSnap.getChildren()) {
+                            String dbKey = c.getKey(); // Key trên Firebase (ví dụ: cgv_giga_mall)
+                            // Kiểm tra xem ID nhận được có chứa Key trong DB không (hoặc ngược lại)
+                            if (preselectedCinemaId.contains(dbKey) || dbKey.contains(preselectedCinemaId)) {
+                                isCinemaServing = true;
+                                // Cập nhật lại ID chính xác từ DB để các bước sau truy vấn đúng
+                                preselectedCinemaId = dbKey;
+                                break;
+                            }
+                        }
+                    }
+                    // 2. Chỉ thêm ngày vào danh sách hiển thị nếu rạp có lịch chiếu
+                    if (isCinemaServing) {
+                        String key = timeSnap.getKey();
+                        if (key != null && key.contains("_")) {
+                            String date = key.split("_")[0];
+                            uniqueDates.add(date);
+                        }
                     }
                 }
 
-                // Create date buttons
+                // Hiển thị các Button Ngày (Phần này giữ nguyên logic của bạn)
                 for (String date : uniqueDates) {
                     Button btnDate = new Button(parthome_CinemaSelectionActivity.this);
                     btnDate.setText(date);
@@ -186,25 +204,27 @@ public class parthome_CinemaSelectionActivity extends AppCompatActivity {
 
                     btnDate.setOnClickListener(v -> {
                         extra_sound_manager.playUiClick(parthome_CinemaSelectionActivity.this);
-
-                        // Reset other buttons
                         for (int i = 0; i < layoutDates.getChildCount(); i++) {
                             layoutDates.getChildAt(i).setSelected(false);
                         }
                         btnDate.setSelected(true);
                         selectedDate = date;
 
-                        // Reset time and cinema
                         layoutTimes.removeAllViews();
                         cinemaList.clear();
                         cinemaAdapter.notifyDataSetChanged();
                         selectedTime = "";
-                        selectedCinemaId = "";
-                        updateContinueButton();
 
+                        // 🔥 LƯU Ý: Đảm bảo không reset ID rạp nếu đang đi từ luồng CinemaDetail
+                        if (!fromCinemaDetail) {
+                            selectedCinemaId = "";
+                        } else {
+                            selectedCinemaId = preselectedCinemaId;
+                        }
+
+                        updateContinueButton();
                         loadShowtimesForDate(date);
                     });
-
                     layoutDates.addView(btnDate);
                 }
             }
@@ -225,43 +245,54 @@ public class parthome_CinemaSelectionActivity extends AppCompatActivity {
                     String key = timeSnap.getKey();
                     if (key != null && key.startsWith(date)) {
                         String time = key.split("_")[1];
-
-                        Button btnTime = new Button(parthome_CinemaSelectionActivity.this);
-                        btnTime.setText(time);
-                        btnTime.setBackgroundResource(R.drawable.bg_date_time_selector);
-                        btnTime.setTextColor(Color.BLACK);
-                        btnTime.setPadding(40, 16, 40, 16);
-
-                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                                LinearLayout.LayoutParams.WRAP_CONTENT,
-                                LinearLayout.LayoutParams.WRAP_CONTENT);
-                        params.setMargins(12, 8, 12, 8);
-                        btnTime.setLayoutParams(params);
-
-                        btnTime.setOnClickListener(v -> {
-                            extra_sound_manager.playUiClick(parthome_CinemaSelectionActivity.this);
-
-                            // Reset other buttons
-                            for (int i = 0; i < layoutTimes.getChildCount(); i++) {
-                                layoutTimes.getChildAt(i).setSelected(false);
+                        boolean isCinemaServing = true;
+                        if (fromCinemaDetail) {
+                            isCinemaServing = false;
+                            DataSnapshot cinemasSnap = timeSnap.child("cinemas");
+                            for (DataSnapshot c : cinemasSnap.getChildren()) {
+                                String dbKey = c.getKey();
+                                if (preselectedCinemaId.contains(dbKey) || dbKey.contains(preselectedCinemaId)) {
+                                    isCinemaServing = true;
+                                    break;
+                                }
                             }
-                            btnTime.setSelected(true);
-                            selectedTime = time;
+                        }
 
-                            // Reset cinema selection
-                            if (!fromCinemaDetail) {
-                                selectedCinemaId = "";
-                                cinemaAdapter.clearSelection();
-                            } else {
-                                // Nếu đi từ rạp, giữ nguyên preselectedCinemaId
-                                selectedCinemaId = preselectedCinemaId;
-                            }
-                            updateContinueButton();
 
-                            loadCinemasForShowtime(date, time);
-                        });
+                        if (isCinemaServing) {
+                            Button btnTime = new Button(parthome_CinemaSelectionActivity.this);
+                            btnTime.setText(time);
+                            btnTime.setBackgroundResource(R.drawable.bg_date_time_selector);
+                            btnTime.setTextColor(Color.BLACK);
+                            btnTime.setPadding(40, 16, 40, 16);
 
-                        layoutTimes.addView(btnTime);
+                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                                    LinearLayout.LayoutParams.WRAP_CONTENT);
+                            params.setMargins(12, 8, 12, 8);
+                            btnTime.setLayoutParams(params);
+
+                            btnTime.setOnClickListener(v -> {
+                                extra_sound_manager.playUiClick(parthome_CinemaSelectionActivity.this);
+
+                                for (int i = 0; i < layoutTimes.getChildCount(); i++) {
+                                    layoutTimes.getChildAt(i).setSelected(false);
+                                }
+                                btnTime.setSelected(true);
+                                selectedTime = time;
+
+                                if (!fromCinemaDetail) {
+                                    selectedCinemaId = "";
+                                    cinemaAdapter.clearSelection();
+                                } else {
+                                    selectedCinemaId = preselectedCinemaId;
+                                }
+                                updateContinueButton();
+                                loadCinemasForShowtime(date, time);
+                            });
+
+                            layoutTimes.addView(btnTime);
+                        }
                     }
                 }
             }

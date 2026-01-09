@@ -70,7 +70,7 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
             movieTitle = getString(R.string.movie_name);
         posterUrl = getIntent().getStringExtra("posterUrl");
         movieID = getIntent().getStringExtra("movieID");
-
+        dbRef = FirebaseDatabase.getInstance().getReference("Bookings").child(sanitizeFirebaseKey(movieTitle));
         // Check if coming from Cinema Selection
         selectedCinemaId = getIntent().getStringExtra("cinemaId");
         selectedCinemaName = getIntent().getStringExtra("cinemaName");
@@ -96,7 +96,7 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
         } else {
             // LUỒNG 2: Đi từ Movie Detail (Menu) -> Phải chọn từ đầu
             tvMovieTitle.setText(movieTitle);
-            dbRef = FirebaseDatabase.getInstance().getReference("Bookings").child(sanitizeFirebaseKey(movieTitle));
+
             loadAvailableDates();
         }
 
@@ -129,23 +129,43 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
     private void loadSeatsFromCinema() {
         String showtimeKey = selectedDate + "_" + selectedShowtime;
         String sanitizedTitle = sanitizeFirebaseKey(movieTitle);
-        DatabaseReference seatRef = FirebaseDatabase.getInstance()
+
+        // Trỏ đến danh sách rạp của suất chiếu đó
+        DatabaseReference cinemasRef = FirebaseDatabase.getInstance()
                 .getReference("Bookings")
                 .child(sanitizedTitle)
                 .child(showtimeKey)
-                .child("cinemas")
-                .child(selectedCinemaId)
-                .child("seats");
+                .child("cinemas");
 
-        seatRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        cinemasRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                displaySeats(snapshot);
-            }
+                if (!snapshot.exists()) return;
 
-            @Override
-            public void onCancelled(DatabaseError error) {
+                String actualDbKey = "";
+                //  Tìm Key thực tế khớp với ID truyền vào
+                for (DataSnapshot cinemaSnap : snapshot.getChildren()) {
+                    String dbKey = cinemaSnap.getKey();
+                    if (selectedCinemaId.contains(dbKey) || dbKey.contains(selectedCinemaId)) {
+                        actualDbKey = dbKey;
+                        break;
+                    }
+                }
+
+                if (!actualDbKey.isEmpty()) {
+                    DataSnapshot targetCinema = snapshot.child(actualDbKey);
+
+                    // Lấy giá tiền từ rạp này
+                    Long price = targetCinema.child("pricePerSeat").getValue(Long.class);
+                    pricePerSeat = (price != null) ? price.intValue() : 0;
+
+                    // Hiển thị ghế
+                    displaySeats(targetCinema.child("seats"));
+                } else {
+                    Toast.makeText(parthome_SeatSelectionActivity.this, "Không tìm thấy rạp khớp", Toast.LENGTH_SHORT).show();
+                }
             }
+            @Override public void onCancelled(DatabaseError error) {}
         });
     }
 
@@ -204,14 +224,37 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
                 Set<String> uniqueDates = new HashSet<>();
 
                 for (DataSnapshot timeSnap : snapshot.getChildren()) {
-                    String key = timeSnap.getKey(); // ví dụ: 2025-11-08_15:15
-                    if (key != null && key.contains("_")) {
-                        String date = key.split("_")[0];
-                        uniqueDates.add(date);
+                    // 1. Kiểm tra rạp có tồn tại trong suất chiếu này không
+                    boolean shouldAddDate = false;
+
+                    // Trường hợp LUỒNG 2: Đi từ Movie Detail (chưa chọn rạp cụ thể) -> Hiện tất cả ngày
+                    if (selectedCinemaId == null || selectedCinemaId.isEmpty()) {
+                        shouldAddDate = true;
+                    } else {
+                        // Trường hợp LUỒNG 1: Đã có rạp (từ Cinema Selection) -> Chỉ hiện ngày rạp đó có suất
+                        DataSnapshot cinemasSnap = timeSnap.child("cinemas");
+                        for (DataSnapshot c : cinemasSnap.getChildren()) {
+                            String dbKey = c.getKey(); // Key trên Firebase (vd: cgv_giga_mall)
+
+                            // Kỹ thuật so khớp mờ để khớp ID
+                            if (selectedCinemaId.contains(dbKey) || dbKey.contains(selectedCinemaId)) {
+                                shouldAddDate = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    // 2. Thêm ngày vào Set (để không bị trùng)
+                    if (shouldAddDate) {
+                        String key = timeSnap.getKey();
+                        if (key != null && key.contains("_")) {
+                            String date = key.split("_")[0];
+                            uniqueDates.add(date);
+                        }
                     }
                 }
 
-                // Tạo nút chọn ngày
+                // 3. Hiển thị Button (Giữ nguyên logic cũ của bạn)
                 for (String date : uniqueDates) {
                     Button btnDate = new Button(parthome_SeatSelectionActivity.this);
                     btnDate.setText(date);
@@ -226,17 +269,12 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
                     btnDate.setLayoutParams(params);
 
                     btnDate.setOnClickListener(v -> {
-                        // reset các nút khác
                         for (int i = 0; i < layoutDates.getChildCount(); i++) {
-                            View child = layoutDates.getChildAt(i);
-                            child.setSelected(false);
+                            layoutDates.getChildAt(i).setSelected(false);
                         }
-
-                        // chọn ngày mới
                         btnDate.setSelected(true);
                         selectedDate = date;
 
-                        // reset suất chiếu & ghế
                         layoutTimes.removeAllViews();
                         gridSeats.removeAllViews();
                         selectedShowtime = "";
@@ -245,13 +283,13 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
 
                         loadShowtimesForDate(date);
                     });
-
                     layoutDates.addView(btnDate);
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError error) {
+                android.util.Log.e("FirebaseError", error.getMessage());
             }
         });
     }
@@ -264,49 +302,62 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 for (DataSnapshot timeSnap : snapshot.getChildren()) {
-                    String key = timeSnap.getKey(); // ví dụ: 2025-11-08_15:15
+                    String key = timeSnap.getKey(); // Ví dụ: 2026-01-15_16:00
+
+                    // 1. Kiểm tra suất chiếu có thuộc Ngày đang chọn không
                     if (key != null && key.startsWith(date)) {
-                        String time = key.split("_")[1];
 
-                        Button btnTime = new Button(parthome_SeatSelectionActivity.this);
-                        btnTime.setText(time);
-                        btnTime.setBackgroundResource(R.drawable.bg_date_time_selector);
-                        btnTime.setTextColor(Color.BLACK);
-                        btnTime.setPadding(40, 16, 40, 16);
+                        // 2. 🔥 QUAN TRỌNG: Kiểm tra suất chiếu này có dành cho rạp đang chọn không?
+                        boolean hasCinemaAtThisTime = false;
+                        DataSnapshot cinemasSnap = timeSnap.child("cinemas");
 
-                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                                LinearLayout.LayoutParams.WRAP_CONTENT,
-                                LinearLayout.LayoutParams.WRAP_CONTENT);
-                        params.setMargins(12, 8, 12, 8);
-                        btnTime.setLayoutParams(params);
-
-                        btnTime.setOnClickListener(v -> {
-                            // reset các suất cũ
-                            for (int i = 0; i < layoutTimes.getChildCount(); i++) {
-                                View child = layoutTimes.getChildAt(i);
-                                child.setSelected(false);
+                        for (DataSnapshot c : cinemasSnap.getChildren()) {
+                            String dbKey = c.getKey();
+                            // Dùng contains để so khớp mờ ID
+                            if (selectedCinemaId.contains(dbKey) || dbKey.contains(selectedCinemaId)) {
+                                hasCinemaAtThisTime = true;
+                                break;
                             }
+                        }
 
-                            // chọn suất hiện tại
-                            btnTime.setSelected(true);
-                            selectedShowtime = time;
+                        // 3. Chỉ tạo Button nếu rạp đó có suất chiếu vào giờ này
+                        if (hasCinemaAtThisTime) {
+                            String time = key.split("_")[1];
 
-                            // reset ghế
-                            gridSeats.removeAllViews();
-                            selectedSeats.clear();
-                            tvTotalPrice.setText(getString(R.string.total_price));
+                            Button btnTime = new Button(parthome_SeatSelectionActivity.this);
+                            btnTime.setText(time);
+                            btnTime.setBackgroundResource(R.drawable.bg_date_time_selector);
+                            btnTime.setTextColor(Color.BLACK);
+                            btnTime.setPadding(40, 16, 40, 16);
 
-                            loadSeats(date, time);
-                        });
+                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                                    LinearLayout.LayoutParams.WRAP_CONTENT);
+                            params.setMargins(12, 8, 12, 8);
+                            btnTime.setLayoutParams(params);
 
-                        layoutTimes.addView(btnTime);
+                            btnTime.setOnClickListener(v -> {
+                                for (int i = 0; i < layoutTimes.getChildCount(); i++) {
+                                    layoutTimes.getChildAt(i).setSelected(false);
+                                }
+                                btnTime.setSelected(true);
+                                selectedShowtime = time;
+
+                                gridSeats.removeAllViews();
+                                selectedSeats.clear();
+                                tvTotalPrice.setText(getString(R.string.total_price));
+
+                                loadSeats(date, time);
+                            });
+
+                            layoutTimes.addView(btnTime);
+                        }
                     }
                 }
             }
 
             @Override
-            public void onCancelled(DatabaseError error) {
-            }
+            public void onCancelled(DatabaseError error) {}
         });
     }
 
@@ -315,42 +366,53 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
         String showtimeKey = date + "_" + time;
         String sanitizedTitle = sanitizeFirebaseKey(movieTitle);
 
-        // 🔥 KỸ THUẬT: Truy vấn sâu trực tiếp đến rạp đã chọn
-        // Bookings -> MovieTitle -> Date_Time -> cinemas -> selectedCinemaId
-        DatabaseReference seatRef = FirebaseDatabase.getInstance()
+        // 1. Trỏ đến node 'cinemas' của suất chiếu đó
+        DatabaseReference cinemasRef = FirebaseDatabase.getInstance()
                 .getReference("Bookings")
                 .child(sanitizedTitle)
                 .child(showtimeKey)
-                .child("cinemas")
-                .child(selectedCinemaId);
+                .child("cinemas");
 
-        android.util.Log.d("SeatSelection", "Loading seats from: " + seatRef.toString());
-
-        seatRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        cinemasRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                gridSeats.removeAllViews();
-                selectedSeats.clear();
-                tvTotalPrice.setText(getString(R.string.total_price));
+                if (!snapshot.exists()) return;
 
-                if (snapshot.exists()) {
-                    // 1. Lấy giá vé của rạp này (từ Firebase)
-                    Long price = snapshot.child("pricePerSeat").getValue(Long.class);
+                String finalTargetId = "";
+
+                // 2. KỸ THUẬT SO KHỚP MỜ: Tìm Key thực tế trên Firebase
+                for (DataSnapshot cinemaSnap : snapshot.getChildren()) {
+                    String dbKey = cinemaSnap.getKey(); // Ví dụ: "cgv_giga_mall"
+
+                    // Nếu ID truyền vào chứa Key trong DB hoặc ngược lại
+                    if (selectedCinemaId.contains(dbKey) || dbKey.contains(selectedCinemaId)) {
+                        finalTargetId = dbKey;
+                        break;
+                    }
+                }
+
+                // 3. Nếu tìm thấy ID khớp, tiến hành load ghế
+                if (!finalTargetId.isEmpty()) {
+                    DataSnapshot targetSnapshot = snapshot.child(finalTargetId);
+
+                    gridSeats.removeAllViews();
+                    selectedSeats.clear();
+                    tvTotalPrice.setText(getString(R.string.total_price));
+
+                    // Lấy giá vé
+                    Long price = targetSnapshot.child("pricePerSeat").getValue(Long.class);
                     pricePerSeat = (price != null) ? price.intValue() : 0;
 
-                    // 2. Hiển thị sơ đồ ghế từ node 'seats'
-                    DataSnapshot seatsSnap = snapshot.child("seats");
-                    displaySeats(seatsSnap);
+                    // Hiển thị ghế
+                    displaySeats(targetSnapshot.child("seats"));
                 } else {
-                    Toast.makeText(parthome_SeatSelectionActivity.this,
-                            "Không tìm thấy dữ liệu ghế cho rạp này", Toast.LENGTH_SHORT).show();
+                    android.util.Log.e("SeatSelection", "Không tìm thấy rạp khớp với ID: " + selectedCinemaId);
+                    Toast.makeText(parthome_SeatSelectionActivity.this, "Dữ liệu rạp không đồng bộ", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onCancelled(DatabaseError error) {
-                android.util.Log.e("SeatSelection", "Firebase Error: " + error.getMessage());
-            }
+            public void onCancelled(DatabaseError error) {}
         });
     }
 
