@@ -180,7 +180,14 @@ public class activities_2_a_lock_screen extends extra_manager_language {
     @Override
     public void onBackPressed() {
         // Prevent backing out of lock screen
+        extra_sound_manager.playUiClick(this);
         super.onBackPressed();
         finishAffinity(); // Close app if user tries to back out
+    }
+
+    @Override
+    protected void onUserLeaveHint() {
+        super.onUserLeaveHint();
+        extra_sound_manager.playUiClick(this);
     }
 }

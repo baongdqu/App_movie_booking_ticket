@@ -38,11 +38,16 @@ public class parthome_WriteReview extends AppCompatActivity {
         movieID = getIntent().getStringExtra("MOVIE_ID");
 
         binding.btnSubmitReview.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
             saveReview();
         });
         loadExistingReview();
-        binding.btnCloseWrite.setOnClickListener(v -> finish());
+        binding.btnCloseWrite.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
+            finish();
+        });
         binding.btnDeleteReview.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
             new AlertDialog.Builder(this)
                     .setTitle("Xóa đánh giá")
                     .setMessage("Bạn có chắc chắn muốn xóa đánh giá này không?")
@@ -50,7 +55,6 @@ public class parthome_WriteReview extends AppCompatActivity {
                     .setNegativeButton("Hủy", null)
                     .show();
         });
-
 
     }
 
@@ -86,18 +90,24 @@ public class parthome_WriteReview extends AppCompatActivity {
                 // Dùng child(userId) để đảm bảo mỗi User chỉ có 1 node duy nhất dưới mỗi phim
                 mDatabase.child("Reviews").child(movieID).child(userId).setValue(review)
                         .addOnSuccessListener(aVoid -> {
-                            Toast.makeText(parthome_WriteReview.this, "Đã lưu đánh giá của bạn!", Toast.LENGTH_SHORT).show();
+                            extra_sound_manager.playSuccess(parthome_WriteReview.this);
+                            Toast.makeText(parthome_WriteReview.this, "Đã lưu đánh giá của bạn!", Toast.LENGTH_SHORT)
+                                    .show();
                             finish();
                         })
                         .addOnFailureListener(e -> {
-                            Toast.makeText(parthome_WriteReview.this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            extra_sound_manager.playError(parthome_WriteReview.this);
+                            Toast.makeText(parthome_WriteReview.this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT)
+                                    .show();
                         });
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
         });
     }
+
     private void loadExistingReview() {
         String userId = FirebaseAuth.getInstance().getUid();
         mDatabase.child("Reviews").child(movieID).child(userId)
@@ -113,25 +123,30 @@ public class parthome_WriteReview extends AppCompatActivity {
                                 binding.btnSubmitReview.setText("CẬP NHẬT"); // Đổi tên nút cho rõ ràng
                                 binding.btnDeleteReview.setVisibility(View.VISIBLE);
                             }
-                        }
-                        else {
+                        } else {
                             // Chưa có đánh giá -> Ẩn nút Xóa
                             binding.btnDeleteReview.setVisibility(View.GONE);
                         }
                     }
+
                     @Override
-                    public void onCancelled(@NonNull DatabaseError error) {}
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
                 });
     }
+
     private void deleteReview() {
         String userId = mAuth.getCurrentUser().getUid();
         mDatabase.child("Reviews").child(movieID).child(userId).removeValue()
                 .addOnSuccessListener(aVoid -> {
+                    extra_sound_manager.playSuccess(this);
                     Toast.makeText(this, "Đã xóa đánh giá", Toast.LENGTH_SHORT).show();
                     finish();
                 })
-                .addOnFailureListener(e -> Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT));
+                .addOnFailureListener(e -> {
+                    extra_sound_manager.playError(this);
+                    Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
     }
-
 
 }

@@ -136,16 +136,19 @@ public class fragments_cinema extends Fragment {
 
         // Refresh button click
         btnRefresh.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(requireContext());
             checkPermissionAndGetLocation();
         });
 
         // Grant permission button
         btnGrantPermission.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(requireContext());
             requestLocationPermission();
         });
 
         // Location card click - retry getting location
         locationCard.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(requireContext());
             checkPermissionAndGetLocation();
         });
     }

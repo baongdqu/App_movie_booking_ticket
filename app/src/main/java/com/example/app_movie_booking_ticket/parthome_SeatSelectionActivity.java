@@ -98,9 +98,11 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
 
         btnContinue.setOnClickListener(v -> {
             if (selectedSeats.isEmpty()) {
+                extra_sound_manager.playError(this);
                 Toast.makeText(this, getString(R.string.toast_select_seat), Toast.LENGTH_SHORT).show();
                 return;
             }
+            extra_sound_manager.playUiClick(this);
             int total = selectedSeats.size() * pricePerSeat;
             Toast.makeText(this, String.format(getString(R.string.toast_seat_total), selectedSeats.toString(),
                     String.valueOf(total)), Toast.LENGTH_LONG).show();
@@ -119,7 +121,22 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
         });
 
         ImageView btnBack = findViewById(R.id.btnBack);
-        btnBack.setOnClickListener(v -> finish());
+        btnBack.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
+            finish();
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        extra_sound_manager.playUiClick(this);
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onUserLeaveHint() {
+        super.onUserLeaveHint();
+        extra_sound_manager.playUiClick(this);
     }
 
     private void loadSeatsFromCinema() {
@@ -204,6 +221,7 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (!snapshot.exists()) {
+                    extra_sound_manager.playError(parthome_SeatSelectionActivity.this);
                     Toast.makeText(parthome_SeatSelectionActivity.this, getString(R.string.toast_no_schedule),
                             Toast.LENGTH_SHORT).show();
                     return;
@@ -235,6 +253,7 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
                     btnDate.setLayoutParams(params);
 
                     btnDate.setOnClickListener(v -> {
+                        extra_sound_manager.playUiClick(parthome_SeatSelectionActivity.this);
                         // reset các nút khác
                         for (int i = 0; i < layoutDates.getChildCount(); i++) {
                             View child = layoutDates.getChildAt(i);
@@ -290,6 +309,7 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
                         btnTime.setLayoutParams(params);
 
                         btnTime.setOnClickListener(v -> {
+                            extra_sound_manager.playUiClick(parthome_SeatSelectionActivity.this);
                             // reset các suất cũ
                             for (int i = 0; i < layoutTimes.getChildCount(); i++) {
                                 View child = layoutTimes.getChildAt(i);
@@ -394,6 +414,7 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
             selectedSeats.add(seatName);
             seatBtn.setSelected(true);
         }
+        extra_sound_manager.playUiClick(this);
         tvTotalPrice.setText(
                 String.format(getString(R.string.price_format), String.valueOf(selectedSeats.size() * pricePerSeat)));
     }

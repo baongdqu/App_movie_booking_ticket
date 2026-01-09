@@ -86,4 +86,16 @@ public class activities_1_forgot_password extends AppCompatActivity {
                     }
                 });
     }
+
+    @Override
+    public void onBackPressed() {
+        extra_sound_manager.playUiClick(this);
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onUserLeaveHint() {
+        super.onUserLeaveHint();
+        extra_sound_manager.playUiClick(this);
+    }
 }

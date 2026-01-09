@@ -159,12 +159,15 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         handleVnpayReturn(intent);
     }
 
-    // =================== QUAN TRỌNG: xử lý kết quả VNPAY bằng intent.getData() ===================
+    // =================== QUAN TRỌNG: xử lý kết quả VNPAY bằng intent.getData()
+    // ===================
     private void handleVnpayReturn(Intent intent) {
-        if (intent == null) return;
+        if (intent == null)
+            return;
 
         Uri data = intent.getData();
-        if (data == null) return;
+        if (data == null)
+            return;
 
         // Ví dụ: resultactivity://... ?vnp_ResponseCode=00&...
         String responseCode = data.getQueryParameter("vnp_ResponseCode");
@@ -183,6 +186,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
 
         // ✅ CHỈ code "00" mới là thành công
         if ("00".equals(responseCode)) {
+            extra_sound_manager.playSuccess(this);
             Toast.makeText(this, R.string.toast_payment_success, Toast.LENGTH_SHORT).show();
             updateTicketToPaid(currentTicketId);
             clearPendingTicketId();
@@ -190,8 +194,10 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         }
 
         // ✅ Hủy / thất bại: chỉ quay về Payment, KHÔNG success
-        // (VNPay thường cancel = 24, nhưng mình không phụ thuộc, cứ !=00 là không thành công)
+        // (VNPay thường cancel = 24, nhưng mình không phụ thuộc, cứ !=00 là không thành
+        // công)
         updateTicketStatus(currentTicketId, "CANCELLED");
+        extra_sound_manager.playError(this);
         Toast.makeText(this, "Bạn đã hủy thanh toán", Toast.LENGTH_SHORT).show();
         clearPendingTicketId();
 
@@ -207,6 +213,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
 
         if (vnpayCard instanceof MaterialCardView) {
             vnpayCard.setOnClickListener(v -> {
+                extra_sound_manager.playUiClick(this);
                 rbVnpay.setChecked(true);
                 rbBalance.setChecked(false);
             });
@@ -214,19 +221,27 @@ public class parthome_PaymentActivity extends AppCompatActivity {
 
         if (balanceCard instanceof MaterialCardView) {
             balanceCard.setOnClickListener(v -> {
+                extra_sound_manager.playUiClick(this);
                 rbBalance.setChecked(true);
                 rbVnpay.setChecked(false);
             });
         }
 
-        rbVnpay.setOnClickListener(v -> rbBalance.setChecked(false));
-        rbBalance.setOnClickListener(v -> rbVnpay.setChecked(false));
+        rbVnpay.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
+            rbBalance.setChecked(false);
+        });
+        rbBalance.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
+            rbVnpay.setChecked(false);
+        });
     }
 
     // =================== Load balance ===================
     private void loadUserBalance() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null) return;
+        if (user == null)
+            return;
 
         String uid = user.getUid();
         DatabaseReference balanceRef = FirebaseDatabase.getInstance()
@@ -263,11 +278,13 @@ public class parthome_PaymentActivity extends AppCompatActivity {
                 if (paymentUrl != null) {
                     openSdk(paymentUrl);
                 } else {
+                    extra_sound_manager.playError(this);
                     Toast.makeText(this,
                             getString(R.string.toast_payment_failed, "URL error"),
                             Toast.LENGTH_SHORT).show();
                 }
             } catch (Exception e) {
+                extra_sound_manager.playError(this);
                 Toast.makeText(this,
                         getString(R.string.toast_payment_failed, e.getMessage()),
                         Toast.LENGTH_SHORT).show();
@@ -275,6 +292,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         } else if (rbBalance.isChecked()) {
             payByBalance();
         } else {
+            extra_sound_manager.playError(this);
             Toast.makeText(this, R.string.toast_select_payment_method, Toast.LENGTH_SHORT).show();
         }
     }
@@ -318,14 +336,16 @@ public class parthome_PaymentActivity extends AppCompatActivity {
     // =================== Load user info ===================
     private void loadUserInfo(TextView txtUser, TextView txtEmail, TextView txtPhone) {
         currentUser = auth.getCurrentUser();
-        if (currentUser == null) return;
+        if (currentUser == null)
+            return;
 
         String uid = currentUser.getUid();
 
         userRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (!snapshot.exists()) return;
+                if (!snapshot.exists())
+                    return;
 
                 String fullName = snapshot.child("fullName").getValue(String.class);
                 String email = snapshot.child("email").getValue(String.class);
@@ -337,14 +357,16 @@ public class parthome_PaymentActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) { }
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
         });
     }
 
     // =================== Balance payment ===================
     private void payByBalance() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null) return;
+        if (user == null)
+            return;
 
         String uid = user.getUid();
 
@@ -370,7 +392,8 @@ public class parthome_PaymentActivity extends AppCompatActivity {
                     Object localVal = currentData.getValue();
                     long balance = (localVal == null) ? serverBalance : parseBalance(localVal);
 
-                    if (balance < totalPrice) return Transaction.abort();
+                    if (balance < totalPrice)
+                        return Transaction.abort();
 
                     currentData.setValue(balance - totalPrice);
                     return Transaction.success(currentData);
@@ -399,7 +422,9 @@ public class parthome_PaymentActivity extends AppCompatActivity {
                     // 2. Lưu vé và lấy ticketId trả về
                     String newTicketId = saveTicketSuccessByBalance();
 
-                    Toast.makeText(parthome_PaymentActivity.this, R.string.toast_payment_success, Toast.LENGTH_SHORT).show();
+                    extra_sound_manager.playSuccess(parthome_PaymentActivity.this);
+                    Toast.makeText(parthome_PaymentActivity.this, R.string.toast_payment_success, Toast.LENGTH_SHORT)
+                            .show();
 
                     // 3. CHUYỂN HƯỚNG VỀ TICKET DETAIL (Thay vì Movie Detail)
                     if (newTicketId != null) {
@@ -427,11 +452,13 @@ public class parthome_PaymentActivity extends AppCompatActivity {
     // =================== Save ticket ===================
     private String saveTicketSuccessByBalance() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null) return null;
+        if (user == null)
+            return null;
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("tickets");
         String ticketId = ref.push().getKey();
-        if (ticketId == null) return null;
+        if (ticketId == null)
+            return null;
 
         Map<String, Object> payment = new HashMap<>();
         payment.put("method", "BALANCE");
@@ -464,7 +491,8 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("tickets");
         currentTicketId = ref.push().getKey();
 
-        if (currentTicketId == null) return;
+        if (currentTicketId == null)
+            return;
 
         savePendingTicketId(currentTicketId);
 
@@ -494,7 +522,8 @@ public class parthome_PaymentActivity extends AppCompatActivity {
     }
 
     private void updateTicketStatus(String ticketId, String newStatus) {
-        if (ticketId == null) return;
+        if (ticketId == null)
+            return;
 
         DatabaseReference ref = FirebaseDatabase.getInstance()
                 .getReference("tickets")
@@ -508,7 +537,8 @@ public class parthome_PaymentActivity extends AppCompatActivity {
     }
 
     private void updateTicketToPaid(String ticketId) {
-        if (ticketId == null) return;
+        if (ticketId == null)
+            return;
 
         DatabaseReference ref = FirebaseDatabase.getInstance()
                 .getReference("tickets")
@@ -536,6 +566,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
             Log.e(TAG, "Lỗi cập nhật vé: " + e.getMessage());
         });
     }
+
     private void goToTicketDetail(String ticketId) {
         // Giả sử tên Activity của bạn là TicketDetailActivity
         Intent intent = new Intent(parthome_PaymentActivity.this, TicketDetailActivity.class);
@@ -572,7 +603,8 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         }
 
         Map<String, Object> updates = new HashMap<>();
-        for (String seat : selectedSeats) updates.put(seat, "booked");
+        for (String seat : selectedSeats)
+            updates.put(seat, "booked");
 
         seatsRef.updateChildren(updates)
                 .addOnSuccessListener(unused -> Log.d("BOOK_SEAT", "Book ghế thành công"))
@@ -581,13 +613,17 @@ public class parthome_PaymentActivity extends AppCompatActivity {
 
     // =================== Helpers ===================
     private long parseBalance(Object val) {
-        if (val == null) return 0L;
-        if (val instanceof Number) return ((Number) val).longValue();
+        if (val == null)
+            return 0L;
+        if (val instanceof Number)
+            return ((Number) val).longValue();
         if (val instanceof String) {
             try {
                 String s = ((String) val).replaceAll("[^0-9]", "");
                 return s.isEmpty() ? 0L : Long.parseLong(s);
-            } catch (Exception ignored) { return 0L; }
+            } catch (Exception ignored) {
+                return 0L;
+            }
         }
         return 0L;
     }
@@ -613,14 +649,15 @@ public class parthome_PaymentActivity extends AppCompatActivity {
             byte[] bytes = hmac512.doFinal(data.getBytes());
 
             StringBuilder hash = new StringBuilder();
-            for (byte b : bytes) hash.append(String.format("%02x", b));
+            for (byte b : bytes)
+                hash.append(String.format("%02x", b));
             return hash.toString();
         } catch (Exception e) {
             return "";
         }
     }
 
-    private String createVnpayUrl(int totalPrice) throws Exception {
+    private String createVnpayUrl(int totalPrice) {
         try {
             String vnp_TmnCode = "C1C16DDU";
             String vnp_HashSecret = "8XWZ093QGUAF75SADH9B1E7KH7NM2SOR";
@@ -660,8 +697,10 @@ public class parthome_PaymentActivity extends AppCompatActivity {
                 }
             }
 
-            hashData.deleteCharAt(hashData.length() - 1);
-            query.deleteCharAt(query.length() - 1);
+            if (hashData.length() > 0)
+                hashData.deleteCharAt(hashData.length() - 1);
+            if (query.length() > 0)
+                query.deleteCharAt(query.length() - 1);
 
             String secureHash = hmacSHA512(vnp_HashSecret, hashData.toString());
             return vnp_Url + "?" + query + "&vnp_SecureHash=" + secureHash;
@@ -670,5 +709,17 @@ public class parthome_PaymentActivity extends AppCompatActivity {
             e.printStackTrace();
             return null;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        extra_sound_manager.playUiClick(this);
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onUserLeaveHint() {
+        super.onUserLeaveHint();
+        extra_sound_manager.playUiClick(this);
     }
 }

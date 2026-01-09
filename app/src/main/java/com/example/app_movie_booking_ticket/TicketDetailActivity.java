@@ -57,6 +57,7 @@ public class TicketDetailActivity extends AppCompatActivity {
         // Toolbar navigation
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
             Intent intent = new Intent(TicketDetailActivity.this, activities_2_a_menu_manage_fragments.class);
             intent.putExtra("OPEN_FRAGMENT", "TICKET_FRAGMENT");
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -84,7 +85,10 @@ public class TicketDetailActivity extends AppCompatActivity {
         }
         loadTicket(ticketId);
 
-        btnRefund.setOnClickListener(v -> refundTicket());
+        btnRefund.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
+            refundTicket();
+        });
     }
 
     private void loadTicket(String ticketId) {
@@ -122,7 +126,8 @@ public class TicketDetailActivity extends AppCompatActivity {
                         if (t.child("seats").exists()) {
                             for (DataSnapshot s : t.child("seats").getChildren()) {
                                 String seat = s.getValue(String.class);
-                                if (seat != null) seats.add(seat);
+                                if (seat != null)
+                                    seats.add(seat);
                             }
                         }
 
@@ -130,12 +135,14 @@ public class TicketDetailActivity extends AppCompatActivity {
                         tvMovieTitle.setText(movieTitle != null ? movieTitle : "");
                         tvCinema.setText(!TextUtils.isEmpty(cinemaName) ? ("🎬 " + cinemaName) : "🎬 (Chưa có rạp)");
                         tvDateTime.setText("🕒 " + (date != null ? date : "") + " • " + (time != null ? time : ""));
-                        tvSeats.setText(seats.isEmpty() ? "🎟 Ghế: (Chưa có)" : "🎟 Ghế: " + TextUtils.join(", ", seats));
+                        tvSeats.setText(
+                                seats.isEmpty() ? "🎟 Ghế: (Chưa có)" : "🎟 Ghế: " + TextUtils.join(", ", seats));
                         tvTotalPrice.setText(moneyFmt.format(totalPrice) + "đ");
 
                         // Hiển thị phương thức thanh toán
                         String paymentDisplay = ("BALANCE".equals(method) ? "Số dư" : "Cổng VNPay");
-                        if (tvPaymentMethod != null) tvPaymentMethod.setText(paymentDisplay);
+                        if (tvPaymentMethod != null)
+                            tvPaymentMethod.setText(paymentDisplay);
 
                         // Hiển thị thời gian giao dịch
                         if (paidAt != null && tvTransactionTime != null) {
@@ -193,10 +200,12 @@ public class TicketDetailActivity extends AppCompatActivity {
         ticketRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshotTicket) {
-                if (!snapshotTicket.exists()) return;
+                if (!snapshotTicket.exists())
+                    return;
 
                 String status = snapshotTicket.child("status").getValue(String.class);
-                if (status == null) status = "PAID";
+                if (status == null)
+                    status = "PAID";
 
                 if (!"PAID".equals(status)) {
                     Toast.makeText(TicketDetailActivity.this,
@@ -238,34 +247,41 @@ public class TicketDetailActivity extends AppCompatActivity {
                         ticketRef.updateChildren(updates)
                                 .addOnSuccessListener(unused -> {
                                     refunded = true;
+                                    extra_sound_manager.playSuccess(TicketDetailActivity.this);
                                     Toast.makeText(TicketDetailActivity.this,
                                             "Hoàn vé thành công!",
                                             Toast.LENGTH_SHORT).show();
-                                    sendNotification(ticketUserId, "Hoàn tiền thành công", "Vé của bạn đã được hoàn tiền.", "REFUND");
+                                    sendNotification(ticketUserId, "Hoàn tiền thành công",
+                                            "Vé của bạn đã được hoàn tiền.", "REFUND");
 
-                                    Toast.makeText(TicketDetailActivity.this, "Hoàn vé thành công!", Toast.LENGTH_SHORT).show();
                                     // ✅ báo về Fragment reload rồi quay lại
                                     setResult(RESULT_OK);
                                     finish();
                                 })
-                                .addOnFailureListener(e -> Toast.makeText(TicketDetailActivity.this,
-                                        "Cập nhật vé thất bại",
-                                        Toast.LENGTH_SHORT).show());
+                                .addOnFailureListener(e -> {
+                                    extra_sound_manager.playError(TicketDetailActivity.this);
+                                    Toast.makeText(TicketDetailActivity.this,
+                                            "Cập nhật vé thất bại",
+                                            Toast.LENGTH_SHORT).show();
+                                });
                     }
                 });
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) { }
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
         });
     }
+
     private void sendNotification(String userId, String title, String message, String type) {
         DatabaseReference notifRef = FirebaseDatabase.getInstance()
                 .getReference("notifications")
                 .child(userId);
 
         String key = notifRef.push().getKey();
-        if (key == null) return;
+        if (key == null)
+            return;
 
         Map<String, Object> notif = new HashMap<>();
         notif.put("title", title);
@@ -277,5 +293,15 @@ public class TicketDetailActivity extends AppCompatActivity {
         notifRef.child(key).setValue(notif);
     }
 
+    @Override
+    public void onBackPressed() {
+        extra_sound_manager.playUiClick(this);
+        super.onBackPressed();
+    }
 
+    @Override
+    protected void onUserLeaveHint() {
+        super.onUserLeaveHint();
+        extra_sound_manager.playUiClick(this);
+    }
 }

@@ -89,6 +89,7 @@ public class fragments_notifications extends Fragment {
 
         // Clear all với confirmation dialog
         btnClearAll.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(requireContext());
             if (list.isEmpty()) {
                 Toast.makeText(getContext(), R.string.no_notifications, Toast.LENGTH_SHORT).show();
                 return;
@@ -187,6 +188,7 @@ public class fragments_notifications extends Fragment {
     // 🔥 CLICK NOTIFICATION
     // =====================================================
     private void handleNotificationClick(AppNotification n) {
+        extra_sound_manager.playUiClick(requireContext());
 
         // Đánh dấu đã đọc
         ref.child(n.getId()).child("read").setValue(true);
@@ -253,6 +255,7 @@ public class fragments_notifications extends Fragment {
                         // Xoá local
                         list.remove(position);
                         adapter.notifyItemRemoved(position);
+                        extra_sound_manager.playUiClick(requireContext());
 
                         // Show toast
                         Toast.makeText(getContext(), R.string.notification_deleted, Toast.LENGTH_SHORT).show();

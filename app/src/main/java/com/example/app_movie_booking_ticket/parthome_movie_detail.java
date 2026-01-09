@@ -86,7 +86,7 @@ public class parthome_movie_detail extends AppCompatActivity {
             binding.cvSummaryRatingInfo.setVisibility(View.VISIBLE);
             loadMovieRatings(movie.getMovieID());
         }
-// Nếu là phim đang chiếu từ CinemaSelection thì đổi text nút
+        // Nếu là phim đang chiếu từ CinemaSelection thì đổi text nút
         if (!isUpcoming && !isExpired && fromCinema && cinemaName != null) {
             binding.button2.setText("Đặt vé tại " + shortenCinemaName(cinemaName));
         }
@@ -170,6 +170,7 @@ public class parthome_movie_detail extends AppCompatActivity {
             startActivity(buyIntent);
         });
         binding.llToRatingLists.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
             Intent ratingIntent = new Intent(parthome_movie_detail.this, parthome_RatingListActivity.class);
             ratingIntent.putExtra("movieID", movie.getMovieID());
             ratingIntent.putExtra("movieTitle", movie.getTitle());
@@ -267,5 +268,17 @@ public class parthome_movie_detail extends AppCompatActivity {
         binding.pb3StarRatingBar.setProgress(0);
         binding.pb2StarRatingBar.setProgress(0);
         binding.pb1StarRatingBar.setProgress(0);
+    }
+
+    @Override
+    public void onBackPressed() {
+        extra_sound_manager.playUiClick(this);
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onUserLeaveHint() {
+        super.onUserLeaveHint();
+        extra_sound_manager.playUiClick(this);
     }
 }

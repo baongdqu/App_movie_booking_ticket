@@ -115,6 +115,7 @@ public class parthome_CinemaSelectionActivity extends AppCompatActivity {
             extra_sound_manager.playUiClick(this);
 
             if (selectedCinemaId.isEmpty()) {
+                extra_sound_manager.playError(this);
                 Toast.makeText(this, getString(R.string.please_select_date_time), Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -142,6 +143,7 @@ public class parthome_CinemaSelectionActivity extends AppCompatActivity {
                 android.util.Log.d("CinemaSelection", "Snapshot exists: " + snapshot.exists());
                 android.util.Log.d("CinemaSelection", "Children count: " + snapshot.getChildrenCount());
                 if (!snapshot.exists()) {
+                    extra_sound_manager.playError(parthome_CinemaSelectionActivity.this);
                     Toast.makeText(parthome_CinemaSelectionActivity.this,
                             getString(R.string.toast_no_schedule), Toast.LENGTH_SHORT).show();
                     return;
@@ -264,6 +266,7 @@ public class parthome_CinemaSelectionActivity extends AppCompatActivity {
                 cinemaList.clear();
 
                 if (!snapshot.exists()) {
+                    extra_sound_manager.playError(parthome_CinemaSelectionActivity.this);
                     Toast.makeText(parthome_CinemaSelectionActivity.this,
                             getString(R.string.no_cinema_available), Toast.LENGTH_SHORT).show();
                     cinemaAdapter.notifyDataSetChanged();
@@ -301,7 +304,24 @@ public class parthome_CinemaSelectionActivity extends AppCompatActivity {
      */
     private String sanitizeFirebaseKey(String key) {
         if (key == null)
-            return "";
-        return key.replaceAll("[$#\\[\\]./]", "").trim();
+            return "unknown";
+        return key.replace(".", "")
+                .replace("#", "")
+                .replace("$", "")
+                .replace("[", "")
+                .replace("]", "")
+                .replace("/", "");
+    }
+
+    @Override
+    public void onBackPressed() {
+        extra_sound_manager.playUiClick(this);
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onUserLeaveHint() {
+        super.onUserLeaveHint();
+        extra_sound_manager.playUiClick(this);
     }
 }

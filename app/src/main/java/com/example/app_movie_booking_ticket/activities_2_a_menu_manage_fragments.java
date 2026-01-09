@@ -74,6 +74,7 @@ public class activities_2_a_menu_manage_fragments extends extra_manager_language
             return false;
         });
     }
+
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
@@ -89,6 +90,7 @@ public class activities_2_a_menu_manage_fragments extends extra_manager_language
             bottomNavigationView.setSelectedItemId(R.id.nav_mail);
         }
     }
+
     /**
      * Kiểm tra xem có thông báo "không có mạng" từ Loading screen không
      * Nếu có thì hiển thị dialog trên màn hình Home (đẹp hơn)
@@ -110,6 +112,7 @@ public class activities_2_a_menu_manage_fragments extends extra_manager_language
                 .setMessage(getString(R.string.dialog_no_internet_message))
                 .setCancelable(false)
                 .setPositiveButton(getString(R.string.retry), (dialog, which) -> {
+                    extra_sound_manager.playUiClick(this);
                     dialog.dismiss();
                     // Khởi động lại app từ Loading screen để kiểm tra lại mạng
                     Intent intent = new Intent(this, activities_0_loading.class);
@@ -118,6 +121,7 @@ public class activities_2_a_menu_manage_fragments extends extra_manager_language
                     finish();
                 })
                 .setNegativeButton(getString(R.string.exit), (dialog, which) -> {
+                    extra_sound_manager.playUiClick(this);
                     dialog.dismiss();
                     finishAffinity();
                 })
@@ -135,5 +139,17 @@ public class activities_2_a_menu_manage_fragments extends extra_manager_language
     // Cho phép fragment chọn lại nav item
     public void selectBottomNavItem(int itemId) {
         bottomNavigationView.setSelectedItemId(itemId);
+    }
+
+    @Override
+    public void onBackPressed() {
+        extra_sound_manager.playUiClick(this);
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onUserLeaveHint() {
+        super.onUserLeaveHint();
+        extra_sound_manager.playUiClick(this);
     }
 }
