@@ -63,6 +63,18 @@
     <string name="top_movie">热门电影</string>
     <string name="view_all">查看全部</string>
     <string name="upcoming_movies">即将上映</string>
+    <string name="now_showing_movies">正在热映</string>
+
+    <!-- Cinema Selection -->
+    <string name="select_cinema">选择电影院</string>
+    <string name="select_cinema_instructions">选择日期，时间和电影院</string>
+    <string name="select_date">选择日期</string>
+    <string name="select_time">选择时间</string>
+    <string name="select">选择此电影院</string>
+    <string name="continue_text">继续</string>
+    <string name="no_cinema_available">无可用电影院</string>
+    <string name="please_select_date_time">请选择日期和时间</string>
+    <string name="selected">已选择</string>
     
     <!-- Mail & Notifications -->
     <string name="empty_mailbox">邮箱为空</string>
@@ -78,7 +90,7 @@
     <string name="genre">类型</string>
     <string name="duration_placeholder">1小时41分钟</string>
     <string name="date_placeholder">2025/10/31</string>
-    <string name="details">详情</string>
+
     <string name="buy_ticket">购票</string>
     <string name="movie_name">电影名称</string>
     
@@ -288,4 +300,241 @@
     <string name="dialog_no_internet_message">使用此应用需要互联网连接。请检查您的网络连接并重试。</string>
     <string name="retry">重试</string>
     <string name="exit">退出</string>
+
+    <!-- Review -->
+    <string name="toast_review_char_limit">内容不能超过200个字符！</string>
+    <string name="toast_select_rating">请选择评分！</string>
+    <string name="toast_review_saved">您的评论已保存！</string>
+    <string name="toast_review_deleted">评论已删除</string>
+    <string name="dialog_delete_review_title">删除评论</string>
+    <string name="dialog_delete_review_message">您确定要删除这条评论吗？</string>
+    <string name="btn_update">更新</string>
+
+    <!-- Ticket -->
+    <string name="toast_ticket_not_found">找不到票</string>
+    <string name="toast_ticket_refunded">票已退款</string>
+    <string name="toast_not_logged_in">您尚未登录</string>
+    <string name="toast_no_refund_permission">您没有退票权限</string>
+    <string name="toast_ticket_data_missing">缺少退款所需的票据数据</string>
+    <string name="toast_refund_failed">退款失败</string>
+
+    <!-- Cinema/Seat Selection -->
+    <string name="toast_cinema_not_found">找不到影院</string>
+    <string name="toast_cinema_data_mismatch">影院数据不匹配</string>
+    <string name="toast_select_showtime">请选择场次</string>
+
+    <!-- Payment -->
+    <string name="toast_payment_cancelled">您已取消支付</string>
+    <string name="toast_payment_confirmed">支付确认成功！</string>
+    <string name="toast_ticket_pending">您已返回，票仍在等待中。</string>
+    <string name="toast_balance_error">无法读取余额，请重试</string>
+
+    <!-- Movie -->
+    <string name="toast_trailer_not_available">预告片暂不可用</string>
+    <string name="toast_no_trending_movies">没有热门电影</string>
+
+    <!-- Ticket Detail -->
+    <string name="btn_refunded">已退款</string>
+    <string name="btn_refund">退款</string>
+    <string name="seat_label">座位:</string>
+    <string name="seat_format">🎟 座位: %1$s</string>
+    <string name="seat_not_selected">🎟 座位: (无)</string>
+    <string name="cinema_not_selected">🎬 (未选择影院)</string>
+
+    <!-- Rating -->
+    <string name="reviews_count">(%1$d条评论)</string>
+    <string name="reviews_count_zero">(0条评论)</string>
+    <string name="filter_all">全部 (%1$d)</string>
+    <string name="filter_star">%1$d ★ (%2$d)</string>
+    <string name="all_reviews_header">全部评论 (%1$d)</string>
+    <string name="star_reviews_header">%1$d星评论 (%2$d)</string>
+    <string name="no_reviews_yet">暂无评论</string>
+    <string name="be_first_to_review">成为第一个评论者！</string>
+    <string name="sentiment_excellent">杰作</string>
+    <string name="sentiment_excellent_desc">高分电影！</string>
+    <string name="sentiment_worth_watching">值得一看</string>
+    <string name="sentiment_worth_watching_desc">获得了积极的反馈。</string>
+    <string name="sentiment_mixed">评价不一</string>
+    <string name="sentiment_mixed_desc">观众意见不一。</string>
+    <string name="sentiment_needs_improvement">有待改善</string>
+    <string name="sentiment_needs_improvement_desc">收到了负面评价。</string>
+    <string name="edit_review">编辑评论</string>
+    <string name="write_review">撰写评论</string>
+
+    <!-- Cinema -->
+    <string name="book_at_cinema">在%1$s预订</string>
+    <string name="cinema_count">附近有%1$d家影院</string>
+    <string name="rating_not_available">N/A</string>
+    <string name="upcoming_badge">即将上映</string>
+    <string name="expired_badge">已结束</string>
+
+    <!-- User -->
+    <string name="default_username">用户</string>
+    <string name="user_not_found">找不到用户</string>
+
+    <!-- Ticket Detail Icon Formats -->
+    <string name="cinema_name_with_icon">🎬 %1$s</string>
+    <string name="time_format_with_icon">🕒 %1$s • %2$s</string>
+    <string name="verified_audience_reviews">%1$d条来自已购票观众的评论</string>
+
+    <!-- Payment Screen -->
+    <string name="payment_info_title">支付信息</string>
+    <string name="ticket_info">票务信息</string>
+    <string name="recipient_info">收件人信息</string>
+    <string name="payment_method">支付方式</string>
+    <string name="total_payment">总付款</string>
+    <string name="pay_now">立即付款</string>
+    <string name="secure_payment">安全支付</string>
+    <string name="movie_poster">电影海报</string>
+    <string name="vnpay_desc">通过VNPay钱包支付</string>
+    <string name="balance_desc">余额: %1$sđ</string>
+    <string name="toast_select_payment_method">请选择支付方式！</string>
+    <string name="toast_insufficient_balance">余额不足！</string>
+    <string name="toast_payment_success">支付成功！</string>
+    <string name="toast_payment_failed">支付失败: %1$s</string>
+
+    <!-- Payment Methods & Formats -->
+    <string name="payment_method_balance">余额</string>
+    <string name="payment_method_vnpay">VNPay网关</string>
+    <string name="price_format_vnd">%1$sđ</string>
+    <string name="ticket_count_format">%1$d张票</string>
+    <string name="balance_format">余额: %1$s đ</string>
+
+    <!-- Generic & Errors -->
+    <string name="email_not_available">无邮箱</string>
+    <string name="choose_image">选择图片</string>
+    <string name="error_ticket_invalid_refund">票已退款或无效</string>
+    <string name="error_update_ticket_failed">更新票据失败</string>
+    <string name="error_load_data">数据加载错误: %1$s</string>
+    <string name="refund_error_seat">退款成功但座位返还失败</string>
+
+    <!-- Notifications -->
+    <string name="notification_update_account_title">账户更新</string>
+    <string name="notification_update_account_body">您更新了个人信息</string>
+    <string name="notification_refund_success_title">退款成功</string>
+    <string name="notification_refund_success_body">您的票已退款。</string>
+    <string name="notification_refund_success_body_with_amount">您已收到电影 %2$s 的退款 %1$sđ</string>
+
+    <string name="info_not_updated">未更新</string>
+    <string name="error_payment_prefix">支付错误: %1$s</string>
+    <string name="trailer_button">观看预告片</string>
+
+    <!-- Missing Strings Added -->
+    <string name="transaction_details">交易详情</string>
+    <string name="payment_method_label">支付方式:</string>
+    <string name="app_wallet">应用钱包</string>
+    <string name="purchase_time_label">购买时间:</string>
+    <string name="total_amount_label">总金额</string>
+    <string name="refund_note">注意: 退款将退回到您的应用内钱包余额。</string>
+    <string name="refund_button">退票</string>
+    <string name="status_now_showing">正在热映</string>
+    <string name="address_label">地址</string>
+    <string name="phone_label">电话</string>
+    <string name="opening_hours_label">营业时间</string>
+    <string name="number_of_screens_label">放映厅数量</string>
+    <string name="utilities_label">设施</string>
+    <string name="now_showing_label">正在热映</string>
+    <string name="upcoming_label">即将上映</string>
+    <string name="no_schedule_message">暂无排片</string>
+    <string name="call_button">拨打电话</string>
+    <string name="directions_button">导航</string>
+    <string name="please_wait">请稍候...</string>
+    <string name="pull_to_retry">下拉重试</string>
+    <string name="my_tickets">我的电影票</string>
+    <string name="no_tickets_yet">暂无电影票</string>
+    <string name="book_ticket_start">预订电影票，开始体验吧！</string>
+    <string name="status_released">已上映</string>
+    <string name="cinema_label_icon">🎬 电影院</string>
+    <string name="schedule_label">📅 排期</string>
+    <string name="screen_label">🎥 放映厅</string>
+    <string name="seat_label_icon">💺 座位</string>
+    <string name="payment_vnpay_label">VNPay</string>
+    <string name="payment_vnpay_desc_text">使用 VNPay 钱包支付</string>
+    <string name="payment_balance_label">账户余额</string>
+    <string name="audience_reviews">观众评价</string>
+    <string name="no_reviews">暂无评价</string>
+    <string name="be_first_to_share">成为第一个分享感受的人！</string>
+    <string name="write_review_button">写影评</string>
+    <string name="all_reviews">所有评价</string>
+    <string name="write_review_title">写影评</string>
+    <string name="review_hint">这部电影怎么样？</string>
+    <string name="review_content_hint">分享你的观影体验...</string>
+    <string name="delete_review_button">删除评价</string>
+    <string name="send_button">发送</string>
+    <string name="format_hd">HD</string>
+    <string name="status_paid">已支付</string>
+    <string name="send_generic">发送</string>
+    <string name="you_marker"> (你)</string>
+    <string name="rating_star_format">%s ★</string>
+    <string name="ticket_cinema_label">影院: </string>
+    <string name="ticket_showtime_label">场次: </string>
+    <string name="ticket_purchase_time_label">时间: </string>
+    <string name="ticket_price_format">%s盾</string>
+    <string name="format_screens_count">%d 个放映厅</string>
+    <string name="format_movies_count">%d 部电影</string>
+    <string name="format_showtime_count">%d 场次</string>
+
+    <!-- Cinema & Location -->
+    <string name="cinema_nearby">附近的电影院</string>
+    <string name="cinema_last_updated">更新于: %s</string>
+    <string name="cinema_current_location">当前位置</string>
+    <string name="cinema_detecting_location">正在检测位置...</string>
+    <string name="cinema_loading">正在加载影院...</string>
+    <string name="cinema_no_results">附近未找到电影院</string>
+    <string name="cinema_grant_permission">允许位置访问</string>
+    <string name="cinema_uit_location">UIT - VNU-HCM</string>
+    <string name="cinema_location_found">已找到位置</string>
+    <string name="cinema_error">加载影院出错</string>
+    <string name="cinema_open_now">营业中</string>
+    <string name="cinema_closed">已关闭</string>
+    <string name="cinema_directions">路线</string>
+    <string name="cinema_call">致电</string>
+    <string name="cinema_distance">%1$.1f km</string>
+    <string name="cinema_location_permission_title">需要位置权限</string>
+    <string name="cinema_location_permission_message">由于需要查找附近的电影院，请授予位置访问权限。</string>
+    <string name="cinema_location_permission_denied">没有位置权限无法查找附近的电影院</string>
+    <string name="details">详情</string>
+
+    <string name="dialog_confirm_delete_all_notifications_message">您确定要删除所有通知吗？</string>
+    <string name="clear_all">全部清除</string>
+
+    <!-- PIN Security Settings -->
+    <string name="pin_settings_title">PIN 安全设置</string>
+    <string name="pin_settings_description">使用 6 位 PIN 码保护应用</string>
+    <string name="setup_pin">设置 PIN</string>
+    <string name="change_pin">更改 PIN</string>
+    <string name="remove_pin">移除 PIN</string>
+    <string name="enable_pin_lock">启用 PIN 锁定</string>
+    <string name="dialog_setup_pin_title">设置 PIN</string>
+    <string name="dialog_enter_new_pin">输入新的 6 位 PIN</string>
+    <string name="dialog_confirm_pin">确认 PIN</string>
+    <string name="dialog_enter_current_pin">输入当前 PIN</string>
+    <string name="dialog_change_pin_title">更改 PIN</string>
+    <string name="dialog_remove_pin_title">移除 PIN</string>
+    <string name="dialog_remove_pin_message">您确定要移除 PIN 吗？应用将不再受保护。</string>
+    <string name="toast_pin_set_success">PIN 设置成功！</string>
+    <string name="toast_pin_changed_success">PIN 更改成功！</string>
+    <string name="toast_pin_removed">PIN 已移除！</string>
+    <string name="toast_pin_mismatch">PIN 确认不匹配！</string>
+    <string name="toast_pin_wrong">PIN 不正确！</string>
+    <string name="toast_pin_invalid_length">PIN 必须正好是 6 位数字！</string>
+    <string name="toast_pin_enabled">PIN 锁定已启用</string>
+    <string name="toast_pin_disabled">PIN 锁定已禁用</string>
+    <string name="pin_status_active">PIN 已激活</string>
+    <string name="pin_status_inactive">PIN 未设置</string>
+
+    <!-- Push Notification Channels -->
+    <string name="notification_channel_tickets">票务通知</string>
+    <string name="notification_channel_tickets_desc">购票或退票成功时的通知</string>
+    <string name="notification_channel_general">一般通知</string>
+    <string name="notification_channel_general_desc">系统通知和更新</string>
+    <string name="notification_channel_system">系统</string>
+    <string name="notification_channel_system_desc">重要的系统通知</string>
+
+    <!-- Push Notification Messages -->
+    <string name="push_notification_new_ticket_title">🎬 购票成功！</string>
+    <string name="push_notification_new_ticket_body">您已购买"%1$s"的电影票，在%2$s，%3$s %4$s。点击查看票据详情。</string>
+    <string name="push_notification_new_notification_title">🔔 您有新通知</string>
+    <string name="push_notification_new_notification_body">%1$s</string>
+    
 </resources>

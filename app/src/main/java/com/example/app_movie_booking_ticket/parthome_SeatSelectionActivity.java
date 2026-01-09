@@ -30,7 +30,7 @@ import java.util.Set;
  * Cho phép người dùng chọn ngày, giờ chiếu và vị trí ghế ngồi.
  * Tính toán tổng tiền vé dựa trên số ghế đã chọn.
  */
-public class parthome_SeatSelectionActivity extends AppCompatActivity {
+public class parthome_SeatSelectionActivity extends extra_manager_language {
 
     private TextView tvMovieTitle, tvTotalPrice;
     private LinearLayout layoutDates, layoutTimes;
@@ -56,6 +56,7 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        extra_themeutils.applySavedTheme(this);
         setContentView(R.layout.parthome_seat_selection);
 
         tvMovieTitle = findViewById(R.id.tvMovieTitle);
@@ -85,7 +86,8 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
             // LUỒNG 1: Đã chọn rạp, ngày, giờ từ CinemaDetail -> CinemaSelection
             tvMovieTitle.setText(movieTitle + "\n" + selectedCinemaName);
 
-            // KỸ THUẬT: Ẩn toàn bộ các layout chọn lại để tránh người dùng chọn sai rạp khác
+            // KỸ THUẬT: Ẩn toàn bộ các layout chọn lại để tránh người dùng chọn sai rạp
+            // khác
             layoutDates.setVisibility(View.GONE);
             layoutTimes.setVisibility(View.GONE);
             findViewById(R.id.labelDate).setVisibility(View.GONE);
@@ -102,9 +104,11 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
 
         btnContinue.setOnClickListener(v -> {
             if (selectedSeats.isEmpty()) {
+                extra_sound_manager.playError(this);
                 Toast.makeText(this, getString(R.string.toast_select_seat), Toast.LENGTH_SHORT).show();
                 return;
             }
+            extra_sound_manager.playUiClick(this);
             int total = selectedSeats.size() * pricePerSeat;
             Toast.makeText(this, String.format(getString(R.string.toast_seat_total), selectedSeats.toString(),
                     String.valueOf(total)), Toast.LENGTH_LONG).show();
@@ -123,7 +127,10 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
         });
 
         ImageView btnBack = findViewById(R.id.btnBack);
-        btnBack.setOnClickListener(v -> finish());
+        btnBack.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
+            finish();
+        });
     }
 
     private void loadSeatsFromCinema() {
@@ -140,10 +147,11 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
         cinemasRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if (!snapshot.exists()) return;
+                if (!snapshot.exists())
+                    return;
 
                 String actualDbKey = "";
-                //  Tìm Key thực tế khớp với ID truyền vào
+                // Tìm Key thực tế khớp với ID truyền vào
                 for (DataSnapshot cinemaSnap : snapshot.getChildren()) {
                     String dbKey = cinemaSnap.getKey();
                     if (selectedCinemaId.contains(dbKey) || dbKey.contains(selectedCinemaId)) {
@@ -162,10 +170,15 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
                     // Hiển thị ghế
                     displaySeats(targetCinema.child("seats"));
                 } else {
-                    Toast.makeText(parthome_SeatSelectionActivity.this, "Không tìm thấy rạp khớp", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(parthome_SeatSelectionActivity.this, getString(R.string.toast_cinema_not_found),
+                            Toast.LENGTH_SHORT)
+                            .show();
                 }
             }
-            @Override public void onCancelled(DatabaseError error) {}
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+            }
         });
     }
 
@@ -215,6 +228,7 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (!snapshot.exists()) {
+                    extra_sound_manager.playError(parthome_SeatSelectionActivity.this);
                     Toast.makeText(parthome_SeatSelectionActivity.this, getString(R.string.toast_no_schedule),
                             Toast.LENGTH_SHORT).show();
                     return;
@@ -227,11 +241,13 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
                     // 1. Kiểm tra rạp có tồn tại trong suất chiếu này không
                     boolean shouldAddDate = false;
 
-                    // Trường hợp LUỒNG 2: Đi từ Movie Detail (chưa chọn rạp cụ thể) -> Hiện tất cả ngày
+                    // Trường hợp LUỒNG 2: Đi từ Movie Detail (chưa chọn rạp cụ thể) -> Hiện tất cả
+                    // ngày
                     if (selectedCinemaId == null || selectedCinemaId.isEmpty()) {
                         shouldAddDate = true;
                     } else {
-                        // Trường hợp LUỒNG 1: Đã có rạp (từ Cinema Selection) -> Chỉ hiện ngày rạp đó có suất
+                        // Trường hợp LUỒNG 1: Đã có rạp (từ Cinema Selection) -> Chỉ hiện ngày rạp đó
+                        // có suất
                         DataSnapshot cinemasSnap = timeSnap.child("cinemas");
                         for (DataSnapshot c : cinemasSnap.getChildren()) {
                             String dbKey = c.getKey(); // Key trên Firebase (vd: cgv_giga_mall)
@@ -269,6 +285,7 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
                     btnDate.setLayoutParams(params);
 
                     btnDate.setOnClickListener(v -> {
+                        extra_sound_manager.playUiClick(parthome_SeatSelectionActivity.this);
                         for (int i = 0; i < layoutDates.getChildCount(); i++) {
                             layoutDates.getChildAt(i).setSelected(false);
                         }
@@ -337,6 +354,7 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
                             btnTime.setLayoutParams(params);
 
                             btnTime.setOnClickListener(v -> {
+                                extra_sound_manager.playUiClick(parthome_SeatSelectionActivity.this);
                                 for (int i = 0; i < layoutTimes.getChildCount(); i++) {
                                     layoutTimes.getChildAt(i).setSelected(false);
                                 }
@@ -357,7 +375,8 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(DatabaseError error) {}
+            public void onCancelled(DatabaseError error) {
+            }
         });
     }
 
@@ -376,7 +395,8 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
         cinemasRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if (!snapshot.exists()) return;
+                if (!snapshot.exists())
+                    return;
 
                 String finalTargetId = "";
 
@@ -407,12 +427,15 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
                     displaySeats(targetSnapshot.child("seats"));
                 } else {
                     android.util.Log.e("SeatSelection", "Không tìm thấy rạp khớp với ID: " + selectedCinemaId);
-                    Toast.makeText(parthome_SeatSelectionActivity.this, "Dữ liệu rạp không đồng bộ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(parthome_SeatSelectionActivity.this, getString(R.string.toast_cinema_data_mismatch),
+                            Toast.LENGTH_SHORT)
+                            .show();
                 }
             }
 
             @Override
-            public void onCancelled(DatabaseError error) {}
+            public void onCancelled(DatabaseError error) {
+            }
         });
     }
 
@@ -424,6 +447,7 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
             selectedSeats.add(seatName);
             seatBtn.setSelected(true);
         }
+        extra_sound_manager.playUiClick(this);
         tvTotalPrice.setText(
                 String.format(getString(R.string.price_format), String.valueOf(selectedSeats.size() * pricePerSeat)));
     }
@@ -435,5 +459,17 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
         if (key == null)
             return "";
         return key.replaceAll("[$#\\[\\]./]", "").trim();
+    }
+
+    @Override
+    public void onBackPressed() {
+        extra_sound_manager.playUiClick(this);
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onUserLeaveHint() {
+        super.onUserLeaveHint();
+        extra_sound_manager.playUiClick(this);
     }
 }

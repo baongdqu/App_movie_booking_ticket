@@ -63,6 +63,18 @@
     <string name="top_movie">인기 영화</string>
     <string name="view_all">모두 보기</string>
     <string name="upcoming_movies">개봉 예정</string>
+    <string name="now_showing_movies">상영 중인 영화</string>
+
+    <!-- Cinema Selection -->
+    <string name="select_cinema">영화관 선택</string>
+    <string name="select_cinema_instructions">날짜, 시간 및 영화관 선택</string>
+    <string name="select_date">날짜 선택</string>
+    <string name="select_time">시간 선택</string>
+    <string name="select">이 영화관 선택</string>
+    <string name="continue_text">계속</string>
+    <string name="no_cinema_available">이용 가능한 영화관 없음</string>
+    <string name="please_select_date_time">날짜와 시간을 선택하십시오</string>
+    <string name="selected">선택됨</string>
     
     <!-- Mail & Notifications -->
     <string name="empty_mailbox">메일함이 비어 있습니다</string>
@@ -78,7 +90,7 @@
     <string name="genre">장르</string>
     <string name="duration_placeholder">1시간 41분</string>
     <string name="date_placeholder">2025.10.31</string>
-    <string name="details">상세정보</string>
+
     <string name="buy_ticket">티켓 구매</string>
     <string name="movie_name">영화 이름</string>
     
@@ -288,4 +300,242 @@
     <string name="dialog_no_internet_message">이 앱을 사용하려면 인터넷 연결이 필요합니다. 네트워크 연결을 확인하고 다시 시도하세요.</string>
     <string name="retry">다시 시도</string>
     <string name="exit">종료</string>
+
+    <!-- Review -->
+    <string name="toast_review_char_limit">내용은 200자를 초과할 수 없습니다!</string>
+    <string name="toast_select_rating">평점을 선택하세요!</string>
+    <string name="toast_review_saved">리뷰가 저장되었습니다!</string>
+    <string name="toast_review_deleted">리뷰가 삭제되었습니다</string>
+    <string name="dialog_delete_review_title">리뷰 삭제</string>
+    <string name="dialog_delete_review_message">이 리뷰를 삭제하시겠습니까?</string>
+    <string name="btn_update">업데이트</string>
+
+    <!-- Ticket -->
+    <string name="toast_ticket_not_found">티켓을 찾을 수 없습니다</string>
+    <string name="toast_ticket_refunded">티켓이 환불되었습니다</string>
+    <string name="toast_not_logged_in">로그인하지 않았습니다</string>
+    <string name="toast_no_refund_permission">이 티켓을 환불할 권한이 없습니다</string>
+    <string name="toast_ticket_data_missing">환불에 필요한 티켓 데이터가 없습니다</string>
+    <string name="toast_refund_failed">환불에 실패했습니다</string>
+
+    <!-- Cinema/Seat Selection -->
+    <string name="toast_cinema_not_found">영화관을 찾을 수 없습니다</string>
+    <string name="toast_cinema_data_mismatch">영화관 데이터 불일치</string>
+    <string name="toast_select_showtime">상영 시간을 선택하세요</string>
+
+    <!-- Payment -->
+    <string name="toast_payment_cancelled">결제를 취소했습니다</string>
+    <string name="toast_payment_confirmed">결제가 확인되었습니다!</string>
+    <string name="toast_ticket_pending">돌아왔습니다, 티켓은 대기 중입니다.</string>
+    <string name="toast_balance_error">잔액을 읽을 수 없습니다. 다시 시도하세요</string>
+
+    <!-- Movie -->
+    <string name="toast_trailer_not_available">예고편을 사용할 수 없습니다</string>
+    <string name="toast_no_trending_movies">인기 영화가 없습니다</string>
+
+    <!-- Ticket Detail -->
+    <string name="btn_refunded">환불 완료</string>
+    <string name="btn_refund">환불</string>
+    <string name="seat_label">좌석:</string>
+    <string name="seat_format">🎟 좌석: %1$s</string>
+    <string name="seat_not_selected">🎟 좌석: (없음)</string>
+    <string name="cinema_not_selected">🎬 (영화관 없음)</string>
+
+    <!-- Rating -->
+    <string name="reviews_count">(%1$d개 리뷰)</string>
+    <string name="reviews_count_zero">(0개 리뷰)</string>
+    <string name="filter_all">전체 (%1$d)</string>
+    <string name="filter_star">%1$d ★ (%2$d)</string>
+    <string name="all_reviews_header">전체 리뷰 (%1$d)</string>
+    <string name="star_reviews_header">%1$d점 리뷰 (%2$d)</string>
+    <string name="no_reviews_yet">아직 리뷰가 없습니다</string>
+    <string name="be_first_to_review">첫 번째 리뷰를 작성하세요!</string>
+    <string name="sentiment_excellent">걸작</string>
+    <string name="sentiment_excellent_desc">높은 평가를 받은 영화!</string>
+    <string name="sentiment_worth_watching">필수 관람</string>
+    <string name="sentiment_worth_watching_desc">긍정적인 평가를 받았습니다.</string>
+    <string name="sentiment_mixed">평가 엇갈림</string>
+    <string name="sentiment_mixed_desc">시청자 간 의견이 나뉩니다.</string>
+    <string name="sentiment_needs_improvement">개선 필요</string>
+    <string name="sentiment_needs_improvement_desc">부정적인 평가를 받았습니다.</string>
+    <string name="edit_review">리뷰 수정</string>
+    <string name="write_review">리뷰 작성</string>
+
+    <!-- Cinema -->
+    <string name="book_at_cinema">%1$s에서 예매</string>
+    <string name="cinema_count">근처에 %1$d개 영화관</string>
+    <string name="rating_not_available">N/A</string>
+    <string name="upcoming_badge">개봉 예정</string>
+    <string name="expired_badge">상영 종료</string>
+
+    <!-- User -->
+    <string name="default_username">사용자</string>
+    <string name="user_not_found">사용자를 찾을 수 없습니다</string>
+
+    <!-- Ticket Detail Icon Formats -->
+    <string name="cinema_name_with_icon">🎬 %1$s</string>
+    <string name="time_format_with_icon">🕒 %1$s • %2$s</string>
+    <string name="verified_audience_reviews">구매 관객 리뷰 %1$d개</string>
+
+    <!-- Payment Screen -->
+    <string name="payment_info_title">결제 정보</string>
+    <string name="ticket_info">티켓 정보</string>
+    <string name="recipient_info">수령인 정보</string>
+    <string name="payment_method">결제 방법</string>
+    <string name="total_payment">총 결제</string>
+    <string name="pay_now">지금 결제</string>
+    <string name="secure_payment">보안 결제</string>
+    <string name="movie_poster">영화 포스터</string>
+    <string name="vnpay_desc">VNPay 지갑으로 결제</string>
+    <string name="balance_desc">잔액: %1$sđ</string>
+    <string name="toast_select_payment_method">결제 방법을 선택해주세요!</string>
+    <string name="toast_insufficient_balance">잔액이 부족합니다!</string>
+    <string name="toast_payment_success">결제 성공!</string>
+    <string name="toast_payment_failed">결제 실패: %1$s</string>
+
+    <!-- Payment Methods & Formats -->
+    <string name="payment_method_balance">잔액</string>
+    <string name="payment_method_vnpay">VNPay 게이트웨이</string>
+    <string name="price_format_vnd">%1$sđ</string>
+    <string name="ticket_count_format">%1$d매</string>
+    <string name="balance_format">잔액: %1$s đ</string>
+
+    <!-- Generic & Errors -->
+    <string name="email_not_available">이메일 없음</string>
+    <string name="choose_image">이미지 선택</string>
+    <string name="error_ticket_invalid_refund">환불되었거나 유효하지 않은 티켓입니다</string>
+    <string name="error_update_ticket_failed">티켓 업데이트 실패</string>
+    <string name="error_load_data">데이터 로드 오류: %1$s</string>
+    <string name="refund_error_seat">환불 성공했으나 좌석 반환 실패</string>
+
+    <!-- Notifications -->
+    <string name="notification_update_account_title">계정 업데이트</string>
+    <string name="notification_update_account_body">개인 정보를 업데이트했습니다</string>
+    <string name="notification_refund_success_title">환불 성공</string>
+    <string name="notification_refund_success_body">티켓이 환불되었습니다.</string>
+    <string name="notification_refund_success_body_with_amount">%2$s 영화에 대해 %1$sđ 환불되었습니다</string>
+
+    <string name="info_not_updated">업데이트되지 않음</string>
+    <string name="error_payment_prefix">결제 오류: %1$s</string>
+    <string name="trailer_button">예고편 보기</string>
+
+    <!-- Missing Strings Added -->
+    <string name="transaction_details">거래 상세</string>
+    <string name="payment_method_label">결제 방법:</string>
+    <string name="app_wallet">이플리케이션 지갑</string>
+    <string name="purchase_time_label">구매 시간:</string>
+    <string name="total_amount_label">총 금액</string>
+    <string name="refund_note">참고: 환불은 내부 지갑 잔액에 추가됩니다.</string>
+    <string name="refund_button">환불</string>
+    <string name="status_now_showing">상영 중</string>
+    <string name="address_label">주소</string>
+    <string name="phone_label">전화번호</string>
+    <string name="opening_hours_label">영업 시간</string>
+    <string name="number_of_screens_label">스크린 수</string>
+    <string name="utilities_label">편의 시설</string>
+    <string name="now_showing_label">상영 중</string>
+    <string name="upcoming_label">개봉 예정</string>
+    <string name="no_schedule_message">상영 일정이 없습니다</string>
+    <string name="call_button">전화</string>
+    <string name="directions_button">길찾기</string>
+    <string name="please_wait">잠시만 기다려주세요...</string>
+    <string name="pull_to_retry">당겨서 재시도</string>
+    <string name="my_tickets">내 티켓</string>
+    <string name="no_tickets_yet">티켓이 없습니다</string>
+    <string name="book_ticket_start">영화 티켓을 예매하세요!</string>
+    <string name="status_released">개봉됨</string>
+    <string name="cinema_label_icon">🎬 영화관</string>
+    <string name="schedule_label">📅 일정</string>
+    <string name="screen_label">🎥 상영관</string>
+    <string name="seat_label_icon">💺 좌석</string>
+    <string name="payment_vnpay_label">VNPay</string>
+    <string name="payment_vnpay_desc_text">VNPay 지갑으로 결제</string>
+    <string name="payment_balance_label">계좌 잔액</string>
+    <string name="audience_reviews">관객 리뷰</string>
+    <string name="no_reviews">리뷰가 없습니다</string>
+    <string name="be_first_to_share">첫 번째 리뷰를 작성해보세요!</string>
+    <string name="write_review_button">리뷰 작성</string>
+    <string name="all_reviews">모든 리뷰</string>
+    <string name="write_review_title">리뷰 작성</string>
+    <string name="review_hint">영화가 어땠나요?</string>
+    <string name="review_content_hint">경험을 공유해주세요...</string>
+    <string name="delete_review_button">리뷰 삭제</string>
+    <string name="send_button">전송</string>
+    <string name="format_hd">HD</string>
+    <string name="status_paid">결제 완료</string>
+    <string name="send_generic">전송</string>
+    <string name="you_marker"> (나)</string>
+    <string name="rating_star_format">%s ★</string>
+    <string name="ticket_cinema_label">영화관: </string>
+    <string name="ticket_showtime_label">상영 시간: </string>
+    <string name="ticket_purchase_time_label">시간: </string>
+    <string name="ticket_price_format">%s동</string>
+    <string name="format_screens_count">%d 스크린</string>
+    <string name="format_movies_count">%d 영화</string>
+    <string name="format_showtime_count">%d 상영</string>
+
+    <!-- Cinema & Location -->
+    <string name="cinema_nearby">근처 영화관</string>
+    <string name="cinema_last_updated">업데이트: %s</string>
+    <string name="cinema_current_location">현재 위치</string>
+    <string name="cinema_detecting_location">위치 확인 중...</string>
+    <string name="cinema_loading">영화관 로딩 중...</string>
+    <string name="cinema_no_results">근처에 영화관이 없습니다</string>
+    <string name="cinema_grant_permission">위치 액세스 허용</string>
+    <string name="cinema_uit_location">UIT - VNU-HCM</string>
+    <string name="cinema_location_found">위치를 찾았습니다</string>
+    <string name="cinema_error">영화관 로드 오류</string>
+    <string name="cinema_open_now">영업 중</string>
+    <string name="cinema_closed">영업 종료</string>
+    <string name="cinema_directions">길찾기</string>
+    <string name="cinema_call">통화</string>
+    <string name="cinema_distance">%1$.1f km</string>
+    <string name="cinema_location_permission_title">위치 권한 필요</string>
+    <string name="cinema_location_permission_message">근처 영화관을 찾으려면 위치 액세스를 허용해주세요.</string>
+    <string name="cinema_location_permission_denied">위치 권한 없이 근처 영화관을 찾을 수 없습니다</string>
+    <string name="details">상세</string>
+
+    <string name="dialog_confirm_delete_all_notifications_message">모든 알림을 삭제하시겠습니까?</string>
+    <string name="clear_all">모두 지우기</string>
+
+    <!-- PIN Security Settings -->
+    <string name="pin_settings_title">PIN 보안</string>
+    <string name="pin_settings_description">6자리 PIN으로 앱 보호</string>
+    <string name="setup_pin">PIN 설정</string>
+    <string name="change_pin">PIN 변경</string>
+    <string name="remove_pin">PIN 제거</string>
+    <string name="enable_pin_lock">PIN 잠금 활성화</string>
+    <string name="dialog_setup_pin_title">PIN 설정</string>
+    <string name="dialog_enter_new_pin">새 6자리 PIN 입력</string>
+    <string name="dialog_confirm_pin">PIN 확인</string>
+    <string name="dialog_enter_current_pin">현재 PIN 입력</string>
+    <string name="dialog_change_pin_title">PIN 변경</string>
+    <string name="dialog_remove_pin_title">PIN 제거</string>
+    <string name="dialog_remove_pin_message">PIN을 제거하시겠습니까? 앱이 보호되지 않습니다.</string>
+    <string name="toast_pin_set_success">PIN이 성공적으로 설정되었습니다!</string>
+    <string name="toast_pin_changed_success">PIN이 성공적으로 변경되었습니다!</string>
+    <string name="toast_pin_removed">PIN이 제거되었습니다!</string>
+    <string name="toast_pin_mismatch">PIN 확인이 일치하지 않습니다!</string>
+    <string name="toast_pin_wrong">잘못된 PIN입니다!</string>
+    <string name="toast_pin_invalid_length">PIN은 정확히 6자리여야 합니다!</string>
+    <string name="toast_pin_enabled">PIN 잠금이 활성화되었습니다</string>
+    <string name="toast_pin_disabled">PIN 잠금이 비활성화되었습니다</string>
+    <string name="pin_status_active">PIN이 활성화됨</string>
+    <string name="pin_status_inactive">PIN이 설정되지 않음</string>
+
+    <!-- Push Notification Channels -->
+    <string name="notification_channel_tickets">티켓 알림</string>
+    <string name="notification_channel_tickets_desc">티켓 구매 또는 환불 시 알림</string>
+    <string name="notification_channel_general">일반 알림</string>
+    <string name="notification_channel_general_desc">시스템 알림 및 업데이트</string>
+    <string name="notification_channel_system">시스템</string>
+    <string name="notification_channel_system_desc">중요한 시스템 알림</string>
+
+    <!-- Push Notification Messages -->
+    <string name="push_notification_new_ticket_title">🎬 티켓 예매 성공!</string>
+    <string name="push_notification_new_ticket_body">"%1$s" 티켓을 %2$s에서 %3$s %4$s에 예매했습니다. 탭하여 상세 정보 확인.</string>
+    <string name="push_notification_new_notification_title">🔔 새 알림이 있습니다</string>
+    <string name="push_notification_new_notification_body">%1$s</string>
+
+
 </resources>

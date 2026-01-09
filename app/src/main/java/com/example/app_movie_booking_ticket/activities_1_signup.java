@@ -33,7 +33,7 @@ import java.util.Objects;
  * Lưu thông tin người dùng vào Firebase Realtime Database.
  * Hỗ trợ đăng ký qua Google - tự động điền email từ Google.
  */
-public class activities_1_signup extends AppCompatActivity {
+public class activities_1_signup extends extra_manager_language {
 
     private TextInputEditText inputFullName, inputEmailSignup, inputPasswordSignup, inputConfirmPassword, inputPhone;
     private TextInputLayout emailInputLayout;
@@ -280,5 +280,17 @@ public class activities_1_signup extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    @Override
+    public void onBackPressed() {
+        extra_sound_manager.playUiClick(this);
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onUserLeaveHint() {
+        super.onUserLeaveHint();
+        extra_sound_manager.playUiClick(this);
     }
 }

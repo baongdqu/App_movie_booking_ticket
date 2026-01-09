@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginVertical="8dp"
@@ -37,7 +38,7 @@
                     android:id="@+id/tvUserNameReview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tên người dùng"
+                    tools:text="Tên người dùng"
                     android:textColor="@color/text_primary"
                     android:textStyle="bold" />
 
@@ -45,7 +46,7 @@
                     android:id="@+id/tvDateReview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="20/12/2025"
+                    tools:text="20/12/2025"
                     android:textSize="12sp" />
             </LinearLayout>
 
@@ -53,7 +54,7 @@
                 android:id="@+id/tvStarCountReview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="5 ★"
+                tools:text="5 ★"
                 android:textColor="#F5A623"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -63,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Nội dung bình luận của khách hàng ở đây..."
+            tools:text="Nội dung bình luận của khách hàng ở đây..."
             android:textColor="@color/text_secondary"
             android:textSize="14sp" />
     </LinearLayout>

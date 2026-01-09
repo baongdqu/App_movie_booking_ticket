@@ -63,6 +63,18 @@
     <string name="top_movie">Топ фильмов</string>
     <string name="view_all">Смотреть все</string>
     <string name="upcoming_movies">Скоро в прокате</string>
+    <string name="now_showing_movies">Сейчас в кино</string>
+
+    <!-- Cinema Selection -->
+    <string name="select_cinema">Выберите кинотеатр</string>
+    <string name="select_cinema_instructions">Выберите дату, время и кинотеатр</string>
+    <string name="select_date">Выберите дату</string>
+    <string name="select_time">Выберите время</string>
+    <string name="select">Выбрать этот кинотеатр</string>
+    <string name="continue_text">Продолжить</string>
+    <string name="no_cinema_available">Нет доступных кинотеатров</string>
+    <string name="please_select_date_time">Пожалуйста, выберите дату и время</string>
+    <string name="selected">Выбрано</string>
     
     <!-- Mail & Notifications -->
     <string name="empty_mailbox">Почтовый ящик пуст</string>
@@ -78,7 +90,7 @@
     <string name="genre">Жанр</string>
     <string name="duration_placeholder">1ч 41м</string>
     <string name="date_placeholder">31.10.2025</string>
-    <string name="details">Подробнее</string>
+
     <string name="buy_ticket">Купить билет</string>
     <string name="movie_name">Название фильма</string>
     
@@ -167,7 +179,6 @@
     <string name="toast_session_expired">Неверный пароль или сессия истекла!</string>
     <string name="toast_select_seat">Выберите место!</string>
     <string name="toast_seat_total">Место: %1$s | Итого: %2$s₽</string>
-    <string name="toast_no_schedule">Нет расписания!</string>
     <string name="toast_load_data_error">Ошибка загрузки данных</string>
     <string name="toast_chatbot_coming_soon">Чат-бот скоро появится!</string>
     <string name="toast_fill_info">Заполните всю информацию!</string>
@@ -288,4 +299,243 @@
     <string name="dialog_no_internet_message">Для использования этого приложения необходимо подключение к интернету. Проверьте соединение и повторите попытку.</string>
     <string name="retry">Повторить</string>
     <string name="exit">Выход</string>
+
+    <!-- Review -->
+    <string name="toast_review_char_limit">Содержимое не должно превышать 200 символов!</string>
+    <string name="toast_select_rating">Пожалуйста, выберите рейтинг!</string>
+    <string name="toast_review_saved">Ваш отзыв сохранён!</string>
+    <string name="toast_review_deleted">Отзыв удалён</string>
+    <string name="dialog_delete_review_title">Удалить отзыв</string>
+    <string name="dialog_delete_review_message">Вы уверены, что хотите удалить этот отзыв?</string>
+    <string name="btn_update">ОБНОВИТЬ</string>
+
+    <!-- Ticket -->
+    <string name="toast_ticket_not_found">Билет не найден</string>
+    <string name="toast_ticket_refunded">Билет возвращён</string>
+    <string name="toast_not_logged_in">Вы не вошли в систему</string>
+    <string name="toast_no_refund_permission">У вас нет прав на возврат этого билета</string>
+    <string name="toast_ticket_data_missing">Отсутствуют данные билета для возврата</string>
+    <string name="toast_refund_failed">Возврат не удался</string>
+
+    <!-- Cinema/Seat Selection -->
+    <string name="toast_cinema_not_found">Кинотеатр не найден</string>
+    <string name="toast_cinema_data_mismatch">Несоответствие данных кинотеатра</string>
+    <string name="toast_select_showtime">Пожалуйста, выберите сеанс</string>
+
+    <!-- Payment -->
+    <string name="toast_payment_cancelled">Вы отменили платёж</string>
+    <string name="toast_payment_confirmed">Платёж успешно подтверждён!</string>
+    <string name="toast_ticket_pending">Вы вернулись, билет ещё в ожидании.</string>
+    <string name="toast_balance_error">Не удалось прочитать баланс, попробуйте ещё раз</string>
+
+    <!-- Movie -->
+    <string name="toast_trailer_not_available">Трейлер недоступен</string>
+    <string name="toast_no_trending_movies">Нет популярных фильмов</string>
+
+    <!-- Ticket Detail -->
+    <string name="btn_refunded">Возвращён</string>
+    <string name="btn_refund">Возврат</string>
+    <string name="seat_label">Место:</string>
+    <string name="seat_format">🎟 Места: %1$s</string>
+    <string name="seat_not_selected">🎟 Места: (нет)</string>
+    <string name="cinema_not_selected">🎬 (Кинотеатр не выбран)</string>
+
+    <!-- Rating -->
+    <string name="reviews_count">(%1$d отзывов)</string>
+    <string name="reviews_count_zero">(0 Отзывов)</string>
+    <string name="filter_all">Все (%1$d)</string>
+    <string name="filter_star">%1$d ★ (%2$d)</string>
+    <string name="all_reviews_header">Все отзывы (%1$d)</string>
+    <string name="star_reviews_header">Отзывы с %1$d звёздами (%2$d)</string>
+    <string name="no_reviews_yet">Пока нет отзывов</string>
+    <string name="be_first_to_review">Будьте первым, кто оставит отзыв!</string>
+    <string name="sentiment_excellent">Шедевр</string>
+    <string name="sentiment_excellent_desc">Фильм с высоким рейтингом!</string>
+    <string name="sentiment_worth_watching">Стоит посмотреть</string>
+    <string name="sentiment_worth_watching_desc">Фильм получил положительные отзывы.</string>
+    <string name="sentiment_mixed">Смешанные отзывы</string>
+    <string name="sentiment_mixed_desc">Мнения зрителей разделились.</string>
+    <string name="sentiment_needs_improvement">Требует улучшения</string>
+    <string name="sentiment_needs_improvement_desc">Фильм получил негативные отзывы.</string>
+    <string name="edit_review">Редактировать отзыв</string>
+    <string name="write_review">Написать отзыв</string>
+
+    <!-- Cinema -->
+    <string name="book_at_cinema">Бронировать в %1$s</string>
+    <string name="cinema_count">%1$d кинотеатров рядом</string>
+    <string name="rating_not_available">N/A</string>
+    <string name="upcoming_badge">Скоро</string>
+    <string name="expired_badge">Завершено</string>
+
+    <!-- User -->
+    <string name="default_username">Пользователь</string>
+    <string name="user_not_found">Пользователь не найден</string>
+
+    <!-- Ticket Detail Icon Formats -->
+    <string name="cinema_name_with_icon">🎬 %1$s</string>
+    <string name="time_format_with_icon">🕒 %1$s • %2$s</string>
+    <string name="verified_audience_reviews">%1$d отзывов от проверенной аудитории</string>
+
+    <!-- Payment Screen -->
+    <string name="payment_info_title">Информация об оплате</string>
+    <string name="ticket_info">ИНФОРМАЦИЯ О БИЛЕТЕ</string>
+    <string name="recipient_info">ИНФОРМАЦИЯ О ПОЛУЧАТЕЛЕ</string>
+    <string name="payment_method">СПОСОБ ОПЛАТЫ</string>
+    <string name="total_payment">Итого к оплате</string>
+    <string name="pay_now">Оплатить</string>
+    <string name="secure_payment">Безопасная оплата</string>
+    <string name="movie_poster">Постер фильма</string>
+    <string name="vnpay_desc">Оплата через кошелек VNPay</string>
+    <string name="balance_desc">Баланс: %1$sđ</string>
+    <string name="toast_select_payment_method">Пожалуйста, выберите способ оплаты!</string>
+    <string name="toast_insufficient_balance">Недостаточно средств!</string>
+    <string name="toast_payment_success">Оплата прошла успешно!</string>
+    <string name="toast_payment_failed">Ошибка оплаты: %1$s</string>
+
+    <!-- Payment Methods & Formats -->
+    <string name="payment_method_balance">Баланс</string>
+    <string name="payment_method_vnpay">Шлюз VNPay</string>
+    <string name="price_format_vnd">%1$sđ</string>
+    <string name="ticket_count_format">%1$d билетов</string>
+    <string name="balance_format">Баланс: %1$s đ</string>
+
+    <!-- Generic & Errors -->
+    <string name="email_not_available">Нет email</string>
+    <string name="choose_image">Выбрать изображение</string>
+    <string name="error_ticket_invalid_refund">Билет возвращён или недействителен</string>
+    <string name="error_update_ticket_failed">Не удалось обновить билет</string>
+    <string name="error_load_data">Ошибка загрузки данных: %1$s</string>
+    <string name="refund_error_seat">Возврат прошёл, но ошибка возврата места</string>
+
+    <!-- Notifications -->
+    <string name="notification_update_account_title">Обновление аккаунта</string>
+    <string name="notification_update_account_body">Вы обновили личную информацию</string>
+    <string name="notification_refund_success_title">Возврат успешен</string>
+    <string name="notification_refund_success_body">Ваш билет был возвращён.</string>
+    <string name="notification_refund_success_body_with_amount">Вам возвращено %1$sđ за фильм %2$s</string>
+
+    <string name="info_not_updated">Не обновлено</string>
+    <string name="error_payment_prefix">Ошибка оплаты: %1$s</string>
+    <string name="trailer_button">Смотреть трейлер</string>
+
+    <!-- Missing Strings Added -->
+    <string name="transaction_details">Детали транзакции</string>
+    <string name="payment_method_label">Метод:</string>
+    <string name="app_wallet">Кошелек приложения</string>
+    <string name="purchase_time_label">Время покупки:</string>
+    <string name="total_amount_label">Общая сумма</string>
+    <string name="refund_note">Примечание: Возврат будет зачислен на баланс внутреннего кошелька.</string>
+    <string name="refund_button">Вернуть билет</string>
+    <string name="status_now_showing">Сейчас в кино</string>
+    <string name="address_label">Адрес</string>
+    <string name="phone_label">Телефон</string>
+    <string name="opening_hours_label">Часы работы</string>
+    <string name="number_of_screens_label">Количество залов</string>
+    <string name="utilities_label">Удобства</string>
+    <string name="now_showing_label">Сейчас в кино</string>
+    <string name="upcoming_label">Скоро в кино</string>
+    <string name="no_schedule_message">Нет доступных сеансов</string>
+    <string name="call_button">Позвонить</string>
+    <string name="directions_button">Маршрут</string>
+    <string name="please_wait">Пожалуйста, подождите...</string>
+    <string name="pull_to_retry">Потяните, чтобы обновить</string>
+    <string name="my_tickets">Мои билеты</string>
+    <string name="no_tickets_yet">Нет билетов</string>
+    <string name="book_ticket_start">Забронируйте билет в кино, чтобы начать!</string>
+    <string name="status_released">Выпущено</string>
+    <string name="cinema_label_icon">🎬 Кинотеатр</string>
+    <string name="schedule_label">📅 Расписание</string>
+    <string name="screen_label">🎥 Зал</string>
+    <string name="seat_label_icon">💺 Место</string>
+    <string name="payment_vnpay_label">VNPay</string>
+    <string name="payment_vnpay_desc_text">Оплата через кошелек VNPay</string>
+    <string name="payment_balance_label">Баланс счета</string>
+    <string name="audience_reviews">Отзывы зрителей</string>
+    <string name="no_reviews">Отзывов пока нет</string>
+    <string name="be_first_to_share">Будьте первым, кто поделится своим мнением!</string>
+    <string name="write_review_button">Написать отзыв</string>
+    <string name="all_reviews">Все отзывы</string>
+    <string name="write_review_title">Написать отзыв</string>
+    <string name="review_hint">Как вам фильм?</string>
+    <string name="review_content_hint">Поделитесь своими впечатлениями...</string>
+    <string name="delete_review_button">Удалить отзыв</string>
+    <string name="send_button">Отправить</string>
+    <string name="format_hd">HD</string>
+    <string name="status_paid">Оплачено</string>
+    <string name="send_generic">Отправить</string>
+    <string name="you_marker"> (Вы)</string>
+    <string name="rating_star_format">%s ★</string>
+    <string name="ticket_cinema_label">Кинотеатр: </string>
+    <string name="ticket_showtime_label">Сеанс: </string>
+    <string name="ticket_purchase_time_label">Время: </string>
+    <string name="ticket_price_format">%sд</string>
+    <string name="format_screens_count">%d залов</string>
+    <string name="format_movies_count">%d фильмов</string>
+    <string name="format_showtime_count">%d сеансов</string>
+
+    <!-- Cinema & Location -->
+    <string name="cinema_nearby">Кинотеатры поблизости</string>
+    <string name="cinema_last_updated">Обновлено: %s</string>
+    <string name="cinema_current_location">Текущее местоположение</string>
+    <string name="cinema_detecting_location">Определение местоположения...</string>
+    <string name="cinema_loading">Загрузка кинотеатров...</string>
+    <string name="cinema_no_results">Кинотеатры поблизости не найдены</string>
+    <string name="cinema_grant_permission">Разрешить доступ к местоположению</string>
+    <string name="cinema_uit_location">UIT - VNU-HCM</string>
+    <string name="cinema_location_found">Местоположение найдено</string>
+    <string name="cinema_error">Ошибка загрузки кинотеатров</string>
+    <string name="cinema_open_now">Открыто</string>
+    <string name="cinema_closed">Закрыто</string>
+    <string name="cinema_directions">Маршрут</string>
+    <string name="cinema_call">Позвонить</string>
+    <string name="cinema_distance">%1$.1f км</string>
+    <string name="cinema_location_permission_title">Требуется разрешение на местоположение</string>
+    <string name="cinema_location_permission_message">Чтобы найти кинотеатры поблизости, пожалуйста, разрешите доступ к местоположению.</string>
+    <string name="cinema_location_permission_denied">Невозможно найти ближайшие кинотеатры без разрешения на местоположение</string>
+    <string name="details">Подробности</string>
+
+    <string name="dialog_confirm_delete_all_notifications_message">Вы уверены, что хотите удалить все уведомления?</string>
+    <string name="clear_all">Очистить все</string>
+
+    <!-- PIN Security Settings -->
+    <string name="pin_settings_title">PIN-код безопасности</string>
+    <string name="pin_settings_description">Защита приложения 6-значным PIN-кодом</string>
+    <string name="setup_pin">Установить PIN</string>
+    <string name="change_pin">Изменить PIN</string>
+    <string name="remove_pin">Удалить PIN</string>
+    <string name="enable_pin_lock">Включить блокировку PIN-кодом</string>
+    <string name="dialog_setup_pin_title">Настройка PIN</string>
+    <string name="dialog_enter_new_pin">Введите новый 6-значный PIN</string>
+    <string name="dialog_confirm_pin">Подтвердите PIN</string>
+    <string name="dialog_enter_current_pin">Введите текущий PIN</string>
+    <string name="dialog_change_pin_title">Изменить PIN</string>
+    <string name="dialog_remove_pin_title">Удалить PIN</string>
+    <string name="dialog_remove_pin_message">Вы уверены, что хотите удалить PIN? Приложение больше не будет защищено.</string>
+    <string name="toast_pin_set_success">PIN успешно установлен!</string>
+    <string name="toast_pin_changed_success">PIN успешно изменен!</string>
+    <string name="toast_pin_removed">PIN удален!</string>
+    <string name="toast_pin_mismatch">PIN-коды не совпадают!</string>
+    <string name="toast_pin_wrong">Неверный PIN!</string>
+    <string name="toast_pin_invalid_length">PIN должен состоять ровно из 6 цифр!</string>
+    <string name="toast_pin_enabled">Блокировка PIN включена</string>
+    <string name="toast_pin_disabled">Блокировка PIN отключена</string>
+    <string name="pin_status_active">PIN активен</string>
+    <string name="pin_status_inactive">PIN не установлен</string>
+    
+    <string name="toast_no_schedule">Нет доступных сеансов</string>
+
+    <!-- Push Notification Channels -->
+    <string name="notification_channel_tickets">Уведомления о билетах</string>
+    <string name="notification_channel_tickets_desc">Уведомления о покупке или возврате билетов</string>
+    <string name="notification_channel_general">Общие уведомления</string>
+    <string name="notification_channel_general_desc">Системные уведомления и обновления</string>
+    <string name="notification_channel_system">Система</string>
+    <string name="notification_channel_system_desc">Важные системные уведомления</string>
+
+    <!-- Push Notification Messages -->
+    <string name="push_notification_new_ticket_title">🎬 Билет забронирован!</string>
+    <string name="push_notification_new_ticket_body">Вы забронировали билет на «%1$s» в %2$s на %3$s в %4$s. Нажмите для просмотра деталей.</string>
+    <string name="push_notification_new_notification_title">🔔 У вас новое уведомление</string>
+    <string name="push_notification_new_notification_body">%1$s</string>
+
 </resources>

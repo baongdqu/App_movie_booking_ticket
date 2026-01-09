@@ -2,6 +2,7 @@
 <com.google.android.material.card.MaterialCardView 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardMovie"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -47,7 +48,7 @@
                 android:background="@drawable/bg_badge_expired"
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="4dp"
-                android:text="Đã chiếu"
+                android:text="@string/status_released"
                 android:textColor="#FFFFFF"
                 android:textSize="10sp"
                 android:textStyle="bold"
@@ -63,7 +64,7 @@
                 android:background="@drawable/bg_rating_badge"
                 android:paddingHorizontal="6dp"
                 android:paddingVertical="2dp"
-                android:text="2024"
+                tools:text="2024"
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 android:textStyle="bold" />
@@ -116,7 +117,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:text="120 min"
+                    tools:text="120 min"
                     android:textColor="@color/text_secondary"
                     android:textSize="12sp" />
             </LinearLayout>

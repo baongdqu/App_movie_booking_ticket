@@ -43,19 +43,19 @@ public class fragments_mail extends Fragment {
         private final Map<String, Movie> movieMap = new HashMap<>();
 
         // ✅ nhận kết quả từ TicketDetailActivity để reload list
-        private final ActivityResultLauncher<Intent> ticketDetailLauncher =
-                registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-                        if (result.getResultCode() == Activity.RESULT_OK) {
-                                loadTickets(); // ✅ reload sau khi hoàn vé
-                        }
-                });
+        private final ActivityResultLauncher<Intent> ticketDetailLauncher = registerForActivityResult(
+                        new ActivityResultContracts.StartActivityForResult(), result -> {
+                                if (result.getResultCode() == Activity.RESULT_OK) {
+                                        loadTickets(); // ✅ reload sau khi hoàn vé
+                                }
+                        });
 
         @Nullable
         @Override
         public View onCreateView(
-                @NonNull LayoutInflater inflater,
-                @Nullable ViewGroup container,
-                @Nullable Bundle savedInstanceState) {
+                        @NonNull LayoutInflater inflater,
+                        @Nullable ViewGroup container,
+                        @Nullable Bundle savedInstanceState) {
 
                 View view = inflater.inflate(R.layout.layouts_fragments_mail, container, false);
 
@@ -67,11 +67,10 @@ public class fragments_mail extends Fragment {
                 rvTickets.setLayoutManager(new LinearLayoutManager(getContext()));
 
                 adapter = new TicketAdapter(
-                        requireContext(),
-                        ticketList,
-                        this::refundTicket,
-                        this::openTicketDetail
-                );
+                                requireContext(),
+                                ticketList,
+                                this::refundTicket,
+                                this::openTicketDetail);
                 rvTickets.setAdapter(adapter);
 
                 if (FirebaseAuth.getInstance().getCurrentUser() != null) {
@@ -103,7 +102,7 @@ public class fragments_mail extends Fragment {
                 emptyStateLayout.setVisibility(View.GONE);
 
                 int count = ticketList.size();
-                tvTicketCount.setText(count + " vé");
+                tvTicketCount.setText(getString(R.string.ticket_count_format, count));
                 tvTicketCount.setVisibility(View.VISIBLE);
         }
 
@@ -111,27 +110,27 @@ public class fragments_mail extends Fragment {
                 showLoading();
 
                 db.child("Movies")
-                        .addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                .addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                                        movieMap.clear();
+                                                movieMap.clear();
 
-                                        for (DataSnapshot item : snapshot.getChildren()) {
-                                                Movie movie = item.getValue(Movie.class);
-                                                if (movie != null && movie.getTitle() != null) {
-                                                        movieMap.put(movie.getTitle().toLowerCase(), movie);
+                                                for (DataSnapshot item : snapshot.getChildren()) {
+                                                        Movie movie = item.getValue(Movie.class);
+                                                        if (movie != null && movie.getTitle() != null) {
+                                                                movieMap.put(movie.getTitle().toLowerCase(), movie);
+                                                        }
                                                 }
+
+                                                loadTickets();
                                         }
 
-                                        loadTickets();
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-                                        showEmptyState();
-                                }
-                        });
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+                                                showEmptyState();
+                                        }
+                                });
         }
 
         private void loadTickets() {
@@ -141,81 +140,94 @@ public class fragments_mail extends Fragment {
                 }
 
                 db.child("tickets")
-                        .orderByChild("userId")
-                        .equalTo(currentUserId)
-                        .addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                .orderByChild("userId")
+                                .equalTo(currentUserId)
+                                .addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                                        ticketList.clear();
+                                                ticketList.clear();
 
-                                        for (DataSnapshot t : snapshot.getChildren()) {
+                                                for (DataSnapshot t : snapshot.getChildren()) {
 
-                                                String status = t.child("status").getValue(String.class);
-                                                if (status != null && !"PAID".equals(status)) continue; // ✅ REFUNDED sẽ bị lọc
+                                                        String status = t.child("status").getValue(String.class);
+                                                        if (status != null && !"PAID".equals(status))
+                                                                continue; // ✅ REFUNDED sẽ bị lọc
 
-                                                String movieTitle = t.child("movieTitle").getValue(String.class);
-                                                if (movieTitle == null) continue;
+                                                        String movieTitle = t.child("movieTitle")
+                                                                        .getValue(String.class);
+                                                        if (movieTitle == null)
+                                                                continue;
 
-                                                Movie movie = movieMap.get(movieTitle.toLowerCase());
-                                                if (movie == null) continue;
+                                                        Movie movie = movieMap.get(movieTitle.toLowerCase());
+                                                        if (movie == null)
+                                                                continue;
 
-                                                String posterUrl = t.child("posterUrl").getValue(String.class);
-                                                String date = t.child("date").getValue(String.class);
-                                                String time = t.child("time").getValue(String.class);
-                                                String cinemaName = t.child("cinemaName").getValue(String.class); // Lấy tên rạp
-                                                Long totalPrice = t.child("totalPrice").getValue(Long.class);
-                                                TicketSimple.PaymentInfo paymentInfo = null;
-                                                DataSnapshot pSnap = t.child("payment");
-                                                if (pSnap.exists()) {
-                                                        paymentInfo = new TicketSimple.PaymentInfo();
-                                                        paymentInfo.method = pSnap.child("method").getValue(String.class);
-                                                        paymentInfo.paidAt = pSnap.child("paidAt").getValue(Long.class);
-                                                }
-                                                List<String> seats = new ArrayList<>();
-                                                if (t.child("seats").exists()) {
-                                                        for (DataSnapshot s : t.child("seats").getChildren()) {
-                                                                seats.add(s.getValue(String.class));
+                                                        String posterUrl = t.child("posterUrl").getValue(String.class);
+                                                        String date = t.child("date").getValue(String.class);
+                                                        String time = t.child("time").getValue(String.class);
+                                                        String cinemaName = t.child("cinemaName")
+                                                                        .getValue(String.class); // Lấy tên rạp
+                                                        Long totalPrice = t.child("totalPrice").getValue(Long.class);
+                                                        TicketSimple.PaymentInfo paymentInfo = null;
+                                                        DataSnapshot pSnap = t.child("payment");
+                                                        if (pSnap.exists()) {
+                                                                paymentInfo = new TicketSimple.PaymentInfo();
+                                                                paymentInfo.method = pSnap.child("method")
+                                                                                .getValue(String.class);
+                                                                paymentInfo.paidAt = pSnap.child("paidAt")
+                                                                                .getValue(Long.class);
                                                         }
+                                                        List<String> seats = new ArrayList<>();
+                                                        if (t.child("seats").exists()) {
+                                                                for (DataSnapshot s : t.child("seats").getChildren()) {
+                                                                        seats.add(s.getValue(String.class));
+                                                                }
+                                                        }
+
+                                                        // Khởi tạo TicketSimple với đầy đủ thông tin mới
+                                                        TicketSimple ticket = new TicketSimple();
+                                                        ticket.setTicketId(t.getKey());
+                                                        ticket.movieTitle = movieTitle;
+                                                        ticket.posterUrl = posterUrl;
+                                                        ticket.date = date;
+                                                        ticket.time = time;
+                                                        ticket.cinemaName = cinemaName;
+                                                        ticket.totalPrice = (totalPrice != null) ? totalPrice : 0L;
+                                                        ticket.seats = seats;
+                                                        ticket.payment = paymentInfo;
+
+                                                        ticketList.add(ticket);
                                                 }
+                                                Collections.sort(ticketList, (a, b) -> {
+                                                        long timeA = (a.payment != null) ? a.payment.paidAt : 0;
+                                                        long timeB = (b.payment != null) ? b.payment.paidAt : 0;
+                                                        return Long.compare(timeB, timeA); // Sắp xếp giảm dần theo thời
+                                                                                           // gian thanh toán
+                                                });
+                                                adapter.notifyDataSetChanged();
 
-                                                // Khởi tạo TicketSimple với đầy đủ thông tin mới
-                                                TicketSimple ticket = new TicketSimple();
-                                                ticket.setTicketId(t.getKey());
-                                                ticket.movieTitle = movieTitle;
-                                                ticket.posterUrl = posterUrl;
-                                                ticket.date = date;
-                                                ticket.time = time;
-                                                ticket.cinemaName = cinemaName;
-                                                ticket.totalPrice = (totalPrice != null) ? totalPrice : 0L;
-                                                ticket.seats = seats;
-                                                ticket.payment = paymentInfo;
-
-                                                ticketList.add(ticket);
+                                                if (ticketList.isEmpty())
+                                                        showEmptyState();
+                                                else
+                                                        showTickets();
                                         }
-                                        Collections.sort(ticketList, (a, b) -> {
-                                                long timeA = (a.payment != null) ? a.payment.paidAt : 0;
-                                                long timeB = (b.payment != null) ? b.payment.paidAt : 0;
-                                                return Long.compare(timeB, timeA); // Sắp xếp giảm dần theo thời gian thanh toán
-                                        });
-                                        adapter.notifyDataSetChanged();
 
-                                        if (ticketList.isEmpty()) showEmptyState();
-                                        else showTickets();
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-                                        showEmptyState();
-                                }
-                        });
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+                                                showEmptyState();
+                                        }
+                                });
         }
 
         private void openTicketDetail(TicketSimple ticket) {
-                if (ticket == null) return;
+                if (ticket == null)
+                        return;
                 String ticketId = ticket.getTicketId();
-                if (ticketId == null || ticketId.trim().isEmpty()) return;
+                if (ticketId == null || ticketId.trim().isEmpty())
+                        return;
 
+                extra_sound_manager.playUiClick(requireContext());
                 Intent i = new Intent(requireContext(), TicketDetailActivity.class);
                 i.putExtra(TicketDetailActivity.EXTRA_TICKET_ID, ticketId);
 
@@ -226,7 +238,8 @@ public class fragments_mail extends Fragment {
         private void refundTicket(TicketSimple ticket) {
 
                 String ticketId = ticket.getTicketId();
-                if (ticketId == null || ticketId.trim().isEmpty()) return;
+                if (ticketId == null || ticketId.trim().isEmpty())
+                        return;
 
                 DatabaseReference ticketRef = db.child("tickets").child(ticketId);
 
@@ -234,13 +247,16 @@ public class fragments_mail extends Fragment {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshotTicket) {
 
-                                if (!snapshotTicket.exists()) return;
+                                if (!snapshotTicket.exists())
+                                        return;
 
                                 String status = snapshotTicket.child("status").getValue(String.class);
-                                if (status == null) status = "PAID";
+                                if (status == null)
+                                        status = "PAID";
 
                                 if (!"PAID".equals(status)) {
-                                        Toast.makeText(getContext(), "Vé đã được hoàn", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getContext(), getString(R.string.toast_ticket_refunded),
+                                                        Toast.LENGTH_SHORT).show();
                                         return;
                                 }
 
@@ -254,21 +270,25 @@ public class fragments_mail extends Fragment {
                                 if (snapshotTicket.child("seats").exists()) {
                                         for (DataSnapshot s : snapshotTicket.child("seats").getChildren()) {
                                                 String seat = s.getValue(String.class);
-                                                if (seat != null) seats.add(seat);
+                                                if (seat != null)
+                                                        seats.add(seat);
                                         }
                                 }
 
                                 Long totalPriceObj = snapshotTicket.child("totalPrice").getValue(Long.class);
                                 final long totalPrice = (totalPriceObj != null) ? totalPriceObj : 0L;
 
-                                if (movieTitle == null || date == null || time == null || cinemaId == null || seats.isEmpty()) {
-                                        Toast.makeText(getContext(), "Thiếu dữ liệu vé để hoàn", Toast.LENGTH_SHORT).show();
+                                if (movieTitle == null || date == null || time == null || cinemaId == null
+                                                || seats.isEmpty()) {
+                                        Toast.makeText(getContext(), getString(R.string.toast_ticket_data_missing),
+                                                        Toast.LENGTH_SHORT)
+                                                        .show();
                                         return;
                                 }
 
                                 DatabaseReference balanceRef = db.child("users")
-                                        .child(currentUserId)
-                                        .child("balance");
+                                                .child(currentUserId)
+                                                .child("balance");
 
                                 // 1) CỘNG TIỀN
                                 balanceRef.runTransaction(new Transaction.Handler() {
@@ -276,59 +296,88 @@ public class fragments_mail extends Fragment {
                                         @Override
                                         public Transaction.Result doTransaction(@NonNull MutableData currentData) {
                                                 Long current = currentData.getValue(Long.class);
-                                                if (current == null) current = 0L;
+                                                if (current == null)
+                                                        current = 0L;
                                                 currentData.setValue(current + totalPrice);
                                                 return Transaction.success(currentData);
                                         }
 
                                         @Override
-                                        public void onComplete(DatabaseError error, boolean committed, DataSnapshot snapshot) {
+                                        public void onComplete(DatabaseError error, boolean committed,
+                                                        DataSnapshot snapshot) {
 
                                                 if (error != null || !committed) {
-                                                        Toast.makeText(getContext(), "Hoàn tiền thất bại", Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(getContext(),
+                                                                        getString(R.string.toast_refund_failed),
+                                                                        Toast.LENGTH_SHORT).show();
                                                         return;
                                                 }
 
                                                 // 2) UPDATE STATUS + TRẢ GHẾ VỀ "available" (KHÔNG XÓA KEY)
                                                 Map<String, Object> updates = new HashMap<>();
                                                 updates.put("tickets/" + ticketId + "/status", "REFUNDED");
-                                                updates.put("tickets/" + ticketId + "/refundedAt", System.currentTimeMillis());
+                                                updates.put("tickets/" + ticketId + "/refundedAt",
+                                                                System.currentTimeMillis());
 
                                                 String showtimeKey = date + "_" + time;
 
                                                 String baseSeatPath = "Bookings/" + movieTitle + "/" + showtimeKey
-                                                        + "/cinemas/" + cinemaId + "/seats/";
+                                                                + "/cinemas/" + cinemaId + "/seats/";
 
                                                 for (String seat : seats) {
                                                         updates.put(baseSeatPath + seat, "available");
                                                 }
 
                                                 db.updateChildren(updates)
-                                                        .addOnSuccessListener(unused -> {
-                                                                Toast.makeText(getContext(), "Hoàn tiền thành công!", Toast.LENGTH_SHORT).show();
-                                                                String msg = "Bạn đã được hoàn " + totalPrice + "đ cho phim " + movieTitle;
-                                                                sendNotification(currentUserId, "Hoàn tiền thành công", msg, "REFUND");
-                                                                loadTickets(); // reload list (REFUNDED sẽ bị lọc)
-                                                        })
-                                                        .addOnFailureListener(e -> {
-                                                                Toast.makeText(getContext(), "Hoàn tiền OK nhưng trả ghế lỗi", Toast.LENGTH_SHORT).show();
-                                                                loadTickets();
-                                                        });
+                                                                .addOnSuccessListener(unused -> {
+                                                                        extra_sound_manager
+                                                                                        .playSuccess(requireContext());
+                                                                        Toast.makeText(getContext(),
+                                                                                        getString(R.string.notification_refund_success_title),
+                                                                                        Toast.LENGTH_SHORT).show();
+                                                                        String msg = getString(
+                                                                                        R.string.notification_refund_success_body_with_amount,
+                                                                                        String.valueOf(totalPrice),
+                                                                                        movieTitle);
+                                                                        sendNotification(currentUserId,
+                                                                                        getString(R.string.notification_refund_success_title),
+                                                                                        msg,
+                                                                                        "REFUND");
+
+                                                                        // 🔔 GỬI PUSH NOTIFICATION HOÀN VÉ
+                                                                        NotificationHelper notificationHelper = new NotificationHelper(
+                                                                                        requireContext());
+                                                                        notificationHelper.sendRefundNotification(
+                                                                                        movieTitle, totalPrice);
+
+                                                                        loadTickets(); // reload list (REFUNDED sẽ bị
+                                                                                       // lọc)
+                                                                })
+                                                                .addOnFailureListener(e -> {
+                                                                        extra_sound_manager.playError(requireContext());
+                                                                        Toast.makeText(getContext(),
+                                                                                        getString(R.string.refund_error_seat),
+                                                                                        Toast.LENGTH_SHORT).show();
+                                                                        loadTickets();
+                                                                });
                                         }
                                 });
                         }
 
                         @Override
-                        public void onCancelled(@NonNull DatabaseError error) { }
+                        public void onCancelled(@NonNull DatabaseError error) {
+                        }
                 });
         }
+
         private void sendNotification(String userId, String title, String message, String type) {
                 DatabaseReference notifRef = FirebaseDatabase.getInstance()
-                        .getReference("notifications")
-                        .child(userId);
+                                .getReference("notifications")
+                                .child(userId);
 
                 String key = notifRef.push().getKey();
-                if (key == null) return;
+                if (key == null)
+                        return;
 
                 Map<String, Object> notif = new HashMap<>();
                 notif.put("title", title);

@@ -175,7 +175,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Địa chỉ"
+                            android:text="@string/address_label"
                             android:textColor="@color/text_secondary"
                             android:textSize="12sp" />
 
@@ -215,7 +215,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Điện thoại"
+                            android:text="@string/phone_label"
                             android:textColor="@color/text_secondary"
                             android:textSize="12sp" />
 
@@ -256,7 +256,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Giờ hoạt động"
+                            android:text="@string/opening_hours_label"
                             android:textColor="@color/text_secondary"
                             android:textSize="12sp" />
 
@@ -296,7 +296,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Số phòng chiếu"
+                            android:text="@string/number_of_screens_label"
                             android:textColor="@color/text_secondary"
                             android:textSize="12sp" />
 
@@ -317,7 +317,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Tiện ích"
+                android:text="@string/utilities_label"
                 android:textColor="@color/text_primary"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -361,7 +361,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:layout_weight="1"
-                        android:text="Phim đang chiếu"
+                        android:text="@string/now_showing_label"
                         android:textColor="@color/text_primary"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -414,7 +414,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:layout_weight="1"
-                        android:text="Phim sắp chiếu"
+                        android:text="@string/upcoming_label"
                         android:textColor="@color/text_primary"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -457,7 +457,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:text="Rạp chưa có lịch chiếu phim"
+                android:text="@string/no_schedule_message"
                 android:textColor="@color/text_secondary"
                 android:textSize="14sp"
                 android:visibility="gone" />
@@ -488,7 +488,7 @@
             android:layout_height="56dp"
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
-            android:text="Gọi điện"
+            android:text="@string/call_button"
             android:textColor="@color/profile_accent"
             android:textSize="15sp"
             app:cornerRadius="16dp"
@@ -506,7 +506,7 @@
             android:layout_height="56dp"
             android:layout_marginStart="8dp"
             android:layout_weight="1"
-            android:text="Chỉ đường"
+            android:text="@string/directions_button"
             android:textSize="15sp"
             app:backgroundTint="@color/profile_accent"
             app:cornerRadius="16dp"

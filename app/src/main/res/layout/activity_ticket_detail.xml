@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -67,7 +68,7 @@
                             android:id="@+id/tvMovieTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Movie title"
+                            tools:text="Movie title"
                             android:textStyle="bold"
                             android:textSize="18sp"
                             android:maxLines="2"
@@ -78,7 +79,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:text="🎬 Cinema name"
+                            tools:text="🎬 Cinema name"
                             android:textSize="14sp"/>
 
                         <TextView
@@ -86,13 +87,54 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
-                            android:text="🕒 Date • Time"
+                            tools:text="🕒 Date • Time"
                             android:textSize="14sp"/>
 
                     </LinearLayout>
 
                 </LinearLayout>
 
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- QR Code Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:text="@string/qr_code_label"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imgQrCode"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:src="@drawable/placeholder_movie" />
+
+                    <TextView
+                        android:id="@+id/tvTicketIdDisplay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textSize="12sp"
+                        android:fontFamily="monospace"
+                        tools:text="ID: ticket_123456789" />
+
+                </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
             <!-- Info card -->
@@ -112,7 +154,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Chi tiết giao dịch"
+                        android:text="@string/transaction_details"
                         android:textStyle="bold"
                         android:textSize="16sp"
                         android:textColor="?attr/colorOnSurface"/>
@@ -122,7 +164,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="🎟 Ghế: A1, A2"
+                        tools:text="🎟 Ghế: A1, A2"
                         android:textSize="14sp"/>
 
                     <LinearLayout
@@ -134,13 +176,13 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Phương thức:"
+                            android:text="@string/payment_method_label"
                             android:textSize="14sp"/>
                         <TextView
                             android:id="@+id/tvPaymentMethod"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Ví ứng dụng"
+                            android:text="@string/app_wallet"
                             android:textStyle="bold"
                             android:textColor="@color/profile_accent"
                             android:textSize="14sp"/>
@@ -155,13 +197,13 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Thời gian mua:"
+                            android:text="@string/purchase_time_label"
                             android:textSize="14sp"/>
                         <TextView
                             android:id="@+id/tvTransactionTime"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="--:--, --/--/----"
+                            tools:text="--:--, --/--/----"
                             android:textSize="14sp"/>
                     </LinearLayout>
 
@@ -181,7 +223,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Tổng tiền"
+                            android:text="@string/total_amount_label"
                             android:textStyle="bold"
                             android:textSize="15sp"/>
 
@@ -189,7 +231,7 @@
                             android:id="@+id/tvTotalPrice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="120,000đ"
+                            tools:text="120,000đ"
                             android:textStyle="bold"
                             android:textColor="#E50914"
                             android:textSize="18sp"/>
@@ -200,7 +242,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="Lưu ý: Hoàn vé sẽ cộng tiền vào số dư ví nội bộ."
+                        android:text="@string/refund_note"
                         android:textSize="11sp"
                         android:textColor="#808080"
                         android:fontFamily="sans-serif-light"/>
@@ -237,7 +279,7 @@
                 android:id="@+id/btnRefund"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
-                android:text="Hoàn vé"
+                android:text="@string/refund_button"
                 app:cornerRadius="14dp"/>
 
         </LinearLayout>

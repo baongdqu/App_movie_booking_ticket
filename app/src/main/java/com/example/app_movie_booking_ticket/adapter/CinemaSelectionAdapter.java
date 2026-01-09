@@ -59,7 +59,7 @@ public class CinemaSelectionAdapter extends RecyclerView.Adapter<CinemaSelection
 
         // Format price
         NumberFormat formatter = NumberFormat.getInstance(new Locale("vi", "VN"));
-        holder.tvPrice.setText(formatter.format(price) + "đ");
+        holder.tvPrice.setText(context.getString(R.string.price_format_vnd, formatter.format(price)));
 
         // Handle selection state
         boolean isSelected = position == selectedPosition;
@@ -100,8 +100,10 @@ public class CinemaSelectionAdapter extends RecyclerView.Adapter<CinemaSelection
             notifyItemChanged(oldPosition);
         }
     }
+
     public void setPreSelectedCinema(String preSelectedId) {
-        if (preSelectedId == null || cinemaList == null) return;
+        if (preSelectedId == null || cinemaList == null)
+            return;
 
         for (int i = 0; i < cinemaList.size(); i++) {
             String id = (String) cinemaList.get(i).get("id");
@@ -112,6 +114,7 @@ public class CinemaSelectionAdapter extends RecyclerView.Adapter<CinemaSelection
             }
         }
     }
+
     static class CinemaViewHolder extends RecyclerView.ViewHolder {
         TextView tvCinemaName, tvAddress, tvPrice;
         Button btnSelect;

@@ -32,7 +32,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-public class TicketDetailActivity extends AppCompatActivity {
+public class TicketDetailActivity extends extra_manager_language {
 
     public static final String EXTRA_TICKET_ID = "ticketId";
 
@@ -52,11 +52,13 @@ public class TicketDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        extra_themeutils.applySavedTheme(this);
         setContentView(R.layout.activity_ticket_detail);
 
         // Toolbar navigation
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
             Intent intent = new Intent(TicketDetailActivity.this, activities_2_a_menu_manage_fragments.class);
             intent.putExtra("OPEN_FRAGMENT", "TICKET_FRAGMENT");
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -84,7 +86,10 @@ public class TicketDetailActivity extends AppCompatActivity {
         }
         loadTicket(ticketId);
 
-        btnRefund.setOnClickListener(v -> refundTicket());
+        btnRefund.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
+            refundTicket();
+        });
     }
 
     private void loadTicket(String ticketId) {
@@ -93,7 +98,8 @@ public class TicketDetailActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot t) {
                         if (!t.exists()) {
-                            Toast.makeText(TicketDetailActivity.this, "Không tìm thấy vé", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(TicketDetailActivity.this, getString(R.string.toast_ticket_not_found),
+                                    Toast.LENGTH_SHORT).show();
                             finish();
                             return;
                         }
@@ -122,20 +128,28 @@ public class TicketDetailActivity extends AppCompatActivity {
                         if (t.child("seats").exists()) {
                             for (DataSnapshot s : t.child("seats").getChildren()) {
                                 String seat = s.getValue(String.class);
-                                if (seat != null) seats.add(seat);
+                                if (seat != null)
+                                    seats.add(seat);
                             }
                         }
 
                         // Hiển thị lên UI
                         tvMovieTitle.setText(movieTitle != null ? movieTitle : "");
-                        tvCinema.setText(!TextUtils.isEmpty(cinemaName) ? ("🎬 " + cinemaName) : "🎬 (Chưa có rạp)");
-                        tvDateTime.setText("🕒 " + (date != null ? date : "") + " • " + (time != null ? time : ""));
-                        tvSeats.setText(seats.isEmpty() ? "🎟 Ghế: (Chưa có)" : "🎟 Ghế: " + TextUtils.join(", ", seats));
-                        tvTotalPrice.setText(moneyFmt.format(totalPrice) + "đ");
+                        tvCinema.setText(
+                                !TextUtils.isEmpty(cinemaName) ? getString(R.string.cinema_name_with_icon, cinemaName)
+                                        : getString(R.string.cinema_not_selected));
+                        tvDateTime.setText(getString(R.string.time_format_with_icon, (date != null ? date : ""),
+                                (time != null ? time : "")));
+                        tvSeats.setText(
+                                seats.isEmpty() ? getString(R.string.seat_not_selected)
+                                        : getString(R.string.seat_format, TextUtils.join(", ", seats)));
+                        tvTotalPrice.setText(getString(R.string.price_format_vnd, moneyFmt.format(totalPrice)));
 
                         // Hiển thị phương thức thanh toán
-                        String paymentDisplay = ("BALANCE".equals(method) ? "Số dư" : "Cổng VNPay");
-                        if (tvPaymentMethod != null) tvPaymentMethod.setText(paymentDisplay);
+                        String paymentDisplay = ("BALANCE".equals(method) ? getString(R.string.payment_method_balance)
+                                : getString(R.string.payment_method_vnpay));
+                        if (tvPaymentMethod != null)
+                            tvPaymentMethod.setText(paymentDisplay);
 
                         // Hiển thị thời gian giao dịch
                         if (paidAt != null && tvTransactionTime != null) {
@@ -149,6 +163,22 @@ public class TicketDetailActivity extends AppCompatActivity {
                                 .placeholder(R.drawable.placeholder_movie)
                                 .error(R.drawable.placeholder_movie)
                                 .into(imgPoster);
+
+                        // --- SINH MÃ QR TỪ TICKET ID ---
+                        ImageView imgQrCode = findViewById(R.id.imgQrCode);
+                        TextView tvTicketIdDisplay = findViewById(R.id.tvTicketIdDisplay);
+                        if (imgQrCode != null && tvTicketIdDisplay != null) {
+                            tvTicketIdDisplay.setText("ID: " + ticketId);
+                            try {
+                                com.google.zxing.BarcodeFormat format = com.google.zxing.BarcodeFormat.QR_CODE;
+                                com.journeyapps.barcodescanner.BarcodeEncoder barcodeEncoder = new com.journeyapps.barcodescanner.BarcodeEncoder();
+                                android.graphics.Bitmap bitmap = barcodeEncoder.encodeBitmap(ticketId, format, 400,
+                                        400);
+                                imgQrCode.setImageBitmap(bitmap);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
 
                         updateRefundButtonUI();
                     }
@@ -164,27 +194,27 @@ public class TicketDetailActivity extends AppCompatActivity {
     private void updateRefundButtonUI() {
         if (refunded) {
             btnRefund.setEnabled(false);
-            btnRefund.setText("Đã hoàn vé");
+            btnRefund.setText(getString(R.string.btn_refunded));
         } else {
             btnRefund.setEnabled(true);
-            btnRefund.setText("Hoàn vé");
+            btnRefund.setText(getString(R.string.btn_refund));
         }
     }
 
     private void refundTicket() {
         if (refunded) {
-            Toast.makeText(this, "Vé đã được hoàn", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_ticket_refunded), Toast.LENGTH_SHORT).show();
             return;
         }
 
         FirebaseUser current = FirebaseAuth.getInstance().getCurrentUser();
         if (current == null) {
-            Toast.makeText(this, "Bạn chưa đăng nhập", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_not_logged_in), Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (ticketUserId != null && !ticketUserId.equals(current.getUid())) {
-            Toast.makeText(this, "Bạn không có quyền hoàn vé này", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_no_refund_permission), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -193,14 +223,16 @@ public class TicketDetailActivity extends AppCompatActivity {
         ticketRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshotTicket) {
-                if (!snapshotTicket.exists()) return;
+                if (!snapshotTicket.exists())
+                    return;
 
                 String status = snapshotTicket.child("status").getValue(String.class);
-                if (status == null) status = "PAID";
+                if (status == null)
+                    status = "PAID";
 
                 if (!"PAID".equals(status)) {
                     Toast.makeText(TicketDetailActivity.this,
-                            "Vé đã được hoàn hoặc không hợp lệ",
+                            getString(R.string.error_ticket_invalid_refund),
                             Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -226,7 +258,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                     public void onComplete(DatabaseError error, boolean committed, DataSnapshot snapshot) {
                         if (!committed) {
                             Toast.makeText(TicketDetailActivity.this,
-                                    "Hoàn tiền thất bại",
+                                    getString(R.string.toast_refund_failed),
                                     Toast.LENGTH_SHORT).show();
                             return;
                         }
@@ -238,34 +270,42 @@ public class TicketDetailActivity extends AppCompatActivity {
                         ticketRef.updateChildren(updates)
                                 .addOnSuccessListener(unused -> {
                                     refunded = true;
+                                    extra_sound_manager.playSuccess(TicketDetailActivity.this);
                                     Toast.makeText(TicketDetailActivity.this,
-                                            "Hoàn vé thành công!",
+                                            getString(R.string.notification_refund_success_title),
                                             Toast.LENGTH_SHORT).show();
-                                    sendNotification(ticketUserId, "Hoàn tiền thành công", "Vé của bạn đã được hoàn tiền.", "REFUND");
+                                    sendNotification(ticketUserId,
+                                            getString(R.string.notification_refund_success_title),
+                                            getString(R.string.notification_refund_success_body), "REFUND");
 
-                                    Toast.makeText(TicketDetailActivity.this, "Hoàn vé thành công!", Toast.LENGTH_SHORT).show();
                                     // ✅ báo về Fragment reload rồi quay lại
                                     setResult(RESULT_OK);
                                     finish();
                                 })
-                                .addOnFailureListener(e -> Toast.makeText(TicketDetailActivity.this,
-                                        "Cập nhật vé thất bại",
-                                        Toast.LENGTH_SHORT).show());
+                                .addOnFailureListener(e -> {
+                                    extra_sound_manager.playError(TicketDetailActivity.this);
+                                    Toast.makeText(TicketDetailActivity.this,
+                                            getString(R.string.error_update_ticket_failed),
+                                            Toast.LENGTH_SHORT).show();
+                                });
                     }
                 });
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) { }
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
         });
     }
+
     private void sendNotification(String userId, String title, String message, String type) {
         DatabaseReference notifRef = FirebaseDatabase.getInstance()
                 .getReference("notifications")
                 .child(userId);
 
         String key = notifRef.push().getKey();
-        if (key == null) return;
+        if (key == null)
+            return;
 
         Map<String, Object> notif = new HashMap<>();
         notif.put("title", title);
@@ -277,5 +317,15 @@ public class TicketDetailActivity extends AppCompatActivity {
         notifRef.child(key).setValue(notif);
     }
 
+    @Override
+    public void onBackPressed() {
+        extra_sound_manager.playUiClick(this);
+        super.onBackPressed();
+    }
 
+    @Override
+    protected void onUserLeaveHint() {
+        super.onUserLeaveHint();
+        extra_sound_manager.playUiClick(this);
+    }
 }

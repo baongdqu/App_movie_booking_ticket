@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Viết đánh giá"
+            android:text="@string/write_review_title"
             android:textColor="@color/text_primary"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -43,7 +43,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bạn thấy phim này thế nào?"
+            android:text="@string/review_hint"
             android:textColor="@color/text_primary"
             android:textSize="16sp" />
 
@@ -63,7 +63,7 @@
             android:layout_marginTop="24dp"
             app:counterEnabled="true"
             app:counterMaxLength="200"
-            android:hint="Chia sẻ trải nghiệm của bạn..."
+            android:hint="@string/review_content_hint"
             app:boxBackgroundColor="@color/card_background"
             app:boxCornerRadiusBottomEnd="8dp"
             app:boxCornerRadiusTopStart="8dp">
@@ -82,7 +82,7 @@
         android:layout_height="56dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="16dp"
-        android:text="Xóa đánh giá"
+        android:text="@string/delete_review_button"
         android:textColor="@color/netflix_text_white"
         android:backgroundTint="@color/netflix_red"
         android:textSize="16sp"
@@ -98,7 +98,7 @@
         android:layout_height="56dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="16dp"
-        android:text="GỬI"
+        android:text="@string/send_button"
         android:textColor="@color/netflix_text_white"
         android:backgroundTint="@color/netflix_red"
         android:textSize="16sp"

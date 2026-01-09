@@ -97,13 +97,13 @@ public class fragments_user extends Fragment {
 
         // Lấy email (ưu tiên từ prefs)
         String email = prefs.getString("email", currentUser.getEmail());
-        txtEmail.setText(email != null ? email : "Không có email");
+        txtEmail.setText(email != null ? email : getString(R.string.email_not_available));
 
         // Load dữ liệu (username + avatar)
         if (email != null) {
             loadUserData(email);
         } else {
-            txtUsername.setText("Người dùng");
+            txtUsername.setText(getString(R.string.default_username));
             imgAvatar.setImageResource(R.drawable.ic_person);
         }
 
@@ -179,7 +179,7 @@ public class fragments_user extends Fragment {
                                 String avatarUrl = child.child("avatarUrl").getValue(String.class);
 
                                 // set tên
-                                txtUsername.setText(username != null ? username : "Người dùng");
+                                txtUsername.setText(username != null ? username : getString(R.string.default_username));
 
                                 // set avatar — nếu null hoặc rỗng thì dùng default
                                 final String urlToLoad = (avatarUrl != null && !avatarUrl.isEmpty()) ? avatarUrl
@@ -201,15 +201,17 @@ public class fragments_user extends Fragment {
                                 break; // chỉ lấy 1 user
                             }
                         } else {
-                            txtUsername.setText("Không tìm thấy người dùng");
+                            txtUsername.setText(getString(R.string.user_not_found));
                             imgAvatar.setImageResource(R.drawable.ic_person);
                         }
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(getContext(),
-                                "Lỗi tải dữ liệu: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                        if (getActivity() != null) {
+                            Toast.makeText(getActivity(),
+                                    getString(R.string.error_load_data, error.getMessage()), Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
     }

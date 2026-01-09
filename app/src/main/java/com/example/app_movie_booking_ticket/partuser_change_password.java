@@ -10,7 +10,7 @@ import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class partuser_change_password extends AppCompatActivity {
+public class partuser_change_password extends extra_manager_language {
 
     private EditText inputOldPassword, inputNewPassword, inputConfirmPassword;
     private Button btnSavePassword, btnCancelPassword;

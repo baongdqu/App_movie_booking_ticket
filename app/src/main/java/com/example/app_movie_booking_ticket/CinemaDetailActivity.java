@@ -45,7 +45,7 @@ import java.util.Set;
  * Activity to display detailed information about a cinema.
  * Bao gồm thông tin rạp và danh sách phim đang chiếu/sắp chiếu tại rạp.
  */
-public class CinemaDetailActivity extends AppCompatActivity implements CinemaMovieAdapter.OnMovieClickListener {
+public class CinemaDetailActivity extends extra_manager_language implements CinemaMovieAdapter.OnMovieClickListener {
 
     private static final String TAG = "CinemaDetailActivity";
     public static final String EXTRA_CINEMA = "extra_cinema";
@@ -94,6 +94,7 @@ public class CinemaDetailActivity extends AppCompatActivity implements CinemaMov
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        extra_themeutils.applySavedTheme(this);
         setContentView(R.layout.layouts_cinema_detail);
 
         // Get cinema from intent
@@ -189,9 +190,9 @@ public class CinemaDetailActivity extends AppCompatActivity implements CinemaMov
         // Rating
         if (cinema.getRating() > 0) {
             tvRating.setText(String.format("%.1f", cinema.getRating()));
-            tvRatingCount.setText("(" + cinema.getUserRatingsTotal() + " đánh giá)");
+            tvRatingCount.setText(getString(R.string.reviews_count, cinema.getUserRatingsTotal()));
         } else {
-            tvRating.setText("N/A");
+            tvRating.setText(getString(R.string.rating_not_available));
             tvRatingCount.setVisibility(View.GONE);
         }
 
@@ -232,7 +233,7 @@ public class CinemaDetailActivity extends AppCompatActivity implements CinemaMov
         int screens = cinema.getScreens();
         if (screens > 0) {
             layoutScreens.setVisibility(View.VISIBLE);
-            tvScreens.setText(screens + " phòng chiếu");
+            tvScreens.setText(getString(R.string.format_screens_count, screens));
         } else {
             layoutScreens.setVisibility(View.GONE);
         }
@@ -405,9 +406,11 @@ public class CinemaDetailActivity extends AppCompatActivity implements CinemaMov
      * Kiểm tra xem cinema key/name có match với rạp hiện tại không
      */
     private boolean matchesCinema(String cinemaKey, String cinemaNameFromBooking) {
-        if (cinemaKey == null || cinemaId == null) return false;
+        if (cinemaKey == null || cinemaId == null)
+            return false;
 
-        // Chuẩn hóa cả hai ID về cùng một định dạng (chữ thường, thay gạch nối bằng gạch dưới)
+        // Chuẩn hóa cả hai ID về cùng một định dạng (chữ thường, thay gạch nối bằng
+        // gạch dưới)
         String normalizedAppId = cinemaId.toLowerCase().replace("-", "_").trim();
         String normalizedDbKey = cinemaKey.toLowerCase().replace("-", "_").trim();
 
@@ -430,93 +433,107 @@ public class CinemaDetailActivity extends AppCompatActivity implements CinemaMov
 
         return false;
     }
-//    private boolean matchesCinema(String cinemaKey, String cinemaNameFromBooking) {
-//        String currentCinemaName = cinema.getName();
-//
-//        // So sánh bằng key (snake_case) - exact match
-//        if (cinemaKey != null && cinemaKey.equalsIgnoreCase(cinemaId)) {
-//            Log.d(TAG, "MATCH by exact key: " + cinemaKey + " == " + cinemaId);
-//            return true;
-//        }
-//
-//        // So sánh bằng key - prefix/contains match
-//        // Key trong Bookings (vd: galaxy_linh_trung) có thể ngắn hơn cinemaId (vd:
-//        // galaxy_linh_trung_thu_duc)
-//        if (cinemaKey != null && cinemaId != null) {
-//            String normalizedKey = cinemaKey.toLowerCase().replace("-", "_");
-//            String normalizedCurrentId = cinemaId.toLowerCase().replace("-", "_");
-//
-//            // Kiểm tra startsWith hoặc contains
-//            if (normalizedCurrentId.startsWith(normalizedKey) || normalizedKey.startsWith(normalizedCurrentId)) {
-//                Log.d(TAG, "MATCH by key prefix: " + normalizedKey + " <-> " + normalizedCurrentId);
-//                return true;
-//            }
-//
-//            // Kiểm tra contains
-//            if (normalizedCurrentId.contains(normalizedKey) || normalizedKey.contains(normalizedCurrentId)) {
-//                Log.d(TAG, "MATCH by key contains: " + normalizedKey + " <-> " + normalizedCurrentId);
-//                return true;
-//            }
-//        }
-//
-//        // So sánh bằng tên (case insensitive và bỏ dấu)
-//        if (cinemaNameFromBooking != null && currentCinemaName != null) {
-//            String normalizedBookingName = normalizeString(cinemaNameFromBooking);
-//            String normalizedCurrentName = normalizeString(currentCinemaName);
-//
-//            // So sánh chứa
-//            if (normalizedBookingName.contains(normalizedCurrentName)
-//                    || normalizedCurrentName.contains(normalizedBookingName)) {
-//                Log.d(TAG, "MATCH by contains: '" + normalizedBookingName + "' <-> '" + normalizedCurrentName + "'");
-//                return true;
-//            }
-//
-//            // So sánh dựa trên brand + location keywords
-//            String[] brands = { "cgv", "galaxy", "lotte", "bhd", "cinestar", "mega", "beta" };
-//            String[] locations = { "thuduc", "gigamall", "linhtrung", "cantavil", "grandpark", "pearl", "plaza" };
-//
-//            String matchedBrand = null;
-//            String matchedLocation = null;
-//
-//            // Tìm brand chung
-//            for (String brand : brands) {
-//                if (normalizedBookingName.contains(brand) && normalizedCurrentName.contains(brand)) {
-//                    matchedBrand = brand;
-//                    break;
-//                }
-//            }
-//
-//            // Tìm location chung
-//            for (String location : locations) {
-//                if (normalizedBookingName.contains(location) && normalizedCurrentName.contains(location)) {
-//                    matchedLocation = location;
-//                    break;
-//                }
-//            }
-//
-//            // Nếu cả brand và location đều match -> cùng rạp
-//            if (matchedBrand != null && matchedLocation != null) {
-//                Log.d(TAG, "MATCH by brand+location: " + matchedBrand + " + " + matchedLocation);
-//                return true;
-//            }
-//
-//            // Nếu chỉ có brand match và tên ngắn -> có thể cùng rạp
-//            // So sánh thêm bằng độ tương đồng
-//            if (matchedBrand != null) {
-//                // Tính số ký tự chung
-//                int commonChars = countCommonChars(normalizedBookingName, normalizedCurrentName);
-//                int minLength = Math.min(normalizedBookingName.length(), normalizedCurrentName.length());
-//                double similarity = (double) commonChars / minLength;
-//
-//                if (similarity >= 0.7) { // 70% tương đồng
-//                    Log.d(TAG, "MATCH by brand + similarity: " + matchedBrand + ", similarity=" + similarity);
-//                    return true;
-//                }
-//            }
-//        }
-//
-//        return false;
-//    }
+    // private boolean matchesCinema(String cinemaKey, String cinemaNameFromBooking)
+    // {
+    // String currentCinemaName = cinema.getName();
+    //
+    // // So sánh bằng key (snake_case) - exact match
+    // if (cinemaKey != null && cinemaKey.equalsIgnoreCase(cinemaId)) {
+    // Log.d(TAG, "MATCH by exact key: " + cinemaKey + " == " + cinemaId);
+    // return true;
+    // }
+    //
+    // // So sánh bằng key - prefix/contains match
+    // // Key trong Bookings (vd: galaxy_linh_trung) có thể ngắn hơn cinemaId (vd:
+    // // galaxy_linh_trung_thu_duc)
+    // if (cinemaKey != null && cinemaId != null) {
+    // String normalizedKey = cinemaKey.toLowerCase().replace("-", "_");
+    // String normalizedCurrentId = cinemaId.toLowerCase().replace("-", "_");
+    //
+    // // Kiểm tra startsWith hoặc contains
+    // if (normalizedCurrentId.startsWith(normalizedKey) ||
+    // normalizedKey.startsWith(normalizedCurrentId)) {
+    // Log.d(TAG, "MATCH by key prefix: " + normalizedKey + " <-> " +
+    // normalizedCurrentId);
+    // return true;
+    // }
+    //
+    // // Kiểm tra contains
+    // if (normalizedCurrentId.contains(normalizedKey) ||
+    // normalizedKey.contains(normalizedCurrentId)) {
+    // Log.d(TAG, "MATCH by key contains: " + normalizedKey + " <-> " +
+    // normalizedCurrentId);
+    // return true;
+    // }
+    // }
+    //
+    // // So sánh bằng tên (case insensitive và bỏ dấu)
+    // if (cinemaNameFromBooking != null && currentCinemaName != null) {
+    // String normalizedBookingName = normalizeString(cinemaNameFromBooking);
+    // String normalizedCurrentName = normalizeString(currentCinemaName);
+    //
+    // // So sánh chứa
+    // if (normalizedBookingName.contains(normalizedCurrentName)
+    // || normalizedCurrentName.contains(normalizedBookingName)) {
+    // Log.d(TAG, "MATCH by contains: '" + normalizedBookingName + "' <-> '" +
+    // normalizedCurrentName + "'");
+    // return true;
+    // }
+    //
+    // // So sánh dựa trên brand + location keywords
+    // String[] brands = { "cgv", "galaxy", "lotte", "bhd", "cinestar", "mega",
+    // "beta" };
+    // String[] locations = { "thuduc", "gigamall", "linhtrung", "cantavil",
+    // "grandpark", "pearl", "plaza" };
+    //
+    // String matchedBrand = null;
+    // String matchedLocation = null;
+    //
+    // // Tìm brand chung
+    // for (String brand : brands) {
+    // if (normalizedBookingName.contains(brand) &&
+    // normalizedCurrentName.contains(brand)) {
+    // matchedBrand = brand;
+    // break;
+    // }
+    // }
+    //
+    // // Tìm location chung
+    // for (String location : locations) {
+    // if (normalizedBookingName.contains(location) &&
+    // normalizedCurrentName.contains(location)) {
+    // matchedLocation = location;
+    // break;
+    // }
+    // }
+    //
+    // // Nếu cả brand và location đều match -> cùng rạp
+    // if (matchedBrand != null && matchedLocation != null) {
+    // Log.d(TAG, "MATCH by brand+location: " + matchedBrand + " + " +
+    // matchedLocation);
+    // return true;
+    // }
+    //
+    // // Nếu chỉ có brand match và tên ngắn -> có thể cùng rạp
+    // // So sánh thêm bằng độ tương đồng
+    // if (matchedBrand != null) {
+    // // Tính số ký tự chung
+    // int commonChars = countCommonChars(normalizedBookingName,
+    // normalizedCurrentName);
+    // int minLength = Math.min(normalizedBookingName.length(),
+    // normalizedCurrentName.length());
+    // double similarity = (double) commonChars / minLength;
+    //
+    // if (similarity >= 0.7) { // 70% tương đồng
+    // Log.d(TAG, "MATCH by brand + similarity: " + matchedBrand + ", similarity=" +
+    // similarity);
+    // return true;
+    // }
+    // }
+    // }
+    //
+    // return false;
+    // }
 
     /**
      * Đếm số ký tự chung giữa hai chuỗi
@@ -558,9 +575,9 @@ public class CinemaDetailActivity extends AppCompatActivity implements CinemaMov
      * Load chi tiết phim từ MovieCacheManager
      */
     private void loadMovieDetailsFromCache(Map<String, Integer> nowShowingShowtimes,
-                                           Map<String, Date> nowShowingEarliest,
-                                           Map<String, Integer> upcomingShowtimes,
-                                           Map<String, Date> upcomingEarliest) {
+            Map<String, Date> nowShowingEarliest,
+            Map<String, Integer> upcomingShowtimes,
+            Map<String, Date> upcomingEarliest) {
         nowShowingMovies.clear();
         upcomingMovies.clear();
 
@@ -582,7 +599,7 @@ public class CinemaDetailActivity extends AppCompatActivity implements CinemaMov
                 String movieTitleFromFb = entry.getKey();
                 int showtimeCount = entry.getValue();
 
-                //  SỬA TẠI ĐÂY: Truy vấn bằng tên đã viết thường
+                // SỬA TẠI ĐÂY: Truy vấn bằng tên đã viết thường
                 Movie movie = movieMap.get(movieTitleFromFb.toLowerCase().trim());
 
                 if (movie != null) {
@@ -596,8 +613,10 @@ public class CinemaDetailActivity extends AppCompatActivity implements CinemaMov
                             dateStr = dateFormat.format(earliest);
                         }
                     }
+                    // Kiểm tra phim đã hết lịch chiếu chưa
+                    boolean isExpired = MovieCacheManager.getInstance().isMovieExpired(movie.getMovieID());
                     nowShowingMovies.add(new CinemaMovieAdapter.CinemaMovie(
-                            movie, showtimeCount, false, rating, dateStr));
+                            movie, showtimeCount, false, isExpired, rating, dateStr));
                 }
             }
 
@@ -606,7 +625,7 @@ public class CinemaDetailActivity extends AppCompatActivity implements CinemaMov
                 String movieTitleFromFb = entry.getKey();
                 int showtimeCount = entry.getValue();
 
-                //  SỬA TẠI ĐÂY: Truy vấn bằng tên đã viết thường
+                // SỬA TẠI ĐÂY: Truy vấn bằng tên đã viết thường
                 Movie movie = movieMap.get(movieTitleFromFb.toLowerCase().trim());
 
                 if (movie != null) {
@@ -616,8 +635,9 @@ public class CinemaDetailActivity extends AppCompatActivity implements CinemaMov
                     if (earliest != null) {
                         dateStr = dateFormat.format(earliest);
                     }
+                    // Phim sắp chiếu không thể là phim đã hết hạn
                     upcomingMovies.add(new CinemaMovieAdapter.CinemaMovie(
-                            movie, showtimeCount, true, rating, dateStr));
+                            movie, showtimeCount, true, false, rating, dateStr));
                 }
             }
 
@@ -645,8 +665,8 @@ public class CinemaDetailActivity extends AppCompatActivity implements CinemaMov
             // Hiển thị và cập nhật số lượng phim ĐANG CHIẾU
             if (!nowShowingMovies.isEmpty()) {
                 layoutNowShowingMovies.setVisibility(View.VISIBLE);
-                //  THÊM DÒNG NÀY để hiện số lượng phim
-                tvNowShowingCount.setText(nowShowingMovies.size() + " phim");
+                // THÊM DÒNG NÀY để hiện số lượng phim
+                tvNowShowingCount.setText(getString(R.string.format_movies_count, nowShowingMovies.size()));
                 nowShowingAdapter.updateList(nowShowingMovies);
             } else {
                 layoutNowShowingMovies.setVisibility(View.GONE);
@@ -655,8 +675,8 @@ public class CinemaDetailActivity extends AppCompatActivity implements CinemaMov
             // Hiển thị và cập nhật số lượng phim SẮP CHIẾU
             if (!upcomingMovies.isEmpty()) {
                 layoutUpcomingMovies.setVisibility(View.VISIBLE);
-                //  THÊM DÒNG NÀY để hiện số lượng phim
-                tvUpcomingCount.setText(upcomingMovies.size() + " phim");
+                // THÊM DÒNG NÀY để hiện số lượng phim
+                tvUpcomingCount.setText(getString(R.string.format_movies_count, upcomingMovies.size()));
                 upcomingAdapter.updateList(upcomingMovies);
             } else {
                 layoutUpcomingMovies.setVisibility(View.GONE);
@@ -693,14 +713,17 @@ public class CinemaDetailActivity extends AppCompatActivity implements CinemaMov
     public void onMovieClick(Movie movie, String cinemaName, String cinemaIdParam, int showtimeCount) {
         extra_sound_manager.playUiClick(this);
 
+        // Kiểm tra phim đã hết lịch chiếu chưa
+        boolean isExpired = MovieCacheManager.getInstance().isMovieExpired(movie.getMovieID());
+
         Intent intent = new Intent(this, parthome_movie_detail.class);
         intent.putExtra("movie", movie);
+        intent.putExtra("isExpired", isExpired); // Truyền trạng thái đã chiếu
         intent.putExtra("fromCinema", true);
         intent.putExtra("cinemaName", cinemaName);
         intent.putExtra("cinemaId", cinemaIdParam);
         intent.putExtra("showtimeCount", showtimeCount);
         startActivity(intent);
     }
-
 
 }

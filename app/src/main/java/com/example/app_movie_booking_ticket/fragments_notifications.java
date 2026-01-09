@@ -89,6 +89,7 @@ public class fragments_notifications extends Fragment {
 
         // Clear all với confirmation dialog
         btnClearAll.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(requireContext());
             if (list.isEmpty()) {
                 Toast.makeText(getContext(), R.string.no_notifications, Toast.LENGTH_SHORT).show();
                 return;
@@ -130,7 +131,7 @@ public class fragments_notifications extends Fragment {
     private void showClearAllConfirmation() {
         new MaterialAlertDialogBuilder(requireContext())
                 .setTitle(R.string.clear_all)
-                .setMessage(R.string.dialog_confirm_delete_message)
+                .setMessage(R.string.dialog_confirm_delete_all_notifications_message)
                 .setPositiveButton(R.string.dialog_confirm, (dialog, which) -> {
                     ref.removeValue();
                     list.clear();
@@ -145,23 +146,50 @@ public class fragments_notifications extends Fragment {
     // =====================================================
     // 🔥 LOAD NOTIFICATIONS
     // =====================================================
+    private int previousNotificationCount = 0;
+    private boolean isFirstLoad = true;
+
     private void loadNotifications() {
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 list.clear();
+                int unreadCount = 0;
 
                 for (DataSnapshot c : snapshot.getChildren()) {
                     AppNotification n = c.getValue(AppNotification.class);
                     if (n != null) {
                         n.setId(c.getKey());
                         list.add(n);
+
+                        // Đếm thông báo chưa đọc
+                        if (!n.isRead()) {
+                            unreadCount++;
+                        }
                     }
                 }
 
                 // 🔥 sort mới → cũ
                 list.sort((a, b) -> Long.compare(b.getTimestamp(), a.getTimestamp()));
+
+                // 🔔 GỬI PUSH NOTIFICATION khi có thông báo MỚI (không phải lần load đầu tiên)
+                if (!isFirstLoad && list.size() > previousNotificationCount && !list.isEmpty()) {
+                    // Lấy thông báo mới nhất
+                    AppNotification latestNotification = list.get(0);
+
+                    // Chỉ push nếu thông báo chưa đọc
+                    if (!latestNotification.isRead()) {
+                        NotificationHelper notificationHelper = new NotificationHelper(requireContext());
+                        notificationHelper.sendGeneralNotification(
+                                latestNotification.getTitle(),
+                                latestNotification.getMessage(),
+                                latestNotification.getType());
+                    }
+                }
+
+                previousNotificationCount = list.size();
+                isFirstLoad = false;
 
                 adapter.notifyDataSetChanged();
 
@@ -187,6 +215,7 @@ public class fragments_notifications extends Fragment {
     // 🔥 CLICK NOTIFICATION
     // =====================================================
     private void handleNotificationClick(AppNotification n) {
+        extra_sound_manager.playUiClick(requireContext());
 
         // Đánh dấu đã đọc
         ref.child(n.getId()).child("read").setValue(true);
@@ -240,6 +269,7 @@ public class fragments_notifications extends Fragment {
                         // Xoá local
                         list.remove(position);
                         adapter.notifyItemRemoved(position);
+                        extra_sound_manager.playUiClick(requireContext());
 
                         // Show toast
                         Toast.makeText(getContext(), R.string.notification_deleted, Toast.LENGTH_SHORT).show();

@@ -191,7 +191,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-medium"
-        android:text="7 rạp gần bạn"
+        tools:text="7 rạp gần bạn"
         android:textColor="@color/text_secondary"
         android:textSize="13sp"
         android:visibility="gone"
@@ -256,7 +256,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="Vui lòng chờ..."
+            android:text="@string/please_wait"
             android:textColor="@color/text_tertiary"
             android:textSize="12sp" />
     </LinearLayout>
@@ -304,7 +304,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:gravity="center"
-            android:text="Kéo xuống để thử lại"
+            android:text="@string/pull_to_retry"
             android:textColor="@color/text_secondary"
             android:textSize="13sp" />
 

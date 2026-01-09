@@ -26,7 +26,7 @@
             android:background="@drawable/bg_badge_expired"
             android:paddingHorizontal="8dp"
             android:paddingVertical="4dp"
-            android:text="Đã chiếu"
+            android:text="@string/status_released"
             android:textColor="#FFFFFF"
             android:textSize="10sp"
             android:textStyle="bold"

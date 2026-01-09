@@ -1,9 +1,15 @@
 package com.example.app_movie_booking_ticket;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -23,6 +29,20 @@ public class activities_2_a_menu_manage_fragments extends extra_manager_language
     private BottomNavigationView bottomNavigationView;
     private Fragment fragmentHome, fragmentCinema, fragmentMail, fragmentNotifications, fragmentUser;
     private Fragment activeFragment;
+
+    // 🔔 Launcher để yêu cầu quyền thông báo (Android 13+)
+    private final ActivityResultLauncher<String> notificationPermissionLauncher = registerForActivityResult(
+            new ActivityResultContracts.RequestPermission(), isGranted -> {
+                if (isGranted) {
+                    // Quyền đã được cấp - tạo notification channels
+                    NotificationHelper notificationHelper = new NotificationHelper(this);
+                    // Channels được tạo trong constructor
+                } else {
+                    // Quyền bị từ chối - không làm gì (người dùng sẽ không nhận được thông báo)
+                    // Có thể hiện dialog giải thích tại đây nếu cần
+                }
+            });
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +61,9 @@ public class activities_2_a_menu_manage_fragments extends extra_manager_language
         // ================== 🌐 KIỂM TRA KẾT QUẢ MẠNG TỪ LOADING SCREEN
         // ==================
         checkNoInternetFromLoading();
+
+        // 🔔 YÊU CẦU QUYỀN THÔNG BÁO (Android 13+)
+        requestNotificationPermission();
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             extra_sound_manager.playMenuClick(this);
@@ -71,6 +94,7 @@ public class activities_2_a_menu_manage_fragments extends extra_manager_language
             return false;
         });
     }
+
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
@@ -86,6 +110,7 @@ public class activities_2_a_menu_manage_fragments extends extra_manager_language
             bottomNavigationView.setSelectedItemId(R.id.nav_mail);
         }
     }
+
     /**
      * Kiểm tra xem có thông báo "không có mạng" từ Loading screen không
      * Nếu có thì hiển thị dialog trên màn hình Home (đẹp hơn)
@@ -99,6 +124,39 @@ public class activities_2_a_menu_manage_fragments extends extra_manager_language
     }
 
     /**
+     * 🔔 YÊU CẦU QUYỀN THÔNG BÁO (Android 13+)
+     * Kiểm tra và yêu cầu quyền POST_NOTIFICATIONS nếu chưa được cấp.
+     * Chỉ yêu cầu một lần duy nhất (lưu trạng thái).
+     */
+    private void requestNotificationPermission() {
+        // Chỉ yêu cầu quyền trên Android 13+ (API 33+)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            // Kiểm tra xem đã cấp quyền chưa
+            if (ContextCompat.checkSelfPermission(this,
+                    Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+
+                // Kiểm tra xem đã từng hỏi quyền chưa (để không spam người dùng)
+                android.content.SharedPreferences prefs = getSharedPreferences("AppSettings", MODE_PRIVATE);
+                boolean hasAskedPermission = prefs.getBoolean("has_asked_notification_permission", false);
+
+                if (!hasAskedPermission) {
+                    // Đánh dấu đã hỏi quyền
+                    prefs.edit().putBoolean("has_asked_notification_permission", true).apply();
+
+                    // Yêu cầu quyền thông báo
+                    notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
+                }
+            } else {
+                // Đã có quyền - tạo notification channels
+                NotificationHelper notificationHelper = new NotificationHelper(this);
+            }
+        } else {
+            // Android < 13 - không cần quyền runtime, tạo channels luôn
+            NotificationHelper notificationHelper = new NotificationHelper(this);
+        }
+    }
+
+    /**
      * Hiển thị hộp thoại thông báo không có kết nối mạng
      */
     private void showNoInternetDialog() {
@@ -107,6 +165,7 @@ public class activities_2_a_menu_manage_fragments extends extra_manager_language
                 .setMessage(getString(R.string.dialog_no_internet_message))
                 .setCancelable(false)
                 .setPositiveButton(getString(R.string.retry), (dialog, which) -> {
+                    extra_sound_manager.playUiClick(this);
                     dialog.dismiss();
                     // Khởi động lại app từ Loading screen để kiểm tra lại mạng
                     Intent intent = new Intent(this, activities_0_loading.class);
@@ -115,6 +174,7 @@ public class activities_2_a_menu_manage_fragments extends extra_manager_language
                     finish();
                 })
                 .setNegativeButton(getString(R.string.exit), (dialog, which) -> {
+                    extra_sound_manager.playUiClick(this);
                     dialog.dismiss();
                     finishAffinity();
                 })
@@ -149,10 +209,14 @@ public class activities_2_a_menu_manage_fragments extends extra_manager_language
         fragmentUser = fragments_user.newInstance();
 
         // Add tất cả nhưng chỉ show Home
-        getSupportFragmentManager().beginTransaction().add(R.id.container, fragmentUser, "5").hide(fragmentUser).commit();
-        getSupportFragmentManager().beginTransaction().add(R.id.container, fragmentNotifications, "4").hide(fragmentNotifications).commit();
-        getSupportFragmentManager().beginTransaction().add(R.id.container, fragmentMail, "3").hide(fragmentMail).commit();
-        getSupportFragmentManager().beginTransaction().add(R.id.container, fragmentCinema, "2").hide(fragmentCinema).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.container, fragmentUser, "5").hide(fragmentUser)
+                .commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.container, fragmentNotifications, "4")
+                .hide(fragmentNotifications).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.container, fragmentMail, "3").hide(fragmentMail)
+                .commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.container, fragmentCinema, "2").hide(fragmentCinema)
+                .commit();
         getSupportFragmentManager().beginTransaction().add(R.id.container, fragmentHome, "1").commit();
 
         activeFragment = fragmentHome;
@@ -160,7 +224,8 @@ public class activities_2_a_menu_manage_fragments extends extra_manager_language
 
     // Hàm switch fragment thay thế cho loadFragment cũ
     public void switchFragment(Fragment target) {
-        if (activeFragment == target) return;
+        if (activeFragment == target)
+            return;
 
         getSupportFragmentManager().beginTransaction()
                 .hide(activeFragment)
@@ -172,5 +237,17 @@ public class activities_2_a_menu_manage_fragments extends extra_manager_language
     // Cho phép fragment chọn lại nav item
     public void selectBottomNavItem(int itemId) {
         bottomNavigationView.setSelectedItemId(itemId);
+    }
+
+    @Override
+    public void onBackPressed() {
+        extra_sound_manager.playUiClick(this);
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onUserLeaveHint() {
+        super.onUserLeaveHint();
+        extra_sound_manager.playUiClick(this);
     }
 }

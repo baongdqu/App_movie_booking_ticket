@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.jspecify.annotations.NonNull;
 
-public class parthome_WriteReview extends AppCompatActivity {
+public class parthome_WriteReview extends extra_manager_language {
     private ParthomeWriteReviewBinding binding; // Tên binding theo file XML của bạn
     private String movieID;
     private DatabaseReference mDatabase;
@@ -30,6 +30,7 @@ public class parthome_WriteReview extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        extra_themeutils.applySavedTheme(this);
         binding = ParthomeWriteReviewBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -38,19 +39,23 @@ public class parthome_WriteReview extends AppCompatActivity {
         movieID = getIntent().getStringExtra("MOVIE_ID");
 
         binding.btnSubmitReview.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
             saveReview();
         });
         loadExistingReview();
-        binding.btnCloseWrite.setOnClickListener(v -> finish());
+        binding.btnCloseWrite.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
+            finish();
+        });
         binding.btnDeleteReview.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
             new AlertDialog.Builder(this)
-                    .setTitle("Xóa đánh giá")
-                    .setMessage("Bạn có chắc chắn muốn xóa đánh giá này không?")
-                    .setPositiveButton("Xóa", (dialog, which) -> deleteReview())
-                    .setNegativeButton("Hủy", null)
+                    .setTitle(getString(R.string.dialog_delete_review_title))
+                    .setMessage(getString(R.string.dialog_delete_review_message))
+                    .setPositiveButton(getString(R.string.dialog_delete), (dialog, which) -> deleteReview())
+                    .setNegativeButton(getString(R.string.cancel), null)
                     .show();
         });
-
 
     }
 
@@ -59,11 +64,11 @@ public class parthome_WriteReview extends AppCompatActivity {
         float rating = binding.ratingBarInput.getRating();
         String comment = binding.edtReviewComment.getText().toString().trim();
         if (comment.length() > 200) {
-            Toast.makeText(this, "Nội dung không được vượt quá 200 ký tự!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_review_char_limit), Toast.LENGTH_SHORT).show();
             return;
         }
         if (rating == 0) {
-            Toast.makeText(this, "Vui lòng chọn số sao!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_select_rating), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -86,18 +91,26 @@ public class parthome_WriteReview extends AppCompatActivity {
                 // Dùng child(userId) để đảm bảo mỗi User chỉ có 1 node duy nhất dưới mỗi phim
                 mDatabase.child("Reviews").child(movieID).child(userId).setValue(review)
                         .addOnSuccessListener(aVoid -> {
-                            Toast.makeText(parthome_WriteReview.this, "Đã lưu đánh giá của bạn!", Toast.LENGTH_SHORT).show();
+                            extra_sound_manager.playSuccess(parthome_WriteReview.this);
+                            Toast.makeText(parthome_WriteReview.this, getString(R.string.toast_review_saved),
+                                    Toast.LENGTH_SHORT)
+                                    .show();
                             finish();
                         })
                         .addOnFailureListener(e -> {
-                            Toast.makeText(parthome_WriteReview.this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            extra_sound_manager.playError(parthome_WriteReview.this);
+                            Toast.makeText(parthome_WriteReview.this, getString(R.string.toast_error, e.getMessage()),
+                                    Toast.LENGTH_SHORT)
+                                    .show();
                         });
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
         });
     }
+
     private void loadExistingReview() {
         String userId = FirebaseAuth.getInstance().getUid();
         mDatabase.child("Reviews").child(movieID).child(userId)
@@ -110,28 +123,34 @@ public class parthome_WriteReview extends AppCompatActivity {
                                 // Hiển thị lại số sao và bình luận cũ để người dùng sửa
                                 binding.ratingBarInput.setRating(oldReview.getRating());
                                 binding.edtReviewComment.setText(oldReview.getComment());
-                                binding.btnSubmitReview.setText("CẬP NHẬT"); // Đổi tên nút cho rõ ràng
+                                binding.btnSubmitReview.setText(getString(R.string.btn_update)); // Đổi tên nút cho rõ
+                                                                                                 // ràng
                                 binding.btnDeleteReview.setVisibility(View.VISIBLE);
                             }
-                        }
-                        else {
+                        } else {
                             // Chưa có đánh giá -> Ẩn nút Xóa
                             binding.btnDeleteReview.setVisibility(View.GONE);
                         }
                     }
+
                     @Override
-                    public void onCancelled(@NonNull DatabaseError error) {}
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
                 });
     }
+
     private void deleteReview() {
         String userId = mAuth.getCurrentUser().getUid();
         mDatabase.child("Reviews").child(movieID).child(userId).removeValue()
                 .addOnSuccessListener(aVoid -> {
-                    Toast.makeText(this, "Đã xóa đánh giá", Toast.LENGTH_SHORT).show();
+                    extra_sound_manager.playSuccess(this);
+                    Toast.makeText(this, getString(R.string.toast_review_deleted), Toast.LENGTH_SHORT).show();
                     finish();
                 })
-                .addOnFailureListener(e -> Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT));
+                .addOnFailureListener(e -> {
+                    extra_sound_manager.playError(this);
+                    Toast.makeText(this, getString(R.string.toast_error, e.getMessage()), Toast.LENGTH_SHORT).show();
+                });
     }
-
 
 }

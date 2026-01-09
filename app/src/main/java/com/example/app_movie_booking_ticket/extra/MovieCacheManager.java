@@ -222,7 +222,8 @@ public class MovieCacheManager {
         // tương lai
         Set<String> moviesWithPastShowtimesOnly = new HashSet<>();
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH:mm", Locale.getDefault());
+        // Cleaner Date Parsing
+        SimpleDateFormat sdfStandard = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
         Date now = new Date();
 
         for (DataSnapshot movieSnap : snapshot.getChildren()) {
@@ -233,22 +234,44 @@ public class MovieCacheManager {
 
             for (DataSnapshot showtimeSnap : movieSnap.getChildren()) {
                 String showtimeKey = showtimeSnap.getKey();
+                if (showtimeKey == null)
+                    continue;
+
+                Date showtimeDate = null;
                 try {
-                    Date showtimeDate = sdf.parse(showtimeKey);
-                    if (showtimeDate != null) {
-                        if (showtimeDate.after(now)) {
-                            // Suất chiếu trong tương lai
-                            hasFutureShowtimes = true;
-                            if (earliestFuture == null || showtimeDate.before(earliestFuture)) {
-                                earliestFuture = showtimeDate;
+                    // Handle format like "Th 6, 21/11/2025_09:00"
+                    String[] parts = showtimeKey.split("_");
+                    if (parts.length >= 2) {
+                        String datePart = parts[0]; // "Th 6, 21/11/2025" or "21/11/2025"
+                        String timePart = parts[1]; // "09:00"
+
+                        // Remove "Th X, " prefix if present to get standard date
+                        if (datePart.contains(",")) {
+                            String[] dParts = datePart.split(",");
+                            if (dParts.length > 1) {
+                                datePart = dParts[1].trim();
                             }
-                        } else {
-                            // Suất chiếu trong quá khứ
-                            hasPastShowtimes = true;
                         }
+
+                        // Combine to standard format "dd/MM/yyyy HH:mm"
+                        String dateTimeStr = datePart + " " + timePart;
+                        showtimeDate = sdfStandard.parse(dateTimeStr);
                     }
-                } catch (ParseException e) {
-                    // Ignore invalid format
+                } catch (Exception e) {
+                    // Ignore parsing errors for individual showtimes
+                }
+
+                if (showtimeDate != null) {
+                    if (showtimeDate.after(now)) {
+                        // Suất chiếu trong tương lai
+                        hasFutureShowtimes = true;
+                        if (earliestFuture == null || showtimeDate.before(earliestFuture)) {
+                            earliestFuture = showtimeDate;
+                        }
+                    } else {
+                        // Suất chiếu trong quá khứ
+                        hasPastShowtimes = true;
+                    }
                 }
             }
 
@@ -326,16 +349,16 @@ public class MovieCacheManager {
         Log.d(TAG, "Thời điểm hiện tại: " + now.toString());
 
         // Ngày thứ 8 (bắt đầu của "sắp chiếu")
-        cal.add(Calendar.DAY_OF_YEAR, 8);
-        cal.set(Calendar.HOUR_OF_DAY, 0);
-        cal.set(Calendar.MINUTE, 0);
-        cal.set(Calendar.SECOND, 0);
-        cal.set(Calendar.MILLISECOND, 0);
-        Date nowShowingStartDate = cal.getTime(); // 00:00 ngày thứ 8
+        cal.add(Calendar.DAY_OF_YEAR, 7);
+        cal.set(Calendar.HOUR_OF_DAY, 23);
+        cal.set(Calendar.MINUTE, 59);
+        cal.set(Calendar.SECOND, 59);
+        cal.set(Calendar.MILLISECOND, 999);
+        Date nowShowingEndDate = cal.getTime(); // 23:59:59 ngày thứ 7
 
-        Log.d(TAG, "Ngày bắt đầu đang chiếu (ngày 8): " + nowShowingStartDate.toString());
-        Log.d(TAG, "Phạm vi SẮP CHIẾU: " + now.toString() + " đến trước " + nowShowingStartDate.toString());
-        Log.d(TAG, "Phạm vi ĐANG CHIẾU: từ " + nowShowingStartDate.toString() + " trở đi");
+        Log.d(TAG, "Ngày kết thúc đang chiếu (cuối ngày 7): " + nowShowingEndDate.toString());
+        Log.d(TAG, "Phạm vi ĐANG CHIẾU: " + now.toString() + " đến " + nowShowingEndDate.toString());
+        Log.d(TAG, "Phạm vi SẮP CHIẾU: sau " + nowShowingEndDate.toString());
 
         // Phân loại theo suất chiếu
         for (Movie movie : cachedAllMovies) {
@@ -354,14 +377,14 @@ public class MovieCacheManager {
 
             if (earliestShowtime != null) {
                 // Có suất chiếu trong tương lai
-                if (earliestShowtime.before(nowShowingStartDate)) {
-                    // Suất chiếu trong 7 ngày -> SẮP CHIẾU (phim sắp ra mắt)
-                    cachedUpcoming.add(movie);
-                    Log.d(TAG, "[SẮP CHIẾU] " + movie.getTitle() + " - Suất sớm nhất: " + earliestShowtime.toString());
-                } else {
-                    // Suất chiếu từ ngày 8 trở đi -> ĐANG CHIẾU (phim đã công chiếu)
+                if (earliestShowtime.before(nowShowingEndDate) || earliestShowtime.equals(nowShowingEndDate)) {
+                    // Suất chiếu trong 7 ngày tới -> ĐANG CHIẾU
                     cachedNowShowing.add(movie);
                     Log.d(TAG, "[ĐANG CHIẾU] " + movie.getTitle() + " - Suất sớm nhất: " + earliestShowtime.toString());
+                } else {
+                    // Suất chiếu từ ngày 8 trở đi -> SẮP CHIẾU
+                    cachedUpcoming.add(movie);
+                    Log.d(TAG, "[SẮP CHIẾU] " + movie.getTitle() + " - Suất sớm nhất: " + earliestShowtime.toString());
                 }
             } else {
                 // Không có suất chiếu trong database -> dựa vào field isUpcoming

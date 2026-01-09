@@ -4,7 +4,10 @@
     <!-- Cho phép ứng dụng truy cập Internet -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.VIBRATE" /> <!-- Location permissions for Cinema nearby feature -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- Push Notification permission (required for Android 13+) -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- Location permissions for Cinema nearby feature -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission

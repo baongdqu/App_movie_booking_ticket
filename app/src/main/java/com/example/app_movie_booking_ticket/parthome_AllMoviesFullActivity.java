@@ -23,7 +23,7 @@ import java.util.List;
 /**
  * Activity hiển thị TẤT CẢ phim (bao gồm cả thịnh hành và sắp chiếu)
  */
-public class parthome_AllMoviesFullActivity extends AppCompatActivity {
+public class parthome_AllMoviesFullActivity extends extra_manager_language {
 
     private RecyclerView recyclerAllMovies;
     private AllMoviesAdapter adapter;
@@ -35,6 +35,7 @@ public class parthome_AllMoviesFullActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        extra_themeutils.applySavedTheme(this);
         setContentView(R.layout.parthome_all_movies);
 
         recyclerAllMovies = findViewById(R.id.recyclerAllMovies);

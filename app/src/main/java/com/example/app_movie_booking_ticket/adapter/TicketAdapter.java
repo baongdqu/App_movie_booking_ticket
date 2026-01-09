@@ -37,9 +37,9 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
     private final OnDetailClickListener detailListener;
 
     public TicketAdapter(Context context,
-                         List<TicketSimple> list,
-                         OnRefundClickListener refundListener,
-                         OnDetailClickListener detailListener) {
+            List<TicketSimple> list,
+            OnRefundClickListener refundListener,
+            OnDetailClickListener detailListener) {
         this.context = context;
         this.list = list;
         this.refundListener = refundListener;
@@ -64,24 +64,25 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
         // 2. Kết hợp thông tin Rạp và Thời gian
 
         // 3. Hiển thị số ghế
-        holder.tvSeats.setText("Ghế: " + ticket.seats);
+        holder.tvSeats.setText(context.getString(R.string.seat_label) + " " + ticket.seats);
 
         // 4. Format và hiển thị Tổng tiền (Ví dụ: 150,000đ)
         DecimalFormat moneyFmt = new DecimalFormat("#,###");
-        String priceText = moneyFmt.format(ticket.totalPrice) + "đ";
+        String priceText = context.getString(R.string.ticket_price_format, moneyFmt.format(ticket.totalPrice));
         // Nếu bạn có TextView tvPrice trong layout, hãy set nó ở đây
         // holder.tvPrice.setText(priceText);
         StringBuilder summaryBuilder = new StringBuilder();
-        summaryBuilder.append("Rạp: ").append(ticket.cinemaName).append("\n");
-        summaryBuilder.append("Suất: ").append(ticket.date).append(" • ").append(ticket.time).append("\n");
+        summaryBuilder.append(context.getString(R.string.ticket_cinema_label)).append(ticket.cinemaName).append("\n");
+        summaryBuilder.append(context.getString(R.string.ticket_showtime_label)).append(ticket.date).append(" • ").append(ticket.time).append("\n");
 
         if (ticket.payment != null && ticket.payment.paidAt > 0) {
             String purchaseTime = formatTimestamp(ticket.payment.paidAt);
-            summaryBuilder.append("Mua lúc: ").append(purchaseTime);
+            summaryBuilder.append(context.getString(R.string.ticket_purchase_time_label)).append(purchaseTime);
         }
         // 4. Hiển thị ghế (Vì JSON seats là List nên dùng TextUtils.join)
         if (ticket.seats != null) {
-            holder.tvSeats.setText("Ghế: " + android.text.TextUtils.join(", ", ticket.seats));
+            holder.tvSeats.setText(
+                    context.getString(R.string.seat_label) + " " + android.text.TextUtils.join(", ", ticket.seats));
         }
         holder.tvInfo.setText(summaryBuilder.toString());
         // Load Poster
@@ -99,6 +100,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
     public int getItemCount() {
         return list.size();
     }
+
     private String formatTimestamp(long timestamp) {
         try {
             // Định dạng: Giờ:Phút - Ngày/Tháng/Năm
@@ -109,6 +111,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
             return "";
         }
     }
+
     static class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imgPoster;

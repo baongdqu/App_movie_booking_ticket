@@ -63,6 +63,18 @@
     <string name="top_movie">人気の映画</string>
     <string name="view_all">すべて表示</string>
     <string name="upcoming_movies">公開予定</string>
+    <string name="now_showing_movies">上映中の映画</string>
+
+    <!-- Cinema Selection -->
+    <string name="select_cinema">映画館を選択</string>
+    <string name="select_cinema_instructions">日付、時間、映画館を選択してください</string>
+    <string name="select_date">日付を選択</string>
+    <string name="select_time">上映時間を選択</string>
+    <string name="select">この映画館を選択</string>
+    <string name="continue_text">続行</string>
+    <string name="no_cinema_available">利用可能な映画館がありません</string>
+    <string name="please_select_date_time">日付と時間を選択してください</string>
+    <string name="selected">選択済み</string>
     
     <!-- Mail & Notifications -->
     <string name="empty_mailbox">受信箱が空です</string>
@@ -78,7 +90,7 @@
     <string name="genre">ジャンル</string>
     <string name="duration_placeholder">1時間41分</string>
     <string name="date_placeholder">2025/10/31</string>
-    <string name="details">詳細</string>
+
     <string name="buy_ticket">チケット購入</string>
     <string name="movie_name">映画名</string>
     
@@ -288,4 +300,242 @@
     <string name="dialog_no_internet_message">このアプリを使用するにはインターネット接続が必要です。ネットワーク接続を確認して再試行してください。</string>
     <string name="retry">再試行</string>
     <string name="exit">終了</string>
+
+    <!-- Review -->
+    <string name="toast_review_char_limit">内容は200文字を超えてはいけません！</string>
+    <string name="toast_select_rating">評価を選択してください！</string>
+    <string name="toast_review_saved">レビューを保存しました！</string>
+    <string name="toast_review_deleted">レビューを削除しました</string>
+    <string name="dialog_delete_review_title">レビューを削除</string>
+    <string name="dialog_delete_review_message">このレビューを削除してもよろしいですか？</string>
+    <string name="btn_update">更新</string>
+
+    <!-- Ticket -->
+    <string name="toast_ticket_not_found">チケットが見つかりません</string>
+    <string name="toast_ticket_refunded">チケットは払い戻されました</string>
+    <string name="toast_not_logged_in">ログインしていません</string>
+    <string name="toast_no_refund_permission">このチケットを払い戻す権限がありません</string>
+    <string name="toast_ticket_data_missing">払い戻しに必要なチケットデータがありません</string>
+    <string name="toast_refund_failed">払い戻しに失敗しました</string>
+
+    <!-- Cinema/Seat Selection -->
+    <string name="toast_cinema_not_found">映画館が見つかりません</string>
+    <string name="toast_cinema_data_mismatch">映画館データの不一致</string>
+    <string name="toast_select_showtime">上映時間を選択してください</string>
+
+    <!-- Payment -->
+    <string name="toast_payment_cancelled">支払いをキャンセルしました</string>
+    <string name="toast_payment_confirmed">支払いが正常に確認されました！</string>
+    <string name="toast_ticket_pending">戻りました、チケットは保留中です。</string>
+    <string name="toast_balance_error">残高を読み取れません。もう一度お試しください</string>
+
+    <!-- Movie -->
+    <string name="toast_trailer_not_available">予告編は利用できません</string>
+    <string name="toast_no_trending_movies">人気の映画がありません</string>
+
+    <!-- Ticket Detail -->
+    <string name="btn_refunded">払い戻し済み</string>
+    <string name="btn_refund">払い戻し</string>
+    <string name="seat_label">座席:</string>
+    <string name="seat_format">🎟 座席: %1$s</string>
+    <string name="seat_not_selected">🎟 座席: (未選択)</string>
+    <string name="cinema_not_selected">🎬 (映画館未選択)</string>
+
+    <!-- Rating -->
+    <string name="reviews_count">(%1$d件のレビュー)</string>
+    <string name="reviews_count_zero">(0件のレビュー)</string>
+    <string name="filter_all">すべて (%1$d)</string>
+    <string name="filter_star">%1$d ★ (%2$d)</string>
+    <string name="all_reviews_header">すべてのレビュー (%1$d)</string>
+    <string name="star_reviews_header">%1$d星レビュー (%2$d)</string>
+    <string name="no_reviews_yet">まだレビューがありません</string>
+    <string name="be_first_to_review">最初のレビューを書いてください！</string>
+    <string name="sentiment_excellent">傑作</string>
+    <string name="sentiment_excellent_desc">高評価の映画！</string>
+    <string name="sentiment_worth_watching">必見</string>
+    <string name="sentiment_worth_watching_desc">好評価を受けています。</string>
+    <string name="sentiment_mixed">評価が分かれる</string>
+    <string name="sentiment_mixed_desc">視聴者の間で意見が分かれています。</string>
+    <string name="sentiment_needs_improvement">改善が必要</string>
+    <string name="sentiment_needs_improvement_desc">否定的な評価を受けています。</string>
+    <string name="edit_review">レビューを編集</string>
+    <string name="write_review">レビューを書く</string>
+
+    <!-- Cinema -->
+    <string name="book_at_cinema">%1$sで予約</string>
+    <string name="cinema_count">%1$d件の近くの映画館</string>
+    <string name="rating_not_available">N/A</string>
+    <string name="upcoming_badge">公開予定</string>
+    <string name="expired_badge">上映終了</string>
+
+    <!-- User -->
+    <string name="default_username">ユーザー</string>
+    <string name="user_not_found">ユーザーが見つかりません</string>
+
+    <!-- Ticket Detail Icon Formats -->
+    <string name="cinema_name_with_icon">🎬 %1$s</string>
+    <string name="time_format_with_icon">🕒 %1$s • %2$s</string>
+    <string name="verified_audience_reviews">購入済みの観客からのレビュー%1$d件</string>
+
+    <!-- Payment Screen -->
+    <string name="payment_info_title">支払い情報</string>
+    <string name="ticket_info">チケット情報</string>
+    <string name="recipient_info">受取人情報</string>
+    <string name="payment_method">支払い方法</string>
+    <string name="total_payment">合計支払い</string>
+    <string name="pay_now">今すぐ支払う</string>
+    <string name="secure_payment">安全な支払い</string>
+    <string name="movie_poster">映画ポスター</string>
+    <string name="vnpay_desc">VNPayウォレットで支払う</string>
+    <string name="balance_desc">残高: %1$sđ</string>
+    <string name="toast_select_payment_method">支払い方法を選択してください！</string>
+    <string name="toast_insufficient_balance">残高不足です！</string>
+    <string name="toast_payment_success">支払い成功！</string>
+    <string name="toast_payment_failed">支払い失敗: %1$s</string>
+
+    <!-- Payment Methods & Formats -->
+    <string name="payment_method_balance">残高</string>
+    <string name="payment_method_vnpay">VNPayゲートウェイ</string>
+    <string name="price_format_vnd">%1$sđ</string>
+    <string name="ticket_count_format">%1$d枚</string>
+    <string name="balance_format">残高: %1$s đ</string>
+
+    <!-- Generic & Errors -->
+    <string name="email_not_available">メールなし</string>
+    <string name="choose_image">画像を選択</string>
+    <string name="error_ticket_invalid_refund">チケットは払い戻し済みまたは無効です</string>
+    <string name="error_update_ticket_failed">チケットの更新に失敗しました</string>
+    <string name="error_load_data">データ読み込みエラー: %1$s</string>
+    <string name="refund_error_seat">払い戻しは成功しましたが、座席の返却に失敗しました</string>
+
+    <!-- Notifications -->
+    <string name="notification_update_account_title">アカウント更新</string>
+    <string name="notification_update_account_body">個人情報を更新しました</string>
+    <string name="notification_refund_success_title">払い戻し成功</string>
+    <string name="notification_refund_success_body">チケットは払い戻されました。</string>
+    <string name="notification_refund_success_body_with_amount">%2$sに対して%1$sđが払い戻されました</string>
+
+    <string name="info_not_updated">未更新</string>
+    <string name="error_payment_prefix">支払いエラー: %1$s</string>
+    <string name="trailer_button">予告編を見る</string>
+
+    <!-- Missing Strings Added -->
+    <string name="transaction_details">取引詳細</string>
+    <string name="payment_method_label">支払い方法:</string>
+    <string name="app_wallet">アプリウォレット</string>
+    <string name="purchase_time_label">購入時間:</string>
+    <string name="total_amount_label">合計金額</string>
+    <string name="refund_note">注: 払い戻しはウォレットの残高に追加されます。</string>
+    <string name="refund_button">払い戻し</string>
+    <string name="status_now_showing">上映中</string>
+    <string name="address_label">住所</string>
+    <string name="phone_label">電話番号</string>
+    <string name="opening_hours_label">営業時間</string>
+    <string name="number_of_screens_label">スクリーン数</string>
+    <string name="utilities_label">設備</string>
+    <string name="now_showing_label">上映中</string>
+    <string name="upcoming_label">公開予定</string>
+    <string name="no_schedule_message">上映スケジュールがありません</string>
+    <string name="call_button">電話</string>
+    <string name="directions_button">経路案内</string>
+    <string name="please_wait">お待ちください...</string>
+    <string name="pull_to_retry">引いて再試行</string>
+    <string name="my_tickets">マイチケット</string>
+    <string name="no_tickets_yet">チケットがありません</string>
+    <string name="book_ticket_start">映画のチケットを予約しましょう！</string>
+    <string name="status_released">公開済み</string>
+    <string name="cinema_label_icon">🎬 映画館</string>
+    <string name="schedule_label">📅 スケジュール</string>
+    <string name="screen_label">🎥 スクリーン</string>
+    <string name="seat_label_icon">💺 座席</string>
+    <string name="payment_vnpay_label">VNPay</string>
+    <string name="payment_vnpay_desc_text">VNPayウォレットで支払う</string>
+    <string name="payment_balance_label">アカウント残高</string>
+    <string name="audience_reviews">観客のレビュー</string>
+    <string name="no_reviews">レビューはまだありません</string>
+    <string name="be_first_to_share">最初のレビューを投稿しましょう！</string>
+    <string name="write_review_button">レビューを書く</string>
+    <string name="all_reviews">すべてのレビュー</string>
+    <string name="write_review_title">レビューを書く</string>
+    <string name="review_hint">この映画はいかがでしたか？</string>
+    <string name="review_content_hint">あなたの体験を共有してください...</string>
+    <string name="delete_review_button">レビューを削除</string>
+    <string name="send_button">送信</string>
+    <string name="format_hd">HD</string>
+    <string name="status_paid">支払い済み</string>
+    <string name="send_generic">送信</string>
+    <string name="you_marker"> (あなた)</string>
+    <string name="rating_star_format">%s ★</string>
+    <string name="ticket_cinema_label">映画館: </string>
+    <string name="ticket_showtime_label">上映時間: </string>
+    <string name="ticket_purchase_time_label">時間: </string>
+    <string name="ticket_price_format">%sドン</string>
+    <string name="format_screens_count">%d スクリーン</string>
+    <string name="format_movies_count">%d 映画</string>
+    <string name="format_showtime_count">%d 上映</string>
+
+    <!-- Cinema & Location -->
+    <string name="cinema_nearby">近くの映画館</string>
+    <string name="cinema_last_updated">更新: %s</string>
+    <string name="cinema_current_location">現在地</string>
+    <string name="cinema_detecting_location">位置情報を取得中...</string>
+    <string name="cinema_loading">映画館を読み込み中...</string>
+    <string name="cinema_no_results">近くに映画館が見つかりません</string>
+    <string name="cinema_grant_permission">位置情報へのアクセスを許可</string>
+    <string name="cinema_uit_location">UIT - VNU-HCM</string>
+    <string name="cinema_location_found">位置情報が見つかりました</string>
+    <string name="cinema_error">映画館の読み込みエラー</string>
+    <string name="cinema_open_now">営業中</string>
+    <string name="cinema_closed">閉店</string>
+    <string name="cinema_directions">経路</string>
+    <string name="cinema_call">電話</string>
+    <string name="cinema_distance">%1$.1f km</string>
+    <string name="cinema_location_permission_title">位置情報の権限が必要です</string>
+    <string name="cinema_location_permission_message">近くの映画館を見つけるには、位置情報へのアクセスを許可してください。</string>
+    <string name="cinema_location_permission_denied">位置情報の権限がないため、近くの映画館を見つけられません</string>
+    <string name="details">詳細</string>
+
+    <string name="dialog_confirm_delete_all_notifications_message">すべての通知を削除してもよろしいですか？</string>
+    <string name="clear_all">すべて削除</string>
+
+    <!-- PIN Security Settings -->
+    <string name="pin_settings_title">PINセキュリティ</string>
+    <string name="pin_settings_description">6桁のPINでアプリを保護する</string>
+    <string name="setup_pin">PINを設定</string>
+    <string name="change_pin">PINを変更</string>
+    <string name="remove_pin">PINを削除</string>
+    <string name="enable_pin_lock">PINロックを有効にする</string>
+    <string name="dialog_setup_pin_title">PINの設定</string>
+    <string name="dialog_enter_new_pin">新しい6桁のPINを入力</string>
+    <string name="dialog_confirm_pin">PINを確認</string>
+    <string name="dialog_enter_current_pin">現在のPINを入力</string>
+    <string name="dialog_change_pin_title">PINの変更</string>
+    <string name="dialog_remove_pin_title">PINの削除</string>
+    <string name="dialog_remove_pin_message">PINを削除してもよろしいですか？アプリは保護されなくなります。</string>
+    <string name="toast_pin_set_success">PINが正常に設定されました！</string>
+    <string name="toast_pin_changed_success">PINが正常に変更されました！</string>
+    <string name="toast_pin_removed">PINが削除されました！</string>
+    <string name="toast_pin_mismatch">PINの確認が一致しません！</string>
+    <string name="toast_pin_wrong">PINが正しくありません！</string>
+    <string name="toast_pin_invalid_length">PINは正確に6桁である必要があります！</string>
+    <string name="toast_pin_enabled">PINロックが有効になりました</string>
+    <string name="toast_pin_disabled">PINロックが無効になりました</string>
+    <string name="pin_status_active">PINは有効です</string>
+    <string name="pin_status_inactive">PINが設定されていません</string>
+
+    <!-- Push Notification Channels -->
+    <string name="notification_channel_tickets">チケット通知</string>
+    <string name="notification_channel_tickets_desc">チケット購入時または払い戻し時の通知</string>
+    <string name="notification_channel_general">一般通知</string>
+    <string name="notification_channel_general_desc">システム通知と更新</string>
+    <string name="notification_channel_system">システム</string>
+    <string name="notification_channel_system_desc">重要なシステム通知</string>
+
+    <!-- Push Notification Messages -->
+    <string name="push_notification_new_ticket_title">🎬 チケット予約成功！</string>
+    <string name="push_notification_new_ticket_body">「%1$s」のチケットを%2$sで%3$s %4$sに予約しました。タップして詳細を確認。</string>
+    <string name="push_notification_new_notification_title">🔔 新しい通知があります</string>
+    <string name="push_notification_new_notification_body">%1$s</string>
+
+
 </resources>

@@ -37,7 +37,7 @@ import com.google.firebase.database.ValueEventListener;
  * 
  * UI/UX: Modern design với gradient, cards, shadows
  */
-public class activities_2_chatbot extends AppCompatActivity {
+public class activities_2_chatbot extends extra_manager_language {
 
     // UI Components
     private ImageView btnBack;
@@ -65,6 +65,7 @@ public class activities_2_chatbot extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        extra_themeutils.applySavedTheme(this);
         setContentView(R.layout.layouts_2_chatbot);
 
         initViews();
@@ -100,7 +101,10 @@ public class activities_2_chatbot extends AppCompatActivity {
      * Setup toolbar với nút back
      */
     private void setupToolbar() {
-        btnBack.setOnClickListener(v -> onBackPressed());
+        btnBack.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
+            onBackPressed();
+        });
     }
 
     /**
@@ -128,7 +132,10 @@ public class activities_2_chatbot extends AppCompatActivity {
      */
     private void setupListeners() {
         // Nút gửi tin nhắn
-        fabSendMessage.setOnClickListener(v -> sendMessage());
+        fabSendMessage.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
+            sendMessage();
+        });
 
         // Gửi bằng phím Enter trên bàn phím
         inputChatMessage.setOnEditorActionListener((v, actionId, event) -> {
@@ -140,10 +147,22 @@ public class activities_2_chatbot extends AppCompatActivity {
         });
 
         // Quick Reply Buttons
-        chipSuggestMovie.setOnClickListener(v -> sendQuickReply(getString(R.string.chip_suggest_movie)));
-        chipBookTicket.setOnClickListener(v -> sendQuickReply(getString(R.string.chip_book_ticket)));
-        chipShowtime.setOnClickListener(v -> sendQuickReply(getString(R.string.chip_showtime)));
-        chipTicketPrice.setOnClickListener(v -> sendQuickReply(getString(R.string.chip_ticket_price)));
+        chipSuggestMovie.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
+            sendQuickReply(getString(R.string.chip_suggest_movie));
+        });
+        chipBookTicket.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
+            sendQuickReply(getString(R.string.chip_book_ticket));
+        });
+        chipShowtime.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
+            sendQuickReply(getString(R.string.chip_showtime));
+        });
+        chipTicketPrice.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
+            sendQuickReply(getString(R.string.chip_ticket_price));
+        });
     }
 
     /**
@@ -377,7 +396,14 @@ public class activities_2_chatbot extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        extra_sound_manager.playUiClick(this);
         super.onBackPressed();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
+
+    @Override
+    protected void onUserLeaveHint() {
+        super.onUserLeaveHint();
+        extra_sound_manager.playUiClick(this);
     }
 }

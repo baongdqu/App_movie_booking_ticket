@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class parthome_AllUpcomingActivity extends AppCompatActivity {
+public class parthome_AllUpcomingActivity extends extra_manager_language {
 
     private RecyclerView recyclerAllUpcoming;
     private AllMoviesAdapter adapter;
@@ -30,6 +30,7 @@ public class parthome_AllUpcomingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        extra_themeutils.applySavedTheme(this);
         setContentView(R.layout.parthome_all_movies);
 
         recyclerAllUpcoming = findViewById(R.id.recyclerAllMovies);

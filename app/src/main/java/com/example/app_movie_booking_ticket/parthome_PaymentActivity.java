@@ -45,7 +45,7 @@ import java.util.TimeZone;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
-public class parthome_PaymentActivity extends AppCompatActivity {
+public class parthome_PaymentActivity extends extra_manager_language {
 
     private static final String TAG = "PAYMENT";
     private static final String PREFS = "payment_prefs";
@@ -74,9 +74,14 @@ public class parthome_PaymentActivity extends AppCompatActivity {
 
     private long userBalance = 0;
 
+    // Thông tin người dùng để gửi email hóa đơn
+    private String userEmail = "";
+    private String userName = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        extra_themeutils.applySavedTheme(this);
 
         auth = FirebaseAuth.getInstance();
         userRef = FirebaseDatabase.getInstance().getReference("users");
@@ -125,7 +130,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
                 .into(imagePoster);
 
         if (cinemaName != null && !cinemaName.isEmpty()) {
-            txtCinemaName.setText("🎬 " + cinemaName);
+            txtCinemaName.setText(getString(R.string.cinema_name_with_icon, cinemaName));
         } else {
             txtCinemaName.setVisibility(View.GONE);
         }
@@ -137,7 +142,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         }
 
         DecimalFormat formatter = new DecimalFormat("#,###");
-        txtTotal.setText(formatter.format(totalPrice) + "đ");
+        txtTotal.setText(getString(R.string.price_format_vnd, formatter.format(totalPrice)));
 
         loadUserInfo(txtUser, txtEmail, txtPhone);
         loadUserBalance();
@@ -162,11 +167,15 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         handleVnpayReturn(intent);
     }
 
-    // =================== QUAN TRỌNG: xử lý kết quả VNPAY bằng intent.getData() ===================
+    // =================== QUAN TRỌNG: xử lý kết quả VNPAY bằng intent.getData()
+    // ===================
     private void handleVnpayReturn(Intent intent) {
-        if (intent == null) return;
+        if (intent == null)
+            return;
+
         Uri data = intent.getData();
-        if (data == null) return;
+        if (data == null)
+            return;
 
         String responseCode = data.getQueryParameter("vnp_ResponseCode");
 
@@ -262,6 +271,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
 
         if (vnpayCard instanceof MaterialCardView) {
             vnpayCard.setOnClickListener(v -> {
+                extra_sound_manager.playUiClick(this);
                 rbVnpay.setChecked(true);
                 rbBalance.setChecked(false);
             });
@@ -269,19 +279,27 @@ public class parthome_PaymentActivity extends AppCompatActivity {
 
         if (balanceCard instanceof MaterialCardView) {
             balanceCard.setOnClickListener(v -> {
+                extra_sound_manager.playUiClick(this);
                 rbBalance.setChecked(true);
                 rbVnpay.setChecked(false);
             });
         }
 
-        rbVnpay.setOnClickListener(v -> rbBalance.setChecked(false));
-        rbBalance.setOnClickListener(v -> rbVnpay.setChecked(false));
+        rbVnpay.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
+            rbBalance.setChecked(false);
+        });
+        rbBalance.setOnClickListener(v -> {
+            extra_sound_manager.playUiClick(this);
+            rbVnpay.setChecked(false);
+        });
     }
 
     // =================== Load balance ===================
     private void loadUserBalance() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null) return;
+        if (user == null)
+            return;
 
         String uid = user.getUid();
         DatabaseReference balanceRef = FirebaseDatabase.getInstance()
@@ -331,6 +349,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         } else if (rbBalance.isChecked()) {
             payByBalance();
         } else {
+            extra_sound_manager.playError(this);
             Toast.makeText(this, R.string.toast_select_payment_method, Toast.LENGTH_SHORT).show();
         }
     }
@@ -384,22 +403,28 @@ public class parthome_PaymentActivity extends AppCompatActivity {
     // =================== Load user info ===================
     private void loadUserInfo(TextView txtUser, TextView txtEmail, TextView txtPhone) {
         currentUser = auth.getCurrentUser();
-        if (currentUser == null) return;
+        if (currentUser == null)
+            return;
 
         String uid = currentUser.getUid();
 
         userRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (!snapshot.exists()) return;
+                if (!snapshot.exists())
+                    return;
 
                 String fullName = snapshot.child("fullName").getValue(String.class);
                 String email = snapshot.child("email").getValue(String.class);
                 String phone = snapshot.child("phone").getValue(String.class);
 
-                txtUser.setText(fullName != null ? fullName : "Người dùng");
-                txtEmail.setText(email != null ? email : "");
-                txtPhone.setText(phone != null ? phone : "Chưa cập nhật");
+                // Lưu thông tin để dùng cho gửi email hóa đơn
+                userEmail = email != null ? email : "";
+                userName = fullName != null ? fullName : getString(R.string.user_name);
+
+                txtUser.setText(userName);
+                txtEmail.setText(userEmail);
+                txtPhone.setText(phone != null ? phone : getString(R.string.info_not_updated));
             }
 
             @Override
@@ -411,7 +436,8 @@ public class parthome_PaymentActivity extends AppCompatActivity {
     // =================== Balance payment ===================
     private void payByBalance() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null) return;
+        if (user == null)
+            return;
 
         String uid = user.getUid();
 
@@ -422,7 +448,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
 
         balanceRef.get().addOnCompleteListener(task -> {
             if (!task.isSuccessful() || task.getResult() == null) {
-                Toast.makeText(this, "Không đọc được số dư, vui lòng thử lại", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.toast_balance_error), Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -437,7 +463,8 @@ public class parthome_PaymentActivity extends AppCompatActivity {
                     Object localVal = currentData.getValue();
                     long balance = (localVal == null) ? serverBalance : parseBalance(localVal);
 
-                    if (balance < totalPrice) return Transaction.abort();
+                    if (balance < totalPrice)
+                        return Transaction.abort();
 
                     currentData.setValue(balance - totalPrice);
                     return Transaction.success(currentData);
@@ -448,7 +475,7 @@ public class parthome_PaymentActivity extends AppCompatActivity {
 
                     if (error != null) {
                         Toast.makeText(parthome_PaymentActivity.this,
-                                "Lỗi thanh toán: " + error.getMessage(),
+                                getString(R.string.error_payment_prefix, error.getMessage()),
                                 Toast.LENGTH_SHORT).show();
                         return;
                     }
@@ -466,10 +493,24 @@ public class parthome_PaymentActivity extends AppCompatActivity {
                     // 2. Lưu vé và lấy ticketId trả về
                     String newTicketId = saveTicketSuccessByBalance();
 
-                    Toast.makeText(parthome_PaymentActivity.this, R.string.toast_payment_success, Toast.LENGTH_SHORT).show();
+                    extra_sound_manager.playSuccess(parthome_PaymentActivity.this);
+                    Toast.makeText(parthome_PaymentActivity.this, R.string.toast_payment_success, Toast.LENGTH_SHORT)
+                            .show();
 
                     // 3. CHUYỂN HƯỚNG VỀ TICKET DETAIL (Thay vì Movie Detail)
                     if (newTicketId != null) {
+                        // GỬI PUSH NOTIFICATION VỀ VÉ MỚI
+                        NotificationHelper notificationHelper = new NotificationHelper(parthome_PaymentActivity.this);
+                        notificationHelper.sendNewTicketNotification(
+                                movieTitle,
+                                newTicketId,
+                                cinemaName != null ? cinemaName : "",
+                                date,
+                                time);
+
+                        // 📧 GỬI EMAIL HÓA ĐƠN TỰ ĐỘNG
+                        sendEmailReceipt(newTicketId, getString(R.string.payment_balance_label));
+
                         Intent intent = new Intent(parthome_PaymentActivity.this, TicketDetailActivity.class);
                         intent.putExtra(TicketDetailActivity.EXTRA_TICKET_ID, newTicketId); // Dùng đúng hằng số key
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -494,11 +535,13 @@ public class parthome_PaymentActivity extends AppCompatActivity {
     // =================== Save ticket ===================
     private String saveTicketSuccessByBalance() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null) return null;
+        if (user == null)
+            return null;
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("tickets");
         String ticketId = ref.push().getKey();
-        if (ticketId == null) return null;
+        if (ticketId == null)
+            return null;
 
         Map<String, Object> payment = new HashMap<>();
         payment.put("method", "BALANCE");
@@ -531,7 +574,8 @@ public class parthome_PaymentActivity extends AppCompatActivity {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("tickets");
         currentTicketId = ref.push().getKey();
 
-        if (currentTicketId == null) return;
+        if (currentTicketId == null)
+            return;
 
         savePendingTicketId(currentTicketId);
 
@@ -561,7 +605,8 @@ public class parthome_PaymentActivity extends AppCompatActivity {
     }
 
     private void updateTicketStatus(String ticketId, String newStatus) {
-        if (ticketId == null) return;
+        if (ticketId == null)
+            return;
 
         DatabaseReference ref = FirebaseDatabase.getInstance()
                 .getReference("tickets")
@@ -575,7 +620,8 @@ public class parthome_PaymentActivity extends AppCompatActivity {
     }
 
     private void updateTicketToPaid(String ticketId) {
-        if (ticketId == null) return;
+        if (ticketId == null)
+            return;
 
         DatabaseReference ref = FirebaseDatabase.getInstance()
                 .getReference("tickets")
@@ -601,6 +647,21 @@ public class parthome_PaymentActivity extends AppCompatActivity {
                     if (mTitle != null && mCinemaId != null) {
                         bookSeats(movieTitle, date, time, seats, cinemaId);
                     }
+            // 2. GỬI PUSH NOTIFICATION VỀ VÉ MỚI
+            NotificationHelper notificationHelper = new NotificationHelper(parthome_PaymentActivity.this);
+            notificationHelper.sendNewTicketNotification(
+                    movieTitle,
+                    ticketId,
+                    cinemaName != null ? cinemaName : "",
+                    date,
+                    time);
+
+            // 📧 GỬI EMAIL HÓA ĐƠN TỰ ĐỘNG
+            sendEmailReceipt(ticketId, "VNPay");
+
+            // 3. Chuyển hướng (Dùng Context từ Activity)
+            Intent intent = new Intent(parthome_PaymentActivity.this, TicketDetailActivity.class);
+            intent.putExtra("ticketId", ticketId);
 
                     if (!isFinishing()) {
                         Intent intent = new Intent(parthome_PaymentActivity.this, TicketDetailActivity.class);
@@ -660,8 +721,10 @@ public class parthome_PaymentActivity extends AppCompatActivity {
 
     // =================== Helpers ===================
     private long parseBalance(Object val) {
-        if (val == null) return 0L;
-        if (val instanceof Number) return ((Number) val).longValue();
+        if (val == null)
+            return 0L;
+        if (val instanceof Number)
+            return ((Number) val).longValue();
         if (val instanceof String) {
             try {
                 String s = ((String) val).replaceAll("[^0-9]", "");
@@ -694,14 +757,15 @@ public class parthome_PaymentActivity extends AppCompatActivity {
             byte[] bytes = hmac512.doFinal(data.getBytes());
 
             StringBuilder hash = new StringBuilder();
-            for (byte b : bytes) hash.append(String.format("%02x", b));
+            for (byte b : bytes)
+                hash.append(String.format("%02x", b));
             return hash.toString();
         } catch (Exception e) {
             return "";
         }
     }
 
-    private String createVnpayUrl(int totalPrice) throws Exception {
+    private String createVnpayUrl(int totalPrice) {
         try {
             String vnp_TmnCode = "C1C16DDU";
             String vnp_HashSecret = "8XWZ093QGUAF75SADH9B1E7KH7NM2SOR";
@@ -780,5 +844,60 @@ public class parthome_PaymentActivity extends AppCompatActivity {
             Log.e("VNPAY_ERROR", "Lỗi tạo URL: " + e.getMessage());
             return null;
         }
+    }
+
+    // =================== GỬI EMAIL HÓA ĐƠN ===================
+    /**
+     * 📧 Gửi email hóa đơn vé xem phim tự động
+     * 
+     * @param ticketId      Mã vé
+     * @param paymentMethod Phương thức thanh toán (Balance/VNPay)
+     */
+    private void sendEmailReceipt(String ticketId, String paymentMethod) {
+        // Kiểm tra email hợp lệ
+        if (userEmail == null || userEmail.isEmpty() || !userEmail.contains("@")) {
+            Log.w(TAG, "Không thể gửi email hóa đơn: Email người dùng không hợp lệ");
+            return;
+        }
+
+        EmailHelper emailHelper = new EmailHelper(this);
+        emailHelper.sendTicketReceipt(
+                userEmail,
+                userName,
+                movieTitle,
+                cinemaName != null ? cinemaName : "N/A",
+                date,
+                time,
+                seats,
+                totalPrice,
+                ticketId,
+                paymentMethod,
+                new EmailHelper.EmailCallback() {
+                    @Override
+                    public void onSuccess() {
+                        Log.d(TAG, "📧 Email hóa đơn đã gửi thành công đến: " + userEmail);
+                        // Có thể hiển thị Toast thành công nếu muốn
+                        // Toast.makeText(parthome_PaymentActivity.this,
+                        // "Hóa đơn đã được gửi đến email của bạn!", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(String errorMessage) {
+                        Log.e(TAG, "❌ Lỗi gửi email hóa đơn: " + errorMessage);
+                        // Không hiển thị lỗi cho người dùng vì đây là tính năng phụ
+                    }
+                });
+    }
+
+    @Override
+    public void onBackPressed() {
+        extra_sound_manager.playUiClick(this);
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onUserLeaveHint() {
+        super.onUserLeaveHint();
+        extra_sound_manager.playUiClick(this);
     }
 }
