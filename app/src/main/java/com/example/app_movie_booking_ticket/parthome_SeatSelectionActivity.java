@@ -78,21 +78,25 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
         selectedShowtime = getIntent().getStringExtra("time");
         pricePerSeat = getIntent().getIntExtra("pricePerSeat", 0);
 
-        fromCinemaSelection = selectedCinemaId != null && !selectedCinemaId.isEmpty();
+        fromCinemaSelection = (selectedCinemaId != null && !selectedCinemaId.isEmpty()
+                && selectedDate != null && selectedShowtime != null);
 
         if (fromCinemaSelection) {
-            // Show cinema name in title
+            // LUỒNG 1: Đã chọn rạp, ngày, giờ từ CinemaDetail -> CinemaSelection
             tvMovieTitle.setText(movieTitle + "\n" + selectedCinemaName);
-            // Hide date/time selection since already selected
+
+            // KỸ THUẬT: Ẩn toàn bộ các layout chọn lại để tránh người dùng chọn sai rạp khác
             layoutDates.setVisibility(View.GONE);
             layoutTimes.setVisibility(View.GONE);
             findViewById(R.id.labelDate).setVisibility(View.GONE);
             findViewById(R.id.labelTime).setVisibility(View.GONE);
-            // Load seats directly
-            loadSeatsFromCinema();
+
+            // Nạp sơ đồ ghế ngay lập tức
+            loadSeats(selectedDate, selectedShowtime);
         } else {
+            // LUỒNG 2: Đi từ Movie Detail (Menu) -> Phải chọn từ đầu
             tvMovieTitle.setText(movieTitle);
-            dbRef = FirebaseDatabase.getInstance().getReference("Bookings").child(movieTitle);
+            dbRef = FirebaseDatabase.getInstance().getReference("Bookings").child(sanitizeFirebaseKey(movieTitle));
             loadAvailableDates();
         }
 
@@ -148,33 +152,20 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
     private void displaySeats(DataSnapshot seatsSnapshot) {
         gridSeats.removeAllViews();
 
-        // Căn giữa GridLayout
-        ViewGroup.LayoutParams lp = gridSeats.getLayoutParams();
-        if (lp instanceof LinearLayout.LayoutParams) {
-            LinearLayout.LayoutParams llp = (LinearLayout.LayoutParams) lp;
-            llp.width = LinearLayout.LayoutParams.WRAP_CONTENT;
-            llp.gravity = android.view.Gravity.CENTER_HORIZONTAL;
-            gridSeats.setLayoutParams(llp);
-        }
-
+        // Cấu hình giao diện Grid
+        gridSeats.setColumnCount(8);
         gridSeats.setAlignmentMode(GridLayout.ALIGN_MARGINS);
         gridSeats.setUseDefaultMargins(true);
-        gridSeats.setColumnCount(8);
-
-        selectedSeats.clear();
-        tvTotalPrice.setText(getString(R.string.total_price));
 
         if (seatsSnapshot.exists()) {
             for (DataSnapshot seat : seatsSnapshot.getChildren()) {
                 String seatName = seat.getKey();
                 String status = seat.getValue(String.class);
 
-                Button seatBtn = new Button(parthome_SeatSelectionActivity.this);
+                Button seatBtn = new Button(this);
                 seatBtn.setText(seatName);
                 seatBtn.setTextSize(12);
                 seatBtn.setTextColor(Color.WHITE);
-                seatBtn.setAllCaps(false);
-                seatBtn.setPadding(0, 0, 0, 0);
 
                 GridLayout.LayoutParams params = new GridLayout.LayoutParams();
                 params.width = 90;
@@ -184,12 +175,12 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
 
                 seatBtn.setBackgroundResource(R.drawable.bg_seat_selector);
 
+                // Kiểm tra trạng thái ghế
                 if ("booked".equals(status)) {
                     seatBtn.setEnabled(false);
-                    seatBtn.setSelected(false);
+                    seatBtn.setAlpha(0.5f); // Làm mờ ghế đã đặt
                 } else {
                     seatBtn.setEnabled(true);
-                    seatBtn.setSelected(false);
                     seatBtn.setOnClickListener(v -> toggleSeat(seatBtn, seatName));
                 }
 
@@ -321,67 +312,44 @@ public class parthome_SeatSelectionActivity extends AppCompatActivity {
 
     // 🔹 Load ghế của ngày + giờ cụ thể
     private void loadSeats(String date, String time) {
-        DatabaseReference seatRef = dbRef.child(date + "_" + time);
+        String showtimeKey = date + "_" + time;
+        String sanitizedTitle = sanitizeFirebaseKey(movieTitle);
+
+        // 🔥 KỸ THUẬT: Truy vấn sâu trực tiếp đến rạp đã chọn
+        // Bookings -> MovieTitle -> Date_Time -> cinemas -> selectedCinemaId
+        DatabaseReference seatRef = FirebaseDatabase.getInstance()
+                .getReference("Bookings")
+                .child(sanitizedTitle)
+                .child(showtimeKey)
+                .child("cinemas")
+                .child(selectedCinemaId);
+
+        android.util.Log.d("SeatSelection", "Loading seats from: " + seatRef.toString());
+
         seatRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 gridSeats.removeAllViews();
-
-                // Căn giữa GridLayout trong LinearLayout cha
-                ViewGroup.LayoutParams lp = gridSeats.getLayoutParams();
-                if (lp instanceof LinearLayout.LayoutParams) {
-                    LinearLayout.LayoutParams llp = (LinearLayout.LayoutParams) lp;
-                    llp.width = LinearLayout.LayoutParams.WRAP_CONTENT;
-                    llp.gravity = android.view.Gravity.CENTER_HORIZONTAL;
-                    gridSeats.setLayoutParams(llp);
-                }
-
-                gridSeats.setAlignmentMode(GridLayout.ALIGN_MARGINS);
-                gridSeats.setUseDefaultMargins(true);
-                gridSeats.setColumnCount(8);
-
                 selectedSeats.clear();
                 tvTotalPrice.setText(getString(R.string.total_price));
 
                 if (snapshot.exists()) {
-                    pricePerSeat = snapshot.child("pricePerSeat").getValue(Integer.class);
+                    // 1. Lấy giá vé của rạp này (từ Firebase)
+                    Long price = snapshot.child("pricePerSeat").getValue(Long.class);
+                    pricePerSeat = (price != null) ? price.intValue() : 0;
+
+                    // 2. Hiển thị sơ đồ ghế từ node 'seats'
                     DataSnapshot seatsSnap = snapshot.child("seats");
-                    for (DataSnapshot seat : seatsSnap.getChildren()) {
-                        String seatName = seat.getKey();
-                        String status = seat.getValue(String.class);
-
-                        Button seatBtn = new Button(parthome_SeatSelectionActivity.this);
-                        seatBtn.setText(seatName);
-                        seatBtn.setTextSize(12);
-                        seatBtn.setTextColor(Color.WHITE);
-                        seatBtn.setAllCaps(false);
-                        seatBtn.setPadding(0, 0, 0, 0);
-
-                        GridLayout.LayoutParams params = new GridLayout.LayoutParams();
-                        params.width = 90;
-                        params.height = 90;
-                        params.setMargins(8, 8, 8, 8);
-                        seatBtn.setLayoutParams(params);
-
-                        seatBtn.setBackgroundResource(R.drawable.bg_seat_selector);
-
-                        // Trạng thái ban đầu
-                        if ("booked".equals(status)) {
-                            seatBtn.setEnabled(false);
-                            seatBtn.setSelected(false);
-                        } else {
-                            seatBtn.setEnabled(true);
-                            seatBtn.setSelected(false);
-                            seatBtn.setOnClickListener(v -> toggleSeat(seatBtn, seatName));
-                        }
-
-                        gridSeats.addView(seatBtn);
-                    }
+                    displaySeats(seatsSnap);
+                } else {
+                    Toast.makeText(parthome_SeatSelectionActivity.this,
+                            "Không tìm thấy dữ liệu ghế cho rạp này", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError error) {
+                android.util.Log.e("SeatSelection", "Firebase Error: " + error.getMessage());
             }
         });
     }

@@ -328,15 +328,15 @@ public class CinemaDetailActivity extends AppCompatActivity implements CinemaMov
                 Log.d(TAG, "Ngưỡng 7 ngày: " + displaySdf.format(upcomingThreshold));
                 Log.d(TAG, "ĐANG CHIẾU: " + displaySdf.format(now) + " -> " + displaySdf.format(upcomingThreshold));
                 Log.d(TAG, "SẮP CHIẾU: sau " + displaySdf.format(upcomingThreshold));
-
+                Log.d(TAG, "Dữ liệu gốc từ Firebase: " + snapshot.toString()); // Xem Firebase trả về cái gì
                 // Duyệt qua tất cả phim trong Bookings
                 for (DataSnapshot movieSnap : snapshot.getChildren()) {
                     String movieId = movieSnap.getKey();
-
+                    Log.d(TAG, "Đang kiểm tra Phim: " + movieId);
                     // Duyệt qua các suất chiếu
                     for (DataSnapshot showtimeSnap : movieSnap.getChildren()) {
                         String showtimeKey = showtimeSnap.getKey();
-
+                        Log.d(TAG, "   => Suất chiếu: " + showtimeKey);
                         try {
                             Date showtimeDate = sdf.parse(showtimeKey);
                             if (showtimeDate == null || showtimeDate.before(now)) {
@@ -416,92 +416,123 @@ public class CinemaDetailActivity extends AppCompatActivity implements CinemaMov
      * Kiểm tra xem cinema key/name có match với rạp hiện tại không
      */
     private boolean matchesCinema(String cinemaKey, String cinemaNameFromBooking) {
-        String currentCinemaName = cinema.getName();
+        // 0. Log quan trọng để debug: soi xem 2 bên đang gửi cái gì cho nhau
+        Log.d(TAG, "DEBUG MATCH: AppID[" + cinemaId + "] vs FirebaseKey[" + cinemaKey + "] | Name[" + cinemaNameFromBooking + "]");
 
-        // So sánh bằng key (snake_case) - exact match
-        if (cinemaKey != null && cinemaKey.equalsIgnoreCase(cinemaId)) {
-            Log.d(TAG, "MATCH by exact key: " + cinemaKey + " == " + cinemaId);
+        if (cinemaKey == null) return false;
+
+        // 1. Chuẩn hóa ID (loại bỏ gạch nối, đưa về chữ thường)
+        String appId = cinemaId.toLowerCase().replace("-", "_").trim();
+        String dbKey = cinemaKey.toLowerCase().replace("-", "_").trim();
+
+        // 2. Kiểm tra chứa nhau (ID) - Đây là cách khớp nhanh nhất
+        // Ví dụ: "galaxy_linh_trung_thu_duc" chứa "galaxy_linh_trung" -> TRUE
+        if (appId.contains(dbKey) || dbKey.contains(appId)) {
+            Log.d(TAG, "==> MATCH SUCCESS by ID");
             return true;
         }
 
-        // So sánh bằng key - prefix/contains match
-        // Key trong Bookings (vd: galaxy_linh_trung) có thể ngắn hơn cinemaId (vd:
-        // galaxy_linh_trung_thu_duc)
-        if (cinemaKey != null && cinemaId != null) {
-            String normalizedKey = cinemaKey.toLowerCase().replace("-", "_");
-            String normalizedCurrentId = cinemaId.toLowerCase().replace("-", "_");
+        // 3. Nếu ID không khớp, thử so khớp bằng Tên (Bỏ dấu, bỏ khoảng trắng)
+        if (cinemaNameFromBooking != null) {
+            String appName = normalizeString(cinema.getName()); // Tên từ Google/Model
+            String dbName = normalizeString(cinemaNameFromBooking); // Tên lưu trong node Bookings
 
-            // Kiểm tra startsWith hoặc contains
-            if (normalizedCurrentId.startsWith(normalizedKey) || normalizedKey.startsWith(normalizedCurrentId)) {
-                Log.d(TAG, "MATCH by key prefix: " + normalizedKey + " <-> " + normalizedCurrentId);
+            // Kiểm tra xem tên có chứa các từ khóa chính không
+            if (appName.contains(dbName) || dbName.contains(appName)) {
+                Log.d(TAG, "==> MATCH SUCCESS by Normalized Name");
                 return true;
-            }
-
-            // Kiểm tra contains
-            if (normalizedCurrentId.contains(normalizedKey) || normalizedKey.contains(normalizedCurrentId)) {
-                Log.d(TAG, "MATCH by key contains: " + normalizedKey + " <-> " + normalizedCurrentId);
-                return true;
-            }
-        }
-
-        // So sánh bằng tên (case insensitive và bỏ dấu)
-        if (cinemaNameFromBooking != null && currentCinemaName != null) {
-            String normalizedBookingName = normalizeString(cinemaNameFromBooking);
-            String normalizedCurrentName = normalizeString(currentCinemaName);
-
-            // So sánh chứa
-            if (normalizedBookingName.contains(normalizedCurrentName)
-                    || normalizedCurrentName.contains(normalizedBookingName)) {
-                Log.d(TAG, "MATCH by contains: '" + normalizedBookingName + "' <-> '" + normalizedCurrentName + "'");
-                return true;
-            }
-
-            // So sánh dựa trên brand + location keywords
-            String[] brands = { "cgv", "galaxy", "lotte", "bhd", "cinestar", "mega", "beta" };
-            String[] locations = { "thuduc", "gigamall", "linhtrung", "cantavil", "grandpark", "pearl", "plaza" };
-
-            String matchedBrand = null;
-            String matchedLocation = null;
-
-            // Tìm brand chung
-            for (String brand : brands) {
-                if (normalizedBookingName.contains(brand) && normalizedCurrentName.contains(brand)) {
-                    matchedBrand = brand;
-                    break;
-                }
-            }
-
-            // Tìm location chung
-            for (String location : locations) {
-                if (normalizedBookingName.contains(location) && normalizedCurrentName.contains(location)) {
-                    matchedLocation = location;
-                    break;
-                }
-            }
-
-            // Nếu cả brand và location đều match -> cùng rạp
-            if (matchedBrand != null && matchedLocation != null) {
-                Log.d(TAG, "MATCH by brand+location: " + matchedBrand + " + " + matchedLocation);
-                return true;
-            }
-
-            // Nếu chỉ có brand match và tên ngắn -> có thể cùng rạp
-            // So sánh thêm bằng độ tương đồng
-            if (matchedBrand != null) {
-                // Tính số ký tự chung
-                int commonChars = countCommonChars(normalizedBookingName, normalizedCurrentName);
-                int minLength = Math.min(normalizedBookingName.length(), normalizedCurrentName.length());
-                double similarity = (double) commonChars / minLength;
-
-                if (similarity >= 0.7) { // 70% tương đồng
-                    Log.d(TAG, "MATCH by brand + similarity: " + matchedBrand + ", similarity=" + similarity);
-                    return true;
-                }
             }
         }
 
         return false;
     }
+//    private boolean matchesCinema(String cinemaKey, String cinemaNameFromBooking) {
+//        String currentCinemaName = cinema.getName();
+//
+//        // So sánh bằng key (snake_case) - exact match
+//        if (cinemaKey != null && cinemaKey.equalsIgnoreCase(cinemaId)) {
+//            Log.d(TAG, "MATCH by exact key: " + cinemaKey + " == " + cinemaId);
+//            return true;
+//        }
+//
+//        // So sánh bằng key - prefix/contains match
+//        // Key trong Bookings (vd: galaxy_linh_trung) có thể ngắn hơn cinemaId (vd:
+//        // galaxy_linh_trung_thu_duc)
+//        if (cinemaKey != null && cinemaId != null) {
+//            String normalizedKey = cinemaKey.toLowerCase().replace("-", "_");
+//            String normalizedCurrentId = cinemaId.toLowerCase().replace("-", "_");
+//
+//            // Kiểm tra startsWith hoặc contains
+//            if (normalizedCurrentId.startsWith(normalizedKey) || normalizedKey.startsWith(normalizedCurrentId)) {
+//                Log.d(TAG, "MATCH by key prefix: " + normalizedKey + " <-> " + normalizedCurrentId);
+//                return true;
+//            }
+//
+//            // Kiểm tra contains
+//            if (normalizedCurrentId.contains(normalizedKey) || normalizedKey.contains(normalizedCurrentId)) {
+//                Log.d(TAG, "MATCH by key contains: " + normalizedKey + " <-> " + normalizedCurrentId);
+//                return true;
+//            }
+//        }
+//
+//        // So sánh bằng tên (case insensitive và bỏ dấu)
+//        if (cinemaNameFromBooking != null && currentCinemaName != null) {
+//            String normalizedBookingName = normalizeString(cinemaNameFromBooking);
+//            String normalizedCurrentName = normalizeString(currentCinemaName);
+//
+//            // So sánh chứa
+//            if (normalizedBookingName.contains(normalizedCurrentName)
+//                    || normalizedCurrentName.contains(normalizedBookingName)) {
+//                Log.d(TAG, "MATCH by contains: '" + normalizedBookingName + "' <-> '" + normalizedCurrentName + "'");
+//                return true;
+//            }
+//
+//            // So sánh dựa trên brand + location keywords
+//            String[] brands = { "cgv", "galaxy", "lotte", "bhd", "cinestar", "mega", "beta" };
+//            String[] locations = { "thuduc", "gigamall", "linhtrung", "cantavil", "grandpark", "pearl", "plaza" };
+//
+//            String matchedBrand = null;
+//            String matchedLocation = null;
+//
+//            // Tìm brand chung
+//            for (String brand : brands) {
+//                if (normalizedBookingName.contains(brand) && normalizedCurrentName.contains(brand)) {
+//                    matchedBrand = brand;
+//                    break;
+//                }
+//            }
+//
+//            // Tìm location chung
+//            for (String location : locations) {
+//                if (normalizedBookingName.contains(location) && normalizedCurrentName.contains(location)) {
+//                    matchedLocation = location;
+//                    break;
+//                }
+//            }
+//
+//            // Nếu cả brand và location đều match -> cùng rạp
+//            if (matchedBrand != null && matchedLocation != null) {
+//                Log.d(TAG, "MATCH by brand+location: " + matchedBrand + " + " + matchedLocation);
+//                return true;
+//            }
+//
+//            // Nếu chỉ có brand match và tên ngắn -> có thể cùng rạp
+//            // So sánh thêm bằng độ tương đồng
+//            if (matchedBrand != null) {
+//                // Tính số ký tự chung
+//                int commonChars = countCommonChars(normalizedBookingName, normalizedCurrentName);
+//                int minLength = Math.min(normalizedBookingName.length(), normalizedCurrentName.length());
+//                double similarity = (double) commonChars / minLength;
+//
+//                if (similarity >= 0.7) { // 70% tương đồng
+//                    Log.d(TAG, "MATCH by brand + similarity: " + matchedBrand + ", similarity=" + similarity);
+//                    return true;
+//                }
+//            }
+//        }
+//
+//        return false;
+//    }
 
     /**
      * Đếm số ký tự chung giữa hai chuỗi
@@ -543,69 +574,69 @@ public class CinemaDetailActivity extends AppCompatActivity implements CinemaMov
      * Load chi tiết phim từ MovieCacheManager
      */
     private void loadMovieDetailsFromCache(Map<String, Integer> nowShowingShowtimes,
-            Map<String, Date> nowShowingEarliest,
-            Map<String, Integer> upcomingShowtimes,
-            Map<String, Date> upcomingEarliest) {
+                                           Map<String, Date> nowShowingEarliest,
+                                           Map<String, Integer> upcomingShowtimes,
+                                           Map<String, Date> upcomingEarliest) {
         nowShowingMovies.clear();
         upcomingMovies.clear();
 
         movieCacheManager.getFilteredMovies((nowShowing, upcoming, trending, allMovies) -> {
-            // Tạo map movieId -> Movie cho tìm kiếm nhanh
+            // 1. Tạo map dùng Title đã viết thường làm Key
             Map<String, Movie> movieMap = new HashMap<>();
             for (Movie movie : allMovies) {
-                movieMap.put(movie.getMovieID(), movie);
+                if (movie.getTitle() != null) {
+                    movieMap.put(movie.getTitle().toLowerCase().trim(), movie);
+                }
             }
 
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM", Locale.getDefault());
             SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
 
-            // Phim đang chiếu tại rạp
+            // 2. Xử lý phim Đang chiếu
             for (Map.Entry<String, Integer> entry : nowShowingShowtimes.entrySet()) {
-                String movieId = entry.getKey();
+                // movieId ở đây thực chất là Tên phim từ Key của Firebase (vd: "Atlas")
+                String movieTitleFromFb = entry.getKey();
                 int showtimeCount = entry.getValue();
-                Movie movie = movieMap.get(movieId);
+
+                // 🔥 SỬA TẠI ĐÂY: Truy vấn bằng tên đã viết thường
+                Movie movie = movieMap.get(movieTitleFromFb.toLowerCase().trim());
 
                 if (movie != null) {
                     double rating = movie.getImdb();
-
-                    // Lấy ngày sớm nhất
                     String dateStr = "";
-                    Date earliest = nowShowingEarliest.get(movieId);
+                    Date earliest = nowShowingEarliest.get(movieTitleFromFb);
                     if (earliest != null) {
-                        // Nếu là hôm nay, hiện giờ. Nếu ngày khác, hiện dd/MM
                         if (android.text.format.DateUtils.isToday(earliest.getTime())) {
                             dateStr = "Hôm nay " + timeFormat.format(earliest);
                         } else {
                             dateStr = dateFormat.format(earliest);
                         }
                     }
-
                     nowShowingMovies.add(new CinemaMovieAdapter.CinemaMovie(
                             movie, showtimeCount, false, rating, dateStr));
                 }
             }
 
-            // Phim sắp chiếu tại rạp
+            // 3. Xử lý phim Sắp chiếu
             for (Map.Entry<String, Integer> entry : upcomingShowtimes.entrySet()) {
-                String movieId = entry.getKey();
+                String movieTitleFromFb = entry.getKey();
                 int showtimeCount = entry.getValue();
-                Movie movie = movieMap.get(movieId);
+
+                // 🔥 SỬA TẠI ĐÂY: Truy vấn bằng tên đã viết thường
+                Movie movie = movieMap.get(movieTitleFromFb.toLowerCase().trim());
 
                 if (movie != null) {
                     double rating = movie.getImdb();
-
                     String dateStr = "";
-                    Date earliest = upcomingEarliest.get(movieId);
+                    Date earliest = upcomingEarliest.get(movieTitleFromFb);
                     if (earliest != null) {
                         dateStr = dateFormat.format(earliest);
                     }
-
                     upcomingMovies.add(new CinemaMovieAdapter.CinemaMovie(
                             movie, showtimeCount, true, rating, dateStr));
                 }
             }
 
-            // Cập nhật UI
             updateMoviesUI();
         });
     }
